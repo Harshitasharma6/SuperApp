@@ -1,0 +1,104 @@
+[
+  {
+    "CdsFCBContext": "{\"FileType\":true,\"ImageExternalStorage\":true}",
+    "EntitySetName": "zx_pricelistmappings",
+    "IsHidden": false,
+    "IsSampleData": false,
+    "IsWritable": true,
+    "LogicalName": "zx_pricelistmapping",
+    "MaxGetRowsCount": 500,
+    "Name": "Price List Mapping.S",
+    "NativeCDSDataSourceInfoNameMapping": {
+      "_ownerid_value": "Owner",
+      "createdby": "Created By",
+      "createdon": "Created On",
+      "createdonbehalfby": "Created By (Delegate)",
+      "importsequencenumber": "Import Sequence Number",
+      "modifiedby": "Modified By",
+      "modifiedon": "Modified On",
+      "modifiedonbehalfby": "Modified By (Delegate)",
+      "overriddencreatedon": "Record Created On",
+      "owningbusinessunit": "Owning Business Unit",
+      "owningteam": "Owning Team",
+      "owninguser": "Owning User",
+      "statecode": "Status",
+      "statuscode": "Status Reason",
+      "timezoneruleversionnumber": "Time Zone Rule Version Number",
+      "utcconversiontimezonecode": "UTC Conversion Time Zone Code",
+      "versionnumber": "Version Number",
+      "zx_Customer": "Customer",
+      "zx_enddate": "End Date",
+      "zx_name": "Name",
+      "zx_PriceList": "Price List",
+      "zx_pricelistmapping_AsyncOperations": "System Jobs",
+      "zx_pricelistmapping_BulkDeleteFailures": "Bulk Delete Failures",
+      "zx_pricelistmapping_DuplicateBaseRecord": "Duplicate Records (zx_pricelistmapping_DuplicateBaseRecord)",
+      "zx_pricelistmapping_DuplicateMatchingRecord": "Duplicate Records (zx_pricelistmapping_DuplicateMatchingRecord)",
+      "zx_pricelistmapping_MailboxTrackingFolders": "Mailbox Auto Tracking Folders",
+      "zx_pricelistmapping_PrincipalObjectAttributeAccesses": "Field Sharing",
+      "zx_pricelistmapping_ProcessSession": "Process Sessions",
+      "zx_pricelistmapping_SyncErrors": "Sync Errors",
+      "zx_pricelistmappingid": "Price List Mapping",
+      "zx_priceliststatus": "Price List Status",
+      "zx_Region": "Region",
+      "zx_startdate": "Start Date",
+      "zx_State": "State"
+    },
+    "PreferredName": "Price List Mapping.S",
+    "Type": "NativeCDSDataSourceInfo"
+  },
+  {
+    "DisplayName": "Price List Mapping.S (Views)",
+    "Name": "_zx_pricelistmapping_views",
+    "RelatedEntityName": "Price List Mapping.S",
+    "TrimmedViewName": true,
+    "Type": "ViewInfo",
+    "ViewInfoNameMapping": {
+      "1c7d0128-435b-42f4-b5ea-e0843d67b678": "Inactive Price List Mappings",
+      "3b6b7b34-b8dc-48bf-aacb-07b0e2106e59": "Price List Mapping Advanced Find View",
+      "61867ed4-7049-456b-8875-fdcaddac4460": "Price List Mapping Lookup View",
+      "75a77abd-c3f8-4856-a57a-4e14fa440f7c": "Active Price List Mappings",
+      "d013fb3b-df53-4aac-819d-f6f87e2d5861": "Price List Mapping Associated View"
+    }
+  },
+  {
+    "DisplayName": "Status (Price List Mapping.S)",
+    "Name": "zx_pricelistmapping_statecode",
+    "OptionSetInfoNameMapping": {
+      "0": "Active",
+      "1": "Inactive"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "statecode",
+        "OptionSetReferenceEntityName": "Price List Mapping.S"
+      }
+    },
+    "OptionSetTypeKey": "StateType",
+    "RelatedColumnInvariantName": "statecode",
+    "RelatedEntityName": "Price List Mapping.S",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Status Reason (Price List Mapping.S)",
+    "Name": "zx_pricelistmapping_statuscode",
+    "OptionSetInfoNameMapping": {
+      "1": "Active",
+      "2": "Inactive"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "statuscode",
+        "OptionSetReferenceEntityName": "Price List Mapping.S"
+      }
+    },
+    "OptionSetTypeKey": "StatusType",
+    "RelatedColumnInvariantName": "statuscode",
+    "RelatedEntityName": "Price List Mapping.S",
+    "Type": "OptionSetInfo"
+  }
+]

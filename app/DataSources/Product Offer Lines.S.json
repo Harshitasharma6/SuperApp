@@ -1,0 +1,100 @@
+[
+  {
+    "CdsFCBContext": "{\"FileType\":true,\"ImageExternalStorage\":true}",
+    "EntitySetName": "zx_productofferlineses",
+    "IsHidden": false,
+    "IsSampleData": false,
+    "IsWritable": true,
+    "LogicalName": "zx_productofferlines",
+    "MaxGetRowsCount": 500,
+    "Name": "Product Offer Lines.S",
+    "NativeCDSDataSourceInfoNameMapping": {
+      "_ownerid_value": "Owner",
+      "createdby": "Created By",
+      "createdon": "Created On",
+      "createdonbehalfby": "Created By (Delegate)",
+      "importsequencenumber": "Import Sequence Number",
+      "modifiedby": "Modified By",
+      "modifiedon": "Modified On",
+      "modifiedonbehalfby": "Modified By (Delegate)",
+      "overriddencreatedon": "Record Created On",
+      "owningbusinessunit": "Owning Business Unit",
+      "owningteam": "Owning Team",
+      "owninguser": "Owning User",
+      "statecode": "Status",
+      "statuscode": "Status Reason",
+      "timezoneruleversionnumber": "Time Zone Rule Version Number",
+      "utcconversiontimezonecode": "UTC Conversion Time Zone Code",
+      "versionnumber": "Version Number",
+      "zx_discount": "Discount %",
+      "zx_name": "Name",
+      "zx_ProductOfferHeader": "Product Offer Header",
+      "zx_productofferlines_AsyncOperations": "System Jobs",
+      "zx_productofferlines_BulkDeleteFailures": "Bulk Delete Failures",
+      "zx_productofferlines_DuplicateBaseRecord": "Duplicate Records (zx_productofferlines_DuplicateBaseRecord)",
+      "zx_productofferlines_DuplicateMatchingRecord": "Duplicate Records (zx_productofferlines_DuplicateMatchingRecord)",
+      "zx_productofferlines_MailboxTrackingFolders": "Mailbox Auto Tracking Folders",
+      "zx_productofferlines_PrincipalObjectAttributeAccesses": "Field Sharing",
+      "zx_productofferlines_ProcessSession": "Process Sessions",
+      "zx_productofferlines_SyncErrors": "Sync Errors",
+      "zx_productofferlinesid": "Product Offer Lines",
+      "zx_ProductSKU": "Product SKU"
+    },
+    "PreferredName": "Product Offer Lines.S",
+    "Type": "NativeCDSDataSourceInfo"
+  },
+  {
+    "DisplayName": "Product Offer Lines.S (Views)",
+    "Name": "_zx_productofferlines_views",
+    "RelatedEntityName": "Product Offer Lines.S",
+    "TrimmedViewName": true,
+    "Type": "ViewInfo",
+    "ViewInfoNameMapping": {
+      "326e8540-89db-436f-ae20-2f7cf8e88c98": "Product Offer Lines Advanced Find View",
+      "6764d547-0b49-4b6d-a6e7-dcdc94840fde": "Active Product Offer Lines",
+      "8512b0d8-5645-448b-8e20-5c15f7a9679b": "Inactive Product Offer Lines",
+      "9358d9b9-9e42-4874-a62e-05bcad81b2af": "Product Offer Lines Associated View",
+      "e8250a2d-d2a0-4a6c-b8ba-62250db71688": "Product Offer Lines Lookup View"
+    }
+  },
+  {
+    "DisplayName": "Status (Product Offer Lines.S)",
+    "Name": "zx_productofferlines_statecode",
+    "OptionSetInfoNameMapping": {
+      "0": "Active",
+      "1": "Inactive"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "statecode",
+        "OptionSetReferenceEntityName": "Product Offer Lines.S"
+      }
+    },
+    "OptionSetTypeKey": "StateType",
+    "RelatedColumnInvariantName": "statecode",
+    "RelatedEntityName": "Product Offer Lines.S",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Status Reason (Product Offer Lines.S)",
+    "Name": "zx_productofferlines_statuscode",
+    "OptionSetInfoNameMapping": {
+      "1": "Active",
+      "2": "Inactive"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "statuscode",
+        "OptionSetReferenceEntityName": "Product Offer Lines.S"
+      }
+    },
+    "OptionSetTypeKey": "StatusType",
+    "RelatedColumnInvariantName": "statuscode",
+    "RelatedEntityName": "Product Offer Lines.S",
+    "Type": "OptionSetInfo"
+  }
+]

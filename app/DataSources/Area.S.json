@@ -1,0 +1,109 @@
+[
+  {
+    "CdsFCBContext": "{\"FileType\":true,\"ImageExternalStorage\":true}",
+    "EntitySetName": "zx_areas",
+    "IsHidden": false,
+    "IsSampleData": false,
+    "IsWritable": true,
+    "LogicalName": "zx_area",
+    "MaxGetRowsCount": 500,
+    "Name": "Area.S",
+    "NativeCDSDataSourceInfoNameMapping": {
+      "_ownerid_value": "Owner",
+      "createdby": "Created By",
+      "createdon": "Created On",
+      "createdonbehalfby": "Created By (Delegate)",
+      "importsequencenumber": "Import Sequence Number",
+      "modifiedby": "Modified By",
+      "modifiedon": "Modified On",
+      "modifiedonbehalfby": "Modified By (Delegate)",
+      "overriddencreatedon": "Record Created On",
+      "owningbusinessunit": "Owning Business Unit",
+      "owningteam": "Owning Team",
+      "owninguser": "Owning User",
+      "statecode": "Status",
+      "statuscode": "Status Reason",
+      "timezoneruleversionnumber": "Time Zone Rule Version Number",
+      "utcconversiontimezonecode": "UTC Conversion Time Zone Code",
+      "versionnumber": "Version Number",
+      "zx_area_AsyncOperations": "System Jobs",
+      "zx_area_BulkDeleteFailures": "Bulk Delete Failures",
+      "zx_area_DuplicateBaseRecord": "Duplicate Records (zx_area_DuplicateBaseRecord)",
+      "zx_area_DuplicateMatchingRecord": "Duplicate Records (zx_area_DuplicateMatchingRecord)",
+      "zx_area_MailboxTrackingFolders": "Mailbox Auto Tracking Folders",
+      "zx_area_PrincipalObjectAttributeAccesses": "Field Sharing",
+      "zx_area_ProcessSession": "Process Sessions",
+      "zx_area_SyncErrors": "Sync Errors",
+      "zx_areaid": "Area",
+      "zx_areaname": "Area Name",
+      "zx_City": "City",
+      "zx_District": "District",
+      "zx_name": "Name",
+      "zx_Pincode": "Pincode",
+      "zx_Region": "Region",
+      "zx_State": "State",
+      "zx_Territory": "Territory",
+      "zx_zx_leads_Area_zx_area": "Leads.S",
+      "zx_zx_parties_Area_zx_area": "Parties.S",
+      "zx_zx_pincode_Area_zx_area": "Pincode.S",
+      "zx_zx_pjproute_Area_zx_area": "Beat.S",
+      "zx_zx_userareamapping_Area_zx_area": "User-Area Mapping.S"
+    },
+    "PreferredName": "Area.S",
+    "Type": "NativeCDSDataSourceInfo"
+  },
+  {
+    "DisplayName": "Area.S (Views)",
+    "Name": "_zx_area_views",
+    "RelatedEntityName": "Area.S",
+    "TrimmedViewName": true,
+    "Type": "ViewInfo",
+    "ViewInfoNameMapping": {
+      "08654ab2-b7ff-49b1-9ee8-f8fc440cdd7c": "Active Areas",
+      "50da0395-8a10-44ba-b522-74faf6cd4e58": "Inactive Areas",
+      "5d08e632-320c-4f7e-b734-6158333be49f": "Area Associated View",
+      "aba392b9-26f2-479f-9970-bafaa27183bf": "Area Advanced Find View",
+      "eedb0fc0-4977-46fa-a2a8-66b48ce40b0f": "Area Lookup View"
+    }
+  },
+  {
+    "DisplayName": "Status (Area.S)",
+    "Name": "zx_area_statecode",
+    "OptionSetInfoNameMapping": {
+      "0": "Active",
+      "1": "Inactive"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "statecode",
+        "OptionSetReferenceEntityName": "Area.S"
+      }
+    },
+    "OptionSetTypeKey": "StateType",
+    "RelatedColumnInvariantName": "statecode",
+    "RelatedEntityName": "Area.S",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Status Reason (Area.S)",
+    "Name": "zx_area_statuscode",
+    "OptionSetInfoNameMapping": {
+      "1": "Active",
+      "2": "Inactive"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "statuscode",
+        "OptionSetReferenceEntityName": "Area.S"
+      }
+    },
+    "OptionSetTypeKey": "StatusType",
+    "RelatedColumnInvariantName": "statuscode",
+    "RelatedEntityName": "Area.S",
+    "Type": "OptionSetInfo"
+  }
+]

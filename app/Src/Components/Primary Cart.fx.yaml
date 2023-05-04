@@ -1,0 +1,622 @@
+"'Primary Cart' As CanvasComponent":
+    CartType: ="Text"
+    Fill: =_VarGblAppColors.BackgroundColor
+    Height: |
+        =800
+    Width: =App.Width
+    X: =0
+    Y: =0
+    ZIndex: =1
+
+    "'Cart Gallery_2' As gallery.galleryVertical":
+        AccessibleLabel: ="Cart"
+        BorderColor: =RGBA(0, 18, 107, 1)
+        FocusedBorderThickness: =
+        Height: =473
+        Items: =If('Primary Cart'.CartType = "Primary", colPrimaryCart, 'Primary Cart'.CartType="Secondary", colSecondaryCart)
+        Layout: =Layout.Vertical
+        TabIndex: =0
+        TemplateSize: =238
+        Width: ='Primary Cart'.Width
+        Y: =10
+        ZIndex: =1
+
+        "'Product BG_11' As button":
+            BorderColor: =_VarGblAppColors.PrimaryRed
+            BorderThickness: =1
+            Color: =_VarGblAppColors.AccentBg
+            DisabledBorderColor: =_VarGblAppColors.PrimaryRed
+            DisabledColor: =RGBA(166, 166, 166, 1)
+            DisabledFill: =_VarGblAppColors.AccentBg
+            DisplayMode: =DisplayMode.Disabled
+            Fill: =RGBA(56, 96, 178, 1)
+            FontWeight: =FontWeight.Semibold
+            Height: =225
+            HoverColor: =RGBA(255, 255, 255, 1)
+            HoverFill: =ColorFade(RGBA(56, 96, 178, 1), -20%)
+            OnSelect: =Select(Parent)
+            RadiusBottomLeft: =15
+            RadiusBottomRight: =15
+            RadiusTopLeft: =15
+            RadiusTopRight: =15
+            Size: =24
+            Text: =""
+            Width: ='Cart Gallery_2'.TemplateWidth -30
+            X: =15
+            ZIndex: =1
+
+        "'Product Name Lbl_8' As label":
+            BorderColor: =RGBA(0, 18, 107, 1)
+            Color: =_VarGblAppColors.PrimaryText
+            DisabledColor: =RGBA(166, 166, 166, 1)
+            FontWeight: =FontWeight.Bold
+            Height: =43
+            OnSelect: =Select(Parent)
+            Size: =18
+            Text: |-
+                =//ThisItem.productName & " (" & ThisItem.productVariant.Variant.'Variant Name' & ")"
+                
+                ThisItem.productName 
+            Width: =413
+            Wrap: =false
+            X: =52
+            Y: =10
+            ZIndex: =2
+
+        "'Product Price Lbl_9' As label":
+            BorderColor: =RGBA(0, 18, 107, 1)
+            Color: =_VarGblAppColors.PrimaryText
+            DisabledColor: =RGBA(166, 166, 166, 1)
+            FontWeight: =FontWeight.Semibold
+            OnSelect: =Select(Parent)
+            Size: =16
+            Text: |-
+                ="Unit Price: " 
+            Width: =140
+            Wrap: =false
+            X: =52
+            Y: =76
+            ZIndex: =4
+
+        "'Product Discount Lbl_5' As label":
+            BorderColor: =RGBA(0, 18, 107, 1)
+            Color: =_VarGblAppColors.PrimaryText
+            DisabledColor: =RGBA(166, 166, 166, 1)
+            FontWeight: =FontWeight.Semibold
+            OnSelect: =Select(Parent)
+            Size: |
+                =16
+            Text: |-
+                ="Discount: "
+            Width: =140
+            Wrap: =false
+            X: =52
+            Y: =119
+            ZIndex: =8
+
+        "'Quantityn Lbl_6' As label":
+            BorderColor: =RGBA(0, 18, 107, 1)
+            Color: =_VarGblAppColors.PrimaryText
+            DisabledColor: =RGBA(166, 166, 166, 1)
+            FontWeight: =FontWeight.Semibold
+            OnSelect: =Select(Parent)
+            Size: =_VarGblAppFonts.Size.Medium
+            Text: |-
+                ="Quantity: "& ""
+            Width: =118
+            Wrap: =false
+            X: =52
+            Y: =162
+            ZIndex: =9
+
+        "'Quantity Input_5' As text":
+            AccessibleLabel: ="Quan"
+            BorderColor: =_VarGblAppColors.SecondaryText
+            BorderThickness: =2
+            Color: =_VarGblAppColors.PrimaryRed
+            Default: =ThisItem.quantity
+            DisabledBorderColor: =RGBA(166, 166, 166, 1)
+            DisabledColor: =RGBA(166, 166, 166, 1)
+            DisabledFill: =RGBA(244, 244, 244, 1)
+            FontWeight: =FontWeight.Bold
+            Format: =TextFormat.Number
+            Height: =35
+            HintText: ="Enter here"
+            HoverBorderColor: =RGBA(128, 128, 128, 1)
+            HoverColor: =RGBA(0, 0, 0, 1)
+            HoverFill: =RGBA(230, 230, 230, 1)
+            OnChange: |-
+                =If(
+                    'Primary Cart'.CartType = "Primary",
+                    If(
+                        Value('Quantity Input_5'.Text) = 0,
+                        Remove(
+                            colPrimaryCart,
+                            LookUp(
+                                colPrimaryCart,
+                                productSKU = ThisItem.productSKU
+                            )
+                        ),
+                        Patch(
+                            colPrimaryCart,
+                            LookUp(
+                                colPrimaryCart,
+                                productSKU = ThisItem.productSKU
+                            ),
+                            {quantity: 'Quantity Input_5'.Text}
+                        );
+                    ),
+                    //Secondary CART----------------------------------------------------
+                    'Primary Cart'.CartType = "Secondary",
+                    If(
+                        Value('Quantity Input_5'.Text) = 0,
+                        Remove(
+                            colSecondaryCart,
+                            LookUp(
+                                colSecondaryCart,
+                                productSKU = ThisItem.productSKU
+                            )
+                        ),
+                        Patch(
+                            colSecondaryCart,
+                            LookUp(
+                                colSecondaryCart,
+                                productSKU = ThisItem.productSKU
+                            ),
+                            {quantity: 'Quantity Input_5'.Text}
+                        );
+                    )
+                )
+            OnSelect: =Select(Parent)
+            RadiusBottomLeft: =15
+            RadiusBottomRight: =15
+            RadiusTopLeft: =15
+            RadiusTopRight: =15
+            Width: =96
+            X: =174
+            Y: =162
+            ZIndex: =10
+
+        Icon8_3 As icon.Trash:
+            AccessibleLabel: ="Delete"
+            BorderColor: =RGBA(0, 18, 107, 1)
+            Color: =RGBA(255, 0, 0, 0.62)
+            DisabledBorderColor: =RGBA(166, 166, 166, 1)
+            DisabledColor: =RGBA(244, 244, 244, 1)
+            Height: =32
+            Icon: =Icon.Trash
+            OnSelect: |-
+                =If(
+                    'Primary Cart'.CartType = "Primary",
+                    Remove(
+                        colPrimaryCart,
+                        ThisItem
+                    ),
+                    'Primary Cart'.CartType = "Secondary",
+                    Remove(
+                        colSecondaryCart,
+                        ThisItem
+                    )
+                )
+            TabIndex: =0
+            Width: =32
+            X: ='Primary Cart'.Width - 80
+            Y: =17
+            ZIndex: =11
+
+        "'Product Price Lbl_10' As label":
+            BorderColor: =RGBA(0, 18, 107, 1)
+            Color: =_VarGblAppColors.PrimaryRed
+            DisabledColor: =RGBA(166, 166, 166, 1)
+            FontWeight: =FontWeight.Semibold
+            OnSelect: =Select(Parent)
+            Size: |
+                =16
+            Text: |-
+                ="Net Price: "
+            Width: =126
+            Wrap: =false
+            X: =360
+            Y: =162
+            ZIndex: =12
+
+        "'Product Price Lbl_15' As label":
+            BorderColor: =RGBA(0, 18, 107, 1)
+            Color: =_VarGblAppColors.PrimaryText
+            DisabledColor: =RGBA(166, 166, 166, 1)
+            FontWeight: =FontWeight.Semibold
+            Height: =43
+            OnSelect: =Select(Parent)
+            Size: =16
+            Text: |-
+                ="Total Price: " 
+            Width: =130
+            Wrap: =false
+            X: =374
+            Y: =76
+            ZIndex: =13
+
+        "'Product Discount Lbl_8' As label":
+            BorderColor: =RGBA(0, 18, 107, 1)
+            Color: =_VarGblAppColors.PrimaryText
+            DisabledColor: =RGBA(166, 166, 166, 1)
+            FontWeight: =FontWeight.Semibold
+            OnSelect: =Select(Parent)
+            Size: =_VarGblAppFonts.Size.Medium
+            Text: |-
+                ="Discount Price: "
+            Width: =172
+            Wrap: =false
+            X: =332
+            Y: =119
+            ZIndex: =14
+
+        Rectangle37 As rectangle:
+            BorderColor: =RGBA(0, 18, 107, 1)
+            Fill: =RGBA(102, 182, 227, 1)
+            Height: =2
+            OnSelect: =Select(Parent)
+            Width: =600
+            X: =15
+            Y: =57
+            ZIndex: =15
+
+        Label55 As label:
+            BorderColor: =RGBA(0, 18, 107, 1)
+            Color: =_VarGblAppColors.PrimaryRed
+            DisabledColor: =RGBA(166, 166, 166, 1)
+            OnSelect: =Select(Parent)
+            Size: =16
+            Text: ="₹" & ThisItem.baseUnitPrice
+            Width: =135
+            X: =174
+            Y: =76
+            ZIndex: =16
+
+        Label59 As label:
+            BorderColor: =RGBA(0, 18, 107, 1)
+            Color: =_VarGblAppColors.PrimaryRed
+            DisabledColor: =RGBA(166, 166, 166, 1)
+            OnSelect: =Select(Parent)
+            Size: |
+                =16
+            Text: =ThisItem.discount & "%"
+            Width: =120
+            X: =174
+            Y: =119
+            ZIndex: =17
+
+        Label60 As label:
+            BorderColor: =RGBA(0, 18, 107, 1)
+            Color: =_VarGblAppColors.PrimaryRed
+            DisabledColor: =RGBA(166, 166, 166, 1)
+            OnSelect: =Select(Parent)
+            Size: |
+                =16
+            Text: |-
+                =  "₹" & Text(((ThisItem.baseUnitPrice - (ThisItem.baseUnitPrice * (ThisItem.discount/100))) * ThisItem.quantity)+ ThisItem.igstAmount + ThisItem.cgstAmount+ ThisItem.sgstAmount+ ThisItem.cessAmount,"[$-hi-IN]##,##,##,###",
+                                        "hi-IN")
+                  
+            Width: =95
+            X: =504
+            Y: =162
+            ZIndex: =18
+
+        Label57_1 As label:
+            BorderColor: =RGBA(0, 18, 107, 1)
+            Color: =_VarGblAppColors.PrimaryRed
+            DisabledColor: =RGBA(166, 166, 166, 1)
+            FontWeight: =FontWeight.Bold
+            Size: =16
+            Text: |-
+                =Concatenate(
+                    "₹",
+                    Text(
+                        ThisItem.baseUnitPrice * (ThisItem.discount / 100) * ThisItem.quantity,
+                        "[$-hi-IN]##,##,##,###",
+                        "hi-IN"
+                    )
+                )
+            Width: =96
+            X: =504
+            Y: =119
+            ZIndex: =20
+
+        Label66 As label:
+            BorderColor: =RGBA(0, 18, 107, 1)
+            Color: =_VarGblAppColors.PrimaryRed
+            DisabledColor: =RGBA(166, 166, 166, 1)
+            OnSelect: =Select(Parent)
+            Size: =16
+            Text: ="₹" & (ThisItem.baseUnitPrice * ThisItem.quantity)
+            Width: =96
+            X: =504
+            Y: =76
+            ZIndex: =21
+
+    btnCnfrm As button:
+        DisabledBorderColor: =RGBA(166, 166, 166, 1)
+        DisabledColor: =RGBA(166, 166, 166, 1)
+        DisabledFill: =RGBA(244, 244, 244, 1)
+        DisplayMode: |-
+            =//DisplayMode.Edit
+            If(
+                CountRows(colPrimaryCart) > 0 ,
+                DisplayMode.Edit,
+                DisplayMode.Disabled
+            )
+        Fill: =_VarGblAppColors.PrimaryRed
+        FontWeight: =FontWeight.Semibold
+        Height: =50
+        HoverColor: =RGBA(255, 255, 255, 1)
+        HoverFill: =ColorFade(_VarGblAppColors.PrimaryRed, -20%)
+        OnSelect: |+
+            =Set(
+                _VarOrderResponse,
+                Patch(
+                    'Order Header.S',
+                    Defaults('Order Header.S'),
+                    {
+                        'Order From': LookUp(
+                            OfflinePartiesCollection,
+                            'Customer Name' = varParty
+                        ),
+                        'Order To': LookUp(
+                            'Parties.S',
+                            'Customer Name' = "Zoxima Solutions"
+                        ),
+                        'Order Status': 'Order Status Choice'.Open,
+                     'Order Type': 'Order Type Choice'.Primary,
+                        SGST: /*(Sum(
+                            colPrimaryCart,
+                            baseUnitPrice * quantity
+                        ) * 0.09)*/
+            Sum(
+                            colPrimaryCart,
+                            sgstAmount
+                        ),
+                        CGST: /*(Sum(
+                            colPrimaryCart,
+                            baseUnitPrice * quantity
+                        ) * 0.09)*/
+            Sum(
+                            colPrimaryCart,
+                            cgstAmount
+                        ),
+                        'Payment Terms': LookUp(
+                            'Payment Terms.S',
+                            Name = ComboBox7_3.Selected.Name
+                        ),
+                        'Bill To': LookUp(
+                            OfflinePartiesCollection,
+                            'Customer Name' = ComboBox7.Selected.'Customer Name'
+                        ),
+                        'Ship To': LookUp(
+                            OfflinePartiesCollection,
+                            'Customer Name' = ComboBox7_2.Selected.'Customer Name'
+                        ),
+                        'Ship to Address': TextInput1.Text,
+                        'Cess %': Sum(
+                            colPrimaryCart,
+                            cessAmount
+                        ),
+                        /*Attachment: {
+                           // FileName: First(DataCardValue30_3.Attachments).Name,
+                            Value: First(DataCardValue30_3.Attachments).Value
+                        },*/
+                        IGST: Sum(
+                            colPrimaryCart,
+                            igstAmount
+                        ),
+                        Quantity: Sum(
+                            colPrimaryCart,
+                            quantity
+                        ), 
+                        'Discount%':Sum(
+                            colPrimaryCart,
+                            discount
+                        ),'Discount ':Sum(
+                            colPrimaryCart,
+                            (baseUnitPrice * (discount / 100)) * quantity// after discount
+                        ) / CountRows(colPrimaryCart),
+                        'Order Date':Today(),
+                        'Total Price': Sum(
+                            colPrimaryCart,
+                            (baseUnitPrice * quantity)
+                        ),
+                        // CountRows(colPrimaryCart),
+                        'Total Bill Amount': Sum(
+                            colPrimaryCart,
+                            (baseUnitPrice - (baseUnitPrice*(discount / 100))) * quantity
+                        ) + Sum(
+                            colPrimaryCart,
+                            igstAmount
+                        ) + Sum(
+                            colPrimaryCart,
+                            cgstAmount
+                        ) + Sum(
+                            colPrimaryCart,
+                            sgstAmount
+                        )
+                    }
+                );
+                
+            );
+                // ORDERLINE PATCH IN ONLINE MODE ################################################################################
+            If(
+                !IsBlank(_VarOrderResponse),
+                ForAll(
+                    colPrimaryCart As ItemOrderLine,
+                    Patch(
+                        'Order Lines.S',
+                        Defaults('Order Lines.S'),
+                        {
+                            'Order Header': LookUp(
+                                'Order Header.S',
+                                'Order ID' = _VarOrderResponse.'Order ID'
+                            ),
+                            Product: LookUp(
+                                OfflineProductCollection,
+                                Product = ItemOrderLine.product
+                            ),
+                            'Product SKU': LookUp(
+                                OfflineProductSKUCollection,
+                                'Product SKU' = ItemOrderLine.productSKU
+                            ),
+                            'Unit Price': ItemOrderLine.baseUnitPrice,
+                            'Discount %': ItemOrderLine.discount,
+                            'Discount Amount': ItemOrderLine.baseUnitPrice * (ItemOrderLine.discount / 100) * ItemOrderLine.quantity,
+                            'Total Unit Price': (ItemOrderLine.baseUnitPrice - (ItemOrderLine.baseUnitPrice*(ItemOrderLine.discount / 100))) * Value(ItemOrderLine.quantity),
+                            Quantity: Value(ItemOrderLine.quantity),
+                            Variant: LookUp(OfflineProductVariantCollection,Variant.'Variant Code'= ItemOrderLine.Variant)
+                        }
+                    );
+                    //Stock Update ____________________________________________________________________________________________________________
+            If(
+                        IsBlank(
+                            LookUp(
+                                'Stock.S',
+                                'Product SKU'.'Product SKU' = ItemOrderLine.productSKU && Customer.Parties = GUID(varCustomerforDiscount)
+                            )
+                        ),
+                        Patch(
+                            'Stock.S',
+                            Defaults('Stock.S'),
+                            {
+                                'Product SKU': LookUp(
+                                    OfflineProductSKUCollection,
+                                    'Product SKU' = ItemOrderLine.productSKU
+                                ),
+                                Customer: LookUp(
+                                    OfflinePartiesCollection,
+                                    Parties = GUID(varCustomerforDiscount)
+                                ),
+                                'Last Updated Date': Now(),
+                                Quantity: Value(ItemOrderLine.quantity)
+                            }
+                        );
+                        ,
+                        //Update Stock________________________________________________
+                        Patch(
+                            'Stock.S',
+                            LookUp(
+                                'Stock.S',
+                                'Product SKU'.'Product SKU' = ItemOrderLine.productSKU && Customer.Parties = GUID(varCustomerforDiscount)
+                            ),
+                            {
+                                'Product SKU': LookUp(
+                                    OfflineProductSKUCollection,
+                                    'Product SKU' = ItemOrderLine.productSKU
+                                ),
+                                Customer: LookUp(
+                                    OfflinePartiesCollection,
+                                    Parties = GUID(varCustomerforDiscount)
+                                ),
+                                'Last Updated Date': Now(),
+                                Quantity: Value(
+                                    LookUp(
+                                        'Stock.S',
+                                        'Product SKU'.'Product SKU' = ItemOrderLine.productSKU && Customer.Parties = GUID(varCustomerforDiscount)
+                                    ).Quantity
+                                ) + Value(ItemOrderLine.quantity)
+                            }
+                        );
+                    );
+                )
+            );
+            //Invoice Header Logic--------------------------------------------------------------------------
+            Set(
+                _varInvoiceResponse,
+                Patch(
+                    'Invoice.S',
+                    Defaults('Invoice.S'),
+                    {
+                        'Order No.': LookUp(
+                            'Order Header.S',
+                            'Order ID' = _VarOrderResponse.'Order ID'
+                        ),
+                        Party: LookUp(
+                            OfflinePartiesCollection,
+                            'Customer Name' = varParty
+                        ),
+                        'Total Discount': _VarOrderResponse.'Discount%',
+                        'Total Amount': _VarOrderResponse.'Total Bill Amount',
+                        CGST: _VarOrderResponse.CGST,
+                        SGST: _VarOrderResponse.SGST,
+                        IGST: _VarOrderResponse.IGST
+                    }
+                )
+            );
+            //Invoice Line Logic:-----------------------------------------------------------------------------------
+            If(
+                !IsBlank(_varInvoiceResponse),
+                ForAll(
+                    colPrimaryCart As InvoiceLine,
+                    Patch(
+                        'Invoice Line.S',
+                        Defaults('Invoice Line.S'),
+                        {
+                            'Unit Price': InvoiceLine.baseUnitPrice,
+                            Discount: InvoiceLine.discount,
+                            'Product SKU': LookUp(
+                                OfflineProductSKUCollection,
+                                'Product SKU' = InvoiceLine.productSKU
+                            ),
+                            Invoice: LookUp(
+                                'Invoice.S',
+                                'Invoice Id' = _varInvoiceResponse.'Invoice Id'
+                            ),
+                            Quantity: Value(InvoiceLine.quantity),
+                            'Discounted Base Price': Sum(
+                                colPrimaryCart,
+                                (baseUnitPrice - (baseUnitPrice*(discount / 100))) * quantity
+                            )
+                        }
+                    )
+                )
+            );
+            Notify(
+                "Stock has been updated.",
+                NotificationType.Success,
+                3000
+            );
+            Notify(
+                "Order has been placed. Your order ID is " & _VarOrderResponse.'Order ID',
+                NotificationType.Success,
+                10000
+            );
+            ClearCollect(
+                OfflineOrderHeaderCollection,
+                'Order Header.S'
+            );
+            ClearCollect(
+                OfflineOrderLineCollection,
+                'Order Lines.S'
+            );
+            ClearCollect(
+                OfflineInvoiceCollection,
+                'Invoice.S'
+            );
+            ClearCollect(
+                OfflineInvoiceLineCollection,
+                'Invoice Line.S'
+            );
+            Clear(colPrimaryCart);
+            Clear(colSecondaryCart);
+            Navigate(
+                'Primary Order Screen',
+                ScreenTransition.CoverRight
+            );
+            /*Reset(DataCardValue30_3);
+            Reset(TextInput3_7);
+            Reset(TextInput3_6);
+            Reset(TextInput3_5);
+            Reset(ComboBox4_1)*/
+            
+        Size: =20
+        Text: ="Place Order"
+        Width: =258
+        X: =191
+        Y: =513
+        ZIndex: =2
+

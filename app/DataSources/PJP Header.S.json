@@ -1,0 +1,129 @@
+[
+  {
+    "CdsFCBContext": "{\"FileType\":true,\"ImageExternalStorage\":true}",
+    "EntitySetName": "zx_pjpheaders",
+    "IsHidden": false,
+    "IsSampleData": false,
+    "IsWritable": true,
+    "LogicalName": "zx_pjpheader",
+    "MaxGetRowsCount": 500,
+    "Name": "PJP Header.S",
+    "NativeCDSDataSourceInfoNameMapping": {
+      "_ownerid_value": "Owner",
+      "createdby": "Created By",
+      "createdon": "Created On",
+      "createdonbehalfby": "Created By (Delegate)",
+      "importsequencenumber": "Import Sequence Number",
+      "modifiedby": "Modified By",
+      "modifiedon": "Modified On",
+      "modifiedonbehalfby": "Modified By (Delegate)",
+      "overriddencreatedon": "Record Created On",
+      "owningbusinessunit": "Owning Business Unit",
+      "owningteam": "Owning Team",
+      "owninguser": "Owning User",
+      "statecode": "Status",
+      "statuscode": "Status Reason",
+      "timezoneruleversionnumber": "Time Zone Rule Version Number",
+      "utcconversiontimezonecode": "UTC Conversion Time Zone Code",
+      "versionnumber": "Version Number",
+      "zx_approvalstatus": "Approval Status",
+      "zx_Approver": "Approver",
+      "zx_Manager": "Manager",
+      "zx_month": "Month",
+      "zx_name": "ID",
+      "zx_noofbeats": "No of Beats",
+      "zx_noofbeats_date": "No of Beats (Last Updated On)",
+      "zx_noofbeats_state": "No of Beats (State)",
+      "zx_pjpheader_AsyncOperations": "System Jobs",
+      "zx_pjpheader_BulkDeleteFailures": "Bulk Delete Failures",
+      "zx_pjpheader_DuplicateBaseRecord": "Duplicate Records (zx_pjpheader_DuplicateBaseRecord)",
+      "zx_pjpheader_DuplicateMatchingRecord": "Duplicate Records (zx_pjpheader_DuplicateMatchingRecord)",
+      "zx_pjpheader_MailboxTrackingFolders": "Mailbox Auto Tracking Folders",
+      "zx_pjpheader_PrincipalObjectAttributeAccesses": "Field Sharing",
+      "zx_pjpheader_ProcessSession": "Process Sessions",
+      "zx_pjpheader_SyncErrors": "Sync Errors",
+      "zx_pjpheaderid": "PJP Header",
+      "zx_User": "User",
+      "zx_zx_pjplines_PJPHeader_zx_pjpheader": "PJP Lines.S",
+      "zx_zx_pjproute_PJPHeader_zx_pjpheader": "Beat.S"
+    },
+    "PreferredName": "PJP Header.S",
+    "Type": "NativeCDSDataSourceInfo"
+  },
+  {
+    "DisplayName": "PJP Header.S (Views)",
+    "Name": "_zx_pjpheader_views",
+    "RelatedEntityName": "PJP Header.S",
+    "TrimmedViewName": true,
+    "Type": "ViewInfo",
+    "ViewInfoNameMapping": {
+      "0d9b0363-4a83-452f-bfe4-5f0fde218b17": "PJP Header Associated View",
+      "35b99ad9-5d79-4bc2-aa80-61f8a4a6d12d": "PJP Header Advanced Find View",
+      "77ff9653-7f14-47a0-a7f2-4ab7cea56ee3": "Active PJP Headers",
+      "916e3f75-2df2-489c-883c-38bac3e2e243": "Inactive PJP Headers",
+      "a4a96f38-3f1d-4290-9529-fa1e57dbdc4d": "PJP Header Lookup View"
+    }
+  },
+  {
+    "DisplayName": "Approval status choices",
+    "Name": "new_approvalstatuschoices",
+    "OptionSetInfoNameMapping": {
+      "100000000": "Draft",
+      "100000001": "Pending for approval",
+      "100000002": "Approved",
+      "100000003": "Rejected"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": true,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "zx_approvalstatus",
+        "OptionSetReferenceEntityName": "PJP Header.S"
+      }
+    },
+    "OptionSetTypeKey": "PicklistType",
+    "RelatedColumnInvariantName": "zx_approvalstatus",
+    "RelatedEntityName": "PJP Header.S",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Status (PJP Header.S)",
+    "Name": "zx_pjpheader_statecode",
+    "OptionSetInfoNameMapping": {
+      "0": "Active",
+      "1": "Inactive"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "statecode",
+        "OptionSetReferenceEntityName": "PJP Header.S"
+      }
+    },
+    "OptionSetTypeKey": "StateType",
+    "RelatedColumnInvariantName": "statecode",
+    "RelatedEntityName": "PJP Header.S",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Status Reason (PJP Header.S)",
+    "Name": "zx_pjpheader_statuscode",
+    "OptionSetInfoNameMapping": {
+      "1": "Active",
+      "2": "Inactive"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "statuscode",
+        "OptionSetReferenceEntityName": "PJP Header.S"
+      }
+    },
+    "OptionSetTypeKey": "StatusType",
+    "RelatedColumnInvariantName": "statuscode",
+    "RelatedEntityName": "PJP Header.S",
+    "Type": "OptionSetInfo"
+  }
+]

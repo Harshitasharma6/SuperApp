@@ -1,0 +1,417 @@
+App As appinfo:
+    BackEnabled: =false
+    OnStart: |+
+        =Set(
+            _VarOfflineDataLoading,
+            true
+        );
+        Set(
+            _VarGblAppColors,
+            {
+                BackgroundColor: ColorValue("#F2F2F2"),
+                HeaderBg: ColorValue("#000000"),
+                PrimaryText: ColorValue("#3A3A3A"),
+                SecondaryText: ColorValue("#6F7EA8"),
+                LightText: ColorValue("#FFFFFF"),
+                PrimaryRed: ColorValue("#2AB8C5"),
+                textbgbutton: ColorValue("#6788AE"),
+                PrimaryBg: ColorValue("#E5F3F5"),
+                GreenColor: ColorValue("#E8E8E8"),
+                AccentBg: ColorValue("#FFFFFF"),
+                BottomListBg: ColorFade(
+                    ColorValue("#000000"),
+                    80%
+                )
+            }
+        );
+        Set(
+            _VarGblAppFonts,
+            {
+                Heading: "Roboto, Open Sans",
+                Body: "Lato",
+                Size: {
+                    Tiny: 10,
+                    Regular: 12,
+                    Subtitle: 14,
+                    Medium: 16,
+                    Title: 20,
+                    Huge: 28
+                }
+            }
+        );
+        Set(
+            _VarActivetopTabID,
+            1
+        );
+        Set(
+            _VarSelectedTab,
+            "Home"
+        );
+        ClearCollect(
+            UserAssignedAreas,
+            Filter(
+                'User-Area Mapping.S',
+                User.'Primary Email' = User().Email
+            )
+        );
+        Set(
+            varUser,
+            LookUp(
+                Users,
+                'Full Name' = User().FullName
+            )
+        );
+        ClearCollect(
+            colZoximaParty,
+            LookUp(
+                'Parties.S',
+                Parties = GUID("2aaf612d-36d4-ed11-a7c7-6045bdad294c")
+            )
+        );
+        Set(
+            varOrderTo,
+            LookUp(
+                'Environment Variable Definitions',
+                'Display Name' = "State"
+            ).'Default Value'
+        );
+        Set(varUserr,First(UserAssignedAreas).Area.Area);
+         
+                
+        // SAVE DATA ###########################################################################################################
+        Concurrent(
+            SaveData(
+                OfflineVisitCollection,
+                "OfflineVisits"
+            );
+            ,
+            SaveData(
+                OfflinePartiesCollection,
+                "OfflineParties"
+            );
+            ,
+            SaveData(
+                OfflineProductPriceCollection,
+                "OfflineProductPrice"
+            );
+            ,
+            SaveData(
+                offlinePriceListMapping,
+                "offlinePriceListMapping"
+            );
+            ,
+            SaveData(
+                offlinePriceList,
+                "offlinePriceList"
+            );
+            ,
+            SaveData(
+                OfflineProductSKUCollection,
+                "OfflineProductSKU"
+            );
+            ,
+            SaveData(
+                OfflineProductOfferHeaderCollection,
+                "OfflineProductOfferHeader"
+            );
+            ,
+            SaveData(
+                OfflineProductOfferMappingCollection,
+                "OfflineProductOfferMappingCollection"
+            );
+            ,
+            SaveData(
+                OfflineVariantCollection,
+                "OfflineVariants"
+            );
+            ,
+            SaveData(
+                OfflineProductVariantCollection,
+                "OfflineProductVariants"
+            );
+            ,
+            SaveData(
+                OfflineProductOfferLinesCollection,
+                "OfflineProductOfferLines"
+            );
+            ,
+            SaveData(
+                OfflineProductCategoryCollection,
+                "OfflineProductCategory"
+            ),
+            SaveData(
+                OfflineProductSubCategoryCollection,
+                "OfflineProductSubCategory"
+            ),
+            SaveData(
+                OfflineVariantsCollection,
+                "OfflineVariants"
+            );
+            ,
+            SaveData(
+                OfflineOrderHeaderCollection,
+                "OfflineOrderHeaderCollection"
+            );
+            ,
+            SaveData(
+                OfflineOrderLineCollection,
+                " OfflineOrderLineCollection"
+            );
+            ,
+            SaveData(
+                OfflineInvoiceCollection,
+                " OfflineInvoiceCollection"
+            );
+            ,
+            SaveData(
+                OfflineInvoiceLineCollection,
+                " OfflineInvoiceLineCollection"
+            );
+            ,
+            SaveData(
+                OfflineActivitiesCollection,
+                "OfflineActivitiesCollection"
+            ),
+            SaveData(
+                OfflineProductCollection,
+                "OfflineProducts"
+            ),
+            SaveData(
+                offlineLeadCollection,
+                "offlineLeadCollection"
+            )
+        );
+        
+        // LOAD DATA ############################################################################################################
+        If(
+            Connection.Connected,
+            Concurrent(
+                If(
+                    CountRows(UserAssignedAreas) > 0,
+                    ClearCollect(
+                        OfflinePartiesCollection,
+                        Filter(
+                            'Parties.S',
+                            (Area.Area in AddColumns(
+                                UserAssignedAreas,
+                                "AreaId",
+                                Area.Area
+                            ).AreaId) && 'Customer Status' = 'Customer status'.Customer
+                        )
+                    )
+                );
+                ClearCollect(
+                    OfflineProductCollection,
+                    'Product.S'
+                );
+                ,
+                ClearCollect(
+                    OfflineVisitCollection,
+                    'Visit.S'
+                );
+                ,
+                ClearCollect(
+                    OfflineProductPriceCollection,
+                    'Product Price.S'
+                );
+                ,
+                ClearCollect(
+                    offlinePriceListMapping,
+                    'Price List Mapping.S'
+                );
+                ,
+                ClearCollect(
+                    offlinePriceList,
+                    'Price List.S'
+                );
+                ,
+                ClearCollect(
+                    OfflineProductSKUCollection,
+                    'Product SKU.S'
+                );
+                ,
+                ClearCollect(
+                    OfflineVariantCollection,
+                    'Variants.S'
+                );
+                ,
+                ClearCollect(
+                    OfflineProductVariantCollection,
+                    'Product Variants.S'
+                );
+                ,
+                ClearCollect(
+                    OfflineProductOfferHeaderCollection,
+                    'Product Offer Header.S'
+                );
+                ,
+                ClearCollect(
+                    OfflineProductOfferLinesCollection,
+                    'Product Offer Lines.S'
+                );
+                ,
+                ClearCollect(
+                    OfflineProductCategoryCollection,
+                    'Product Category.S'
+                );
+                ,
+                ClearCollect(
+                    OfflineProductSubCategoryCollection,
+                    'Product Sub-Category.S'
+                );
+                ,
+                ClearCollect(
+                    OfflineOrderHeaderCollection,
+                    Filter('Order Header.S','Owning User'.'Primary Email'= User().Email)  );
+                ,
+                ClearCollect(
+                    OfflineOrderLineCollection,
+                    Filter('Order Lines.S','Owning User'.'Primary Email'= User().Email)
+                );
+                ,
+                ClearCollect(
+                    OfflineInvoiceCollection,
+                    Filter('Invoice.S','Owning User'.'Primary Email'= User().Email)
+                );
+                ,
+                ClearCollect(
+                    OfflineInvoiceLineCollection,
+                    Filter('Invoice Line.S','Owning User'.'Primary Email'= User().Email)
+                );
+                ,
+                ClearCollect(
+                    OfflineProductOfferMappingCollection,
+                    'Product Offers Mapping.S'
+                );
+                ,
+                ClearCollect(
+                    OfflineActivitiesCollection,
+                    'Lead Activities.S'
+                );
+                ,
+                ClearCollect(
+                    OfflineVariantsCollection,
+                    'Variants.S'
+                );
+                ,
+                ClearCollect(
+                    offlineLeadCollection,
+                    'Leads.S'
+                )
+            ),
+            Concurrent(
+                LoadData(
+                    OfflineProductCollection,
+                    "OfflineProducts"
+                );
+                ,
+                LoadData(
+                    OfflineVisitCollection,
+                    "OfflineVisits"
+                );
+                
+                ,
+                LoadData(
+                    OfflinePartiesCollection,
+                    "OfflineParties"
+                );
+                ,
+                LoadData(
+                    OfflineProductPriceCollection,
+                    "OfflineProductPrice"
+                );
+                ,
+                LoadData(
+                    offlinePriceListMapping,
+                    "offlinePriceListMapping"
+                );
+                ,
+                LoadData(
+                    offlinePriceList,
+                    "offlinePriceList"
+                );
+                ,
+                LoadData(
+                    OfflineProductSKUCollection,
+                    "OfflineProductSKU"
+                );
+                ,
+                LoadData(
+                    OfflineProductVariantCollection,
+                    "OfflineProductVariants"
+                );
+                ,
+                LoadData(
+                    OfflineVariantCollection,
+                    "OfflineVariants"
+                );
+                ,
+                LoadData(
+                    OfflineProductOfferHeaderCollection,
+                    "OfflineProductOfferHeader"
+                );
+                ,
+                LoadData(
+                    OfflineProductOfferLinesCollection,
+                    "OfflineProductOfferLines"
+                );
+                ,
+                LoadData(
+                    OfflineProductOfferMappingCollection,
+                    "OfflineProductOfferMappingCollection"
+                );
+                ,
+                LoadData(
+                    OfflineProductCategoryCollection,
+                    "OfflineProductCategory"
+                );
+                LoadData(
+                    OfflineOrderHeaderCollection,
+                    "OfflineOrderHeaderCollection"
+                );
+                LoadData(
+                    OfflineOrderLineCollection,
+                    "OfflineOrderLineCollection"
+                );
+                LoadData(
+                    OfflineInvoiceCollection,
+                    "OfflineInvoiceCollection"
+                );
+                LoadData(
+                    OfflineInvoiceLineCollection,
+                    " OfflineInvoiceLineCollection"
+                );
+                LoadData(
+                    OfflineActivitiesCollection,
+                    "OfflineActivitiesCollection"
+                );
+                LoadData(
+                    offlineLeadCollection,
+                    "offlineLeadCollection"
+                );
+                LoadData(
+                    OfflineVariantsCollection,
+                    "OfflineVariants"
+                );
+            )
+        );
+        // #############################################################################################################
+        Set(
+            _VarOfflineDataLoading,
+            false
+        );
+        Notify(
+            "Data has been saved offline",
+            NotificationType.Success,
+            1000
+        );
+        
+        
+
+    Host As hostControl.DefaultHostControlVariant:
+        OnCancel: =false
+        OnEdit: =false
+        OnNew: =false
+        OnSave: =false
+        OnView: =false
+

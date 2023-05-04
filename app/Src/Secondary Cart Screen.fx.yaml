@@ -1,0 +1,698 @@
+"'Secondary Cart Screen' As screen":
+    LoadingSpinnerColor: =RGBA(0, 120, 212, 1)
+
+    Header_6 As Header:
+        ScreenName: =varParty
+
+    Gallery14_2 As gallery.galleryHorizontal:
+        AccessibleLabel: ="Gallery14"
+        BorderColor: =RGBA(0, 18, 107, 1)
+        DelayItemLoading: =true
+        Height: =60
+        Items: |-
+            =Table(
+                {
+                    ID: 1,
+                    Title: "Order Summary"
+                    
+                },
+                {
+                     ID: 2,
+                    Title: "Order Terms"
+                   
+                }
+            )
+        LoadingSpinner: =LoadingSpinner.Data
+        ShowScrollbar: =false
+        TabIndex: =0
+        TemplateSize: =Self.Width/CountRows(Self.AllItems) - 8
+        Width: =600
+        X: =40
+        Y: =60
+        ZIndex: =2
+
+        Label69_2 As label:
+            Align: =Align.Center
+            BorderColor: =RGBA(0, 18, 107, 1)
+            Color: =If(ThisItem.IsSelected,_VarGblAppColors.PrimaryRed,_VarGblAppColors.textbgbutton)
+            DisabledColor: =RGBA(166, 166, 166, 1)
+            FontWeight: =FontWeight.Semibold
+            Height: =50
+            OnSelect: =Select(Parent)
+            Size: =16
+            Text: =ThisItem.Title
+            Width: =Parent.TemplateWidth
+            ZIndex: =1
+
+        Rectangle38_2 As rectangle:
+            BorderColor: =RGBA(0, 18, 107, 1)
+            Fill: =If(ThisItem.IsSelected,_VarGblAppColors.PrimaryRed,Color.White)
+            Height: =2
+            OnSelect: =Select(Parent)
+            X: =Parent.TemplateWidth/2-Self.Width/2
+            Y: =48
+            ZIndex: =2
+
+    Container16_2 As groupContainer.manualLayoutContainer:
+        Height: =900
+        Visible: =If(Gallery14_2.Selected.Title="Order Summary",true,false)
+        Width: =640
+        Y: =122
+        ZIndex: =3
+
+        Gallery17_2 As gallery.galleryVertical:
+            AccessibleLabel: ="Gallery17"
+            BorderColor: =RGBA(0, 18, 107, 1)
+            DelayItemLoading: =true
+            Height: =250
+            Items: |-
+                =ForAll(
+                    [
+                        {
+                            Title: "Order Date",
+                            Value: Text(
+                                Today(),
+                                "dd-mm-yy"
+                            )
+                        },
+                        
+                        {
+                            Title: "Supplier",
+                            Value: varParty
+                        },
+                        {
+                            Title: "Total Price",
+                            Value: If(
+                                'Product List_1'.OrderType = "Primary",
+                                Concatenate(
+                                    "₹",
+                                    Text(
+                                        Sum(
+                                            colPrimaryCart,
+                                            (baseUnitPrice * quantity)
+                                        ),
+                                        "[$-hi-IN]##,##,##,###",
+                                        "hi-IN"
+                                    )
+                                ),
+                                Concatenate(
+                                    "₹",
+                                    Text(
+                                        Sum(
+                                            colSecondaryCart,
+                                            (baseUnitPrice * quantity)
+                                        ),
+                                        "[$-hi-IN]##,##,##,###",
+                                        "hi-IN"
+                                    )
+                                )
+                            )
+                        },
+                        {
+                            Title: "Discount",
+                            Value: If(
+                                'Product List_1'.OrderType = "Primary",
+                                Concatenate(
+                                    "₹",
+                                    Text(
+                                        Round(
+                                            Sum(
+                                                colPrimaryCart,
+                                                (baseUnitPrice * (discount / 100)) * quantity
+                                            ),
+                                            2
+                                        ),
+                                        "[$-hi-IN]##,##,##,###",
+                                        "hi-IN"
+                                    )
+                                ),
+                                Concatenate(
+                                    "₹",
+                                    Text(
+                                        Round(
+                                            Sum(
+                                                colSecondaryCart,
+                                                (baseUnitPrice * (discount / 100)) * quantity
+                                            ),
+                                            2
+                                        ),
+                                        "[$-hi-IN]##,##,##,###",
+                                        "hi-IN"
+                                    )
+                                )
+                            )
+                        },
+                        {
+                            Title: "Net Price",
+                            Value: If(
+                                'Product List_1'.OrderType= "Primary",
+                                Concatenate(
+                                    "₹",
+                                    Text(
+                                        Sum(
+                                            colPrimaryCart,
+                                            (baseUnitPrice - (baseUnitPrice * (discount / 100))) * quantity
+                                        ) + (Sum(
+                                            colPrimaryCart,
+                                            igstAmount
+                                        ) + Sum(
+                                            colPrimaryCart,
+                                            cgstAmount
+                                        ) + Sum(
+                                            colPrimaryCart,
+                                            sgstAmount
+                                        ) + Sum(
+                                            colPrimaryCart,
+                                            cessAmount
+                                        )),
+                                        "[$-hi-IN]##,##,##,###",
+                                        "hi-IN"
+                                    )
+                                ),
+                                Concatenate(
+                                    "₹",
+                                    Text(
+                                        Sum(
+                                            colSecondaryCart,
+                                            (baseUnitPrice - (baseUnitPrice * (discount / 100))) * quantity
+                                        ) + (Sum(
+                                            colSecondaryCart,
+                                            igstAmount
+                                        ) + Sum(
+                                            colSecondaryCart,
+                                            cgstAmount
+                                        ) + Sum(
+                                            colSecondaryCart,
+                                            sgstAmount
+                                        ) + Sum(
+                                            colSecondaryCart,
+                                            cessAmount
+                                        )),
+                                        "[$-hi-IN]##,##,##,###",
+                                        "hi-IN"
+                                    )
+                                )
+                            )
+                        },
+                        {
+                            Title: "Tax",
+                            Value: If(
+                                'Product List_1'.OrderType = "Primary",
+                                Concatenate(
+                                    "₹",
+                                    Text(
+                                        Sum(
+                                            colPrimaryCart,
+                                            (baseUnitPrice - (baseUnitPrice * (discount / 100))) * quantity
+                                        ) + (Sum(
+                                            colPrimaryCart,
+                                            igstAmount
+                                        ) + Sum(
+                                            colPrimaryCart,
+                                            cgstAmount
+                                        ) + Sum(
+                                            colPrimaryCart,
+                                            sgstAmount
+                                        ) + Sum(
+                                            colPrimaryCart,
+                                            cessAmount
+                                        )) - Sum(
+                                            colPrimaryCart,
+                                            (baseUnitPrice - (baseUnitPrice * (discount / 100))) * quantity
+                                        ),
+                                        "[$-hi-IN]##,##,##,###",
+                                        "hi-IN"
+                                    )
+                                ),
+                                Concatenate(
+                                    "₹",
+                                    Text(
+                                        Sum(
+                                            colSecondaryCart,
+                                            (baseUnitPrice - (baseUnitPrice * (discount / 100))) * quantity
+                                        ) + (Sum(
+                                            colSecondaryCart,
+                                            igstAmount
+                                        ) + Sum(
+                                            colSecondaryCart,
+                                            cgstAmount
+                                        ) + Sum(
+                                            colSecondaryCart,
+                                            sgstAmount
+                                        ) + Sum(
+                                            colSecondaryCart,
+                                            cessAmount
+                                        )) - Sum(
+                                            colSecondaryCart,
+                                            (baseUnitPrice - (baseUnitPrice * (discount / 100))) * quantity
+                                        ),
+                                        "[$-hi-IN]##,##,##,###",
+                                        "hi-IN"
+                                    )
+                                )
+                            )
+                        },
+                        {
+                            Title: "Disc. Price",
+                            Value: If(
+                                'Product List_1'.OrderType = "Primary",
+                                Concatenate(
+                                    "₹",
+                                    Text(
+                                        Sum(
+                                            colPrimaryCart,
+                                            (baseUnitPrice - (baseUnitPrice * (discount / 100))) * quantity
+                                        ),
+                                        "[$-hi-IN]##,##,##,###",
+                                        "hi-IN"
+                                    )
+                                ),
+                                Concatenate(
+                                    "₹",
+                                    Text(
+                                        Sum(
+                                            colSecondaryCart,
+                                            (baseUnitPrice - (baseUnitPrice * (discount / 100))) * quantity
+                                        ),
+                                        "[$-hi-IN]##,##,##,###",
+                                        "hi-IN"
+                                    )
+                                )
+                            )
+                        },
+                        {
+                            Title: "IGST",
+                            Value: Concatenate(
+                                "₹",
+                                Text(
+                                    Sum(
+                                        colSecondaryCart,
+                                        igstAmount
+                                    ),
+                                    "[$-hi-IN]##,##,##,###",
+                                    "hi-IN"
+                                )
+                            )
+                        },
+                        {
+                            Title: "CGST",
+                            Value: Concatenate(
+                                "₹",
+                                Text(
+                                    Sum(
+                                        colSecondaryCart,
+                                        cgstAmount
+                                    ),
+                                    "[$-hi-IN]##,##,##,###",
+                                    "hi-IN"
+                                )
+                            )
+                        },
+                        {
+                            Title: "SGST",
+                            Value: Concatenate(
+                                "₹",
+                                Text(
+                                    Sum(
+                                        colSecondaryCart,
+                                        sgstAmount
+                                    ),
+                                    "[$-hi-IN]##,##,##,###",
+                                    "hi-IN"
+                                )
+                            )
+                        },
+                        {
+                            Title: "Cess",
+                            Value: Concatenate(
+                                "₹",
+                                Text(
+                                    Sum(
+                                        colSecondaryCart,
+                                        cessAmount
+                                    ),
+                                    "[$-hi-IN]##,##,##,###",
+                                    "hi-IN"
+                                )
+                            )
+                        },
+                    ],
+                    {Value: ThisRecord}
+                )
+            Layout: =Layout.Vertical
+            LoadingSpinner: =LoadingSpinner.Data
+            ShowScrollbar: =false
+            TabIndex: =0
+            TemplateSize: =35
+            Width: =600
+            WrapCount: =2
+            X: =20
+            ZIndex: =1
+
+            Label71_2 As label:
+                BorderColor: =RGBA(0, 18, 107, 1)
+                Color: =RGBA(0, 0, 0, 1)
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                FontWeight: =FontWeight.Semibold
+                Height: =30
+                OnSelect: =Select(Parent)
+                Size: =16
+                Text: =ThisItem.Value.Title
+                Width: =216
+                ZIndex: =1
+
+            Label72_2 As label:
+                BorderColor: =RGBA(0, 18, 107, 1)
+                Color: =_VarGblAppColors.PrimaryRed
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                Height: =30
+                OnSelect: =Select(Parent)
+                Text: =ThisItem.Value.Value
+                X: =142.5
+                ZIndex: =2
+
+        Label73_2 As label:
+            BorderColor: =RGBA(0, 18, 107, 1)
+            Color: =_VarGblAppColors.PrimaryRed
+            DisabledColor: =RGBA(166, 166, 166, 1)
+            FontWeight: =FontWeight.Bold
+            Height: =50
+            Size: =20
+            Text: ="Order Products"
+            Width: =560
+            X: =20
+            Y: =250
+            ZIndex: =2
+
+        "'Secondary Cart_1' As 'Secondary Cart'":
+            CartType: ="Secondary"
+            Height: =600
+            Y: =300
+            ZIndex: =4
+
+    "'Bottom Bar_8' As 'Bottom Bar'":
+        Y: =1026
+        ZIndex: =4
+
+    Container17_2 As groupContainer.manualLayoutContainer:
+        Height: =862
+        Visible: =If(Gallery14_2.Selected.Title="Order Terms",true,false)
+        Width: =App.Width
+        Y: =120
+        ZIndex: =5
+
+        Group21_8 As group:
+            Height: =5
+            Width: =5
+            X: =40
+            Y: =40
+            ZIndex: =4
+
+            Button42_9 As button:
+                DisabledBorderColor: =RGBA(219, 219, 219, 1)
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                DisabledFill: =RGBA(255, 255, 255, 1)
+                DisplayMode: =DisplayMode.Disabled
+                Fill: =RGBA(56, 96, 178, 1)
+                FontWeight: =FontWeight.Semibold
+                Height: =60
+                HoverColor: =RGBA(255, 255, 255, 1)
+                HoverFill: =ColorFade(RGBA(56, 96, 178, 1), -20%)
+                RadiusBottomLeft: =15
+                RadiusBottomRight: =15
+                RadiusTopLeft: =15
+                RadiusTopRight: =15
+                Size: =24
+                Text: =""
+                Width: =525
+                X: =60
+                Y: =170
+                ZIndex: =1
+
+            ComboBox7_7 As combobox:
+                AccessibleLabel: ="Combobox7"
+                BorderColor: =RGBA(0, 18, 107, 1)
+                BorderStyle: =BorderStyle.None
+                BorderThickness: =0
+                ChevronBackground: =RGBA(255, 255, 255, 1)
+                ChevronDisabledBackground: =RGBA(166, 166, 166, 1)
+                ChevronDisabledFill: =RGBA(244, 244, 244, 1)
+                ChevronFill: =RGBA(0, 0, 0, 1)
+                ChevronHoverBackground: =ColorFade(RGBA(56, 96, 178, 1), -20%)
+                ChevronHoverFill: =RGBA(255, 255, 255, 1)
+                DefaultSelectedItems: =LookUp(OfflinePartiesCollection,'Customer Name'= varParty)
+                DisabledBorderColor: =RGBA(166, 166, 166, 1)
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                DisabledFill: =RGBA(244, 244, 244, 1)
+                DisplayFields: =["zx_name"]
+                DisplayMode: =DisplayMode.View
+                Height: =45
+                HoverColor: =RGBA(0, 0, 0, 1)
+                HoverFill: =RGBA(186, 202, 226, 1)
+                InputTextPlaceholder: =
+                Items: ='Parties.S'
+                PressedColor: =RGBA(255, 255, 255, 1)
+                PressedFill: =RGBA(0, 18, 107, 1)
+                SearchFields: =["zx_name"]
+                SearchItems: =Search('Parties.S',ComboBox7_7.SearchText,"zx_name")
+                SelectionFill: =RGBA(0, 0, 0, 0)
+                SelectMultiple: =false
+                Size: =14
+                Width: =510
+                X: =74
+                Y: =179
+                ZIndex: =2
+
+            Label74_9 As label:
+                BorderColor: =RGBA(0, 18, 107, 1)
+                Color: =_VarGblAppColors.PrimaryRed
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                Fill: =RGBA(255, 255, 255, 1)
+                FontWeight: =FontWeight.Semibold
+                Size: =16
+                Text: ="Bill To"
+                Width: =90
+                X: =112
+                Y: =149
+                ZIndex: =3
+
+        Group21_9 As group:
+            Height: =5
+            Width: =5
+            X: =-9
+            Y: =-22
+            ZIndex: =7
+
+            Button42_10 As button:
+                DisabledBorderColor: =RGBA(219, 219, 219, 1)
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                DisabledFill: =RGBA(255, 255, 255, 1)
+                DisplayMode: =DisplayMode.Disabled
+                Fill: =RGBA(56, 96, 178, 1)
+                FontWeight: =FontWeight.Semibold
+                Height: =60
+                HoverColor: =RGBA(255, 255, 255, 1)
+                HoverFill: =ColorFade(RGBA(56, 96, 178, 1), -20%)
+                RadiusBottomLeft: =15
+                RadiusBottomRight: =15
+                RadiusTopLeft: =15
+                RadiusTopRight: =15
+                Size: =24
+                Text: =""
+                Width: =525
+                X: =60
+                Y: =280
+                ZIndex: =4
+
+            ComboBox7_8 As combobox:
+                AccessibleLabel: ="Combobox7_2"
+                BorderColor: =RGBA(0, 18, 107, 1)
+                BorderStyle: =BorderStyle.None
+                BorderThickness: =0
+                ChevronBackground: =RGBA(255, 255, 255, 1)
+                ChevronDisabledBackground: =RGBA(166, 166, 166, 1)
+                ChevronDisabledFill: =RGBA(244, 244, 244, 1)
+                ChevronFill: =RGBA(0, 0, 0, 1)
+                ChevronHoverBackground: =ColorFade(RGBA(56, 96, 178, 1), -20%)
+                ChevronHoverFill: =RGBA(255, 255, 255, 1)
+                DefaultSelectedItems: =LookUp(OfflinePartiesCollection,'Customer Name'= varParty)
+                DisabledBorderColor: =RGBA(166, 166, 166, 1)
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                DisabledFill: =RGBA(244, 244, 244, 1)
+                DisplayFields: =["zx_name"]
+                Height: =45
+                HoverColor: =RGBA(0, 0, 0, 1)
+                HoverFill: =RGBA(186, 202, 226, 1)
+                InputTextPlaceholder: =
+                Items: ='Parties.S'
+                PressedColor: =RGBA(255, 255, 255, 1)
+                PressedFill: =RGBA(0, 18, 107, 1)
+                SearchFields: =["zx_name"]
+                SearchItems: =Search('Parties.S',ComboBox7_8.SearchText,"zx_name")
+                SelectionFill: =RGBA(0, 0, 0, 0)
+                SelectMultiple: =false
+                Size: =14
+                Width: =500
+                X: =77
+                Y: =289
+                ZIndex: =5
+
+            Label74_10 As label:
+                BorderColor: =RGBA(0, 18, 107, 1)
+                Color: =_VarGblAppColors.PrimaryRed
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                Fill: =RGBA(255, 255, 255, 1)
+                FontWeight: =FontWeight.Semibold
+                Size: =16
+                Text: ="Ship To Party"
+                Width: =160
+                X: =111
+                Y: =259
+                ZIndex: =6
+
+        Group21_10 As group:
+            Height: =5
+            Width: =5
+            X: =11
+            Y: =-2
+            ZIndex: =10
+
+            Button42_4 As button:
+                DisabledBorderColor: =RGBA(219, 219, 219, 1)
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                DisabledFill: =RGBA(255, 255, 255, 1)
+                DisplayMode: =DisplayMode.Disabled
+                Fill: =RGBA(56, 96, 178, 1)
+                FontWeight: =FontWeight.Semibold
+                Height: =60
+                HoverColor: =RGBA(255, 255, 255, 1)
+                HoverFill: =ColorFade(RGBA(56, 96, 178, 1), -20%)
+                RadiusBottomLeft: =15
+                RadiusBottomRight: =15
+                RadiusTopLeft: =15
+                RadiusTopRight: =15
+                Size: =24
+                Text: =""
+                Width: =525
+                X: =65
+                Y: =72
+                ZIndex: =7
+
+            ComboBox7_6 As combobox:
+                AccessibleLabel: ="Combobox7_3"
+                BorderColor: =RGBA(0, 18, 107, 1)
+                BorderStyle: =BorderStyle.None
+                BorderThickness: =0
+                ChevronBackground: =RGBA(255, 255, 255, 1)
+                ChevronDisabledBackground: =RGBA(166, 166, 166, 1)
+                ChevronDisabledFill: =RGBA(244, 244, 244, 1)
+                ChevronFill: =RGBA(0, 0, 0, 1)
+                ChevronHoverBackground: =ColorFade(RGBA(56, 96, 178, 1), -20%)
+                ChevronHoverFill: =RGBA(255, 255, 255, 1)
+                DefaultSelectedItems: =LookUp('Payment Terms.S',Name= varpaymentterm)
+                DisabledBorderColor: =RGBA(166, 166, 166, 1)
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                DisabledFill: =RGBA(244, 244, 244, 1)
+                DisplayFields: =["zx_name"]
+                Height: =45
+                HoverColor: =RGBA(0, 0, 0, 1)
+                HoverFill: =RGBA(186, 202, 226, 1)
+                InputTextPlaceholder: =
+                Items: ='Payment Terms.S'
+                PressedColor: =RGBA(255, 255, 255, 1)
+                PressedFill: =RGBA(0, 18, 107, 1)
+                SearchFields: =["zx_name"]
+                SearchItems: =Search('Payment Terms.S',ComboBox7_6.SearchText,"zx_name")
+                SelectionFill: =RGBA(0, 0, 0, 0)
+                SelectMultiple: =false
+                Size: =14
+                Width: =510
+                X: =65
+                Y: =81
+                ZIndex: =8
+
+            Label74_8 As label:
+                BorderColor: =RGBA(0, 18, 107, 1)
+                Color: =_VarGblAppColors.PrimaryRed
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                Fill: =RGBA(255, 255, 255, 1)
+                FontWeight: =FontWeight.Semibold
+                Size: =16
+                Text: ="Payment Terms"
+                Width: =180
+                X: =65
+                Y: =51
+                ZIndex: =9
+
+        TextInput1_2 As text:
+            AccessibleLabel: ="TextInput1"
+            BorderColor: =RGBA(166, 166, 166, 1)
+            BorderStyle: =BorderStyle.None
+            BorderThickness: =0
+            Color: =RGBA(51, 51, 51, 1)
+            Default: =LookUp(OfflinePartiesCollection,'Customer Name'= varParty).Address
+            DisabledBorderColor: =RGBA(0, 0, 0, 0)
+            DisabledColor: =RGBA(166, 166, 166, 1)
+            DisabledFill: =RGBA(244, 244, 244, 1)
+            FocusedBorderThickness: =4
+            Font: =Font.'Segoe UI'
+            Height: =67
+            HintText: ="Ship to Address"
+            HoverBorderColor: =ColorFade(RGBA(0, 120, 212, 1), -30%)
+            HoverColor: =RGBA(51, 51, 51, 1)
+            HoverFill: =RGBA(255, 255, 255, 1)
+            PressedBorderColor: =RGBA(0, 120, 212, 1)
+            PressedColor: =RGBA(51, 51, 51, 1)
+            PressedFill: =RGBA(255, 255, 255, 1)
+            RadiusBottomLeft: =0
+            RadiusBottomRight: =0
+            RadiusTopLeft: =0
+            RadiusTopRight: =0
+            Size: =16
+            Width: =483
+            X: =77
+            Y: =407
+            ZIndex: =13
+
+        Group21_11 As group:
+            Height: =5
+            Width: =5
+            X: =31
+            Y: =18
+            ZIndex: =13
+
+            Button42_11 As button:
+                DisabledBorderColor: =RGBA(219, 219, 219, 1)
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                DisabledFill: =RGBA(255, 255, 255, 1)
+                DisplayMode: =DisplayMode.Disabled
+                Fill: =RGBA(56, 96, 178, 1)
+                FontWeight: =FontWeight.Semibold
+                Height: =90
+                HoverColor: =RGBA(255, 255, 255, 1)
+                HoverFill: =ColorFade(RGBA(56, 96, 178, 1), -20%)
+                RadiusBottomLeft: =15
+                RadiusBottomRight: =15
+                RadiusTopLeft: =15
+                RadiusTopRight: =15
+                Size: =24
+                Text: =""
+                Width: =525
+                X: =60
+                Y: =396
+                ZIndex: =10
+
+            Label74_11 As label:
+                BorderColor: =RGBA(0, 18, 107, 1)
+                Color: =_VarGblAppColors.PrimaryRed
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                Fill: =RGBA(255, 255, 255, 1)
+                FontWeight: =FontWeight.Semibold
+                Height: =60
+                Size: =16
+                Text: ="Ship To Address"
+                Width: =180
+                X: =111
+                Y: =365
+                ZIndex: =12
+

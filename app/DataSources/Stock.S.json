@@ -1,0 +1,101 @@
+[
+  {
+    "CdsFCBContext": "{\"FileType\":true,\"ImageExternalStorage\":true}",
+    "EntitySetName": "zx_stocks",
+    "IsHidden": false,
+    "IsSampleData": false,
+    "IsWritable": true,
+    "LogicalName": "zx_stock",
+    "MaxGetRowsCount": 500,
+    "Name": "Stock.S",
+    "NativeCDSDataSourceInfoNameMapping": {
+      "_ownerid_value": "Owner",
+      "createdby": "Created By",
+      "createdon": "Created On",
+      "createdonbehalfby": "Created By (Delegate)",
+      "importsequencenumber": "Import Sequence Number",
+      "modifiedby": "Modified By",
+      "modifiedon": "Modified On",
+      "modifiedonbehalfby": "Modified By (Delegate)",
+      "overriddencreatedon": "Record Created On",
+      "owningbusinessunit": "Owning Business Unit",
+      "owningteam": "Owning Team",
+      "owninguser": "Owning User",
+      "statecode": "Status",
+      "statuscode": "Status Reason",
+      "timezoneruleversionnumber": "Time Zone Rule Version Number",
+      "utcconversiontimezonecode": "UTC Conversion Time Zone Code",
+      "versionnumber": "Version Number",
+      "zx_Customer": "Customer",
+      "zx_lastupdateddate": "Last Updated Date",
+      "zx_name": "Stock ID",
+      "zx_ProductSKU": "Product SKU",
+      "zx_quantity": "Quantity",
+      "zx_stock_AsyncOperations": "System Jobs",
+      "zx_stock_BulkDeleteFailures": "Bulk Delete Failures",
+      "zx_stock_DuplicateBaseRecord": "Duplicate Records (zx_stock_DuplicateBaseRecord)",
+      "zx_stock_DuplicateMatchingRecord": "Duplicate Records (zx_stock_DuplicateMatchingRecord)",
+      "zx_stock_MailboxTrackingFolders": "Mailbox Auto Tracking Folders",
+      "zx_stock_PrincipalObjectAttributeAccesses": "Field Sharing",
+      "zx_stock_ProcessSession": "Process Sessions",
+      "zx_stock_SyncErrors": "Sync Errors",
+      "zx_stockid": "Stock"
+    },
+    "PreferredName": "Stock.S",
+    "Type": "NativeCDSDataSourceInfo"
+  },
+  {
+    "DisplayName": "Stock.S (Views)",
+    "Name": "_zx_stock_views",
+    "RelatedEntityName": "Stock.S",
+    "TrimmedViewName": true,
+    "Type": "ViewInfo",
+    "ViewInfoNameMapping": {
+      "126aadf1-f0f8-49ff-b01f-8f6933578911": "Active Stocks",
+      "761949aa-f707-46b5-bfcb-c5683194f3d1": "Inactive Stocks",
+      "82c9ca88-6296-492b-adab-066f627af87a": "Stock Advanced Find View",
+      "86e84b33-23e5-4762-ba18-5f61ce55f24a": "Stock Associated View",
+      "f2a1bccc-46d3-4c97-b5fc-c23c9d2e45a5": "Stock Lookup View"
+    }
+  },
+  {
+    "DisplayName": "Status (Stock.S)",
+    "Name": "zx_stock_statecode",
+    "OptionSetInfoNameMapping": {
+      "0": "Active",
+      "1": "Inactive"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "statecode",
+        "OptionSetReferenceEntityName": "Stock.S"
+      }
+    },
+    "OptionSetTypeKey": "StateType",
+    "RelatedColumnInvariantName": "statecode",
+    "RelatedEntityName": "Stock.S",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Status Reason (Stock.S)",
+    "Name": "zx_stock_statuscode",
+    "OptionSetInfoNameMapping": {
+      "1": "Active",
+      "2": "Inactive"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "statuscode",
+        "OptionSetReferenceEntityName": "Stock.S"
+      }
+    },
+    "OptionSetTypeKey": "StatusType",
+    "RelatedColumnInvariantName": "statuscode",
+    "RelatedEntityName": "Stock.S",
+    "Type": "OptionSetInfo"
+  }
+]

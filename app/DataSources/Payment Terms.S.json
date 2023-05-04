@@ -1,0 +1,125 @@
+[
+  {
+    "CdsFCBContext": "{\"FileType\":true,\"ImageExternalStorage\":true}",
+    "EntitySetName": "zx_paymenttermses",
+    "IsHidden": false,
+    "IsSampleData": false,
+    "IsWritable": true,
+    "LogicalName": "zx_paymentterms",
+    "MaxGetRowsCount": 500,
+    "Name": "Payment Terms.S",
+    "NativeCDSDataSourceInfoNameMapping": {
+      "_ownerid_value": "Owner",
+      "{Attachments}": "Attachments",
+      "createdby": "Created By",
+      "createdon": "Created On",
+      "createdonbehalfby": "Created By (Delegate)",
+      "importsequencenumber": "Import Sequence Number",
+      "modifiedby": "Modified By",
+      "modifiedon": "Modified On",
+      "modifiedonbehalfby": "Modified By (Delegate)",
+      "overriddencreatedon": "Record Created On",
+      "owningbusinessunit": "Owning Business Unit",
+      "owningteam": "Owning Team",
+      "owninguser": "Owning User",
+      "statecode": "Status",
+      "statuscode": "Status Reason",
+      "timezoneruleversionnumber": "Time Zone Rule Version Number",
+      "utcconversiontimezonecode": "UTC Conversion Time Zone Code",
+      "versionnumber": "Version Number",
+      "zx_initialbill": "Initial Bill",
+      "zx_name": "Name",
+      "zx_new_parties_PaymentTerms_zx_paymentterms": "Parties",
+      "zx_paymentterm": "Payment Term",
+      "zx_paymentterms_Annotations": "Notes",
+      "zx_paymentterms_AsyncOperations": "System Jobs",
+      "zx_paymentterms_BulkDeleteFailures": "Bulk Delete Failures",
+      "zx_paymentterms_DuplicateBaseRecord": "Duplicate Records (zx_paymentterms_DuplicateBaseRecord)",
+      "zx_paymentterms_DuplicateMatchingRecord": "Duplicate Records (zx_paymentterms_DuplicateMatchingRecord)",
+      "zx_paymentterms_MailboxTrackingFolders": "Mailbox Auto Tracking Folders",
+      "zx_paymentterms_PrincipalObjectAttributeAccesses": "Field Sharing",
+      "zx_paymentterms_ProcessSession": "Process Sessions",
+      "zx_paymentterms_SyncErrors": "Sync Errors",
+      "zx_paymenttermsid": "Payment Terms",
+      "zx_zerobilling": "Zero Billing ",
+      "zx_zx_orderheader_PaymentTerms_zx_paymentter": "Order Header.S",
+      "zx_zx_parties_PaymentTerms_zx_paymentterms": "Parties.S"
+    },
+    "PreferredName": "Payment Terms.S",
+    "Type": "NativeCDSDataSourceInfo"
+  },
+  {
+    "DisplayName": "Payment Terms.S (Views)",
+    "Name": "_zx_paymentterms_views",
+    "RelatedEntityName": "Payment Terms.S",
+    "TrimmedViewName": true,
+    "Type": "ViewInfo",
+    "ViewInfoNameMapping": {
+      "7d09fa3a-f9a1-4428-9ecd-d65069c53cda": "Inactive Payment Terms",
+      "850f8115-1935-475f-9836-9e52acc41cb6": "Payment Terms Lookup View",
+      "ecb54081-db84-4b47-b2d5-1e30b62573ed": "Active Payment Terms",
+      "f1070d30-28b1-4549-a725-03bea83ef50b": "Payment Terms Associated View",
+      "f7ee4030-3fdc-4358-a14a-07f03926b432": "Payment Terms Advanced Find View"
+    }
+  },
+  {
+    "DisplayName": "Status (Payment Terms.S)",
+    "Name": "zx_paymentterms_statecode",
+    "OptionSetInfoNameMapping": {
+      "0": "Active",
+      "1": "Inactive"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "statecode",
+        "OptionSetReferenceEntityName": "Payment Terms.S"
+      }
+    },
+    "OptionSetTypeKey": "StateType",
+    "RelatedColumnInvariantName": "statecode",
+    "RelatedEntityName": "Payment Terms.S",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Status Reason (Payment Terms.S)",
+    "Name": "zx_paymentterms_statuscode",
+    "OptionSetInfoNameMapping": {
+      "1": "Active",
+      "2": "Inactive"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "statuscode",
+        "OptionSetReferenceEntityName": "Payment Terms.S"
+      }
+    },
+    "OptionSetTypeKey": "StatusType",
+    "RelatedColumnInvariantName": "statuscode",
+    "RelatedEntityName": "Payment Terms.S",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Zero Billing  (Payment Terms.S)",
+    "Name": "zx_paymentterms_zx_zerobilling",
+    "OptionSetInfoNameMapping": {
+      "0": "No",
+      "1": "Yes"
+    },
+    "OptionSetIsBooleanValued": true,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "zx_zerobilling",
+        "OptionSetReferenceEntityName": "Payment Terms.S"
+      }
+    },
+    "OptionSetTypeKey": "BooleanType",
+    "RelatedColumnInvariantName": "zx_zerobilling",
+    "RelatedEntityName": "Payment Terms.S",
+    "Type": "OptionSetInfo"
+  }
+]

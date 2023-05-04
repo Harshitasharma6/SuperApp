@@ -1,0 +1,110 @@
+[
+  {
+    "CdsFCBContext": "{\"FileType\":true,\"ImageExternalStorage\":true}",
+    "EntitySetName": "zx_orderlineses",
+    "IsHidden": false,
+    "IsSampleData": false,
+    "IsWritable": true,
+    "LogicalName": "zx_orderlines",
+    "MaxGetRowsCount": 500,
+    "Name": "Order Lines.S",
+    "NativeCDSDataSourceInfoNameMapping": {
+      "_ownerid_value": "Owner",
+      "createdby": "Created By",
+      "createdon": "Created On",
+      "createdonbehalfby": "Created By (Delegate)",
+      "exchangerate": "Exchange Rate",
+      "importsequencenumber": "Import Sequence Number",
+      "modifiedby": "Modified By",
+      "modifiedon": "Modified On",
+      "modifiedonbehalfby": "Modified By (Delegate)",
+      "overriddencreatedon": "Record Created On",
+      "owningbusinessunit": "Owning Business Unit",
+      "owningteam": "Owning Team",
+      "owninguser": "Owning User",
+      "statecode": "Status",
+      "statuscode": "Status Reason",
+      "timezoneruleversionnumber": "Time Zone Rule Version Number",
+      "transactioncurrencyid": "Currency",
+      "utcconversiontimezonecode": "UTC Conversion Time Zone Code",
+      "versionnumber": "Version Number",
+      "zx_discount": "Discount %",
+      "zx_discountamount": "Discount Amount",
+      "zx_discountamount_base": "Discount Amount (Base)",
+      "zx_name": "Order Line ID",
+      "zx_OrderHeader": "Order Header",
+      "zx_orderlines_AsyncOperations": "System Jobs",
+      "zx_orderlines_BulkDeleteFailures": "Bulk Delete Failures",
+      "zx_orderlines_DuplicateBaseRecord": "Duplicate Records (zx_orderlines_DuplicateBaseRecord)",
+      "zx_orderlines_DuplicateMatchingRecord": "Duplicate Records (zx_orderlines_DuplicateMatchingRecord)",
+      "zx_orderlines_MailboxTrackingFolders": "Mailbox Auto Tracking Folders",
+      "zx_orderlines_PrincipalObjectAttributeAccesses": "Field Sharing",
+      "zx_orderlines_ProcessSession": "Process Sessions",
+      "zx_orderlines_SyncErrors": "Sync Errors",
+      "zx_orderlinesid": "Order Lines",
+      "zx_Product": "Product",
+      "zx_ProductSKU": "Product SKU",
+      "zx_quantity": "Quantity",
+      "zx_totalunitprice": "Total Unit Price",
+      "zx_unitprice": "Unit Price",
+      "zx_unitprice_base": "Unit Price (Base)",
+      "zx_Variant": "Variant"
+    },
+    "PreferredName": "Order Lines.S",
+    "Type": "NativeCDSDataSourceInfo"
+  },
+  {
+    "DisplayName": "Order Lines.S (Views)",
+    "Name": "_zx_orderlines_views",
+    "RelatedEntityName": "Order Lines.S",
+    "TrimmedViewName": true,
+    "Type": "ViewInfo",
+    "ViewInfoNameMapping": {
+      "3f95eed1-062e-4a67-a891-778419d251f1": "Inactive Order Lines",
+      "46187626-3230-4819-8c90-b6f8857e5b30": "Order Lines Associated View",
+      "4c8e47be-e06b-41dc-b4ad-9d5e84a5a344": "Active Order Lines",
+      "c78a8a74-2af8-4c08-a27c-4edd4bb33da3": "Order Lines Advanced Find View",
+      "eecd1800-9f25-44aa-8012-27ae9481d6b2": "Order Lines Lookup View"
+    }
+  },
+  {
+    "DisplayName": "Status (Order Lines.S)",
+    "Name": "zx_orderlines_statecode",
+    "OptionSetInfoNameMapping": {
+      "0": "Active",
+      "1": "Inactive"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "statecode",
+        "OptionSetReferenceEntityName": "Order Lines.S"
+      }
+    },
+    "OptionSetTypeKey": "StateType",
+    "RelatedColumnInvariantName": "statecode",
+    "RelatedEntityName": "Order Lines.S",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Status Reason (Order Lines.S)",
+    "Name": "zx_orderlines_statuscode",
+    "OptionSetInfoNameMapping": {
+      "1": "Active",
+      "2": "Inactive"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "statuscode",
+        "OptionSetReferenceEntityName": "Order Lines.S"
+      }
+    },
+    "OptionSetTypeKey": "StatusType",
+    "RelatedColumnInvariantName": "statuscode",
+    "RelatedEntityName": "Order Lines.S",
+    "Type": "OptionSetInfo"
+  }
+]
