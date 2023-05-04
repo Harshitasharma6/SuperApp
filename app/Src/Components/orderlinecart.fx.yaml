@@ -1,0 +1,244 @@
+orderlinecart As CanvasComponent:
+    CartType: ="Text"
+    Fill: =_VarGblAppColors.AccentBg
+    Height: |
+        =800
+    Width: =App.Width
+    X: =0
+    Y: =0
+    ZIndex: =1
+
+    "'Cart Gallery_3' As gallery.galleryVertical":
+        AccessibleLabel: ="Cart"
+        BorderColor: =RGBA(0, 18, 107, 1)
+        FocusedBorderThickness: =
+        Height: =473
+        Items: |-
+            =//If(Cart_1.CartType = "Primary", colPrimaryCart, Cart_1.CartType="Secondary", colSecondaryCart)
+            Filter(OfflineOrderLineCollection,'Order Header'.'Order Header'= varOrderData.'Order Header')
+        Layout: =Layout.Vertical
+        TabIndex: =0
+        TemplateSize: =238
+        Width: =orderlinecart.Width
+        Y: =10
+        ZIndex: =1
+
+        "'Product BG_12' As button":
+            BorderColor: =_VarGblAppColors.PrimaryRed
+            BorderThickness: =1
+            Color: =_VarGblAppColors.AccentBg
+            DisabledBorderColor: =_VarGblAppColors.PrimaryRed
+            DisabledColor: =RGBA(166, 166, 166, 1)
+            DisabledFill: =_VarGblAppColors.AccentBg
+            DisplayMode: =DisplayMode.Disabled
+            Fill: =RGBA(56, 96, 178, 1)
+            FontWeight: =FontWeight.Semibold
+            Height: =225
+            HoverColor: =RGBA(255, 255, 255, 1)
+            HoverFill: =ColorFade(RGBA(56, 96, 178, 1), -20%)
+            OnSelect: =Select(Parent)
+            RadiusBottomLeft: =15
+            RadiusBottomRight: =15
+            RadiusTopLeft: =15
+            RadiusTopRight: =15
+            Size: =24
+            Text: =""
+            Width: ='Cart Gallery_3'.TemplateWidth -30
+            X: =15
+            ZIndex: =1
+
+        "'Product Name Lbl_9' As label":
+            BorderColor: =RGBA(0, 18, 107, 1)
+            Color: =_VarGblAppColors.PrimaryText
+            DisabledColor: =RGBA(166, 166, 166, 1)
+            FontWeight: =FontWeight.Bold
+            Height: =43
+            OnSelect: =Select(Parent)
+            Size: =18
+            Text: =ThisItem.'Product SKU'.'Item Name'
+            Width: =413
+            Wrap: =false
+            X: =52
+            Y: =10
+            ZIndex: =2
+
+        "'Product Price Lbl_11' As label":
+            BorderColor: =RGBA(0, 18, 107, 1)
+            Color: =_VarGblAppColors.PrimaryText
+            DisabledColor: =RGBA(166, 166, 166, 1)
+            FontWeight: =FontWeight.Semibold
+            OnSelect: =Select(Parent)
+            Size: =16
+            Text: |-
+                ="Unit Price: " 
+            Width: =140
+            Wrap: =false
+            X: =52
+            Y: =76
+            ZIndex: =4
+
+        "'Product Discount Lbl_6' As label":
+            BorderColor: =RGBA(0, 18, 107, 1)
+            Color: =_VarGblAppColors.PrimaryText
+            DisabledColor: =RGBA(166, 166, 166, 1)
+            FontWeight: =FontWeight.Semibold
+            OnSelect: =Select(Parent)
+            Size: |
+                =16
+            Text: |-
+                ="Discount: "
+            Width: =140
+            Wrap: =false
+            X: =52
+            Y: =119
+            ZIndex: =8
+
+        "'Quantityn Lbl_7' As label":
+            BorderColor: =RGBA(0, 18, 107, 1)
+            Color: =_VarGblAppColors.PrimaryText
+            DisabledColor: =RGBA(166, 166, 166, 1)
+            FontWeight: =FontWeight.Semibold
+            OnSelect: =Select(Parent)
+            Size: =_VarGblAppFonts.Size.Medium
+            Text: |-
+                ="Quantity: "& ""
+            Width: =118
+            Wrap: =false
+            X: =52
+            Y: =162
+            ZIndex: =9
+
+        "'Product Price Lbl_12' As label":
+            BorderColor: =RGBA(0, 18, 107, 1)
+            Color: =_VarGblAppColors.PrimaryRed
+            DisabledColor: =RGBA(166, 166, 166, 1)
+            FontWeight: =FontWeight.Semibold
+            OnSelect: =Select(Parent)
+            Size: |
+                =16
+            Text: |-
+                ="Total Price: "
+            Width: =140
+            Wrap: =false
+            X: =362
+            Y: =162
+            ZIndex: =12
+
+        "'Product Price Lbl_16' As label":
+            BorderColor: =RGBA(0, 18, 107, 1)
+            Color: =_VarGblAppColors.PrimaryText
+            DisabledColor: =RGBA(166, 166, 166, 1)
+            FontWeight: =FontWeight.Semibold
+            OnSelect: =Select(Parent)
+            Size: =16
+            Text: |-
+                ="Variant: " 
+            Width: =140
+            Wrap: =false
+            X: =362
+            Y: =76
+            ZIndex: =13
+
+        "'Product Discount Lbl_9' As label":
+            BorderColor: =RGBA(0, 18, 107, 1)
+            Color: =_VarGblAppColors.PrimaryText
+            DisabledColor: =RGBA(166, 166, 166, 1)
+            FontWeight: =FontWeight.Semibold
+            OnSelect: =Select(Parent)
+            Size: =_VarGblAppFonts.Size.Medium
+            Text: |-
+                ="Discount: "
+            Width: =130
+            Wrap: =false
+            X: =362
+            Y: =119
+            ZIndex: =14
+
+        Rectangle37_1 As rectangle:
+            BorderColor: =RGBA(0, 18, 107, 1)
+            Fill: =RGBA(102, 182, 227, 1)
+            Height: =2
+            OnSelect: =Select(Parent)
+            Width: =600
+            X: =15
+            Y: =57
+            ZIndex: =15
+
+        Label55_1 As label:
+            BorderColor: =RGBA(0, 18, 107, 1)
+            Color: =_VarGblAppColors.PrimaryRed
+            DisabledColor: =RGBA(166, 166, 166, 1)
+            OnSelect: =Select(Parent)
+            Size: =16
+            Text: ="₹" & ThisItem.'Unit Price'
+            Width: =135
+            X: =174
+            Y: =76
+            ZIndex: =16
+
+        Label59_1 As label:
+            BorderColor: =RGBA(0, 18, 107, 1)
+            Color: =_VarGblAppColors.PrimaryRed
+            DisabledColor: =RGBA(166, 166, 166, 1)
+            OnSelect: =Select(Parent)
+            Size: |
+                =16
+            Text: =ThisItem.'Discount %' & "%"
+            Width: =120
+            X: =174
+            Y: =119
+            ZIndex: =17
+
+        Label60_1 As label:
+            BorderColor: =RGBA(0, 18, 107, 1)
+            Color: =_VarGblAppColors.PrimaryRed
+            DisabledColor: =RGBA(166, 166, 166, 1)
+            OnSelect: =Select(Parent)
+            Size: |
+                =16
+            Text: =  "₹" & ThisItem.'Total Unit Price'
+            Width: =95
+            X: =504
+            Y: =162
+            ZIndex: =18
+
+        Label57_2 As label:
+            BorderColor: =RGBA(0, 18, 107, 1)
+            Color: =_VarGblAppColors.PrimaryRed
+            DisabledColor: =RGBA(166, 166, 166, 1)
+            FontWeight: =FontWeight.Bold
+            Size: =16
+            Text: |-
+                ="₹" & ThisItem.'Discount Amount'
+                 
+            Width: =96
+            X: =504
+            Y: =119
+            ZIndex: =20
+
+        Label66_1 As label:
+            BorderColor: =RGBA(0, 18, 107, 1)
+            Color: =_VarGblAppColors.PrimaryRed
+            DisabledColor: =RGBA(166, 166, 166, 1)
+            OnSelect: =Select(Parent)
+            Size: =16
+            Text: =LookUp(OfflineProductSKUCollection,'Product SKU'= ThisItem.'Product SKU'.'Product SKU').Variant.'Variant Name'
+            Width: =96
+            X: =504
+            Y: =76
+            ZIndex: =21
+
+        "'Quantityn Lbl_8' As label":
+            BorderColor: =RGBA(0, 18, 107, 1)
+            Color: =_VarGblAppColors.PrimaryRed
+            DisabledColor: =RGBA(166, 166, 166, 1)
+            FontWeight: =FontWeight.Semibold
+            OnSelect: =Select(Parent)
+            Size: =_VarGblAppFonts.Size.Medium
+            Text: =ThisItem.Quantity
+            Width: =118
+            Wrap: =false
+            X: =175
+            Y: =159
+            ZIndex: =22
+

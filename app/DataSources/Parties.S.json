@@ -1,0 +1,216 @@
+[
+  {
+    "CdsFCBContext": "{\"FileType\":true,\"ImageExternalStorage\":true}",
+    "EntitySetName": "zx_partieses",
+    "IsHidden": false,
+    "IsSampleData": false,
+    "IsWritable": true,
+    "LogicalName": "zx_parties",
+    "MaxGetRowsCount": 500,
+    "Name": "Parties.S",
+    "NativeCDSDataSourceInfoNameMapping": {
+      "_ownerid_value": "Owner",
+      "{Attachments}": "Attachments",
+      "createdby": "Created By",
+      "createdon": "Created On",
+      "createdonbehalfby": "Created By (Delegate)",
+      "importsequencenumber": "Import Sequence Number",
+      "modifiedby": "Modified By",
+      "modifiedon": "Modified On",
+      "modifiedonbehalfby": "Modified By (Delegate)",
+      "overriddencreatedon": "Record Created On",
+      "owningbusinessunit": "Owning Business Unit",
+      "owningteam": "Owning Team",
+      "owninguser": "Owning User",
+      "statecode": "Status",
+      "statuscode": "Status Reason",
+      "timezoneruleversionnumber": "Time Zone Rule Version Number",
+      "utcconversiontimezonecode": "UTC Conversion Time Zone Code",
+      "versionnumber": "Version Number",
+      "zx_aadhaarno": "Aadhaar No",
+      "zx_address": "Address",
+      "zx_Area": "Area",
+      "zx_AttachedDistributor": "Attached Distributor",
+      "zx_AttachedUser": "Attached User",
+      "zx_Branch": "Branch",
+      "zx_City": "City",
+      "zx_customercode": "Customer Code",
+      "zx_customererpcode": "Customer ERP Code",
+      "zx_customerstatus": "Customer Status",
+      "zx_customertype": "Customer Type",
+      "zx_District": "District",
+      "zx_email": "Email",
+      "zx_firstname": "First Name",
+      "zx_gstimage": "GST Image",
+      "zx_gstimageid": "zx_GSTImageId",
+      "zx_gstno": "GST No",
+      "zx_lastname": "Last Name",
+      "zx_latitude": "Latitude",
+      "zx_longitude": "Longitude",
+      "zx_meetingdate": "Meeting Date",
+      "zx_mobileno": "Mobile No.",
+      "zx_name": "Customer Name",
+      "zx_panimage": "PAN Image",
+      "zx_panimageid": "zx_PANImageId",
+      "zx_panno": "Pan no",
+      "zx_parties_Annotations": "Notes",
+      "zx_parties_AsyncOperations": "System Jobs",
+      "zx_parties_BulkDeleteFailures": "Bulk Delete Failures",
+      "zx_parties_DuplicateBaseRecord": "Duplicate Records (zx_parties_DuplicateBaseRecord)",
+      "zx_parties_DuplicateMatchingRecord": "Duplicate Records (zx_parties_DuplicateMatchingRecord)",
+      "zx_parties_MailboxTrackingFolders": "Mailbox Auto Tracking Folders",
+      "zx_parties_PrincipalObjectAttributeAccesses": "Field Sharing",
+      "zx_parties_ProcessSession": "Process Sessions",
+      "zx_parties_SyncErrors": "Sync Errors",
+      "zx_partiesid": "Parties",
+      "zx_PaymentTerms": "Payment Terms",
+      "zx_phoneno": "Phone No.",
+      "zx_Pincode": "Pincode",
+      "zx_PriceList": "Price List",
+      "zx_Region": "Region",
+      "zx_remarks": "Remarks",
+      "zx_State": "State",
+      "zx_Supplier": "Supplier",
+      "zx_type": "Type",
+      "zx_zx_contacts_Party_zx_parties": "Contacts.S",
+      "zx_zx_invoice_Party_zx_parties": "Invoice.S",
+      "zx_zx_leadactivities_Party_zx_parties": "Lead Activities.S",
+      "zx_zx_leads_Party_zx_parties": "Leads.S",
+      "zx_zx_orderheader_BillTo_zx_parties": "Order Header.S (zx_zx_orderheader_BillTo_zx_parties)",
+      "zx_zx_orderheader_OrderFrom_zx_parties": "Order Header.S (zx_zx_orderheader_OrderFrom_zx_parties)",
+      "zx_zx_orderheader_OrderTo_zx_parties": "Order Header.S (zx_zx_orderheader_OrderTo_zx_parties)",
+      "zx_zx_orderheader_ShipTo_zx_parties": "Order Header.S (zx_zx_orderheader_ShipTo_zx_parties)",
+      "zx_zx_parties_AttachedDistributor_zx_parties": "Parties.S",
+      "zx_zx_pricelistmapping_Customer_zx_parties": "Price List Mapping.S",
+      "zx_zx_productinterested_Party_zx_parties": "Product Interested.S",
+      "zx_zx_productoffersmapping_Customer_zx_parti": "Product Offers Mapping.S",
+      "zx_zx_stock_Customer_zx_parties": "Stock.S",
+      "zx_zx_visit_Party_zx_parties": "Visit.S"
+    },
+    "PreferredName": "Parties.S",
+    "Type": "NativeCDSDataSourceInfo"
+  },
+  {
+    "DisplayName": "Parties.S (Views)",
+    "Name": "_zx_parties_views",
+    "RelatedEntityName": "Parties.S",
+    "TrimmedViewName": true,
+    "Type": "ViewInfo",
+    "ViewInfoNameMapping": {
+      "0086ced8-3ee5-4015-ba75-c9c8b7a8574c": "Parties Lookup View",
+      "2b68fc53-1fb2-4cfc-b7b8-aa3e78df1db3": "Inactive Parties",
+      "c47a3c49-6813-4681-b84f-78d0b65e35d5": "Active Parties",
+      "ddb7a779-37bb-4f04-a574-daa8ded9841a": "Parties Advanced Find View",
+      "e4392b8b-d068-4a27-9c64-9053fa70e11c": "Parties Associated View"
+    }
+  },
+  {
+    "DisplayName": "Party Type Choices",
+    "Name": "cra3a_partytype",
+    "OptionSetInfoNameMapping": {
+      "135360000": "Distributor",
+      "135360001": "Dealer",
+      "135360002": "Retailer"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": true,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "zx_customertype",
+        "OptionSetReferenceEntityName": "Parties.S"
+      },
+      "OptionSetReferenceItem1": {
+        "OptionSetReferenceColumnName": "cra3a_partytype",
+        "OptionSetReferenceEntityName": "Parties_1"
+      }
+    },
+    "OptionSetTypeKey": "PicklistType",
+    "RelatedColumnInvariantName": "zx_customertype",
+    "RelatedEntityName": "Parties.S",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Customer status",
+    "Name": "cra62_customerstatus",
+    "OptionSetInfoNameMapping": {
+      "571990000": "Requested",
+      "571990001": "Customer"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": true,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "zx_customerstatus",
+        "OptionSetReferenceEntityName": "Parties.S"
+      },
+      "OptionSetReferenceItem1": {
+        "OptionSetReferenceColumnName": "cra62_customerstatus",
+        "OptionSetReferenceEntityName": "Parties_1"
+      }
+    },
+    "OptionSetTypeKey": "PicklistType",
+    "RelatedColumnInvariantName": "zx_customerstatus",
+    "RelatedEntityName": "Parties.S",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Status (Parties.S)",
+    "Name": "zx_parties_statecode",
+    "OptionSetInfoNameMapping": {
+      "0": "Active",
+      "1": "Inactive"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "statecode",
+        "OptionSetReferenceEntityName": "Parties.S"
+      }
+    },
+    "OptionSetTypeKey": "StateType",
+    "RelatedColumnInvariantName": "statecode",
+    "RelatedEntityName": "Parties.S",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Status Reason (Parties.S)",
+    "Name": "zx_parties_statuscode",
+    "OptionSetInfoNameMapping": {
+      "1": "Active",
+      "2": "Inactive"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "statuscode",
+        "OptionSetReferenceEntityName": "Parties.S"
+      }
+    },
+    "OptionSetTypeKey": "StatusType",
+    "RelatedColumnInvariantName": "statuscode",
+    "RelatedEntityName": "Parties.S",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Type (Parties.S)",
+    "Name": "zx_parties_zx_type",
+    "OptionSetInfoNameMapping": {
+      "128780000": "Primary",
+      "128780001": "Secondary"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "zx_type",
+        "OptionSetReferenceEntityName": "Parties.S"
+      }
+    },
+    "OptionSetTypeKey": "PicklistType",
+    "RelatedColumnInvariantName": "zx_type",
+    "RelatedEntityName": "Parties.S",
+    "Type": "OptionSetInfo"
+  }
+]

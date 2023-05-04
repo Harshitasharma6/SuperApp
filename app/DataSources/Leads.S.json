@@ -1,0 +1,194 @@
+[
+  {
+    "CdsFCBContext": "{\"FileType\":true,\"ImageExternalStorage\":true}",
+    "EntitySetName": "zx_leadses",
+    "IsHidden": false,
+    "IsSampleData": false,
+    "IsWritable": true,
+    "LogicalName": "zx_leads",
+    "MaxGetRowsCount": 500,
+    "Name": "Leads.S",
+    "NativeCDSDataSourceInfoNameMapping": {
+      "_ownerid_value": "Owner",
+      "{Attachments}": "Attachments",
+      "createdby": "Created By",
+      "createdon": "Created On",
+      "createdonbehalfby": "Created By (Delegate)",
+      "exchangerate": "Exchange Rate",
+      "importsequencenumber": "Import Sequence Number",
+      "modifiedby": "Modified By",
+      "modifiedon": "Modified On",
+      "modifiedonbehalfby": "Modified By (Delegate)",
+      "overriddencreatedon": "Record Created On",
+      "owningbusinessunit": "Owning Business Unit",
+      "owningteam": "Owning Team",
+      "owninguser": "Owning User",
+      "statecode": "Status",
+      "statuscode": "Status Reason",
+      "timezoneruleversionnumber": "Time Zone Rule Version Number",
+      "transactioncurrencyid": "Currency",
+      "utcconversiontimezonecode": "UTC Conversion Time Zone Code",
+      "versionnumber": "Version Number",
+      "zx_actualclosuredate": "Actual Closure Date",
+      "zx_address": "Address",
+      "zx_Area": "Area",
+      "zx_assigndate": "Assign Date",
+      "zx_commited": "Commited",
+      "zx_Contact": "Contact",
+      "zx_estimatedvalue": "Estimated Value",
+      "zx_expectedclosuredate": "Expected Closure Date",
+      "zx_KRA": "KRA",
+      "zx_leadareasqft": "Lead Area (sqft)",
+      "zx_leaddate": "Lead Date",
+      "zx_leaddays": "Lead Days",
+      "zx_leadname": "Lead Name",
+      "zx_leads_Annotations": "Notes",
+      "zx_leads_AsyncOperations": "System Jobs",
+      "zx_leads_BulkDeleteFailures": "Bulk Delete Failures",
+      "zx_leads_DuplicateBaseRecord": "Duplicate Records (zx_leads_DuplicateBaseRecord)",
+      "zx_leads_DuplicateMatchingRecord": "Duplicate Records (zx_leads_DuplicateMatchingRecord)",
+      "zx_leads_MailboxTrackingFolders": "Mailbox Auto Tracking Folders",
+      "zx_leads_PrincipalObjectAttributeAccesses": "Field Sharing",
+      "zx_leads_ProcessSession": "Process Sessions",
+      "zx_leads_SyncErrors": "Sync Errors",
+      "zx_leadsid": "Leads",
+      "zx_leadstage": "Lead Stage ",
+      "zx_leadvalue": "Lead Value",
+      "zx_leadvalue_base": "Lead Value (Base)",
+      "zx_mobileno": "Mobile No.",
+      "zx_name": "Lead Id",
+      "zx_nextaction": "Next Action",
+      "zx_nextactiondate": "Next Action Date",
+      "zx_noactiondays": "No Action Days",
+      "zx_Party": "Party",
+      "zx_probability": "Probability",
+      "zx_ProductCategory": "Product Category",
+      "zx_ProductSKU": "Product SKU",
+      "zx_source": "Source",
+      "zx_zx_leadactivities_Lead_zx_leads": "Lead Activities.S",
+      "zx_zx_orderheader_Lead_zx_leads": "Order Header.S",
+      "zx_zx_productinterested_Lead_zx_leads": "Product Interested.S",
+      "zx_zx_visit_Lead_zx_leads": "Visit.S"
+    },
+    "PreferredName": "Leads.S",
+    "Type": "NativeCDSDataSourceInfo"
+  },
+  {
+    "DisplayName": "Leads.S (Views)",
+    "Name": "_zx_leads_views",
+    "RelatedEntityName": "Leads.S",
+    "TrimmedViewName": true,
+    "Type": "ViewInfo",
+    "ViewInfoNameMapping": {
+      "2fadb3b7-443d-4ab2-b27c-da2b4abcd830": "Leads Associated View",
+      "3eed0694-7a54-41f0-9689-df8dd5e37f42": "Leads Lookup View",
+      "4411fa71-e143-4d82-a300-46e07b556b65": "Active Leads",
+      "6afebdf2-178d-41cf-876a-25bcf1e3979e": "Inactive Leads",
+      "9449eb90-36ca-4490-898b-371c51a1f460": "Leads Advanced Find View"
+    }
+  },
+  {
+    "DisplayName": "source",
+    "Name": "cra62_source",
+    "OptionSetInfoNameMapping": {
+      "571990000": "Social Media",
+      "571990001": "Influencer",
+      "571990002": "Email"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": true,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "zx_source",
+        "OptionSetReferenceEntityName": "Leads.S"
+      }
+    },
+    "OptionSetTypeKey": "PicklistType",
+    "RelatedColumnInvariantName": "zx_source",
+    "RelatedEntityName": "Leads.S",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Stage Choice",
+    "Name": "cra62_stagechoice",
+    "OptionSetInfoNameMapping": {
+      "128780001": "Rejected",
+      "571990000": "Fresh",
+      "571990002": "Won",
+      "571990003": "Lost",
+      "571990004": "Active"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": true,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "zx_leadstage",
+        "OptionSetReferenceEntityName": "Leads.S"
+      }
+    },
+    "OptionSetTypeKey": "PicklistType",
+    "RelatedColumnInvariantName": "zx_leadstage",
+    "RelatedEntityName": "Leads.S",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Status (Leads.S)",
+    "Name": "zx_leads_statecode",
+    "OptionSetInfoNameMapping": {
+      "0": "Active",
+      "1": "Inactive"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "statecode",
+        "OptionSetReferenceEntityName": "Leads.S"
+      }
+    },
+    "OptionSetTypeKey": "StateType",
+    "RelatedColumnInvariantName": "statecode",
+    "RelatedEntityName": "Leads.S",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Status Reason (Leads.S)",
+    "Name": "zx_leads_statuscode",
+    "OptionSetInfoNameMapping": {
+      "1": "Active",
+      "2": "Inactive"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "statuscode",
+        "OptionSetReferenceEntityName": "Leads.S"
+      }
+    },
+    "OptionSetTypeKey": "StatusType",
+    "RelatedColumnInvariantName": "statuscode",
+    "RelatedEntityName": "Leads.S",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Commited (Leads.S)",
+    "Name": "zx_leads_zx_commited",
+    "OptionSetInfoNameMapping": {
+      "0": "No",
+      "1": "Yes"
+    },
+    "OptionSetIsBooleanValued": true,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "zx_commited",
+        "OptionSetReferenceEntityName": "Leads.S"
+      }
+    },
+    "OptionSetTypeKey": "BooleanType",
+    "RelatedColumnInvariantName": "zx_commited",
+    "RelatedEntityName": "Leads.S",
+    "Type": "OptionSetInfo"
+  }
+]

@@ -1,0 +1,133 @@
+[
+  {
+    "CdsFCBContext": "{\"FileType\":true,\"ImageExternalStorage\":true}",
+    "EntitySetName": "cra3a_attendances",
+    "IsHidden": false,
+    "IsSampleData": false,
+    "IsWritable": true,
+    "LogicalName": "cra3a_attendance",
+    "MaxGetRowsCount": 500,
+    "Name": "Attendances",
+    "NativeCDSDataSourceInfoNameMapping": {
+      "_ownerid_value": "Owner",
+      "cra3a_attendance_AsyncOperations": "System Jobs",
+      "cra3a_attendance_BulkDeleteFailures": "Bulk Delete Failures",
+      "cra3a_attendance_DuplicateBaseRecord": "Duplicate Records (cra3a_attendance_DuplicateBaseRecord)",
+      "cra3a_attendance_DuplicateMatchingRecord": "Duplicate Records (cra3a_attendance_DuplicateMatchingRecord)",
+      "cra3a_attendance_MailboxTrackingFolders": "Mailbox Auto Tracking Folders",
+      "cra3a_attendance_PrincipalObjectAttributeAccesses": "Field Sharing",
+      "cra3a_attendance_ProcessSession": "Process Sessions",
+      "cra3a_attendance_SyncErrors": "Sync Errors",
+      "cra3a_attendanceid": "Attendance",
+      "cra3a_autocheckedout": "Auto checked out",
+      "cra3a_checkinlocationlat": "Check-in Location Lat",
+      "cra3a_checkinlocationlong": "Check-in Location Long",
+      "cra3a_checkintime": "Check-in Time",
+      "cra3a_checkoutlocationlat": "Check-out Location Lat ",
+      "cra3a_checkoutlocationlong": "Check-out Location Long",
+      "cra3a_checkouttime": "Check-out Time",
+      "cra3a_date": "Date",
+      "cra3a_name": "Name (cra3a_name)",
+      "cra3a_User": "User",
+      "cra3a_workinghours": "Working Hours",
+      "createdby": "Created By",
+      "createdon": "Created On",
+      "createdonbehalfby": "Created By (Delegate)",
+      "importsequencenumber": "Import Sequence Number",
+      "modifiedby": "Modified By",
+      "modifiedon": "Modified On",
+      "modifiedonbehalfby": "Modified By (Delegate)",
+      "new_absenttype": "Absent Type",
+      "new_attendancetype": "Attendance Type",
+      "new_name": "Name (new_name)",
+      "new_presenttype": "Present Type",
+      "overriddencreatedon": "Record Created On",
+      "owningbusinessunit": "Owning Business Unit",
+      "owningteam": "Owning Team",
+      "owninguser": "Owning User",
+      "statecode": "Status",
+      "statuscode": "Status Reason",
+      "timezoneruleversionnumber": "Time Zone Rule Version Number",
+      "utcconversiontimezonecode": "UTC Conversion Time Zone Code",
+      "versionnumber": "Version Number",
+      "zx_selfie": "Selfie",
+      "zx_selfieid": "zx_SelfieId"
+    },
+    "PreferredName": "Attendances",
+    "Type": "NativeCDSDataSourceInfo"
+  },
+  {
+    "DisplayName": "Attendances (Views)",
+    "Name": "_cra3a_attendance_views",
+    "RelatedEntityName": "Attendances",
+    "TrimmedViewName": true,
+    "Type": "ViewInfo",
+    "ViewInfoNameMapping": {
+      "0a52d88e-d934-46de-a5a7-0699892c35b4": "Attendance Advanced Find View",
+      "3456d231-7ef5-47f6-ba64-050c407a573a": "Attendance Lookup View",
+      "86d8c6ec-3226-427c-8291-b802dc564d34": "Inactive Attendances",
+      "b367c53b-221b-4b7c-ba97-2c367c8822b2": "Attendance Associated View",
+      "e07357fa-b75f-4318-8b13-1ca5dbc4d3b3": "Active Attendances"
+    }
+  },
+  {
+    "DisplayName": "Auto checked out (Attendances)",
+    "Name": "cra3a_attendance_cra3a_autocheckedout",
+    "OptionSetInfoNameMapping": {
+      "0": "No",
+      "1": "Yes"
+    },
+    "OptionSetIsBooleanValued": true,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "cra3a_autocheckedout",
+        "OptionSetReferenceEntityName": "Attendances"
+      }
+    },
+    "OptionSetTypeKey": "BooleanType",
+    "RelatedColumnInvariantName": "cra3a_autocheckedout",
+    "RelatedEntityName": "Attendances",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Status (Attendances)",
+    "Name": "cra3a_attendance_statecode",
+    "OptionSetInfoNameMapping": {
+      "0": "Active",
+      "1": "Inactive"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "statecode",
+        "OptionSetReferenceEntityName": "Attendances"
+      }
+    },
+    "OptionSetTypeKey": "StateType",
+    "RelatedColumnInvariantName": "statecode",
+    "RelatedEntityName": "Attendances",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Status Reason (Attendances)",
+    "Name": "cra3a_attendance_statuscode",
+    "OptionSetInfoNameMapping": {
+      "1": "Active",
+      "2": "Inactive"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "statuscode",
+        "OptionSetReferenceEntityName": "Attendances"
+      }
+    },
+    "OptionSetTypeKey": "StatusType",
+    "RelatedColumnInvariantName": "statuscode",
+    "RelatedEntityName": "Attendances",
+    "Type": "OptionSetInfo"
+  }
+]

@@ -1,0 +1,107 @@
+[
+  {
+    "CdsFCBContext": "{\"FileType\":true,\"ImageExternalStorage\":true}",
+    "EntitySetName": "zx_cities",
+    "IsHidden": false,
+    "IsSampleData": false,
+    "IsWritable": true,
+    "LogicalName": "zx_city",
+    "MaxGetRowsCount": 500,
+    "Name": "City.S",
+    "NativeCDSDataSourceInfoNameMapping": {
+      "_ownerid_value": "Owner",
+      "createdby": "Created By",
+      "createdon": "Created On",
+      "createdonbehalfby": "Created By (Delegate)",
+      "importsequencenumber": "Import Sequence Number",
+      "modifiedby": "Modified By",
+      "modifiedon": "Modified On",
+      "modifiedonbehalfby": "Modified By (Delegate)",
+      "overriddencreatedon": "Record Created On",
+      "owningbusinessunit": "Owning Business Unit",
+      "owningteam": "Owning Team",
+      "owninguser": "Owning User",
+      "statecode": "Status",
+      "statuscode": "Status Reason",
+      "timezoneruleversionnumber": "Time Zone Rule Version Number",
+      "utcconversiontimezonecode": "UTC Conversion Time Zone Code",
+      "versionnumber": "Version Number",
+      "zx_city_AsyncOperations": "System Jobs",
+      "zx_city_BulkDeleteFailures": "Bulk Delete Failures",
+      "zx_city_DuplicateBaseRecord": "Duplicate Records (zx_city_DuplicateBaseRecord)",
+      "zx_city_DuplicateMatchingRecord": "Duplicate Records (zx_city_DuplicateMatchingRecord)",
+      "zx_city_MailboxTrackingFolders": "Mailbox Auto Tracking Folders",
+      "zx_city_PrincipalObjectAttributeAccesses": "Field Sharing",
+      "zx_city_ProcessSession": "Process Sessions",
+      "zx_city_SyncErrors": "Sync Errors",
+      "zx_cityid": "City",
+      "zx_cityname": "City Name",
+      "zx_District": "District",
+      "zx_name": "Name",
+      "zx_Region": "Region",
+      "zx_State": "State",
+      "zx_systemuser_City_zx_city": "Users",
+      "zx_Territory": "Territory",
+      "zx_zx_area_City_zx_city": "Area.S",
+      "zx_zx_branch_City_zx_city": "Branch.S",
+      "zx_zx_parties_City_zx_city": "Parties.S",
+      "zx_zx_pincode_City_zx_city": "Pincode.S"
+    },
+    "PreferredName": "City.S",
+    "Type": "NativeCDSDataSourceInfo"
+  },
+  {
+    "DisplayName": "City.S (Views)",
+    "Name": "_zx_city_views",
+    "RelatedEntityName": "City.S",
+    "TrimmedViewName": true,
+    "Type": "ViewInfo",
+    "ViewInfoNameMapping": {
+      "1b82cdba-6022-44f3-a997-5907ee447e06": "City Advanced Find View",
+      "5b91d2f9-c898-49b0-bc60-9e5f480defc0": "City Lookup View",
+      "a71e67ae-a801-4ef6-bb59-c310f880d386": "City Associated View",
+      "cd599e48-479e-4669-b6ff-659acc8bf023": "Inactive Cities",
+      "f19a0166-d2d3-42d3-a24d-c2671e9bcee6": "Active Cities"
+    }
+  },
+  {
+    "DisplayName": "Status (City.S)",
+    "Name": "zx_city_statecode",
+    "OptionSetInfoNameMapping": {
+      "0": "Active",
+      "1": "Inactive"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "statecode",
+        "OptionSetReferenceEntityName": "City.S"
+      }
+    },
+    "OptionSetTypeKey": "StateType",
+    "RelatedColumnInvariantName": "statecode",
+    "RelatedEntityName": "City.S",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Status Reason (City.S)",
+    "Name": "zx_city_statuscode",
+    "OptionSetInfoNameMapping": {
+      "1": "Active",
+      "2": "Inactive"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "statuscode",
+        "OptionSetReferenceEntityName": "City.S"
+      }
+    },
+    "OptionSetTypeKey": "StatusType",
+    "RelatedColumnInvariantName": "statuscode",
+    "RelatedEntityName": "City.S",
+    "Type": "OptionSetInfo"
+  }
+]

@@ -1,0 +1,131 @@
+[
+  {
+    "CdsFCBContext": "{\"FileType\":true,\"ImageExternalStorage\":true}",
+    "EntitySetName": "zx_productcategories",
+    "IsHidden": false,
+    "IsSampleData": false,
+    "IsWritable": true,
+    "LogicalName": "zx_productcategory",
+    "MaxGetRowsCount": 500,
+    "Name": "Product Category.S",
+    "NativeCDSDataSourceInfoNameMapping": {
+      "_ownerid_value": "Owner",
+      "createdby": "Created By",
+      "createdon": "Created On",
+      "createdonbehalfby": "Created By (Delegate)",
+      "importsequencenumber": "Import Sequence Number",
+      "modifiedby": "Modified By",
+      "modifiedon": "Modified On",
+      "modifiedonbehalfby": "Modified By (Delegate)",
+      "overriddencreatedon": "Record Created On",
+      "owningbusinessunit": "Owning Business Unit",
+      "owningteam": "Owning Team",
+      "owninguser": "Owning User",
+      "statecode": "Status",
+      "statuscode": "Status Reason",
+      "timezoneruleversionnumber": "Time Zone Rule Version Number",
+      "utcconversiontimezonecode": "UTC Conversion Time Zone Code",
+      "versionnumber": "Version Number",
+      "zx_categorycode": "Category Code",
+      "zx_level": "Level",
+      "zx_name": "Category Name",
+      "zx_ParentCategory": "Parent Category",
+      "zx_parentcategorycode": "Parent Category Code",
+      "zx_productcategory_AsyncOperations": "System Jobs",
+      "zx_productcategory_BulkDeleteFailures": "Bulk Delete Failures",
+      "zx_productcategory_DuplicateBaseRecord": "Duplicate Records (zx_productcategory_DuplicateBaseRecord)",
+      "zx_productcategory_DuplicateMatchingRecord": "Duplicate Records (zx_productcategory_DuplicateMatchingRecord)",
+      "zx_productcategory_MailboxTrackingFolders": "Mailbox Auto Tracking Folders",
+      "zx_productcategory_PrincipalObjectAttributeAccesses": "Field Sharing",
+      "zx_productcategory_ProcessSession": "Process Sessions",
+      "zx_productcategory_SyncErrors": "Sync Errors",
+      "zx_productcategoryid": "Product Category",
+      "zx_type": "Type",
+      "zx_zx_leads_ProductCategory_zx_productcatego": "Leads.S",
+      "zx_zx_product_ProductCategory_zx_productcate": "Product.S",
+      "zx_zx_productcategory_ParentCategory_zx_prod": "Product Category.S",
+      "zx_zx_productofferheader_ProductCategory_zx_": "Product Offer Header.S",
+      "zx_zx_productsku_ProductCategory_zx_productc": "Product SKU.S",
+      "zx_zx_productsubcategory_ProductCategory_zx_": "Product Sub-Category.S"
+    },
+    "PreferredName": "Product Category.S",
+    "Type": "NativeCDSDataSourceInfo"
+  },
+  {
+    "DisplayName": "Product Category.S (Views)",
+    "Name": "_zx_productcategory_views",
+    "RelatedEntityName": "Product Category.S",
+    "TrimmedViewName": true,
+    "Type": "ViewInfo",
+    "ViewInfoNameMapping": {
+      "1a5d6447-68c4-4dd6-8214-808afdb90871": "Product Category Lookup View",
+      "200ac783-0b45-4953-b2e5-f16a9611b58f": "Product Category Advanced Find View",
+      "a6aff3e9-7d0b-499f-98d5-b6fa55c6af6c": "Active Product Categories",
+      "d13e51f1-a2f4-4392-aa9a-e129cb513da2": "Product Category Associated View",
+      "f4ab4b25-5f63-4336-9914-c7ebd0733b3f": "Inactive Product Categories"
+    }
+  },
+  {
+    "DisplayName": "PickList for Product Category Type",
+    "Name": "zx_picklistforproductcategorytype",
+    "OptionSetInfoNameMapping": {
+      "128780000": "Type1"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": true,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "zx_type",
+        "OptionSetReferenceEntityName": "Product Category.S"
+      },
+      "OptionSetReferenceItem1": {
+        "OptionSetReferenceColumnName": "zx_type",
+        "OptionSetReferenceEntityName": "Product Categories"
+      }
+    },
+    "OptionSetTypeKey": "PicklistType",
+    "RelatedColumnInvariantName": "zx_type",
+    "RelatedEntityName": "Product Category.S",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Status (Product Category.S)",
+    "Name": "zx_productcategory_statecode",
+    "OptionSetInfoNameMapping": {
+      "0": "Active",
+      "1": "Inactive"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "statecode",
+        "OptionSetReferenceEntityName": "Product Category.S"
+      }
+    },
+    "OptionSetTypeKey": "StateType",
+    "RelatedColumnInvariantName": "statecode",
+    "RelatedEntityName": "Product Category.S",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Status Reason (Product Category.S)",
+    "Name": "zx_productcategory_statuscode",
+    "OptionSetInfoNameMapping": {
+      "1": "Active",
+      "2": "Inactive"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "statuscode",
+        "OptionSetReferenceEntityName": "Product Category.S"
+      }
+    },
+    "OptionSetTypeKey": "StatusType",
+    "RelatedColumnInvariantName": "statuscode",
+    "RelatedEntityName": "Product Category.S",
+    "Type": "OptionSetInfo"
+  }
+]

@@ -1,0 +1,111 @@
+[
+  {
+    "CdsFCBContext": "{\"FileType\":true,\"ImageExternalStorage\":true}",
+    "EntitySetName": "zx_states",
+    "IsHidden": false,
+    "IsSampleData": false,
+    "IsWritable": true,
+    "LogicalName": "zx_state",
+    "MaxGetRowsCount": 500,
+    "Name": "State.S",
+    "NativeCDSDataSourceInfoNameMapping": {
+      "_ownerid_value": "Owner",
+      "createdby": "Created By",
+      "createdon": "Created On",
+      "createdonbehalfby": "Created By (Delegate)",
+      "importsequencenumber": "Import Sequence Number",
+      "modifiedby": "Modified By",
+      "modifiedon": "Modified On",
+      "modifiedonbehalfby": "Modified By (Delegate)",
+      "overriddencreatedon": "Record Created On",
+      "owningbusinessunit": "Owning Business Unit",
+      "owningteam": "Owning Team",
+      "owninguser": "Owning User",
+      "statecode": "Status",
+      "statuscode": "Status Reason",
+      "timezoneruleversionnumber": "Time Zone Rule Version Number",
+      "utcconversiontimezonecode": "UTC Conversion Time Zone Code",
+      "versionnumber": "Version Number",
+      "zx_name": "Name",
+      "zx_Region": "Region",
+      "zx_state_AsyncOperations": "System Jobs",
+      "zx_state_BulkDeleteFailures": "Bulk Delete Failures",
+      "zx_state_DuplicateBaseRecord": "Duplicate Records (zx_state_DuplicateBaseRecord)",
+      "zx_state_DuplicateMatchingRecord": "Duplicate Records (zx_state_DuplicateMatchingRecord)",
+      "zx_state_MailboxTrackingFolders": "Mailbox Auto Tracking Folders",
+      "zx_state_PrincipalObjectAttributeAccesses": "Field Sharing",
+      "zx_state_ProcessSession": "Process Sessions",
+      "zx_state_SyncErrors": "Sync Errors",
+      "zx_stateid": "State",
+      "zx_statename": "State Name",
+      "zx_systemuser_State_zx_state": "Users",
+      "zx_zx_area_State_zx_state": "Area.S",
+      "zx_zx_branch_State_zx_state": "Branch.S",
+      "zx_zx_city_State_zx_state": "City.S",
+      "zx_zx_district_State_zx_state": "District.S",
+      "zx_zx_parties_State_zx_state": "Parties.S",
+      "zx_zx_pincode_State_zx_state": "Pincode.S",
+      "zx_zx_pricelistmapping_State_zx_state": "Price List Mapping.S",
+      "zx_zx_productofferheader_State_zx_state": "Product Offer Header.S",
+      "zx_zx_productoffersmapping_State_zx_state": "Product Offers Mapping.S",
+      "zx_zx_territory_State_zx_state": "Territory.S",
+      "zx_zx_usergeographymapping_State_zx_state": "User-Geography Mapping.S"
+    },
+    "PreferredName": "State.S",
+    "Type": "NativeCDSDataSourceInfo"
+  },
+  {
+    "DisplayName": "State.S (Views)",
+    "Name": "_zx_state_views",
+    "RelatedEntityName": "State.S",
+    "TrimmedViewName": true,
+    "Type": "ViewInfo",
+    "ViewInfoNameMapping": {
+      "375d21cd-6b34-4fe7-8a0d-4faf6c32939b": "State Advanced Find View",
+      "9869ed7b-35e7-41c4-a275-e3980c9622a9": "Inactive States",
+      "ac38ba6f-7944-4249-b5e7-aca4769d5629": "Active States",
+      "bca608fb-f9bb-4a40-83e0-0015faaeb9b8": "State Associated View",
+      "e917ecbc-dc7a-4406-a366-dae308b0c39c": "State Lookup View"
+    }
+  },
+  {
+    "DisplayName": "Status (State.S)",
+    "Name": "zx_state_statecode",
+    "OptionSetInfoNameMapping": {
+      "0": "Active",
+      "1": "Inactive"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "statecode",
+        "OptionSetReferenceEntityName": "State.S"
+      }
+    },
+    "OptionSetTypeKey": "StateType",
+    "RelatedColumnInvariantName": "statecode",
+    "RelatedEntityName": "State.S",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Status Reason (State.S)",
+    "Name": "zx_state_statuscode",
+    "OptionSetInfoNameMapping": {
+      "1": "Active",
+      "2": "Inactive"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "statuscode",
+        "OptionSetReferenceEntityName": "State.S"
+      }
+    },
+    "OptionSetTypeKey": "StatusType",
+    "RelatedColumnInvariantName": "statuscode",
+    "RelatedEntityName": "State.S",
+    "Type": "OptionSetInfo"
+  }
+]

@@ -1,0 +1,1976 @@
+"'Lead List View With Filters' As screen":
+    LoadingSpinnerColor: =RGBA(0, 120, 212, 1)
+
+    "'Bottom Bar_12' As 'Bottom Bar'":
+        Y: =1026
+
+    Header_12 As Header:
+        Height: =73
+        ScreenName: ="Leads"
+        ZIndex: =2
+
+    "'Leads List View With Filters_1' As 'Leads List View With Filters'":
+        Y: =73
+        ZIndex: =3
+
+    Button9_19 As button:
+        DisabledBorderColor: =RGBA(166, 166, 166, 1)
+        DisabledColor: =RGBA(166, 166, 166, 1)
+        DisabledFill: =RGBA(244, 244, 244, 1)
+        Fill: =_VarGblAppColors.PrimaryRed
+        FontWeight: =FontWeight.Semibold
+        Height: =65
+        HoverColor: =RGBA(255, 255, 255, 1)
+        HoverFill: =ColorFade(Self.Fill, -20%)
+        OnSelect: =Set(varNewLeadForm,true);
+        RadiusBottomLeft: =100
+        RadiusBottomRight: =100
+        RadiusTopLeft: |
+            =0
+        RadiusTopRight: =100
+        Size: =30
+        Text: ="+"
+        Width: =65
+        X: =555
+        Y: =965
+        ZIndex: =4
+
+    Rectangle3_16 As rectangle:
+        AccessibleLabel: ="Rectangle3_2"
+        BorderColor: =RGBA(0, 18, 107, 1)
+        Fill: =RGBA(0, 0, 0, 0.41)
+        Height: =1136
+        OnSelect: |-
+            =Set(
+                varClickedCreateLeadVisit,
+                false
+            );
+        TabIndex: =0
+        Visible: =varClickedCreateLeadVisit
+        Width: =640
+        ZIndex: =5
+
+    Rectangle4_10 As rectangle:
+        BorderColor: =RGBA(0, 18, 107, 1)
+        Fill: =RGBA(255, 255, 255, 1)
+        Height: =337
+        Visible: =varClickedCreateLeadVisit
+        Width: =App.Width - 50
+        X: =30
+        Y: =307
+        ZIndex: =6
+
+    Label11_12 As label:
+        Align: =Align.Center
+        BorderColor: =RGBA(0, 18, 107, 1)
+        Color: =_VarGblAppColors.PrimaryRed
+        DisabledColor: =RGBA(166, 166, 166, 1)
+        FontWeight: =FontWeight.Semibold
+        Height: =151
+        PaddingLeft: =15
+        PaddingRight: =15
+        Size: =21
+        Text: ="Do you really want to plan visit for "&varLeadData.Party.'Customer Name' &" ?"
+        Visible: =varClickedCreateLeadVisit
+        Width: =590
+        X: =30
+        Y: =372
+        ZIndex: =7
+
+    Button9_21 As button:
+        DisabledBorderColor: =RGBA(166, 166, 166, 1)
+        DisabledColor: =RGBA(166, 166, 166, 1)
+        DisabledFill: =RGBA(244, 244, 244, 1)
+        Fill: =_VarGblAppColors.PrimaryRed
+        FontWeight: =FontWeight.Semibold
+        Height: =63
+        HoverColor: =RGBA(255, 255, 255, 1)
+        HoverFill: =ColorFade(Self.Fill, -20%)
+        OnSelect: |
+            =If(
+                !IsBlank(
+                    LookUp(
+                        OfflineVisitCollection,
+                        Party.Parties = varLeadData.Party.Parties && IsToday('Visit date') && 'Owning User'.'Primary Email' = User().Email
+                    )
+                ),
+                Notify(
+                    "One visit is already planned for " & varLeadData.Party.'Customer Name' & " for today.",
+                    NotificationType.Information,
+                    4000
+                );
+                ,
+                Set(
+                    createVisitResponse,
+                    Patch(
+                        'Visit.S',
+                        Defaults('Visit.S'),
+                        {
+                            'Visit date': Today(),
+                            Party: LookUp(
+                                'Parties.S',                    Parties = varLeadData.Party.Parties
+                            ),
+                            'Party Location': varLeadData.Party.Latitude & "," & varLeadData.Party.Longitude,
+                            'Visit Type': 'Visit Type'.Planned,
+                            'Visit Status': 'Visit Status'.'Not Started',
+                            Owner: LookUp(
+                                Users,
+                                'Primary Email' = User().Email
+                            )
+                        }
+                    );
+                );
+                If(
+                    !IsBlank(createVisitResponse),
+                    Patch(
+                        'Lead Activities.S',
+                        Defaults('Lead Activities.S'),
+                        {
+                            Lead: LookUp(
+                                'Leads.S',
+                                'Lead Id' = varLeadData.'Lead Id'
+                            ),
+                            'Activity Type': 'Activity Type'.Visit,
+                            Party: LookUp(
+                                OfflinePartiesCollection,
+                                Parties = varLeadData.Party.Parties
+                            ),
+                            Date: Today(),
+                            Contact: LookUp(
+                                'Contacts.S',
+                                Contacts = varLeadData.Contact.Contacts
+                            ),
+                            Visit: LookUp(
+                                OfflineVisitCollection,
+                                Visit = createVisitResponse.Visit
+                            )
+                        }
+                    );
+                )
+            );
+            Set(
+                varClickedCreateLeadVisit,
+                false
+            );
+            Notify(
+                "Visit and activity has been created successfully.",
+                NotificationType.Success,
+                3000
+            );
+            ClearCollect(
+                OfflineVisitCollection,
+                'Visit.S'
+            );
+            SaveData(
+                OfflineVisitCollection,
+                "OfflineVisits"
+            );
+            // #############################################################################################################
+            ClearCollect(
+                OfflinePjpRouteCollection,
+                Filter(
+                    'Beat.S',
+                    Area.Area = varUserr  && 'Owning User'.'Primary Email' = User().Email
+                )
+            );
+            SaveData(
+                OfflinePjpRouteCollection,
+                "OfflinePjpRoutes"
+            );
+        Size: =20
+        Text: ="CREATE VISIT"
+        Visible: =varClickedCreateLeadVisit
+        Width: =354
+        X: =163
+        Y: =534
+        ZIndex: =8
+
+    CancelIcon_13 As icon.Cancel:
+        AccessibleLabel: ="Cancel Icon"
+        BorderColor: =RGBA(0, 18, 107, 1)
+        Color: =_VarGblAppColors.HeaderBg
+        DisabledBorderColor: =RGBA(166, 166, 166, 1)
+        DisabledColor: =RGBA(244, 244, 244, 1)
+        Height: =42
+        Icon: =Icon.Cancel
+        OnSelect: |-
+            =Set(
+                varClickedCreateLeadVisit,
+                false
+            );
+        TabIndex: =0
+        Visible: =varClickedCreateLeadVisit
+        Width: =41
+        X: =578
+        Y: =323
+        ZIndex: =9
+
+    Rectangle3_15 As rectangle:
+        AccessibleLabel: ="Rectangle3"
+        BorderColor: =RGBA(0, 18, 107, 1)
+        Fill: =RGBA(0, 0, 0, 0.41)
+        Height: =1136
+        OnSelect: =Set(varNewLeadForm, false)
+        TabIndex: =0
+        Visible: =varNewLeadForm
+        Width: =640
+        ZIndex: =10
+
+    Rectangle4_9 As rectangle:
+        BorderColor: =RGBA(0, 18, 107, 1)
+        Fill: =RGBA(255, 255, 255, 1)
+        Height: =977
+        Visible: =varNewLeadForm
+        Width: =App.Width - 50
+        X: =30
+        Y: =143
+        ZIndex: =11
+
+    Label11_11 As label:
+        Align: =Align.Center
+        BorderColor: =RGBA(0, 18, 107, 1)
+        Color: =_VarGblAppColors.PrimaryRed
+        DisabledColor: =RGBA(166, 166, 166, 1)
+        FontWeight: =FontWeight.Bold
+        Height: =70
+        Size: =21
+        Text: ="New Lead"
+        Visible: =varNewLeadForm
+        Width: =590
+        X: =30
+        Y: =136
+        ZIndex: =12
+
+    CancelIcon_12 As icon.Cancel:
+        AccessibleLabel: ="Cancel Icon"
+        BorderColor: =RGBA(0, 18, 107, 1)
+        Color: =_VarGblAppColors.HeaderBg
+        DisabledBorderColor: =RGBA(166, 166, 166, 1)
+        DisabledColor: =RGBA(244, 244, 244, 1)
+        Height: =42
+        Icon: =Icon.Cancel
+        OnSelect: =Set(varNewLeadForm, false)
+        TabIndex: =0
+        Visible: =varNewLeadForm
+        Width: =41
+        X: =579
+        Y: =150
+        ZIndex: =13
+
+    MainCanvas_1 As fluidGrid.fluidGridWithBlankCard:
+        BorderThickness: =0
+        Height: =883
+        Visible: =varNewLeadForm
+        Width: =Parent.Width-50
+        X: =30
+        Y: =206
+        ZIndex: =14
+
+        MainDataCard_4 As dataCard:
+            BorderColor: =RGBA(0, 0, 0, 1)
+            BorderStyle: =BorderStyle.Solid
+            BorderThickness: =0
+            DisplayMode: =DisplayMode.Edit
+            Fill: =RGBA(0, 0, 0, 0)
+            Height: =1410
+            Width: =Parent.Width
+            X: =0
+            Y: =0
+            ZIndex: =1
+
+            Container9_1 As groupContainer.manualLayoutContainer:
+                Height: =110
+                Width: =590
+                ZIndex: =1
+
+                Label15_2 As label:
+                    BorderColor: =RGBA(0, 18, 107, 1)
+                    Color: =RGBA(0, 0, 0, 1)
+                    DisabledColor: =RGBA(166, 166, 166, 1)
+                    FontWeight: =FontWeight.Semibold
+                    Height: =50
+                    PaddingLeft: =30
+                    Size: =16
+                    Text: ="Party"
+                    Width: =417
+                    ZIndex: =1
+
+                partyCmb As combobox:
+                    AccessibleLabel: ="Party Cmb"
+                    BorderColor: =RGBA(149, 149, 149, 1)
+                    BorderThickness: =1
+                    ChevronBackground: =RGBA(255, 255, 255, 1)
+                    ChevronDisabledBackground: =RGBA(166, 166, 166, 1)
+                    ChevronDisabledFill: =RGBA(244, 244, 244, 1)
+                    ChevronFill: =RGBA(26, 26, 26, 1)
+                    ChevronHoverBackground: =ColorFade(RGBA(56, 96, 178, 1), -20%)
+                    ChevronHoverFill: =RGBA(255, 255, 255, 1)
+                    DefaultSelectedItems: =LookUp(OfflinePartiesCollection, zx_partiesid = First(patchedParty).Parties)
+                    DisabledBorderColor: =RGBA(166, 166, 166, 1)
+                    DisabledColor: =RGBA(166, 166, 166, 1)
+                    DisabledFill: =RGBA(244, 244, 244, 1)
+                    DisplayFields: =["zx_name"]
+                    FontWeight: =FontWeight.Semibold
+                    Height: =50
+                    HoverColor: =RGBA(0, 0, 0, 1)
+                    HoverFill: =RGBA(186, 202, 226, 1)
+                    IsSearchable: =false
+                    Items: |-
+                        =OfflinePartiesCollection
+                        /*If(
+                            IsBlank(ComboBox7_1.SelectedItems),
+                            OfflinePartiesCollection,
+                            LookUp( OfflinePartiesCollection, 'Customer Code' = ComboBox7_1.Selected.Party.'Customer Code')
+                        )*/
+                    PressedColor: =RGBA(255, 255, 255, 1)
+                    PressedFill: =RGBA(0, 18, 107, 1)
+                    SearchFields: =["zx_name"]
+                    SearchItems: =[]
+                    SelectionFill: =RGBA(56, 96, 178, 1)
+                    SelectionTagFill: =
+                    SelectMultiple: =false
+                    Size: =16
+                    Width: =514
+                    X: =32
+                    Y: =50
+                    ZIndex: =2
+
+            Container9_2 As groupContainer.manualLayoutContainer:
+                Height: =115
+                Width: =590
+                Y: =110
+                ZIndex: =2
+
+                contactCmb As label:
+                    BorderColor: =RGBA(0, 18, 107, 1)
+                    Color: =RGBA(0, 0, 0, 1)
+                    DisabledColor: =RGBA(166, 166, 166, 1)
+                    FontWeight: =FontWeight.Semibold
+                    Height: =50
+                    PaddingLeft: =30
+                    Size: =16
+                    Text: ="Contact"
+                    Width: =590
+                    ZIndex: =1
+
+                ComboBox7_9 As combobox:
+                    AccessibleLabel: ="ComboBox"
+                    BorderColor: =RGBA(149, 149, 149, 1)
+                    BorderThickness: =1
+                    ChevronBackground: =RGBA(255, 255, 255, 1)
+                    ChevronDisabledBackground: =RGBA(166, 166, 166, 1)
+                    ChevronDisabledFill: =RGBA(244, 244, 244, 1)
+                    ChevronFill: =RGBA(26, 26, 26, 1)
+                    ChevronHoverBackground: =ColorFade(RGBA(56, 96, 178, 1), -20%)
+                    ChevronHoverFill: =RGBA(255, 255, 255, 1)
+                    DefaultSelectedItems: |-
+                        =LookUp(
+                            'Contacts.S',
+                            'Contact Id' =  varPatchedContact
+                        )
+                    DisabledBorderColor: =RGBA(166, 166, 166, 1)
+                    DisabledColor: =RGBA(166, 166, 166, 1)
+                    DisabledFill: =RGBA(244, 244, 244, 1)
+                    DisplayFields: =["zx_firstname","cra62_designation"]
+                    FontWeight: =FontWeight.Semibold
+                    Height: =50
+                    HoverColor: =RGBA(0, 0, 0, 1)
+                    HoverFill: =RGBA(186, 202, 226, 1)
+                    Items: |-
+                        =Filter(
+                            'Contacts.S',
+                            Party.'Customer Code' = partyCmb.Selected.'Customer Code'
+                        )
+                    PaddingLeft: =10
+                    PressedColor: =RGBA(255, 255, 255, 1)
+                    PressedFill: =RGBA(0, 18, 107, 1)
+                    SearchFields: =["zx_firstname"]
+                    SearchItems: |-
+                        =Search(Filter(
+                            'Contacts.S',
+                            Party.'Customer Code' = partyCmb.Selected.'Customer Code'
+                        ),ComboBox7_9.SearchText,"zx_firstname")
+                    SelectionFill: =RGBA(56, 96, 178, 1)
+                    SelectionTagFill: =
+                    SelectMultiple: =false
+                    Size: =16
+                    Template: =ListItemTemplate.Double
+                    Width: =514
+                    X: =32
+                    Y: =50
+                    ZIndex: =2
+
+            Container9_3 As groupContainer.manualLayoutContainer:
+                Height: =115
+                Width: =590
+                Y: =225
+                ZIndex: =3
+
+                emaiCmb As label:
+                    BorderColor: =RGBA(0, 18, 107, 1)
+                    Color: =RGBA(0, 0, 0, 1)
+                    DisabledColor: =RGBA(166, 166, 166, 1)
+                    FontWeight: =FontWeight.Semibold
+                    Height: =50
+                    PaddingLeft: =30
+                    Size: =16
+                    Text: ="Email "
+                    Width: =590
+                    ZIndex: =1
+
+                TextInput6 As text:
+                    AccessibleLabel: ="Text Input"
+                    BorderColor: =RGBA(149, 149, 149, 1)
+                    Color: =RGBA(0, 0, 0, 1)
+                    Default: =""
+                    DisabledBorderColor: =RGBA(166, 166, 166, 1)
+                    DisabledColor: =RGBA(166, 166, 166, 1)
+                    DisabledFill: =RGBA(244, 244, 244, 1)
+                    FocusedBorderThickness: =01
+                    FontWeight: =FontWeight.Semibold
+                    Height: =50
+                    HintText: ="Enter here"
+                    HoverBorderColor: =RGBA(0, 18, 107, 1)
+                    HoverColor: =RGBA(0, 0, 0, 1)
+                    HoverFill: =RGBA(186, 202, 226, 1)
+                    PressedBorderColor: =
+                    RadiusBottomLeft: =0
+                    RadiusBottomRight: =0
+                    RadiusTopLeft: =0
+                    RadiusTopRight: =0
+                    Size: =16
+                    Width: =514
+                    X: =32
+                    Y: =50
+                    ZIndex: =2
+
+            Container9_4 As groupContainer.manualLayoutContainer:
+                Height: =115
+                Width: =590
+                Y: =340
+                ZIndex: =4
+
+                mobileCmb As label:
+                    BorderColor: =RGBA(0, 18, 107, 1)
+                    Color: =RGBA(0, 0, 0, 1)
+                    DisabledColor: =RGBA(166, 166, 166, 1)
+                    FontWeight: =FontWeight.Semibold
+                    Height: =50
+                    PaddingLeft: =30
+                    Size: =16
+                    Text: ="Mobile No. "
+                    Width: =590
+                    ZIndex: =1
+
+                TextInput6_1 As text:
+                    AccessibleLabel: ="Text Input"
+                    BorderColor: =RGBA(149, 149, 149, 1)
+                    Color: =RGBA(0, 0, 0, 1)
+                    Default: |+
+                        =""
+                        
+                        
+                        
+                    DisabledBorderColor: =RGBA(166, 166, 166, 1)
+                    DisabledColor: =RGBA(166, 166, 166, 1)
+                    DisabledFill: =RGBA(244, 244, 244, 1)
+                    FocusedBorderThickness: =01
+                    FontWeight: =FontWeight.Semibold
+                    Format: =TextFormat.Number
+                    Height: =50
+                    HintText: ="Enter here"
+                    HoverBorderColor: =RGBA(0, 18, 107, 1)
+                    HoverColor: =RGBA(0, 0, 0, 1)
+                    HoverFill: =RGBA(186, 202, 226, 1)
+                    MaxLength: =10
+                    OnChange: |-
+                        =If(
+                            Len(Self.Text) < 10,
+                            Notify("Please enter 10 digit number");
+                            Reset(TextInput6_1)
+                        )
+                    PressedBorderColor: =
+                    RadiusBottomLeft: =0
+                    RadiusBottomRight: =0
+                    RadiusTopLeft: =0
+                    RadiusTopRight: =0
+                    Size: =16
+                    Width: =514
+                    X: =32
+                    Y: =50
+                    ZIndex: =2
+
+            Container9_5 As groupContainer.manualLayoutContainer:
+                Height: =115
+                Width: =590
+                Y: =455
+                ZIndex: =5
+
+                Label15_22 As label:
+                    BorderColor: =RGBA(0, 18, 107, 1)
+                    Color: =RGBA(0, 0, 0, 1)
+                    DisabledColor: =RGBA(166, 166, 166, 1)
+                    FontWeight: =FontWeight.Semibold
+                    Height: =50
+                    PaddingLeft: =30
+                    Size: =16
+                    Text: ="Area "
+                    Width: =590
+                    ZIndex: =1
+
+                areaCmbbx As combobox:
+                    AccessibleLabel: ="Area ComboBox"
+                    BorderColor: =RGBA(149, 149, 149, 1)
+                    BorderThickness: =1
+                    ChevronBackground: =RGBA(255, 255, 255, 1)
+                    ChevronDisabledBackground: =RGBA(166, 166, 166, 1)
+                    ChevronDisabledFill: =RGBA(244, 244, 244, 1)
+                    ChevronFill: =RGBA(26, 26, 26, 1)
+                    ChevronHoverBackground: =ColorFade(RGBA(56, 96, 178, 1), -20%)
+                    ChevronHoverFill: =RGBA(255, 255, 255, 1)
+                    DefaultSelectedItems: |-
+                        =AddColumns(
+                            Filter(
+                                'User-Area Mapping.S',
+                                User.'Primary Email' = User().Email && Area.Area = partyCmb.Selected.Area.Area
+                            ),
+                            "areaName",
+                            Area.'Area Name'
+                        )
+                    DisabledBorderColor: =RGBA(166, 166, 166, 1)
+                    DisabledColor: =RGBA(166, 166, 166, 1)
+                    DisabledFill: =RGBA(244, 244, 244, 1)
+                    DisplayFields: =["areaName"]
+                    FontWeight: =FontWeight.Semibold
+                    Height: =50
+                    HoverColor: =RGBA(0, 0, 0, 1)
+                    HoverFill: =RGBA(186, 202, 226, 1)
+                    IsSearchable: =false
+                    Items: =AddColumns(Filter('User-Area Mapping.S', User.'Primary Email' = User().Email), "areaName", Area.'Area Name')
+                    PaddingLeft: =10
+                    PressedColor: =RGBA(255, 255, 255, 1)
+                    PressedFill: =RGBA(0, 18, 107, 1)
+                    SearchFields: =["areaName"]
+                    SearchItems: =[]
+                    SelectionFill: =RGBA(56, 96, 178, 1)
+                    SelectionTagFill: =
+                    SelectMultiple: =false
+                    Size: =16
+                    Width: =514
+                    X: =32
+                    Y: =50
+                    ZIndex: =2
+
+            Container9_6 As groupContainer.manualLayoutContainer:
+                Height: =187
+                Width: =590
+                Y: =570
+                ZIndex: =6
+
+                Label15_23 As label:
+                    BorderColor: =RGBA(0, 18, 107, 1)
+                    Color: =RGBA(0, 0, 0, 1)
+                    DisabledColor: =RGBA(166, 166, 166, 1)
+                    FontWeight: =FontWeight.Semibold
+                    Height: =50
+                    PaddingLeft: =30
+                    Size: =16
+                    Text: ="Address"
+                    Width: =590
+                    ZIndex: =1
+
+                addressCmb As text:
+                    AccessibleLabel: ="Address"
+                    BorderColor: =RGBA(149, 149, 149, 1)
+                    Color: =RGBA(0, 0, 0, 1)
+                    Default: =""
+                    DisabledBorderColor: =RGBA(166, 166, 166, 1)
+                    DisabledColor: =RGBA(166, 166, 166, 1)
+                    DisabledFill: =RGBA(244, 244, 244, 1)
+                    FocusedBorderThickness: =01
+                    FontWeight: =FontWeight.Semibold
+                    Height: =137
+                    HintText: ="Enter here"
+                    HoverBorderColor: =RGBA(0, 18, 107, 1)
+                    HoverColor: =RGBA(0, 0, 0, 1)
+                    HoverFill: =RGBA(186, 202, 226, 1)
+                    PressedBorderColor: =
+                    RadiusBottomLeft: =0
+                    RadiusBottomRight: =0
+                    RadiusTopLeft: =0
+                    RadiusTopRight: =0
+                    Size: =16
+                    Width: =514
+                    X: =32
+                    Y: =50
+                    ZIndex: =2
+
+            Container9_7 As groupContainer.manualLayoutContainer:
+                Height: =115
+                Width: =590
+                Y: =778
+                ZIndex: =7
+
+                Label15_24 As label:
+                    BorderColor: =RGBA(0, 18, 107, 1)
+                    Color: =RGBA(0, 0, 0, 1)
+                    DisabledColor: =RGBA(166, 166, 166, 1)
+                    FontWeight: =FontWeight.Semibold
+                    Height: =50
+                    PaddingLeft: =30
+                    Size: =16
+                    Text: ="Product SKU"
+                    Width: =590
+                    Y: =15
+                    ZIndex: =1
+
+                skuCmb As combobox:
+                    AccessibleLabel: ="SKU ComboBox"
+                    BorderColor: =RGBA(149, 149, 149, 1)
+                    BorderThickness: =1
+                    ChevronBackground: =RGBA(255, 255, 255, 1)
+                    ChevronDisabledBackground: =RGBA(166, 166, 166, 1)
+                    ChevronDisabledFill: =RGBA(244, 244, 244, 1)
+                    ChevronFill: =RGBA(26, 26, 26, 1)
+                    ChevronHoverBackground: =ColorFade(RGBA(56, 96, 178, 1), -20%)
+                    ChevronHoverFill: =RGBA(255, 255, 255, 1)
+                    DisabledBorderColor: =RGBA(166, 166, 166, 1)
+                    DisabledColor: =RGBA(166, 166, 166, 1)
+                    DisabledFill: =RGBA(244, 244, 244, 1)
+                    DisplayFields: =["DisplayName"]
+                    FontWeight: =FontWeight.Semibold
+                    Height: =50
+                    HoverColor: =RGBA(0, 0, 0, 1)
+                    HoverFill: =RGBA(186, 202, 226, 1)
+                    IsSearchable: =false
+                    Items: |-
+                        =AddColumns(
+                            OfflineProductSKUCollection,
+                            "DisplayName",
+                            Product.'Product Name' & " (" & LookUp(
+                                OfflineVariantCollection,
+                                Variants = LookUp(
+                                    OfflineProductVariantCollection,
+                                    'Product Variants' = 'Product Variant'.'Product Variants'
+                                ).Variant.Variants
+                            ).'Variant Name' & ")",
+                            "searchCategory",
+                            'Product Category'.'Category Name',
+                            "searchGroup",
+                            'Product Group'.'Group Name',
+                            "searchVariant",
+                            'Product Variants.S'.Variant,
+                            "searchSubcategory",
+                            'Product Sub-Category.S'.'Sub-Category Name'
+                        )
+                    PaddingLeft: =10
+                    PressedColor: =RGBA(255, 255, 255, 1)
+                    PressedFill: =RGBA(0, 18, 107, 1)
+                    SearchFields: |-
+                        =[
+                            "DisplayName",
+                            "searchCategory",
+                            "searchGroup",
+                            "searchVariant",
+                            "searchSubcategory"
+                        ]
+                    SearchItems: =[]
+                    SelectionFill: =RGBA(56, 96, 178, 1)
+                    SelectionTagFill: =
+                    SelectMultiple: =false
+                    Size: =16
+                    Width: =514
+                    X: =32
+                    Y: =65
+                    ZIndex: =2
+
+            Container9_9 As groupContainer.manualLayoutContainer:
+                Height: =115
+                Width: =590
+                Y: =915
+                ZIndex: =9
+
+                Label15_26 As label:
+                    BorderColor: =RGBA(0, 18, 107, 1)
+                    Color: =RGBA(0, 0, 0, 1)
+                    DisabledColor: =RGBA(166, 166, 166, 1)
+                    FontWeight: =FontWeight.Semibold
+                    Height: =50
+                    PaddingLeft: =30
+                    Size: =16
+                    Text: ="Expected Closure Date"
+                    Width: =290
+                    ZIndex: =1
+
+                closureCmb As datepicker:
+                    AccessibleLabel: ="Closure"
+                    BorderColor: =RGBA(149, 149, 149, 1)
+                    BorderThickness: =1
+                    CalendarHeaderFill: =RGBA(56, 96, 178, 1)
+                    Color: =RGBA(0, 0, 0, 1)
+                    DefaultDate: =Today() + 1
+                    DisabledBorderColor: =RGBA(166, 166, 166, 1)
+                    DisabledColor: =RGBA(166, 166, 166, 1)
+                    DisabledFill: =RGBA(244, 244, 244, 1)
+                    FontWeight: =FontWeight.Semibold
+                    Height: =50
+                    HoverDateFill: =RGBA(186, 202, 226, 1)
+                    IconBackground: =RGBA(255, 255, 255, 1)
+                    IconFill: =
+                    SelectedDateFill: =RGBA(56, 96, 178, 1)
+                    Size: =16
+                    Width: =227
+                    X: =32
+                    Y: =50
+                    ZIndex: =2
+
+                expectedValueCmb As text:
+                    AccessibleLabel: ="Expected Value"
+                    BorderColor: =RGBA(149, 149, 149, 1)
+                    Color: =RGBA(0, 0, 0, 1)
+                    Default: =""
+                    DisabledBorderColor: =RGBA(166, 166, 166, 1)
+                    DisabledColor: =RGBA(166, 166, 166, 1)
+                    DisabledFill: =RGBA(244, 244, 244, 1)
+                    FocusedBorderThickness: =01
+                    FontWeight: =FontWeight.Semibold
+                    Format: =TextFormat.Number
+                    Height: =50
+                    HintText: ="Enter here"
+                    HoverBorderColor: =RGBA(0, 18, 107, 1)
+                    HoverColor: =RGBA(0, 0, 0, 1)
+                    HoverFill: =RGBA(186, 202, 226, 1)
+                    PressedBorderColor: =
+                    RadiusBottomLeft: =0
+                    RadiusBottomRight: =0
+                    RadiusTopLeft: =0
+                    RadiusTopRight: =0
+                    Size: =16
+                    Width: =234
+                    X: =311
+                    Y: =50
+                    ZIndex: =3
+
+                Label15_27 As label:
+                    BorderColor: =RGBA(0, 18, 107, 1)
+                    Color: =RGBA(0, 0, 0, 1)
+                    DisabledColor: =RGBA(166, 166, 166, 1)
+                    FontWeight: =FontWeight.Semibold
+                    Height: =50
+                    PaddingLeft: =30
+                    Size: =16
+                    Text: ="Expected Value"
+                    Width: =290
+                    X: =280
+                    ZIndex: =4
+
+            Container9_10 As groupContainer.manualLayoutContainer:
+                Height: =115
+                Width: =590
+                Y: =1030
+                ZIndex: =10
+
+                Label15_28 As label:
+                    BorderColor: =RGBA(0, 18, 107, 1)
+                    Color: =RGBA(0, 0, 0, 1)
+                    DisabledColor: =RGBA(166, 166, 166, 1)
+                    FontWeight: =FontWeight.Semibold
+                    Height: =50
+                    PaddingLeft: =30
+                    Size: =16
+                    Text: ="Next Action Date"
+                    Width: =290
+                    ZIndex: =1
+
+                nextActionCmb As datepicker:
+                    AccessibleLabel: ="Next Action"
+                    BorderColor: =RGBA(149, 149, 149, 1)
+                    BorderThickness: =1
+                    CalendarHeaderFill: =RGBA(56, 96, 178, 1)
+                    Color: =RGBA(0, 0, 0, 1)
+                    DefaultDate: =Today() + 1
+                    DisabledBorderColor: =RGBA(166, 166, 166, 1)
+                    DisabledColor: =RGBA(166, 166, 166, 1)
+                    DisabledFill: =RGBA(244, 244, 244, 1)
+                    FontWeight: =FontWeight.Semibold
+                    Height: =50
+                    HoverDateFill: =RGBA(186, 202, 226, 1)
+                    IconBackground: =RGBA(255, 255, 255, 1)
+                    IconFill: =
+                    SelectedDateFill: =RGBA(56, 96, 178, 1)
+                    Size: =16
+                    Width: =227
+                    X: =32
+                    Y: =50
+                    ZIndex: =2
+
+                Label15_29 As label:
+                    BorderColor: =RGBA(0, 18, 107, 1)
+                    Color: =RGBA(0, 0, 0, 1)
+                    DisabledColor: =RGBA(166, 166, 166, 1)
+                    FontWeight: =FontWeight.Semibold
+                    Height: =50
+                    PaddingLeft: =30
+                    Size: =16
+                    Text: ="Next Action"
+                    Width: =290
+                    X: =280
+                    ZIndex: =4
+
+                nextActionCmbBx As combobox:
+                    AccessibleLabel: ="Next Action"
+                    BorderColor: =RGBA(149, 149, 149, 1)
+                    BorderThickness: =1
+                    ChevronBackground: =RGBA(255, 255, 255, 1)
+                    ChevronDisabledBackground: =RGBA(166, 166, 166, 1)
+                    ChevronDisabledFill: =RGBA(244, 244, 244, 1)
+                    ChevronFill: =RGBA(26, 26, 26, 1)
+                    ChevronHoverBackground: =ColorFade(RGBA(56, 96, 178, 1), -20%)
+                    ChevronHoverFill: =RGBA(255, 255, 255, 1)
+                    DisabledBorderColor: =RGBA(166, 166, 166, 1)
+                    DisabledColor: =RGBA(166, 166, 166, 1)
+                    DisabledFill: =RGBA(244, 244, 244, 1)
+                    DisplayFields: =["Value"]
+                    FontWeight: =FontWeight.Semibold
+                    Height: =50
+                    HoverColor: =RGBA(0, 0, 0, 1)
+                    HoverFill: =RGBA(186, 202, 226, 1)
+                    IsSearchable: =false
+                    Items: =["Call", "Visit"]
+                    PaddingLeft: =10
+                    PressedColor: =RGBA(255, 255, 255, 1)
+                    PressedFill: =RGBA(0, 18, 107, 1)
+                    SearchFields: =["Value"]
+                    SearchItems: =[]
+                    SelectionFill: =RGBA(56, 96, 178, 1)
+                    SelectionTagFill: =
+                    SelectMultiple: =false
+                    Size: =16
+                    Width: =234
+                    X: =311
+                    Y: =50
+                    ZIndex: =5
+
+            Container9_11 As groupContainer.manualLayoutContainer:
+                Height: =115
+                Width: =590
+                Y: =1145
+                ZIndex: =11
+
+                Button27 As button:
+                    DisabledBorderColor: =RGBA(166, 166, 166, 1)
+                    DisabledColor: =RGBA(166, 166, 166, 1)
+                    DisabledFill: =RGBA(244, 244, 244, 1)
+                    Fill: =RGBA(255, 255, 255, 1)
+                    FontWeight: =FontWeight.Semibold
+                    Height: =50
+                    HoverColor: =RGBA(255, 255, 255, 1)
+                    HoverFill: =ColorFade(RGBA(56, 96, 178, 1), -20%)
+                    Size: =24
+                    Text: =""
+                    Width: =234
+                    X: =305
+                    Y: =50
+                    ZIndex: =1
+
+                Label15_30 As label:
+                    BorderColor: =RGBA(0, 18, 107, 1)
+                    Color: =RGBA(0, 0, 0, 1)
+                    DisabledColor: =RGBA(166, 166, 166, 1)
+                    FontWeight: =FontWeight.Semibold
+                    Height: =50
+                    PaddingLeft: =30
+                    Size: =16
+                    Text: ="Probability"
+                    Width: =290
+                    ZIndex: =2
+
+                Label15_31 As label:
+                    BorderColor: =RGBA(0, 18, 107, 1)
+                    Color: =RGBA(0, 0, 0, 1)
+                    DisabledColor: =RGBA(166, 166, 166, 1)
+                    FontWeight: =FontWeight.Semibold
+                    Height: =50
+                    PaddingLeft: =30
+                    Size: =16
+                    Text: ="Commited"
+                    Width: =290
+                    X: =280
+                    ZIndex: =4
+
+                commitedRadioC As radio:
+                    AccessibleLabel: ="Committed"
+                    BorderColor: =RGBA(0, 18, 107, 1)
+                    Color: =RGBA(0, 0, 0, 1)
+                    FontWeight: =FontWeight.Semibold
+                    Height: =50
+                    HoverColor: =RGBA(0, 18, 107, 1)
+                    Items: =Choices('Commited (Leads.S)')
+                    Layout: =Layout.Horizontal
+                    OnChange: =
+                    PaddingBottom: =0
+                    PaddingTop: =3
+                    RadioBorderColor: =RGBA(26, 26, 26, 1)
+                    RadioSize: =40
+                    Size: =16
+                    Width: =234
+                    X: =306
+                    Y: =50
+                    ZIndex: =5
+
+                probabilityCmb As combobox:
+                    AccessibleLabel: ="Probability"
+                    BorderColor: =RGBA(0, 18, 107, 1)
+                    ChevronBackground: =RGBA(0, 0, 0, 0)
+                    ChevronDisabledBackground: =RGBA(166, 166, 166, 1)
+                    ChevronDisabledFill: =RGBA(244, 244, 244, 1)
+                    ChevronFill: =//RGBA(255, 255, 255, 1)
+                    ChevronHoverBackground: =ColorFade(RGBA(56, 96, 178, 1), -20%)
+                    ChevronHoverFill: =RGBA(255, 255, 255, 1)
+                    DefaultSelectedItems: |-
+                        =If( 
+                            commitedRadioC.Selected.Value = 'Commited (Leads.S)'.Yes, 
+                            ["80-100"]
+                        )
+                    DisabledBorderColor: =RGBA(166, 166, 166, 1)
+                    DisabledColor: =RGBA(166, 166, 166, 1)
+                    DisabledFill: =RGBA(244, 244, 244, 1)
+                    DisplayFields: =["Value"]
+                    DisplayMode: |-
+                        =If(
+                            commitedRadioC.Selected.Value ='Commited (Leads.S)'.Yes,
+                            DisplayMode.Disabled,
+                            DisplayMode.Edit
+                        )
+                    Height: =50
+                    HoverColor: =RGBA(0, 0, 0, 1)
+                    HoverFill: =RGBA(186, 202, 226, 1)
+                    InputTextPlaceholder: =
+                    Items: =[ "0-20", "20-40", "40-60", "60-80", "80-100" ]
+                    OnChange: |-
+                        =If(
+                            commitedRadioC.Selected.Value = 'Commited (Leads.S)'.Yes && Self.Selected.Value = "80-100",
+                            Notify(
+                                "Probability should be 80-100 if the lead is committed",
+                                NotificationType.Success,
+                                2000
+                            ),
+                            commitedRadioC.Selected.Value = 'Commited (Leads.S)'.No && Self.Selected.Value = "80-100",
+                            Notify(
+                                "Probability cannot be 80-100 if the lead is not committed",
+                                NotificationType.Success,
+                                2000
+                            )
+                        )
+                    PaddingBottom: =0
+                    PaddingLeft: =0
+                    PaddingRight: =0
+                    PaddingTop: =3
+                    PressedColor: =RGBA(255, 255, 255, 1)
+                    PressedFill: =RGBA(0, 18, 107, 1)
+                    SearchFields: =["Value"]
+                    SearchItems: =Search([ "0-20", "20-40", "40-60", "60-80", "80-100" ],probabilityCmb.SearchText,"Value")
+                    SelectionFill: =RGBA(56, 96, 178, 1)
+                    SelectMultiple: =false
+                    Size: =21
+                    Width: =234
+                    X: =15
+                    Y: =50
+                    ZIndex: =6
+
+            Button9_20 As button:
+                DisabledBorderColor: =RGBA(166, 166, 166, 1)
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                DisabledFill: =RGBA(244, 244, 244, 1)
+                Fill: =_VarGblAppColors.PrimaryRed
+                FontWeight: =FontWeight.Bold
+                Height: =63
+                HoverColor: =RGBA(255, 255, 255, 1)
+                HoverFill: =ColorFade(Self.Fill, -20%)
+                OnSelect: |-
+                    =If(
+                        commitedRadioC.Selected.Value = 'Commited (Leads.S)'.Yes && Not(probabilityCmb.Selected.Value = "80-100"),
+                        Notify(
+                            "Probability should be 80-100 if the lead is committed",
+                            NotificationType.Success,
+                            2000
+                        ),
+                        Patch(
+                            'Leads.S',
+                            Defaults('Leads.S'),
+                            {
+                                Party: LookUp(
+                                    OfflinePartiesCollection,
+                                    Parties = partyCmb.Selected.Parties
+                                ),
+                                Contact: LookUp(
+                                    'Contacts.S',
+                                    'Contact Id' = ComboBox7_9.Selected.'Contact Id'
+                                ),
+                               // Email: TextInput6.Text,
+                                'Mobile No.': TextInput6_1.Text,
+                                Area: LookUp(
+                                    'Area.S',
+                                    Area = areaCmbbx.Selected.Area.Area
+                                ),
+                                Address: addressCmb.Text,
+                                'Product SKU': LookUp(
+                                    OfflineProductSKUCollection,
+                                    'Product SKU' = skuCmb.Selected.'Product SKU'
+                                ),
+                                
+                                'Expected Closure Date': closureCmb.SelectedDate,
+                                'Lead Value': Value(expectedValueCmb.Text),
+                                'Next Action Date': nextActionCmb.SelectedDate,
+                              //  Probability: Value(probabilityCmb.Selected.Value),
+                                Commited: commitedRadioC.Selected.Value
+                            }
+                        );
+                        Reset(partyCmb);
+                        Reset(ComboBox7_9);
+                        Reset(TextInput6);
+                        Reset(TextInput6_1);
+                        Reset(areaCmbbx);
+                        Reset(addressCmb);
+                        Reset(skuCmb);
+                       // Reset(leadAreaCmb);
+                        Reset(closureCmb);
+                        Reset(expectedValueCmb);
+                        Reset(nextActionCmb);
+                        Reset(nextActionCmbBx);
+                        Reset(probabilityCmb);
+                        Clear(patchedParty);
+                        Clear(patchedContact);
+                        Notify(
+                            "New lead has been created",
+                            NotificationType.Success,
+                            2000
+                        );
+                        ClearCollect(
+                            offlineLeadCollection,
+                            'Leads.S'
+                        );
+                        Set(
+                            varNewLeadForm,
+                            false
+                        );
+                        Notify(
+                            "Mandatory fields missing",
+                            NotificationType.Error,
+                            1500
+                        );
+                        
+                    )
+                Size: =20
+                Text: ="SUBMIT"
+                Visible: =varNewLeadForm
+                Width: =354
+                X: =118
+                Y: =1304
+                ZIndex: =12
+
+            Button9_24 As button:
+                DisabledBorderColor: =RGBA(166, 166, 166, 1)
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                DisabledFill: =RGBA(244, 244, 244, 1)
+                Fill: =_VarGblAppColors.PrimaryRed
+                FontWeight: =FontWeight.Semibold
+                Height: =35
+                HoverColor: =RGBA(255, 255, 255, 1)
+                HoverFill: =ColorFade(Self.Fill, -20%)
+                OnSelect: |-
+                    =Set(newCustomerModal, true);
+                    NewForm(Form2)
+                RadiusBottomLeft: =100
+                RadiusBottomRight: =100
+                RadiusTopLeft: |
+                    =0
+                RadiusTopRight: =100
+                Size: =30
+                Text: ="+"
+                Width: =35
+                X: =494
+                Y: =10
+                ZIndex: =15
+
+            Button9_25 As button:
+                DisabledBorderColor: =RGBA(166, 166, 166, 1)
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                DisabledFill: =RGBA(244, 244, 244, 1)
+                Fill: =_VarGblAppColors.PrimaryRed
+                FontWeight: =FontWeight.Semibold
+                Height: =35
+                HoverColor: =RGBA(255, 255, 255, 1)
+                HoverFill: =ColorFade(Self.Fill, -20%)
+                OnSelect: |-
+                    =Set(newContactModal, true);
+                    NewForm(Form2_1)
+                RadiusBottomLeft: =100
+                RadiusBottomRight: =100
+                RadiusTopLeft: |
+                    =0
+                RadiusTopRight: =100
+                Size: =30
+                Text: ="+"
+                Width: =35
+                X: =494
+                Y: =118
+                ZIndex: =16
+
+    Rectangle3_17 As rectangle:
+        AccessibleLabel: ="Rectangle3"
+        BorderColor: =RGBA(0, 18, 107, 1)
+        Fill: =RGBA(0, 0, 0, 0.41)
+        Height: =1136
+        OnSelect: =Set(varNewLeadForm, false)
+        TabIndex: =0
+        Visible: =newCustomerModal
+        Width: =640
+        ZIndex: =15
+
+    Rectangle4_11 As rectangle:
+        BorderColor: =RGBA(0, 18, 107, 1)
+        Fill: =RGBA(255, 255, 255, 1)
+        Height: =752
+        Visible: =newCustomerModal
+        Width: =App.Width - 50
+        X: =30
+        Y: =249
+        ZIndex: =16
+
+    Label11_13 As label:
+        Align: =Align.Center
+        BorderColor: =RGBA(0, 18, 107, 1)
+        Color: =_VarGblAppColors.PrimaryRed
+        DisabledColor: =RGBA(166, 166, 166, 1)
+        FontWeight: =FontWeight.Bold
+        Height: =70
+        Size: =21
+        Text: ="New Party"
+        Visible: =newCustomerModal
+        Width: =590
+        X: =30
+        Y: =249
+        ZIndex: =17
+
+    CancelIcon_14 As icon.Cancel:
+        AccessibleLabel: ="Cancel Icon"
+        BorderColor: =RGBA(0, 18, 107, 1)
+        Color: =_VarGblAppColors.HeaderBg
+        DisabledBorderColor: =RGBA(166, 166, 166, 1)
+        DisabledColor: =RGBA(244, 244, 244, 1)
+        Height: =42
+        Icon: =Icon.Cancel
+        OnSelect: =Set(newCustomerModal, false)
+        TabIndex: =0
+        Visible: =newCustomerModal
+        Width: =41
+        X: =568
+        Y: =263
+        ZIndex: =18
+
+    Form2 As form:
+        AcceptsFocus: =false
+        BorderColor: =RGBA(0, 18, 107, 1)
+        DataSource: ='Parties.S'
+        Height: =521
+        NumberOfColumns: =1
+        Visible: =newCustomerModal
+        Width: =590
+        X: =30
+        Y: =319
+        ZIndex: =19
+
+        "'Customer Name_DataCard1' As typedDataCard.textualEditCard":
+            BorderColor: =RGBA(166, 166, 166, 1)
+            BorderStyle: =BorderStyle.Solid
+            DataField: ="zx_name"
+            Default: =ThisItem.'Customer Name'
+            DisplayMode: =Parent.DisplayMode
+            DisplayName: =DataSourceInfo([@'Parties.S'],DataSourceInfo.DisplayName,"zx_name")
+            Fill: =RGBA(0, 0, 0, 0)
+            Height: =50
+            MaxLength: =DataSourceInfo([@'Parties.S'], DataSourceInfo.MaxLength, "zx_name")
+            Required: =true
+            Update: =DataCardValue1.Text
+            Width: =590
+            X: =0
+            Y: =0
+            ZIndex: =20
+
+            DataCardKey1 As label:
+                AutoHeight: =true
+                BorderColor: =RGBA(0, 0, 0, 0)
+                BorderStyle: =BorderStyle.None
+                BorderThickness: =2
+                Color: =RGBA(51, 51, 51, 1)
+                DisabledBorderColor: =RGBA(0, 0, 0, 0)
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                FocusedBorderThickness: =4
+                Font: =Font.'Segoe UI'
+                FontWeight: =FontWeight.Semibold
+                Height: =48
+                PaddingLeft: =0
+                Size: =21
+                Text: =Parent.DisplayName
+                Width: =Parent.Width - 60
+                Wrap: =false
+                X: =30
+                Y: =10
+                ZIndex: =1
+
+            DataCardValue1 As text:
+                BorderColor: =If(IsBlank(Parent.Error), Parent.BorderColor, Color.Red)
+                BorderThickness: =2
+                Color: =RGBA(51, 51, 51, 1)
+                Default: =Parent.Default
+                DelayOutput: =true
+                DisabledBorderColor: =RGBA(0, 0, 0, 0)
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                DisabledFill: =RGBA(244, 244, 244, 1)
+                DisplayMode: =Parent.DisplayMode
+                FocusedBorderThickness: =4
+                Font: =Font.'Segoe UI'
+                Height: =70
+                HoverBorderColor: =ColorFade(RGBA(0, 120, 212, 1), -30%)
+                HoverColor: =RGBA(51, 51, 51, 1)
+                HoverFill: =RGBA(255, 255, 255, 1)
+                MaxLength: =Parent.MaxLength
+                PaddingLeft: =5
+                PressedBorderColor: =RGBA(0, 120, 212, 1)
+                PressedColor: =RGBA(51, 51, 51, 1)
+                PressedFill: =RGBA(255, 255, 255, 1)
+                RadiusBottomLeft: =0
+                RadiusBottomRight: =0
+                RadiusTopLeft: =0
+                RadiusTopRight: =0
+                Size: =21
+                Tooltip: =Parent.DisplayName
+                Width: =Parent.Width - 60
+                X: =30
+                Y: =DataCardKey1.Y + DataCardKey1.Height + 5
+                ZIndex: =2
+
+            ErrorMessage1 As label:
+                AutoHeight: =true
+                BorderColor: =RGBA(0, 0, 0, 0)
+                BorderStyle: =BorderStyle.None
+                BorderThickness: =2
+                Color: =RGBA(168, 0, 0, 1)
+                DisabledBorderColor: =RGBA(0, 0, 0, 0)
+                DisabledColor: =RGBA(168, 0, 0, 1)
+                FocusedBorderThickness: =4
+                Font: =Font.'Segoe UI'
+                FontWeight: =FontWeight.Semibold
+                Height: =10
+                Live: =Live.Assertive
+                PaddingBottom: =0
+                PaddingLeft: =0
+                PaddingRight: =0
+                PaddingTop: =0
+                Size: =21
+                Text: =Parent.Error
+                Visible: =Parent.DisplayMode=DisplayMode.Edit
+                Width: =Parent.Width - 60
+                X: =30
+                Y: =DataCardValue1.Y + DataCardValue1.Height
+                ZIndex: =3
+
+            StarVisible1 As label:
+                Align: =Align.Center
+                BorderColor: =RGBA(0, 0, 0, 0)
+                BorderStyle: =BorderStyle.None
+                BorderThickness: =2
+                Color: =RGBA(51, 51, 51, 1)
+                DisabledBorderColor: =RGBA(0, 0, 0, 0)
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                FocusedBorderThickness: =4
+                Font: =Font.'Segoe UI'
+                FontWeight: =FontWeight.Semibold
+                Height: =DataCardKey1.Height
+                PaddingLeft: =0
+                Size: =21
+                Text: ="*"
+                Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
+                Width: =30
+                Wrap: =false
+                Y: =DataCardKey1.Y
+                ZIndex: =4
+
+        "'Created On_DataCard1' As typedDataCard.textualViewCard":
+            BorderColor: =RGBA(166, 166, 166, 1)
+            BorderStyle: =BorderStyle.Solid
+            DataField: ="createdon"
+            Default: =ThisItem.'Created On'
+            DisplayMode: =DisplayMode.View
+            DisplayName: =DataSourceInfo([@'Parties.S'],DataSourceInfo.DisplayName,"createdon")
+            Fill: =RGBA(0, 0, 0, 0)
+            Height: =40
+            Required: =false
+            Width: =590
+            X: =0
+            Y: =1
+            ZIndex: =20
+
+            DataCardKey2 As label:
+                AutoHeight: =true
+                BorderColor: =RGBA(0, 0, 0, 0)
+                BorderStyle: =BorderStyle.None
+                BorderThickness: =2
+                Color: =RGBA(51, 51, 51, 1)
+                DisabledBorderColor: =RGBA(0, 0, 0, 0)
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                FocusedBorderThickness: =4
+                Font: =Font.'Segoe UI'
+                FontWeight: =FontWeight.Semibold
+                Height: =48
+                PaddingLeft: =0
+                Size: =21
+                Text: =Parent.DisplayName
+                Width: =Parent.Width - 60
+                Wrap: =false
+                X: =30
+                Y: =10
+                ZIndex: =1
+
+            DataCardValue2 As label:
+                AutoHeight: =true
+                BorderColor: =RGBA(0, 0, 0, 0)
+                BorderStyle: =BorderStyle.None
+                BorderThickness: =2
+                Color: =RGBA(51, 51, 51, 1)
+                DisabledBorderColor: =RGBA(0, 0, 0, 0)
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                DisplayMode: =Parent.DisplayMode
+                FocusedBorderThickness: =4
+                Font: =Font.'Segoe UI'
+                PaddingLeft: =0
+                PaddingRight: =0
+                PaddingTop: =0
+                Size: =21
+                Text: =Parent.Default
+                Width: =Parent.Width - 60
+                X: =30
+                Y: =DataCardKey2.Y + DataCardKey2.Height + 5
+                ZIndex: =2
+
+    Button9_22 As button:
+        DisabledBorderColor: =RGBA(166, 166, 166, 1)
+        DisabledColor: =RGBA(166, 166, 166, 1)
+        DisabledFill: =RGBA(244, 244, 244, 1)
+        Fill: =_VarGblAppColors.PrimaryRed
+        FontWeight: =FontWeight.Bold
+        Height: =56
+        HoverColor: =RGBA(255, 255, 255, 1)
+        HoverFill: =ColorFade(Self.Fill, -20%)
+        OnSelect: |-
+            =ClearCollect(
+                patchedParty,
+                Patch(
+                    'Parties.S',
+                    Defaults('Parties.S'),
+                    {'Customer Status': 'Customer status'.Customer},
+                    Form2.Updates
+                )
+            );
+            Notify(
+                "New Party has been created",
+                NotificationType.Success,
+                2000
+            );
+            ClearCollect(
+                OfflinePartiesCollection,
+                Filter(
+                    'Parties.S',
+                    (Area.Area in AddColumns(
+                        UserAssignedAreas,
+                        "AreaId",
+                        Area.Area
+                    ).AreaId) && 'Customer Status' = 'Customer status'.Customer
+                )
+            );
+            ResetForm(Form2);
+            Set(
+                newCustomerModal,
+                false
+            )
+        Size: =20
+        Text: ="CREATE"
+        Visible: =newCustomerModal
+        Width: =289
+        X: =215
+        Y: =868
+        ZIndex: =20
+
+    Rectangle3_18 As rectangle:
+        AccessibleLabel: ="Rectangle3"
+        BorderColor: =RGBA(0, 18, 107, 1)
+        Fill: =RGBA(0, 0, 0, 0.41)
+        Height: =1136
+        OnSelect: =Set(varNewLeadForm, false)
+        TabIndex: =0
+        Visible: =newContactModal
+        Width: =640
+        ZIndex: =21
+
+    Rectangle4_30 As rectangle:
+        BorderColor: =RGBA(0, 18, 107, 1)
+        Fill: =RGBA(255, 255, 255, 1)
+        Height: =752
+        Visible: =newContactModal
+        Width: =App.Width - 50
+        X: =30
+        Y: =249
+        ZIndex: =22
+
+    Label11_14 As label:
+        Align: =Align.Center
+        BorderColor: =RGBA(0, 18, 107, 1)
+        Color: =_VarGblAppColors.PrimaryRed
+        DisabledColor: =RGBA(166, 166, 166, 1)
+        FontWeight: =FontWeight.Bold
+        Height: =70
+        Size: =21
+        Text: ="New Contact"
+        Visible: =newContactModal
+        Width: =590
+        X: =30
+        Y: =249
+        ZIndex: =23
+
+    CancelIcon_15 As icon.Cancel:
+        AccessibleLabel: ="Cancel Icon"
+        BorderColor: =RGBA(0, 18, 107, 1)
+        Color: =_VarGblAppColors.HeaderBg
+        DisabledBorderColor: =RGBA(166, 166, 166, 1)
+        DisabledColor: =RGBA(244, 244, 244, 1)
+        Height: =42
+        Icon: =Icon.Cancel
+        OnSelect: =Set(newContactModal, false)
+        TabIndex: =0
+        Visible: =newContactModal
+        Width: =41
+        X: =579
+        Y: =263
+        ZIndex: =24
+
+    Form2_1 As form:
+        AcceptsFocus: =false
+        BorderColor: =RGBA(0, 18, 107, 1)
+        DataSource: ='Contacts.S'
+        Height: =593
+        NumberOfColumns: =1
+        Visible: =newContactModal
+        Width: =590
+        X: =30
+        Y: =319
+        ZIndex: =25
+
+        "'First Name_DataCard3' As typedDataCard.textualEditCard":
+            BorderColor: =RGBA(0, 18, 107, 1)
+            BorderStyle: =BorderStyle.Solid
+            DataField: ="cra62_firstname"
+            Default: =ThisItem.'First Name'
+            DisplayMode: =Parent.DisplayMode
+            DisplayName: =DataSourceInfo([@'Contacts.S'],DataSourceInfo.DisplayName,"zx_firstname")
+            Fill: =RGBA(0, 0, 0, 0)
+            Height: =50
+            MaxLength: =DataSourceInfo([@'Contacts.S'], DataSourceInfo.MaxLength, "zx_firstname")
+            Required: =false
+            Update: =DataCardValue46.Text
+            Width: =590
+            X: =0
+            Y: =0
+            ZIndex: =1
+
+            DataCardKey51 As label:
+                AutoHeight: =true
+                Color: =RGBA(26, 26, 26, 1)
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                FontWeight: =FontWeight.Semibold
+                Height: =48
+                Size: =16
+                Text: =Parent.DisplayName
+                Width: =Parent.Width - 60
+                Wrap: =false
+                X: =30
+                Y: =10
+                ZIndex: =1
+
+            DataCardValue46 As text:
+                AccessibleLabel: ="First Name"
+                BorderColor: =RGBA(149, 149, 149, 1)
+                Color: =RGBA(0, 0, 0, 1)
+                Default: =Parent.Default
+                DelayOutput: =true
+                DisabledBorderColor: =RGBA(166, 166, 166, 1)
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                DisabledFill: =RGBA(244, 244, 244, 1)
+                DisplayMode: =Parent.DisplayMode
+                FocusedBorderThickness: =4
+                Height: =50
+                HoverBorderColor: =RGBA(0, 18, 107, 1)
+                HoverColor: =RGBA(0, 0, 0, 1)
+                HoverFill: =RGBA(186, 202, 226, 1)
+                MaxLength: =Parent.MaxLength
+                PaddingLeft: =5
+                RadiusBottomLeft: =0
+                RadiusBottomRight: =0
+                RadiusTopLeft: =0
+                RadiusTopRight: =0
+                Size: =16
+                Tooltip: =Parent.DisplayName
+                Width: =Parent.Width - 60
+                X: =30
+                Y: =DataCardKey51.Y + DataCardKey51.Height + 5
+                ZIndex: =2
+
+            ErrorMessage45 As label:
+                AutoHeight: =true
+                Color: =RGBA(168, 0, 0, 1)
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                FontWeight: =FontWeight.Semibold
+                Height: =10
+                Live: =Live.Assertive
+                PaddingBottom: =0
+                PaddingLeft: =0
+                PaddingRight: =0
+                PaddingTop: =0
+                Size: =24
+                Text: =Parent.Error
+                Visible: =Parent.DisplayMode=DisplayMode.Edit
+                Width: =Parent.Width - 60
+                X: =30
+                Y: =DataCardValue46.Y + DataCardValue46.Height
+                ZIndex: =3
+
+            StarVisible45 As label:
+                Align: =Align.Center
+                Color: =RGBA(0, 18, 107, 1)
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                Height: =DataCardKey51.Height
+                Size: =21
+                Text: ="*"
+                Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
+                Width: =30
+                Wrap: =false
+                Y: =DataCardKey51.Y
+                ZIndex: =4
+
+        "'Last Name_DataCard3' As typedDataCard.textualEditCard":
+            BorderColor: =RGBA(0, 18, 107, 1)
+            BorderStyle: =BorderStyle.Solid
+            DataField: ="cra62_lastname"
+            Default: =ThisItem.'Last Name'
+            DisplayMode: =Parent.DisplayMode
+            DisplayName: =DataSourceInfo([@'Contacts.S'],DataSourceInfo.DisplayName,"zx_lastname")
+            Fill: =RGBA(0, 0, 0, 0)
+            Height: =50
+            MaxLength: =DataSourceInfo([@'Contacts.S'], DataSourceInfo.MaxLength, "zx_lastname")
+            Required: =false
+            Update: =DataCardValue49.Text
+            Width: =590
+            X: =0
+            Y: =1
+            ZIndex: =1
+
+            DataCardKey54 As label:
+                AutoHeight: =true
+                Color: =RGBA(26, 26, 26, 1)
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                FontWeight: =FontWeight.Semibold
+                Height: =48
+                Size: =16
+                Text: =Parent.DisplayName
+                Width: =Parent.Width - 60
+                Wrap: =false
+                X: =30
+                Y: =10
+                ZIndex: =1
+
+            DataCardValue49 As text:
+                AccessibleLabel: ="Last Name"
+                BorderColor: =RGBA(149, 149, 149, 1)
+                Color: =RGBA(0, 0, 0, 1)
+                Default: =Parent.Default
+                DelayOutput: =true
+                DisabledBorderColor: =RGBA(166, 166, 166, 1)
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                DisabledFill: =RGBA(244, 244, 244, 1)
+                DisplayMode: =Parent.DisplayMode
+                FocusedBorderThickness: =4
+                Height: =50
+                HoverBorderColor: =RGBA(0, 18, 107, 1)
+                HoverColor: =RGBA(0, 0, 0, 1)
+                HoverFill: =RGBA(186, 202, 226, 1)
+                MaxLength: =Parent.MaxLength
+                PaddingLeft: =5
+                RadiusBottomLeft: =0
+                RadiusBottomRight: =0
+                RadiusTopLeft: =0
+                RadiusTopRight: =0
+                Size: =16
+                Tooltip: =Parent.DisplayName
+                Width: =Parent.Width - 60
+                X: =30
+                Y: =DataCardKey54.Y + DataCardKey54.Height + 5
+                ZIndex: =2
+
+            ErrorMessage46 As label:
+                AutoHeight: =true
+                Color: =RGBA(168, 0, 0, 1)
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                FontWeight: =FontWeight.Semibold
+                Height: =10
+                Live: =Live.Assertive
+                PaddingBottom: =0
+                PaddingLeft: =0
+                PaddingRight: =0
+                PaddingTop: =0
+                Size: =24
+                Text: =Parent.Error
+                Visible: =Parent.DisplayMode=DisplayMode.Edit
+                Width: =Parent.Width - 60
+                X: =30
+                Y: =DataCardValue49.Y + DataCardValue49.Height
+                ZIndex: =3
+
+            StarVisible46 As label:
+                Align: =Align.Center
+                Color: =RGBA(0, 18, 107, 1)
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                Height: =DataCardKey54.Height
+                Size: =21
+                Text: ="*"
+                Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
+                Width: =30
+                Wrap: =false
+                Y: =DataCardKey54.Y
+                ZIndex: =4
+
+        "'Email Address_DataCard2' As typedDataCard.textualEditCard":
+            BorderColor: =RGBA(0, 18, 107, 1)
+            BorderStyle: =BorderStyle.Solid
+            DataField: ="cra62_emailaddress"
+            Default: =ThisItem.'Email Address'
+            DisplayMode: =Parent.DisplayMode
+            DisplayName: =DataSourceInfo([@'Contacts.S'],DataSourceInfo.DisplayName,"zx_emailaddress")
+            Fill: =RGBA(0, 0, 0, 0)
+            Height: =50
+            MaxLength: =DataSourceInfo([@'Contacts.S'], DataSourceInfo.MaxLength, "zx_emailaddress")
+            Required: =false
+            Update: =DataCardValue50.Text
+            Width: =590
+            X: =0
+            Y: =2
+            ZIndex: =1
+
+            DataCardKey55 As label:
+                AutoHeight: =true
+                Color: =RGBA(26, 26, 26, 1)
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                FontWeight: =FontWeight.Semibold
+                Height: =48
+                Size: =16
+                Text: =Parent.DisplayName
+                Width: =Parent.Width - 60
+                Wrap: =false
+                X: =30
+                Y: =10
+                ZIndex: =1
+
+            DataCardValue50 As text:
+                AccessibleLabel: ="Email Address"
+                BorderColor: =RGBA(149, 149, 149, 1)
+                Color: =RGBA(0, 0, 0, 1)
+                Default: =Parent.Default
+                DelayOutput: =true
+                DisabledBorderColor: =RGBA(166, 166, 166, 1)
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                DisabledFill: =RGBA(244, 244, 244, 1)
+                DisplayMode: =Parent.DisplayMode
+                FocusedBorderThickness: =4
+                Height: =50
+                HoverBorderColor: =RGBA(0, 18, 107, 1)
+                HoverColor: =RGBA(0, 0, 0, 1)
+                HoverFill: =RGBA(186, 202, 226, 1)
+                MaxLength: =Parent.MaxLength
+                OnChange: |-
+                    =If(
+                        IsMatch(
+                            DataCardValue50.Text,
+                            Match.Email
+                        ),
+                        Color.Blue,
+                       Notify("Please Enter Correct Email"); Reset(DataCardValue50)
+                    )
+                PaddingLeft: =5
+                RadiusBottomLeft: =0
+                RadiusBottomRight: =0
+                RadiusTopLeft: =0
+                RadiusTopRight: =0
+                Size: =21
+                Tooltip: =Parent.DisplayName
+                Width: =Parent.Width - 60
+                X: =30
+                Y: =DataCardKey55.Y + DataCardKey55.Height + 5
+                ZIndex: =2
+
+            ErrorMessage47 As label:
+                AutoHeight: =true
+                Color: =RGBA(168, 0, 0, 1)
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                FontWeight: =FontWeight.Semibold
+                Height: =10
+                Live: =Live.Assertive
+                PaddingBottom: =0
+                PaddingLeft: =0
+                PaddingRight: =0
+                PaddingTop: =0
+                Size: =24
+                Text: =Parent.Error
+                Visible: =Parent.DisplayMode=DisplayMode.Edit
+                Width: =Parent.Width - 60
+                X: =30
+                Y: =DataCardValue50.Y + DataCardValue50.Height
+                ZIndex: =3
+
+            StarVisible47 As label:
+                Align: =Align.Center
+                Color: =RGBA(0, 18, 107, 1)
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                Height: =DataCardKey55.Height
+                Size: =21
+                Text: ="*"
+                Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
+                Width: =30
+                Wrap: =false
+                Y: =DataCardKey55.Y
+                ZIndex: =4
+
+        Designation_DataCard2 As typedDataCard.textualEditCard:
+            BorderColor: =RGBA(0, 18, 107, 1)
+            BorderStyle: =BorderStyle.Solid
+            DataField: ="cra62_designation"
+            Default: =ThisItem.Designation
+            DisplayMode: =Parent.DisplayMode
+            DisplayName: =DataSourceInfo([@'Contacts.S'],DataSourceInfo.DisplayName,"zx_designation")
+            Fill: =RGBA(0, 0, 0, 0)
+            Height: =50
+            MaxLength: =DataSourceInfo([@'Contacts.S'], DataSourceInfo.MaxLength, "zx_designation")
+            Required: =false
+            Update: =DataCardValue51.Text
+            Width: =590
+            X: =0
+            Y: =3
+            ZIndex: =1
+
+            DataCardKey56 As label:
+                AutoHeight: =true
+                Color: =RGBA(26, 26, 26, 1)
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                FontWeight: =FontWeight.Semibold
+                Height: =48
+                Size: =16
+                Text: =Parent.DisplayName
+                Width: =Parent.Width - 60
+                Wrap: =false
+                X: =30
+                Y: =10
+                ZIndex: =1
+
+            DataCardValue51 As text:
+                AccessibleLabel: ="Designation"
+                BorderColor: =RGBA(149, 149, 149, 1)
+                Color: =RGBA(0, 0, 0, 1)
+                Default: =Parent.Default
+                DelayOutput: =true
+                DisabledBorderColor: =RGBA(166, 166, 166, 1)
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                DisabledFill: =RGBA(244, 244, 244, 1)
+                DisplayMode: =Parent.DisplayMode
+                FocusedBorderThickness: =4
+                Height: =50
+                HoverBorderColor: =RGBA(0, 18, 107, 1)
+                HoverColor: =RGBA(0, 0, 0, 1)
+                HoverFill: =RGBA(186, 202, 226, 1)
+                MaxLength: =Parent.MaxLength
+                PaddingLeft: =5
+                RadiusBottomLeft: =0
+                RadiusBottomRight: =0
+                RadiusTopLeft: =0
+                RadiusTopRight: =0
+                Size: =21
+                Tooltip: =Parent.DisplayName
+                Width: =Parent.Width - 60
+                X: =30
+                Y: =DataCardKey56.Y + DataCardKey56.Height + 5
+                ZIndex: =2
+
+            ErrorMessage48 As label:
+                AutoHeight: =true
+                Color: =RGBA(168, 0, 0, 1)
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                FontWeight: =FontWeight.Semibold
+                Height: =10
+                Live: =Live.Assertive
+                PaddingBottom: =0
+                PaddingLeft: =0
+                PaddingRight: =0
+                PaddingTop: =0
+                Size: =24
+                Text: =Parent.Error
+                Visible: =Parent.DisplayMode=DisplayMode.Edit
+                Width: =Parent.Width - 60
+                X: =30
+                Y: =DataCardValue51.Y + DataCardValue51.Height
+                ZIndex: =3
+
+            StarVisible48 As label:
+                Align: =Align.Center
+                Color: =RGBA(0, 18, 107, 1)
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                Height: =DataCardKey56.Height
+                Size: =21
+                Text: ="*"
+                Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
+                Width: =30
+                Wrap: =false
+                Y: =DataCardKey56.Y
+                ZIndex: =4
+
+        Party_DataCard2 As typedDataCard.comboBoxEditCard:
+            BorderColor: =RGBA(0, 18, 107, 1)
+            BorderStyle: =BorderStyle.Solid
+            DataField: ="cra62_Party"
+            Default: =ThisItem.Party
+            DisplayMode: =Parent.DisplayMode
+            DisplayName: =DataSourceInfo([@'Contacts.S'],DataSourceInfo.DisplayName,"zx_Party")
+            Fill: =RGBA(0, 0, 0, 0)
+            Height: =50
+            Required: =false
+            Update: =DataCardValue52.Selected
+            Width: =590
+            X: =0
+            Y: =4
+            ZIndex: =1
+
+            DataCardKey57 As label:
+                AutoHeight: =true
+                Color: =RGBA(26, 26, 26, 1)
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                FontWeight: =FontWeight.Semibold
+                Height: =48
+                Size: =16
+                Text: =Parent.DisplayName
+                Width: =Parent.Width - 60
+                Wrap: =false
+                X: =30
+                Y: =10
+                ZIndex: =1
+
+            DataCardValue52 As combobox:
+                AccessibleLabel: ="Party"
+                BorderColor: =RGBA(149, 149, 149, 1)
+                BorderThickness: =1
+                ChevronBackground: =RGBA(255, 255, 255, 1)
+                ChevronDisabledBackground: =RGBA(166, 166, 166, 1)
+                ChevronDisabledFill: =RGBA(244, 244, 244, 1)
+                ChevronFill: =_VarGblAppColors.PrimaryRed
+                ChevronHoverBackground: =ColorFade(RGBA(56, 96, 178, 1), -20%)
+                ChevronHoverFill: =RGBA(255, 255, 255, 1)
+                DefaultSelectedItems: =Parent.Default
+                DisabledBorderColor: =RGBA(166, 166, 166, 1)
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                DisabledFill: =RGBA(244, 244, 244, 1)
+                DisplayFields: =["zx_name"]
+                DisplayMode: =Parent.DisplayMode
+                Height: =50
+                HoverColor: =RGBA(0, 0, 0, 1)
+                HoverFill: =RGBA(186, 202, 226, 1)
+                IsSearchable: =false
+                Items: =Choices([@'Contacts.S'].Party)
+                PaddingLeft: =If(Self.DisplayMode = DisplayMode.Edit, 5, 0)
+                PressedColor: =RGBA(255, 255, 255, 1)
+                PressedFill: =RGBA(0, 18, 107, 1)
+                SearchFields: =["zx_name"]
+                SearchItems: =[]
+                SelectionFill: =RGBA(0, 0, 0, 1)
+                SelectionTagFill: =
+                SelectMultiple: =false
+                Size: =16
+                Tooltip: =Parent.DisplayName
+                Width: =Parent.Width - 60
+                X: =30
+                Y: =DataCardKey57.Y + DataCardKey57.Height + 5
+                ZIndex: =2
+
+            ErrorMessage49 As label:
+                AutoHeight: =true
+                Color: =RGBA(168, 0, 0, 1)
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                FontWeight: =FontWeight.Semibold
+                Height: =10
+                Live: =Live.Assertive
+                PaddingBottom: =0
+                PaddingLeft: =0
+                PaddingRight: =0
+                PaddingTop: =0
+                Size: =24
+                Text: =Parent.Error
+                Visible: =Parent.DisplayMode=DisplayMode.Edit
+                Width: =Parent.Width - 60
+                X: =30
+                Y: =DataCardValue52.Y + DataCardValue52.Height
+                ZIndex: =3
+
+            StarVisible49 As label:
+                Align: =Align.Center
+                Color: =RGBA(0, 18, 107, 1)
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                Height: =DataCardKey57.Height
+                Size: =21
+                Text: ="*"
+                Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
+                Width: =30
+                Wrap: =false
+                Y: =DataCardKey57.Y
+                ZIndex: =4
+
+    Button9_23 As button:
+        DisabledBorderColor: =RGBA(166, 166, 166, 1)
+        DisabledColor: =RGBA(166, 166, 166, 1)
+        DisabledFill: =RGBA(244, 244, 244, 1)
+        Fill: =_VarGblAppColors.PrimaryRed
+        FontWeight: =FontWeight.Bold
+        Height: =56
+        HoverColor: =RGBA(255, 255, 255, 1)
+        HoverFill: =ColorFade(Self.Fill, -20%)
+        OnSelect: |-
+            =ClearCollect(
+                patchedContact,
+                Patch(
+                    'Contacts.S',
+                    Defaults('Contacts.S'),
+                    Form2_1.Updates
+                )
+            );
+            Notify(
+                "New Contact has been created",
+                NotificationType.Success,
+                2000
+            );
+            ResetForm(Form2_1);
+            Set(
+                newContactModal,
+                false
+            );
+            Set(varPatchedContact,First(patchedContact).'Contact Id')
+        Size: =20
+        Text: ="CREATE"
+        Visible: =newContactModal
+        Width: =289
+        X: =215
+        Y: =928
+        ZIndex: =26
+

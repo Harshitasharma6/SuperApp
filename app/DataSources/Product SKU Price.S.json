@@ -1,0 +1,97 @@
+[
+  {
+    "CdsFCBContext": "{\"FileType\":true,\"ImageExternalStorage\":true}",
+    "EntitySetName": "zx_productskuprices",
+    "IsHidden": false,
+    "IsSampleData": false,
+    "IsWritable": true,
+    "LogicalName": "zx_productskuprice",
+    "MaxGetRowsCount": 500,
+    "Name": "Product SKU Price.S",
+    "NativeCDSDataSourceInfoNameMapping": {
+      "_ownerid_value": "Owner",
+      "createdby": "Created By",
+      "createdon": "Created On",
+      "createdonbehalfby": "Created By (Delegate)",
+      "importsequencenumber": "Import Sequence Number",
+      "modifiedby": "Modified By",
+      "modifiedon": "Modified On",
+      "modifiedonbehalfby": "Modified By (Delegate)",
+      "overriddencreatedon": "Record Created On",
+      "owningbusinessunit": "Owning Business Unit",
+      "owningteam": "Owning Team",
+      "owninguser": "Owning User",
+      "statecode": "Status",
+      "statuscode": "Status Reason",
+      "timezoneruleversionnumber": "Time Zone Rule Version Number",
+      "utcconversiontimezonecode": "UTC Conversion Time Zone Code",
+      "versionnumber": "Version Number",
+      "zx_name": "Name",
+      "zx_productskuprice_AsyncOperations": "System Jobs",
+      "zx_productskuprice_BulkDeleteFailures": "Bulk Delete Failures",
+      "zx_productskuprice_DuplicateBaseRecord": "Duplicate Records (zx_productskuprice_DuplicateBaseRecord)",
+      "zx_productskuprice_DuplicateMatchingRecord": "Duplicate Records (zx_productskuprice_DuplicateMatchingRecord)",
+      "zx_productskuprice_MailboxTrackingFolders": "Mailbox Auto Tracking Folders",
+      "zx_productskuprice_PrincipalObjectAttributeAccesses": "Field Sharing",
+      "zx_productskuprice_ProcessSession": "Process Sessions",
+      "zx_productskuprice_SyncErrors": "Sync Errors",
+      "zx_productskupriceid": "Product SKU Price"
+    },
+    "PreferredName": "Product SKU Price.S",
+    "Type": "NativeCDSDataSourceInfo"
+  },
+  {
+    "DisplayName": "Product SKU Price.S (Views)",
+    "Name": "_zx_productskuprice_views",
+    "RelatedEntityName": "Product SKU Price.S",
+    "TrimmedViewName": true,
+    "Type": "ViewInfo",
+    "ViewInfoNameMapping": {
+      "482d11a8-3051-4a39-8e38-1913f614c363": "Product SKU Price Advanced Find View",
+      "4f8bfc84-372a-4c65-ac38-a4d6e4635352": "Active Product SKU Prices",
+      "939df5e7-f97a-49d5-aab1-76fc79067cba": "Product SKU Price Associated View",
+      "a1e587fa-8b16-4dd7-bbbf-b47d9e908913": "Inactive Product SKU Prices",
+      "bd81c8d0-ceff-4421-8975-bb25b42e86b8": "Product SKU Price Lookup View"
+    }
+  },
+  {
+    "DisplayName": "Status (Product SKU Price.S)",
+    "Name": "zx_productskuprice_statecode",
+    "OptionSetInfoNameMapping": {
+      "0": "Active",
+      "1": "Inactive"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "statecode",
+        "OptionSetReferenceEntityName": "Product SKU Price.S"
+      }
+    },
+    "OptionSetTypeKey": "StateType",
+    "RelatedColumnInvariantName": "statecode",
+    "RelatedEntityName": "Product SKU Price.S",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Status Reason (Product SKU Price.S)",
+    "Name": "zx_productskuprice_statuscode",
+    "OptionSetInfoNameMapping": {
+      "1": "Active",
+      "2": "Inactive"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "statuscode",
+        "OptionSetReferenceEntityName": "Product SKU Price.S"
+      }
+    },
+    "OptionSetTypeKey": "StatusType",
+    "RelatedColumnInvariantName": "statuscode",
+    "RelatedEntityName": "Product SKU Price.S",
+    "Type": "OptionSetInfo"
+  }
+]

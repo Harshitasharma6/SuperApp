@@ -1,0 +1,105 @@
+[
+  {
+    "CdsFCBContext": "{\"FileType\":true,\"ImageExternalStorage\":true}",
+    "EntitySetName": "zx_hsnmasters",
+    "IsHidden": false,
+    "IsSampleData": false,
+    "IsWritable": true,
+    "LogicalName": "zx_hsnmaster",
+    "MaxGetRowsCount": 500,
+    "Name": "HSN Master.S",
+    "NativeCDSDataSourceInfoNameMapping": {
+      "_ownerid_value": "Owner",
+      "createdby": "Created By (createdby)",
+      "createdon": "Created On",
+      "createdonbehalfby": "Created By (Delegate)",
+      "importsequencenumber": "Import Sequence Number",
+      "modifiedby": "Modified By",
+      "modifiedon": "Modified On",
+      "modifiedonbehalfby": "Modified By (Delegate)",
+      "overriddencreatedon": "Record Created On",
+      "owningbusinessunit": "Owning Business Unit",
+      "owningteam": "Owning Team",
+      "owninguser": "Owning User",
+      "statecode": "Status",
+      "statuscode": "Status Reason",
+      "timezoneruleversionnumber": "Time Zone Rule Version Number",
+      "utcconversiontimezonecode": "UTC Conversion Time Zone Code",
+      "versionnumber": "Version Number",
+      "zx_cess": "Cess %",
+      "zx_cgst": "CGST %",
+      "zx_CreatedBy": "Created By (zx_CreatedBy)",
+      "zx_gst": "GST %",
+      "zx_hsnmaster_AsyncOperations": "System Jobs",
+      "zx_hsnmaster_BulkDeleteFailures": "Bulk Delete Failures",
+      "zx_hsnmaster_DuplicateBaseRecord": "Duplicate Records (zx_hsnmaster_DuplicateBaseRecord)",
+      "zx_hsnmaster_DuplicateMatchingRecord": "Duplicate Records (zx_hsnmaster_DuplicateMatchingRecord)",
+      "zx_hsnmaster_MailboxTrackingFolders": "Mailbox Auto Tracking Folders",
+      "zx_hsnmaster_PrincipalObjectAttributeAccesses": "Field Sharing",
+      "zx_hsnmaster_ProcessSession": "Process Sessions",
+      "zx_hsnmaster_SyncErrors": "Sync Errors",
+      "zx_hsnmasterid": "HSN Master",
+      "zx_igst": "IGST %",
+      "zx_name": "Name",
+      "zx_sgst": "SGST %",
+      "zx_zx_productprice_HSN_zx_hsnmaster": "Product Price.S",
+      "zx_zx_productsku_HSN_zx_hsnmaster": "Product SKU.S"
+    },
+    "PreferredName": "HSN Master.S",
+    "Type": "NativeCDSDataSourceInfo"
+  },
+  {
+    "DisplayName": "HSN Master.S (Views)",
+    "Name": "_zx_hsnmaster_views",
+    "RelatedEntityName": "HSN Master.S",
+    "TrimmedViewName": true,
+    "Type": "ViewInfo",
+    "ViewInfoNameMapping": {
+      "0bf382e6-e235-4eff-92e6-580e9e99c58c": "Active HSN Masters",
+      "456c66b6-2bb4-4470-b157-db2d6e0cdc50": "HSN Master Lookup View",
+      "50752b98-dd38-45eb-814d-600ba9f940ef": "HSN Master Advanced Find View",
+      "54710d31-1f4f-4659-8aba-02b617927c17": "Inactive HSN Masters",
+      "e6da8839-caaa-40df-99ab-6aadfe85e891": "HSN Master Associated View"
+    }
+  },
+  {
+    "DisplayName": "Status (HSN Master.S)",
+    "Name": "zx_hsnmaster_statecode",
+    "OptionSetInfoNameMapping": {
+      "0": "Active",
+      "1": "Inactive"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "statecode",
+        "OptionSetReferenceEntityName": "HSN Master.S"
+      }
+    },
+    "OptionSetTypeKey": "StateType",
+    "RelatedColumnInvariantName": "statecode",
+    "RelatedEntityName": "HSN Master.S",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Status Reason (HSN Master.S)",
+    "Name": "zx_hsnmaster_statuscode",
+    "OptionSetInfoNameMapping": {
+      "1": "Active",
+      "2": "Inactive"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "statuscode",
+        "OptionSetReferenceEntityName": "HSN Master.S"
+      }
+    },
+    "OptionSetTypeKey": "StatusType",
+    "RelatedColumnInvariantName": "statuscode",
+    "RelatedEntityName": "HSN Master.S",
+    "Type": "OptionSetInfo"
+  }
+]

@@ -1,0 +1,104 @@
+[
+  {
+    "CdsFCBContext": "{\"FileType\":true,\"ImageExternalStorage\":true}",
+    "EntitySetName": "new_pjproutes",
+    "IsHidden": false,
+    "IsSampleData": false,
+    "IsWritable": true,
+    "LogicalName": "new_pjproute",
+    "MaxGetRowsCount": 500,
+    "Name": "Beats",
+    "NativeCDSDataSourceInfoNameMapping": {
+      "_ownerid_value": "Owner",
+      "cra62_date": "Date",
+      "createdby": "Created By",
+      "createdon": "Created On",
+      "createdonbehalfby": "Created By (Delegate)",
+      "importsequencenumber": "Import Sequence Number",
+      "modifiedby": "Modified By",
+      "modifiedon": "Modified On",
+      "modifiedonbehalfby": "Modified By (Delegate)",
+      "new_Area": "Area",
+      "new_id": "ID",
+      "new_new_visit_PjpRoute_new_pjproute": "Visits",
+      "new_PJPHeader": "PJP Header",
+      "new_PJPLine": "PJP Line",
+      "new_pjproute_AsyncOperations": "System Jobs",
+      "new_pjproute_BulkDeleteFailures": "Bulk Delete Failures",
+      "new_pjproute_DuplicateBaseRecord": "Duplicate Records (new_pjproute_DuplicateBaseRecord)",
+      "new_pjproute_DuplicateMatchingRecord": "Duplicate Records (new_pjproute_DuplicateMatchingRecord)",
+      "new_pjproute_MailboxTrackingFolders": "Mailbox Auto Tracking Folders",
+      "new_pjproute_PrincipalObjectAttributeAccesses": "Field Sharing",
+      "new_pjproute_ProcessSession": "Process Sessions",
+      "new_pjproute_SyncErrors": "Sync Errors",
+      "new_pjprouteid": "PJP Route",
+      "new_totalnoofparty": "Total No of Party",
+      "overriddencreatedon": "Record Created On",
+      "owningbusinessunit": "Owning Business Unit",
+      "owningteam": "Owning Team",
+      "owninguser": "Owning User",
+      "statecode": "Status",
+      "statuscode": "Status Reason",
+      "timezoneruleversionnumber": "Time Zone Rule Version Number",
+      "utcconversiontimezonecode": "UTC Conversion Time Zone Code",
+      "versionnumber": "Version Number",
+      "zx_futurevisit": "Future Visit"
+    },
+    "PreferredName": "Beats",
+    "Type": "NativeCDSDataSourceInfo"
+  },
+  {
+    "DisplayName": "Beats (Views)",
+    "Name": "_new_pjproute_views",
+    "RelatedEntityName": "Beats",
+    "TrimmedViewName": true,
+    "Type": "ViewInfo",
+    "ViewInfoNameMapping": {
+      "03bdf75c-4df3-433d-af80-4457e7434f75": "Inactive PJP Routes",
+      "7749f167-60a7-43fe-9153-42153c85d9bb": "PJP Route Advanced Find View",
+      "aab11b95-67a8-4cce-8abf-1e62c09770c2": "Active PJP Routes",
+      "aed0575a-8115-4dd7-8fb9-1b6c90d57148": "PJP Route Lookup View",
+      "fabd11ec-9d04-43a4-964f-196c277e8152": "PJP Route Associated View"
+    }
+  },
+  {
+    "DisplayName": "Status (Beats)",
+    "Name": "new_pjproute_statecode",
+    "OptionSetInfoNameMapping": {
+      "0": "Active",
+      "1": "Inactive"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "statecode",
+        "OptionSetReferenceEntityName": "Beats"
+      }
+    },
+    "OptionSetTypeKey": "StateType",
+    "RelatedColumnInvariantName": "statecode",
+    "RelatedEntityName": "Beats",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Status Reason (Beats)",
+    "Name": "new_pjproute_statuscode",
+    "OptionSetInfoNameMapping": {
+      "1": "Active",
+      "2": "Inactive"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "statuscode",
+        "OptionSetReferenceEntityName": "Beats"
+      }
+    },
+    "OptionSetTypeKey": "StatusType",
+    "RelatedColumnInvariantName": "statuscode",
+    "RelatedEntityName": "Beats",
+    "Type": "OptionSetInfo"
+  }
+]

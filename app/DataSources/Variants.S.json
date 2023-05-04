@@ -1,0 +1,100 @@
+[
+  {
+    "CdsFCBContext": "{\"FileType\":true,\"ImageExternalStorage\":true}",
+    "EntitySetName": "zx_variantses",
+    "IsHidden": false,
+    "IsSampleData": false,
+    "IsWritable": true,
+    "LogicalName": "zx_variants",
+    "MaxGetRowsCount": 500,
+    "Name": "Variants.S",
+    "NativeCDSDataSourceInfoNameMapping": {
+      "_ownerid_value": "Owner",
+      "createdby": "Created By",
+      "createdon": "Created On",
+      "createdonbehalfby": "Created By (Delegate)",
+      "importsequencenumber": "Import Sequence Number",
+      "modifiedby": "Modified By",
+      "modifiedon": "Modified On",
+      "modifiedonbehalfby": "Modified By (Delegate)",
+      "overriddencreatedon": "Record Created On",
+      "owningbusinessunit": "Owning Business Unit",
+      "owningteam": "Owning Team",
+      "owninguser": "Owning User",
+      "statecode": "Status",
+      "statuscode": "Status Reason",
+      "timezoneruleversionnumber": "Time Zone Rule Version Number",
+      "utcconversiontimezonecode": "UTC Conversion Time Zone Code",
+      "versionnumber": "Version Number",
+      "zx_name": "Variant Code",
+      "zx_variantname": "Variant Name",
+      "zx_variants_AsyncOperations": "System Jobs",
+      "zx_variants_BulkDeleteFailures": "Bulk Delete Failures",
+      "zx_variants_DuplicateBaseRecord": "Duplicate Records (zx_variants_DuplicateBaseRecord)",
+      "zx_variants_DuplicateMatchingRecord": "Duplicate Records (zx_variants_DuplicateMatchingRecord)",
+      "zx_variants_MailboxTrackingFolders": "Mailbox Auto Tracking Folders",
+      "zx_variants_PrincipalObjectAttributeAccesses": "Field Sharing",
+      "zx_variants_ProcessSession": "Process Sessions",
+      "zx_variants_SyncErrors": "Sync Errors",
+      "zx_variantsid": "Variants",
+      "zx_zx_productsku_Variant_zx_variants": "Product SKU.S",
+      "zx_zx_productvariants_Variant_zx_variants": "Product Variants.S"
+    },
+    "PreferredName": "Variants.S",
+    "Type": "NativeCDSDataSourceInfo"
+  },
+  {
+    "DisplayName": "Variants.S (Views)",
+    "Name": "_zx_variants_views",
+    "RelatedEntityName": "Variants.S",
+    "TrimmedViewName": true,
+    "Type": "ViewInfo",
+    "ViewInfoNameMapping": {
+      "3d037929-5133-4d46-8edc-32f97923baf3": "Active Variants",
+      "74d6612f-c012-44af-be03-f20e5b901a2b": "Variants Lookup View",
+      "b1f198c3-435a-4c2b-839d-2c5422a5f37b": "Variants Advanced Find View",
+      "f4616f8f-17b9-4b8e-ae05-1da9b1fe4350": "Inactive Variants",
+      "ff44cee8-03dd-48b3-b6eb-be788cc9e157": "Variants Associated View"
+    }
+  },
+  {
+    "DisplayName": "Status (Variants.S)",
+    "Name": "zx_variants_statecode",
+    "OptionSetInfoNameMapping": {
+      "0": "Active",
+      "1": "Inactive"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "statecode",
+        "OptionSetReferenceEntityName": "Variants.S"
+      }
+    },
+    "OptionSetTypeKey": "StateType",
+    "RelatedColumnInvariantName": "statecode",
+    "RelatedEntityName": "Variants.S",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Status Reason (Variants.S)",
+    "Name": "zx_variants_statuscode",
+    "OptionSetInfoNameMapping": {
+      "1": "Active",
+      "2": "Inactive"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "statuscode",
+        "OptionSetReferenceEntityName": "Variants.S"
+      }
+    },
+    "OptionSetTypeKey": "StatusType",
+    "RelatedColumnInvariantName": "statuscode",
+    "RelatedEntityName": "Variants.S",
+    "Type": "OptionSetInfo"
+  }
+]
