@@ -40,7 +40,7 @@ Home As screen:
                         DisplayMode.Edit,
                         DisplayMode.View
                     )
-                Fill: =ColorValue( LookUp('Environment Variable Definitions', 'Display Name'="Common Primary Background").'Default Value')//_VarGblAppColors.PrimaryBg
+                Fill: =ColorValue( LookUp('Environment Variable Definitions', 'Display Name'="Common Primary Background").'Default Value')//ColorValue(LookUp('Environment Variable Definitions', 'Display Name'="Common Primary Background").'Default Value')
                 FontWeight: =FontWeight.Semibold
                 Height: =50
                 HoverColor: =RGBA(255, 255, 255, 1)
@@ -123,7 +123,7 @@ Home As screen:
                 DisabledFill: =RGBA(244, 244, 244, 1)
                 DisplayMode: =DisplayMode.View
                 Fill: |
-                    =ColorValue( LookUp('Environment Variable Definitions', 'Display Name'="Common Primary Background").'Default Value')//_VarGblAppColors.PrimaryBg
+                    =ColorValue( LookUp('Environment Variable Definitions', 'Display Name'="Common Primary Background").'Default Value')//ColorValue(LookUp('Environment Variable Definitions', 'Display Name'="Common Primary Background").'Default Value')
                 FontWeight: =FontWeight.Semibold
                 Height: =183
                 HoverColor: =RGBA(255, 255, 255, 1)
@@ -203,7 +203,7 @@ Home As screen:
                     BorderColor: =RGBA(0, 18, 107, 1)
                     Color: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//_VarGblAppColors.PrimaryRed
                     DisabledColor: =RGBA(166, 166, 166, 1)
-                    Fill: =ColorValue( LookUp('Environment Variable Definitions', 'Display Name'="Common Primary Background").'Default Value')//_VarGblAppColors.PrimaryBg
+                    Fill: =ColorValue( LookUp('Environment Variable Definitions', 'Display Name'="Common Primary Background").'Default Value')//ColorValue(LookUp('Environment Variable Definitions', 'Display Name'="Common Primary Background").'Default Value')
                     FontWeight: =FontWeight.Semibold
                     Height: =120
                     Size: =16
@@ -217,7 +217,7 @@ Home As screen:
                     BorderColor: =RGBA(0, 18, 107, 1)
                     Color: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//_VarGblAppColors.PrimaryRed
                     DisabledColor: =RGBA(166, 166, 166, 1)
-                    Fill: =ColorValue( LookUp('Environment Variable Definitions', 'Display Name'="Common Primary Background").'Default Value')//_VarGblAppColors.PrimaryBg
+                    Fill: =ColorValue( LookUp('Environment Variable Definitions', 'Display Name'="Common Primary Background").'Default Value')//ColorValue(LookUp('Environment Variable Definitions', 'Display Name'="Common Primary Background").'Default Value')
                     FontWeight: =FontWeight.Semibold
                     Height: =120
                     Size: =16
@@ -240,7 +240,7 @@ Home As screen:
                     BorderColor: =RGBA(0, 18, 107, 1)
                     Color: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//_VarGblAppColors.PrimaryRed
                     DisabledColor: =RGBA(166, 166, 166, 1)
-                    Fill: =ColorValue( LookUp('Environment Variable Definitions', 'Display Name'="Common Primary Background").'Default Value')//_VarGblAppColors.PrimaryBg
+                    Fill: =ColorValue( LookUp('Environment Variable Definitions', 'Display Name'="Common Primary Background").'Default Value')//ColorValue(LookUp('Environment Variable Definitions', 'Display Name'="Common Primary Background").'Default Value')
                     FontWeight: =FontWeight.Semibold
                     Height: =120
                     Size: =16
@@ -301,7 +301,7 @@ Home As screen:
                 ZIndex: =15
 
             Button21_1 As button:
-                BorderColor: =ColorValue( LookUp('Environment Variable Definitions', 'Display Name'="Common Primary Background").'Default Value')//_VarGblAppColors.PrimaryBg
+                BorderColor: =ColorValue( LookUp('Environment Variable Definitions', 'Display Name'="Common Primary Background").'Default Value')//ColorValue(LookUp('Environment Variable Definitions', 'Display Name'="Common Primary Background").'Default Value')
                 BorderStyle: =BorderStyle.None
                 DisabledBorderColor: =RGBA(224, 224, 224, 1)
                 DisabledColor: =RGBA(166, 166, 166, 1)

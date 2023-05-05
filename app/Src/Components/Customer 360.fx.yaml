@@ -1329,14 +1329,14 @@
 
         "'Variant ComboBox_1' As combobox":
             AccessibleLabel: ="Variant"
-            BorderColor: =_VarGblAppColors.SecondaryText
+            BorderColor: =ColorValue(LookUp('Environment Variable Definitions', 'Display Name'="Text Secondary Color").'Default Value')
             ChevronBackground: =RGBA(255, 255, 255, 1)
             ChevronDisabledBackground: =RGBA(166, 166, 166, 1)
             ChevronDisabledFill: =RGBA(244, 244, 244, 1)
-            ChevronFill: =_VarGblAppColors.SecondaryText
+            ChevronFill: =ColorValue(LookUp('Environment Variable Definitions', 'Display Name'="Text Secondary Color").'Default Value')
             ChevronHoverBackground: =
             ChevronHoverFill: =
-            Color: =_VarGblAppColors.PrimaryText
+            Color: =ColorValue(LookUp('Environment Variable Definitions', 'Display Name'="Text Primary Color").'Default Value')
             Default: |-
                 =/*First(
                    AddColumns(
@@ -1360,7 +1360,7 @@
                 )
                 )*/
             DisabledBorderColor: =RGBA(166, 166, 166, 1)
-            DisabledColor: =_VarGblAppColors.SecondaryText
+            DisabledColor: =ColorValue(LookUp('Environment Variable Definitions', 'Display Name'="Text Secondary Color").'Default Value')
             DisabledFill: =RGBA(244, 244, 244, 1)
             DisplayFields: =["VariantName"]
             FontWeight: =FontWeight.Semibold
@@ -1384,9 +1384,9 @@
             PressedFill: =RGBA(0, 18, 107, 1)
             SearchFields: =["VariantName"]
             SearchItems: =[]
-            SelectionColor: =_VarGblAppColors.PrimaryText
+            SelectionColor: =ColorValue(LookUp('Environment Variable Definitions', 'Display Name'="Text Primary Color").'Default Value')
             SelectionFill: =RGBA(230, 230, 230, 1)
-            SelectionTagColor: =_VarGblAppColors.PrimaryText
+            SelectionTagColor: =ColorValue(LookUp('Environment Variable Definitions', 'Display Name'="Text Primary Color").'Default Value')
             SelectionTagFill: |-
                 =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Screen Background Color").'Default Value')
                 //_VarGblAppColors.BackgroundColor

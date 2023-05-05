@@ -137,7 +137,10 @@
                     )
                 )
                 //Set(_varsideNav, false))
-            Size: =_VarGblAppFonts.Size.Regular
+            Size: |
+                =
+                
+                LookUp('Environment Variable Definitions', 'Display Name'="Text Regular Font Size").'Default Value'
             TabIndex: =0
             Text: =ThisItem.Title
             Width: =Parent.TemplateWidth

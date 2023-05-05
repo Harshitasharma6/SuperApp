@@ -394,7 +394,7 @@ VisitPlanningNew As screen:
         Rectangle1_34 As rectangle:
             AccessibleLabel: ="Rectangle1_7"
             BorderColor: =RGBA(0, 18, 107, 1)
-            Fill: =ColorValue( LookUp('Environment Variable Definitions', 'Display Name'="Common Primary Background").'Default Value')//_VarGblAppColors.PrimaryBg
+            Fill: =ColorValue( LookUp('Environment Variable Definitions', 'Display Name'="Common Primary Background").'Default Value')//ColorValue(LookUp('Environment Variable Definitions', 'Display Name'="Common Primary Background").'Default Value')
             Height: =2
             OnSelect: |-
                 =/*Navigate('Leads Detail Page',ScreenTransition.CoverRight);
@@ -454,7 +454,7 @@ VisitPlanningNew As screen:
             DisabledColor: =RGBA(166, 166, 166, 1)
             DisabledFill: =RGBA(244, 244, 244, 1)
             DisplayMode: =DisplayMode.View
-            Fill: =ColorValue( LookUp('Environment Variable Definitions', 'Display Name'="Common Primary Background").'Default Value')//_VarGblAppColors.PrimaryBg
+            Fill: =ColorValue( LookUp('Environment Variable Definitions', 'Display Name'="Common Primary Background").'Default Value')//ColorValue(LookUp('Environment Variable Definitions', 'Display Name'="Common Primary Background").'Default Value')
             FontWeight: =FontWeight.Semibold
             Height: =43
             HoverColor: =RGBA(255, 255, 255, 1)

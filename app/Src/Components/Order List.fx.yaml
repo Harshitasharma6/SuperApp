@@ -1529,7 +1529,7 @@
                 //RGBA(153, 160, 196, 1)
                 If(
                     radioDate_5.Selected.Value,
-                    _VarGblAppColors.PrimaryBg,
+                    ColorValue(LookUp('Environment Variable Definitions', 'Display Name'="Common Primary Background").'Default Value'),
                 ColorValue(LookUp('Environment Variable Definitions', 'Display Name'="Button Color").'Default Value')   
                 )
             DisplayMode: =If(IsBlank(DateFrom_5.SelectedDate),DisplayMode.Edit,DisplayMode.View)
@@ -1568,7 +1568,7 @@
                 If(
                     //ThisItem.IsSelected,
                     radioDate_5.Selected.Value,
-                    _VarGblAppColors.PrimaryBg,
+                    ColorValue(LookUp('Environment Variable Definitions', 'Display Name'="Common Primary Background").'Default Value'),
                 ColorValue(LookUp('Environment Variable Definitions', 'Display Name'="Button Color").'Default Value')   
                 )
             RadioSize: =40
@@ -1592,7 +1592,7 @@
                 If(
                     //ThisItem.IsSelected,
                     radioSalesperson_5.Selected.'Full Name',
-                    _VarGblAppColors.PrimaryBg,
+                    ColorValue(LookUp('Environment Variable Definitions', 'Display Name'="Common Primary Background").'Default Value'),
                 ColorValue(LookUp('Environment Variable Definitions', 'Display Name'="Button Color").'Default Value')   
                 )
             Default: =LookUp(Users,'Primary Email'=User().Email).'Full Name'
@@ -1622,7 +1622,7 @@
                 If(
                     //ThisItem.IsSelected,
                     radioSalesperson_5.Selected.'Full Name',
-                    _VarGblAppColors.PrimaryBg,
+                    ColorValue(LookUp('Environment Variable Definitions', 'Display Name'="Common Primary Background").'Default Value'),
                 ColorValue(LookUp('Environment Variable Definitions', 'Display Name'="Button Color").'Default Value')   
                 )
             RadioSize: =40
@@ -1677,7 +1677,7 @@
                     If(
                         //ThisItem.IsSelected,
                         radioParty_1.Selected.'Customer Name',
-                        _VarGblAppColors.PrimaryBg,
+                        ColorValue(LookUp('Environment Variable Definitions', 'Display Name'="Common Primary Background").'Default Value'),
                     ColorValue(LookUp('Environment Variable Definitions', 'Display Name'="Button Color").'Default Value')   
                     )
                 DisabledBorderColor: =RGBA(166, 166, 166, 1)
@@ -1760,7 +1760,7 @@
                     //RGBA(153, 160, 196, 1)
                     If(
                         ThisItem.IsSelected,
-                        _VarGblAppColors.PrimaryBg,
+                        ColorValue(LookUp('Environment Variable Definitions', 'Display Name'="Common Primary Background").'Default Value'),
                     ColorValue(LookUp('Environment Variable Definitions', 'Display Name'="Button Color").'Default Value')   
                     )
                 DisabledColor: =RGBA(166, 166, 166, 1)
@@ -1785,7 +1785,7 @@
                     =//RGBA(153, 160, 196, 1)
                     If(
                         ThisItem.IsSelected,
-                        _VarGblAppColors.PrimaryBg,
+                        ColorValue(LookUp('Environment Variable Definitions', 'Display Name'="Common Primary Background").'Default Value'),
                     ColorValue(LookUp('Environment Variable Definitions', 'Display Name'="Button Color").'Default Value')   
                     )
                 DisabledColor: =RGBA(166, 166, 166, 1)
@@ -1807,7 +1807,7 @@
                     //RGBA(153, 160, 196, 1)
                     If(
                         ThisItem.IsSelected,
-                        _VarGblAppColors.PrimaryBg,
+                        ColorValue(LookUp('Environment Variable Definitions', 'Display Name'="Common Primary Background").'Default Value'),
                     ColorValue(LookUp('Environment Variable Definitions', 'Display Name'="Button Color").'Default Value')   
                     )
                 DisabledBorderColor: =RGBA(166, 166, 166, 1)
@@ -1834,7 +1834,7 @@
                 If(
                     //ThisItem.IsSelected,
                     radioParty_1.Selected.'Customer Name',
-                    _VarGblAppColors.PrimaryBg,
+                    ColorValue(LookUp('Environment Variable Definitions', 'Display Name'="Common Primary Background").'Default Value'),
                 ColorValue(LookUp('Environment Variable Definitions', 'Display Name'="Button Color").'Default Value')   
                 )
             Height: =466
@@ -1870,7 +1870,7 @@
                 If(
                     //ThisItem.IsSelected,
                     radioParty_1.Selected.'Customer Name',
-                    _VarGblAppColors.PrimaryBg,
+                    ColorValue(LookUp('Environment Variable Definitions', 'Display Name'="Common Primary Background").'Default Value'),
                 ColorValue(LookUp('Environment Variable Definitions', 'Display Name'="Button Color").'Default Value')   
                 )
             RadioSize: =40

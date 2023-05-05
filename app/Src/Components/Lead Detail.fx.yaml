@@ -73,7 +73,7 @@
             Color: =If(ProdAddd=ThisItem.Id, Color.White,_VarGblAppColors.PrimaryRed)
             DisabledBorderColor: =RGBA(0, 0, 0, 0)
             DisabledColor: =RGBA(166, 166, 166, 1)
-            Fill: =If(ProdAddd=ThisItem.Id, _VarGblAppColors.PrimaryRed,ColorFade( _VarGblAppColors.PrimaryBg,20%))
+            Fill: =If(ProdAddd=ThisItem.Id, ColorValue(LookUp('Environment Variable Definitions', 'Display Name'="Button Fill").'Default Value'),ColorFade( ColorValue(LookUp('Environment Variable Definitions', 'Display Name'="Common Primary Background").'Default Value'),20%))
             FocusedBorderThickness: =4
             Font: =Font.Lato
             FontWeight: =FontWeight.Semibold
@@ -2267,7 +2267,7 @@
 
         Divider_1 As rectangle:
             BorderColor: =RGBA(0, 18, 107, 1)
-            Fill: =_VarGblAppColors.PrimaryBg
+            Fill: =ColorValue(LookUp('Environment Variable Definitions', 'Display Name'="Common Primary Background").'Default Value')
             Height: =40
             Width: =2
             X: =533

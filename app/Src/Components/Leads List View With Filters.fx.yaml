@@ -135,7 +135,7 @@
             DisabledBorderColor: =RGBA(166, 166, 166, 1)
             DisabledColor: =RGBA(166, 166, 166, 1)
             DisabledFill: =RGBA(244, 244, 244, 1)
-            Fill: =If(ThisItem.IsSelected && CountRows(colLeadFilter)=0, _VarGblAppColors.PrimaryRed,_VarGblAppColors.PrimaryBg)
+            Fill: =If(ThisItem.IsSelected && CountRows(colLeadFilter)=0, ColorValue(LookUp('Environment Variable Definitions', 'Display Name'="Button Fill").'Default Value'),ColorValue(LookUp('Environment Variable Definitions', 'Display Name'="Common Primary Background").'Default Value'))
             Font: =Font.'Segoe UI'
             FontWeight: =FontWeight.Bold
             Height: =43
@@ -614,7 +614,7 @@
             Rectangle1_32 As rectangle:
                 AccessibleLabel: ="Rectangle1_7"
                 BorderColor: =RGBA(0, 18, 107, 1)
-                Fill: =_VarGblAppColors.PrimaryBg
+                Fill: =ColorValue(LookUp('Environment Variable Definitions', 'Display Name'="Common Primary Background").'Default Value')
                 Height: =1.5
                 OnSelect: |-
                     =Navigate('Leads Detail Page',ScreenTransition.CoverRight);
@@ -739,7 +739,7 @@
                 DisabledColor: =RGBA(166, 166, 166, 1)
                 DisabledFill: =RGBA(244, 244, 244, 1)
                 DisplayMode: =DisplayMode.View
-                Fill: =_VarGblAppColors.PrimaryBg
+                Fill: =ColorValue(LookUp('Environment Variable Definitions', 'Display Name'="Common Primary Background").'Default Value')
                 FontWeight: =FontWeight.Semibold
                 Height: =37
                 HoverColor: =RGBA(255, 255, 255, 1)

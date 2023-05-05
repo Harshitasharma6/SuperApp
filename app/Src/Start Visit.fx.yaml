@@ -794,7 +794,7 @@
                 SearchFields: =["Title"]
                 SearchItems: =[]
                 SelectionColor: =Color.Black
-                SelectionFill: =ColorValue( LookUp('Environment Variable Definitions', 'Display Name'="Common Primary Background").'Default Value')//_VarGblAppColors.PrimaryBg
+                SelectionFill: =ColorValue( LookUp('Environment Variable Definitions', 'Display Name'="Common Primary Background").'Default Value')//ColorValue(LookUp('Environment Variable Definitions', 'Display Name'="Common Primary Background").'Default Value')
                 SelectionTagFill: =
                 SelectMultiple: =false
                 Size: =15

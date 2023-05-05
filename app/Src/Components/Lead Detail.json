@@ -458,7 +458,7 @@
               },
               {
                 "Category": "Design",
-                "InvariantScript": "If(ProdAddd=ThisItem.Id, _VarGblAppColors.PrimaryRed,ColorFade( _VarGblAppColors.PrimaryBg,20%))",
+                "InvariantScript": "If(ProdAddd=ThisItem.Id, ColorValue(LookUp('Environment Variable Definitions', 'Display Name'=\"Button Fill\").'Default Value'),ColorFade( ColorValue(LookUp('Environment Variable Definitions', 'Display Name'=\"Common Primary Background\").'Default Value'),20%))",
                 "Property": "Fill",
                 "RuleProviderType": "Unknown"
               },
@@ -16744,7 +16744,7 @@
               },
               {
                 "Category": "Design",
-                "InvariantScript": "_VarGblAppColors.PrimaryBg",
+                "InvariantScript": "ColorValue(LookUp('Environment Variable Definitions', 'Display Name'=\"Common Primary Background\").'Default Value')",
                 "Property": "Fill",
                 "RuleProviderType": "Unknown"
               },
@@ -63890,7 +63890,7 @@
       },
       "ProductCall"
     ],
-    "LastModifiedTimestamp": "638189069237862206",
+    "LastModifiedTimestamp": "638189080283775508",
     "Name": "Lead Detail",
     "Rules": [
       {
@@ -63995,7 +63995,7 @@
   "IsPcfControl": false,
   "IsPremiumPcfControl": false,
   "IsWidgetTemplate": false,
-  "LastModifiedTimestamp": "638189069237862206",
+  "LastModifiedTimestamp": "638189080283775508",
   "Name": "faa7ee8782af41fb94ebfc5a4619c922",
   "OverridableProperties": {},
   "TemplateOriginalName": "5ffbd2772db845fbb8178e9b015a9273",

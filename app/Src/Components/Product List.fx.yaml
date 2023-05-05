@@ -118,7 +118,7 @@
 
     Divider_3 As rectangle:
         BorderColor: =RGBA(0, 18, 107, 1)
-        Fill: =_VarGblAppColors.PrimaryBg
+        Fill: =ColorValue(LookUp('Environment Variable Definitions', 'Display Name'="Common Primary Background").'Default Value')
         Height: =40
         Width: =2
         X: =533

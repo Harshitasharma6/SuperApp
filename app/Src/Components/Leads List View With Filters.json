@@ -10150,7 +10150,7 @@
               },
               {
                 "Category": "Design",
-                "InvariantScript": "If(ThisItem.IsSelected && CountRows(colLeadFilter)=0, _VarGblAppColors.PrimaryRed,_VarGblAppColors.PrimaryBg)",
+                "InvariantScript": "If(ThisItem.IsSelected && CountRows(colLeadFilter)=0, ColorValue(LookUp('Environment Variable Definitions', 'Display Name'=\"Button Fill\").'Default Value'),ColorValue(LookUp('Environment Variable Definitions', 'Display Name'=\"Common Primary Background\").'Default Value'))",
                 "Property": "Fill",
                 "RuleProviderType": "Unknown"
               },
@@ -14191,7 +14191,7 @@
                   },
                   {
                     "Category": "Design",
-                    "InvariantScript": "_VarGblAppColors.PrimaryBg",
+                    "InvariantScript": "ColorValue(LookUp('Environment Variable Definitions', 'Display Name'=\"Common Primary Background\").'Default Value')",
                     "Property": "Fill",
                     "RuleProviderType": "Unknown"
                   },
@@ -14445,7 +14445,7 @@
                   },
                   {
                     "Category": "Design",
-                    "InvariantScript": "_VarGblAppColors.PrimaryBg",
+                    "InvariantScript": "ColorValue(LookUp('Environment Variable Definitions', 'Display Name'=\"Common Primary Background\").'Default Value')",
                     "Property": "Fill",
                     "RuleProviderType": "Unknown"
                   },
@@ -19788,7 +19788,7 @@
       "DataSource",
       "Customer"
     ],
-    "LastModifiedTimestamp": "638189071096030497",
+    "LastModifiedTimestamp": "638189080613864646",
     "Name": "Leads List View With Filters",
     "Rules": [
       {
@@ -19878,7 +19878,7 @@
   "IsPcfControl": false,
   "IsPremiumPcfControl": false,
   "IsWidgetTemplate": false,
-  "LastModifiedTimestamp": "638189071096030497",
+  "LastModifiedTimestamp": "638189080613864646",
   "Name": "03998f1d0e2c47e9b22fcf4169d0a5b8",
   "OverridableProperties": {},
   "Version": "638186918313043292"
