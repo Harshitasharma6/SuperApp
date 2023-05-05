@@ -130,10 +130,11 @@ SideBar As CanvasComponent:
         ZIndex: =6
 
         Rectangle22 As rectangle:
+            AccessibleLabel: ="Text"
             BorderColor: =RGBA(0, 18, 107, 1)
             Fill: =RGBA(166, 166, 166, 1)
             Height: =0.5
-            OnSelect: |
+            OnSelect: |-
                 =
                 Set(
                     _varsideNav,
@@ -154,6 +155,7 @@ SideBar As CanvasComponent:
                         ScreenTransition.CoverRight
                     )
                 )
+                Text
             Width: =630
             Y: =89
             ZIndex: =1
@@ -230,6 +232,7 @@ SideBar As CanvasComponent:
             ZIndex: =4
 
         Image11 As image:
+            AccessibleLabel: ="Text"
             BorderColor: =RGBA(0, 18, 107, 1)
             DisabledBorderColor: =RGBA(166, 166, 166, 1)
             DisabledFill: =RGBA(244, 244, 244, 1)
@@ -260,6 +263,7 @@ SideBar As CanvasComponent:
             PaddingLeft: =5
             PaddingRight: =5
             PaddingTop: =5
+            TabIndex: =0
             Width: =45
             X: =12
             Y: =22

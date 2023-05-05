@@ -289,6 +289,7 @@
             ZIndex: =9
 
         Circle18 As circle:
+            AccessibleLabel: ="Text"
             BorderColor: =RGBA(0, 18, 107, 1)
             Fill: =_VarGblAppColors.PrimaryRed
             Height: =50
@@ -296,6 +297,7 @@
                 =Navigate('order detail screen',ScreenTransition.CoverRight);
                 Set(varOrderData, ThisItem)
                  
+            TabIndex: =0
             Width: =50
             X: =20
             Y: =10
@@ -311,6 +313,7 @@
                 Set(varOrderData, ThisItem)
                  
             Size: =16
+            TabIndex: =0
             Text: =ThisItem.'Order ID'
             Width: =290
             X: =216
@@ -326,6 +329,7 @@
                 =Navigate('order detail screen',ScreenTransition.CoverRight);
                 Set(varOrderData, ThisItem)
                  
+            TabIndex: =0
             Text: =Left(Upper(ThisItem.'Order From'.'First Name'),1) & Left(Upper(ThisItem.'Order From'.'Last Name'),1)
             Width: =40
             X: =26
@@ -333,6 +337,7 @@
             ZIndex: =12
 
     Image1 As image:
+        AccessibleLabel: ="Text"
         BorderColor: =RGBA(0, 0, 0, 0)
         BorderStyle: =BorderStyle.None
         BorderThickness: =2
@@ -351,6 +356,7 @@
             
         PressedBorderColor: =RGBA(0, 0, 0, 0)
         PressedFill: =RGBA(0, 0, 0, 0)
+        TabIndex: =0
         Width: =50
         X: =410
         Y: =15
@@ -382,6 +388,7 @@
         ZIndex: =4
 
     DatePicker1 As datepicker:
+        AccessibleLabel: ="Text"
         BorderColor: =RGBA(166, 166, 166, 1)
         CalendarHeaderFill: =ColorFade(RGBA(0, 120, 212, 1), -30%)
         Color: =RGBA(51, 51, 51, 1)

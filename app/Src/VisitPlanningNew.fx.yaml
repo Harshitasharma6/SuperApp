@@ -465,6 +465,7 @@ VisitPlanningNew As screen:
             ZIndex: =19
 
         Circle12_4 As circle:
+            AccessibleLabel: ="Text"
             BorderColor: =RGBA(102, 182, 227, 1)
             BorderThickness: =1
             DisplayMode: |-
@@ -505,6 +506,7 @@ VisitPlanningNew As screen:
                         ThisItem
                     )
                 )*/
+            TabIndex: =0
             Visible: =If('Type Filter_1'.Selected.Id=1, true, false)
             Width: =43
             X: =493
@@ -519,6 +521,7 @@ VisitPlanningNew As screen:
             ZIndex: =23
 
             Circle12_5 As circle:
+                AccessibleLabel: ="Text"
                 BorderColor: =RGBA(0, 18, 107, 1)
                 DisplayMode: |-
                     =DisplayMode.Edit
@@ -577,6 +580,7 @@ VisitPlanningNew As screen:
                             )
                         )
                     )
+                TabIndex: =0
                 Visible: =If('Type Filter_1'.Selected.Id=1, true, false)
                 Width: =43
                 X: =548
@@ -584,6 +588,7 @@ VisitPlanningNew As screen:
                 ZIndex: =21
 
             Icon29_1 As icon.Add:
+                AccessibleLabel: ="Text"
                 BorderColor: =RGBA(0, 18, 107, 1)
                 Color: =RGBA(255, 255, 255, 1)
                 DisabledBorderColor: =RGBA(166, 166, 166, 1)
@@ -659,6 +664,7 @@ VisitPlanningNew As screen:
                             )
                         )
                     )
+                TabIndex: =0
                 Visible: =If('Type Filter_1'.Selected.Id=1, true, false)
                 Width: =25
                 X: =557
@@ -681,6 +687,7 @@ VisitPlanningNew As screen:
             ZIndex: =24
 
         Circle12_6 As circle:
+            AccessibleLabel: ="Text"
             BorderColor: =RGBA(102, 182, 227, 1)
             BorderThickness: =1
             DisplayMode: |-
@@ -700,6 +707,7 @@ VisitPlanningNew As screen:
             OnSelect: |-
                 =
                 true
+            TabIndex: =0
             Visible: =If('Type Filter_1'.Selected.Id=1, true, false)
             Width: =45
             X: =11

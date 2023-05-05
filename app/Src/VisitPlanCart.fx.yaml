@@ -157,6 +157,7 @@ VisitPlanCart As screen:
             ZIndex: =19
 
         Circle12_7 As circle:
+            AccessibleLabel: ="Text"
             BorderColor: =RGBA(102, 182, 227, 1)
             BorderThickness: =1
             DisplayMode: |-
@@ -197,6 +198,7 @@ VisitPlanCart As screen:
                         ThisItem
                     )
                 )*/
+            TabIndex: =0
             Visible: =If('Type Filter_1'.Selected.Id=1, true, false)
             Width: =43
             X: =493
@@ -219,6 +221,7 @@ VisitPlanCart As screen:
             ZIndex: =24
 
         Circle12_9 As circle:
+            AccessibleLabel: ="Text"
             BorderColor: =RGBA(102, 182, 227, 1)
             BorderThickness: =1
             DisplayMode: |-
@@ -238,6 +241,7 @@ VisitPlanCart As screen:
             OnSelect: |-
                 =
                 true
+            TabIndex: =0
             Visible: =If('Type Filter_1'.Selected.Id=1, true, false)
             Width: =45
             X: =11
@@ -445,6 +449,7 @@ VisitPlanCart As screen:
             ZIndex: =40
 
         Icon32 As icon.Cancel:
+            AccessibleLabel: ="Text"
             BorderColor: =RGBA(0, 18, 107, 1)
             Color: = _VarGblAppColors.PrimaryRed
             DisabledBorderColor: =RGBA(166, 166, 166, 1)
@@ -456,6 +461,7 @@ VisitPlanCart As screen:
             PaddingLeft: =2
             PaddingRight: =2
             PaddingTop: =2
+            TabIndex: =0
             Width: =44
             X: =546
             Y: =10
