@@ -660,7 +660,7 @@
                     );
                 Size: =16
                 TabIndex: =0
-                Text: =ThisItem.zx_leadsid
+                Text: =ThisItem.zx_leadname
                 Tooltip: =
                 Width: =91
                 Wrap: =false
@@ -766,7 +766,7 @@
                 Text: ="|"
                 Tooltip: |-
                     ="Order Date: "& DateValue(ThisItem.createdon)
-                Width: =79
+                Width: =25
                 Wrap: =false
                 X: =96
                 ZIndex: =10
@@ -1125,391 +1125,391 @@
                             !IsBlank(radioArea_2.Selected) && IsBlank(Value(Leadvalue_1.Text)) && IsBlank(radioCustomers_1.Selected) && IsBlank(radioStage_1.Selected) && IsBlank(radioCommit_1.Selected) && IsBlank(radioCompetitor_1.Selected) || (varCreateddate = true || varEstimated=true),
                             Filter(
                                 offlineLeadCollection,
-                                Area.'Area Name' = radioArea_2.Selected.Areaname && owninguser.'Primary Email'= User().Email
+                                zx_Area.'Area Name' = radioArea_2.Selected.Areaname && owninguser.'Primary Email'= User().Email
                             ),
                             // Filter according to Competitor--------------------------------------------------------
                             !IsBlank(radioCompetitor_1.Selected) && IsBlank(Value(Leadvalue_1.Text)) && IsBlank(radioCustomers_1.Selected) && IsBlank(radioStage_1.Selected) && IsBlank(radioCommit_1.Selected) && IsBlank(radioArea_2.Selected) || (varCreateddate = true || varEstimated=true),
                             Filter(
                                 offlineLeadCollection,
-                                Competitor.'Competitor Name' = radioCompetitor_1.Selected.'Competitor Name' && owninguser.'Primary Email'= User().Email
+                                zx_Competitor.'Competitor Name' = radioCompetitor_1.Selected.'Competitor Name' && owninguser.'Primary Email'= User().Email
                             ),
                             // Filter according to created date--------------------------------------------------------
                             !IsBlank(DateFrom_8.SelectedDate) && IsBlank(Value(Leadvalue_1.Text)) && IsBlank(radioCustomers_1.Selected) && IsBlank(radioStage_1.Selected) && IsBlank(radioCommit_1.Selected) && IsBlank(radioArea_2.Selected) && IsBlank(radioCompetitor_1.Selected) || varEstimated=true,
                             Filter(
                                 offlineLeadCollection,
-                                DateValue('Created On') >= DateValue(DateFrom_8.SelectedDate) && DateValue('Created On') <= DateValue(DateTo_8.SelectedDate) && owninguser.'Primary Email'= User().Email
+                                DateValue(createdon) >= DateValue(DateFrom_8.SelectedDate) && DateValue(createdon) <= DateValue(DateTo_8.SelectedDate) && owninguser.'Primary Email'= User().Email
                             ),
                             // Filter according to expected closure date --------------------------------------------------------
                             !IsBlank(DateFrom_9.SelectedDate) && IsBlank(Value(Leadvalue_1.Text)) && IsBlank(radioCustomers_1.Selected) && IsBlank(radioStage_1.Selected) && IsBlank(radioCommit_1.Selected) && IsBlank(radioArea_2.Selected) && IsBlank(radioCompetitor_1.Selected) && IsBlank(DateFrom_8.SelectedDate),
                             Filter(
                                 offlineLeadCollection,
-                                DateValue('Expected Closure Date')  <=  DateValue(DateFrom_9.SelectedDate) && owninguser.'Primary Email'= User().Email
+                                DateValue(zx_expectedclosuredate)  <=  DateValue(DateFrom_9.SelectedDate) && owninguser.'Primary Email'= User().Email
                             ),
                             // Filter according to Stage and commit--------------------------------------------------------
                             !IsBlank(radioStage_1.Selected) && IsBlank(Value(Leadvalue_1.Text)) && IsBlank(radioCustomers_1.Selected) && !IsBlank(radioCommit_1.Selected) && IsBlank(radioArea_2.Selected) && IsBlank(radioCompetitor_1.Selected) || (varCreateddate = true || varEstimated=true),
                             Filter(
                                 offlineLeadCollection,
-                                'Lead Stage ' = radioStage_1.Selected.Value && Commited = radioCommit_1.Selected.Value && owninguser.'Primary Email'= User().Email
+                                zx_leadstage = radioStage_1.Selected.Value && zx_commited = radioCommit_1.Selected.Value && owninguser.'Primary Email'= User().Email
                             ),
                              // Filter according to Stage and Created date------------------------------------------------
                             !IsBlank(radioStage_1.Selected) && IsBlank(Value(Leadvalue_1.Text)) && IsBlank(radioCustomers_1.Selected) && IsBlank(radioCommit_1.Selected) && IsBlank(radioArea_2.Selected) && IsBlank(radioCompetitor_1.Selected) && !IsBlank(DateFrom_8.SelectedDate) && IsBlank(DateFrom_9.SelectedDate),
                             Filter(
                                 offlineLeadCollection,
-                                'Lead Stage ' = radioStage_1.Selected.Value && DateValue('Created On') >= DateValue(DateFrom_8.SelectedDate) && DateValue('Created On') <= DateValue(DateTo_8.SelectedDate) && owninguser.'Primary Email'= User().Email
+                                zx_leadstage = radioStage_1.Selected.Value && DateValue(createdon) >= DateValue(DateFrom_8.SelectedDate) && DateValue(createdon) <= DateValue(DateTo_8.SelectedDate) && owninguser.'Primary Email'= User().Email
                             ),
                             // Filter according to Stage and Lead value------------------------------------------------
                             !IsBlank(radioStage_1.Selected) && !IsBlank(Value(Leadvalue_1.Text)) && IsBlank(radioCustomers_1.Selected) && IsBlank(radioCommit_1.Selected) && IsBlank(radioArea_2.Selected) && IsBlank(radioCompetitor_1.Selected) || (varCreateddate = true || varEstimated=true),
                             Filter(
                                 offlineLeadCollection,
-                                'Lead Stage ' = radioStage_1.Selected.Value && 'Lead Value' = Value(Leadvalue_1.Text) && owninguser.'Primary Email'= User().Email
+                                zx_leadstage = radioStage_1.Selected.Value && zx_leadvalue = Value(Leadvalue_1.Text) && owninguser.'Primary Email'= User().Email
                             ),
                             // Filter according to Stage and Estimated closure date-------------------------------------------
                             !IsBlank(radioStage_1.Selected) && IsBlank(Value(Leadvalue_1.Text)) && IsBlank(radioCustomers_1.Selected) && IsBlank(radioCommit_1.Selected) && IsBlank(radioArea_2.Selected) && IsBlank(radioCompetitor_1.Selected) && IsBlank(DateFrom_8.SelectedDate) && !IsBlank(DateFrom_9.SelectedDate),
                             Filter(
                                 offlineLeadCollection,
-                                'Lead Stage ' = radioStage_1.Selected.Value && DateValue('Expected Closure Date') <= DateValue(DateFrom_9.SelectedDate) && owninguser.'Primary Email'= User().Email
+                                zx_leadstage = radioStage_1.Selected.Value && DateValue(zx_expectedclosuredate) <= DateValue(DateFrom_9.SelectedDate) && owninguser.'Primary Email'= User().Email
                             ),
                              // Filter according to Stage and Customer-------------------------------------------
                             !IsBlank(radioStage_1.Selected) && IsBlank(Value(Leadvalue_1.Text)) && !IsBlank(radioCustomers_1.Selected) && IsBlank(radioCommit_1.Selected) && IsBlank(radioArea_2.Selected) && IsBlank(radioCompetitor_1.Selected) || (varCreateddate = true || varEstimated=true),
                             Filter(
                                 offlineLeadCollection,
-                                'Lead Stage ' = radioStage_1.Selected.Value && Party.'Customer Name' = radioCustomers_1.Selected.'Customer Name' && owninguser.'Primary Email'= User().Email
+                                zx_leadstage = radioStage_1.Selected.Value && zx_Party.'Customer Name' = radioCustomers_1.Selected.'Customer Name' && owninguser.'Primary Email'= User().Email
                             ),
                             // Filter according to Stage and Area-------------------------------------------
                             !IsBlank(radioStage_1.Selected) && IsBlank(Value(Leadvalue_1.Text)) && IsBlank(radioCustomers_1.Selected) && IsBlank(radioCommit_1.Selected) && !IsBlank(radioArea_2.Selected) && IsBlank(radioCompetitor_1.Selected) || (varCreateddate = true || varEstimated=true),
                             Filter(
                                 offlineLeadCollection,
-                                'Lead Stage ' = radioStage_1.Selected.Value && Area.'Area Name' = radioArea_2.Selected.Areaname && owninguser.'Primary Email'= User().Email
+                                zx_leadstage = radioStage_1.Selected.Value && zx_Area.'Area Name' = radioArea_2.Selected.Areaname && owninguser.'Primary Email'= User().Email
                             ),
                             // Filter according to Stage and Competitor-------------------------------------------
                             !IsBlank(radioStage_1.Selected) && IsBlank(Value(Leadvalue_1.Text)) && IsBlank(radioCustomers_1.Selected) && IsBlank(radioCommit_1.Selected) && IsBlank(radioArea_2.Selected) && !IsBlank(radioCompetitor_1.Selected) || (varCreateddate = true || varEstimated=true),
                             Filter(
                                 offlineLeadCollection,
-                                'Lead Stage ' = radioStage_1.Selected.Value && Competitor.'Competitor Name' = radioCompetitor_1.Selected.'Competitor Name' && owninguser.'Primary Email'= User().Email
+                                zx_leadstage = radioStage_1.Selected.Value && zx_Competitor.'Competitor Name' = radioCompetitor_1.Selected.'Competitor Name' && owninguser.'Primary Email'= User().Email
                             ),
                             // Filter according to Stage,commit and created date--------------------------------------------------
                             !IsBlank(radioStage_1.Selected) && IsBlank(Value(Leadvalue_1.Text)) && IsBlank(radioCustomers_1.Selected) && !IsBlank(radioCommit_1.Selected) && IsBlank(radioArea_2.Selected) && IsBlank(radioCompetitor_1.Selected) && !IsBlank(DateFrom_8.SelectedDate) && IsBlank(DateFrom_9.SelectedDate),
                             Filter(
                                 offlineLeadCollection,
-                                'Lead Stage ' = radioStage_1.Selected.Value && Commited = radioCommit_1.Selected.Value && DateValue('Created On') >= DateValue(DateFrom_8.SelectedDate) && DateValue('Created On') <= DateValue(DateTo_8.SelectedDate) && owninguser.'Primary Email'= User().Email
+                                zx_leadstage = radioStage_1.Selected.Value && zx_commited = radioCommit_1.Selected.Value && DateValue(createdon) >= DateValue(DateFrom_8.SelectedDate) && DateValue(createdon) <= DateValue(DateTo_8.SelectedDate) && owninguser.'Primary Email'= User().Email
                             ),
                              // Filter according to Stage,commit and Lead Value--------------------------------------------------
                             !IsBlank(radioStage_1.Selected) && !IsBlank(Value(Leadvalue_1.Text)) && IsBlank(radioCustomers_1.Selected) && !IsBlank(radioCommit_1.Selected) && IsBlank(radioArea_2.Selected) && IsBlank(radioCompetitor_1.Selected) || (varCreateddate = true || varEstimated=true),
                             Filter(
                                 offlineLeadCollection,
-                                'Lead Stage ' = radioStage_1.Selected.Value && Commited = radioCommit_1.Selected.Value && 'Lead Value' = Value(Leadvalue_1.Text) && owninguser.'Primary Email'= User().Email
+                                zx_leadstage = radioStage_1.Selected.Value && zx_commited = radioCommit_1.Selected.Value && zx_leadvalue = Value(Leadvalue_1.Text) && owninguser.'Primary Email'= User().Email
                             ),
                                 // Filter according to Stage,commit and Estimated closure date --------------------
                             !IsBlank(radioStage_1.Selected) && IsBlank(Value(Leadvalue_1.Text)) && IsBlank(radioCustomers_1.Selected) && !IsBlank(radioCommit_1.Selected) && IsBlank(radioArea_2.Selected) && IsBlank(radioCompetitor_1.Selected) && IsBlank(DateFrom_8.SelectedDate) && !IsBlank(DateFrom_9.SelectedDate),
                             Filter(
                                 offlineLeadCollection,
-                                'Lead Stage ' = radioStage_1.Selected.Value && Commited = radioCommit_1.Selected.Value && DateValue('Expected Closure Date') <= DateValue(DateFrom_9.SelectedDate) && owninguser.'Primary Email'= User().Email
+                                zx_leadstage = radioStage_1.Selected.Value && zx_commited = radioCommit_1.Selected.Value && DateValue('Expected Closure Date') <= DateValue(DateFrom_9.SelectedDate) && owninguser.'Primary Email'= User().Email
                             ),
                     // Filter according to Stage,commit and Customer --------------------
                             !IsBlank(radioStage_1.Selected) && IsBlank(Value(Leadvalue_1.Text)) && !IsBlank(radioCustomers_1.Selected) && !IsBlank(radioCommit_1.Selected) && IsBlank(radioArea_2.Selected) && IsBlank(radioCompetitor_1.Selected) || (varCreateddate = true || varEstimated=true),
                             Filter(
                                 offlineLeadCollection,
-                                'Lead Stage ' = radioStage_1.Selected.Value && Commited = radioCommit_1.Selected.Value && Party.'Customer Name' = radioCustomers_1.Selected.'Customer Name' && 'Owning User'.'Primary Email'= User().Email
+                                zx_leadstage = radioStage_1.Selected.Value && zx_commited = radioCommit_1.Selected.Value && Party.'Customer Name' = radioCustomers_1.Selected.'Customer Name' && owninguser.'Primary Email'= User().Email
                             ),
                             // Filter according to Stage,commit and Area --------------------
                             !IsBlank(radioStage_1.Selected) && IsBlank(Value(Leadvalue_1.Text)) && IsBlank(radioCustomers_1.Selected) && !IsBlank(radioCommit_1.Selected) && !IsBlank(radioArea_2.Selected) && IsBlank(radioCompetitor_1.Selected) || (varCreateddate = true || varEstimated=true),
                             Filter(
                                 offlineLeadCollection,
-                                'Lead Stage ' = radioStage_1.Selected.Value && Commited = radioCommit_1.Selected.Value && Area.'Area Name' = radioArea_2.Selected.Areaname && 'Owning User'.'Primary Email'= User().Email
+                                zx_leadstage = radioStage_1.Selected.Value && zx_commited = radioCommit_1.Selected.Value && zx_Area.'Area Name' = radioArea_2.Selected.Areaname && owninguser.'Primary Email'= User().Email
                             ),
                             // Filter according to Stage,commit and Competitor --------------------
                             !IsBlank(radioStage_1.Selected) && IsBlank(Value(Leadvalue_1.Text)) && IsBlank(radioCustomers_1.Selected) && !IsBlank(radioCommit_1.Selected) && IsBlank(radioArea_2.Selected) && !IsBlank(radioCompetitor_1.Selected) || (varCreateddate = true || varEstimated=true),
                             Filter(
                                 offlineLeadCollection,
-                                'Lead Stage ' = radioStage_1.Selected.Value && Commited = radioCommit_1.Selected.Value && Competitor.'Competitor Name' = radioCompetitor_1.Selected.'Competitor Name' && 'Owning User'.'Primary Email'= User().Email
+                                zx_leadstage = radioStage_1.Selected.Value && zx_commited = radioCommit_1.Selected.Value && Competitor.'Competitor Name' = radioCompetitor_1.Selected.'Competitor Name' && owninguser.'Primary Email'= User().Email
                             ),
                     // Filter according to Stage,commit,created date and lead value--------------------------------------------
                             !IsBlank(radioStage_1.Selected) && !IsBlank(Value(Leadvalue_1.Text)) && IsBlank(radioCustomers_1.Selected) && !IsBlank(radioCommit_1.Selected) && IsBlank(radioArea_2.Selected) && IsBlank(radioCompetitor_1.Selected) && !IsBlank(DateFrom_8.SelectedDate) && IsBlank(DateFrom_9.SelectedDate),
                             Filter(
                                 offlineLeadCollection,
-                                'Lead Stage ' = radioStage_1.Selected.Value && Commited = radioCommit_1.Selected.Value && DateValue('Created On') >= DateValue(DateFrom_8.SelectedDate) && DateValue('Created On') <= DateValue(DateTo_8.SelectedDate) && 'Lead Value' = Value(Leadvalue_1.Text) && 'Owning User'.'Primary Email'= User().Email
+                                zx_leadstage = radioStage_1.Selected.Value && zx_commited = radioCommit_1.Selected.Value && DateValue(createdon) >= DateValue(DateFrom_8.SelectedDate) && DateValue(createdon) <= DateValue(DateTo_8.SelectedDate) && 'Lead Value' = Value(Leadvalue_1.Text) && owninguser.'Primary Email'= User().Email
                             ),
                     // Filter according to Stage,commit,created date and estimated date------------------------------------
                             !IsBlank(radioStage_1.Selected) && IsBlank(Value(Leadvalue_1.Text)) && IsBlank(radioCustomers_1.Selected) && !IsBlank(radioCommit_1.Selected) && IsBlank(radioArea_2.Selected) && IsBlank(radioCompetitor_1.Selected) && !IsBlank(DateFrom_8.SelectedDate) && !IsBlank(DateFrom_9.SelectedDate),
                             Filter(
                                 offlineLeadCollection,
-                                'Lead Stage ' = radioStage_1.Selected.Value && Commited = radioCommit_1.Selected.Value && DateValue('Created On') >= DateValue(DateFrom_8.SelectedDate) && DateValue('Created On') <= DateValue(DateTo_8.SelectedDate) && 'Expected Closure Date' <= DateValue(DateFrom_9.SelectedDate) && 'Owning User'.'Primary Email'= User().Email
+                                zx_leadstage = radioStage_1.Selected.Value && zx_commited = radioCommit_1.Selected.Value && DateValue(createdon) >= DateValue(DateFrom_8.SelectedDate) && DateValue(createdon) <= DateValue(DateTo_8.SelectedDate) && 'Expected Closure Date' <= DateValue(DateFrom_9.SelectedDate) && owninguser.'Primary Email'= User().Email
                             ),
                             // Filter according to Stage,commit,created date and Customer------------------------------------
                             !IsBlank(radioStage_1.Selected) && IsBlank(Value(Leadvalue_1.Text)) && !IsBlank(radioCustomers_1.Selected) && !IsBlank(radioCommit_1.Selected) && IsBlank(radioArea_2.Selected) && IsBlank(radioCompetitor_1.Selected) && !IsBlank(DateFrom_8.SelectedDate) && IsBlank(DateFrom_9.SelectedDate),
                             Filter(
                                 offlineLeadCollection,
-                                'Lead Stage ' = radioStage_1.Selected.Value && Commited = radioCommit_1.Selected.Value && DateValue('Created On') >= DateValue(DateFrom_8.SelectedDate) && DateValue('Created On') <= DateValue(DateTo_8.SelectedDate) && Party.'Customer Name' = radioCustomers_1.Selected.'Customer Name' && 'Owning User'.'Primary Email'= User().Email
+                                zx_leadstage = radioStage_1.Selected.Value && zx_commited = radioCommit_1.Selected.Value && DateValue(createdon) >= DateValue(DateFrom_8.SelectedDate) && DateValue(createdon) <= DateValue(DateTo_8.SelectedDate) && Party.'Customer Name' = radioCustomers_1.Selected.'Customer Name' && owninguser.'Primary Email'= User().Email
                             ),
                              // Filter according to Stage,commit,created date and Area------------------------------------
                             !IsBlank(radioStage_1.Selected) && IsBlank(Value(Leadvalue_1.Text)) && IsBlank(radioCustomers_1.Selected) && !IsBlank(radioCommit_1.Selected) && !IsBlank(radioArea_2.Selected) && IsBlank(radioCompetitor_1.Selected) && IsBlank(DateFrom_8.SelectedDate) && !IsBlank(DateFrom_9.SelectedDate),
                             Filter(
                                 offlineLeadCollection,
-                                'Lead Stage ' = radioStage_1.Selected.Value && Commited = radioCommit_1.Selected.Value && DateValue('Created On') >= DateValue(DateFrom_8.SelectedDate) && DateValue('Created On') <= DateValue(DateTo_8.SelectedDate) && Area.'Area Name' = radioArea_2.Selected.Areaname && 'Owning User'.'Primary Email'= User().Email
+                                zx_leadstage = radioStage_1.Selected.Value && zx_commited = radioCommit_1.Selected.Value && DateValue(createdon) >= DateValue(DateFrom_8.SelectedDate) && DateValue(createdon) <= DateValue(DateTo_8.SelectedDate) && Area.'Area Name' = radioArea_2.Selected.Areaname && owninguser.'Primary Email'= User().Email
                             ),
                             // Filter according to Stage,commit,created date and Competitor------------------------------------
                             !IsBlank(radioStage_1.Selected) && IsBlank(Value(Leadvalue_1.Text)) && IsBlank(radioCustomers_1.Selected) && !IsBlank(radioCommit_1.Selected) && IsBlank(radioArea_2.Selected) && !IsBlank(radioCompetitor_1.Selected) && IsBlank(DateFrom_8.SelectedDate) && !IsBlank(DateFrom_9.SelectedDate),
                             Filter(
                                 offlineLeadCollection,
-                                'Lead Stage ' = radioStage_1.Selected.Value && Commited = radioCommit_1.Selected.Value && DateValue('Created On') >= DateValue(DateFrom_8.SelectedDate) && DateValue('Created On') <= DateValue(DateTo_8.SelectedDate) && Competitor.'Competitor Name' = radioCompetitor_1.Selected.'Competitor Name' && 'Owning User'.'Primary Email'= User().Email
+                                zx_leadstage = radioStage_1.Selected.Value && zx_commited = radioCommit_1.Selected.Value && DateValue(createdon) >= DateValue(DateFrom_8.SelectedDate) && DateValue('Created On') <= DateValue(DateTo_8.SelectedDate) && Competitor.'Competitor Name' = radioCompetitor_1.Selected.'Competitor Name' && owninguser.'Primary Email'= User().Email
                             ),
                     // Filter according to Stage,commit,created date,lead value and estimated----------------------------------
                             !IsBlank(radioStage_1.Selected) && !IsBlank(Value(Leadvalue_1.Text)) && IsBlank(radioCustomers_1.Selected) && !IsBlank(radioCommit_1.Selected) && IsBlank(radioArea_2.Selected) && IsBlank(radioCompetitor_1.Selected) && !IsBlank(DateFrom_8.SelectedDate) && !IsBlank(DateFrom_9.SelectedDate),
                             Filter(
                                 offlineLeadCollection,
-                                'Lead Stage ' = radioStage_1.Selected.Value && Commited = radioCommit_1.Selected.Value && DateValue('Created On') >= DateValue(DateFrom_8.SelectedDate) && DateValue('Created On') <= DateValue(DateTo_8.SelectedDate) && 'Lead Value' = Value(Leadvalue_1.Text) && 'Expected Closure Date' <= DateValue(DateFrom_9.SelectedDate) && 'Owning User'.'Primary Email'= User().Email
+                                zx_leadstage = radioStage_1.Selected.Value && zx_commited = radioCommit_1.Selected.Value && DateValue('Created On') >= DateValue(DateFrom_8.SelectedDate) && DateValue('Created On') <= DateValue(DateTo_8.SelectedDate) && 'Lead Value' = Value(Leadvalue_1.Text) && 'Expected Closure Date' <= DateValue(DateFrom_9.SelectedDate) && owninguser.'Primary Email'= User().Email
                             ),
                     // Filter according to Stage,commit,created date,lead value and Customer--------------------------------
                             !IsBlank(radioStage_1.Selected) && !IsBlank(Value(Leadvalue_1.Text)) && !IsBlank(radioCustomers_1.Selected) && !IsBlank(radioCommit_1.Selected) && IsBlank(radioArea_2.Selected) && IsBlank(radioCompetitor_1.Selected) && !IsBlank(DateFrom_8.SelectedDate) && IsBlank(DateFrom_9.SelectedDate),
                             Filter(
                                 offlineLeadCollection,
-                                'Lead Stage ' = radioStage_1.Selected.Value && Commited = radioCommit_1.Selected.Value && DateValue('Created On') >= DateValue(DateFrom_8.SelectedDate) && DateValue('Created On') <= DateValue(DateTo_8.SelectedDate) && 'Lead Value' = Value(Leadvalue_1.Text) && Party.'Customer Name' = radioCustomers_1.Selected.'Customer Name' && 'Owning User'.'Primary Email'= User().Email
+                                zx_leadstage = radioStage_1.Selected.Value && zx_commited = radioCommit_1.Selected.Value && DateValue('Created On') >= DateValue(DateFrom_8.SelectedDate) && DateValue('Created On') <= DateValue(DateTo_8.SelectedDate) && 'Lead Value' = Value(Leadvalue_1.Text) && Party.'Customer Name' = radioCustomers_1.Selected.'Customer Name' && owninguser.'Primary Email'= User().Email
                             ),
                             // Filter according to Stage,commit,created date,lead value and Area--------------------------------
                             !IsBlank(radioStage_1.Selected) && !IsBlank(Value(Leadvalue_1.Text)) && IsBlank(radioCustomers_1.Selected) && !IsBlank(radioCommit_1.Selected) && !IsBlank(radioArea_2.Selected) && IsBlank(radioCompetitor_1.Selected) && !IsBlank(DateFrom_8.SelectedDate) && IsBlank(DateFrom_9.SelectedDate),
                             Filter(
                                 offlineLeadCollection,
-                                'Lead Stage ' = radioStage_1.Selected.Value && Commited = radioCommit_1.Selected.Value && DateValue('Created On') >= DateValue(DateFrom_8.SelectedDate) && DateValue('Created On') <= DateValue(DateTo_8.SelectedDate) && 'Lead Value' = Value(Leadvalue_1.Text) && Area.'Area Name' = radioArea_2.Selected.Areaname && 'Owning User'.'Primary Email'= User().Email
+                                zx_leadstage = radioStage_1.Selected.Value && zx_commited = radioCommit_1.Selected.Value && DateValue('Created On') >= DateValue(DateFrom_8.SelectedDate) && DateValue('Created On') <= DateValue(DateTo_8.SelectedDate) && 'Lead Value' = Value(Leadvalue_1.Text) && Area.'Area Name' = radioArea_2.Selected.Areaname && owninguser.'Primary Email'= User().Email
                             ),
                     // Filter according to Stage,commit,created date,lead value and Competitor--------------------------------
                             !IsBlank(radioStage_1.Selected) && !IsBlank(Value(Leadvalue_1.Text)) && IsBlank(radioCustomers_1.Selected) && !IsBlank(radioCommit_1.Selected) && IsBlank(radioArea_2.Selected) && !IsBlank(radioCompetitor_1.Selected) && !IsBlank(DateFrom_8.SelectedDate) && IsBlank(DateFrom_9.SelectedDate),
                             Filter(
                                 offlineLeadCollection,
-                                'Lead Stage ' = radioStage_1.Selected.Value && Commited = radioCommit_1.Selected.Value && DateValue('Created On') >= DateValue(DateFrom_8.SelectedDate) && DateValue('Created On') <= DateValue(DateTo_8.SelectedDate) && 'Lead Value' = Value(Leadvalue_1.Text) && Competitor.'Competitor Name' = radioCompetitor_1.Selected.'Competitor Name' && 'Owning User'.'Primary Email'= User().Email
+                                zx_leadstage = radioStage_1.Selected.Value && zx_commited = radioCommit_1.Selected.Value && DateValue('Created On') >= DateValue(DateFrom_8.SelectedDate) && DateValue('Created On') <= DateValue(DateTo_8.SelectedDate) && 'Lead Value' = Value(Leadvalue_1.Text) && Competitor.'Competitor Name' = radioCompetitor_1.Selected.'Competitor Name' && owninguser.'Primary Email'= User().Email
                             ),
                     // Filter according to Stage,commit,created date,lead value, estimated and customer
                             !IsBlank(radioStage_1.Selected) && !IsBlank(Value(Leadvalue_1.Text)) && !IsBlank(radioCustomers_1.Selected) && !IsBlank(radioCommit_1.Selected) && IsBlank(radioArea_2.Selected) && IsBlank(radioCompetitor_1.Selected) && !IsBlank(DateFrom_8.SelectedDate) && !IsBlank(DateFrom_9.SelectedDate),
                             Filter(
                                 offlineLeadCollection,
-                                'Lead Stage ' = radioStage_1.Selected.Value && Commited = radioCommit_1.Selected.Value && DateValue('Created On') >= DateValue(DateFrom_8.SelectedDate) && DateValue('Created On') <= DateValue(DateTo_8.SelectedDate) && 'Lead Value' = Value(Leadvalue_1.Text) && 'Expected Closure Date' <= DateValue(DateFrom_9.SelectedDate) && Party.'Customer Name' = radioCustomers_1.Selected.'Customer Name' && 'Owning User'.'Primary Email'= User().Email
+                                zx_leadstage = radioStage_1.Selected.Value && zx_commited = radioCommit_1.Selected.Value && DateValue('Created On') >= DateValue(DateFrom_8.SelectedDate) && DateValue('Created On') <= DateValue(DateTo_8.SelectedDate) && 'Lead Value' = Value(Leadvalue_1.Text) && 'Expected Closure Date' <= DateValue(DateFrom_9.SelectedDate) && Party.'Customer Name' = radioCustomers_1.Selected.'Customer Name' && owninguser.'Primary Email'= User().Email
                             ),
                     // Filter according to Stage,commit,created date,lead value,estimated and Competitor-------------------------
                             !IsBlank(radioStage_1.Selected) && !IsBlank(Value(Leadvalue_1.Text)) && IsBlank(radioCustomers_1.Selected) && !IsBlank(radioCommit_1.Selected) && IsBlank(radioArea_2.Selected) && !IsBlank(radioCompetitor_1.Selected) && !IsBlank(DateFrom_8.SelectedDate) && !IsBlank(DateFrom_9.SelectedDate),
                             Filter(
                                 offlineLeadCollection,
-                                'Lead Stage ' = radioStage_1.Selected.Value && Commited = radioCommit_1.Selected.Value && DateValue('Created On') >= DateValue(DateFrom_8.SelectedDate) && DateValue('Created On') <= DateValue(DateTo_8.SelectedDate) && 'Lead Value' = Value(Leadvalue_1.Text) && Competitor.'Competitor Name' = radioCompetitor_1.Selected.'Competitor Name' && 'Expected Closure Date' <= DateValue(DateFrom_9.SelectedDate) && 'Owning User'.'Primary Email'= User().Email
+                                zx_leadstage = radioStage_1.Selected.Value && zx_commited = radioCommit_1.Selected.Value && DateValue('Created On') >= DateValue(DateFrom_8.SelectedDate) && DateValue('Created On') <= DateValue(DateTo_8.SelectedDate) && 'Lead Value' = Value(Leadvalue_1.Text) && Competitor.'Competitor Name' = radioCompetitor_1.Selected.'Competitor Name' && 'Expected Closure Date' <= DateValue(DateFrom_9.SelectedDate) && owninguser.'Primary Email'= User().Email
                             ),
                     // Filter according to Stage,commit,created date,lead value,estimated and Area-------------------------
                             !IsBlank(radioStage_1.Selected) && !IsBlank(Value(Leadvalue_1.Text)) && IsBlank(radioCustomers_1.Selected) && !IsBlank(radioCommit_1.Selected) && !IsBlank(radioArea_2.Selected) && IsBlank(radioCompetitor_1.Selected) && !IsBlank(DateFrom_8.SelectedDate) && !IsBlank(DateFrom_9.SelectedDate),
                             Filter(
                                 offlineLeadCollection,
-                                'Lead Stage ' = radioStage_1.Selected.Value && Commited = radioCommit_1.Selected.Value && DateValue('Created On') >= DateValue(DateFrom_8.SelectedDate) && DateValue('Created On') <= DateValue(DateTo_8.SelectedDate) && 'Lead Value' = Value(Leadvalue_1.Text) && Area.'Area Name' = radioArea_2.Selected.Areaname && 'Expected Closure Date' <= DateValue(DateFrom_9.SelectedDate) && 'Owning User'.'Primary Email'= User().Email
+                                zx_leadstage = radioStage_1.Selected.Value && zx_commited = radioCommit_1.Selected.Value && DateValue('Created On') >= DateValue(DateFrom_8.SelectedDate) && DateValue('Created On') <= DateValue(DateTo_8.SelectedDate) && 'Lead Value' = Value(Leadvalue_1.Text) && Area.'Area Name' = radioArea_2.Selected.Areaname && 'Expected Closure Date' <= DateValue(DateFrom_9.SelectedDate) && owninguser.'Primary Email'= User().Email
                             ),
                     // Filter according to Stage,commit,created date,lead value, estimated,customer and area
                             !IsBlank(radioStage_1.Selected) && !IsBlank(Value(Leadvalue_1.Text)) && !IsBlank(radioCustomers_1.Selected) && !IsBlank(radioCommit_1.Selected) && !IsBlank(radioArea_2.Selected) && IsBlank(radioCompetitor_1.Selected) && !IsBlank(DateFrom_8.SelectedDate) && !IsBlank(DateFrom_9.SelectedDate),
                             Filter(
                                 offlineLeadCollection,
-                                'Lead Stage ' = radioStage_1.Selected.Value && Commited = radioCommit_1.Selected.Value && DateValue('Created On') >= DateValue(DateFrom_8.SelectedDate) && DateValue('Created On') <= DateValue(DateTo_8.SelectedDate) && 'Lead Value' = Value(Leadvalue_1.Text) && 'Expected Closure Date' <= DateValue(DateFrom_9.SelectedDate) && Party.'Customer Name' = radioCustomers_1.Selected.'Customer Name' && Area.'Area Name' = radioArea_2.Selected.Areaname && 'Owning User'.'Primary Email'= User().Email
+                                zx_leadstage = radioStage_1.Selected.Value && zx_commited = radioCommit_1.Selected.Value && DateValue('Created On') >= DateValue(DateFrom_8.SelectedDate) && DateValue('Created On') <= DateValue(DateTo_8.SelectedDate) && 'Lead Value' = Value(Leadvalue_1.Text) && 'Expected Closure Date' <= DateValue(DateFrom_9.SelectedDate) && Party.'Customer Name' = radioCustomers_1.Selected.'Customer Name' && Area.'Area Name' = radioArea_2.Selected.Areaname && owninguser.'Primary Email'= User().Email
                             ),
                             // Filter according to Stage,commit,created date,lead value, estimated,customer and Competitor
                             !IsBlank(radioStage_1.Selected) && !IsBlank(Value(Leadvalue_1.Text)) && !IsBlank(radioCustomers_1.Selected) && !IsBlank(radioCommit_1.Selected) && IsBlank(radioArea_2.Selected) && !IsBlank(radioCompetitor_1.Selected) && !IsBlank(DateFrom_8.SelectedDate) && !IsBlank(DateFrom_9.SelectedDate),
                             Filter(
                                 offlineLeadCollection,
-                                'Lead Stage ' = radioStage_1.Selected.Value && Commited = radioCommit_1.Selected.Value && DateValue('Created On') >= DateValue(DateFrom_8.SelectedDate) && DateValue('Created On') <= DateValue(DateTo_8.SelectedDate) && 'Lead Value' = Value(Leadvalue_1.Text) && 'Expected Closure Date' <= DateValue(DateFrom_9.SelectedDate) && Party.'Customer Name' = radioCustomers_1.Selected.'Customer Name' && Competitor.'Competitor Name' = radioCompetitor_1.Selected.'Competitor Name' && 'Owning User'.'Primary Email'= User().Email
+                                zx_leadstage = radioStage_1.Selected.Value && zx_commited = radioCommit_1.Selected.Value && DateValue('Created On') >= DateValue(DateFrom_8.SelectedDate) && DateValue('Created On') <= DateValue(DateTo_8.SelectedDate) && 'Lead Value' = Value(Leadvalue_1.Text) && 'Expected Closure Date' <= DateValue(DateFrom_9.SelectedDate) && Party.'Customer Name' = radioCustomers_1.Selected.'Customer Name' && Competitor.'Competitor Name' = radioCompetitor_1.Selected.'Competitor Name' && owninguser.'Primary Email'= User().Email
                             ),
                     // Filter according to Stage,commit,created date,lead value, estimated,customer,area and Competitor
                             !IsBlank(radioStage_1.Selected) && !IsBlank(Value(Leadvalue_1.Text)) && !IsBlank(radioCustomers_1.Selected) && !IsBlank(radioCommit_1.Selected) && !IsBlank(radioArea_2.Selected) && !IsBlank(radioCompetitor_1.Selected) && !IsBlank(DateFrom_8.SelectedDate) && !IsBlank(DateFrom_9.SelectedDate),
                             Filter(
                                 offlineLeadCollection,
-                                'Lead Stage ' = radioStage_1.Selected.Value && Commited = radioCommit_1.Selected.Value && DateValue('Created On') >= DateValue(DateFrom_8.SelectedDate) && DateValue('Created On') <= DateValue(DateTo_8.SelectedDate) && 'Lead Value' = Value(Leadvalue_1.Text) && 'Expected Closure Date' <= DateValue(DateFrom_9.SelectedDate) && Party.'Customer Name' = radioCustomers_1.Selected.'Customer Name' && Area.'Area Name' = radioArea_2.Selected.Areaname && Competitor.'Competitor Name' = radioCompetitor_1.Selected.'Competitor Name' && 'Owning User'.'Primary Email'= User().Email
+                                zx_leadstage = radioStage_1.Selected.Value && zx_commited = radioCommit_1.Selected.Value && DateValue('Created On') >= DateValue(DateFrom_8.SelectedDate) && DateValue('Created On') <= DateValue(DateTo_8.SelectedDate) && 'Lead Value' = Value(Leadvalue_1.Text) && 'Expected Closure Date' <= DateValue(DateFrom_9.SelectedDate) && Party.'Customer Name' = radioCustomers_1.Selected.'Customer Name' && Area.'Area Name' = radioArea_2.Selected.Areaname && Competitor.'Competitor Name' = radioCompetitor_1.Selected.'Competitor Name' && owninguser.'Primary Email'= User().Email
                             ),
                     // Filter according to commit and created date--------------------------------------------------
                             IsBlank(radioStage_1.Selected) && IsBlank(Value(Leadvalue_1.Text)) && IsBlank(radioCustomers_1.Selected) && !IsBlank(radioCommit_1.Selected) && IsBlank(radioArea_2.Selected) && IsBlank(radioCompetitor_1.Selected) && !IsBlank(DateFrom_8.SelectedDate) && IsBlank(DateFrom_9.SelectedDate),
                             Filter(
                                 offlineLeadCollection,
-                                 Commited = radioCommit_1.Selected.Value && DateValue('Created On') >= DateValue(DateFrom_8.SelectedDate) && DateValue('Created On') <= DateValue(DateTo_8.SelectedDate) && 'Owning User'.'Primary Email'= User().Email
+                                 zx_commited = radioCommit_1.Selected.Value && DateValue('Created On') >= DateValue(DateFrom_8.SelectedDate) && DateValue('Created On') <= DateValue(DateTo_8.SelectedDate) && owninguser.'Primary Email'= User().Email
                             ),
                     // Filter according to commit and lead value--------------------------------------------------
                             IsBlank(radioStage_1.Selected) && !IsBlank(Value(Leadvalue_1.Text)) && IsBlank(radioCustomers_1.Selected) && !IsBlank(radioCommit_1.Selected) && IsBlank(radioArea_2.Selected) && IsBlank(radioCompetitor_1.Selected) || (varCreateddate = true || varEstimated=true),
                             Filter(
                                 offlineLeadCollection,
-                                 Commited = radioCommit_1.Selected.Value && 'Lead Value' = Value(Leadvalue_1.Text) && 'Owning User'.'Primary Email'= User().Email
+                                 zx_commited = radioCommit_1.Selected.Value && 'Lead Value' = Value(Leadvalue_1.Text) && owninguser.'Primary Email'= User().Email
                             ),
                         // Filter according to commit and estimated--------------------------------------------------
                             IsBlank(radioStage_1.Selected) && IsBlank(Value(Leadvalue_1.Text)) && IsBlank(radioCustomers_1.Selected) && !IsBlank(radioCommit_1.Selected) && IsBlank(radioArea_2.Selected) && IsBlank(radioCompetitor_1.Selected) && IsBlank(DateFrom_8.SelectedDate) && !IsBlank(DateFrom_9.SelectedDate),
                             Filter(
                                 offlineLeadCollection,
-                                 Commited = radioCommit_1.Selected.Value && 'Expected Closure Date' <= DateValue(DateFrom_9.SelectedDate) && 'Owning User'.'Primary Email'= User().Email
+                                 zx_commited = radioCommit_1.Selected.Value && 'Expected Closure Date' <= DateValue(DateFrom_9.SelectedDate) && owninguser.'Primary Email'= User().Email
                             ),
                     // Filter according to commit and Customer--------------------------------------------------
                             IsBlank(radioStage_1.Selected) && IsBlank(Value(Leadvalue_1.Text)) && !IsBlank(radioCustomers_1.Selected) && !IsBlank(radioCommit_1.Selected) && IsBlank(radioArea_2.Selected) && IsBlank(radioCompetitor_1.Selected) || (varCreateddate = true || varEstimated=true),
                             Filter(
                                 offlineLeadCollection,
-                                 Commited = radioCommit_1.Selected.Value && Party.'Customer Name' = radioCustomers_1.Selected.'Customer Name' && 'Owning User'.'Primary Email'= User().Email
+                                 zx_commited = radioCommit_1.Selected.Value && Party.'Customer Name' = radioCustomers_1.Selected.'Customer Name' && owninguser.'Primary Email'= User().Email
                             ),
                     // Filter according to commit and area--------------------------------------------------
                             IsBlank(radioStage_1.Selected) && IsBlank(Value(Leadvalue_1.Text)) && IsBlank(radioCustomers_1.Selected) && !IsBlank(radioCommit_1.Selected) && !IsBlank(radioArea_2.Selected) && IsBlank(radioCompetitor_1.Selected) || (varCreateddate = true || varEstimated=true),
                             Filter(
                                 offlineLeadCollection,
-                                 Commited = radioCommit_1.Selected.Value &&  Area.'Area Name' = radioArea_2.Selected.Areaname && 'Owning User'.'Primary Email'= User().Email
+                                 zx_commited = radioCommit_1.Selected.Value &&  Area.'Area Name' = radioArea_2.Selected.Areaname && owninguser.'Primary Email'= User().Email
                             ),
                     // Filter according to commit and Competitor--------------------------------------------------
                             IsBlank(radioStage_1.Selected) && IsBlank(Value(Leadvalue_1.Text)) && IsBlank(radioCustomers_1.Selected) && !IsBlank(radioCommit_1.Selected) && IsBlank(radioArea_2.Selected) && !IsBlank(radioCompetitor_1.Selected) || (varCreateddate = true || varEstimated=true),
                             Filter(
                                 offlineLeadCollection,
-                                 Commited = radioCommit_1.Selected.Value && Competitor.'Competitor Name' = radioCompetitor_1.Selected.'Competitor Name' && 'Owning User'.'Primary Email'= User().Email
+                                 zx_commited = radioCommit_1.Selected.Value && Competitor.'Competitor Name' = radioCompetitor_1.Selected.'Competitor Name' && owninguser.'Primary Email'= User().Email
                             ),
                     // Filter according to commit,created date,lead value-----------------------
                             IsBlank(radioStage_1.Selected) && !IsBlank(Value(Leadvalue_1.Text)) && IsBlank(radioCustomers_1.Selected) && !IsBlank(radioCommit_1.Selected) && IsBlank(radioArea_2.Selected) && IsBlank(radioCompetitor_1.Selected) && !IsBlank(DateFrom_8.SelectedDate) && IsBlank(DateFrom_9.SelectedDate),
                             Filter(
                                 offlineLeadCollection,
-                                 Commited = radioCommit_1.Selected.Value && DateValue('Created On') >= DateValue(DateFrom_8.SelectedDate) && DateValue('Created On') <= DateValue(DateTo_8.SelectedDate) && 'Lead Value' = Value(Leadvalue_1.Text) && 'Owning User'.'Primary Email'= User().Email
+                                 zx_commited = radioCommit_1.Selected.Value && DateValue('Created On') >= DateValue(DateFrom_8.SelectedDate) && DateValue('Created On') <= DateValue(DateTo_8.SelectedDate) && 'Lead Value' = Value(Leadvalue_1.Text) && owninguser.'Primary Email'= User().Email
                             ),
                     // Filter according to commit,created date, estimated----------------
                             IsBlank(radioStage_1.Selected) && IsBlank(Value(Leadvalue_1.Text)) && IsBlank(radioCustomers_1.Selected) && !IsBlank(radioCommit_1.Selected) && IsBlank(radioArea_2.Selected) && IsBlank(radioCompetitor_1.Selected) && !IsBlank(DateFrom_8.SelectedDate) && !IsBlank(DateFrom_9.SelectedDate),
                             Filter(
                                 offlineLeadCollection,
-                                Commited = radioCommit_1.Selected.Value && DateValue('Created On') >= DateValue(DateFrom_8.SelectedDate) && DateValue('Created On') <= DateValue(DateTo_8.SelectedDate) && 'Expected Closure Date' <= DateValue(DateFrom_9.SelectedDate) && 'Owning User'.'Primary Email'= User().Email
+                                zx_commited = radioCommit_1.Selected.Value && DateValue('Created On') >= DateValue(DateFrom_8.SelectedDate) && DateValue('Created On') <= DateValue(DateTo_8.SelectedDate) && 'Expected Closure Date' <= DateValue(DateFrom_9.SelectedDate) && owninguser.'Primary Email'= User().Email
                             ),
                     // Filter according to commit,created date,customer----------
                             IsBlank(radioStage_1.Selected) && IsBlank(Value(Leadvalue_1.Text)) && !IsBlank(radioCustomers_1.Selected) && !IsBlank(radioCommit_1.Selected) && IsBlank(radioArea_2.Selected) && IsBlank(radioCompetitor_1.Selected) && !IsBlank(DateFrom_8.SelectedDate) && IsBlank(DateFrom_9.SelectedDate),
                             Filter(
                                 offlineLeadCollection,
-                                Commited = radioCommit_1.Selected.Value && DateValue('Created On') >= DateValue(DateFrom_8.SelectedDate) && DateValue('Created On') <= DateValue(DateTo_8.SelectedDate) && Party.'Customer Name' = radioCustomers_1.Selected.'Customer Name' && 'Owning User'.'Primary Email'= User().Email
+                               zx_commited = radioCommit_1.Selected.Value && DateValue('Created On') >= DateValue(DateFrom_8.SelectedDate) && DateValue('Created On') <= DateValue(DateTo_8.SelectedDate) && Party.'Customer Name' = radioCustomers_1.Selected.'Customer Name' && owninguser.'Primary Email'= User().Email
                             ),
                     // Filter according to commit,created date,area -----------------
                             IsBlank(radioStage_1.Selected) && IsBlank(Value(Leadvalue_1.Text)) && IsBlank(radioCustomers_1.Selected) && !IsBlank(radioCommit_1.Selected) && !IsBlank(radioArea_2.Selected) && IsBlank(radioCompetitor_1.Selected) && !IsBlank(DateFrom_8.SelectedDate) && IsBlank(DateFrom_9.SelectedDate),
                             Filter(
                                 offlineLeadCollection,
-                                 Commited = radioCommit_1.Selected.Value && DateValue('Created On') >= DateValue(DateFrom_8.SelectedDate) && DateValue('Created On') <= DateValue(DateTo_8.SelectedDate)  && Area.'Area Name' = radioArea_2.Selected.Areaname && 'Owning User'.'Primary Email'= User().Email
+                                zx_commited = radioCommit_1.Selected.Value && DateValue('Created On') >= DateValue(DateFrom_8.SelectedDate) && DateValue('Created On') <= DateValue(DateTo_8.SelectedDate)  && Area.'Area Name' = radioArea_2.Selected.Areaname && owninguser.'Primary Email'= User().Email
                             ),
                     // Filter according to commit,created date, Competitor-------------------
                             IsBlank(radioStage_1.Selected) && IsBlank(Value(Leadvalue_1.Text)) && IsBlank(radioCustomers_1.Selected) && !IsBlank(radioCommit_1.Selected) && IsBlank(radioArea_2.Selected) && !IsBlank(radioCompetitor_1.Selected) && !IsBlank(DateFrom_8.SelectedDate) && IsBlank(DateFrom_9.SelectedDate),
                             Filter(
                                 offlineLeadCollection,
-                                 Commited = radioCommit_1.Selected.Value && DateValue('Created On') >= DateValue(DateFrom_8.SelectedDate) && DateValue('Created On') <= DateValue(DateTo_8.SelectedDate) && 'Expected Closure Date' <= DateValue(DateFrom_9.SelectedDate) && Competitor.'Competitor Name' = radioCompetitor_1.Selected.'Competitor Name' && 'Owning User'.'Primary Email'= User().Email
+                                zx_commited = radioCommit_1.Selected.Value && DateValue('Created On') >= DateValue(DateFrom_8.SelectedDate) && DateValue('Created On') <= DateValue(DateTo_8.SelectedDate) && 'Expected Closure Date' <= DateValue(DateFrom_9.SelectedDate) && Competitor.'Competitor Name' = radioCompetitor_1.Selected.'Competitor Name' && owninguser.'Primary Email'= User().Email
                             ),
                     // Filter according to commit,created date,lead value, estimated-----------------
                             IsBlank(radioStage_1.Selected) && !IsBlank(Value(Leadvalue_1.Text)) && IsBlank(radioCustomers_1.Selected) && !IsBlank(radioCommit_1.Selected) && IsBlank(radioArea_2.Selected) && IsBlank(radioCompetitor_1.Selected) && !IsBlank(DateFrom_8.SelectedDate) && !IsBlank(DateFrom_9.SelectedDate),
                             Filter(
                                 offlineLeadCollection,
-                                 Commited = radioCommit_1.Selected.Value && DateValue('Created On') >= DateValue(DateFrom_8.SelectedDate) && DateValue('Created On') <= DateValue(DateTo_8.SelectedDate) && 'Lead Value' = Value(Leadvalue_1.Text) && 'Expected Closure Date' <= DateValue(DateFrom_9.SelectedDate) && 'Owning User'.'Primary Email'= User().Email
+                                zx_commited = radioCommit_1.Selected.Value && DateValue('Created On') >= DateValue(DateFrom_8.SelectedDate) && DateValue('Created On') <= DateValue(DateTo_8.SelectedDate) && 'Lead Value' = Value(Leadvalue_1.Text) && 'Expected Closure Date' <= DateValue(DateFrom_9.SelectedDate) && owninguser.'Primary Email'= User().Email
                             ),
                             // Filter according to commit,created date,lead value, customer------------------
                             IsBlank(radioStage_1.Selected) && !IsBlank(Value(Leadvalue_1.Text)) && !IsBlank(radioCustomers_1.Selected) && !IsBlank(radioCommit_1.Selected) && !IsBlank(radioArea_2.Selected) && IsBlank(radioCompetitor_1.Selected) && !IsBlank(DateFrom_8.SelectedDate) && IsBlank(DateFrom_9.SelectedDate),
                             Filter(
                                 offlineLeadCollection,
-                                 Commited = radioCommit_1.Selected.Value && DateValue('Created On') >= DateValue(DateFrom_8.SelectedDate) && DateValue('Created On') <= DateValue(DateTo_8.SelectedDate) && 'Lead Value' = Value(Leadvalue_1.Text) && Party.'Customer Name' = radioCustomers_1.Selected.'Customer Name' && 'Owning User'.'Primary Email'= User().Email
+                                zx_commited = radioCommit_1.Selected.Value && DateValue('Created On') >= DateValue(DateFrom_8.SelectedDate) && DateValue('Created On') <= DateValue(DateTo_8.SelectedDate) && 'Lead Value' = Value(Leadvalue_1.Text) && Party.'Customer Name' = radioCustomers_1.Selected.'Customer Name' && owninguser.'Primary Email'= User().Email
                             ),
                             // Filter according to commit,created date,lead value, area --------------------------------------
                             IsBlank(radioStage_1.Selected) && !IsBlank(Value(Leadvalue_1.Text)) && IsBlank(radioCustomers_1.Selected) && !IsBlank(radioCommit_1.Selected) && !IsBlank(radioArea_2.Selected) && IsBlank(radioCompetitor_1.Selected) && !IsBlank(DateFrom_8.SelectedDate) && IsBlank(DateFrom_9.SelectedDate),
                             Filter(
                                 offlineLeadCollection,
-                                 Commited = radioCommit_1.Selected.Value && DateValue('Created On') >= DateValue(DateFrom_8.SelectedDate) && DateValue('Created On') <= DateValue(DateTo_8.SelectedDate) && 'Lead Value' = Value(Leadvalue_1.Text) && Area.'Area Name' = radioArea_2.Selected.Areaname && 'Owning User'.'Primary Email'= User().Email
+                                zx_commited = radioCommit_1.Selected.Value && DateValue('Created On') >= DateValue(DateFrom_8.SelectedDate) && DateValue('Created On') <= DateValue(DateTo_8.SelectedDate) && 'Lead Value' = Value(Leadvalue_1.Text) && Area.'Area Name' = radioArea_2.Selected.Areaname && owninguser.'Primary Email'= User().Email
                             ),
                             // Filter according to commit,created date,lead value,  Competitor
                             IsBlank(radioStage_1.Selected) && !IsBlank(Value(Leadvalue_1.Text)) && IsBlank(radioCustomers_1.Selected) && !IsBlank(radioCommit_1.Selected) && IsBlank(radioArea_2.Selected) && !IsBlank(radioCompetitor_1.Selected) && !IsBlank(DateFrom_8.SelectedDate) && IsBlank(DateFrom_9.SelectedDate),
                             Filter(
                                 offlineLeadCollection,
-                                 Commited = radioCommit_1.Selected.Value && DateValue('Created On') >= DateValue(DateFrom_8.SelectedDate) && DateValue('Created On') <= DateValue(DateTo_8.SelectedDate) &&  'Lead Value' = Value(Leadvalue_1.Text) &&  Competitor.'Competitor Name' = radioCompetitor_1.Selected.'Competitor Name' && 'Owning User'.'Primary Email'= User().Email
+                                zx_commited = radioCommit_1.Selected.Value && DateValue('Created On') >= DateValue(DateFrom_8.SelectedDate) && DateValue('Created On') <= DateValue(DateTo_8.SelectedDate) &&  'Lead Value' = Value(Leadvalue_1.Text) &&  Competitor.'Competitor Name' = radioCompetitor_1.Selected.'Competitor Name' && owninguser.'Primary Email'= User().Email
                             ),
                             // Filter according to commit,created date,lead value, estimated and customer-----------------
                             IsBlank(radioStage_1.Selected) && !IsBlank(Value(Leadvalue_1.Text)) && !IsBlank(radioCustomers_1.Selected) && !IsBlank(radioCommit_1.Selected) && IsBlank(radioArea_2.Selected) && IsBlank(radioCompetitor_1.Selected) && !IsBlank(DateFrom_8.SelectedDate) && !IsBlank(DateFrom_9.SelectedDate),
                             Filter(
                                 offlineLeadCollection,
-                                 Commited = radioCommit_1.Selected.Value && DateValue('Created On') >= DateValue(DateFrom_8.SelectedDate) && DateValue('Created On') <= DateValue(DateTo_8.SelectedDate) && 'Lead Value' = Value(Leadvalue_1.Text) && 'Expected Closure Date' <= DateValue(DateFrom_9.SelectedDate) && Party.'Customer Name' = radioCustomers_1.Selected.'Customer Name' && 'Owning User'.'Primary Email'= User().Email
+                                zx_commited = radioCommit_1.Selected.Value && DateValue('Created On') >= DateValue(DateFrom_8.SelectedDate) && DateValue('Created On') <= DateValue(DateTo_8.SelectedDate) && 'Lead Value' = Value(Leadvalue_1.Text) && 'Expected Closure Date' <= DateValue(DateFrom_9.SelectedDate) && Party.'Customer Name' = radioCustomers_1.Selected.'Customer Name' && owninguser.'Primary Email'= User().Email
                             ),
                             // Filter according to commit,created date,lead value, estimated and Area-----------------
                             IsBlank(radioStage_1.Selected) && !IsBlank(Value(Leadvalue_1.Text)) && IsBlank(radioCustomers_1.Selected) && !IsBlank(radioCommit_1.Selected) && !IsBlank(radioArea_2.Selected) && IsBlank(radioCompetitor_1.Selected) && !IsBlank(DateFrom_8.SelectedDate) && !IsBlank(DateFrom_9.SelectedDate),
                             Filter(
                                 offlineLeadCollection,
-                                 Commited = radioCommit_1.Selected.Value && DateValue('Created On') >= DateValue(DateFrom_8.SelectedDate) && DateValue('Created On') <= DateValue(DateTo_8.SelectedDate) && 'Lead Value' = Value(Leadvalue_1.Text) && 'Expected Closure Date' <= DateValue(DateFrom_9.SelectedDate) && Area.'Area Name' = radioArea_2.Selected.Areaname && 'Owning User'.'Primary Email'= User().Email
+                                zx_commited = radioCommit_1.Selected.Value && DateValue('Created On') >= DateValue(DateFrom_8.SelectedDate) && DateValue('Created On') <= DateValue(DateTo_8.SelectedDate) && 'Lead Value' = Value(Leadvalue_1.Text) && 'Expected Closure Date' <= DateValue(DateFrom_9.SelectedDate) && Area.'Area Name' = radioArea_2.Selected.Areaname && owninguser.'Primary Email'= User().Email
                             ),
                             // Filter according to commit,created date,lead value, estimated and Competitor-----------------
                             IsBlank(radioStage_1.Selected) && !IsBlank(Value(Leadvalue_1.Text)) && IsBlank(radioCustomers_1.Selected) && !IsBlank(radioCommit_1.Selected) && !IsBlank(radioArea_2.Selected) && IsBlank(radioCompetitor_1.Selected) && !IsBlank(DateFrom_8.SelectedDate) && !IsBlank(DateFrom_9.SelectedDate),
                             Filter(
                                 offlineLeadCollection,
-                                 Commited = radioCommit_1.Selected.Value && DateValue('Created On') >= DateValue(DateFrom_8.SelectedDate) && DateValue('Created On') <= DateValue(DateTo_8.SelectedDate) && 'Lead Value' = Value(Leadvalue_1.Text) && 'Expected Closure Date' <= DateValue(DateFrom_9.SelectedDate) &&  Competitor.'Competitor Name' = radioCompetitor_1.Selected.'Competitor Name' && 'Owning User'.'Primary Email'= User().Email
+                                zx_commited = radioCommit_1.Selected.Value && DateValue('Created On') >= DateValue(DateFrom_8.SelectedDate) && DateValue('Created On') <= DateValue(DateTo_8.SelectedDate) && 'Lead Value' = Value(Leadvalue_1.Text) && 'Expected Closure Date' <= DateValue(DateFrom_9.SelectedDate) &&  Competitor.'Competitor Name' = radioCompetitor_1.Selected.'Competitor Name' && owninguser.'Primary Email'= User().Email
                             ),
                             // Filter according to commit,created date,lead value, estimated,customer,area----
                             IsBlank(radioStage_1.Selected) && !IsBlank(Value(Leadvalue_1.Text)) && !IsBlank(radioCustomers_1.Selected) && !IsBlank(radioCommit_1.Selected) && !IsBlank(radioArea_2.Selected) && IsBlank(radioCompetitor_1.Selected) && !IsBlank(DateFrom_8.SelectedDate) && !IsBlank(DateFrom_9.SelectedDate),
                             Filter(
                                 offlineLeadCollection,
-                                Commited = radioCommit_1.Selected.Value && DateValue('Created On') >= DateValue(DateFrom_8.SelectedDate) && DateValue('Created On') <= DateValue(DateTo_8.SelectedDate) && 'Lead Value' = Value(Leadvalue_1.Text) && 'Expected Closure Date' <= DateValue(DateFrom_9.SelectedDate) && Party.'Customer Name' = radioCustomers_1.Selected.'Customer Name' && Area.'Area Name' = radioArea_2.Selected.Areaname && 'Owning User'.'Primary Email'= User().Email
+                               zx_commited = radioCommit_1.Selected.Value && DateValue('Created On') >= DateValue(DateFrom_8.SelectedDate) && DateValue('Created On') <= DateValue(DateTo_8.SelectedDate) && 'Lead Value' = Value(Leadvalue_1.Text) && 'Expected Closure Date' <= DateValue(DateFrom_9.SelectedDate) && Party.'Customer Name' = radioCustomers_1.Selected.'Customer Name' && Area.'Area Name' = radioArea_2.Selected.Areaname && owninguser.'Primary Email'= User().Email
                             ),
                         // Filter according to commit,created date,lead value, estimated,customer,Competitor----
                             IsBlank(radioStage_1.Selected) && !IsBlank(Value(Leadvalue_1.Text)) && !IsBlank(radioCustomers_1.Selected) && !IsBlank(radioCommit_1.Selected) && IsBlank(radioArea_2.Selected) && !IsBlank(radioCompetitor_1.Selected) && !IsBlank(DateFrom_8.SelectedDate) && !IsBlank(DateFrom_9.SelectedDate),
                             Filter(
                                 offlineLeadCollection,
-                                Commited = radioCommit_1.Selected.Value && DateValue('Created On') >= DateValue(DateFrom_8.SelectedDate) && DateValue('Created On') <= DateValue(DateTo_8.SelectedDate) && 'Lead Value' = Value(Leadvalue_1.Text) && 'Expected Closure Date' <= DateValue(DateFrom_9.SelectedDate) && Party.'Customer Name' = radioCustomers_1.Selected.'Customer Name' &&  Competitor.'Competitor Name' = radioCompetitor_1.Selected.'Competitor Name' && 'Owning User'.'Primary Email'= User().Email
+                               zx_commited = radioCommit_1.Selected.Value && DateValue('Created On') >= DateValue(DateFrom_8.SelectedDate) && DateValue('Created On') <= DateValue(DateTo_8.SelectedDate) && 'Lead Value' = Value(Leadvalue_1.Text) && 'Expected Closure Date' <= DateValue(DateFrom_9.SelectedDate) && Party.'Customer Name' = radioCustomers_1.Selected.'Customer Name' &&  Competitor.'Competitor Name' = radioCompetitor_1.Selected.'Competitor Name' && owninguser.'Primary Email'= User().Email
                             ),
                     // Filter according to commit,created date,lead value, estimated,customer,area and Competitor
                             IsBlank(radioStage_1.Selected) && !IsBlank(Value(Leadvalue_1.Text)) && !IsBlank(radioCustomers_1.Selected) && !IsBlank(radioCommit_1.Selected) && !IsBlank(radioArea_2.Selected) && !IsBlank(radioCompetitor_1.Selected) && !IsBlank(DateFrom_8.SelectedDate) && !IsBlank(DateFrom_9.SelectedDate),
                             Filter(
                                 offlineLeadCollection,
-                                Commited = radioCommit_1.Selected.Value && DateValue('Created On') >= DateValue(DateFrom_8.SelectedDate) && DateValue('Created On') <= DateValue(DateTo_8.SelectedDate) && 'Lead Value' = Value(Leadvalue_1.Text) && 'Expected Closure Date' <= DateValue(DateFrom_9.SelectedDate) && Party.'Customer Name' = radioCustomers_1.Selected.'Customer Name' && Area.'Area Name' = radioArea_2.Selected.Areaname && Competitor.'Competitor Name' = radioCompetitor_1.Selected.'Competitor Name' && 'Owning User'.'Primary Email'= User().Email
+                               zx_commited = radioCommit_1.Selected.Value && DateValue('Created On') >= DateValue(DateFrom_8.SelectedDate) && DateValue('Created On') <= DateValue(DateTo_8.SelectedDate) && 'Lead Value' = Value(Leadvalue_1.Text) && 'Expected Closure Date' <= DateValue(DateFrom_9.SelectedDate) && Party.'Customer Name' = radioCustomers_1.Selected.'Customer Name' && Area.'Area Name' = radioArea_2.Selected.Areaname && Competitor.'Competitor Name' = radioCompetitor_1.Selected.'Competitor Name' && owninguser.'Primary Email'= User().Email
                             ),
                             // Filter according to Created date and lead value------------------------------------------------
                             IsBlank(radioStage_1.Selected) && !IsBlank(Value(Leadvalue_1.Text)) && IsBlank(radioCustomers_1.Selected) && IsBlank(radioCommit_1.Selected) && IsBlank(radioArea_2.Selected) && IsBlank(radioCompetitor_1.Selected) && !IsBlank(DateFrom_8.SelectedDate) && IsBlank(DateFrom_9.SelectedDate),
                             Filter(
                                 offlineLeadCollection,
-                                DateValue('Created On') >= DateValue(DateFrom_8.SelectedDate) && DateValue('Created On') <= DateValue(DateTo_8.SelectedDate) && 'Lead Value' = Value(Leadvalue_1.Text) && 'Owning User'.'Primary Email'= User().Email
+                                DateValue('Created On') >= DateValue(DateFrom_8.SelectedDate) && DateValue('Created On') <= DateValue(DateTo_8.SelectedDate) && 'Lead Value' = Value(Leadvalue_1.Text) && owninguser.'Primary Email'= User().Email
                             ),
                             // Filter according to Created date and estimated------------------------------------------------
                             IsBlank(radioStage_1.Selected) && IsBlank(Value(Leadvalue_1.Text)) && IsBlank(radioCustomers_1.Selected) && IsBlank(radioCommit_1.Selected) && IsBlank(radioArea_2.Selected) && IsBlank(radioCompetitor_1.Selected) && !IsBlank(DateFrom_8.SelectedDate) && !IsBlank(DateFrom_9.SelectedDate),
                             Filter(
                                 offlineLeadCollection,
-                                DateValue('Created On') >= DateValue(DateFrom_8.SelectedDate) && DateValue('Created On') <= DateValue(DateTo_8.SelectedDate) && 'Expected Closure Date' <= DateValue(DateFrom_9.SelectedDate) && 'Owning User'.'Primary Email'= User().Email
+                                DateValue('Created On') >= DateValue(DateFrom_8.SelectedDate) && DateValue('Created On') <= DateValue(DateTo_8.SelectedDate) && 'Expected Closure Date' <= DateValue(DateFrom_9.SelectedDate) && owninguser.'Primary Email'= User().Email
                             ),
                             // Filter according to Created date and customer------------------------------------------------
                             IsBlank(radioStage_1.Selected) && IsBlank(Value(Leadvalue_1.Text)) && !IsBlank(radioCustomers_1.Selected) && IsBlank(radioCommit_1.Selected) && IsBlank(radioArea_2.Selected) && IsBlank(radioCompetitor_1.Selected) && !IsBlank(DateFrom_8.SelectedDate) && IsBlank(DateFrom_9.SelectedDate),
                             Filter(
                                 offlineLeadCollection,
-                                DateValue('Created On') >= DateValue(DateFrom_8.SelectedDate) && DateValue('Created On') <= DateValue(DateTo_8.SelectedDate) && Party.'Customer Name' = radioCustomers_1.Selected.'Customer Name' && 'Owning User'.'Primary Email'= User().Email
+                                DateValue('Created On') >= DateValue(DateFrom_8.SelectedDate) && DateValue('Created On') <= DateValue(DateTo_8.SelectedDate) && Party.'Customer Name' = radioCustomers_1.Selected.'Customer Name' && owninguser.'Primary Email'= User().Email
                             ),
                             // Filter according to Created date and area------------------------------------------------
                             IsBlank(radioStage_1.Selected) && IsBlank(Value(Leadvalue_1.Text)) && IsBlank(radioCustomers_1.Selected) && IsBlank(radioCommit_1.Selected) && !IsBlank(radioArea_2.Selected) && IsBlank(radioCompetitor_1.Selected) && !IsBlank(DateFrom_8.SelectedDate) && IsBlank(DateFrom_9.SelectedDate),
                             Filter(
                                 offlineLeadCollection,
-                                DateValue('Created On') >= DateValue(DateFrom_8.SelectedDate) && DateValue('Created On') <= DateValue(DateTo_8.SelectedDate) && Area.'Area Name' = radioArea_2.Selected.Areaname && 'Owning User'.'Primary Email'= User().Email
+                                DateValue('Created On') >= DateValue(DateFrom_8.SelectedDate) && DateValue('Created On') <= DateValue(DateTo_8.SelectedDate) && Area.'Area Name' = radioArea_2.Selected.Areaname && owninguser.'Primary Email'= User().Email
                             ),
                              // Filter according to Created date and Competitor------------------------------------------------
                             IsBlank(radioStage_1.Selected) && IsBlank(Value(Leadvalue_1.Text)) && IsBlank(radioCustomers_1.Selected) && IsBlank(radioCommit_1.Selected) && IsBlank(radioArea_2.Selected) && !IsBlank(radioCompetitor_1.Selected) && !IsBlank(DateFrom_8.SelectedDate) && IsBlank(DateFrom_9.SelectedDate),
                             Filter(
                                 offlineLeadCollection,
-                                DateValue('Created On') >= DateValue(DateFrom_8.SelectedDate) && DateValue('Created On') <= DateValue(DateTo_8.SelectedDate) && Competitor.'Competitor Name' = radioCompetitor_1.Selected.'Competitor Name' && 'Owning User'.'Primary Email'= User().Email
+                                DateValue('Created On') >= DateValue(DateFrom_8.SelectedDate) && DateValue('Created On') <= DateValue(DateTo_8.SelectedDate) && Competitor.'Competitor Name' = radioCompetitor_1.Selected.'Competitor Name' && owninguser.'Primary Email'= User().Email
                             ),
                     // Filter according to Created date,lead value and estimated date--------------------------------------------
                             IsBlank(radioStage_1.Selected) && !IsBlank(Value(Leadvalue_1.Text)) && IsBlank(radioCustomers_1.Selected) && IsBlank(radioCommit_1.Selected) && IsBlank(radioArea_2.Selected) && IsBlank(radioCompetitor_1.Selected) && !IsBlank(DateFrom_8.SelectedDate) && !IsBlank(DateFrom_9.SelectedDate),
                             Filter(
                                 offlineLeadCollection,
-                                DateValue('Created On') >= DateValue(DateFrom_8.SelectedDate) && DateValue('Created On') <= DateValue(DateTo_8.SelectedDate) && 'Lead Value' = Value(Leadvalue_1.Text) && 'Expected Closure Date' <= DateValue(DateFrom_9.SelectedDate) && 'Owning User'.'Primary Email'= User().Email
+                                DateValue('Created On') >= DateValue(DateFrom_8.SelectedDate) && DateValue('Created On') <= DateValue(DateTo_8.SelectedDate) && 'Lead Value' = Value(Leadvalue_1.Text) && 'Expected Closure Date' <= DateValue(DateFrom_9.SelectedDate) && owninguser.'Primary Email'= User().Email
                             ),
                     // Filter according to Created date,lead value and Customer-----------------------------------------
                             IsBlank(radioStage_1.Selected) && !IsBlank(Value(Leadvalue_1.Text)) && !IsBlank(radioCustomers_1.Selected) && IsBlank(radioCommit_1.Selected) && IsBlank(radioArea_2.Selected) && IsBlank(radioCompetitor_1.Selected) && !IsBlank(DateFrom_8.SelectedDate) && IsBlank(DateFrom_9.SelectedDate),
                             Filter(
                                 offlineLeadCollection,
-                                DateValue('Created On') >= DateValue(DateFrom_8.SelectedDate) && DateValue('Created On') <= DateValue(DateTo_8.SelectedDate) && 'Lead Value' = Value(Leadvalue_1.Text) && Party.'Customer Name' = radioCustomers_1.Selected.'Customer Name' && 'Owning User'.'Primary Email'= User().Email
+                                DateValue('Created On') >= DateValue(DateFrom_8.SelectedDate) && DateValue('Created On') <= DateValue(DateTo_8.SelectedDate) && 'Lead Value' = Value(Leadvalue_1.Text) && Party.'Customer Name' = radioCustomers_1.Selected.'Customer Name' && owninguser.'Primary Email'= User().Email
                             ),
                         // Filter according to Created date,lead value and Area-----------------------------------------
                             IsBlank(radioStage_1.Selected) && !IsBlank(Value(Leadvalue_1.Text)) && IsBlank(radioCustomers_1.Selected) && IsBlank(radioCommit_1.Selected) && !IsBlank(radioArea_2.Selected) && IsBlank(radioCompetitor_1.Selected) && !IsBlank(DateFrom_8.SelectedDate) && IsBlank(DateFrom_9.SelectedDate),
                             Filter(
                                 offlineLeadCollection,
-                                DateValue('Created On') >= DateValue(DateFrom_8.SelectedDate) && DateValue('Created On') <= DateValue(DateTo_8.SelectedDate) && 'Lead Value' = Value(Leadvalue_1.Text) && Area.'Area Name' = radioArea_2.Selected.Areaname && 'Owning User'.'Primary Email'= User().Email
+                                DateValue('Created On') >= DateValue(DateFrom_8.SelectedDate) && DateValue('Created On') <= DateValue(DateTo_8.SelectedDate) && 'Lead Value' = Value(Leadvalue_1.Text) && Area.'Area Name' = radioArea_2.Selected.Areaname && owninguser.'Primary Email'= User().Email
                             ),
                         // Filter according to Created date,lead value and Competitor-----------------------------------------
                             IsBlank(radioStage_1.Selected) && !IsBlank(Value(Leadvalue_1.Text)) && IsBlank(radioCustomers_1.Selected) && IsBlank(radioCommit_1.Selected) && IsBlank(radioArea_2.Selected) && !IsBlank(radioCompetitor_1.Selected) && !IsBlank(DateFrom_8.SelectedDate) && IsBlank(DateFrom_9.SelectedDate),
                             Filter(
                                 offlineLeadCollection,
-                                DateValue('Created On') >= DateValue(DateFrom_8.SelectedDate) && DateValue('Created On') <= DateValue(DateTo_8.SelectedDate) && 'Lead Value' = Value(Leadvalue_1.Text) && Competitor.'Competitor Name' = radioCompetitor_1.Selected.'Competitor Name' && 'Owning User'.'Primary Email'= User().Email
+                                DateValue('Created On') >= DateValue(DateFrom_8.SelectedDate) && DateValue('Created On') <= DateValue(DateTo_8.SelectedDate) && 'Lead Value' = Value(Leadvalue_1.Text) && Competitor.'Competitor Name' = radioCompetitor_1.Selected.'Competitor Name' && owninguser.'Primary Email'= User().Email
                             ),
                     // Filter according to Created date,lead value,estimated date and customer----------------------------------
                             IsBlank(radioStage_1.Selected) && !IsBlank(Value(Leadvalue_1.Text)) && !IsBlank(radioCustomers_1.Selected) && IsBlank(radioCommit_1.Selected) && IsBlank(radioArea_2.Selected) && IsBlank(radioCompetitor_1.Selected) && !IsBlank(DateFrom_8.SelectedDate) && !IsBlank(DateFrom_9.SelectedDate),
                             Filter(
                                 offlineLeadCollection,
-                                DateValue('Created On') >= DateValue(DateFrom_8.SelectedDate) && DateValue('Created On') <= DateValue(DateTo_8.SelectedDate) && 'Lead Value' = Value(Leadvalue_1.Text) && 'Expected Closure Date' <= DateValue(DateFrom_9.SelectedDate) && Party.'Customer Name' = radioCustomers_1.Selected.'Customer Name' && 'Owning User'.'Primary Email'= User().Email
+                                DateValue('Created On') >= DateValue(DateFrom_8.SelectedDate) && DateValue('Created On') <= DateValue(DateTo_8.SelectedDate) && 'Lead Value' = Value(Leadvalue_1.Text) && 'Expected Closure Date' <= DateValue(DateFrom_9.SelectedDate) && Party.'Customer Name' = radioCustomers_1.Selected.'Customer Name' && owninguser.'Primary Email'= User().Email
                             ),
                             // Filter according to Created date,lead value,estimated date and area------------------------------
                             IsBlank(radioStage_1.Selected) && !IsBlank(Value(Leadvalue_1.Text)) && IsBlank(radioCustomers_1.Selected) && IsBlank(radioCommit_1.Selected) && !IsBlank(radioArea_2.Selected) && IsBlank(radioCompetitor_1.Selected) && !IsBlank(DateFrom_8.SelectedDate) && !IsBlank(DateFrom_9.SelectedDate),
                             Filter(
                                 offlineLeadCollection,
-                                DateValue('Created On') >= DateValue(DateFrom_8.SelectedDate) && DateValue('Created On') <= DateValue(DateTo_8.SelectedDate) && 'Lead Value' = Value(Leadvalue_1.Text) && 'Expected Closure Date' <= DateValue(DateFrom_9.SelectedDate) && Area.'Area Name' = radioArea_2.Selected.Areaname && 'Owning User'.'Primary Email'= User().Email
+                                DateValue('Created On') >= DateValue(DateFrom_8.SelectedDate) && DateValue('Created On') <= DateValue(DateTo_8.SelectedDate) && 'Lead Value' = Value(Leadvalue_1.Text) && 'Expected Closure Date' <= DateValue(DateFrom_9.SelectedDate) && Area.'Area Name' = radioArea_2.Selected.Areaname && owninguser.'Primary Email'= User().Email
                             ),
                      // Filter according to Created date,lead value,estimated date and Competitior----------------------------
                             IsBlank(radioStage_1.Selected) && !IsBlank(Value(Leadvalue_1.Text)) && IsBlank(radioCustomers_1.Selected) && IsBlank(radioCommit_1.Selected) && IsBlank(radioArea_2.Selected) && !IsBlank(radioCompetitor_1.Selected) && !IsBlank(DateFrom_8.SelectedDate) && !IsBlank(DateFrom_9.SelectedDate),
                             Filter(
                                 offlineLeadCollection,
-                                DateValue('Created On') >= DateValue(DateFrom_8.SelectedDate) && DateValue('Created On') <= DateValue(DateTo_8.SelectedDate) && 'Lead Value' = Value(Leadvalue_1.Text) && 'Expected Closure Date' <= DateValue(DateFrom_9.SelectedDate) && Competitor.'Competitor Name' = radioCompetitor_1.Selected.'Competitor Name' && 'Owning User'.'Primary Email'= User().Email
+                                DateValue('Created On') >= DateValue(DateFrom_8.SelectedDate) && DateValue('Created On') <= DateValue(DateTo_8.SelectedDate) && 'Lead Value' = Value(Leadvalue_1.Text) && 'Expected Closure Date' <= DateValue(DateFrom_9.SelectedDate) && Competitor.'Competitor Name' = radioCompetitor_1.Selected.'Competitor Name' && owninguser.'Primary Email'= User().Email
                             ),
                     // Filter according to Created date,lead value,estimated date,customer and area----------------------------------
                             IsBlank(radioStage_1.Selected) && !IsBlank(Value(Leadvalue_1.Text)) && !IsBlank(radioCustomers_1.Selected) && IsBlank(radioCommit_1.Selected) && !IsBlank(radioArea_2.Selected) && IsBlank(radioCompetitor_1.Selected) && !IsBlank(DateFrom_8.SelectedDate) && !IsBlank(DateFrom_9.SelectedDate),
@@ -1641,13 +1641,13 @@
                             IsBlank(radioStage_1.Selected) && IsBlank(Value(Leadvalue_1.Text)) && !IsBlank(radioCustomers_1.Selected) && IsBlank(radioCommit_1.Selected) && !IsBlank(radioArea_2.Selected) && !IsBlank(radioCompetitor_1.Selected) || (varCreateddate = true || varEstimated=true),
                             Filter(
                                 offlineLeadCollection,
-                               Party.'Customer Name' = radioCustomers_1.Selected.'Customer Name' && Area.'Area Name' = radioArea_2.Selected.Areaname && Competitor.'Competitor Name' = radioCompetitor_1.Selected.'Competitor Name' && 'Owning User'.'Primary Email'= User().Email
+                               Party.'Customer Name' = radioCustomers_1.Selected.'Customer Name' && Area.'Area Name' = radioArea_2.Selected.Areaname && Competitor.'Competitor Name' = radioCompetitor_1.Selected.'Competitor Name' && owninguser.'Primary Email'= User().Email
                             ),
                              // Filter according to area and competitior ------------------------
                             IsBlank(radioStage_1.Selected) && IsBlank(Value(Leadvalue_1.Text)) && IsBlank(radioCustomers_1.Selected) && IsBlank(radioCommit_1.Selected) && !IsBlank(radioArea_2.Selected) && !IsBlank(radioCompetitor_1.Selected) || (varCreateddate = true || varEstimated=true),
                             Filter(
                                 offlineLeadCollection,
-                                Area.'Area Name' = radioArea_2.Selected.Areaname && Competitor.'Competitor Name' = radioCompetitor_1.Selected.'Competitor Name' && 'Owning User'.'Primary Email'= User().Email
+                                zx_Area.'Area Name' = radioArea_2.Selected.Areaname && zx_Competitor.'Competitor Name' = radioCompetitor_1.Selected.'Competitor Name' && owninguser.'Primary Email'= User().Email
                             )
                         )
                     );

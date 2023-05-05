@@ -1,0 +1,49 @@
+"'Activity Detail Screen' As screen":
+    LoadingSpinnerColor: =RGBA(0, 120, 212, 1)
+
+    Header_19 As Header_17:
+        ScreenName: =varActivityData.new_leadactivityid
+
+    "'Detail Page_3' As 'Detail Page'":
+        DataSource: |-
+            =Table({
+                    Title: "Activity Id:",
+                    Data:varActivityData.new_leadactivityid
+                },
+                {
+                    Title: "Type:",
+                    Data:Text(varActivityData.new_activitytype)
+                },
+                {
+                    Title: "Contact:",
+                    Data: varActivityData.new_Contact.'First Name' & " "& varActivityData.new_Contact.'Last Name'
+                },
+                {
+                    Title: "Remarks:",
+                    Data:varActivityData.new_activityremarks
+                },
+                {
+                    Title: "Outcome:",
+                    Data: Text(varActivityData.new_activityoutcome)
+                },
+                {
+                    Title: "Duration:",
+                    Data: Text(varActivityData.new_duration)
+                },
+                {
+                    Title: "Next Follow-Up Date:",
+                    Data: Text(varActivityData.new_nextfollowupdate,"dd-mm-yyyy")
+                },
+                {
+                    Title: "Next Follow-Up Activity:",
+                    Data: Text(varActivityData.new_followupactivitytype)
+                }
+            )
+        Height: =962
+        Y: =80
+        ZIndex: =2
+
+    "'Bottom Bar_21' As 'Bottom Bar_19'":
+        Y: =996
+        ZIndex: =3
+
