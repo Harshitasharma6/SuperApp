@@ -155,6 +155,22 @@ Home As screen:
                 Y: =90
                 ZIndex: =11
 
+            GreetingLbl_1 As label:
+                BorderColor: =RGBA(0, 18, 107, 1)
+                Color: |-
+                    =_VarGblAppColors.PrimaryRed
+                    //RGBA(0, 0, 0, 1)
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                FontWeight: =FontWeight.Bold
+                Height: =68
+                Size: =28
+                Text: =User().FullName
+                Width: =533
+                Wrap: =false
+                X: =30
+                Y: =121
+                ZIndex: =12
+
             "'Report Speak' As group":
                 Height: =5
                 Width: =5
@@ -230,22 +246,6 @@ Home As screen:
                     X: =30
                     Y: =1028
                     ZIndex: =8
-
-            GreetingLbl_1 As label:
-                BorderColor: =RGBA(0, 18, 107, 1)
-                Color: |-
-                    =_VarGblAppColors.PrimaryRed
-                    //RGBA(0, 0, 0, 1)
-                DisabledColor: =RGBA(166, 166, 166, 1)
-                FontWeight: =FontWeight.Bold
-                Height: =68
-                Size: =28
-                Text: =User().FullName
-                Width: =533
-                Wrap: =false
-                X: =30
-                Y: =121
-                ZIndex: =12
 
             PieChart4 As pieChart:
                 DisabledBorderColor: =RGBA(166, 166, 166, 1)
@@ -640,6 +640,24 @@ Home As screen:
                 Y: =671
                 ZIndex: =28
 
+            HtmlText1_1 As htmlViewer:
+                Height: =237
+                HtmlText: |
+                    ="<div style='margin:10px;width:578px;height:183px;background-color:#;box-shadow:0 3px 6px 1px  #ccc; border-radius:15px'></div>"
+                Width: =623
+                X: =17
+                Y: =206
+                ZIndex: =29
+
+            HtmlText1 As htmlViewer:
+                Height: =237
+                HtmlText: |
+                    ="<div style='margin:10px;width:578px;height:202px;background-color:#;box-shadow:0 3px 6px 1px  #ccc; border-radius:15px'></div>"
+                Width: =623
+                X: =17
+                Y: =414
+                ZIndex: =30
+
     "'Absent type Gallery' As gallery.galleryVertical":
         AccessibleLabel: ="Present"
         BorderColor: =RGBA(0, 18, 107, 1)
@@ -909,15 +927,6 @@ Home As screen:
         Y: =1026
         ZIndex: =15
 
-    HtmlText1_1 As htmlViewer:
-        Height: =237
-        HtmlText: |
-            ="<div style='margin:10px;width:578px;height:183px;background-color:#;box-shadow:0 3px 6px 1px  #ccc; border-radius:15px'></div>"
-        Width: =623
-        X: =17
-        Y: =207
-        ZIndex: =16
-
     "'Take Selfie Lbl' As label":
         Align: =Align.Center
         BorderColor: =RGBA(0, 18, 107, 1)
@@ -975,15 +984,6 @@ Home As screen:
         X: =28
         Y: =559
         ZIndex: =20
-
-    HtmlText1 As htmlViewer:
-        Height: =237
-        HtmlText: |
-            ="<div style='margin:10px;width:578px;height:202px;background-color:#;box-shadow:0 3px 6px 1px  #ccc; border-radius:15px'></div>"
-        Width: =623
-        X: =17
-        Y: =415
-        ZIndex: =21
 
     Rectangle18 As rectangle:
         AccessibleLabel: ="Home Screen"
@@ -1062,14 +1062,14 @@ Home As screen:
         BorderColor: =RGBA(0, 18, 107, 1)
         Fill: =RGBA(255, 255, 255, 1)
         FocusedBorderThickness: =
-        Height: =248
+        Height: =275
         Items: =Choices(Present)
         Layout: =Layout.Vertical
         TabIndex: =0
-        TemplateSize: =75
+        TemplateSize: =73
         Transition: =Transition.Push
         Visible: =_VarStartdayModal
-        Y: =421
+        Y: =446
         ZIndex: =23
 
         Button8 As button:
@@ -1094,7 +1094,7 @@ Home As screen:
             Size: =_VarGblAppFonts.Size.Medium
             Text: =ThisItem.Value
             Width: =363
-            X: =128
-            Y: =8
+            X: =134
+            Y: =9
             ZIndex: =2
 
