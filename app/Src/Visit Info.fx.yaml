@@ -271,9 +271,9 @@
                         If(
                             !IsBlank(UploadedImage2_1.Image),
                             Patch(
-                                Visit.S,
+                                Visits,
                                 LookUp(
-                                    'Visit.S',
+                                    Visits,
                                     Visit = dataVisit.zx_visitid
                                 ),
                                 {

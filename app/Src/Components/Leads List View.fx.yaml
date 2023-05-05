@@ -165,7 +165,7 @@
             DisabledColor: =RGBA(166, 166, 166, 1)
             FocusedBorderColor: =Color.Transparent
             FocusedBorderThickness: =01
-            Font: =LookUp('Environment Variable Definitions', 'Display Name'="Common Heading Font").'Default Value'
+            Font: =_VarGblAppFonts.Heading
             FontWeight: =FontWeight.Bold
             Height: =75
             OnSelect: |
@@ -206,7 +206,7 @@
             Color: =_VarGblAppColors.PrimaryRed
             DisabledColor: =RGBA(166, 166, 166, 1)
             FocusedBorderThickness: =01
-            Font: =LookUp('Environment Variable Definitions', 'Display Name'="Common Heading Font").'Default Value'
+            Font: =_VarGblAppFonts.Heading
             FontWeight: =FontWeight.Bold
             Height: =74
             OnSelect: |-
@@ -227,7 +227,7 @@
             Color: =RGBA(0, 0, 0, 1)
             DisabledColor: =RGBA(166, 166, 166, 1)
             FocusedBorderThickness: =01
-            Font: =LookUp('Environment Variable Definitions', 'Display Name'="Common Heading Font").'Default Value'
+            Font: =_VarGblAppFonts.Heading
             FontWeight: =FontWeight.Semibold
             Height: =75
             OnSelect: |-
@@ -252,7 +252,7 @@
             Color: =RGBA(0, 0, 0, 1)
             DisabledColor: =RGBA(166, 166, 166, 1)
             FocusedBorderThickness: =01
-            Font: =LookUp('Environment Variable Definitions', 'Display Name'="Common Heading Font").'Default Value'
+            Font: =_VarGblAppFonts.Heading
             FontWeight: =FontWeight.Semibold
             Height: =74
             OnSelect: |-
@@ -275,7 +275,7 @@
             Color: =RGBA(0, 0, 0, 1)
             DisabledColor: =RGBA(166, 166, 166, 1)
             FocusedBorderThickness: =1
-            Font: =LookUp('Environment Variable Definitions', 'Display Name'="Common Heading Font").'Default Value'
+            Font: =_VarGblAppFonts.Heading
             FontWeight: =FontWeight.Semibold
             Height: =55
             OnSelect: |-
@@ -298,7 +298,7 @@
             Color: =RGBA(0, 0, 0, 1)
             DisabledColor: =RGBA(166, 166, 166, 1)
             FocusedBorderThickness: =1
-            Font: =LookUp('Environment Variable Definitions', 'Display Name'="Common Heading Font").'Default Value'
+            Font: =_VarGblAppFonts.Heading
             FontWeight: =FontWeight.Semibold
             Height: =55
             OnSelect: |-
@@ -510,10 +510,7 @@
             DisabledBorderColor: =RGBA(166, 166, 166, 1)
             DisabledColor: =RGBA(166, 166, 166, 1)
             DisabledFill: =RGBA(244, 244, 244, 1)
-            Fill: |-
-                =If(ThisItem.IsSelected, _VarGblAppColors.PrimaryRed,ColorFade(
-                    ColorValue(LookUp('Environment Variable Definitions', 'Display Name'="Common Primary Background").'Default Value')
-                     ,20%))
+            Fill: =If(ThisItem.IsSelected, _VarGblAppColors.PrimaryRed,ColorFade( _VarGblAppColors.PrimaryBg,20%))
             Font: =Font.'Segoe UI'
             FontWeight: =FontWeight.Bold
             Height: =29.5

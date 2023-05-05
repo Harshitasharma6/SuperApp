@@ -66,7 +66,7 @@ PlanPJPCart As screen:
 
         Title2Lbl_12 As label:
             BorderColor: =RGBA(0, 18, 107, 1)
-            Color: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Text Primary Color").'Default Value') // ColorValue(LookUp('Environment Variable Definitions', 'Display Name'="Button Color").'Default Value')
+            Color: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Text Primary Color").'Default Value') //_VarGblAppColors.textbgbutton
             DisabledColor: =RGBA(166, 166, 166, 1)
             Font: =LookUp(c_EnvironmentVariable,'Display Name'="Common Heading Font").'Default Value'
             FontWeight: =FontWeight.Semibold
@@ -284,7 +284,7 @@ PlanPJPCart As screen:
             ZIndex: =14
 
         Button26_1 As button:
-            BorderColor: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Text Primary Color").'Default Value') // ColorValue(LookUp('Environment Variable Definitions', 'Display Name'="Button Color").'Default Value')
+            BorderColor: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Text Primary Color").'Default Value') //_VarGblAppColors.textbgbutton
             DisabledBorderColor: =RGBA(166, 166, 166, 1)
             DisabledColor: =RGBA(166, 166, 166, 1)
             DisabledFill: =RGBA(244, 244, 244, 1)

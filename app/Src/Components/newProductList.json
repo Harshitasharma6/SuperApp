@@ -1236,7 +1236,7 @@
           },
           {
             "Category": "Design",
-            "InvariantScript": "ColorValue(LookUp('Environment Variable Definitions', 'Display Name'=\"Common Primary Background\").'Default Value')",
+            "InvariantScript": "_VarGblAppColors.PrimaryBg",
             "Property": "Fill",
             "RuleProviderType": "Unknown"
           },
@@ -1718,7 +1718,7 @@
               },
               {
                 "Category": "Design",
-                "InvariantScript": "//RGBA(0, 0, 0, 1)\r\nIf(ThisItem.IsSelected,\r\nColorValue(LookUp('Environment Variable Definitions', 'Display Name'=\"Button Fill\").'Default Value'),\r\nColorValue(LookUp('Environment Variable Definitions', 'Display Name'=\"Button Color\").'Default Value'))",
+                "InvariantScript": "//RGBA(0, 0, 0, 1)\r\nIf(ThisItem.IsSelected,_VarGblAppColors.PrimaryRed,_VarGblAppColors.textbgbutton)",
                 "Property": "Color",
                 "RuleProviderType": "Unknown"
               },
@@ -3172,7 +3172,7 @@
               },
               {
                 "Category": "Design",
-                "InvariantScript": "ColorValue(LookUp('Environment Variable Definitions', 'Display Name'=\"Text Light Color\").'Default Value')",
+                "InvariantScript": "_VarGblAppColors.LightText",
                 "Property": "BorderColor",
                 "RuleProviderType": "Unknown"
               },
@@ -7674,7 +7674,7 @@
               },
               {
                 "Category": "Design",
-                "InvariantScript": "ColorValue(LookUp('Environment Variable Definitions', 'Display Name'=\"Text Light Color\").'Default Value')",
+                "InvariantScript": "_VarGblAppColors.LightText",
                 "Property": "BorderColor",
                 "RuleProviderType": "Unknown"
               },
@@ -9192,7 +9192,7 @@
         "NameMapSourceSchema": "?"
       }
     ],
-    "LastModifiedTimestamp": "638189080714405268",
+    "LastModifiedTimestamp": "638189097628809104",
     "Name": "newProductList",
     "Rules": [
       {
@@ -9282,7 +9282,7 @@
   "IsPcfControl": false,
   "IsPremiumPcfControl": false,
   "IsWidgetTemplate": false,
-  "LastModifiedTimestamp": "638189080714405268",
+  "LastModifiedTimestamp": "638189097628809104",
   "Name": "162c1d3ff75049d5a85979f39b6a3090",
   "OverridableProperties": {},
   "TemplateOriginalName": "6c3191d24540484d8f9aaa4915017e1e",

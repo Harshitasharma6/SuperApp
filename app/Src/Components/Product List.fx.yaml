@@ -118,7 +118,7 @@
 
     Divider_3 As rectangle:
         BorderColor: =RGBA(0, 18, 107, 1)
-        Fill: =ColorValue(LookUp('Environment Variable Definitions', 'Display Name'="Common Primary Background").'Default Value')
+        Fill: =_VarGblAppColors.PrimaryBg
         Height: =40
         Width: =2
         X: =533
@@ -158,7 +158,7 @@
         ZIndex: =6
 
         "'Product BG_6' As button":
-            BorderColor: =ColorValue(LookUp('Environment Variable Definitions', 'Display Name'="Text Light Color").'Default Value')
+            BorderColor: =_VarGblAppColors.LightText
             BorderThickness: =1
             Color: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Hover Color").'Default Value')
             DisabledBorderColor: =RGBA(166, 166, 166, 1)
@@ -1202,7 +1202,7 @@
         ZIndex: =7
 
         "'Product BG_7' As button":
-            BorderColor: =ColorValue(LookUp('Environment Variable Definitions', 'Display Name'="Text Light Color").'Default Value')
+            BorderColor: =_VarGblAppColors.LightText
             BorderThickness: =0
             Color: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Hover Color").'Default Value')
             DisabledBorderColor: =RGBA(166, 166, 166, 1)
@@ -1308,7 +1308,7 @@
                     ZIndex: =1
 
                     "'Product BG_9' As button":
-                        BorderColor: =ColorValue(LookUp('Environment Variable Definitions', 'Display Name'="Text Light Color").'Default Value')
+                        BorderColor: =_VarGblAppColors.LightText
                         BorderThickness: =1
                         Color: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Hover Color").'Default Value')
                         DisabledBorderColor: =RGBA(166, 166, 166, 1)
@@ -1727,7 +1727,7 @@
             ZIndex: =6
 
             "'Product BG_8' As button":
-                BorderColor: =ColorValue(LookUp('Environment Variable Definitions', 'Display Name'="Text Light Color").'Default Value')
+                BorderColor: =_VarGblAppColors.LightText
                 BorderThickness: =1
                 Color: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Hover Color").'Default Value')
                 DisabledBorderColor: =RGBA(166, 166, 166, 1)

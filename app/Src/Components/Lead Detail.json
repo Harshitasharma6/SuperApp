@@ -458,7 +458,7 @@
               },
               {
                 "Category": "Design",
-                "InvariantScript": "If(ProdAddd=ThisItem.Id, ColorValue(LookUp('Environment Variable Definitions', 'Display Name'=\"Button Fill\").'Default Value'),ColorFade( ColorValue(LookUp('Environment Variable Definitions', 'Display Name'=\"Common Primary Background\").'Default Value'),20%))",
+                "InvariantScript": "If(ProdAddd=ThisItem.Id, _VarGblAppColors.PrimaryRed,ColorFade( _VarGblAppColors.PrimaryBg,20%))",
                 "Property": "Fill",
                 "RuleProviderType": "Unknown"
               },
@@ -1534,7 +1534,7 @@
               },
               {
                 "Category": "Design",
-                "InvariantScript": "LookUp('Environment Variable Definitions', 'Display Name'=\"Common Heading Font\").'Default Value'",
+                "InvariantScript": "_VarGblAppFonts.Heading",
                 "Property": "Font",
                 "RuleProviderType": "Unknown"
               },
@@ -1977,7 +1977,7 @@
               },
               {
                 "Category": "Design",
-                "InvariantScript": "LookUp('Environment Variable Definitions', 'Display Name'=\"Common Heading Font\").'Default Value'",
+                "InvariantScript": "_VarGblAppFonts.Heading",
                 "Property": "Font",
                 "RuleProviderType": "Unknown"
               },
@@ -2625,7 +2625,7 @@
               },
               {
                 "Category": "Design",
-                "InvariantScript": "LookUp('Environment Variable Definitions', 'Display Name'=\"Common Heading Font\").'Default Value'",
+                "InvariantScript": "_VarGblAppFonts.Heading",
                 "Property": "Font",
                 "RuleProviderType": "Unknown"
               },
@@ -3068,7 +3068,7 @@
               },
               {
                 "Category": "Design",
-                "InvariantScript": "LookUp('Environment Variable Definitions', 'Display Name'=\"Common Heading Font\").'Default Value'",
+                "InvariantScript": "_VarGblAppFonts.Heading",
                 "Property": "Font",
                 "RuleProviderType": "Unknown"
               },
@@ -3898,7 +3898,7 @@
               },
               {
                 "Category": "Design",
-                "InvariantScript": "LookUp('Environment Variable Definitions', 'Display Name'=\"Common Heading Font\").'Default Value'",
+                "InvariantScript": "_VarGblAppFonts.Heading",
                 "Property": "Font",
                 "RuleProviderType": "Unknown"
               },
@@ -4335,7 +4335,7 @@
               },
               {
                 "Category": "Design",
-                "InvariantScript": "LookUp('Environment Variable Definitions', 'Display Name'=\"Common Heading Font\").'Default Value'",
+                "InvariantScript": "_VarGblAppFonts.Heading",
                 "Property": "Font",
                 "RuleProviderType": "Unknown"
               },
@@ -5804,7 +5804,7 @@
                   },
                   {
                     "Category": "Design",
-                    "InvariantScript": "LookUp('Environment Variable Definitions', 'Display Name'=\"Common Heading Font\").'Default Value'",
+                    "InvariantScript": "_VarGblAppFonts.Heading",
                     "Property": "Font",
                     "RuleProviderType": "Unknown"
                   },
@@ -6248,7 +6248,7 @@
                   },
                   {
                     "Category": "Design",
-                    "InvariantScript": "LookUp('Environment Variable Definitions', 'Display Name'=\"Common Heading Font\").'Default Value'",
+                    "InvariantScript": "_VarGblAppFonts.Heading",
                     "Property": "Font",
                     "RuleProviderType": "Unknown"
                   },
@@ -6882,7 +6882,7 @@
                   },
                   {
                     "Category": "Design",
-                    "InvariantScript": "LookUp('Environment Variable Definitions', 'Display Name'=\"Common Heading Font\").'Default Value'",
+                    "InvariantScript": "_VarGblAppFonts.Heading",
                     "Property": "Font",
                     "RuleProviderType": "Unknown"
                   },
@@ -7318,7 +7318,7 @@
                   },
                   {
                     "Category": "Design",
-                    "InvariantScript": "LookUp('Environment Variable Definitions', 'Display Name'=\"Common Heading Font\").'Default Value'",
+                    "InvariantScript": "_VarGblAppFonts.Heading",
                     "Property": "Font",
                     "RuleProviderType": "Unknown"
                   },
@@ -7740,7 +7740,7 @@
                   },
                   {
                     "Category": "Design",
-                    "InvariantScript": "LookUp('Environment Variable Definitions', 'Display Name'=\"Common Heading Font\").'Default Value'",
+                    "InvariantScript": "_VarGblAppFonts.Heading",
                     "Property": "Font",
                     "RuleProviderType": "Unknown"
                   },
@@ -8183,7 +8183,7 @@
                   },
                   {
                     "Category": "Design",
-                    "InvariantScript": "LookUp('Environment Variable Definitions', 'Display Name'=\"Common Heading Font\").'Default Value'",
+                    "InvariantScript": "_VarGblAppFonts.Heading",
                     "Property": "Font",
                     "RuleProviderType": "Unknown"
                   },
@@ -9013,7 +9013,7 @@
                   },
                   {
                     "Category": "Design",
-                    "InvariantScript": "LookUp('Environment Variable Definitions', 'Display Name'=\"Common Heading Font\").'Default Value'",
+                    "InvariantScript": "_VarGblAppFonts.Heading",
                     "Property": "Font",
                     "RuleProviderType": "Unknown"
                   },
@@ -9449,7 +9449,7 @@
                   },
                   {
                     "Category": "Design",
-                    "InvariantScript": "LookUp('Environment Variable Definitions', 'Display Name'=\"Common Heading Font\").'Default Value'",
+                    "InvariantScript": "_VarGblAppFonts.Heading",
                     "Property": "Font",
                     "RuleProviderType": "Unknown"
                   },
@@ -11326,7 +11326,7 @@
                   },
                   {
                     "Category": "Design",
-                    "InvariantScript": "ColorValue(LookUp('Environment Variable Definitions', 'Display Name'=\"Text Light Color\").'Default Value')",
+                    "InvariantScript": "_VarGblAppColors.LightText",
                     "Property": "BorderColor",
                     "RuleProviderType": "Unknown"
                   },
@@ -16744,7 +16744,7 @@
               },
               {
                 "Category": "Design",
-                "InvariantScript": "ColorValue(LookUp('Environment Variable Definitions', 'Display Name'=\"Common Primary Background\").'Default Value')",
+                "InvariantScript": "_VarGblAppColors.PrimaryBg",
                 "Property": "Fill",
                 "RuleProviderType": "Unknown"
               },
@@ -18712,7 +18712,7 @@
                   },
                   {
                     "Category": "Design",
-                    "InvariantScript": "ColorValue(LookUp('Environment Variable Definitions', 'Display Name'=\"Text Light Color\").'Default Value')",
+                    "InvariantScript": "_VarGblAppColors.LightText",
                     "Property": "BorderColor",
                     "RuleProviderType": "Unknown"
                   },
@@ -26308,7 +26308,7 @@
                   },
                   {
                     "Category": "Design",
-                    "InvariantScript": "LookUp('Environment Variable Definitions', 'Display Name'=\"Common Heading Font\").'Default Value'",
+                    "InvariantScript": "_VarGblAppFonts.Heading",
                     "Property": "Font",
                     "RuleProviderType": "Unknown"
                   },
@@ -26751,7 +26751,7 @@
                   },
                   {
                     "Category": "Design",
-                    "InvariantScript": "LookUp('Environment Variable Definitions', 'Display Name'=\"Common Heading Font\").'Default Value'",
+                    "InvariantScript": "_VarGblAppFonts.Heading",
                     "Property": "Font",
                     "RuleProviderType": "Unknown"
                   },
@@ -27406,7 +27406,7 @@
                   },
                   {
                     "Category": "Design",
-                    "InvariantScript": "LookUp('Environment Variable Definitions', 'Display Name'=\"Common Heading Font\").'Default Value'",
+                    "InvariantScript": "_VarGblAppFonts.Heading",
                     "Property": "Font",
                     "RuleProviderType": "Unknown"
                   },
@@ -27849,7 +27849,7 @@
                   },
                   {
                     "Category": "Design",
-                    "InvariantScript": "LookUp('Environment Variable Definitions', 'Display Name'=\"Common Heading Font\").'Default Value'",
+                    "InvariantScript": "_VarGblAppFonts.Heading",
                     "Property": "Font",
                     "RuleProviderType": "Unknown"
                   },
@@ -28686,7 +28686,7 @@
                   },
                   {
                     "Category": "Design",
-                    "InvariantScript": "LookUp('Environment Variable Definitions', 'Display Name'=\"Common Heading Font\").'Default Value'",
+                    "InvariantScript": "_VarGblAppFonts.Heading",
                     "Property": "Font",
                     "RuleProviderType": "Unknown"
                   },
@@ -29129,7 +29129,7 @@
                   },
                   {
                     "Category": "Design",
-                    "InvariantScript": "LookUp('Environment Variable Definitions', 'Display Name'=\"Common Heading Font\").'Default Value'",
+                    "InvariantScript": "_VarGblAppFonts.Heading",
                     "Property": "Font",
                     "RuleProviderType": "Unknown"
                   },
@@ -30478,7 +30478,7 @@
                   },
                   {
                     "Category": "Design",
-                    "InvariantScript": "LookUp('Environment Variable Definitions', 'Display Name'=\"Common Heading Font\").'Default Value'",
+                    "InvariantScript": "_VarGblAppFonts.Heading",
                     "Property": "Font",
                     "RuleProviderType": "Unknown"
                   },
@@ -31499,7 +31499,7 @@
                   },
                   {
                     "Category": "Design",
-                    "InvariantScript": "LookUp('Environment Variable Definitions', 'Display Name'=\"Common Heading Font\").'Default Value'",
+                    "InvariantScript": "_VarGblAppFonts.Heading",
                     "Property": "Font",
                     "RuleProviderType": "Unknown"
                   },
@@ -31942,7 +31942,7 @@
                   },
                   {
                     "Category": "Design",
-                    "InvariantScript": "LookUp('Environment Variable Definitions', 'Display Name'=\"Common Heading Font\").'Default Value'",
+                    "InvariantScript": "_VarGblAppFonts.Heading",
                     "Property": "Font",
                     "RuleProviderType": "Unknown"
                   },
@@ -32779,7 +32779,7 @@
                   },
                   {
                     "Category": "Design",
-                    "InvariantScript": "LookUp('Environment Variable Definitions', 'Display Name'=\"Common Heading Font\").'Default Value'",
+                    "InvariantScript": "_VarGblAppFonts.Heading",
                     "Property": "Font",
                     "RuleProviderType": "Unknown"
                   },
@@ -33222,7 +33222,7 @@
                   },
                   {
                     "Category": "Design",
-                    "InvariantScript": "LookUp('Environment Variable Definitions', 'Display Name'=\"Common Heading Font\").'Default Value'",
+                    "InvariantScript": "_VarGblAppFonts.Heading",
                     "Property": "Font",
                     "RuleProviderType": "Unknown"
                   },
@@ -63890,7 +63890,7 @@
       },
       "ProductCall"
     ],
-    "LastModifiedTimestamp": "638189080283775508",
+    "LastModifiedTimestamp": "638189097628937688",
     "Name": "Lead Detail",
     "Rules": [
       {
@@ -63995,7 +63995,7 @@
   "IsPcfControl": false,
   "IsPremiumPcfControl": false,
   "IsWidgetTemplate": false,
-  "LastModifiedTimestamp": "638189080283775508",
+  "LastModifiedTimestamp": "638189097628937688",
   "Name": "faa7ee8782af41fb94ebfc5a4619c922",
   "OverridableProperties": {},
   "TemplateOriginalName": "5ffbd2772db845fbb8178e9b015a9273",

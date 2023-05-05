@@ -45,3 +45,40 @@
         Y: =80
         ZIndex: =2
 
+    "'Bottom Bar_21' As 'Bottom Bar_19'":
+        NavItems: |-
+            =Table(
+                {
+                    Title: "Orders",
+                    Icon : 'shopping-cart',
+                    Screen: 'Customer 360 Screen',
+                    Id: 1
+                },
+                {
+                    Title: "Visit",
+                    Icon: location,
+                    Screen:'Start Visit',
+                    Id:2
+                },
+                 {
+                    Title: "Home",
+                    Icon:home,
+                    Screen: Home,
+                    Id:3
+                },
+                 {
+                    Title: "Parties",
+                    Icon: people,
+                    Screen: Parties,
+                    Id:4
+                },
+                {
+                    Title: varUser.'First Name',
+                    Icon: User().Image,
+                    Screen: Sidebar,
+                    Id:5
+                }
+            )
+        Y: =996
+        ZIndex: =3
+

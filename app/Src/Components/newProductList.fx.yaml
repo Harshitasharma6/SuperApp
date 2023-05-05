@@ -45,9 +45,7 @@ newProductList As CanvasComponent:
             BorderColor: =RGBA(0, 18, 107, 1)
             Color: |-
                 =//RGBA(0, 0, 0, 1)
-                If(ThisItem.IsSelected,
-                ColorValue(LookUp('Environment Variable Definitions', 'Display Name'="Button Fill").'Default Value'),
-                ColorValue(LookUp('Environment Variable Definitions', 'Display Name'="Button Color").'Default Value'))
+                If(ThisItem.IsSelected,_VarGblAppColors.PrimaryRed,_VarGblAppColors.textbgbutton)
             DisabledColor: =RGBA(166, 166, 166, 1)
             Font: =Font.'Segoe UI'
             FontWeight: =FontWeight.Semibold
@@ -117,7 +115,7 @@ newProductList As CanvasComponent:
 
     Divider_4 As rectangle:
         BorderColor: =RGBA(0, 18, 107, 1)
-        Fill: =ColorValue(LookUp('Environment Variable Definitions', 'Display Name'="Common Primary Background").'Default Value')
+        Fill: =_VarGblAppColors.PrimaryBg
         Height: =40
         Width: =2
         X: =533
@@ -152,7 +150,7 @@ newProductList As CanvasComponent:
         ZIndex: =16
 
         "'Product BG_10' As button":
-            BorderColor: =ColorValue(LookUp('Environment Variable Definitions', 'Display Name'="Text Light Color").'Default Value')
+            BorderColor: =_VarGblAppColors.LightText
             BorderThickness: =1
             Color: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Hover Color").'Default Value')
             DisabledBorderColor: =RGBA(166, 166, 166, 1)
@@ -1149,7 +1147,7 @@ newProductList As CanvasComponent:
         ZIndex: =17
 
         "'Product BG_14' As button":
-            BorderColor: =ColorValue(LookUp('Environment Variable Definitions', 'Display Name'="Text Light Color").'Default Value')
+            BorderColor: =_VarGblAppColors.LightText
             BorderThickness: =0
             Color: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Hover Color").'Default Value')
             DisabledBorderColor: =RGBA(166, 166, 166, 1)

@@ -4338,7 +4338,7 @@
               },
               {
                 "Category": "Design",
-                "InvariantScript": "LookUp('Environment Variable Definitions', 'Display Name'=\"Common Heading Font\").'Default Value'",
+                "InvariantScript": "_VarGblAppFonts.Heading",
                 "Property": "Font",
                 "RuleProviderType": "Unknown"
               },
@@ -5958,7 +5958,7 @@
               },
               {
                 "Category": "Design",
-                "InvariantScript": "LookUp('Environment Variable Definitions', 'Display Name'=\"Common Heading Font\").'Default Value'",
+                "InvariantScript": "_VarGblAppFonts.Heading",
                 "Property": "Font",
                 "RuleProviderType": "Unknown"
               },
@@ -6401,7 +6401,7 @@
               },
               {
                 "Category": "Design",
-                "InvariantScript": "LookUp('Environment Variable Definitions', 'Display Name'=\"Common Heading Font\").'Default Value'",
+                "InvariantScript": "_VarGblAppFonts.Heading",
                 "Property": "Font",
                 "RuleProviderType": "Unknown"
               },
@@ -6851,7 +6851,7 @@
               },
               {
                 "Category": "Design",
-                "InvariantScript": "LookUp('Environment Variable Definitions', 'Display Name'=\"Common Heading Font\").'Default Value'",
+                "InvariantScript": "_VarGblAppFonts.Heading",
                 "Property": "Font",
                 "RuleProviderType": "Unknown"
               },
@@ -9534,7 +9534,7 @@
                   },
                   {
                     "Category": "Design",
-                    "InvariantScript": "//RGBA(0, 0, 0, 1)\r\n//RGBA(153, 160, 196, 1)\r\nIf(\r\n    ThisItem.IsSelected,\r\n    ColorValue(LookUp('Environment Variable Definitions', 'Display Name'=\"Common Primary Background\").'Default Value'),\r\nColorValue(LookUp('Environment Variable Definitions', 'Display Name'=\"Button Color\").'Default Value')   \r\n)",
+                    "InvariantScript": "//RGBA(0, 0, 0, 1)\r\n//RGBA(153, 160, 196, 1)\r\nIf(\r\n    ThisItem.IsSelected,\r\n    _VarGblAppColors.PrimaryBg,_VarGblAppColors.textbgbutton   \r\n)",
                     "Property": "Color",
                     "RuleProviderType": "Unknown"
                   },
@@ -9851,7 +9851,7 @@
                   },
                   {
                     "Category": "Design",
-                    "InvariantScript": "//RGBA(0, 0, 0, 1)\r\n//RGBA(153, 160, 196, 1)\r\nIf(\r\n    ThisItem.IsSelected,\r\n    ColorValue(LookUp('Environment Variable Definitions', 'Display Name'=\"Common Primary Background\").'Default Value'),\r\nColorValue(LookUp('Environment Variable Definitions', 'Display Name'=\"Button Color\").'Default Value')   \r\n)",
+                    "InvariantScript": "//RGBA(0, 0, 0, 1)\r\n//RGBA(153, 160, 196, 1)\r\nIf(\r\n    ThisItem.IsSelected,\r\n    _VarGblAppColors.PrimaryBg,_VarGblAppColors.textbgbutton   \r\n)",
                     "Property": "Color",
                     "RuleProviderType": "Unknown"
                   },
@@ -10139,7 +10139,7 @@
                   },
                   {
                     "Category": "Design",
-                    "InvariantScript": "//RGBA(153, 160, 196, 1)\r\nIf(\r\n    ThisItem.IsSelected,\r\n    ColorValue(LookUp('Environment Variable Definitions', 'Display Name'=\"Common Primary Background\").'Default Value'),\r\nColorValue(LookUp('Environment Variable Definitions', 'Display Name'=\"Button Color\").'Default Value')   \r\n)",
+                    "InvariantScript": "//RGBA(153, 160, 196, 1)\r\nIf(\r\n    ThisItem.IsSelected,\r\n    _VarGblAppColors.PrimaryBg,_VarGblAppColors.textbgbutton   \r\n)",
                     "Property": "Color",
                     "RuleProviderType": "Unknown"
                   },
@@ -11208,7 +11208,7 @@
                   },
                   {
                     "Category": "Design",
-                    "InvariantScript": "//RGBA(0, 0, 0, 1)\r\nIf(\r\n    //ThisItem.IsSelected,\r\n    radioParty_1.Selected.'Customer Name',\r\n    ColorValue(LookUp('Environment Variable Definitions', 'Display Name'=\"Common Primary Background\").'Default Value'),\r\nColorValue(LookUp('Environment Variable Definitions', 'Display Name'=\"Button Color\").'Default Value')   \r\n)",
+                    "InvariantScript": "//RGBA(0, 0, 0, 1)\r\nIf(\r\n    //ThisItem.IsSelected,\r\n    radioParty_1.Selected.'Customer Name',\r\n    _VarGblAppColors.PrimaryBg,_VarGblAppColors.textbgbutton   \r\n)",
                     "Property": "Color",
                     "RuleProviderType": "Unknown"
                   },
@@ -11949,7 +11949,7 @@
               },
               {
                 "Category": "Design",
-                "InvariantScript": "//RGBA(0, 13, 75, 1)\r\n//RGBA(153, 160, 196, 1)\r\nIf(\r\n    radioDate_5.Selected.Value,\r\n    ColorValue(LookUp('Environment Variable Definitions', 'Display Name'=\"Common Primary Background\").'Default Value'),\r\nColorValue(LookUp('Environment Variable Definitions', 'Display Name'=\"Button Color\").'Default Value')   \r\n)",
+                "InvariantScript": "//RGBA(0, 13, 75, 1)\r\n//RGBA(153, 160, 196, 1)\r\nIf(\r\n    radioDate_5.Selected.Value,\r\n    _VarGblAppColors.PrimaryBg,_VarGblAppColors.textbgbutton   \r\n)",
                 "Property": "Color",
                 "RuleProviderType": "Unknown"
               },
@@ -12009,7 +12009,7 @@
               },
               {
                 "Category": "Design",
-                "InvariantScript": "//RGBA(153, 160, 196, 1)\r\nIf(\r\n    //ThisItem.IsSelected,\r\n    radioDate_5.Selected.Value,\r\n    ColorValue(LookUp('Environment Variable Definitions', 'Display Name'=\"Common Primary Background\").'Default Value'),\r\nColorValue(LookUp('Environment Variable Definitions', 'Display Name'=\"Button Color\").'Default Value')   \r\n)",
+                "InvariantScript": "//RGBA(153, 160, 196, 1)\r\nIf(\r\n    //ThisItem.IsSelected,\r\n    radioDate_5.Selected.Value,\r\n    _VarGblAppColors.PrimaryBg,_VarGblAppColors.textbgbutton   \r\n)",
                 "Property": "RadioSelectionFill",
                 "RuleProviderType": "Unknown"
               },
@@ -12364,7 +12364,7 @@
               },
               {
                 "Category": "Design",
-                "InvariantScript": "//RGBA(0, 0, 0, 1)\r\nIf(\r\n    //ThisItem.IsSelected,\r\n    radioSalesperson_5.Selected.'Full Name',\r\n    ColorValue(LookUp('Environment Variable Definitions', 'Display Name'=\"Common Primary Background\").'Default Value'),\r\nColorValue(LookUp('Environment Variable Definitions', 'Display Name'=\"Button Color\").'Default Value')   \r\n)",
+                "InvariantScript": "//RGBA(0, 0, 0, 1)\r\nIf(\r\n    //ThisItem.IsSelected,\r\n    radioSalesperson_5.Selected.'Full Name',\r\n    _VarGblAppColors.PrimaryBg,_VarGblAppColors.textbgbutton   \r\n)",
                 "Property": "Color",
                 "RuleProviderType": "Unknown"
               },
@@ -12424,7 +12424,7 @@
               },
               {
                 "Category": "Design",
-                "InvariantScript": "//RGBA(0, 0, 0, 1)\r\nIf(\r\n    //ThisItem.IsSelected,\r\n    radioSalesperson_5.Selected.'Full Name',\r\n    ColorValue(LookUp('Environment Variable Definitions', 'Display Name'=\"Common Primary Background\").'Default Value'),\r\nColorValue(LookUp('Environment Variable Definitions', 'Display Name'=\"Button Color\").'Default Value')   \r\n)",
+                "InvariantScript": "//RGBA(0, 0, 0, 1)\r\nIf(\r\n    //ThisItem.IsSelected,\r\n    radioSalesperson_5.Selected.'Full Name',\r\n    _VarGblAppColors.PrimaryBg,_VarGblAppColors.textbgbutton   \r\n)",
                 "Property": "RadioSelectionFill",
                 "RuleProviderType": "Unknown"
               },
@@ -12830,7 +12830,7 @@
               },
               {
                 "Category": "Design",
-                "InvariantScript": "RGBA(0, 0, 0, 1)\r\n/*If(\r\n    //ThisItem.IsSelected,\r\n    radioStatus.Selected.Value\r\n    _VarGblAppColors.PrimaryBg,\r\nColorValue(LookUp('Environment Variable Definitions', 'Display Name'=\"Button Color\").'Default Value')   \r\n)*/",
+                "InvariantScript": "RGBA(0, 0, 0, 1)\r\n/*If(\r\n    //ThisItem.IsSelected,\r\n    radioStatus.Selected.Value\r\n    _VarGblAppColors.PrimaryBg,_VarGblAppColors.textbgbutton   \r\n)*/",
                 "Property": "RadioSelectionFill",
                 "RuleProviderType": "Unknown"
               },
@@ -13077,7 +13077,7 @@
               },
               {
                 "Category": "Design",
-                "InvariantScript": "//RGBA(0, 0, 0, 1)\r\nIf(\r\n    //ThisItem.IsSelected,\r\n    radioParty_1.Selected.'Customer Name',\r\n    ColorValue(LookUp('Environment Variable Definitions', 'Display Name'=\"Common Primary Background\").'Default Value'),\r\nColorValue(LookUp('Environment Variable Definitions', 'Display Name'=\"Button Color\").'Default Value')   \r\n)",
+                "InvariantScript": "//RGBA(0, 0, 0, 1)\r\nIf(\r\n    //ThisItem.IsSelected,\r\n    radioParty_1.Selected.'Customer Name',\r\n    _VarGblAppColors.PrimaryBg,_VarGblAppColors.textbgbutton   \r\n)",
                 "Property": "Color",
                 "RuleProviderType": "Unknown"
               },
@@ -13239,7 +13239,7 @@
               },
               {
                 "Category": "Design",
-                "InvariantScript": "//RGBA(0, 0, 0, 1)\r\nIf(\r\n    //ThisItem.IsSelected,\r\n    radioParty_1.Selected.'Customer Name',\r\n    ColorValue(LookUp('Environment Variable Definitions', 'Display Name'=\"Common Primary Background\").'Default Value'),\r\nColorValue(LookUp('Environment Variable Definitions', 'Display Name'=\"Button Color\").'Default Value')   \r\n)",
+                "InvariantScript": "//RGBA(0, 0, 0, 1)\r\nIf(\r\n    //ThisItem.IsSelected,\r\n    radioParty_1.Selected.'Customer Name',\r\n    _VarGblAppColors.PrimaryBg,_VarGblAppColors.textbgbutton   \r\n)",
                 "Property": "RadioSelectionFill",
                 "RuleProviderType": "Unknown"
               },
@@ -13405,7 +13405,7 @@
               },
               {
                 "Category": "Design",
-                "InvariantScript": "//RGBA(0, 0, 0, 1)\r\n\r\nColorValue(LookUp('Environment Variable Definitions', 'Display Name'=\"Button Color\").'Default Value')",
+                "InvariantScript": "//RGBA(0, 0, 0, 1)\r\n_VarGblAppColors.textbgbutton",
                 "Property": "Color",
                 "RuleProviderType": "Unknown"
               },
@@ -14538,7 +14538,7 @@
               },
               {
                 "Category": "Design",
-                "InvariantScript": "//RGBA(0, 0, 0, 1)\r\n\r\nColorValue(LookUp('Environment Variable Definitions', 'Display Name'=\"Button Color\").'Default Value')",
+                "InvariantScript": "//RGBA(0, 0, 0, 1)\r\n_VarGblAppColors.textbgbutton",
                 "Property": "Color",
                 "RuleProviderType": "Unknown"
               },
@@ -15065,7 +15065,7 @@
               },
               {
                 "Category": "Design",
-                "InvariantScript": "//RGBA(0, 0, 0, 1)\r\n\r\nColorValue(LookUp('Environment Variable Definitions', 'Display Name'=\"Button Color\").'Default Value')",
+                "InvariantScript": "//RGBA(0, 0, 0, 1)\r\n_VarGblAppColors.textbgbutton",
                 "Property": "Color",
                 "RuleProviderType": "Unknown"
               },
@@ -15131,7 +15131,7 @@
               },
               {
                 "Category": "Design",
-                "InvariantScript": "//RGBA(0, 0, 0, 1)\r\n\r\nColorValue(LookUp('Environment Variable Definitions', 'Display Name'=\"Button Color\").'Default Value')",
+                "InvariantScript": "//RGBA(0, 0, 0, 1)\r\n_VarGblAppColors.textbgbutton",
                 "Property": "BorderColor",
                 "RuleProviderType": "Unknown"
               },
@@ -15396,7 +15396,7 @@
               },
               {
                 "Category": "Design",
-                "InvariantScript": "//RGBA(0, 0, 0, 1)\r\n\r\nColorValue(LookUp('Environment Variable Definitions', 'Display Name'=\"Button Color\").'Default Value')",
+                "InvariantScript": "//RGBA(0, 0, 0, 1)\r\n_VarGblAppColors.textbgbutton",
                 "Property": "Color",
                 "RuleProviderType": "Unknown"
               },
@@ -15923,7 +15923,7 @@
               },
               {
                 "Category": "Design",
-                "InvariantScript": "//RGBA(0, 0, 0, 1)\r\n\r\nColorValue(LookUp('Environment Variable Definitions', 'Display Name'=\"Button Color\").'Default Value')",
+                "InvariantScript": "//RGBA(0, 0, 0, 1)\r\n_VarGblAppColors.textbgbutton",
                 "Property": "Color",
                 "RuleProviderType": "Unknown"
               },
@@ -15989,7 +15989,7 @@
               },
               {
                 "Category": "Design",
-                "InvariantScript": "//RGBA(0, 0, 0, 1)\r\n\r\nColorValue(LookUp('Environment Variable Definitions', 'Display Name'=\"Button Color\").'Default Value')",
+                "InvariantScript": "//RGBA(0, 0, 0, 1)\r\n_VarGblAppColors.textbgbutton",
                 "Property": "BorderColor",
                 "RuleProviderType": "Unknown"
               },
@@ -19223,7 +19223,7 @@
         "NameMapSourceSchema": "?"
       }
     ],
-    "LastModifiedTimestamp": "638189081263868656",
+    "LastModifiedTimestamp": "638189097628923862",
     "Name": "Order List",
     "Rules": [
       {
@@ -19313,7 +19313,7 @@
   "IsPcfControl": false,
   "IsPremiumPcfControl": false,
   "IsWidgetTemplate": false,
-  "LastModifiedTimestamp": "638189081263868656",
+  "LastModifiedTimestamp": "638189097628923862",
   "Name": "778120b64c2148d9aca06a9354d20324",
   "OverridableProperties": {},
   "Version": "638176705552921363"

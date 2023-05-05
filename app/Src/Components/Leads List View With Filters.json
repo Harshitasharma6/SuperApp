@@ -10150,7 +10150,7 @@
               },
               {
                 "Category": "Design",
-                "InvariantScript": "If(ThisItem.IsSelected && CountRows(colLeadFilter)=0, ColorValue(LookUp('Environment Variable Definitions', 'Display Name'=\"Button Fill\").'Default Value'),ColorValue(LookUp('Environment Variable Definitions', 'Display Name'=\"Common Primary Background\").'Default Value'))",
+                "InvariantScript": "If(ThisItem.IsSelected && CountRows(colLeadFilter)=0, _VarGblAppColors.PrimaryRed,_VarGblAppColors.PrimaryBg)",
                 "Property": "Fill",
                 "RuleProviderType": "Unknown"
               },
@@ -11831,7 +11831,7 @@
                   },
                   {
                     "Category": "Design",
-                    "InvariantScript": "LookUp('Environment Variable Definitions', 'Display Name'=\"Common Heading Font\").'Default Value'",
+                    "InvariantScript": "_VarGblAppFonts.Heading",
                     "Property": "Font",
                     "RuleProviderType": "Unknown"
                   },
@@ -12294,7 +12294,7 @@
                   },
                   {
                     "Category": "Design",
-                    "InvariantScript": "LookUp('Environment Variable Definitions', 'Display Name'=\"Common Heading Font\").'Default Value'",
+                    "InvariantScript": "_VarGblAppFonts.Heading",
                     "Property": "Font",
                     "RuleProviderType": "Unknown"
                   },
@@ -12737,7 +12737,7 @@
                   },
                   {
                     "Category": "Design",
-                    "InvariantScript": "LookUp('Environment Variable Definitions', 'Display Name'=\"Common Heading Font\").'Default Value'",
+                    "InvariantScript": "_VarGblAppFonts.Heading",
                     "Property": "Font",
                     "RuleProviderType": "Unknown"
                   },
@@ -12905,7 +12905,7 @@
                   },
                   {
                     "Category": "Design",
-                    "InvariantScript": "\r\nColorValue(LookUp('Environment Variable Definitions', 'Display Name'=\"Button Color\").'Default Value')",
+                    "InvariantScript": "_VarGblAppColors.textbgbutton",
                     "Property": "Color",
                     "RuleProviderType": "Unknown"
                   },
@@ -14191,7 +14191,7 @@
                   },
                   {
                     "Category": "Design",
-                    "InvariantScript": "ColorValue(LookUp('Environment Variable Definitions', 'Display Name'=\"Common Primary Background\").'Default Value')",
+                    "InvariantScript": "_VarGblAppColors.PrimaryBg",
                     "Property": "Fill",
                     "RuleProviderType": "Unknown"
                   },
@@ -14445,7 +14445,7 @@
                   },
                   {
                     "Category": "Design",
-                    "InvariantScript": "ColorValue(LookUp('Environment Variable Definitions', 'Display Name'=\"Common Primary Background\").'Default Value')",
+                    "InvariantScript": "_VarGblAppColors.PrimaryBg",
                     "Property": "Fill",
                     "RuleProviderType": "Unknown"
                   },
@@ -14768,7 +14768,7 @@
                   },
                   {
                     "Category": "Design",
-                    "InvariantScript": "LookUp('Environment Variable Definitions', 'Display Name'=\"Common Heading Font\").'Default Value'",
+                    "InvariantScript": "_VarGblAppFonts.Heading",
                     "Property": "Font",
                     "RuleProviderType": "Unknown"
                   },
@@ -15211,7 +15211,7 @@
                   },
                   {
                     "Category": "Design",
-                    "InvariantScript": "LookUp('Environment Variable Definitions', 'Display Name'=\"Common Heading Font\").'Default Value'",
+                    "InvariantScript": "_VarGblAppFonts.Heading",
                     "Property": "Font",
                     "RuleProviderType": "Unknown"
                   },
@@ -15654,7 +15654,7 @@
                   },
                   {
                     "Category": "Design",
-                    "InvariantScript": "LookUp('Environment Variable Definitions', 'Display Name'=\"Common Heading Font\").'Default Value'",
+                    "InvariantScript": "_VarGblAppFonts.Heading",
                     "Property": "Font",
                     "RuleProviderType": "Unknown"
                   },
@@ -16011,7 +16011,7 @@
                   },
                   {
                     "Category": "Design",
-                    "InvariantScript": "\r\nColorValue(LookUp('Environment Variable Definitions', 'Display Name'=\"Button Color\").'Default Value')",
+                    "InvariantScript": "_VarGblAppColors.textbgbutton",
                     "Property": "BorderColor",
                     "RuleProviderType": "Unknown"
                   },
@@ -16047,7 +16047,7 @@
                   },
                   {
                     "Category": "Design",
-                    "InvariantScript": "\r\nColorValue(LookUp('Environment Variable Definitions', 'Display Name'=\"Button Color\").'Default Value')",
+                    "InvariantScript": "_VarGblAppColors.textbgbutton",
                     "Property": "Color",
                     "RuleProviderType": "Unknown"
                   },
@@ -19788,7 +19788,7 @@
       "DataSource",
       "Customer"
     ],
-    "LastModifiedTimestamp": "638189080613864646",
+    "LastModifiedTimestamp": "638189097628929764",
     "Name": "Leads List View With Filters",
     "Rules": [
       {
@@ -19878,7 +19878,7 @@
   "IsPcfControl": false,
   "IsPremiumPcfControl": false,
   "IsWidgetTemplate": false,
-  "LastModifiedTimestamp": "638189080613864646",
+  "LastModifiedTimestamp": "638189097628929764",
   "Name": "03998f1d0e2c47e9b22fcf4169d0a5b8",
   "OverridableProperties": {},
   "Version": "638186918313043292"

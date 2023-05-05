@@ -1,37 +1,32 @@
-"'Bottom Bar' As CanvasComponent":
+"'Bottom Bar_19' As CanvasComponent":
     Fill: =RGBA(0, 0, 0, 0)
     Height: =110
     NavItems: |-
         =Table(
             {
                 Title: "Orders",
-                Icon : 'shopping-cart',
-                Screen: 'Customer 360 Screen',
-                Id: 1
+                Icon: cart,
+                Screen: 'Primary Order Screen'
             },
             {
                 Title: "Visit",
-                Icon: location,
-                Screen:'Start Visit',
-                Id:2
+                Icon: 'pin-map',
+                Screen:'Start Visit'
             },
              {
                 Title: "Home",
                 Icon:home,
-                Screen: Home,
-                Id:3
+                Screen: Home
             },
              {
                 Title: "Parties",
                 Icon: people,
-                Screen: Parties,
-                Id:4
+                Screen: 'Party List'
             },
             {
                 Title: varUser.'First Name',
-                Icon: User().Image,
-                Screen: Sidebar,
-                Id:5
+                Icon: User().Image
+                //Screen: App.ActiveScreen
             }
         )
     Width: =App.Width
@@ -39,25 +34,23 @@
     Y: =0
     ZIndex: =1
 
-    Gallery2 As gallery.galleryHorizontal:
+    Gallery2_1 As gallery.galleryHorizontal:
         AccessibleLabel: ="Bottom Bar"
         BorderColor: =RGBA(0, 18, 107, 1)
         BorderStyle: =BorderStyle.None
         Fill: =Color.Transparent
         FocusedBorderThickness: =
         Height: =Parent.Height
-        Items: ='Bottom Bar'.NavItems
+        Items: ='Bottom Bar_19'.NavItems
         ShowScrollbar: =false
         TabIndex: =0
         TemplateFill: =Color.Transparent
         TemplatePadding: =0
-        TemplateSize: |-
-            =//Parent.Width/CountRows(Self.AllItems)
-            128
+        TemplateSize: =Parent.Width/CountRows(Self.AllItems)
         Width: =Parent.Width
         ZIndex: =1
 
-        Button2 As button:
+        Button2_1 As button:
             BorderThickness: =0
             Color: |-
                 =
@@ -78,21 +71,20 @@
                     ThisItem.Title
                 );
                 If(
-                    ThisItem.Id = 1,
+                    ThisItem.Title = varUser.'First Name',
                     Set(
-                        varfiltergallery,
-                        true
-                    );
-                    Navigate(
-                        ThisItem.Screen,
-                        ScreenTransition.CoverRight
+                        _varsideNav,
+                        !_varsideNav
                     ),
                     Navigate(
                         ThisItem.Screen,
                         ScreenTransition.CoverRight
+                    );
+                    Set(
+                        _varsideNav,
+                        false
                     )
                 )
-                //Set(_varsideNav, false))
             RadiusBottomLeft: =0
             RadiusBottomRight: =0
             RadiusTopLeft: =If(ThisItem.Title="Orders", 20, 0)
@@ -100,42 +92,25 @@
             Size: =24
             Text: =""
             Width: =Parent.TemplateWidth
-            Y: =75
+            Y: =25
             ZIndex: =1
 
-        Label3 As label:
+        Label3_1 As label:
             Align: =Align.Center
             BorderColor: =RGBA(0, 18, 107, 1)
             Color: |+
                 =//_VarGblAppColors.PrimaryRed
-                If(ThisItem.IsSelected,ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//_VarGblAppColors.PrimaryRed
-                ,_VarGblAppColors.textbgbutton)
+                If(ThisItem.IsSelected,_VarGblAppColors.PrimaryRed,_VarGblAppColors.textbgbutton)
                 
             DisabledColor: =RGBA(166, 166, 166, 1)
             FocusedBorderThickness: =0.3
             FontWeight: =FontWeight.Semibold
             Height: =34
             OnSelect: |-
-                =Set(
-                    _VarSelectedTab,
-                    ThisItem.Title
-                );
-                If(
-                    ThisItem.Id = 1,
-                    Set(
-                        varfiltergallery,
-                        true
-                    );
-                    Navigate(
-                        ThisItem.Screen,
-                        ScreenTransition.CoverRight
-                    ),
-                    Navigate(
-                        ThisItem.Screen,
-                        ScreenTransition.CoverRight
-                    )
-                )
-                //Set(_varsideNav, false))
+                =Set(_VarSelectedTab, ThisItem.Title);
+                If(ThisItem.Title = varUser.'First Name',Set(_varsideNav,!_varsideNav),
+                Navigate(ThisItem.Screen, ScreenTransition.CoverRight);
+                Set(_varsideNav, false))
             Size: =_VarGblAppFonts.Size.Regular
             TabIndex: =0
             Text: =ThisItem.Title
@@ -143,8 +118,7 @@
             Y: =75
             ZIndex: =2
 
-        Image12 As image:
-            AccessibleLabel: ="Image12"
+        Image12_1 As image:
             BorderColor: =RGBA(0, 18, 107, 1)
             DisabledBorderColor: =RGBA(166, 166, 166, 1)
             DisabledFill: =RGBA(244, 244, 244, 1)
@@ -154,31 +128,14 @@
             Image: =ThisItem.Icon
             ImagePosition: =ImagePosition.Fill
             OnSelect: |-
-                =Set(
-                    _VarSelectedTab,
-                    ThisItem.Title
-                );
-                If(
-                    ThisItem.Id = 1,
-                    Set(
-                        varfiltergallery,
-                        true
-                    );
-                    Navigate(
-                        ThisItem.Screen,
-                        ScreenTransition.CoverRight
-                    ),
-                    Navigate(
-                        ThisItem.Screen,
-                        ScreenTransition.CoverRight
-                    )
-                )
-                //Set(_varsideNav, false))
+                =Set(_VarSelectedTab, ThisItem.Title);
+                If(ThisItem.Title = varUser.'First Name',Set(_varsideNav,!_varsideNav),
+                Navigate(ThisItem.Screen, ScreenTransition.CoverRight);
+                Set(_varsideNav, false))
             RadiusBottomLeft: =If(ThisItem.Title = varUser.'First Name',25,0)
             RadiusBottomRight: =If(ThisItem.Title = varUser.'First Name',25,0)
             RadiusTopLeft: =If(ThisItem.Title = varUser.'First Name',25,0)
             RadiusTopRight: =If(ThisItem.Title = varUser.'First Name',25,0)
-            TabIndex: =
             Width: =35
             X: =Parent.TemplateWidth/2 - Self.Width/2
             Y: =35

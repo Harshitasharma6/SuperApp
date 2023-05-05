@@ -1,7 +1,7 @@
 "'Start Visit' As screen":
     Fill: =RGBA(237, 237, 237, 1)
     LoadingSpinnerColor: =RGBA(0, 120, 212, 1)
-    OnVisible: |-
+    OnVisible: |
         =Set(VarStartVisitDate, Today());
         Set(ClickedStartVisitdate, Today());
         Set(_VarActivetopTabID, 1);
@@ -158,7 +158,7 @@
 
                 Title2Lbl_4 As label:
                     BorderColor: =RGBA(0, 18, 107, 1)
-                    Color: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Text Primary Color").'Default Value') // ColorValue(LookUp('Environment Variable Definitions', 'Display Name'="Button Color").'Default Value')
+                    Color: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Text Primary Color").'Default Value') //_VarGblAppColors.textbgbutton
                     DisabledColor: =RGBA(166, 166, 166, 1)
                     Font: =Font.'Segoe UI'
                     FontWeight: =FontWeight.Semibold
@@ -794,7 +794,7 @@
                 SearchFields: =["Title"]
                 SearchItems: =[]
                 SelectionColor: =Color.Black
-                SelectionFill: =ColorValue( LookUp('Environment Variable Definitions', 'Display Name'="Common Primary Background").'Default Value')//ColorValue(LookUp('Environment Variable Definitions', 'Display Name'="Common Primary Background").'Default Value')
+                SelectionFill: =ColorValue( LookUp('Environment Variable Definitions', 'Display Name'="Common Primary Background").'Default Value')//_VarGblAppColors.PrimaryBg
                 SelectionTagFill: =
                 SelectMultiple: =false
                 Size: =15
@@ -942,7 +942,7 @@
 
         Title2Lbl_9 As label:
             BorderColor: =RGBA(0, 18, 107, 1)
-            Color: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Text Primary Color").'Default Value') // ColorValue(LookUp('Environment Variable Definitions', 'Display Name'="Button Color").'Default Value')
+            Color: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Text Primary Color").'Default Value') //_VarGblAppColors.textbgbutton
             DisabledColor: =RGBA(166, 166, 166, 1)
             FocusedBorderThickness: =01
             Font: =LookUp(c_EnvironmentVariable,'Display Name'="Common Heading Font").'Default Value'
@@ -1036,7 +1036,7 @@
 
         Body1_180 As label:
             BorderColor: =RGBA(0, 18, 107, 1)
-            Color: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Text Primary Color").'Default Value') // ColorValue(LookUp('Environment Variable Definitions', 'Display Name'="Button Color").'Default Value')
+            Color: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Text Primary Color").'Default Value') //_VarGblAppColors.textbgbutton
             DisabledColor: =RGBA(166, 166, 166, 1)
             FocusedBorderThickness: =01
             Font: =Font.'Segoe UI'
@@ -1112,7 +1112,7 @@
 
         Body1_249 As label:
             BorderColor: =RGBA(0, 18, 107, 1)
-            Color: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Text Primary Color").'Default Value') // ColorValue(LookUp('Environment Variable Definitions', 'Display Name'="Button Color").'Default Value')
+            Color: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Text Primary Color").'Default Value') //_VarGblAppColors.textbgbutton
             DisabledColor: =RGBA(166, 166, 166, 1)
             FocusedBorderThickness: =01
             Font: =LookUp(c_EnvironmentVariable,'Display Name'="Common Heading Font").'Default Value'
@@ -1169,7 +1169,7 @@
 
         Body1_182 As label:
             BorderColor: =RGBA(0, 18, 107, 1)
-            Color: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Text Primary Color").'Default Value') // ColorValue(LookUp('Environment Variable Definitions', 'Display Name'="Button Color").'Default Value')
+            Color: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Text Primary Color").'Default Value') //_VarGblAppColors.textbgbutton
             DisabledColor: =RGBA(166, 166, 166, 1)
             FocusedBorderThickness: =01
             Font: =LookUp(c_EnvironmentVariable,'Display Name'="Common Heading Font").'Default Value'
@@ -1250,7 +1250,7 @@
 
         Label50_1 As label:
             BorderColor: =RGBA(0, 18, 107, 1)
-            Color: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Text Primary Color").'Default Value') // ColorValue(LookUp('Environment Variable Definitions', 'Display Name'="Button Color").'Default Value')
+            Color: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Text Primary Color").'Default Value') //_VarGblAppColors.textbgbutton
             DisabledColor: =RGBA(166, 166, 166, 1)
             Height: =30
             OnSelect: =Select(Parent)
@@ -1264,7 +1264,7 @@
 
         Label51_2 As label:
             BorderColor: =RGBA(0, 18, 107, 1)
-            Color: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Text Primary Color").'Default Value') // ColorValue(LookUp('Environment Variable Definitions', 'Display Name'="Button Color").'Default Value')
+            Color: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Text Primary Color").'Default Value') //_VarGblAppColors.textbgbutton
             DisabledColor: =RGBA(166, 166, 166, 1)
             Height: =33
             OnSelect: =Select(Parent)
@@ -1276,7 +1276,7 @@
 
         Label51_3 As label:
             BorderColor: =RGBA(0, 18, 107, 1)
-            Color: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Text Primary Color").'Default Value') // ColorValue(LookUp('Environment Variable Definitions', 'Display Name'="Button Color").'Default Value')
+            Color: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Text Primary Color").'Default Value') //_VarGblAppColors.textbgbutton
             DisabledColor: =RGBA(166, 166, 166, 1)
             Height: =33
             OnSelect: =Select(Parent)
@@ -1819,6 +1819,27 @@
         Y: =959
         ZIndex: =18
 
+    "'filter button_2' As button":
+        DisabledBorderColor: =RGBA(166, 166, 166, 1)
+        DisabledColor: =RGBA(166, 166, 166, 1)
+        DisabledFill: =RGBA(244, 244, 244, 1)
+        DisplayMode: =DisplayMode.View
+        Fill: =RGBA(255, 255, 255, 1)
+        FontWeight: =FontWeight.Semibold
+        Height: =333
+        HoverColor: =RGBA(255, 255, 255, 1)
+        HoverFill: =ColorFade(RGBA(56, 96, 178, 1), -20%)
+        RadiusBottomLeft: =0
+        RadiusBottomRight: =0
+        RadiusTopLeft: =25
+        RadiusTopRight: =25
+        Size: =24
+        Text: =""
+        Visible: =varFilter
+        Width: =640
+        Y: =508
+        ZIndex: =19
+
     Group4_1 As group:
         Height: =5
         Width: =5
@@ -1888,7 +1909,7 @@
                 Color: |-
                     =If(
                         ApplyBtn_3,ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//_VarGblAppColors.PrimaryRed
-                        ,ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Text Primary Color").'Default Value') // ColorValue(LookUp('Environment Variable Definitions', 'Display Name'="Button Color").'Default Value')
+                        ,ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Text Primary Color").'Default Value') //_VarGblAppColors.textbgbutton
                         )
                 DisabledBorderColor: =RGBA(166, 166, 166, 1)
                 DisabledColor: =RGBA(166, 166, 166, 1)
@@ -1964,7 +1985,7 @@
                 Color: |-
                     =If(
                         ApplyBtn_3,ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//_VarGblAppColors.PrimaryRed
-                        ,ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Text Primary Color").'Default Value') // ColorValue(LookUp('Environment Variable Definitions', 'Display Name'="Button Color").'Default Value')
+                        ,ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Text Primary Color").'Default Value') //_VarGblAppColors.textbgbutton
                         )
                 DisabledBorderColor: =RGBA(166, 166, 166, 1)
                 DisabledColor: =RGBA(166, 166, 166, 1)
@@ -2379,6 +2400,661 @@
                     Y: =260
                     ZIndex: =15
 
+            Container4_26 As groupContainer:
+                Height: =814
+                Visible: =varFilter
+                Width: =607
+                ZIndex: =22
+
+                Rectangle16_2 As rectangle:
+                    BorderColor: =RGBA(0, 18, 107, 1)
+                    DisplayMode: =DisplayMode.View
+                    Fill: =RGBA(0, 0, 0, 1)
+                    Height: =500
+                    Visible: =varFilter
+                    Width: =2
+                    X: =290
+                    Y: =230
+                    ZIndex: =1
+
+                Label8_7 As label:
+                    BorderColor: =RGBA(0, 18, 107, 1)
+                    Color: =RGBA(0, 0, 0, 1)
+                    DisabledColor: =RGBA(166, 166, 166, 1)
+                    FontWeight: =FontWeight.Bold
+                    Height: =58
+                    PaddingLeft: =30
+                    Size: =21
+                    Text: ="All Filters"
+                    Visible: =varFilter
+                    Width: =273
+                    X: =20
+                    Y: =40
+                    ZIndex: =2
+
+                ApplyBtn_7 As button:
+                    BorderColor: =RGBA(0, 0, 0, 1)
+                    BorderThickness: =0
+                    Color: |-
+                        =If(
+                            ApplyBtn_7,ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//_VarGblAppColors.PrimaryRed
+                            ,ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Text Primary Color").'Default Value') // ColorValue(LookUp('Environment Variable Definitions', 'Display Name'="Button Color").'Default Value')
+                            )
+                    DisabledBorderColor: =RGBA(166, 166, 166, 1)
+                    DisabledColor: =RGBA(166, 166, 166, 1)
+                    DisabledFill: =RGBA(244, 244, 244, 1)
+                    Fill: |
+                        =If(
+                            ApplyBtn_7,ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )
+                            //ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//_VarGblAppColors.PrimaryRed
+                            ,Color.LightGray
+                            )
+                            
+                    FocusedBorderThickness: =
+                    Font: =
+                    FontWeight: =FontWeight.Semibold
+                    Height: =50
+                    HoverColor: =RGBA(255, 255, 255, 1)
+                    HoverFill: |-
+                        =ColorFade(ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//_VarGblAppColors.PrimaryRed
+                        , 10%)
+                    OnSelect: |
+                        =/*ClearCollect(
+                            colFilterData,
+                            If(
+                                IsBlank(DateFrom_1.SelectedDate) && IsBlank(radioDate_1.Selected),
+                                OfflineVisitCollection,
+                        
+                               radioDate_1.Selected.Value = "All",
+                                Filter(
+                                    OfflineVisitCollection,
+                                    IsToday('Created On') && 'Owning User'.'Primary Email' = radioSalesperson_1.Selected.'Primary Email'
+                                ),
+                        
+                                radioDate_1.Selected.Value = "Planned",
+                                Filter(
+                                    OfflineVisitCollection,
+                                    (DateValue('Created On') >= DateValue(Today()) - Weekday(Today()) + 2 && DateValue('Created On') <= DateValue(Today()) + (9 - Weekday(Today()))) && 'Owning User'.'Primary Email' = radioSalesperson_1.Selected.'Primary Email'
+                                ),
+                                
+                                radioDate_1.Selected.Value= "Unplanned",
+                                Filter(
+                                    OfflineVisitCollection,
+                                    (Text(
+                                        'Created On',
+                                        "mmmm"
+                                    ) = Text(
+                                        Today(),
+                                        "mmmm"
+                                    )) && 'Owning User'.'Primary Email' = radioSalesperson_1.Selected.'Primary Email'
+                                ),
+                        
+                                !IsBlank(DateFrom_1.SelectedDate),
+                                Filter(
+                                    OfflineVisitCollection,
+                                    DateValue('Created On') >= DateValue(DateFrom_1.SelectedDate) && DateValue('Created On') <= DateValue(DateTo_1.SelectedDate) && 'Owning User'.'Primary Email' =  radioSalesperson_1.Selected.'Primary Email'
+                                ),
+                            
+                                OfflineVisitCollection
+                            )
+                        );
+                        Set(
+                            varFilter,
+                            !varFilter
+                        );*/
+                    Size: =16
+                    Text: ="Apply Filters"
+                    Visible: =varFilter
+                    Width: =220
+                    X: =348
+                    Y: =625
+                    ZIndex: =3
+
+                ClearBtn_3 As button:
+                    Color: |-
+                        =If(
+                            ApplyBtn_7,ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//_VarGblAppColors.PrimaryRed
+                            ,ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Text Primary Color").'Default Value') // ColorValue(LookUp('Environment Variable Definitions', 'Display Name'="Button Color").'Default Value')
+                            )
+                    DisabledBorderColor: =RGBA(166, 166, 166, 1)
+                    DisabledColor: =RGBA(166, 166, 166, 1)
+                    DisabledFill: =RGBA(244, 244, 244, 1)
+                    Fill: |-
+                        =If(
+                            ApplyBtn_7,ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )
+                            //ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//_VarGblAppColors.PrimaryRed
+                            ,Color.LightGray)
+                    FontWeight: =FontWeight.Semibold
+                    Height: =50
+                    HoverColor: =RGBA(255, 255, 255, 1)
+                    HoverFill: |-
+                        =ColorFade(ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//_VarGblAppColors.PrimaryRed
+                        , 10%)
+                    OnSelect: |-
+                        =Reset(DateFrom_3);
+                        Reset(DateTo_3);
+                        //Reset(radioDate_1);
+                        Reset(radioSalesperson_3);
+                        Clear(colFilter);
+                        Clear(colFilterData)
+                    Size: =16
+                    Text: ="Clear Filters"
+                    Visible: =varFilter
+                    Width: =220
+                    X: =38
+                    Y: =625
+                    ZIndex: =4
+
+                Rectangle17_3 As rectangle:
+                    BorderColor: =RGBA(0, 18, 107, 1)
+                    Fill: =RGBA(0, 0, 0, 1)
+                    Height: =2
+                    Visible: =varFilter
+                    Width: =607
+                    Y: =227
+                    ZIndex: =5
+
+                Label30_9 As label:
+                    BorderColor: =RGBA(0, 18, 107, 1)
+                    Color: =RGBA(0, 0, 0, 1)
+                    DisabledColor: =RGBA(166, 166, 166, 1)
+                    FontWeight: =FontWeight.Semibold
+                    Height: =57
+                    Size: =18
+                    Text: ="Date From"
+                    Visible: =If(Gallery8_3.Selected.tabid=2,true,false)
+                    Width: =173
+                    X: =331
+                    Y: =259
+                    ZIndex: =6
+
+                DateTo_3 As datepicker:
+                    AccessibleLabel: ="Date To"
+                    BorderThickness: =1
+                    CalendarHeaderFill: =RGBA(56, 96, 178, 1)
+                    Color: =RGBA(0, 0, 0, 1)
+                    DisabledBorderColor: =RGBA(166, 166, 166, 1)
+                    DisabledColor: =RGBA(166, 166, 166, 1)
+                    DisabledFill: =RGBA(244, 244, 244, 1)
+                    Fill: =RGBA(255,255,255,0)
+                    Height: =63
+                    HoverDateFill: =RGBA(186, 202, 226, 1)
+                    IconBackground: =Color.Transparent
+                    IconFill: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//_VarGblAppColors.PrimaryRed
+                    InputTextPlaceholder: =If(IsBlank(Self.SelectedDate), Text(Today(), "dd/mm/yyyy"))
+                    OnSelect: |-
+                        =If(
+                            Gallery8_3.Selected.tabid = 2 && IsBlank(
+                                LookUp(
+                                    colFilter,
+                                    Title = "Date To"
+                                ).Title
+                            ),
+                            Collect(
+                                colFilter,
+                                {
+                                    Title: "Date To",
+                                    value: Text(
+                                        DateTo_3.SelectedDate,
+                                        "dd-mm-yyyy"
+                                    )
+                                }
+                            ),
+                            Patch(
+                                colFilter,
+                                LookUp(
+                                    colFilter,
+                                    Title = "Date To"
+                                ),
+                                {
+                                    value: Text(
+                                        DateTo_3.SelectedDate,
+                                        "dd-mm-yyyy"
+                                    )
+                                }
+                            )
+                        )
+                    SelectedDateFill: =RGBA(56, 96, 178, 1)
+                    Size: =16
+                    Visible: =If(Gallery8_3.Selected.tabid=2,true,false)
+                    Width: =238
+                    X: =323
+                    Y: =458
+                    ZIndex: =7
+
+                Label30_10 As label:
+                    BorderColor: =RGBA(0, 18, 107, 1)
+                    Color: =RGBA(0, 0, 0, 1)
+                    DisabledColor: =RGBA(166, 166, 166, 1)
+                    FontWeight: =FontWeight.Semibold
+                    Height: =49
+                    Size: =18
+                    Text: ="Date To"
+                    Visible: =If(Gallery8_3.Selected.tabid=2,true,false)
+                    Width: =173
+                    X: =331
+                    Y: =409
+                    ZIndex: =8
+
+                DateFrom_3 As datepicker:
+                    AccessibleLabel: ="From Date"
+                    BorderThickness: =1
+                    CalendarHeaderFill: =RGBA(56, 96, 178, 1)
+                    Color: =RGBA(0, 0, 0, 1)
+                    DefaultDate: =//Today()
+                    DisabledBorderColor: =RGBA(166, 166, 166, 1)
+                    DisabledColor: =RGBA(166, 166, 166, 1)
+                    DisabledFill: =RGBA(244, 244, 244, 1)
+                    Fill: =RGBA(255,255,255,0)
+                    Height: =63
+                    HoverDateFill: =RGBA(186, 202, 226, 1)
+                    IconBackground: =Color.Transparent
+                    IconFill: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//_VarGblAppColors.PrimaryRed
+                    InputTextPlaceholder: =If(IsBlank(Self.SelectedDate), Text(Today(), "dd/mm/yyyy"))
+                    OnSelect: |-
+                        =If(
+                            Gallery8_3.Selected.tabid = 2 && IsBlank(
+                                LookUp(
+                                    colFilter,
+                                    Title = "Date From"
+                                ).Title
+                            ),
+                            Collect(
+                                colFilter,
+                                {
+                                    Title: "Date From",
+                                    value: Text(
+                                        DateFrom_3.SelectedDate,
+                                        "dd-mm-yyyy"
+                                    )
+                                }
+                            ),
+                            Patch(
+                                colFilter,
+                                LookUp(
+                                    colFilter,
+                                    Title = "Date From"
+                                ),
+                                {
+                                    value: Text(
+                                        DateFrom_3.SelectedDate,
+                                        "dd-mm-yyyy"
+                                    )
+                                }
+                            )
+                        )
+                    SelectedDateFill: =RGBA(56, 96, 178, 1)
+                    Size: =16
+                    Visible: =If(Gallery8_3.Selected.tabid=2,true,false)
+                    Width: =238
+                    X: =322
+                    Y: =316
+                    ZIndex: =9
+
+                Icon18_7 As icon.Cancel:
+                    AccessibleLabel: ="Icon"
+                    BorderColor: =RGBA(0, 18, 107, 1)
+                    DisabledBorderColor: =RGBA(166, 166, 166, 1)
+                    DisabledColor: =RGBA(244, 244, 244, 1)
+                    Height: =40
+                    Icon: =Icon.Cancel
+                    OnSelect: |
+                        =Set(varFilter,false);
+                    TabIndex: =0//-1
+                    Visible: =varFilter
+                    Width: =40
+                    X: =541
+                    Y: =27
+                    ZIndex: =10
+
+                radioSalesperson_3 As radio:
+                    AccessibleLabel: ="Salesperson"
+                    BorderColor: =RGBA(0, 18, 107, 1)
+                    Color: =RGBA(0, 0, 0, 1)
+                    Default: =LookUp(Users,'Primary Email'=User().Email).'Full Name'
+                    Height: =309
+                    HoverColor: =RGBA(0, 18, 107, 1)
+                    Items: |-
+                        =/*Filter(
+                            Users,
+                            Manager.'Primary Email' = User().Email || 'Primary Email' = User().Email
+                        )*/
+                        Search(Users, TextInput4_3.Text, "firstname")
+                    LineHeight: =2
+                    OnSelect: |-
+                        =
+                        
+                            If(Gallery8_3.Selected.tabid = 3  && IsBlank(LookUp(colFilter,Title= Gallery8_3.Selected.Title).Title),
+                            Collect(
+                                colFilter,
+                                {
+                                    Title: Gallery8_3.Selected.Title,
+                                    value: radioSalesperson_3.Selected.'Full Name'
+                                }
+                            ),
+                            Patch(colFilter,LookUp(colFilter,Title= Gallery8_3.Selected.Title),{value: radioSalesperson_3.Selected.'Full Name'})
+                        )
+                    RadioSize: =40
+                    Size: =18
+                    Visible: =If(Gallery8_3.Selected.tabid=3 && !IsBlank(TextInput4_3.Text),true,false)
+                    Width: =340
+                    X: =267
+                    Y: =316
+                    ZIndex: =11
+
+                Gallery8_3 As gallery.galleryVertical:
+                    AccessibleLabel: ="Gallery"
+                    BorderColor: =RGBA(0, 18, 107, 1)
+                    Height: =95
+                    Items: |-
+                        =Table(
+                            {
+                                Title: "Visit Type",
+                                tabid: 1
+                            },
+                            {
+                                Title: "Custom Date",
+                                tabid: 2
+                            },
+                            {
+                                Title: "Salesperson",
+                                tabid: 3
+                            }
+                        )
+                    Layout: =Layout.Vertical
+                    ShowScrollbar: =false
+                    TabIndex: =0//-1
+                    TemplateSize: =84
+                    Visible: =varFilter
+                    Width: =243
+                    X: =36
+                    Y: =259
+                    ZIndex: =12
+
+                    Button18_2 As button:
+                        Align: =Align.Left
+                        BorderColor: |-
+                            =If(ThisItem.IsSelected,ColorFade(ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//_VarGblAppColors.PrimaryRed
+                            ,20%)
+                            
+                            ,Color.Transparent)
+                        Color: |-
+                            =If(ThisItem.IsSelected,ColorFade(ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//_VarGblAppColors.PrimaryRed
+                            ,20%)
+                            ,Color.Transparent)
+                        DisabledBorderColor: =RGBA(166, 166, 166, 1)
+                        DisabledColor: =RGBA(166, 166, 166, 1)
+                        DisabledFill: =RGBA(244, 244, 244, 1)
+                        Fill: |
+                            =Color.Transparent
+                        FontWeight: =FontWeight.Semibold
+                        Height: =60
+                        HoverColor: =RGBA(255, 255, 255, 1)
+                        HoverFill: =ColorFade(Color.DimGrey,80%)
+                        OnSelect: |-
+                            =//Patch(colFilter,Defaults(colFilter),AddColumns(colFilter,"title",ThisItem.Title),{})
+                            
+                            
+                            
+                            //If(CountRows(colFilter)>0,Collect(colFilter,{Title: ThisItem.Title,value:""});
+                        PaddingLeft: =25
+                        PressedColor: =Color.DimGrey
+                        PressedFill: =ColorFade(Color.DimGrey,80%)
+                        Size: =16
+                        Text: =ThisItem.Title
+                        Width: =224
+                        X: =1
+                        Y: =9
+                        ZIndex: =1
+
+                Display_3 As gallery.galleryHorizontal:
+                    AccessibleLabel: ="Display Gallery"
+                    BorderColor: =RGBA(0, 18, 107, 1)
+                    DelayItemLoading: =true
+                    Height: =106
+                    Items: =colFilter
+                    LoadingSpinner: =LoadingSpinner.Data
+                    ShowScrollbar: =false
+                    TabIndex: =0//-1
+                    TemplateSize: =336
+                    Visible: |-
+                        =//If(CountRows(colFilter)=1,false,true)
+                        true
+                    Width: =607
+                    Y: =109
+                    ZIndex: =13
+
+                    Button20_2 As button:
+                        DisabledBorderColor: =RGBA(166, 166, 166, 1)
+                        DisabledColor: =RGBA(166, 166, 166, 1)
+                        DisabledFill: =RGBA(244, 244, 244, 1)
+                        DisplayMode: =DisplayMode.View
+                        Fill: |-
+                            =//RGBA(204, 204, 204, 1)
+                            ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//_VarGblAppColors.PrimaryRed
+                        FontWeight: =FontWeight.Semibold
+                        Height: =60
+                        HoverColor: =RGBA(255, 255, 255, 1)
+                        HoverFill: =ColorFade(RGBA(56, 96, 178, 1), -20%)
+                        RadiusBottomLeft: =15
+                        RadiusBottomRight: =15
+                        RadiusTopLeft: =15
+                        RadiusTopRight: =15
+                        Size: =24
+                        Text: =""
+                        Width: =285
+                        X: =8
+                        Y: =12
+                        ZIndex: =1
+
+                    Label31_3 As label:
+                        Align: =Align.Center
+                        BorderColor: =RGBA(0, 18, 107, 1)
+                        Color: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Hover Color").'Default Value')
+                        DisabledColor: =RGBA(166, 166, 166, 1)
+                        Height: =37
+                        OnSelect: =Select(Parent)
+                        Size: =16
+                        Text: |-
+                            =ThisItem.Title & ":" & ThisItem.value
+                        Tooltip: |-
+                            =ThisItem.Title & ":"
+                        Width: =269
+                        Wrap: =false
+                        Y: =25
+                        ZIndex: =2
+
+                    Icon21_2 As icon.Cancel:
+                        AccessibleLabel: ="Ico"
+                        BorderColor: =RGBA(0, 18, 107, 1)
+                        Color: =RGBA(255, 255, 255, 1)
+                        DisabledBorderColor: =RGBA(166, 166, 166, 1)
+                        DisabledColor: =RGBA(244, 244, 244, 1)
+                        Height: =30
+                        Icon: =Icon.Cancel
+                        OnSelect: |-
+                            =Remove(colFilter,ThisItem);
+                            //Reset(radioDate_1);
+                            Reset(radioSalesperson_3)
+                        PaddingBottom: =4
+                        PaddingLeft: =3
+                        PaddingRight: =3
+                        PaddingTop: =4
+                        TabIndex: =0//-1
+                        Width: =40
+                        X: =248
+                        Y: =15
+                        ZIndex: =4
+
+                Group2_3 As group:
+                    Height: =5
+                    Width: =5
+                    X: =60
+                    Y: =60
+                    ZIndex: =17
+
+                    TextInput4_3 As text:
+                        AccessibleLabel: ="Text input"
+                        Align: =Align.Center
+                        BorderColor: =RGBA(0, 18, 107, 1)
+                        BorderThickness: =2
+                        Color: =RGBA(0, 0, 0, 1)
+                        Default: ="Text Input"
+                        DisabledBorderColor: =RGBA(166, 166, 166, 1)
+                        DisabledColor: =RGBA(166, 166, 166, 1)
+                        DisabledFill: =RGBA(244, 244, 244, 1)
+                        FocusedBorderThickness: =4
+                        Height: =43
+                        HintText: ="Search"
+                        HoverBorderColor: =RGBA(0, 18, 107, 1)
+                        HoverColor: =RGBA(0, 0, 0, 1)
+                        HoverFill: =RGBA(186, 202, 226, 1)
+                        Size: =15
+                        Visible: =If(Gallery8_3.Selected.tabid=3,true,false)
+                        Width: =271
+                        X: =312
+                        Y: =255
+                        ZIndex: =14
+
+                    Icon18_10 As icon.Search:
+                        BorderColor: =RGBA(0, 18, 107, 1)
+                        Color: =RGBA(0, 18, 107, 1)
+                        DisabledBorderColor: =RGBA(166, 166, 166, 1)
+                        DisabledColor: =RGBA(244, 244, 244, 1)
+                        Height: =30
+                        Icon: =Icon.Search
+                        Visible: =If(Gallery8_3.Selected.tabid=3,true,false)
+                        Width: =30
+                        X: =322
+                        Y: =260
+                        ZIndex: =15
+
+                Group25_1 As group:
+                    Height: =5
+                    Width: =5
+                    X: =60
+                    Y: =60
+                    ZIndex: =22
+
+                    Button41_3 As button:
+                        DisabledBorderColor: =RGBA(102, 182, 227, 1)
+                        DisabledColor: =RGBA(166, 166, 166, 1)
+                        DisabledFill: =RGBA(0, 0, 0, 0)
+                        DisplayMode: =DisplayMode.Disabled
+                        Fill: =RGBA(56, 96, 178, 1)
+                        FontWeight: =FontWeight.Semibold
+                        Height: =65
+                        HoverColor: =RGBA(255, 255, 255, 1)
+                        HoverFill: =ColorFade(RGBA(56, 96, 178, 1), -20%)
+                        RadiusBottomLeft: =15
+                        RadiusBottomRight: =15
+                        RadiusTopLeft: =15
+                        RadiusTopRight: =15
+                        Size: =24
+                        Text: =""
+                        Width: =280
+                        X: =315
+                        Y: =251
+                        ZIndex: =16
+
+                    Checkbox5_1 As checkbox:
+                        BorderColor: =RGBA(0, 18, 107, 1)
+                        CheckboxBorderColor: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//_VarGblAppColors.PrimaryRed
+                        CheckboxSize: =40
+                        Color: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//_VarGblAppColors.PrimaryRed
+                        Height: =65
+                        HoverColor: =RGBA(0, 18, 107, 1)
+                        Size: =21
+                        Text: ="All"
+                        Width: =280
+                        X: =320
+                        Y: =252
+                        ZIndex: =17
+
+                Group24_1 As group:
+                    Height: =5
+                    Width: =5
+                    X: =60
+                    Y: =60
+                    ZIndex: =22
+
+                    Button41_4 As button:
+                        DisabledBorderColor: =RGBA(102, 182, 227, 1)
+                        DisabledColor: =RGBA(166, 166, 166, 1)
+                        DisabledFill: =RGBA(0, 0, 0, 0)
+                        DisplayMode: =DisplayMode.Disabled
+                        Fill: =RGBA(56, 96, 178, 1)
+                        FontWeight: =FontWeight.Semibold
+                        Height: =65
+                        HoverColor: =RGBA(255, 255, 255, 1)
+                        HoverFill: =ColorFade(RGBA(56, 96, 178, 1), -20%)
+                        RadiusBottomLeft: =15
+                        RadiusBottomRight: =15
+                        RadiusTopLeft: =15
+                        RadiusTopRight: =15
+                        Size: =24
+                        Text: =""
+                        Width: =280
+                        X: =315
+                        Y: =332
+                        ZIndex: =20
+
+                    Checkbox5_4 As checkbox:
+                        BorderColor: =RGBA(0, 18, 107, 1)
+                        CheckboxBorderColor: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//_VarGblAppColors.PrimaryRed
+                        CheckboxSize: =40
+                        Color: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//_VarGblAppColors.PrimaryRed
+                        Height: =65
+                        HoverColor: =RGBA(0, 18, 107, 1)
+                        Size: =21
+                        Text: ="Planned"
+                        Width: =250
+                        X: =320
+                        Y: =332
+                        ZIndex: =21
+
+                Group23_1 As group:
+                    Height: =5
+                    Width: =5
+                    X: =60
+                    Y: =60
+                    ZIndex: =23
+
+                    Button41_5 As button:
+                        DisabledBorderColor: =RGBA(102, 182, 227, 1)
+                        DisabledColor: =RGBA(166, 166, 166, 1)
+                        DisabledFill: =RGBA(0, 0, 0, 0)
+                        DisplayMode: =DisplayMode.Disabled
+                        Fill: =RGBA(56, 96, 178, 1)
+                        FontWeight: =FontWeight.Semibold
+                        Height: =65
+                        HoverColor: =RGBA(255, 255, 255, 1)
+                        HoverFill: =ColorFade(RGBA(56, 96, 178, 1), -20%)
+                        RadiusBottomLeft: =15
+                        RadiusBottomRight: =15
+                        RadiusTopLeft: =15
+                        RadiusTopRight: =15
+                        Size: =24
+                        Text: =""
+                        Width: =280
+                        X: =315
+                        Y: =416
+                        ZIndex: =18
+
+                    Checkbox5_5 As checkbox:
+                        BorderColor: =RGBA(0, 18, 107, 1)
+                        CheckboxBorderColor: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//_VarGblAppColors.PrimaryRed
+                        CheckboxSize: =40
+                        Color: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//_VarGblAppColors.PrimaryRed
+                        Height: =65
+                        HoverColor: =RGBA(0, 18, 107, 1)
+                        Size: =21
+                        Text: ="UnPlanned"
+                        Width: =250
+                        X: =320
+                        Y: =413
+                        ZIndex: =19
+
             Group25 As group:
                 Height: =5
                 Width: =5
@@ -2504,4 +3180,59 @@
                     X: =320
                     Y: =413
                     ZIndex: =19
+
+    Button20_3 As button:
+        DisabledBorderColor: =RGBA(166, 166, 166, 1)
+        DisabledColor: =RGBA(166, 166, 166, 1)
+        DisabledFill: =RGBA(244, 244, 244, 1)
+        DisplayMode: =DisplayMode.View
+        Fill: |-
+            =//RGBA(204, 204, 204, 1)
+            ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//_VarGblAppColors.PrimaryRed
+        FontWeight: =FontWeight.Semibold
+        Height: =60
+        HoverColor: =RGBA(255, 255, 255, 1)
+        HoverFill: =ColorFade(RGBA(56, 96, 178, 1), -20%)
+        OnSelect: |+
+            =
+            /*
+            
+            Patch('Parties.S', 
+            
+            'Customer 360'.CustomerRecord, {Latitude:Location.Latitude, Longitude:Location.Longitude});
+            */
+            
+        RadiusBottomLeft: =15
+        RadiusBottomRight: =15
+        RadiusTopLeft: =15
+        RadiusTopRight: =15
+        Size: =24
+        Text: ="Yes"
+        Width: =231
+        X: =49
+        Y: =722
+        ZIndex: =21
+
+    Button20_4 As button:
+        DisabledBorderColor: =RGBA(166, 166, 166, 1)
+        DisabledColor: =RGBA(166, 166, 166, 1)
+        DisabledFill: =RGBA(244, 244, 244, 1)
+        DisplayMode: =DisplayMode.View
+        Fill: |-
+            =//RGBA(204, 204, 204, 1)
+            ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//_VarGblAppColors.PrimaryRed
+        FontWeight: =FontWeight.Semibold
+        Height: =59
+        HoverColor: =RGBA(255, 255, 255, 1)
+        HoverFill: =ColorFade(RGBA(56, 96, 178, 1), -20%)
+        RadiusBottomLeft: =15
+        RadiusBottomRight: =15
+        RadiusTopLeft: =15
+        RadiusTopRight: =15
+        Size: =24
+        Text: ="NO"
+        Width: =231
+        X: =367
+        Y: =722
+        ZIndex: =22
 
