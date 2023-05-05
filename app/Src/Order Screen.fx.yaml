@@ -33,7 +33,7 @@
 
     Circle13 As circle:
         BorderColor: =RGBA(0, 18, 107, 1)
-        Fill: =_VarGblAppColors.PrimaryRed
+        Fill: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//_VarGblAppColors.PrimaryRed
         Height: =30
         Width: =30
         X: =597

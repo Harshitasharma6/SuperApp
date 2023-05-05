@@ -66,7 +66,7 @@ PlanPJPCart As screen:
 
         Title2Lbl_12 As label:
             BorderColor: =RGBA(0, 18, 107, 1)
-            Color: =_VarGblAppColors.textbgbutton
+            Color: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Text Primary Color").'Default Value') //_VarGblAppColors.textbgbutton
             DisabledColor: =RGBA(166, 166, 166, 1)
             Font: =_VarGblAppFonts.Heading
             FontWeight: =FontWeight.Semibold
@@ -177,7 +177,7 @@ PlanPJPCart As screen:
             FontWeight: =FontWeight.Semibold
             Height: =38
             OnSelect: =Select(Parent)
-            Size: =_VarGblAppFonts.Size.Subtitle
+            Size: =LookUp(c_EnvironmentVariable,'Display Name'="Text Sub Title Font Size").'Default Value' //_VarGblAppFonts.Size.Subtitle
             Text: |-
                 ="State: "& "Uttar Pardesh"
             Visible: =false
@@ -223,7 +223,7 @@ PlanPJPCart As screen:
                             'PJP Line'.Date = ClickedPjpdate &&  'PJP Line'.'Owning User'.'Primary Email' =  ComboBox3.Selected.'Primary Email'&& Area.Area = ThisItem.Area.Area
                         )
                     ),
-                    _VarGblAppColors.PrimaryRed,
+                    ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//_VarGblAppColors.PrimaryRed,
                     Color.Green
                 )
             DisabledBorderColor: =RGBA(166, 166, 166, 1)
@@ -283,7 +283,7 @@ PlanPJPCart As screen:
             ZIndex: =14
 
         Button26_1 As button:
-            BorderColor: =_VarGblAppColors.textbgbutton
+            BorderColor: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Text Primary Color").'Default Value') //_VarGblAppColors.textbgbutton
             DisabledBorderColor: =RGBA(166, 166, 166, 1)
             DisabledColor: =RGBA(166, 166, 166, 1)
             DisabledFill: =RGBA(244, 244, 244, 1)
@@ -346,7 +346,7 @@ PlanPJPCart As screen:
         DisabledColor: =RGBA(166, 166, 166, 1)
         DisabledFill: =RGBA(244, 244, 244, 1)
         DisplayMode: =If(CountRows(Gallery1_8.AllItems)=0,DisplayMode.Disabled,DisplayMode.Edit)
-        Fill: =_VarGblAppColors.PrimaryRed
+        Fill: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//_VarGblAppColors.PrimaryRed
         FontWeight: =FontWeight.Semibold
         HoverColor: =RGBA(255, 255, 255, 1)
         HoverFill: =ColorFade(RGBA(56, 96, 178, 1), -20%)

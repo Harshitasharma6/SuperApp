@@ -22,7 +22,9 @@
                 Data: "5"
             }
         )
-    Fill: =_VarGblAppColors.BackgroundColor
+    Fill: |-
+        =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Screen Background Color").'Default Value')
+        //_VarGblAppColors.BackgroundColor
     HeaderId: =varContactData
     Height: =800
     Width: =640
@@ -73,7 +75,7 @@
 
             Data_1 As label:
                 BorderColor: =RGBA(0, 18, 107, 1)
-                Color: =_VarGblAppColors.PrimaryRed
+                Color: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//_VarGblAppColors.PrimaryRed
                 DisabledColor: =RGBA(166, 166, 166, 1)
                 FontWeight: =FontWeight.Semibold
                 Height: =66

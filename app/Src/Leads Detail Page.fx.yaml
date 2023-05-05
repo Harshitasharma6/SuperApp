@@ -48,7 +48,7 @@
         DisabledBorderColor: =RGBA(166, 166, 166, 1)
         DisabledColor: =RGBA(166, 166, 166, 1)
         DisabledFill: =RGBA(244, 244, 244, 1)
-        Fill: =_VarGblAppColors.PrimaryRed
+        Fill: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//_VarGblAppColors.PrimaryRed
         FontWeight: =FontWeight.Semibold
         Height: =63
         HoverColor: =RGBA(255, 255, 255, 1)
@@ -97,7 +97,7 @@
     Label11_2 As label:
         Align: =Align.Center
         BorderColor: =RGBA(0, 18, 107, 1)
-        Color: =_VarGblAppColors.PrimaryRed
+        Color: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//_VarGblAppColors.PrimaryRed
         DisabledColor: =RGBA(166, 166, 166, 1)
         FontWeight: =FontWeight.Bold
         Height: =70
@@ -113,7 +113,7 @@
         DisabledBorderColor: =RGBA(166, 166, 166, 1)
         DisabledColor: =RGBA(166, 166, 166, 1)
         DisabledFill: =RGBA(244, 244, 244, 1)
-        Fill: =_VarGblAppColors.PrimaryRed
+        Fill: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//_VarGblAppColors.PrimaryRed
         FontWeight: =FontWeight.Semibold
         Height: =63
         HoverColor: =RGBA(255, 255, 255, 1)
@@ -218,8 +218,8 @@
                 BorderThickness: =1
                 ChevronBackground: =
                 ChevronDisabledBackground: =RGBA(230, 230, 230, 1)
-                ChevronDisabledFill: =_VarGblAppColors.PrimaryRed
-                ChevronFill: =_VarGblAppColors.PrimaryRed
+                ChevronDisabledFill: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//_VarGblAppColors.PrimaryRed
+                ChevronFill: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//_VarGblAppColors.PrimaryRed
                 ChevronHoverBackground: =
                 ChevronHoverFill: =RGBA(255, 255, 255, 1)
                 DefaultSelectedItems: |-
@@ -323,7 +323,7 @@
                 ChevronBackground: =
                 ChevronDisabledBackground: =RGBA(166, 166, 166, 1)
                 ChevronDisabledFill: =RGBA(244, 244, 244, 1)
-                ChevronFill: =_VarGblAppColors.PrimaryRed
+                ChevronFill: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//_VarGblAppColors.PrimaryRed
                 ChevronHoverBackground: =
                 ChevronHoverFill: =RGBA(255, 255, 255, 1)
                 DefaultSelectedItems: |-
@@ -608,7 +608,7 @@
                 ChevronDisabledFill: =RGBA(244, 244, 244, 1)
                 ChevronFill: |-
                     =//RGBA(255, 255, 255, 1)
-                    _VarGblAppColors.PrimaryRed
+                    ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//_VarGblAppColors.PrimaryRed
                 ChevronHoverBackground: =
                 ChevronHoverFill: =Self.Fill
                 DefaultSelectedItems: =[Parent.Default]
@@ -704,7 +704,7 @@
                 ChevronBackground: =RGBA(0, 0, 0, 0)
                 ChevronDisabledBackground: =RGBA(166, 166, 166, 1)
                 ChevronDisabledFill: =RGBA(244, 244, 244, 1)
-                ChevronFill: =_VarGblAppColors.PrimaryRed
+                ChevronFill: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//_VarGblAppColors.PrimaryRed
                 ChevronHoverBackground: =
                 ChevronHoverFill: =RGBA(255, 255, 255, 1)
                 DefaultSelectedItems: =[Parent.Default]
@@ -808,7 +808,7 @@
                 Height: =70
                 HoverDateFill: =RGBA(186, 202, 226, 1)
                 IconBackground: =
-                IconFill: =_VarGblAppColors.PrimaryRed
+                IconFill: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//_VarGblAppColors.PrimaryRed
                 InputTextPlaceholder: |-
                     =//If(IsBlank(Self.SelectedDate), Text(Date(2001,12,31), Self.Format, Self.Language))
                     Today()

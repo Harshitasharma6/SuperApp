@@ -1,7 +1,9 @@
 "'Order List View' As CanvasComponent":
     Customer: =
     DataSource: =Parties_1
-    Fill: =_VarGblAppColors.BackgroundColor
+    Fill: |-
+        =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Screen Background Color").'Default Value')
+        //_VarGblAppColors.BackgroundColor
     Height: =App.Height
     Type: ="Primary"
     varvisitid: =

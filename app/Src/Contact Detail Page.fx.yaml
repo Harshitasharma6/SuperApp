@@ -2,6 +2,7 @@
     LoadingSpinnerColor: =RGBA(0, 120, 212, 1)
 
     Header_20 As Header_18:
+        Fill: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Screen Background Color").'Default Value') //ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Screen Background Color").'Default Value') //_VarGblAppColors.BackgroundColor
         ScreenName: =varContactData.zx_firstname& " " & varContactData.zx_lastname
 
     "'Bottom Bar_22' As 'Bottom Bar_20'":
@@ -69,6 +70,7 @@
                     Data: varContactData.zx_department
                 }
             )
+        Fill: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Screen Background Color").'Default Value') //ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Screen Background Color").'Default Value') //_VarGblAppColors.BackgroundColor
         Height: =798
         Y: =80
         ZIndex: =3

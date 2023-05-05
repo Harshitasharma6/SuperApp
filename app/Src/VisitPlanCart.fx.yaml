@@ -31,7 +31,7 @@ VisitPlanCart As screen:
 
     Icon15_2 As icon.Search:
         BorderColor: =RGBA(0, 18, 107, 1)
-        Color: =_VarGblAppColors.PrimaryRed
+        Color: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//_VarGblAppColors.PrimaryRed
         DisabledBorderColor: =RGBA(166, 166, 166, 1)
         DisabledColor: =RGBA(244, 244, 244, 1)
         Height: =30
@@ -96,7 +96,7 @@ VisitPlanCart As screen:
 
         Body1_144 As label:
             BorderColor: =RGBA(0, 18, 107, 1)
-            Color: =_VarGblAppColors.PrimaryRed
+            Color: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//_VarGblAppColors.PrimaryRed
             DisabledColor: =RGBA(166, 166, 166, 1)
             FocusedBorderColor: =Color.Transparent
             FocusedBorderThickness: =0.1
@@ -138,7 +138,7 @@ VisitPlanCart As screen:
             ZIndex: =5
 
         Button6_4 As button:
-            Color: =_VarGblAppColors.PrimaryRed
+            Color: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//_VarGblAppColors.PrimaryRed
             DisabledBorderColor: =RGBA(166, 166, 166, 1)
             DisabledColor: =RGBA(166, 166, 166, 1)
             DisabledFill: =RGBA(244, 244, 244, 1)
@@ -236,7 +236,7 @@ VisitPlanCart As screen:
                     DisplayMode.Disabled,
                     DisplayMode.Edit
                 )*/
-            Fill: =_VarGblAppColors.PrimaryRed
+            Fill: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//_VarGblAppColors.PrimaryRed
             Height: =45
             OnSelect: |-
                 =
@@ -250,7 +250,7 @@ VisitPlanCart As screen:
 
         Body1_178 As label:
             BorderColor: =RGBA(0, 18, 107, 1)
-            Color: =_VarGblAppColors.PrimaryRed
+            Color: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//_VarGblAppColors.PrimaryRed
             DisabledColor: =RGBA(166, 166, 166, 1)
             FocusedBorderColor: =Color.Transparent
             FocusedBorderThickness: =0.1
@@ -292,7 +292,7 @@ VisitPlanCart As screen:
 
         Label56_2 As label:
             BorderColor: =RGBA(0, 18, 107, 1)
-            Color: =_VarGblAppColors.PrimaryRed
+            Color: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//_VarGblAppColors.PrimaryRed
             DisabledColor: =RGBA(166, 166, 166, 1)
             OnSelect: =Select(Parent)
             Text: =Text(ThisItem.createdon,"dd-mm-yyyy")
@@ -451,7 +451,7 @@ VisitPlanCart As screen:
         Icon32 As icon.Cancel:
             AccessibleLabel: ="Text"
             BorderColor: =RGBA(0, 18, 107, 1)
-            Color: = _VarGblAppColors.PrimaryRed
+            Color: = ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//_VarGblAppColors.PrimaryRed
             DisabledBorderColor: =RGBA(166, 166, 166, 1)
             DisabledColor: =RGBA(244, 244, 244, 1)
             Height: =43
@@ -471,7 +471,7 @@ VisitPlanCart As screen:
         DisabledBorderColor: =RGBA(166, 166, 166, 1)
         DisabledColor: =RGBA(166, 166, 166, 1)
         DisabledFill: =RGBA(244, 244, 244, 1)
-        Fill: =_VarGblAppColors.PrimaryRed
+        Fill: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//_VarGblAppColors.PrimaryRed
         FontWeight: =FontWeight.Semibold
         HoverColor: =RGBA(255, 255, 255, 1)
         HoverFill: =ColorFade(RGBA(56, 96, 178, 1), -20%)

@@ -1,6 +1,8 @@
 "'Secondary Cart' As CanvasComponent":
     CartType: ="Text"
-    Fill: =_VarGblAppColors.BackgroundColor
+    Fill: |-
+        =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Screen Background Color").'Default Value')
+        //_VarGblAppColors.BackgroundColor
     Height: |
         =800
     Width: =App.Width

@@ -1,5 +1,7 @@
 Header_18 As CanvasComponent:
-    Fill: =//_VarGblAppColors.BackgroundColor
+    Fill: |-
+        =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Screen Background Color").'Default Value')
+        //_VarGblAppColors.BackgroundColor
     Height: =80
     ScreenName: ="Dashboard"
     Width: =App.Width

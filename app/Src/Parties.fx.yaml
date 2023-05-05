@@ -46,7 +46,7 @@ Parties As screen:
             BorderColor: |-
                 =/*If(
                     _VarActivePartyTypeID = ThisItem.TabId,
-                    _VarGblAppColors.PrimaryRed,
+                    ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//_VarGblAppColors.PrimaryRed,
                     _VarGblAppColors.AccentBg
                 )*/
             BorderStyle: =BorderStyle.None
@@ -54,7 +54,7 @@ Parties As screen:
                 =/*If(
                     _VarActivePartyTypeID = ThisItem.TabId,
                     Color.White,
-                    _VarGblAppColors.PrimaryRed
+                    ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//_VarGblAppColors.PrimaryRed
                 )*/
             DisabledBorderColor: =RGBA(166, 166, 166, 1)
             DisabledColor: =RGBA(166, 166, 166, 1)
@@ -94,7 +94,7 @@ Parties As screen:
             Color: |-
                 =If(
                     _VarActivePartyTypeID = ThisItem.TabId,
-                       _VarGblAppColors.PrimaryRed, _VarGblAppColors.textbgbutton
+                       ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//_VarGblAppColors.PrimaryRed, ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Text Primary Color").'Default Value') //_VarGblAppColors.textbgbutton
                 )
             DisabledColor: =RGBA(166, 166, 166, 1)
             FocusedBorderThickness: =0.3
@@ -109,7 +109,7 @@ Parties As screen:
 
         Rectangle31 As rectangle:
             BorderColor: =RGBA(0, 18, 107, 1)
-            Fill: =_VarGblAppColors.PrimaryRed
+            Fill: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//_VarGblAppColors.PrimaryRed
             Height: =2
             OnSelect: =Select(Parent)
             Visible: |-
@@ -184,7 +184,7 @@ Parties As screen:
                 =Navigate('Customer 360 Screen',ScreenTransition.CoverRight);
                 
                 Set(varCustomerRecord,ThisItem)
-            Size: =_VarGblAppFonts.Size.Subtitle
+            Size: =LookUp(c_EnvironmentVariable,'Display Name'="Text Sub Title Font Size").'Default Value' //_VarGblAppFonts.Size.Subtitle
             TabIndex: =0
             Text: =ThisItem.zx_name 
             Width: =300
@@ -194,7 +194,7 @@ Parties As screen:
 
         Title2Lbl_6 As label:
             BorderColor: =RGBA(0, 18, 107, 1)
-            Color: =_VarGblAppColors.textbgbutton
+            Color: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Text Primary Color").'Default Value') //_VarGblAppColors.textbgbutton
             DisabledColor: =RGBA(166, 166, 166, 1)
             FocusedBorderThickness: =01
             Font: =_VarGblAppFonts.Heading
@@ -283,7 +283,7 @@ Parties As screen:
 
         Body1_26 As label:
             BorderColor: =RGBA(0, 18, 107, 1)
-            Color: =_VarGblAppColors.textbgbutton
+            Color: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Text Primary Color").'Default Value') //_VarGblAppColors.textbgbutton
             DisabledColor: =RGBA(166, 166, 166, 1)
             FocusedBorderThickness: =01
             Font: =Font.'Segoe UI'
@@ -339,7 +339,7 @@ Parties As screen:
 
         Body1_28 As label:
             BorderColor: =RGBA(0, 18, 107, 1)
-            Color: =_VarGblAppColors.textbgbutton
+            Color: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Text Primary Color").'Default Value') //_VarGblAppColors.textbgbutton
             DisabledColor: =RGBA(166, 166, 166, 1)
             FocusedBorderThickness: =01
             Font: =_VarGblAppFonts.Heading
@@ -395,7 +395,7 @@ Parties As screen:
 
         Body1_27 As label:
             BorderColor: =RGBA(0, 18, 107, 1)
-            Color: =_VarGblAppColors.textbgbutton
+            Color: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Text Primary Color").'Default Value') //_VarGblAppColors.textbgbutton
             DisabledColor: =RGBA(166, 166, 166, 1)
             FocusedBorderThickness: =01
             Font: =_VarGblAppFonts.Heading
@@ -458,7 +458,7 @@ Parties As screen:
 
         Label50 As label:
             BorderColor: =RGBA(0, 18, 107, 1)
-            Color: =_VarGblAppColors.textbgbutton
+            Color: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Text Primary Color").'Default Value') //_VarGblAppColors.textbgbutton
             DisabledColor: =RGBA(166, 166, 166, 1)
             Height: =33
             OnSelect: =Select(Parent)
@@ -473,7 +473,7 @@ Parties As screen:
 
         Label51 As label:
             BorderColor: =RGBA(0, 18, 107, 1)
-            Color: =_VarGblAppColors.textbgbutton
+            Color: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Text Primary Color").'Default Value') //_VarGblAppColors.textbgbutton
             DisabledColor: =RGBA(166, 166, 166, 1)
             Height: =33
             OnSelect: =Select(Parent)
@@ -485,7 +485,7 @@ Parties As screen:
 
         Label51_1 As label:
             BorderColor: =RGBA(0, 18, 107, 1)
-            Color: =_VarGblAppColors.textbgbutton
+            Color: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Text Primary Color").'Default Value') //_VarGblAppColors.textbgbutton
             DisabledColor: =RGBA(166, 166, 166, 1)
             Height: =33
             OnSelect: =Select(Parent)
@@ -504,7 +504,7 @@ Parties As screen:
 
             Circle9 As circle:
                 BorderColor: =RGBA(0, 18, 107, 1)
-                Fill: =_VarGblAppColors.PrimaryRed
+                Fill: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//_VarGblAppColors.PrimaryRed
                 Height: =40
                 OnSelect: =Select(Parent)
                 Width: =40

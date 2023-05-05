@@ -96,7 +96,9 @@
         "'Activity gallery' As gallery.galleryVertical":
             AccessibleLabel: ="Orderline Gallery"
             BorderColor: =RGBA(0, 18, 107, 1)
-            Fill: =_VarGblAppColors.BackgroundColor
+            Fill: |-
+                =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Screen Background Color").'Default Value')
+                //_VarGblAppColors.BackgroundColor
             Height: =853
             Items: =Sort(Filter('Lead Activities',Lead.'Lead Id'= 'Lead Detail'.HeaderId.cra62_leadid),'Created On',SortOrder.Descending)
             Layout: =Layout.Vertical
@@ -448,7 +450,7 @@
 
             "'Product Name Lbl_4' As label":
                 BorderColor: =RGBA(0, 18, 107, 1)
-                Color: =_VarGblAppColors.PrimaryRed
+                Color: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//_VarGblAppColors.PrimaryRed
                 DisabledColor: =RGBA(166, 166, 166, 1)
                 FocusedBorderColor: =Color.Transparent
                 FocusedBorderThickness: =0.1
@@ -677,7 +679,7 @@
                     DisplayMode.Edit,
                     DisplayMode.Disabled
                 )*/
-            Fill: =_VarGblAppColors.PrimaryRed
+            Fill: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//_VarGblAppColors.PrimaryRed
             FontWeight: =FontWeight.Semibold
             Height: =47
             HoverColor: =RGBA(255, 255, 255, 1)
@@ -993,7 +995,7 @@
             DisabledBorderColor: =RGBA(166, 166, 166, 1)
             DisabledColor: =RGBA(166, 166, 166, 1)
             DisabledFill: =RGBA(244, 244, 244, 1)
-            Fill: =_VarGblAppColors.PrimaryRed
+            Fill: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//_VarGblAppColors.PrimaryRed
             FontWeight: =FontWeight.Semibold
             Height: =47
             HoverColor: =RGBA(255, 255, 255, 1)
@@ -1198,7 +1200,9 @@
                 Color: =_VarGblAppColors.AccentBg
                 DisabledBorderColor: =RGBA(166, 166, 166, 1)
                 DisabledColor: =RGBA(116, 116, 116, 1)
-                DisabledFill: =ColorFade(_VarGblAppColors.PrimaryRed,80%)
+                DisabledFill: |-
+                    =ColorFade(ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//_VarGblAppColors.PrimaryRed
+                    ,80%)
                 DisplayMode: =DisplayMode.Disabled
                 Fill: =_VarGblAppColors.BottomListBg
                 FontWeight: =FontWeight.Semibold
@@ -1224,7 +1228,7 @@
 
             Body1_102 As label:
                 BorderColor: =RGBA(0, 18, 107, 1)
-                Color: =_VarGblAppColors.PrimaryRed
+                Color: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//_VarGblAppColors.PrimaryRed
                 DisabledColor: =RGBA(166, 166, 166, 1)
                 FocusedBorderThickness: =01
                 Font: =_VarGblAppFonts.Heading
@@ -1400,7 +1404,7 @@
                 DisabledBorderColor: =RGBA(166, 166, 166, 1)
                 DisabledColor: =RGBA(166, 166, 166, 1)
                 DisabledFill: =RGBA(244, 244, 244, 1)
-                Fill: =_VarGblAppColors.PrimaryRed
+                Fill: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//_VarGblAppColors.PrimaryRed
                 FontWeight: =FontWeight.Semibold
                 Height: =39
                 HoverColor: =RGBA(255, 255, 255, 1)
@@ -1639,7 +1643,7 @@
 
             "'Product Name Lbl_3' As label":
                 BorderColor: =RGBA(0, 18, 107, 1)
-                Color: =_VarGblAppColors.PrimaryRed
+                Color: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//_VarGblAppColors.PrimaryRed
                 DisabledColor: =RGBA(166, 166, 166, 1)
                 FocusedBorderColor: =Color.Transparent
                 FocusedBorderThickness: =0.1
@@ -1767,7 +1771,9 @@
                 SelectionColor: =_VarGblAppColors.PrimaryText
                 SelectionFill: =RGBA(230, 230, 230, 1)
                 SelectionTagColor: =_VarGblAppColors.PrimaryText
-                SelectionTagFill: =_VarGblAppColors.BackgroundColor
+                SelectionTagFill: |-
+                    =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Screen Background Color").'Default Value')
+                    //_VarGblAppColors.BackgroundColor
                 SelectMultiple: =false
                 Size: =_VarGblAppFonts.Size.Medium
                 Visible: =false
@@ -2063,7 +2069,9 @@
             BorderColor: =RGBA(179, 179, 179, 1)
             BorderThickness: =1
             DisplayMode: =DisplayMode.View
-            Fill: =_VarGblAppColors.BackgroundColor
+            Fill: |-
+                =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Screen Background Color").'Default Value')
+                //_VarGblAppColors.BackgroundColor
             Height: =572
             Visible: =_VarFilterModal
             Width: =551
@@ -2275,7 +2283,9 @@
             FontWeight: =FontWeight.Semibold
             Height: =50
             HoverColor: =RGBA(255, 255, 255, 1)
-            HoverFill: =ColorFade(_VarGblAppColors.PrimaryRed, 10%)
+            HoverFill: |-
+                =ColorFade(ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//_VarGblAppColors.PrimaryRed
+                , 10%)
             OnSelect: |-
                 =Set(
                     _VarFilterModal,
@@ -2428,7 +2438,7 @@
 
             Body1_116 As label:
                 BorderColor: =RGBA(0, 18, 107, 1)
-                Color: =_VarGblAppColors.PrimaryRed
+                Color: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//_VarGblAppColors.PrimaryRed
                 DisabledColor: =RGBA(166, 166, 166, 1)
                 FocusedBorderThickness: =01
                 Font: =_VarGblAppFonts.Heading
@@ -2448,7 +2458,7 @@
 
             Body1_117 As label:
                 BorderColor: =RGBA(0, 18, 107, 1)
-                Color: =_VarGblAppColors.PrimaryRed
+                Color: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//_VarGblAppColors.PrimaryRed
                 DisabledColor: =RGBA(166, 166, 166, 1)
                 FocusedBorderThickness: =01
                 Font: =_VarGblAppFonts.Heading
@@ -2907,7 +2917,7 @@
                 ChevronBackground: =RGBA(0, 0, 0, 0)
                 ChevronDisabledBackground: =RGBA(166, 166, 166, 1)
                 ChevronDisabledFill: =RGBA(244, 244, 244, 1)
-                ChevronFill: =_VarGblAppColors.PrimaryRed
+                ChevronFill: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//_VarGblAppColors.PrimaryRed
                 ChevronHoverBackground: =ColorFade(RGBA(56, 96, 178, 1), -20%)
                 ChevronHoverFill: =RGBA(255, 255, 255, 1)
                 Default: =varLeadData.'Lead Stage '
@@ -2989,7 +2999,7 @@
                 ChevronBackground: =RGBA(0, 0, 0, 0)
                 ChevronDisabledBackground: =RGBA(166, 166, 166, 1)
                 ChevronDisabledFill: =RGBA(244, 244, 244, 1)
-                ChevronFill: =_VarGblAppColors.PrimaryRed
+                ChevronFill: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//_VarGblAppColors.PrimaryRed
                 ChevronHoverBackground: =ColorFade(RGBA(56, 96, 178, 1), -20%)
                 ChevronHoverFill: =RGBA(255, 255, 255, 1)
                 Default: =varLeadData.Engagement
@@ -3077,7 +3087,7 @@
                 ChevronBackground: =RGBA(0, 0, 0, 0)
                 ChevronDisabledBackground: =RGBA(166, 166, 166, 1)
                 ChevronDisabledFill: =RGBA(244, 244, 244, 1)
-                ChevronFill: =_VarGblAppColors.PrimaryRed
+                ChevronFill: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//_VarGblAppColors.PrimaryRed
                 ChevronHoverBackground: =ColorFade(RGBA(56, 96, 178, 1), -20%)
                 ChevronHoverFill: =RGBA(255, 255, 255, 1)
                 Default: =varLeadData.'Lead Status'
@@ -3243,8 +3253,10 @@
                 ChevronBackground: =RGBA(0, 0, 0, 0)
                 ChevronDisabledBackground: =RGBA(166, 166, 166, 1)
                 ChevronDisabledFill: =RGBA(244, 244, 244, 1)
-                ChevronFill: =_VarGblAppColors.PrimaryRed
-                ChevronHoverBackground: =ColorFade(_VarGblAppColors.PrimaryRed,50%)
+                ChevronFill: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//_VarGblAppColors.PrimaryRed
+                ChevronHoverBackground: |-
+                    =ColorFade(ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//_VarGblAppColors.PrimaryRed
+                    ,50%)
                 ChevronHoverFill: =RGBA(255, 255, 255, 1)
                 Default: =varLeadData.Commited
                 DisabledBorderColor: =RGBA(166, 166, 166, 1)
@@ -3467,7 +3479,7 @@
             ComboBox5 As combobox:
                 AccessibleLabel: ="Assigned to"
                 BorderColor: =RGBA(255, 255, 255, 1)
-                ChevronBackground: =_VarGblAppColors.PrimaryRed
+                ChevronBackground: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//_VarGblAppColors.PrimaryRed
                 ChevronDisabledBackground: =RGBA(166, 166, 166, 1)
                 ChevronDisabledFill: =RGBA(244, 244, 244, 1)
                 ChevronHoverBackground: =ColorFade(RGBA(56, 96, 178, 1), -20%)
@@ -3554,7 +3566,7 @@
                 DisabledFill: =RGBA(244, 244, 244, 1)
                 HoverDateFill: =RGBA(186, 202, 226, 1)
                 IconBackground: =
-                IconFill: =_VarGblAppColors.PrimaryRed
+                IconFill: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//_VarGblAppColors.PrimaryRed
                 OnChange: |-
                     =Patch(
                         Leads,
@@ -3677,7 +3689,7 @@
                 Fill: =If(varEdit=true,RGBA(255, 255, 255, 1),RGBA(0, 0, 0, 0))
                 HoverDateFill: =RGBA(186, 202, 226, 1)
                 IconBackground: =Color.Transparent
-                IconFill: =_VarGblAppColors.PrimaryRed
+                IconFill: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//_VarGblAppColors.PrimaryRed
                 InputTextPlaceholder: =If(IsBlank(Self.SelectedDate), Text(Today(),"dd/mm/yyyy"))
                 OnChange: |-
                     =Patch(
@@ -3975,7 +3987,7 @@
 
         Body1_166 As label:
             BorderColor: =RGBA(0, 18, 107, 1)
-            Color: =_VarGblAppColors.PrimaryRed
+            Color: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//_VarGblAppColors.PrimaryRed
             DisabledColor: =RGBA(166, 166, 166, 1)
             FocusedBorderThickness: =1
             Font: =_VarGblAppFonts.Heading
@@ -3995,7 +4007,7 @@
 
         Body1_167 As label:
             BorderColor: =RGBA(0, 18, 107, 1)
-            Color: =_VarGblAppColors.PrimaryRed
+            Color: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//_VarGblAppColors.PrimaryRed
             DisabledColor: =RGBA(166, 166, 166, 1)
             FocusedBorderThickness: =01
             Font: =_VarGblAppFonts.Heading

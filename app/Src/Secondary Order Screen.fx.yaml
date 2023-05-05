@@ -58,7 +58,7 @@
     parties_2 As rectangle:
         BorderColor: =RGBA(0, 18, 107, 1)
         DisplayMode: =DisplayMode.View
-        Fill: =_VarGblAppColors.BackgroundColor
+        Fill: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Screen Background Color").'Default Value') //ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Screen Background Color").'Default Value') //_VarGblAppColors.BackgroundColor
         Height: =344
         Visible: =varParties
         Width: =574
@@ -87,7 +87,7 @@
         DisabledColor: =RGBA(166, 166, 166, 1)
         DisabledFill: =RGBA(244, 244, 244, 1)
         DisplayMode: =If(IsBlank( ComboBox1_2.Selected), DisplayMode.Disabled, DisplayMode.Edit)
-        Fill: =_VarGblAppColors.PrimaryRed
+        Fill: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//_VarGblAppColors.PrimaryRed
         FontWeight: =FontWeight.Semibold
         Height: =60
         HoverColor: =RGBA(255, 255, 255, 1)
@@ -144,10 +144,10 @@
     ComboBox1_2 As combobox:
         AccessibleLabel: ="ComboBox1"
         BorderColor: =Color.Black
-        ChevronBackground: =_VarGblAppColors.PrimaryRed
+        ChevronBackground: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//_VarGblAppColors.PrimaryRed
         ChevronDisabledBackground: =RGBA(166, 166, 166, 1)
         ChevronDisabledFill: =RGBA(244, 244, 244, 1)
-        ChevronHoverBackground: =ColorFade(_VarGblAppColors.PrimaryRed, -20%)
+        ChevronHoverBackground: =ColorFade(ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//_VarGblAppColors.PrimaryRed, -20%)
         ChevronHoverFill: =RGBA(255, 255, 255, 1)
         DisabledBorderColor: =RGBA(166, 166, 166, 1)
         DisabledColor: =RGBA(166, 166, 166, 1)
@@ -163,14 +163,14 @@
                 ('Customer Type' = 'Party Type Choices'.Distributor || 'Customer Type' = 'Party Type Choices'.Dealer)
             )
         PressedColor: =RGBA(255, 255, 255, 1)
-        PressedFill: =_VarGblAppColors.PrimaryRed
+        PressedFill: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//_VarGblAppColors.PrimaryRed
         SearchFields: =["zx_name"]
         SearchItems: |-
             =Search(Filter(
                 OfflinePartiesCollection,
                 ('Customer Type' = 'Party Type Choices'.Distributor || 'Customer Type' = 'Party Type Choices'.Dealer)
             ),ComboBox1_2.SearchText,"zx_name")
-        SelectionFill: =_VarGblAppColors.PrimaryRed
+        SelectionFill: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//_VarGblAppColors.PrimaryRed
         SelectMultiple: =false
         Size: =21
         Template: =ListItemTemplate.Double
@@ -209,7 +209,7 @@
     parties_3 As rectangle:
         BorderColor: =RGBA(0, 18, 107, 1)
         DisplayMode: =DisplayMode.View
-        Fill: =_VarGblAppColors.BackgroundColor
+        Fill: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Screen Background Color").'Default Value') //ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Screen Background Color").'Default Value') //_VarGblAppColors.BackgroundColor
         Height: =344
         Visible: =varParties
         Width: =574
@@ -238,7 +238,7 @@
         DisabledColor: =RGBA(166, 166, 166, 1)
         DisabledFill: =RGBA(244, 244, 244, 1)
         DisplayMode: =If(IsBlank( ComboBox1_3.Selected), DisplayMode.Disabled, DisplayMode.Edit)
-        Fill: =_VarGblAppColors.PrimaryRed
+        Fill: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//_VarGblAppColors.PrimaryRed
         FontWeight: =FontWeight.Semibold
         Height: =60
         HoverColor: =RGBA(255, 255, 255, 1)
@@ -341,10 +341,10 @@
     ComboBox1_3 As combobox:
         AccessibleLabel: ="ComboBox1"
         BorderColor: =Color.Black
-        ChevronBackground: =_VarGblAppColors.PrimaryRed
+        ChevronBackground: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//_VarGblAppColors.PrimaryRed
         ChevronDisabledBackground: =RGBA(166, 166, 166, 1)
         ChevronDisabledFill: =RGBA(244, 244, 244, 1)
-        ChevronHoverBackground: =ColorFade(_VarGblAppColors.PrimaryRed, -20%)
+        ChevronHoverBackground: =ColorFade(ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//_VarGblAppColors.PrimaryRed, -20%)
         ChevronHoverFill: =RGBA(255, 255, 255, 1)
         DisabledBorderColor: =RGBA(166, 166, 166, 1)
         DisabledColor: =RGBA(166, 166, 166, 1)
@@ -360,14 +360,14 @@
                 ('Customer Type' = 'Party Type Choices'.Retailer)
             )
         PressedColor: =RGBA(255, 255, 255, 1)
-        PressedFill: =_VarGblAppColors.PrimaryRed
+        PressedFill: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//_VarGblAppColors.PrimaryRed
         SearchFields: =["zx_name"]
         SearchItems: |-
             =Search(Filter(
                 OfflinePartiesCollection,
                 ('Customer Type' = 'Party Type Choices'.Retailer)
             ),ComboBox1_3.SearchText,"zx_name")
-        SelectionFill: =_VarGblAppColors.PrimaryRed
+        SelectionFill: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//_VarGblAppColors.PrimaryRed
         SelectMultiple: =false
         Size: =21
         Template: =ListItemTemplate.Double
