@@ -1,0 +1,141 @@
+"'Bottom Bar_19' As CanvasComponent":
+    Fill: =RGBA(0, 0, 0, 0)
+    Height: =110
+    NavItems: |-
+        =Table(
+            {
+                Title: "Orders",
+                Icon: cart,
+                Screen: 'Primary Order Screen'
+            },
+            {
+                Title: "Visit",
+                Icon: 'pin-map',
+                Screen:'Start Visit'
+            },
+             {
+                Title: "Home",
+                Icon:home,
+                Screen: Home
+            },
+             {
+                Title: "Parties",
+                Icon: people,
+                Screen: 'Party List'
+            },
+            {
+                Title: varUser.'First Name',
+                Icon: User().Image
+                //Screen: App.ActiveScreen
+            }
+        )
+    Width: =App.Width
+    X: =0
+    Y: =0
+    ZIndex: =1
+
+    Gallery2_1 As gallery.galleryHorizontal:
+        AccessibleLabel: ="Bottom Bar"
+        BorderColor: =RGBA(0, 18, 107, 1)
+        BorderStyle: =BorderStyle.None
+        Fill: =Color.Transparent
+        FocusedBorderThickness: =
+        Height: =Parent.Height
+        Items: ='Bottom Bar_19'.NavItems
+        ShowScrollbar: =false
+        TabIndex: =0
+        TemplateFill: =Color.Transparent
+        TemplatePadding: =0
+        TemplateSize: =Parent.Width/CountRows(Self.AllItems)
+        Width: =Parent.Width
+        ZIndex: =1
+
+        Button2_1 As button:
+            BorderThickness: =0
+            Color: =_VarGblAppColors.HeaderBg
+            DisabledBorderColor: =RGBA(166, 166, 166, 1)
+            DisabledColor: =RGBA(166, 166, 166, 1)
+            DisabledFill: =RGBA(244, 244, 244, 1)
+            DisplayMode: =DisplayMode.View
+            Fill: =RGBA(255, 255, 255, 1)
+            FocusedBorderThickness: =
+            FontWeight: =FontWeight.Semibold
+            Height: =85
+            HoverColor: =RGBA(255, 255, 255, 1)
+            HoverFill: =ColorFade(RGBA(56, 96, 178, 1), -20%)
+            OnSelect: |-
+                =Set(
+                    _VarSelectedTab,
+                    ThisItem.Title
+                );
+                If(
+                    ThisItem.Title = varUser.'First Name',
+                    Set(
+                        _varsideNav,
+                        !_varsideNav
+                    ),
+                    Navigate(
+                        ThisItem.Screen,
+                        ScreenTransition.CoverRight
+                    );
+                    Set(
+                        _varsideNav,
+                        false
+                    )
+                )
+            RadiusBottomLeft: =0
+            RadiusBottomRight: =0
+            RadiusTopLeft: =If(ThisItem.Title="Orders", 20, 0)
+            RadiusTopRight: =If(ThisItem.Title="Menu", 20, 0)
+            Size: =24
+            Text: =""
+            Width: =Parent.TemplateWidth
+            Y: =25
+            ZIndex: =1
+
+        Label3_1 As label:
+            Align: =Align.Center
+            BorderColor: =RGBA(0, 18, 107, 1)
+            Color: |+
+                =//_VarGblAppColors.PrimaryRed
+                If(ThisItem.IsSelected,_VarGblAppColors.PrimaryRed,_VarGblAppColors.textbgbutton)
+                
+            DisabledColor: =RGBA(166, 166, 166, 1)
+            FocusedBorderThickness: =0.3
+            FontWeight: =FontWeight.Semibold
+            Height: =34
+            OnSelect: |-
+                =Set(_VarSelectedTab, ThisItem.Title);
+                If(ThisItem.Title = varUser.'First Name',Set(_varsideNav,!_varsideNav),
+                Navigate(ThisItem.Screen, ScreenTransition.CoverRight);
+                Set(_varsideNav, false))
+            Size: =_VarGblAppFonts.Size.Regular
+            TabIndex: =0
+            Text: =ThisItem.Title
+            Width: =Parent.TemplateWidth
+            Y: =75
+            ZIndex: =2
+
+        Image12_1 As image:
+            BorderColor: =RGBA(0, 18, 107, 1)
+            DisabledBorderColor: =RGBA(166, 166, 166, 1)
+            DisabledFill: =RGBA(244, 244, 244, 1)
+            Height: |-
+                =//If(ThisItem.Title = varUser.'First Name', 40, 30)
+                35
+            Image: =ThisItem.Icon
+            ImagePosition: =ImagePosition.Fill
+            OnSelect: |-
+                =Set(_VarSelectedTab, ThisItem.Title);
+                If(ThisItem.Title = varUser.'First Name',Set(_varsideNav,!_varsideNav),
+                Navigate(ThisItem.Screen, ScreenTransition.CoverRight);
+                Set(_varsideNav, false))
+            RadiusBottomLeft: =If(ThisItem.Title = varUser.'First Name',25,0)
+            RadiusBottomRight: =If(ThisItem.Title = varUser.'First Name',25,0)
+            RadiusTopLeft: =If(ThisItem.Title = varUser.'First Name',25,0)
+            RadiusTopRight: =If(ThisItem.Title = varUser.'First Name',25,0)
+            Width: =35
+            X: =Parent.TemplateWidth/2 - Self.Width/2
+            Y: =35
+            ZIndex: =6
+
