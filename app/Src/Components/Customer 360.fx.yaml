@@ -1026,7 +1026,7 @@
                 =
                 Navigate('Activity Detail Screen',ScreenTransition.CoverRight);
                 Set(varActivityData,ThisItem);
-            Size: =_VarGblAppFonts.Size.Medium
+            Size: =LookUp(c_EnvironmentVariable,'Display Name'="Text Medium Font Size").'Default Value'
             TabIndex: =0
             Text: |-
                 ="Type: " & ThisItem.'Activity Type'
@@ -1247,7 +1247,7 @@
                     productinfo,
                     ThisItem
                 )
-            Size: =_VarGblAppFonts.Size.Medium
+            Size: =LookUp(c_EnvironmentVariable,'Display Name'="Text Medium Font Size").'Default Value'
             TabIndex: =0
             Text: |-
                 =LookUp(
@@ -1346,7 +1346,7 @@
                 =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Screen Background Color").'Default Value')
                 //_VarGblAppColors.BackgroundColor
             SelectMultiple: =false
-            Size: =_VarGblAppFonts.Size.Medium
+            Size: =LookUp(c_EnvironmentVariable,'Display Name'="Text Medium Font Size").'Default Value'
             Visible: =false
             Width: =150
             X: =421

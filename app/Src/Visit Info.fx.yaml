@@ -262,7 +262,9 @@
                     FontWeight: =FontWeight.Semibold
                     Height: =50
                     HoverColor: =RGBA(255, 255, 255, 1)
-                    HoverFill: =ColorFade(ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//_VarGblAppColors.PrimaryRed, 10%)
+                    HoverFill: |-
+                        =ColorFade(ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//_VarGblAppColors.PrimaryRed
+                        , 10%)
                     OnSelect: |-
                         =//OfflineVisitCollection
                         //SubmitForm(Form1);
