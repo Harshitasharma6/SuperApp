@@ -364,7 +364,7 @@
               },
               {
                 "Category": "Design",
-                "InvariantScript": "If(_VarActivetopTabID= ThisItem.TabId, _VarGblAppColors.PrimaryRed , _VarGblAppColors.PrimaryText)",
+                "InvariantScript": "If(_VarActivetopTabID= ThisItem.TabId, ColorValue(LookUp(c_EnvironmentVariable,'Display Name'=\"Button Fill\").'Default Value' ), ColorValue(LookUp(c_EnvironmentVariable,'Display Name'=\"Text Primary Color\").'Default Value' ))",
                 "Property": "Color",
                 "RuleProviderType": "Unknown"
               },
@@ -822,7 +822,7 @@
               },
               {
                 "Category": "Design",
-                "InvariantScript": "If(_VarActivetopTabID= ThisItem.TabId, _VarGblAppColors.PrimaryRed , _VarGblAppColors.AccentBg)",
+                "InvariantScript": "If(_VarActivetopTabID= ThisItem.TabId, ColorValue(LookUp(c_EnvironmentVariable,'Display Name'=\"Button  Fill\").'Default Value') , ColorValue(LookUp(c_EnvironmentVariable,'Display Name'=\"Button Hover Color\").'Default Value'))",
                 "Property": "BorderColor",
                 "RuleProviderType": "Unknown"
               },
@@ -1356,7 +1356,7 @@
         "NameMapSourceSchema": "?"
       }
     ],
-    "LastModifiedTimestamp": "638188983808034013",
+    "LastModifiedTimestamp": "638189025907502455",
     "Name": "Top Tab",
     "Rules": [
       {
@@ -1446,7 +1446,7 @@
   "IsPcfControl": false,
   "IsPremiumPcfControl": false,
   "IsWidgetTemplate": false,
-  "LastModifiedTimestamp": "638188983808034013",
+  "LastModifiedTimestamp": "638189025907502455",
   "Name": "5414202b40a642889a0f2598b170fc92",
   "OverridableProperties": {},
   "TemplateOriginalName": "d2ccd1cc9d8a4f5f80825a8ef782448e",

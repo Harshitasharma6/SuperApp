@@ -135,7 +135,7 @@
 
         Background_18 As button:
             BorderThickness: =0
-            Color: =_VarGblAppColors.AccentBg
+            Color: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Hover Color").'Default Value')
             DisabledBorderColor: =RGBA(166, 166, 166, 1)
             DisabledColor: =RGBA(116, 116, 116, 1)
             DisabledFill: =_VarGblAppColors.BottomListBg

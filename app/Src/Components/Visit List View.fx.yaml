@@ -52,10 +52,10 @@
         Background_2 As button:
             BorderColor: =RGBA(0, 121, 187, 1)
             BorderThickness: =1
-            Color: =_VarGblAppColors.AccentBg
+            Color: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Hover Color").'Default Value')
             DisabledBorderColor: =RGBA(102, 182, 227, 1)
             DisabledColor: =RGBA(166, 166, 166, 1)
-            DisabledFill: =_VarGblAppColors.AccentBg
+            DisabledFill: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Hover Color").'Default Value')
             DisplayMode: =DisplayMode.Disabled
             Fill: =RGBA(56, 96, 178, 1)
             FontWeight: =FontWeight.Semibold
@@ -106,7 +106,7 @@
         Icon2 As icon.Leave:
             AccessibleLabel: ="Start visit"
             BorderColor: =RGBA(0, 18, 107, 1)
-            Color: =_VarGblAppColors.AccentBg
+            Color: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Hover Color").'Default Value')
             DisabledBorderColor: =RGBA(166, 166, 166, 1)
             DisabledColor: =RGBA(244, 244, 244, 1)
             DisplayMode: |-
@@ -295,7 +295,7 @@
 
         Icon2_1 As icon.Leave:
             BorderColor: =RGBA(0, 18, 107, 1)
-            Color: =_VarGblAppColors.AccentBg
+            Color: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Hover Color").'Default Value')
             DisabledBorderColor: =RGBA(166, 166, 166, 1)
             DisabledColor: =RGBA(244, 244, 244, 1)
             Height: =25
