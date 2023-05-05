@@ -96,7 +96,7 @@
             Height: =35
             LineHeight: =1
             OnSelect: =Select(Parent)
-            Size: =11
+            Size: =12
             Text: =ThisItem.Party.Address
             Width: =296
             X: =77
@@ -568,221 +568,232 @@
                 DisabledBorderColor: =RGBA(166, 166, 166, 1)
                 DisabledFill: =RGBA(244, 244, 244, 1)
                 DisplayMode: |-
-                    =If(
+                    =/*If(
                         LookUp(
                             OfflineVisitCollection,
                             zx_visitid = ThisItem.zx_visitid
                         ).zx_visitstatus = 'Visit Status'.Completed,
                         DisplayMode.Disabled,
                         DisplayMode.Edit
-                    )
+                    )*/
                 Height: =30
                 Image: |-
                     =/*If(Endbtvisible = false,
                     'play-buttton','call-end')*/
                     //'play-buttton'
                     If(ThisItem.zx_visitstatus = 'Visit Status'.Started , square , 'play (1)')
-                OnSelect: |
+                OnSelect: |-
                     =If(
-                        Self.Image = 'play (1)',
-                        (If(
-                            ThisItem.createdby.'Primary Email' = User().Email,
-                            If(
-                                CountIf(
-                                    'Attendance.S',
-                                    User.'Primary Email' = User().Email && Date = Today() && !IsBlank('Check-out Time')
-                                ) > 0,
-                                Notify(
-                                    "Your day has Ended, you can not start Visit",
-                                    NotificationType.Error,
-                                    2000
-                                ),
+                        ThisItem.'Visit Status' = [@'Visit Status'].Completed,
+                        Notify(
+                            "Your Visit is Already Ended",
+                            NotificationType.Success,1000
+                        ),
+                        If(
+                            Self.Image = 'play (1)',
+                            (If(
+                                ThisItem.createdby.'Primary Email' = User().Email,
                                 If(
                                     CountIf(
                                         'Attendance.S',
-                                        User.'Primary Email' = User().Email && Date = Today() && !IsBlank('Check-in Time')
-                                    ) = 0,
+                                        User.'Primary Email' = User().Email && Date = Today() && !IsBlank('Check-out Time')
+                                    ) > 0,
                                     Notify(
-                                        "Kindly Start your day first",
+                                        "Your day has Ended, you can not start Visit",
                                         NotificationType.Error,
                                         2000
-                                    );
-                                    Navigate(Home),
+                                    ),
                                     If(
-                                        Not(
-                                            Text(
-                                                ThisItem.zx_visitdate,
-                                                "dd/mm/yyyy"
-                                            ) = Text(
-                                                Today(),
-                                                "dd/mm/yyyy"
-                                            )
-                                        ),
+                                        CountIf(
+                                            'Attendance.S',
+                                            User.'Primary Email' = User().Email && Date = Today() && !IsBlank('Check-in Time')
+                                        ) = 0,
                                         Notify(
-                                            "Visit cannot be started",
+                                            "Kindly Start your day first",
                                             NotificationType.Error,
                                             2000
-                                        ),
-                                        IsBlank(
-                                            LookUp(
-                                                OfflineVisitCollection,
-                                                zx_visitdate = Today() && createdby.'Primary Email' = User().Email && zx_visitstatus = [@'Visit Status'].Started && Not(zx_visitid = ThisItem.zx_visitid)
-                                            )
-                                        ),
+                                        );
+                                        Navigate(Home),
                                         If(
-                                            Connection.Connected,
-                                            Patch(
-                                                'Visit.S',
-                                                LookUp(
-                                                    'Visit.S',
-                                                    Visit = ThisItem.zx_visitid
-                                                ),
-                                                {
-                                                    'Visit Status': 'Visit Status'.Started,
-                                                    'Check-in Time': Now(),
-                                                    'Check-in Geo Location Lat': Location.Latitude,
-                                                    'Check-in Geo Location Long': Location.Longitude,
-                                                    'Check-in Address': LookUp(
-                                                        'Parties.S',
-                                                        Address = ThisItem.zx_Party.Address
-                                                    ).Address
-                                                }
-                                            );
+                                            Not(
+                                                Text(
+                                                    ThisItem.zx_visitdate,
+                                                    "dd/mm/yyyy"
+                                                ) = Text(
+                                                    Today(),
+                                                    "dd/mm/yyyy"
+                                                )
+                                            ),
                                             Notify(
-                                                "Visit has been started",
-                                                NotificationType.Success,
-                                                700
-                                            );
-                                            ,
-                                            Collect(
-                                                OfflineVisitsToBeSynced,
-                                                {
-                                                    visitItem: LookUp(
+                                                "Visit cannot be started",
+                                                NotificationType.Error,
+                                                2000
+                                            ),
+                                            IsBlank(
+                                                LookUp(
+                                                    OfflineVisitCollection,
+                                                    zx_visitdate = Today() && createdby.'Primary Email' = User().Email && zx_visitstatus = [@'Visit Status'].Started && Not(zx_visitid = ThisItem.zx_visitid)
+                                                )
+                                            ),
+                                            If(
+                                                Connection.Connected,
+                                                Patch(
+                                                    'Visit.S',
+                                                    LookUp(
+                                                        'Visit.S',
+                                                        Visit = ThisItem.zx_visitid
+                                                    ),
+                                                    {
+                                                        'Visit Status': 'Visit Status'.Started,
+                                                        'Check-in Time': Now(),
+                                                        'Check-in Geo Location Lat': Location.Latitude,
+                                                        'Check-in Geo Location Long': Location.Longitude,
+                                                        'Check-in Address': LookUp(
+                                                            'Parties.S',
+                                                            Address = ThisItem.zx_Party.Address
+                                                        ).Address
+                                                    }
+                                                );
+                                                Notify(
+                                                    "Visit has been started",
+                                                    NotificationType.Success,
+                                                    700
+                                                );
+                                                ,
+                                                Collect(
+                                                    OfflineVisitsToBeSynced,
+                                                    {
+                                                        visitItem: LookUp(
+                                                            OfflineVisitCollection,
+                                                            zx_visitid = ThisItem.zx_visitid
+                                                        ),
+                                                        visitGUID: ThisItem.zx_visitid,
+                                                        status: 'Visit Status'.Started,
+                                                        'Check-in Time': Now(),
+                                                        'Check-in Geo Location Lat': Location.Latitude,
+                                                        'Check-in Geo Location Long': Location.Longitude,
+                                                        'Check-in Address': LookUp(
+                                                            'Parties.S',
+                                                            Address = ThisItem.zx_Party.Address
+                                                        ).Address
+                                                    }
+                                                );
+                                                Patch(
+                                                    OfflineVisitCollection,
+                                                    LookUp(
                                                         OfflineVisitCollection,
                                                         zx_visitid = ThisItem.zx_visitid
                                                     ),
-                                                    visitGUID: ThisItem.zx_visitid,
-                                                    status: 'Visit Status'.Started,
-                                                    'Check-in Time': Now(),
-                                                    'Check-in Geo Location Lat': Location.Latitude,
-                                                    'Check-in Geo Location Long': Location.Longitude,
-                                                    'Check-in Address': LookUp(
-                                                        'Parties.S',
-                                                        Address = ThisItem.zx_Party.Address
-                                                    ).Address
-                                                }
+                                                    {
+                                                        zx_visitstatus: 'Visit Status'.Started,
+                                                        zx_checkintime: Now(),
+                                                        zx_checkingeolocationlat: Location.Latitude,
+                                                        zx_checkingeolocationlong: Location.Longitude,
+                                                        zx_checkinaddress: LookUp(
+                                                            'Parties.S',
+                                                            Address = ThisItem.zx_Party.Address
+                                                        ).Address
+                                                    }
+                                                );
+                                                SaveData(
+                                                    OfflineVisitsToBeSynced,
+                                                    "OfflineVisitsToBeSynced"
+                                                );
+                                                Notify(
+                                                    "Data has been saved on local",
+                                                    NotificationType.Success,
+                                                    1000
+                                                );
                                             );
-                                            Patch(
-                                                OfflineVisitCollection,
-                                                LookUp(
-                                                    OfflineVisitCollection,
-                                                    zx_visitid = ThisItem.zx_visitid
-                                                ),
-                                                {
-                                                    zx_visitstatus: 'Visit Status'.Started,
-                                                    zx_checkintime: Now(),
-                                                    zx_checkingeolocationlat: Location.Latitude,
-                                                    zx_checkingeolocationlong: Location.Longitude,
-                                                    zx_checkinaddress: LookUp(
-                                                        'Parties.S',
-                                                        Address = ThisItem.zx_Party.Address
-                                                    ).Address
-                                                }
+                                            Set(
+                                                _VarActivetopTabID,
+                                                1
                                             );
-                                            SaveData(
-                                                OfflineVisitsToBeSynced,
-                                                "OfflineVisitsToBeSynced"
+                                            Navigate(
+                                                'Visit Info',
+                                                ScreenTransition.CoverRight
                                             );
-                                            Notify(
-                                                "Data has been saved on local",
-                                                NotificationType.Success,
-                                                1000
+                                            Set(
+                                                dataVisit,
+                                                ThisItem
                                             );
-                                        );
-                                        Set(
-                                            _VarActivetopTabID,
-                                            1
-                                        );
-                                        Navigate(
-                                            'Visit Info',
-                                            ScreenTransition.CoverRight
-                                        );
-                                        Set(
-                                            dataVisit,
-                                            ThisItem
-                                        );
-                                        Set(
-                                            _varClickedVisitAccount,
-                                            ThisItem.zx_Party.Parties
-                                        );
-                                        Set(
-                                            _varCustomerforDiscount,
-                                            ThisItem.zx_Party.Parties
-                                        );
+                                            Set(
+                                                _varClickedVisitAccount,
+                                                ThisItem.zx_Party.Parties
+                                            );
+                                            Set(
+                                                _varCustomerforDiscount,
+                                                ThisItem.zx_Party.Parties
+                                            );
                                     //Set attached dist according_______________________________________________________________
                     If(
-                                            ThisItem.zx_Party.'Customer Type' = 'Party Type Choices'.Retailer,
+                                                ThisItem.zx_Party.'Customer Type' = 'Party Type Choices'.Retailer,
+                                                Set(
+                                                    _varSelectedRetailerAttachedDistributor,
+                                                    LookUp(
+                                                        OfflinePartiesCollection,
+                                                        zx_customercode = ThisItem.zx_Party.'Customer Code'
+                                                    ).zx_AttachedDistributor.Parties
+                                                );
+                                                ,
+                                                Set(
+                                                    _varSelectedRetailerAttachedDistributor,
+                                                    Blank()
+                                                )
+                                            );
                                             Set(
-                                                _varSelectedRetailerAttachedDistributor,
-                                                LookUp(
-                                                    OfflinePartiesCollection,
-                                                    zx_customercode = ThisItem.zx_Party.'Customer Code'
-                                                ).zx_AttachedDistributor.Parties
+                                                _varVisitId,
+                                                ThisItem.zx_visitid
                                             );
                                             ,
-                                            Set(
-                                                _varSelectedRetailerAttachedDistributor,
-                                                Blank()
+                                            Notify(
+                                                "Visit is Already Started.",
+                                                NotificationType.Warning,
+                                                1000
                                             )
-                                        );
-                                        Set(
-                                            _varVisitId,
-                                            ThisItem.zx_visitid
-                                        );
-                                        ,
-                                        Notify(
-                                            "One Visit is Already Started.",
-                                            NotificationType.Warning,
-                                            1000
                                         )
                                     )
+                                );
+                                ,
+                                Notify(
+                                    "You cannot start the subordinate visit",
+                                    NotificationType.Error,
+                                    2000
                                 )
-                            );
+                            ));
                             ,
-                            Notify(
-                                "You cannot start the subordinate visit",
-                                NotificationType.Error,
-                                2000
-                            )
-                        ));
-                        ,
-                        Patch(
-                            OfflineVisitCollection,
-                            LookUp(
-                                OfflineVisitCollection,
-                                zx_visitid = ThisItem.zx_visitid
-                            ),
-                            {
-                                zx_visitstatus: 'Visit Status'.Completed,
-                                zx_checkoutaddress: Concatenate(
-                                    Location.Latitude,
-                                    ",",
-                                    Location.Longitude
+                        // changing offline visit collection to table i.e OfflineVisitCollection to visit.s
+                            Patch(
+                                'Visit.S',
+                                LookUp(
+                                    'Visit.S',
+                                    'Visit ID' = ThisItem.'Visit ID'
+                                //zx_visitid = ThisItem.zx_visitid
                                 ),
-                                zx_checkouttime: Now()
-                            }
+                                {
+                                    zx_visitstatus: 'Visit Status'.Completed,
+                                    zx_checkoutaddress: Concatenate(
+                                        Location.Latitude,
+                                        ",",
+                                        Location.Longitude
+                                    ),
+                                    zx_checkouttime: Now()
+                                }
+                            );
+                            Notify(
+                                "Your visit has been successfully ended.",
+                                NotificationType.Success,
+                                2500
+                            );
                         );
-                        Notify(
-                            "Your visit has been successfully ended.",
-                            NotificationType.Success,
-                            2500
+                        ClearCollect(
+                            OfflineVisitCollection,
+                            'Visit.S'
                         );
                         
                     );
-                    ClearCollect(
-                        OfflineVisitCollection,
-                        'Visit.S'
-                    );
+                    Refresh('Parties.S');
+                    Refresh('Visit.S')
                 TabIndex: =0
                 Width: =30
                 X: =560
@@ -833,33 +844,6 @@
             Y: =30
             ZIndex: =25
 
-        Circle7_2 As circle:
-            AccessibleLabel: ="Text"
-            BorderColor: =RGBA(102, 182, 227, 1)
-            BorderThickness: =1
-            DisplayMode: |-
-                =If(
-                    LookUp(
-                        OfflineVisitCollection,
-                        zx_visitid = ThisItem.zx_visitid
-                    ).zx_visitstatus = 'Visit Status'.Completed,
-                    DisplayMode.Disabled,
-                    DisplayMode.Edit
-                )
-            Fill: =RGBA(0, 0, 0, 0)
-            Height: =50
-            OnSelect: |-
-                = Navigate(
-                                        'Visit Info',
-                                        ScreenTransition.CoverRight
-                                    );
-            TabIndex: =0
-            Visible: =If(ThisItem.'Visit Status'=[@'Visit Status'].Started,true,false)
-            Width: =50
-            X: =373
-            Y: =20
-            ZIndex: =26
-
         Group13 As group:
             Height: =5
             Width: =5
@@ -892,6 +876,52 @@
                 X: =32
                 Y: =30
                 ZIndex: =13
+
+        Circle7_2 As circle:
+            AccessibleLabel: ="Text"
+            BorderColor: =RGBA(102, 182, 227, 1)
+            BorderThickness: =1
+            DisplayMode: |-
+                =If(
+                    LookUp(
+                        OfflineVisitCollection,
+                        zx_visitid = ThisItem.zx_visitid
+                    ).zx_visitstatus = 'Visit Status'.Completed,
+                    DisplayMode.Disabled,
+                    DisplayMode.Edit
+                )
+            Fill: =RGBA(0, 0, 0, 0)
+            Height: =50
+            OnSelect: |-
+                = Navigate(
+                                        'Visit Info',
+                                        ScreenTransition.CoverRight
+                                    );
+            TabIndex: =0
+            Visible: =If(ThisItem.'Visit Status'=[@'Visit Status'].Started,true,false)
+            Width: =50
+            X: =373
+            Y: =20
+            ZIndex: =26
+
+        Label2 As label:
+            Align: =Align.Right
+            BorderColor: =RGBA(0, 0, 0, 0)
+            BorderStyle: =BorderStyle.None
+            BorderThickness: =2
+            Color: =RGBA(51, 51, 51, 1)
+            DisabledBorderColor: =RGBA(0, 0, 0, 0)
+            DisabledColor: =RGBA(166, 166, 166, 1)
+            FocusedBorderThickness: =4
+            Font: =Font.'Segoe UI'
+            Height: =33
+            OnSelect: =Select(Parent)
+            Size: =10
+            Text: =ThisItem.'Visit Status'
+            Width: =106
+            X: =493
+            Y: =236
+            ZIndex: =27
 
     Container4_25 As groupContainer:
         Height: =774
