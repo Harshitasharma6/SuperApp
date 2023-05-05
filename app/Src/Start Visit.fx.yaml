@@ -1408,7 +1408,7 @@
                             LookUp(
                                 'Visit.S',
                                 Party.Parties = ThisItem.zx_partiesid
-                            ).Party.'Customer Type' = 'Party Type Choices'.Retailer,
+                            ).Party.'Customer Type' = 'Party Type Choices'.Retailer
                           /*  Set(
                                 _varSelectedRetailerAttachedDistributor,
                                 LookUp(
@@ -1574,6 +1574,28 @@
                             'Owning User'.'Primary Email' = User().Email
                         )
                     );
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
                                     /*Set(
                                         varVisitId,
                                         LookUp('Visit.S', Party.Parties = ThisItem.zx_partiesid).Visit
@@ -1718,6 +1740,33 @@
         Width: =74
         X: =257
         ZIndex: =17
+
+    Button3 As button:
+        BorderColor: =RGBA(0, 0, 0, 0)
+        DisabledBorderColor: =RGBA(0, 0, 0, 0)
+        DisabledColor: =RGBA(166, 166, 166, 1)
+        DisabledFill: =RGBA(244, 244, 244, 1)
+        Fill: =RGBA(0, 120, 212, 1)
+        FocusedBorderColor: =ColorFade(Self.Fill, -75%)
+        Font: =Font.'Segoe UI'
+        FontWeight: =FontWeight.Semibold
+        Height: =70
+        HoverBorderColor: =RGBA(0, 0, 0, 0)
+        HoverColor: =RGBA(255, 255, 255, 1)
+        HoverFill: =ColorFade(RGBA(0, 120, 212, 1), -10%)
+        PressedBorderColor: =ColorFade(RGBA(0, 120, 212, 1), -50%)
+        PressedColor: =RGBA(255, 255, 255, 1)
+        PressedFill: =ColorFade(RGBA(0, 120, 212, 1), -30%)
+        RadiusBottomLeft: =0
+        RadiusBottomRight: =0
+        RadiusTopLeft: =0
+        RadiusTopRight: =0
+        Size: =24
+        Text: |-
+            ="last commit 3 :09"
+        Width: =280
+        Y: =276
+        ZIndex: =18
 
     Group4_1 As group:
         Height: =5
