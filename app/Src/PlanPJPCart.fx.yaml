@@ -7,9 +7,15 @@ PlanPJPCart As screen:
     Gallery1_8 As gallery.galleryVertical:
         AccessibleLabel: ="List View"
         BorderColor: =RGBA(0, 18, 107, 1)
+        DisplayMode: =
         FocusedBorderThickness: =
         Height: =913
-        Items: =colAddAreaParty
+        Items: |-
+            =//colAddAreaParty
+            If(IsBlank(TextInput2_14.Text),
+            colAddAreaParty,
+            Filter(
+            colAddAreaParty, TextInput2_14.Text in Area.'Area Name'))
         Layout: =Layout.Vertical
         ShowScrollbar: =false
         TabIndex: =
@@ -339,6 +345,7 @@ PlanPJPCart As screen:
         DisabledBorderColor: =RGBA(166, 166, 166, 1)
         DisabledColor: =RGBA(166, 166, 166, 1)
         DisabledFill: =RGBA(244, 244, 244, 1)
+        DisplayMode: =If(CountRows(Gallery1_8.AllItems)=0,DisplayMode.Disabled,DisplayMode.Edit)
         Fill: =_VarGblAppColors.PrimaryRed
         FontWeight: =FontWeight.Semibold
         HoverColor: =RGBA(255, 255, 255, 1)
