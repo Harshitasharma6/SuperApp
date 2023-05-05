@@ -1409,7 +1409,7 @@
                                 'Visit.S',
                                 Party.Parties = ThisItem.zx_partiesid
                             ).Party.'Customer Type' = 'Party Type Choices'.Retailer,
-                            Set(
+                          /*  Set(
                                 _varSelectedRetailerAttachedDistributor,
                                 LookUp(
                                     OfflinePartiesCollection,
@@ -1418,7 +1418,7 @@
                                         Party.Parties = ThisItem.zx_partiesid
                                     ).Party.'Customer Code'
                                 ).zx_AttachedDistributor.Parties
-                            );
+                            );*/
                             ,
                             Set(
                                 _varSelectedRetailerAttachedDistributor,
@@ -1548,8 +1548,9 @@
                             LookUp(
                                 'Visit.S',
                                 Party.Parties = ThisItem.zx_partiesid
-                            ).Party.'Customer Type' = 'Party Type Choices'.Retailer,
-                            Set(
+                            ).Party.'Customer Type' = 'Party Type Choices'.Retailer
+                            /*,
+                           Set(
                                 _varSelectedRetailerAttachedDistributor,
                                 LookUp(
                                     OfflinePartiesCollection,
@@ -1558,7 +1559,7 @@
                                          Party.Parties = ThisItem.zx_partiesid
                                          
                                     ).Party.'Customer Code').'Attached Distributor'.Parties
-                            );
+                            );*/
                             ,
                             Set(
                                 _varSelectedRetailerAttachedDistributor,
