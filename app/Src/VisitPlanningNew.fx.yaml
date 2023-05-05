@@ -189,7 +189,7 @@ VisitPlanningNew As screen:
                 varCollectionEmpty = true,
                 Filter(
                     offlineLeadCollection,
-                    owninguser.'Primary Email' = User().Email 
+                    'Owning User'.'Primary Email' = User().Email 
                 ),
                 If(
                     varLeadFilter = true,
@@ -207,13 +207,13 @@ VisitPlanningNew As screen:
                                     Filter(
                                         offlineLeadCollection,
                                       //  'Owning User'.'Primary Email' = User().Email && Area.Area = areaCmb_1.Selected.Area.Area
-                                      owninguser.'Primary Email' = User().Email && zx_Area.Area = areaCmb_1.Selected.Area.Area
+                                      'Owning User'.'Primary Email' = User().Email && Area.Area = areaCmb_1.Selected.Area.Area
             
                                     )
                            ),
-                                SearchBox_1.Text in zx_leadname //|| SearchBox_1.Text in zx_Party. //|| SearchBox_1.Text in Contact.'First Name' || //SearchBox_1.Text in Contact.'Last Name'
+                                SearchBox_1.Text in 'Lead Name' //|| SearchBox_1.Text in zx_Party. //|| SearchBox_1.Text in Contact.'First Name' || //SearchBox_1.Text in Contact.'Last Name'
                             ),
-                            createdon,
+                            'Created On',
                             SortOrder.Descending
                         ),
                         'Sort gallery_8'.Selected.Title = "Oldest",
@@ -227,12 +227,12 @@ VisitPlanningNew As screen:
                                   //  ),
                                     Filter(
                                         offlineLeadCollection,
-                                        owninguser.'Primary Email' = User().Email && zx_Area.Area = areaCmb_1.Selected.Area.Area
+                                        'Owning User'.'Primary Email' = User().Email && Area.Area = areaCmb_1.Selected.Area.Area
                                     )
                                 ),
-                                SearchBox_1.Text in zx_leadname //|| SearchBox_1.Text in Party.'Customer Name' || SearchBox_1.Text in //Contact.'First Name' || SearchBox_1.Text in Contact.'Last Name'
+                                SearchBox_1.Text in 'Lead Name' //|| SearchBox_1.Text in Party.'Customer Name' || SearchBox_1.Text in //Contact.'First Name' || SearchBox_1.Text in Contact.'Last Name'
                             ),
-                            createdon,
+                            'Created On',
                             SortOrder.Ascending
                         ),
                         'Sort gallery_8'.Selected.Title = "Highest to Lowest",
@@ -246,12 +246,12 @@ VisitPlanningNew As screen:
                                    // ),
                                     Filter(
                                         offlineLeadCollection,
-                                        owninguser.'Primary Email' = User().Email && zx_Area.Area = areaCmb_1.Selected.Area.Area
+                                        'Owning User'.'Primary Email' = User().Email && Area.Area = areaCmb_1.Selected.Area.Area
                                     )
                                 ),
-                                SearchBox_1.Text in zx_leadname //|| SearchBox_1.Text in Party.'Customer Name' || SearchBox_1.Text in //Contact.'First Name' || SearchBox_1.Text in Contact.'Last Name'
+                                SearchBox_1.Text in 'Lead Name' //|| SearchBox_1.Text in Party.'Customer Name' || SearchBox_1.Text in //Contact.'First Name' || SearchBox_1.Text in Contact.'Last Name'
                             ),
-                            zx_leadvalue,
+                            'Lead Value',
                             SortOrder.Ascending
                         ),
                         'Sort gallery_8'.Selected.Title = "Lowest to Highest",
@@ -261,16 +261,16 @@ VisitPlanningNew As screen:
                                     IsBlank(areaCmb_1.Selected),
                                     Filter(
                                         offlineLeadCollection,
-                                        owninguser.'Primary Email' = User().Email 
+                                        'Owning User'.'Primary Email' = User().Email 
                                     ),
                                     Filter(
                                         offlineLeadCollection,
-                                        owninguser.'Primary Email' = User().Email && zx_Area.Area = areaCmb_1.Selected.Area.Area
+                                        'Owning User'.'Primary Email' = User().Email && Area.Area = areaCmb_1.Selected.Area.Area
                                     )
                                 ),
-                                SearchBox_1.Text in zx_leadname //SearchBox_1.Text in Party.'Customer Name' || SearchBox_1.Text in Contact.'First Name' || SearchBox_1.Text in Contact.'Last Name'
+                                SearchBox_1.Text in 'Lead Name' //SearchBox_1.Text in Party.'Customer Name' || SearchBox_1.Text in Contact.'First Name' || SearchBox_1.Text in Contact.'Last Name'
                             ),
-                            zx_leadvalue,
+                            'Lead Value',
                             SortOrder.Descending
                         )
                     ),
@@ -285,17 +285,17 @@ VisitPlanningNew As screen:
                                     Filter(
                                         colFilterLeadData,
                                        // 'Leads.S',
-                                        owninguser.'Primary Email' = User().Email 
+                                        'Owning User'.'Primary Email' = User().Email 
                                     ),
                                     Filter(
                                         colFilterLeadData,
                                        //'Leads.S',
-                                        owninguser.'Primary Email' = User().Email && zx_Area.Area = areaCmb_1.Selected.Area.Area
+                                        'Owning User'.'Primary Email' = User().Email && Area.Area = areaCmb_1.Selected.Area.Area
                                     )
                                 ),
-                                SearchBox_1.Text in zx_leadname  //|| SearchBox_1.Text in Party.'Customer Name' || SearchBox_1.Text in Contact.'First Name' || SearchBox_1.Text in Contact.'Last Name'
+                                SearchBox_1.Text in 'Lead Name'  //|| SearchBox_1.Text in Party.'Customer Name' || SearchBox_1.Text in Contact.'First Name' || SearchBox_1.Text in Contact.'Last Name'
                             ),
-                            createdon,
+                            'Created On',
                             SortOrder.Descending
                         ),
                         'Sort gallery_8'.Selected.Title = "Oldest",
@@ -305,16 +305,16 @@ VisitPlanningNew As screen:
                                     IsBlank(areaCmb_1.Selected),
                                     Filter(
                                         colFilterLeadData,
-                                        owninguser.'Primary Email' = User().Email 
+                                        'Owning User'.'Primary Email' = User().Email 
                                     ),
                                     Filter(
                                         colFilterLeadData,
-                                        owninguser.'Primary Email' = User().Email && zx_Area.Area = areaCmb_1.Selected.Area.Area
+                                        'Owning User'.'Primary Email' = User().Email && Area.Area = areaCmb_1.Selected.Area.Area
                                     )
                                 ),
-                                SearchBox_1.Text in zx_leadname //|| SearchBox_1.Text in Party.'Customer Name' || SearchBox_1.Text in Contact.'First Name' || SearchBox_1.Text in Contact.'Last Name'
+                                SearchBox_1.Text in 'Lead Name' //|| SearchBox_1.Text in Party.'Customer Name' || SearchBox_1.Text in Contact.'First Name' || SearchBox_1.Text in Contact.'Last Name'
                             ),
-                            createdon,
+                            'Created On',
                             SortOrder.Ascending
                         ),
                         'Sort gallery_8'.Selected.Title = "Highest to Lowest",
@@ -324,16 +324,16 @@ VisitPlanningNew As screen:
                                     IsBlank(areaCmb_1.Selected),
                                     Filter(
                                         colFilterLeadData,
-                                        owninguser.'Primary Email' = User().Email 
+                                        'Owning User'.'Primary Email' = User().Email 
                                     ),
                                     Filter(
                                         colFilterLeadData,
-                                        owninguser.'Primary Email' = User().Email && zx_Area.Area = areaCmb_1.Selected.Area.Area
+                                        'Owning User'.'Primary Email' = User().Email && Area.Area = areaCmb_1.Selected.Area.Area
                                     )
                                 ),
-                                SearchBox_1.Text in zx_leadname //|| SearchBox_1.Text in Party.'Customer Name' || SearchBox_1.Text in Contact.'First Name' || SearchBox_1.Text in Contact.'Last Name'
+                                SearchBox_1.Text in 'Lead Name' //|| SearchBox_1.Text in Party.'Customer Name' || SearchBox_1.Text in Contact.'First Name' || SearchBox_1.Text in Contact.'Last Name'
                             ),
-                            zx_leadvalue,
+                            'Lead Value',
                             SortOrder.Descending
                         ),
                         'Sort gallery_8'.Selected.Title = "Lowest to Highest",
@@ -343,16 +343,16 @@ VisitPlanningNew As screen:
                                     IsBlank(areaCmb_1.Selected),
                                     Filter(
                                         colFilterLeadData,
-                                        owninguser.'Primary Email' = User().Email 
+                                        'Owning User'.'Primary Email' = User().Email 
                                     ),
                                     Filter(
                                         colFilterLeadData,
-                                        owninguser.'Primary Email' = User().Email && zx_Area.Area = areaCmb_1.Selected.Area.Area
+                                        'Owning User'.'Primary Email' = User().Email && Area.Area = areaCmb_1.Selected.Area.Area
                                     )
                                 ),
-                                SearchBox_1.Text in zx_leadname //|| SearchBox_1.Text in Party.'Customer Name' || SearchBox_1.Text in Contact.'First Name' || SearchBox_1.Text in Contact.'Last Name'
+                                SearchBox_1.Text in 'Lead Name' //|| SearchBox_1.Text in Party.'Customer Name' || SearchBox_1.Text in Contact.'First Name' || SearchBox_1.Text in Contact.'Last Name'
                             ),
-                            zx_leadvalue,
+                            'Lead Value',
                             SortOrder.Ascending
                         )
                     )
@@ -787,7 +787,7 @@ VisitPlanningNew As screen:
             Color: =RGBA(0, 0, 0, 1)
             DisabledColor: =RGBA(166, 166, 166, 1)
             OnSelect: =Select(Parent)
-            Text: = ThisItem.zx_Contact.'First Name'
+            Text: = ThisItem.Contact.'First Name'
             Width: =130
             X: =160
             Y: =76

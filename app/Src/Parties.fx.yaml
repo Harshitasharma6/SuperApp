@@ -130,7 +130,7 @@ Parties As screen:
         Items: |-
             =Filter(
                 OfflinePartiesCollection,
-            zx_customertype='Party Type Filter'.Selected.Title)
+            'Customer Type'='Party Type Filter'.Selected.Title)
         Layout: =Layout.Vertical
         ShowScrollbar: =false
         TabIndex: =
@@ -205,7 +205,7 @@ Parties As screen:
                 Set(varCustomerRecord,ThisItem)
             Size: =_VarGblAppFonts.Size.Regular
             TabIndex: =0
-            Text: =ThisItem.zx_Area.'Area Name'
+            Text: =ThisItem.Area.'Area Name'
             Width: =545
             Wrap: =false
             X: =65
