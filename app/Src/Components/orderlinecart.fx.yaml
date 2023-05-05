@@ -99,7 +99,7 @@ orderlinecart As CanvasComponent:
             DisabledColor: =RGBA(166, 166, 166, 1)
             FontWeight: =FontWeight.Semibold
             OnSelect: =Select(Parent)
-            Size: =_VarGblAppFonts.Size.Medium
+            Size: =LookUp(c_EnvironmentVariable,'Display Name'="Text Medium Font Size").'Default Value'
             Text: |-
                 ="Quantity: "& ""
             Width: =118
@@ -145,7 +145,7 @@ orderlinecart As CanvasComponent:
             DisabledColor: =RGBA(166, 166, 166, 1)
             FontWeight: =FontWeight.Semibold
             OnSelect: =Select(Parent)
-            Size: =_VarGblAppFonts.Size.Medium
+            Size: =LookUp(c_EnvironmentVariable,'Display Name'="Text Medium Font Size").'Default Value'
             Text: |-
                 ="Discount: "
             Width: =130
@@ -234,7 +234,7 @@ orderlinecart As CanvasComponent:
             DisabledColor: =RGBA(166, 166, 166, 1)
             FontWeight: =FontWeight.Semibold
             OnSelect: =Select(Parent)
-            Size: =_VarGblAppFonts.Size.Medium
+            Size: =LookUp(c_EnvironmentVariable,'Display Name'="Text Medium Font Size").'Default Value'
             Text: =ThisItem.Quantity
             Width: =118
             Wrap: =false

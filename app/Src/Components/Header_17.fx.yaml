@@ -32,7 +32,9 @@ Header_17 As CanvasComponent:
         BorderColor: =RGBA(0, 18, 107, 1)
         DisabledBorderColor: =RGBA(166, 166, 166, 1)
         DisabledColor: =RGBA(244, 244, 244, 1)
-        FocusedBorderColor: =_VarGblAppColors.HeaderBg
+        FocusedBorderColor: |-
+            =
+            ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Header Band Color").'Default Value' )
         FocusedBorderThickness: =01
         Height: =60
         Icon: =Icon.ChevronLeft
@@ -51,7 +53,9 @@ Header_17 As CanvasComponent:
         PaddingLeft: =10
         PaddingRight: =15
         PaddingTop: =10
-        PressedBorderColor: =_VarGblAppColors.HeaderBg
+        PressedBorderColor: |-
+            =
+            ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Header Band Color").'Default Value' )
         TabIndex: =0
         Width: =60
         X: =9

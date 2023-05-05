@@ -177,7 +177,7 @@ PlanPJPCart As screen:
             FontWeight: =FontWeight.Semibold
             Height: =38
             OnSelect: =Select(Parent)
-            Size: =LookUp(c_EnvironmentVariable,'Display Name'="Text Sub Title Font Size").'Default Value' //_VarGblAppFonts.Size.Subtitle
+            Size: =LookUp(c_EnvironmentVariable,'Display Name'="Text Sub Title Font Size").'Default Value' // LookUp('Environment Variable Definitions', 'Display Name'="Text Sub Title Font Size").'Default Value'
             Text: |-
                 ="State: "& "Uttar Pardesh"
             Visible: =false

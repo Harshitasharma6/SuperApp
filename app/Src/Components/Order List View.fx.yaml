@@ -403,7 +403,9 @@
         Rectangle1_7 As rectangle:
             AccessibleLabel: ="Rectangle1_7"
             BorderColor: =RGBA(0, 18, 107, 1)
-            Fill: =_VarGblAppColors.HeaderBg
+            Fill: |-
+                =
+                ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Header Band Color").'Default Value' )
             Height: =1
             OnSelect: |-
                 =Navigate('Order Info',ScreenTransition.CoverRight);
@@ -471,7 +473,7 @@
                 =Navigate('Order Info',ScreenTransition.CoverRight);
                 Set(varOrderData, ThisItem)
                  
-            Size: =_VarGblAppFonts.Size.Medium
+            Size: =LookUp(c_EnvironmentVariable,'Display Name'="Text Medium Font Size").'Default Value'
             TabIndex: =0
             Text: |-
                 =Text(DateTimeValue( ThisItem.'Created On'), "dd/mm/yyyy hh:mm AM/PM")

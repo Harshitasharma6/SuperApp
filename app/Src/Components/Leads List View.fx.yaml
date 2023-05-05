@@ -122,7 +122,9 @@
         Rectangle1_12 As rectangle:
             AccessibleLabel: ="Rectangle1_7"
             BorderColor: =RGBA(0, 18, 107, 1)
-            Fill: =_VarGblAppColors.HeaderBg
+            Fill: |-
+                =
+                ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Header Band Color").'Default Value' )
             Height: =1
             OnSelect: |-
                 =Navigate('Leads Detail Page',ScreenTransition.CoverRight);
@@ -211,7 +213,7 @@
                 =Navigate('Leads Detail Page',ScreenTransition.CoverRight);
                 Set(varLeadData, ThisItem)
                  
-            Size: =_VarGblAppFonts.Size.Medium
+            Size: =LookUp(c_EnvironmentVariable,'Display Name'="Text Medium Font Size").'Default Value'
             TabIndex: =0
             Text: =DateValue(ThisItem.'Created On')
             Tooltip: |-

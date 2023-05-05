@@ -107,7 +107,7 @@ newProductList As CanvasComponent:
         RadiusBottomRight: =15
         RadiusTopLeft: =15
         RadiusTopRight: =15
-        Size: =_VarGblAppFonts.Size.Medium
+        Size: =LookUp(c_EnvironmentVariable,'Display Name'="Text Medium Font Size").'Default Value'
         Width: =500
         X: =25
         Y: =20
@@ -214,9 +214,7 @@ newProductList As CanvasComponent:
             FontWeight: =FontWeight.Semibold
             Height: =30
             OnSelect: =Select(Parent)
-            Size: |-
-                =//_VarGblAppFonts.Size.Medium
-                15
+            Size: =LookUp(c_EnvironmentVariable,'Display Name'="Text Medium Font Size").'Default Value'
             Text: |-
                 ="SKU: "& ThisItem.'Item Code'
             Width: =206
@@ -232,7 +230,7 @@ newProductList As CanvasComponent:
             FontWeight: =FontWeight.Semibold
             Height: =30
             OnSelect: =Select(Parent)
-            Size: =_VarGblAppFonts.Size.Medium
+            Size: =LookUp(c_EnvironmentVariable,'Display Name'="Text Medium Font Size").'Default Value'
             Strikethrough: |-
                 =If(
                     If(
@@ -370,7 +368,7 @@ newProductList As CanvasComponent:
                 =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Screen Background Color").'Default Value')
                 //_VarGblAppColors.BackgroundColor
             SelectMultiple: =false
-            Size: =_VarGblAppFonts.Size.Medium
+            Size: =LookUp(c_EnvironmentVariable,'Display Name'="Text Medium Font Size").'Default Value'
             Visible: =false
             Width: =150
             X: =162.5
@@ -384,9 +382,7 @@ newProductList As CanvasComponent:
             FontWeight: =FontWeight.Semibold
             Height: =If('Product Price Lbl_18'.Visible, 30, 0)
             OnSelect: =Select(Parent)
-            Size: |-
-                =//_VarGblAppFonts.Size.Medium
-                15
+            Size: =LookUp(c_EnvironmentVariable,'Display Name'="Text Medium Font Size").'Default Value'
             Text: |-
                 ="(" &
                 If(
@@ -578,7 +574,7 @@ newProductList As CanvasComponent:
             FontWeight: =FontWeight.Semibold
             Height: =30
             OnSelect: =Select(Parent)
-            Size: =_VarGblAppFonts.Size.Medium
+            Size: =LookUp(c_EnvironmentVariable,'Display Name'="Text Medium Font Size").'Default Value'
             Text: |-
                 =If(
                     IsBlank(
@@ -702,9 +698,7 @@ newProductList As CanvasComponent:
                 FontWeight: =FontWeight.Semibold
                 Height: =30
                 OnSelect: =Select(Parent)
-                Size: |-
-                    =//_VarGblAppFonts.Size.Medium
-                    15
+                Size: =LookUp(c_EnvironmentVariable,'Display Name'="Text Medium Font Size").'Default Value'
                 Text: |-
                     ="Quantity: "& ""
                 Width: =110
@@ -1139,7 +1133,7 @@ newProductList As CanvasComponent:
                 RadiusTopLeft: =15
                 RadiusTopRight: =15
                 Reset: =
-                Size: =_VarGblAppFonts.Size.Medium
+                Size: =LookUp(c_EnvironmentVariable,'Display Name'="Text Medium Font Size").'Default Value'
                 Width: =62
                 X: =115
                 Y: =370

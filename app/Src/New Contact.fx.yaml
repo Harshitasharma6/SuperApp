@@ -293,10 +293,10 @@
             DataField: ="cra62_emailaddress"
             Default: =ThisItem.'Email Address'
             DisplayMode: =Parent.DisplayMode
-            DisplayName: =DataSourceInfo([@Contacts_1],DataSourceInfo.DisplayName,"cra62_emailaddress")
+            DisplayName: =DataSourceInfo([@'Contacts.S'],DataSourceInfo.DisplayName,"zx_emailaddress")
             Fill: =RGBA(0, 0, 0, 0)
             Height: =50
-            MaxLength: =DataSourceInfo([@Contacts_1], DataSourceInfo.MaxLength, "cra62_emailaddress")
+            MaxLength: =DataSourceInfo([@'Contacts.S'], DataSourceInfo.MaxLength, "zx_emailaddress")
             Required: =false
             Update: =DataCardValue4.Text
             Width: =640
@@ -383,10 +383,10 @@
             DataField: ="cra62_department"
             Default: =ThisItem.Department
             DisplayMode: =Parent.DisplayMode
-            DisplayName: =DataSourceInfo([@Contacts_1],DataSourceInfo.DisplayName,"cra62_department")
+            DisplayName: =DataSourceInfo([@'Contacts.S'],DataSourceInfo.DisplayName,"zx_department")
             Fill: =RGBA(0, 0, 0, 0)
             Height: =50
-            MaxLength: =DataSourceInfo([@Contacts_1], DataSourceInfo.MaxLength, "cra62_department")
+            MaxLength: =DataSourceInfo([@'Contacts.S'], DataSourceInfo.MaxLength, "zx_department")
             Required: =false
             Update: =DataCardValue5.Text
             Width: =640
@@ -473,10 +473,10 @@
             DataField: ="cra62_designation"
             Default: =ThisItem.Designation
             DisplayMode: =Parent.DisplayMode
-            DisplayName: =DataSourceInfo([@Contacts_1],DataSourceInfo.DisplayName,"cra62_designation")
+            DisplayName: =DataSourceInfo([@'Contacts.S'],DataSourceInfo.DisplayName,"zx_designation")
             Fill: =RGBA(0, 0, 0, 0)
             Height: =50
-            MaxLength: =DataSourceInfo([@Contacts_1], DataSourceInfo.MaxLength, "cra62_designation")
+            MaxLength: =DataSourceInfo([@'Contacts.S'], DataSourceInfo.MaxLength, "zx_designation")
             Required: =false
             Update: =DataCardValue6.Text
             Width: =640
@@ -569,11 +569,11 @@
         HoverFill: =ColorFade(RGBA(56, 96, 178, 1), -20%)
         OnSelect: |
             =Patch(
-                Contacts_1,
-                Defaults(Contacts_1),
+                'Contacts.S',
+                Defaults('Contacts.S'),
                 {
                     Party: LookUp(
-                        Parties_1,
+                        'Parties.S',
                         'Customer Name' = varContact
                     )
                 },

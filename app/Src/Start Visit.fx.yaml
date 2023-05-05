@@ -219,7 +219,7 @@
                     FontWeight: =FontWeight.Semibold
                     Height: =30
                     OnSelect: =Select(Parent)
-                    Size: =LookUp(c_EnvironmentVariable,'Display Name'="Text Sub Title Font Size").'Default Value' //_VarGblAppFonts.Size.Subtitle
+                    Size: =LookUp(c_EnvironmentVariable,'Display Name'="Text Sub Title Font Size").'Default Value' // LookUp('Environment Variable Definitions', 'Display Name'="Text Sub Title Font Size").'Default Value'
                     Text: |-
                         ="Pincode: "& "134367"
                     Width: =290
@@ -237,7 +237,7 @@
                     FontWeight: =FontWeight.Semibold
                     Height: =30
                     OnSelect: =Select(Parent)
-                    Size: =LookUp(c_EnvironmentVariable,'Display Name'="Text Sub Title Font Size").'Default Value' //_VarGblAppFonts.Size.Subtitle
+                    Size: =LookUp(c_EnvironmentVariable,'Display Name'="Text Sub Title Font Size").'Default Value' // LookUp('Environment Variable Definitions', 'Display Name'="Text Sub Title Font Size").'Default Value'
                     Text: |-
                         ="City: " & "Noida"
                     Width: =296
@@ -254,7 +254,7 @@
                     FontWeight: =FontWeight.Semibold
                     Height: =30
                     OnSelect: =Select(Parent)
-                    Size: =LookUp(c_EnvironmentVariable,'Display Name'="Text Sub Title Font Size").'Default Value' //_VarGblAppFonts.Size.Subtitle
+                    Size: =LookUp(c_EnvironmentVariable,'Display Name'="Text Sub Title Font Size").'Default Value' // LookUp('Environment Variable Definitions', 'Display Name'="Text Sub Title Font Size").'Default Value'
                     Text: |-
                         ="District: "& "Noida"
                     Width: =290
@@ -272,7 +272,7 @@
                     FontWeight: =FontWeight.Semibold
                     Height: =30
                     OnSelect: =Select(Parent)
-                    Size: =LookUp(c_EnvironmentVariable,'Display Name'="Text Sub Title Font Size").'Default Value' //_VarGblAppFonts.Size.Subtitle
+                    Size: =LookUp(c_EnvironmentVariable,'Display Name'="Text Sub Title Font Size").'Default Value' // LookUp('Environment Variable Definitions', 'Display Name'="Text Sub Title Font Size").'Default Value'
                     Text: |-
                         ="State: "& "Uttar Pardesh"
                     Width: =298
@@ -312,7 +312,7 @@
                     FontWeight: =FontWeight.Semibold
                     Height: =35
                     OnSelect: =Select(Parent)
-                    Size: =LookUp(c_EnvironmentVariable,'Display Name'="Text Sub Title Font Size").'Default Value' //_VarGblAppFonts.Size.Subtitle
+                    Size: =LookUp(c_EnvironmentVariable,'Display Name'="Text Sub Title Font Size").'Default Value' // LookUp('Environment Variable Definitions', 'Display Name'="Text Sub Title Font Size").'Default Value'
                     Text: |-
                         ="Total No of Parties: " & CountRows(
                             Filter(
@@ -932,7 +932,7 @@
                 =//Navigate('Customer 360 Screen',ScreenTransition.CoverRight);
                 
                 Set(varCustomerRecord,ThisItem)
-            Size: =LookUp(c_EnvironmentVariable,'Display Name'="Text Sub Title Font Size").'Default Value' //_VarGblAppFonts.Size.Subtitle
+            Size: =LookUp(c_EnvironmentVariable,'Display Name'="Text Sub Title Font Size").'Default Value' // LookUp('Environment Variable Definitions', 'Display Name'="Text Sub Title Font Size").'Default Value'
             TabIndex: =0
             Text: =ThisItem.zx_name
             Width: =300

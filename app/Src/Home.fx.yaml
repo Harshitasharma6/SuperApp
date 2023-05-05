@@ -558,7 +558,7 @@ Home As screen:
                     )
                 PaddingTop: =4
                 Size: |
-                    =LookUp(c_EnvironmentVariable,'Display Name'="Text Sub Title Font Size").'Default Value' //_VarGblAppFonts.Size.Subtitle
+                    =LookUp(c_EnvironmentVariable,'Display Name'="Text Sub Title Font Size").'Default Value' // LookUp('Environment Variable Definitions', 'Display Name'="Text Sub Title Font Size").'Default Value'
                 Text: ="END DAY"
                 Visible: |-
                     =If(

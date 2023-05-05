@@ -66,7 +66,7 @@
                 Height: =66
                 OnSelect: =Select(Parent)
                 PaddingLeft: =15
-                Size: =_VarGblAppFonts.Size.Medium
+                Size: =LookUp(c_EnvironmentVariable,'Display Name'="Text Medium Font Size").'Default Value'
                 Text: =ThisItem.Title
                 Width: =246
                 X: =25
@@ -80,7 +80,7 @@
                 FontWeight: =FontWeight.Semibold
                 Height: =66
                 OnSelect: =Select(Parent)
-                Size: =_VarGblAppFonts.Size.Medium
+                Size: =LookUp(c_EnvironmentVariable,'Display Name'="Text Medium Font Size").'Default Value'
                 Text: =ThisItem.Data
                 Width: =292
                 Wrap: =false
