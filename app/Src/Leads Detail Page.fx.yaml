@@ -127,11 +127,11 @@
                     2000
                 ),
                 Patch(
-                    'Lead Activities',
-                    Defaults('Lead Activities'),
+                    'Lead Activities.S',
+                    Defaults('Lead Activities.S'),
                     {
                         Lead: LookUp(
-                            Leads,
+                            'Leads.S',
                             'Lead Id' = varLeadData.'Lead Id'
                         )
                     },
@@ -148,7 +148,7 @@
                     {'Next Action Date': DateValue1.SelectedDate}
                 );
                 Set(varLeadData,LookUp(Leads, 'Lead Id'=varleadid));*/
-            Refresh(Leads);
+            Refresh('Leads.S');
                 Notify(
                     "New Activity has been successfully created.",
                     NotificationType.Success,
@@ -158,7 +158,7 @@
             );
             ClearCollect(
                 OfflineActivitiesCollection,
-                'Lead Activities'
+                'Lead Activities.S'
             );
             Set(
                 VarCallClicked,
