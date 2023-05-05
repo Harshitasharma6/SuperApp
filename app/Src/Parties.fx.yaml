@@ -94,7 +94,7 @@ Parties As screen:
             Color: |-
                 =If(
                     _VarActivePartyTypeID = ThisItem.TabId,
-                       ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//_VarGblAppColors.PrimaryRed, ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Text Primary Color").'Default Value') //_VarGblAppColors.textbgbutton
+                       ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//_VarGblAppColors.PrimaryRed, ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Text Primary Color").'Default Value') // ColorValue(LookUp('Environment Variable Definitions', 'Display Name'="Button Color").'Default Value')
                 )
             DisabledColor: =RGBA(166, 166, 166, 1)
             FocusedBorderThickness: =0.3
@@ -195,7 +195,7 @@ Parties As screen:
 
         Title2Lbl_6 As label:
             BorderColor: =RGBA(0, 18, 107, 1)
-            Color: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Text Primary Color").'Default Value') //_VarGblAppColors.textbgbutton
+            Color: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Text Primary Color").'Default Value') // ColorValue(LookUp('Environment Variable Definitions', 'Display Name'="Button Color").'Default Value')
             DisabledColor: =RGBA(166, 166, 166, 1)
             FocusedBorderThickness: =01
             Font: =Font.'Courier New'
@@ -284,7 +284,7 @@ Parties As screen:
 
         Body1_26 As label:
             BorderColor: =RGBA(0, 18, 107, 1)
-            Color: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Text Primary Color").'Default Value') //_VarGblAppColors.textbgbutton
+            Color: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Text Primary Color").'Default Value') // ColorValue(LookUp('Environment Variable Definitions', 'Display Name'="Button Color").'Default Value')
             DisabledColor: =RGBA(166, 166, 166, 1)
             FocusedBorderThickness: =01
             Font: =Font.'Segoe UI'
@@ -340,7 +340,7 @@ Parties As screen:
 
         Body1_28 As label:
             BorderColor: =RGBA(0, 18, 107, 1)
-            Color: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Text Primary Color").'Default Value') //_VarGblAppColors.textbgbutton
+            Color: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Text Primary Color").'Default Value') // ColorValue(LookUp('Environment Variable Definitions', 'Display Name'="Button Color").'Default Value')
             DisabledColor: =RGBA(166, 166, 166, 1)
             FocusedBorderThickness: =01
             Font: =LookUp(c_EnvironmentVariable,'Display Name'="Common Heading Font").'Default Value'
@@ -396,7 +396,7 @@ Parties As screen:
 
         Body1_27 As label:
             BorderColor: =RGBA(0, 18, 107, 1)
-            Color: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Text Primary Color").'Default Value') //_VarGblAppColors.textbgbutton
+            Color: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Text Primary Color").'Default Value') // ColorValue(LookUp('Environment Variable Definitions', 'Display Name'="Button Color").'Default Value')
             DisabledColor: =RGBA(166, 166, 166, 1)
             FocusedBorderThickness: =01
             Font: =LookUp(c_EnvironmentVariable,'Display Name'="Common Heading Font").'Default Value'
@@ -459,7 +459,7 @@ Parties As screen:
 
         Label50 As label:
             BorderColor: =RGBA(0, 18, 107, 1)
-            Color: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Text Primary Color").'Default Value') //_VarGblAppColors.textbgbutton
+            Color: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Text Primary Color").'Default Value') // ColorValue(LookUp('Environment Variable Definitions', 'Display Name'="Button Color").'Default Value')
             DisabledColor: =RGBA(166, 166, 166, 1)
             Height: =33
             OnSelect: =Select(Parent)
@@ -474,7 +474,7 @@ Parties As screen:
 
         Label51 As label:
             BorderColor: =RGBA(0, 18, 107, 1)
-            Color: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Text Primary Color").'Default Value') //_VarGblAppColors.textbgbutton
+            Color: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Text Primary Color").'Default Value') // ColorValue(LookUp('Environment Variable Definitions', 'Display Name'="Button Color").'Default Value')
             DisabledColor: =RGBA(166, 166, 166, 1)
             Height: =33
             OnSelect: =Select(Parent)
@@ -486,7 +486,7 @@ Parties As screen:
 
         Label51_1 As label:
             BorderColor: =RGBA(0, 18, 107, 1)
-            Color: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Text Primary Color").'Default Value') //_VarGblAppColors.textbgbutton
+            Color: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Text Primary Color").'Default Value') // ColorValue(LookUp('Environment Variable Definitions', 'Display Name'="Button Color").'Default Value')
             DisabledColor: =RGBA(166, 166, 166, 1)
             Height: =33
             OnSelect: =Select(Parent)

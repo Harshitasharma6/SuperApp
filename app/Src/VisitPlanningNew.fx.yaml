@@ -148,7 +148,7 @@ VisitPlanningNew As screen:
                 =If(
                     ThisItem.IsSelected,
                     ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Text Primary Color").'Default Value') 
-                    //_VarGblAppColors.textbgbutton
+                    // ColorValue(LookUp('Environment Variable Definitions', 'Display Name'="Button Color").'Default Value')
                     ,
                     ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )
                     //ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//_VarGblAppColors.PrimaryRed

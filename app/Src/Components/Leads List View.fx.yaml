@@ -165,7 +165,7 @@
             DisabledColor: =RGBA(166, 166, 166, 1)
             FocusedBorderColor: =Color.Transparent
             FocusedBorderThickness: =01
-            Font: =_VarGblAppFonts.Heading
+            Font: =LookUp('Environment Variable Definitions', 'Display Name'="Common Heading Font").'Default Value'
             FontWeight: =FontWeight.Bold
             Height: =75
             OnSelect: |
@@ -206,7 +206,7 @@
             Color: =_VarGblAppColors.PrimaryRed
             DisabledColor: =RGBA(166, 166, 166, 1)
             FocusedBorderThickness: =01
-            Font: =_VarGblAppFonts.Heading
+            Font: =LookUp('Environment Variable Definitions', 'Display Name'="Common Heading Font").'Default Value'
             FontWeight: =FontWeight.Bold
             Height: =74
             OnSelect: |-
@@ -227,14 +227,16 @@
             Color: =RGBA(0, 0, 0, 1)
             DisabledColor: =RGBA(166, 166, 166, 1)
             FocusedBorderThickness: =01
-            Font: =_VarGblAppFonts.Heading
+            Font: =LookUp('Environment Variable Definitions', 'Display Name'="Common Heading Font").'Default Value'
             FontWeight: =FontWeight.Semibold
             Height: =75
             OnSelect: |-
                 =Navigate('Leads Detail Page',ScreenTransition.CoverRight);
                 Set(varLeadData, ThisItem)
                  
-            Size: =_VarGblAppFonts.Size.Subtitle
+            Size: |-
+                =
+                LookUp('Environment Variable Definitions', 'Display Name'="Text Sub Title Font Size").'Default Value'
             TabIndex: =0
             Text: |-
                 ="Commited: "
@@ -250,14 +252,16 @@
             Color: =RGBA(0, 0, 0, 1)
             DisabledColor: =RGBA(166, 166, 166, 1)
             FocusedBorderThickness: =01
-            Font: =_VarGblAppFonts.Heading
+            Font: =LookUp('Environment Variable Definitions', 'Display Name'="Common Heading Font").'Default Value'
             FontWeight: =FontWeight.Semibold
             Height: =74
             OnSelect: |-
                 =Navigate('Leads Detail Page',ScreenTransition.CoverRight);
                 Set(varLeadData, ThisItem)
                  
-            Size: =_VarGblAppFonts.Size.Subtitle
+            Size: |-
+                =
+                LookUp('Environment Variable Definitions', 'Display Name'="Text Sub Title Font Size").'Default Value'
             TabIndex: =0
             Text: |-
                 ="Contact: " & ThisItem.Contact.'First Name'
@@ -271,14 +275,16 @@
             Color: =RGBA(0, 0, 0, 1)
             DisabledColor: =RGBA(166, 166, 166, 1)
             FocusedBorderThickness: =1
-            Font: =_VarGblAppFonts.Heading
+            Font: =LookUp('Environment Variable Definitions', 'Display Name'="Common Heading Font").'Default Value'
             FontWeight: =FontWeight.Semibold
             Height: =55
             OnSelect: |-
                 =Navigate('Leads Detail Page',ScreenTransition.CoverRight);
                 Set(varLeadData, ThisItem)
                  
-            Size: =_VarGblAppFonts.Size.Subtitle
+            Size: |-
+                =
+                LookUp('Environment Variable Definitions', 'Display Name'="Text Sub Title Font Size").'Default Value'
             TabIndex: =0
             Text: |-
                 ="Stage: " 
@@ -292,14 +298,16 @@
             Color: =RGBA(0, 0, 0, 1)
             DisabledColor: =RGBA(166, 166, 166, 1)
             FocusedBorderThickness: =1
-            Font: =_VarGblAppFonts.Heading
+            Font: =LookUp('Environment Variable Definitions', 'Display Name'="Common Heading Font").'Default Value'
             FontWeight: =FontWeight.Semibold
             Height: =55
             OnSelect: |-
                 =Navigate('Leads Detail Page',ScreenTransition.CoverRight);
                 Set(varLeadData, ThisItem)
                  
-            Size: =_VarGblAppFonts.Size.Subtitle
+            Size: |-
+                =
+                LookUp('Environment Variable Definitions', 'Display Name'="Text Sub Title Font Size").'Default Value'
             TabIndex: =0
             Text: |-
                 ="Source: " &ThisItem.Source

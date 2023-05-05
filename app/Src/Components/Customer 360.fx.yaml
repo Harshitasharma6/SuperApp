@@ -148,7 +148,7 @@
             Color: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//_VarGblAppColors.PrimaryRed
             DisabledColor: =RGBA(166, 166, 166, 1)
             FocusedBorderThickness: =01
-            Font: =_VarGblAppFonts.Heading
+            Font: =LookUp('Environment Variable Definitions', 'Display Name'="Common Heading Font").'Default Value'
             FontWeight: =FontWeight.Bold
             Height: =66
             OnSelect: |-
@@ -169,13 +169,15 @@
             Color: =RGBA(0, 0, 0, 1)
             DisabledColor: =RGBA(166, 166, 166, 1)
             FocusedBorderThickness: =01
-            Font: =_VarGblAppFonts.Heading
+            Font: =LookUp('Environment Variable Definitions', 'Display Name'="Common Heading Font").'Default Value'
             FontWeight: =FontWeight.Semibold
             Height: =52
             OnSelect: |-
                 =Set(varContactData,ThisItem);
                 //[anjali--]Navigate('Contact Detail Page',ScreenTransition.CoverRight);
-            Size: =_VarGblAppFonts.Size.Subtitle
+            Size: |-
+                =
+                LookUp('Environment Variable Definitions', 'Display Name'="Text Sub Title Font Size").'Default Value'
             TabIndex: =0
             Text: |-
                 ="Email: " & ThisItem.'Email Address'
@@ -192,13 +194,15 @@
             Color: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//_VarGblAppColors.PrimaryRed
             DisabledColor: =RGBA(166, 166, 166, 1)
             FocusedBorderThickness: =01
-            Font: =_VarGblAppFonts.Heading
+            Font: =LookUp('Environment Variable Definitions', 'Display Name'="Common Heading Font").'Default Value'
             FontWeight: =FontWeight.Semibold
             Height: =37
             OnSelect: |-
                 =Set(varContactData,ThisItem);
                 Navigate('Contact Detail Page',ScreenTransition.CoverRight);
-            Size: =_VarGblAppFonts.Size.Subtitle
+            Size: |-
+                =
+                LookUp('Environment Variable Definitions', 'Display Name'="Text Sub Title Font Size").'Default Value'
             TabIndex: =0
             Text: =ThisItem.'Mobile No'
             Tooltip: =ThisItem.'Mobile No'
@@ -212,13 +216,15 @@
             Color: =RGBA(0, 0, 0, 1)
             DisabledColor: =RGBA(166, 166, 166, 1)
             FocusedBorderThickness: =01
-            Font: =_VarGblAppFonts.Heading
+            Font: =LookUp('Environment Variable Definitions', 'Display Name'="Common Heading Font").'Default Value'
             FontWeight: =FontWeight.Semibold
             Height: =52
             OnSelect: |-
                 =Set(varContactData,ThisItem);
                 Navigate('Contact Detail Page',ScreenTransition.CoverRight);
-            Size: =_VarGblAppFonts.Size.Subtitle
+            Size: |-
+                =
+                LookUp('Environment Variable Definitions', 'Display Name'="Text Sub Title Font Size").'Default Value'
             TabIndex: =0
             Text: |-
                 ="Department: " & ThisItem.Department
@@ -234,13 +240,15 @@
             Color: =RGBA(0, 0, 0, 1)
             DisabledColor: =RGBA(166, 166, 166, 1)
             FocusedBorderThickness: =01
-            Font: =_VarGblAppFonts.Heading
+            Font: =LookUp('Environment Variable Definitions', 'Display Name'="Common Heading Font").'Default Value'
             FontWeight: =FontWeight.Semibold
             Height: =56
             OnSelect: |-
                 =Set(varContactData,ThisItem);
                 Navigate('Contact Detail Page',ScreenTransition.CoverRight);
-            Size: =_VarGblAppFonts.Size.Subtitle
+            Size: |-
+                =
+                LookUp('Environment Variable Definitions', 'Display Name'="Text Sub Title Font Size").'Default Value'
             TabIndex: =0
             Text: |-
                 ="Designation: " & ThisItem.Designation
@@ -310,7 +318,7 @@
             Color: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//_VarGblAppColors.PrimaryRed
             DisabledColor: =RGBA(166, 166, 166, 1)
             FocusedBorderThickness: =01
-            Font: =_VarGblAppFonts.Heading
+            Font: =LookUp('Environment Variable Definitions', 'Display Name'="Common Heading Font").'Default Value'
             FontWeight: =FontWeight.Bold
             Height: =84
             Size: =20
@@ -328,7 +336,7 @@
             Color: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//_VarGblAppColors.PrimaryRed
             DisabledColor: =RGBA(166, 166, 166, 1)
             FocusedBorderThickness: =01
-            Font: =_VarGblAppFonts.Heading
+            Font: =LookUp('Environment Variable Definitions', 'Display Name'="Common Heading Font").'Default Value'
             FontWeight: =FontWeight.Bold
             Height: =83
             Size: =LookUp(c_EnvironmentVariable,'Display Name'="Text Medium Font Size").'Default Value'
@@ -349,10 +357,12 @@
             Color: =RGBA(0, 0, 0, 1)
             DisabledColor: =RGBA(166, 166, 166, 1)
             FocusedBorderThickness: =01
-            Font: =_VarGblAppFonts.Heading
+            Font: =LookUp('Environment Variable Definitions', 'Display Name'="Common Heading Font").'Default Value'
             FontWeight: =FontWeight.Semibold
             Height: =55
-            Size: =_VarGblAppFonts.Size.Subtitle
+            Size: |-
+                =
+                LookUp('Environment Variable Definitions', 'Display Name'="Text Sub Title Font Size").'Default Value'
             TabIndex: =0
             Text: |-
                 ="Visit Type: "& ThisItem.'Visit Type'
@@ -580,7 +590,9 @@
 
         Label10_8 As label:
             BorderColor: =RGBA(0, 18, 107, 1)
-            Color: =_VarGblAppColors.textbgbutton
+            Color: |-
+                =
+                ColorValue(LookUp('Environment Variable Definitions', 'Display Name'="Button Color").'Default Value')
             DisabledColor: =RGBA(166, 166, 166, 1)
             FontWeight: =FontWeight.Semibold
             Height: =55
@@ -786,10 +798,13 @@
 
         Body1_37 As label:
             BorderColor: =RGBA(0, 18, 107, 1)
-            Color: =_VarGblAppColors.PrimaryText
+            Color: |-
+                =
+                
+                ColorValue(LookUp('Environment Variable Definitions', 'Display Name'="Button Color").'Default Value')
             DisabledColor: =RGBA(166, 166, 166, 1)
             FocusedBorderThickness: =01
-            Font: =_VarGblAppFonts.Heading
+            Font: =LookUp('Environment Variable Definitions', 'Display Name'="Common Heading Font").'Default Value'
             FontWeight: =FontWeight.Bold
             Height: =75
             OnSelect: |-
@@ -813,14 +828,16 @@
             Color: =RGBA(0, 0, 0, 1)
             DisabledColor: =RGBA(166, 166, 166, 1)
             FocusedBorderThickness: =01
-            Font: =_VarGblAppFonts.Heading
+            Font: =LookUp('Environment Variable Definitions', 'Display Name'="Common Heading Font").'Default Value'
             FontWeight: =FontWeight.Semibold
             Height: =48
             OnSelect: |-
                 =Navigate('Order Info',ScreenTransition.CoverRight);
                 Set(varOrderData, ThisItem)
                  
-            Size: =_VarGblAppFonts.Size.Subtitle
+            Size: |-
+                =
+                LookUp('Environment Variable Definitions', 'Display Name'="Text Sub Title Font Size").'Default Value'
             TabIndex: =0
             Text: = ThisItem.'Order From'.'Customer Type'
             Tooltip: |-
@@ -836,13 +853,15 @@
             Color: =RGBA(0, 0, 0, 1)
             DisabledColor: =RGBA(166, 166, 166, 1)
             FocusedBorderThickness: =01
-            Font: =_VarGblAppFonts.Heading
+            Font: =LookUp('Environment Variable Definitions', 'Display Name'="Common Heading Font").'Default Value'
             FontWeight: =FontWeight.Semibold
             OnSelect: |-
                 =Navigate('Order Info',ScreenTransition.CoverRight);
                 Set(varOrderData, ThisItem)
                  
-            Size: =_VarGblAppFonts.Size.Subtitle
+            Size: |-
+                =
+                LookUp('Environment Variable Definitions', 'Display Name'="Text Sub Title Font Size").'Default Value'
             TabIndex: =0
             Text: |-
                 ="Customer Name: " & ThisItem.'Order To'.'Customer Name'
@@ -858,7 +877,7 @@
             Color: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//_VarGblAppColors.PrimaryRed
             DisabledColor: =RGBA(166, 166, 166, 1)
             FocusedBorderThickness: =01
-            Font: =_VarGblAppFonts.Heading
+            Font: =LookUp('Environment Variable Definitions', 'Display Name'="Common Heading Font").'Default Value'
             FontWeight: =FontWeight.Semibold
             Height: =39
             OnSelect: |-
@@ -883,7 +902,7 @@
             Color: =RGBA(0, 0, 0, 1)
             DisabledColor: =RGBA(166, 166, 166, 1)
             FocusedBorderThickness: =01
-            Font: =_VarGblAppFonts.Heading
+            Font: =LookUp('Environment Variable Definitions', 'Display Name'="Common Heading Font").'Default Value'
             FontWeight: =FontWeight.Semibold
             Height: =39
             OnSelect: |-
@@ -1073,7 +1092,7 @@
             Color: =RGBA(0, 0, 0, 1)
             DisabledColor: =RGBA(166, 166, 166, 1)
             FocusedBorderThickness: =1
-            Font: =_VarGblAppFonts.Heading
+            Font: =LookUp('Environment Variable Definitions', 'Display Name'="Common Heading Font").'Default Value'
             FontWeight: =FontWeight.Semibold
             Height: =62
             OnSelect: |-
@@ -1123,7 +1142,7 @@
             Color: =RGBA(0, 0, 0, 1)
             DisabledColor: =RGBA(166, 166, 166, 1)
             FocusedBorderThickness: =01
-            Font: =_VarGblAppFonts.Heading
+            Font: =LookUp('Environment Variable Definitions', 'Display Name'="Common Heading Font").'Default Value'
             FontWeight: =FontWeight.Semibold
             Height: =72
             OnSelect: |-
@@ -1147,7 +1166,7 @@
             Color: =RGBA(0, 0, 0, 1)
             DisabledColor: =RGBA(166, 166, 166, 1)
             FocusedBorderThickness: =01
-            Font: =_VarGblAppFonts.Heading
+            Font: =LookUp('Environment Variable Definitions', 'Display Name'="Common Heading Font").'Default Value'
             FontWeight: =FontWeight.Semibold
             Height: =72
             OnSelect: |-
@@ -1170,7 +1189,7 @@
             Color: =RGBA(0, 0, 0, 1)
             DisabledColor: =RGBA(166, 166, 166, 1)
             FocusedBorderThickness: =01
-            Font: =_VarGblAppFonts.Heading
+            Font: =LookUp('Environment Variable Definitions', 'Display Name'="Common Heading Font").'Default Value'
             FontWeight: =FontWeight.Semibold
             Height: =62
             OnSelect: |-
@@ -1194,7 +1213,7 @@
             Color: =RGBA(0, 0, 0, 1)
             DisabledColor: =RGBA(166, 166, 166, 1)
             FocusedBorderThickness: =01
-            Font: =_VarGblAppFonts.Heading
+            Font: =LookUp('Environment Variable Definitions', 'Display Name'="Common Heading Font").'Default Value'
             FontWeight: =FontWeight.Semibold
             Height: =62
             OnSelect: |-
@@ -1229,7 +1248,9 @@
         ZIndex: =14
 
         "'Product BG_1' As button":
-            BorderColor: =_VarGblAppColors.LightText
+            BorderColor: |-
+                =
+                ColorValue(LookUp('Environment Variable Definitions', 'Display Name'="Text Light Color").'Default Value')
             BorderThickness: =0
             Color: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Hover Color").'Default Value')
             DisabledBorderColor: =RGBA(166, 166, 166, 1)
@@ -1553,7 +1574,7 @@
             DisabledColor: =RGBA(166, 166, 166, 1)
             FocusedBorderColor: =Color.Transparent
             FocusedBorderThickness: =0.1
-            Font: =_VarGblAppFonts.Heading
+            Font: =LookUp('Environment Variable Definitions', 'Display Name'="Common Heading Font").'Default Value'
             FontWeight: =FontWeight.Bold
             Height: =75
             OnSelect: |-
@@ -1571,10 +1592,12 @@
 
         Body1_77 As label:
             BorderColor: =RGBA(0, 18, 107, 1)
-            Color: =_VarGblAppColors.PrimaryRed
+            Color: |-
+                =
+                ColorValue(LookUp('Environment Variable Definitions', 'Display Name'="Button Fill").'Default Value')
             DisabledColor: =RGBA(166, 166, 166, 1)
             FocusedBorderThickness: =01
-            Font: =_VarGblAppFonts.Heading
+            Font: =LookUp('Environment Variable Definitions', 'Display Name'="Common Heading Font").'Default Value'
             FontWeight: =FontWeight.Bold
             Height: =75
             OnSelect: |-
@@ -1598,7 +1621,7 @@
             Color: =RGBA(0, 0, 0, 1)
             DisabledColor: =RGBA(166, 166, 166, 1)
             FocusedBorderThickness: =01
-            Font: =_VarGblAppFonts.Heading
+            Font: =LookUp('Environment Variable Definitions', 'Display Name'="Common Heading Font").'Default Value'
             FontWeight: =FontWeight.Semibold
             Height: =75
             OnSelect: |-
@@ -1624,7 +1647,7 @@
             Color: =RGBA(0, 0, 0, 1)
             DisabledColor: =RGBA(166, 166, 166, 1)
             FocusedBorderThickness: =01
-            Font: =_VarGblAppFonts.Heading
+            Font: =LookUp('Environment Variable Definitions', 'Display Name'="Common Heading Font").'Default Value'
             FontWeight: =FontWeight.Semibold
             Height: =74
             OnSelect: |-
@@ -1646,7 +1669,7 @@
             Color: =RGBA(0, 0, 0, 1)
             DisabledColor: =RGBA(166, 166, 166, 1)
             FocusedBorderThickness: =1
-            Font: =_VarGblAppFonts.Heading
+            Font: =LookUp('Environment Variable Definitions', 'Display Name'="Common Heading Font").'Default Value'
             FontWeight: =FontWeight.Semibold
             Height: =55
             OnSelect: |-
@@ -1670,7 +1693,7 @@
             Color: =RGBA(0, 0, 0, 1)
             DisabledColor: =RGBA(166, 166, 166, 1)
             FocusedBorderThickness: =1
-            Font: =_VarGblAppFonts.Heading
+            Font: =LookUp('Environment Variable Definitions', 'Display Name'="Common Heading Font").'Default Value'
             FontWeight: =FontWeight.Semibold
             Height: =55
             OnSelect: |-
@@ -1919,7 +1942,8 @@
             Color: |-
                 =
                 If(ThisItem.Title="First Name",
-                RGBA(0, 0, 0, 1),_VarGblAppColors.textbgbutton)
+                RGBA(0, 0, 0, 1),
+                ColorValue(LookUp('Environment Variable Definitions', 'Display Name'="Button Color").'Default Value'))
             DisabledColor: =RGBA(166, 166, 166, 1)
             FontWeight: =FontWeight.Semibold
             Height: =55
@@ -1958,7 +1982,7 @@
         FontWeight: =FontWeight.Bold
         Height: =60
         Size: =22
-        Text: ="Harkamal Singh"//'Customer 360'.CustomerRecord.zx_name
+        Text: ='Customer 360'.CustomerRecord.zx_name
         Width: =420
         X: =35
         Y: =15
@@ -2031,7 +2055,6 @@
             ZIndex: =21
 
         Icon10_1 As icon.Waypoint:
-            AccessibleLabel: ="Icon10_1"
             BorderColor: =RGBA(0, 18, 107, 1)
             Color: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//_VarGblAppColors.PrimaryRed
             DisabledBorderColor: =RGBA(166, 166, 166, 1)
@@ -2103,7 +2126,9 @@
 
         Label10_6 As label:
             BorderColor: =RGBA(0, 18, 107, 1)
-            Color: =_VarGblAppColors.textbgbutton
+            Color: |-
+                =
+                ColorValue(LookUp('Environment Variable Definitions', 'Display Name'="Button Color").'Default Value')
             DisabledColor: =RGBA(166, 166, 166, 1)
             FontWeight: =FontWeight.Semibold
             Height: =55

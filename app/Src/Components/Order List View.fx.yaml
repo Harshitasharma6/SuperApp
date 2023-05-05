@@ -445,7 +445,7 @@
             Color: =_VarGblAppColors.PrimaryRed
             DisabledColor: =RGBA(166, 166, 166, 1)
             FocusedBorderThickness: =1
-            Font: =_VarGblAppFonts.Heading
+            Font: =LookUp('Environment Variable Definitions', 'Display Name'="Common Heading Font").'Default Value'
             FontWeight: =FontWeight.Bold
             Height: =75
             OnSelect: |-
@@ -466,7 +466,7 @@
             Color: =_VarGblAppColors.PrimaryRed
             DisabledColor: =RGBA(166, 166, 166, 1)
             FocusedBorderThickness: =01
-            Font: =_VarGblAppFonts.Heading
+            Font: =LookUp('Environment Variable Definitions', 'Display Name'="Common Heading Font").'Default Value'
             FontWeight: =FontWeight.Bold
             Height: =75
             OnSelect: |-
@@ -489,14 +489,16 @@
             Color: =RGBA(0, 0, 0, 1)
             DisabledColor: =RGBA(166, 166, 166, 1)
             FocusedBorderThickness: =01
-            Font: =_VarGblAppFonts.Heading
+            Font: =LookUp('Environment Variable Definitions', 'Display Name'="Common Heading Font").'Default Value'
             FontWeight: =FontWeight.Semibold
             Height: =75
             OnSelect: |-
                 =Navigate('Order Info',ScreenTransition.CoverRight);
                 Set(varOrderData, ThisItem)
                  
-            Size: =_VarGblAppFonts.Size.Subtitle
+            Size: |-
+                =
+                LookUp('Environment Variable Definitions', 'Display Name'="Text Sub Title Font Size").'Default Value'
             TabIndex: =0
             Text: |-
                 ="Order Status: " & ThisItem.'Order Status'
@@ -513,14 +515,16 @@
             Color: =RGBA(0, 0, 0, 1)
             DisabledColor: =RGBA(166, 166, 166, 1)
             FocusedBorderThickness: =01
-            Font: =_VarGblAppFonts.Heading
+            Font: =LookUp('Environment Variable Definitions', 'Display Name'="Common Heading Font").'Default Value'
             FontWeight: =FontWeight.Semibold
             Height: =74
             OnSelect: |-
                 =Navigate('Order Info',ScreenTransition.CoverRight);
                 Set(varOrderData, ThisItem)
                  
-            Size: =_VarGblAppFonts.Size.Subtitle
+            Size: |-
+                =
+                LookUp('Environment Variable Definitions', 'Display Name'="Text Sub Title Font Size").'Default Value'
             TabIndex: =0
             Text: |-
                 ="Order From: " & ThisItem.'Order From'.'Customer Name'
@@ -536,14 +540,16 @@
             Color: =RGBA(0, 0, 0, 1)
             DisabledColor: =RGBA(166, 166, 166, 1)
             FocusedBorderThickness: =1
-            Font: =_VarGblAppFonts.Heading
+            Font: =LookUp('Environment Variable Definitions', 'Display Name'="Common Heading Font").'Default Value'
             FontWeight: =FontWeight.Semibold
             Height: =55
             OnSelect: |-
                 =Navigate('Order Info',ScreenTransition.CoverRight);
                 Set(varOrderData, ThisItem)
                  
-            Size: =_VarGblAppFonts.Size.Subtitle
+            Size: |-
+                =
+                LookUp('Environment Variable Definitions', 'Display Name'="Text Sub Title Font Size").'Default Value'
             TabIndex: =0
             Text: |-
                 ="Total Bill Amount: " &"₹"&ThisItem.'Total Bill Amount'
@@ -559,14 +565,16 @@
             Color: =RGBA(0, 0, 0, 1)
             DisabledColor: =RGBA(166, 166, 166, 1)
             FocusedBorderThickness: =1
-            Font: =_VarGblAppFonts.Heading
+            Font: =LookUp('Environment Variable Definitions', 'Display Name'="Common Heading Font").'Default Value'
             FontWeight: =FontWeight.Semibold
             Height: =55
             OnSelect: |-
                 =Navigate('Order Info',ScreenTransition.CoverRight);
                 Set(varOrderData, ThisItem)
                  
-            Size: =_VarGblAppFonts.Size.Subtitle
+            Size: |-
+                =
+                LookUp('Environment Variable Definitions', 'Display Name'="Text Sub Title Font Size").'Default Value'
             TabIndex: =0
             Text: |-
                 ="Total Tax: " & "₹" & If(
@@ -633,7 +641,7 @@
                                             ),
                                             'Order From'.'Customer Code' = LookUp(
                                                 Parties_1,
-                                                'Parties (new_partiesid)' = 'Order List View'.Customer.new_partiesid
+                                                Parties = 'Order List View'.Customer.new_partiesid
                                             ).'Customer Code' && 'Order Status' = 'Status Gallery'.Selected.Value
                                         ),
                                         IsToday('Created On')
@@ -662,7 +670,7 @@
                                             OfflineOrderHeaderCollection,
                                             'Order From'.'Customer Code' = LookUp(
                                                 OfflinePartiesCollection,
-                                                'Parties (new_partiesid)' = 'Order List View'.Customer.new_partiesid
+                                                Parties = 'Order List View'.Customer.new_partiesid
                                             ).'Customer Code' && 'Order Status' = 'Status Gallery'.Selected.Value && 'Order Type' = 'Order Type Choice'.Primary && 'Owning User'.'Primary Email' = ComboBox2_2.Selected.'Primary Email'
                                         ),
                                         IsToday('Created On')
@@ -701,7 +709,7 @@
                                             ),
                                             'Order From'.'Customer Code' = LookUp(
                                                 Parties_1,
-                                                'Parties (new_partiesid)' = 'Order List View'.Customer.new_partiesid
+                                                Parties = 'Order List View'.Customer.new_partiesid
                                             ).'Customer Code' && 'Order Status' = 'Status Gallery'.Selected.Value
                                         ),
                                         IsToday('Created On')
@@ -730,7 +738,7 @@
                                             OfflineOrderHeaderCollection,
                                             'Order From'.'Customer Code' = LookUp(
                                                 OfflinePartiesCollection,
-                                                'Parties (new_partiesid)' = 'Order List View'.Customer.new_partiesid
+                                                Parties = 'Order List View'.Customer.new_partiesid
                                             ).'Customer Code' && 'Order Status' = 'Status Gallery'.Selected.Value && 'Order Type' = 'Order Type Choice'.Secondary && 'Owning User'.'Primary Email' = ComboBox2_2.Selected.'Primary Email'
                                         ),
                                         IsToday('Created On')
@@ -771,7 +779,7 @@
                                             ),
                                             'Order From'.'Customer Code' = LookUp(
                                                 Parties_1,
-                                                'Parties (new_partiesid)' = 'Order List View'.Customer.new_partiesid
+                                                Parties = 'Order List View'.Customer.new_partiesid
                                             ).'Customer Code' && 'Order Status' = 'Status Gallery'.Selected.Value
                                         ),
                                         IsToday('Created On')
@@ -798,7 +806,7 @@
                                             OfflineOrderHeaderCollection,
                                             'Order From'.'Customer Code' = LookUp(
                                                 OfflinePartiesCollection,
-                                                'Parties (new_partiesid)' = 'Order List View'.Customer.new_partiesid
+                                                Parties = 'Order List View'.Customer.new_partiesid
                                             ).'Customer Code' && 'Order Status' = 'Status Gallery'.Selected.Value && 'Order Type' = 'Order Type Choice'.Primary && 'Owning User'.'Primary Email' = ComboBox2_2.Selected.'Primary Email'
                                         ),
                                         IsToday('Created On')
@@ -835,7 +843,7 @@
                                             ),
                                             'Order From'.'Customer Code' = LookUp(
                                                 Parties_1,
-                                                'Parties (new_partiesid)' = 'Order List View'.Customer.new_partiesid
+                                               Parties = 'Order List View'.Customer.new_partiesid
                                             ).'Customer Code' && 'Order Status' = 'Status Gallery'.Selected.Value
                                         ),
                                         IsToday('Created On')
@@ -862,7 +870,7 @@
                                             OfflineOrderHeaderCollection,
                                             'Order From'.'Customer Code' = LookUp(
                                                 OfflinePartiesCollection,
-                                                'Parties (new_partiesid)' = 'Order List View'.Customer.new_partiesid
+                                                Parties = 'Order List View'.Customer.new_partiesid
                                             ).'Customer Code' && 'Order Status' = 'Status Gallery'.Selected.Value && 'Order Type' = 'Order Type Choice'.Secondary && 'Owning User'.'Primary Email' = ComboBox2_2.Selected.'Primary Email'
                                         ),
                                         IsToday('Created On')
@@ -907,7 +915,7 @@
                                             ),
                                             'Order From'.'Customer Code' = LookUp(
                                                 Parties_1,
-                                                'Parties (new_partiesid)' = 'Order List View'.Customer.new_partiesid
+                                                Parties = 'Order List View'.Customer.new_partiesid
                                             ).'Customer Code' && 'Order Status' = 'Status Gallery'.Selected.Value
                                         ),
                                         'Created On' > (Today() - 7)&& Not( IsToday('Created On'))
@@ -936,7 +944,7 @@
                                             OfflineOrderHeaderCollection,
                                             'Order From'.'Customer Code' = LookUp(
                                                 OfflinePartiesCollection,
-                                                'Parties (new_partiesid)' = 'Order List View'.Customer.new_partiesid
+                                               Parties = 'Order List View'.Customer.new_partiesid
                                             ).'Customer Code' && 'Order Status' = 'Status Gallery'.Selected.Value && 'Order Type' = 'Order Type Choice'.Primary && 'Owning User'.'Primary Email' = ComboBox2_2.Selected.'Primary Email'
                                         ),
                                         'Created On' > (Today() - 7)&& Not( IsToday('Created On'))
@@ -975,7 +983,7 @@
                                             ),
                                             'Order From'.'Customer Code' = LookUp(
                                                 Parties_1,
-                                                'Parties (new_partiesid)' = 'Order List View'.Customer.new_partiesid
+                                                Parties = 'Order List View'.Customer.new_partiesid
                                             ).'Customer Code' && 'Order Status' = 'Status Gallery'.Selected.Value
                                         ),
                                         'Created On' > (Today() - 7)&& Not( IsToday('Created On'))
@@ -1004,7 +1012,7 @@
                                             OfflineOrderHeaderCollection,
                                             'Order From'.'Customer Code' = LookUp(
                                                 OfflinePartiesCollection,
-                                                'Parties (new_partiesid)' = 'Order List View'.Customer.new_partiesid
+                                                Parties= 'Order List View'.Customer.new_partiesid
                                             ).'Customer Code' && 'Order Status' = 'Status Gallery'.Selected.Value && 'Order Type' = 'Order Type Choice'.Secondary && 'Owning User'.'Primary Email' = ComboBox2_2.Selected.'Primary Email'
                                         ),
                                         'Created On' > (Today() - 7)&& Not( IsToday('Created On'))
@@ -1045,7 +1053,7 @@
                                             ),
                                             'Order From'.'Customer Code' = LookUp(
                                                 Parties_1,
-                                                'Parties (new_partiesid)' = 'Order List View'.Customer.new_partiesid
+                                                Parties = 'Order List View'.Customer.new_partiesid
                                             ).'Customer Code' && 'Order Status' = 'Status Gallery'.Selected.Value
                                         ),
                                         'Created On' > (Today() - 7)&& Not( IsToday('Created On'))
@@ -1072,7 +1080,7 @@
                                             OfflineOrderHeaderCollection,
                                             'Order From'.'Customer Code' = LookUp(
                                                 OfflinePartiesCollection,
-                                                'Parties (new_partiesid)' = 'Order List View'.Customer.new_partiesid
+                                                Parties = 'Order List View'.Customer.new_partiesid
                                             ).'Customer Code' && 'Order Status' = 'Status Gallery'.Selected.Value && 'Order Type' = 'Order Type Choice'.Primary && 'Owning User'.'Primary Email' = ComboBox2_2.Selected.'Primary Email'
                                         ),
                                         'Created On' > (Today() - 7)&& Not( IsToday('Created On'))

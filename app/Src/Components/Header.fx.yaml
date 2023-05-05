@@ -11,7 +11,7 @@ Header As CanvasComponent:
         BorderColor: =RGBA(0, 18, 107, 1)
         Color: =RGBA(0, 0, 0, 1)
         DisabledColor: =RGBA(166, 166, 166, 1)
-        Font: =_VarGblAppFonts.Heading
+        Font: =LookUp('Environment Variable Definitions', 'Display Name'="Common Heading Font").'Default Value'
         FontWeight: =FontWeight.Semibold
         Height: =60
         PaddingTop: =2

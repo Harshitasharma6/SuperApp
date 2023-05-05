@@ -109,7 +109,8 @@
             Color: |+
                 =//_VarGblAppColors.PrimaryRed
                 If(ThisItem.IsSelected,ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//_VarGblAppColors.PrimaryRed
-                ,_VarGblAppColors.textbgbutton)
+                ,
+                ColorValue(LookUp('Environment Variable Definitions', 'Display Name'="Button Color").'Default Value'))
                 
             DisabledColor: =RGBA(166, 166, 166, 1)
             FocusedBorderThickness: =0.3
