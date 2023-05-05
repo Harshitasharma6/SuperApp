@@ -70,7 +70,7 @@
         PaddingLeft: =15
         PaddingRight: =15
         Size: =21
-        Text: ="Do you really want to plan visit for "&varLeadData.Party.'Customer Name' &" ?"
+        Text: ="Do you really want to plan visit for "&varLeadData.zx_Party.'Customer Name' &" ?"
         Visible: =varClickedCreateLeadVisit
         Width: =590
         X: =30
@@ -91,11 +91,11 @@
                 !IsBlank(
                     LookUp(
                         OfflineVisitCollection,
-                        Party.Parties = varLeadData.Party.Parties && IsToday('Visit date') && 'Owning User'.'Primary Email' = User().Email
+                        Party.Parties = varLeadData.zx_Party.Parties && IsToday('Visit date') && 'Owning User'.'Primary Email' = User().Email
                     )
                 ),
                 Notify(
-                    "One visit is already planned for " & varLeadData.Party.'Customer Name' & " for today.",
+                    "One visit is already planned for " & varLeadData.zx_Party.'Customer Name' & " for today.",
                     NotificationType.Information,
                     4000
                 );
@@ -108,9 +108,10 @@
                         {
                             'Visit date': Today(),
                             Party: LookUp(
-                                'Parties.S',                    Parties = varLeadData.Party.Parties
+                                'Parties.S',
+                                Parties = varLeadData.zx_Party.Parties
                             ),
-                            'Party Location': varLeadData.Party.Latitude & "," & varLeadData.Party.Longitude,
+                            'Party Location': varLeadData.zx_Party.Latitude & "," & varLeadData.zx_Party.Longitude,
                             'Visit Type': 'Visit Type'.Planned,
                             'Visit Status': 'Visit Status'.'Not Started',
                             Owner: LookUp(
@@ -128,17 +129,17 @@
                         {
                             Lead: LookUp(
                                 'Leads.S',
-                                'Lead Id' = varLeadData.'Lead Id'
+                                Leads = varLeadData.zx_leadsid
                             ),
                             'Activity Type': 'Activity Type'.Visit,
                             Party: LookUp(
                                 OfflinePartiesCollection,
-                                Parties = varLeadData.Party.Parties
+                                Parties = varLeadData.zx_Party.Parties
                             ),
                             Date: Today(),
                             Contact: LookUp(
                                 'Contacts.S',
-                                Contacts = varLeadData.Contact.Contacts
+                                Contacts = varLeadData.zx_Contact.Contacts
                             ),
                             Visit: LookUp(
                                 OfflineVisitCollection,
@@ -170,7 +171,7 @@
                 OfflinePjpRouteCollection,
                 Filter(
                     'Beat.S',
-                    Area.Area = varUserr  && 'Owning User'.'Primary Email' = User().Email
+                    Area.Area = varUserr && 'Owning User'.'Primary Email' = User().Email
                 )
             );
             SaveData(
@@ -447,6 +448,23 @@
                     HoverBorderColor: =RGBA(0, 18, 107, 1)
                     HoverColor: =RGBA(0, 0, 0, 1)
                     HoverFill: =RGBA(186, 202, 226, 1)
+                    OnChange: |-
+                        =If(
+                            IsMatch(
+                                TextInput6.Text,
+                                Match.Email
+                            ),
+                            Notify(
+                                "Success",
+                                NotificationType.Success,
+                                2000
+                            ),
+                            Notify(
+                                "Please Enter Correct Format",
+                                NotificationType.Error,
+                                2000
+                            )
+                        )
                     PressedBorderColor: =
                     RadiusBottomLeft: =0
                     RadiusBottomRight: =0
