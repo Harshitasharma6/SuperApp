@@ -2,41 +2,41 @@
     LoadingSpinnerColor: =RGBA(0, 120, 212, 1)
 
     Header_19 As Header_17:
-        ScreenName: =varActivityData.new_leadactivityid
+        ScreenName: =varActivityData.zx_leadactivitiesid
 
     "'Detail Page_3' As 'Detail Page'":
         DataSource: |-
             =Table({
                     Title: "Activity Id:",
-                    Data:varActivityData.new_leadactivityid
+                    Data:varActivityData.zx_leadactivitiesid
                 },
                 {
                     Title: "Type:",
-                    Data:Text(varActivityData.new_activitytype)
+                    Data:Text(varActivityData.zx_activitytype)
                 },
                 {
                     Title: "Contact:",
-                    Data: varActivityData.new_Contact.'First Name' & " "& varActivityData.new_Contact.'Last Name'
+                    Data: varActivityData.zx_Contact.'First Name' & " "& varActivityData.zx_Contact.'Last Name'
                 },
                 {
                     Title: "Remarks:",
-                    Data:varActivityData.new_activityremarks
+                    Data:varActivityData.zx_activityremarks
                 },
                 {
                     Title: "Outcome:",
-                    Data: Text(varActivityData.new_activityoutcome)
+                    Data: Text(varActivityData.zx_activityoutcome)
                 },
                 {
                     Title: "Duration:",
-                    Data: Text(varActivityData.new_duration)
+                    Data: Text(varActivityData.zx_duration)
                 },
                 {
                     Title: "Next Follow-Up Date:",
-                    Data: Text(varActivityData.new_nextfollowupdate,"dd-mm-yyyy")
+                    Data: Text(varActivityData.zx_nextfollowupdate,"dd-mm-yyyy")
                 },
                 {
                     Title: "Next Follow-Up Activity:",
-                    Data: Text(varActivityData.new_followupactivitytype)
+                    Data: Text(varActivityData.zx_followupactivitytype)
                 }
             )
         Height: =962
@@ -44,6 +44,39 @@
         ZIndex: =2
 
     "'Bottom Bar_21' As 'Bottom Bar_19'":
+        NavItems: |-
+            =Table(
+                {
+                    Title: "Orders",
+                    Icon : 'shopping-cart',
+                    Screen: 'Customer 360 Screen',
+                    Id: 1
+                },
+                {
+                    Title: "Visit",
+                    Icon: location,
+                    Screen:'Start Visit',
+                    Id:2
+                },
+                 {
+                    Title: "Home",
+                    Icon:home,
+                    Screen: Home,
+                    Id:3
+                },
+                 {
+                    Title: "Parties",
+                    Icon: people,
+                    Screen: Parties,
+                    Id:4
+                },
+                {
+                    Title: varUser.'First Name',
+                    Icon: User().Image,
+                    Screen: Sidebar,
+                    Id:5
+                }
+            )
         Y: =996
         ZIndex: =3
 

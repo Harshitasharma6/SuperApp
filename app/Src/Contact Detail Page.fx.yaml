@@ -1,0 +1,75 @@
+"'Contact Detail Page' As screen":
+    LoadingSpinnerColor: =RGBA(0, 120, 212, 1)
+
+    Header_20 As Header_18:
+        ScreenName: =varContactData.zx_firstname& " " & varContactData.zx_lastname
+
+    "'Bottom Bar_22' As 'Bottom Bar_20'":
+        NavItems: |-
+            =Table(
+                {
+                    Title: "Orders",
+                    Icon : 'shopping-cart',
+                    Screen: 'Customer 360 Screen',
+                    Id: 1
+                },
+                {
+                    Title: "Visit",
+                    Icon: location,
+                    Screen:'Start Visit',
+                    Id:2
+                },
+                 {
+                    Title: "Home",
+                    Icon:home,
+                    Screen: Home,
+                    Id:3
+                },
+                 {
+                    Title: "Parties",
+                    Icon: people,
+                    Screen: Parties,
+                    Id:4
+                },
+                {
+                    Title: varUser.'First Name',
+                    Icon: User().Image,
+                    Screen: Sidebar,
+                    Id:5
+                }
+            )
+        Y: =996
+        ZIndex: =2
+
+    "'Detail Page_2' As 'Detail Page_1'":
+        DataSource: |-
+            =Table(
+                {
+                    Title: "Name:",
+                    Data: Concatenate( varContactData.zx_firstname, varContactData.zx_lastname)
+                },
+                {
+                    Title: "Email:",
+                    Data: varContactData.zx_emailaddress
+                },
+                {
+                    Title: "Mobile No:",
+                    Data:varContactData.zx_mobileno
+                },
+                {
+                    Title: "Party:",
+                    Data: varContactData.zx_Party.'Customer Name'
+                },
+                {
+                    Title: "Designation:",
+                    Data: varContactData.zx_designation
+                },
+                {
+                    Title: "Department:",
+                    Data: varContactData.zx_department
+                }
+            )
+        Height: =798
+        Y: =80
+        ZIndex: =3
+
