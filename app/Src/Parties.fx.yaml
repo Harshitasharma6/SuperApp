@@ -186,16 +186,7 @@ Parties As screen:
                 Set(varCustomerRecord,ThisItem)
             Size: =_VarGblAppFonts.Size.Subtitle
             TabIndex: =0
-            Text: |-
-                =ThisItem.zx_name & LookUp(
-                        Sort(
-                           OfflineVisitCollection,
-                            zx_visitdate,
-                            SortOrder.Descending
-                        ),
-                        zx_Party.Parties = ThisItem.zx_partiesid && 'Visit Status' = [@'Visit Status'].Completed
-                        
-                    ).zx_visitdate
+            Text: =ThisItem.zx_name 
             Width: =300
             X: =70
             Y: =15
