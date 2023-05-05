@@ -2,7 +2,7 @@
     LoadingSpinnerColor: =RGBA(0, 120, 212, 1)
 
     Header_15 As Header:
-        ScreenName: =varLeadData.'Lead Id'
+        ScreenName: =varLeadData.zx_leadname
 
     "'Bottom Bar_17' As 'Bottom Bar'":
         Y: =1026
@@ -132,7 +132,7 @@
                     {
                         Lead: LookUp(
                             'Leads.S',
-                            'Lead Id' = varLeadData.'Lead Id'
+                            Leads = varLeadData.zx_leadsid
                         )
                     },
                     'Activity Form'.Updates
@@ -329,7 +329,7 @@
                 DefaultSelectedItems: |-
                     =If(
                         VarCallClicked,
-                        LookUp('Contacts.S', 'Contact Id' = varLeadData.Contact.'Contact Id')
+                        LookUp('Contacts.S', 'Contact Id' = varLeadData.zx_Contact.'Contact Id')
                     )
                 DisabledBorderColor: =RGBA(166, 166, 166, 1)
                 DisabledColor: =RGBA(166, 166, 166, 1)
@@ -341,7 +341,7 @@
                 HoverFill: =RGBA(186, 202, 226, 1)
                 InputTextPlaceholder: ="Select Contact"
                 IsSearchable: =false
-                Items: =Filter('Contacts.S', Party.'Customer Name' = varLeadData.Party.'Customer Name')
+                Items: =Filter('Contacts.S', Party.'Customer Name' = varLeadData.zx_Party.'Customer Name')
                 PaddingLeft: =If(Self.DisplayMode = DisplayMode.Edit, 5, 0)
                 PressedColor: =RGBA(255, 255, 255, 1)
                 PressedFill: =RGBA(0, 18, 107, 1)
