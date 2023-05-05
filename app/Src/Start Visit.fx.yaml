@@ -1292,9 +1292,9 @@
             Height: =70
             OnSelect: =Select(Parent)
             Size: =21
-            Text: =LookUp('Visit.S','Visit date'=Today() && Party.Parties=ThisItem.Parties).'Visit Status'
+            Text: =LookUp('Visit.S',Text('Visit date',"dd-mm-yyyy")=Text(Today(),"dd-mm-yyyy") && Party.Parties=ThisItem.Parties).'Visit Status'
             Width: =165
-            X: =257
+            X: =267
             ZIndex: =23
 
         Group1 As group:
@@ -1401,10 +1401,9 @@
                 Height: =37
                 OnSelect: |-
                     =If(
-                        LookUp(
-                            'Visit.S',
-                            'Visit date' = Today() && Party.Parties = ThisItem.Parties
-                        ).'Visit Status' = [@'Visit Status'].Completed,
+                        LookUp('Visit.S',Text('Visit date',"dd-mm-yyyy")=Text(Today(),"dd-mm-yyyy") && Party.Parties=ThisItem.Parties).'Visit Status' = [@'Visit Status'].Completed,
+                    
+                    
                         Notify(
                             "Visit is Already Ended",
                             NotificationType.Error,
@@ -1557,10 +1556,9 @@
                     )
                 OnSelect: |-
                     =If(
-                        LookUp(
-                            'Visit.S',
-                            'Visit date' = Today() && Party.Parties = ThisItem.Parties
-                        ).'Visit Status' = [@'Visit Status'].Completed,
+                        LookUp('Visit.S',Text('Visit date',"dd-mm-yyyy")=Text(Today(),"dd-mm-yyyy") && Party.Parties=ThisItem.Parties).'Visit Status' = [@'Visit Status'].Completed,
+                    
+                        
                         Notify(
                             "Visit is Already Ended",
                             NotificationType.Error,
@@ -1835,7 +1833,7 @@
         RadiusTopRight: =0
         Size: =24
         Text: |-
-            ="last commit 3 : 53"
+            ="last commit 4 : 22"
         Width: =280
         Y: =959
         ZIndex: =18
