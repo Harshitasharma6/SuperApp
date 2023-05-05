@@ -89,6 +89,50 @@
     }
   },
   {
+    "DisplayName": "source",
+    "Name": "cra62_source",
+    "OptionSetInfoNameMapping": {
+      "571990000": "Social Media",
+      "571990001": "Influencer",
+      "571990002": "Email"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": true,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "zx_source",
+        "OptionSetReferenceEntityName": "Leads.S"
+      }
+    },
+    "OptionSetTypeKey": "PicklistType",
+    "RelatedColumnInvariantName": "zx_source",
+    "RelatedEntityName": "Leads.S",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Stage Choice",
+    "Name": "cra62_stagechoice",
+    "OptionSetInfoNameMapping": {
+      "128780001": "Rejected",
+      "571990000": "Fresh",
+      "571990002": "Won",
+      "571990003": "Lost",
+      "571990004": "Active"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": true,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "zx_leadstage",
+        "OptionSetReferenceEntityName": "Leads.S"
+      }
+    },
+    "OptionSetTypeKey": "PicklistType",
+    "RelatedColumnInvariantName": "zx_leadstage",
+    "RelatedEntityName": "Leads.S",
+    "Type": "OptionSetInfo"
+  },
+  {
     "DisplayName": "Status (Leads.S)",
     "Name": "zx_leads_statecode",
     "OptionSetInfoNameMapping": {

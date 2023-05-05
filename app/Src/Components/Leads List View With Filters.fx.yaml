@@ -207,7 +207,7 @@
                     varCollectionEmpty = true,
                     Filter(
                         offlineLeadCollection,
-                        'Owning User'.'Primary Email' = ComboBox2_8.Selected.'Primary Email'
+                        owninguser.'Primary Email' = ComboBox2_8.Selected.'Primary Email'
                     ),
                     If(
                         varLeadFilter = true,
@@ -223,10 +223,10 @@
                                         Filter(
                                             Filter(
                                                 offlineLeadCollection,
-                                                'Owning User'.'Primary Email' = ComboBox2_8.Selected.'Primary Email'
+                                                owninguser.'Primary Email' = ComboBox2_8.Selected.'Primary Email'
                                             ),
                                             Text(
-                                                'Created On',
+                                                createdon,
                                                 "mmm"
                                             ) = Text(
                                                 Today(),
@@ -237,17 +237,17 @@
                                         Filter(
                                             Filter(
                                                 offlineLeadCollection,
-                                                'Owning User'.'Primary Email' = ComboBox2_8.Selected.'Primary Email'
+                                               owninguser.'Primary Email' = ComboBox2_8.Selected.'Primary Email'
                                             ),
-                                            (DateValue('Created On') >= DateValue(Today()) - Weekday(Today()) + 2 && DateValue('Created On') <= DateValue(Today()) + (9 - Weekday(Today())))
+                                            (DateValue(createdon) >= DateValue(Today()) - Weekday(Today()) + 2 && DateValue(createdon) <= DateValue(Today()) + (9 - Weekday(Today())))
                                         ),
                                         "Today's Leads",
                                         Filter(
                                             Filter(
                                                 offlineLeadCollection,
-                                                'Owning User'.'Primary Email' = ComboBox2_8.Selected.'Primary Email'
+                                                owninguser.'Primary Email' = ComboBox2_8.Selected.'Primary Email'
                                             ),
-                                            IsToday('Created On')
+                                            IsToday(createdon)
                                         )
                                     ),
                     //For Customer-----------------------------------------------------------------
@@ -257,13 +257,13 @@
                                         Filter(
                                             Filter(
                                                 offlineLeadCollection,
-                                                Party.'Customer Code' = LookUp(
+                                                zx_Party.'Customer Code' = LookUp(
                                                     'Parties.S',
                                                     Parties = 'Leads List View_1'.Customer.zx_Party.Parties
-                                                ).'Customer Code' && 'Owning User'.'Primary Email' = ComboBox2_8.Selected.'Primary Email'
+                                                ).'Customer Code' && owninguser.'Primary Email' = ComboBox2_8.Selected.'Primary Email'
                                             ),
                                             Text(
-                                                'Created On',
+                                                createdon,
                                                 "mmm"
                                             ) = Text(
                                                 Today(),
@@ -274,27 +274,27 @@
                                         Filter(
                                             Filter(
                                                 offlineLeadCollection,
-                                                Party.'Customer Code' = LookUp(
+                                                zx_Party.'Customer Code' = LookUp(
                                                     'Parties.S',
                                                     Parties = 'Leads List View_1'.Customer.zx_Party.Parties
-                                                ).'Customer Code' && 'Owning User'.'Primary Email' = ComboBox2_8.Selected.'Primary Email'
+                                                ).'Customer Code' && owninguser.'Primary Email' = ComboBox2_8.Selected.'Primary Email'
                                             ),
-                                            (DateValue('Created On') >= DateValue(Today()) - Weekday(Today()) + 2 && DateValue('Created On') <= DateValue(Today()) + (9 - Weekday(Today())))
+                                            (DateValue(createdon) >= DateValue(Today()) - Weekday(Today()) + 2 && DateValue(createdon) <= DateValue(Today()) + (9 - Weekday(Today())))
                                         ),
                                         "Today's Orders",
                                         Filter(
                                             Filter(
                                                 offlineLeadCollection,
-                                                Party.'Customer Code' = LookUp(
+                                                zx_Party.'Customer Code' = LookUp(
                                                     'Parties.S',
                                                     Parties = 'Leads List View_1'.Customer.zx_Party.Parties
-                                                ).'Customer Code' && 'Owning User'.'Primary Email' = ComboBox2_8.Selected.'Primary Email'
+                                                ).'Customer Code' && owninguser.'Primary Email' = ComboBox2_8.Selected.'Primary Email'
                                             ),
-                                            IsToday('Created On')
+                                            IsToday(createdon)
                                         )
                                     )
                                 ),
-                                'Created On',
+                                createdon,
                                 SortOrder.Descending
                             ),
                             'Sort gallery_5'.Selected.Title = "Oldest",
@@ -308,10 +308,10 @@
                                         Filter(
                                             Filter(
                                                 offlineLeadCollection,
-                                                'Owning User'.'Primary Email' = ComboBox2_8.Selected.'Primary Email'
+                                                owninguser.'Primary Email' = ComboBox2_8.Selected.'Primary Email'
                                             ),
                                             Text(
-                                                'Created On',
+                                                createdon,
                                                 "mmm"
                                             ) = Text(
                                                 Today(),
@@ -322,17 +322,17 @@
                                         Filter(
                                             Filter(
                                                 offlineLeadCollection,
-                                                'Owning User'.'Primary Email' = ComboBox2_8.Selected.'Primary Email'
+                                                owninguser.'Primary Email' = ComboBox2_8.Selected.'Primary Email'
                                             ),
-                                            (DateValue('Created On') >= DateValue(Today()) - Weekday(Today()) + 2 && DateValue('Created On') <= DateValue(Today()) + (9 - Weekday(Today())))
+                                            (DateValue(createdon) >= DateValue(Today()) - Weekday(Today()) + 2 && DateValue(createdon) <= DateValue(Today()) + (9 - Weekday(Today())))
                                         ),
                                         "Today's Leads",
                                         Filter(
                                             Filter(
                                                 offlineLeadCollection,
-                                                'Owning User'.'Primary Email' = ComboBox2_8.Selected.'Primary Email'
+                                                owninguser.'Primary Email' = ComboBox2_8.Selected.'Primary Email'
                                             ),
-                                            IsToday('Created On')
+                                            IsToday(createdon)
                                         )
                                     ),
                     //For Customer-----------------------------------------------------------------
@@ -342,13 +342,13 @@
                                         Filter(
                                             Filter(
                                                 offlineLeadCollection,
-                                                Party.'Customer Code' = LookUp(
+                                                zx_Party.'Customer Code' = LookUp(
                                                     'Parties.S',
                                                     Parties = 'Leads List View_1'.Customer.zx_Party.Parties
-                                                ).'Customer Code' && 'Owning User'.'Primary Email' = ComboBox2_8.Selected.'Primary Email'
+                                                ).'Customer Code' && owninguser.'Primary Email' = ComboBox2_8.Selected.'Primary Email'
                                             ),
                                             Text(
-                                                'Created On',
+                                                createdon,
                                                 "mmm"
                                             ) = Text(
                                                 Today(),
@@ -359,27 +359,27 @@
                                         Filter(
                                             Filter(
                                                 offlineLeadCollection,
-                                                Party.'Customer Code' = LookUp(
+                                                zx_Party.'Customer Code' = LookUp(
                                                     'Parties.S',
                                                     Parties = 'Leads List View_1'.Customer.zx_Party.Parties
-                                                ).'Customer Code' && 'Owning User'.'Primary Email' = ComboBox2_8.Selected.'Primary Email'
+                                                ).'Customer Code' && owninguser.'Primary Email' = ComboBox2_8.Selected.'Primary Email'
                                             ),
-                                            (DateValue('Created On') >= DateValue(Today()) - Weekday(Today()) + 2 && DateValue('Created On') <= DateValue(Today()) + (9 - Weekday(Today())))
+                                            (DateValue(createdon) >= DateValue(Today()) - Weekday(Today()) + 2 && DateValue(createdon) <= DateValue(Today()) + (9 - Weekday(Today())))
                                         ),
                                         "Today's Orders",
                                         Filter(
                                             Filter(
                                                 offlineLeadCollection,
-                                                Party.'Customer Code' = LookUp(
+                                                zx_Party.'Customer Code' = LookUp(
                                                     'Parties.S',
                                                     Parties = 'Leads List View_1'.Customer.zx_Party.Parties
-                                                ).'Customer Code' && 'Owning User'.'Primary Email' = ComboBox2_8.Selected.'Primary Email'
+                                                ).'Customer Code' && owninguser.'Primary Email' = ComboBox2_8.Selected.'Primary Email'
                                             ),
-                                            IsToday('Created On')
+                                            IsToday(createdon)
                                         )
                                     )
                                 ),
-                                'Created On',
+                                createdon,
                                 SortOrder.Ascending
                             ),
                             'Sort gallery_5'.Selected.Title = "Highest to Lowest",
@@ -393,10 +393,10 @@
                                         Filter(
                                             Filter(
                                                 offlineLeadCollection,
-                                                'Owning User'.'Primary Email' = ComboBox2_8.Selected.'Primary Email'
+                                                owninguser.'Primary Email' = ComboBox2_8.Selected.'Primary Email'
                                             ),
                                             Text(
-                                                'Created On',
+                                               createdon,
                                                 "mmm"
                                             ) = Text(
                                                 Today(),
@@ -407,17 +407,17 @@
                                         Filter(
                                             Filter(
                                                 offlineLeadCollection,
-                                                'Owning User'.'Primary Email' = ComboBox2_8.Selected.'Primary Email'
+                                                owninguser.'Primary Email' = ComboBox2_8.Selected.'Primary Email'
                                             ),
-                                            (DateValue('Created On') >= DateValue(Today()) - Weekday(Today()) + 2 && DateValue('Created On') <= DateValue(Today()) + (9 - Weekday(Today())))
+                                            (DateValue(createdon) >= DateValue(Today()) - Weekday(Today()) + 2 && DateValue(createdon) <= DateValue(Today()) + (9 - Weekday(Today())))
                                         ),
                                         "Today's Leads",
                                         Filter(
                                             Filter(
                                                 offlineLeadCollection,
-                                                'Owning User'.'Primary Email' = ComboBox2_8.Selected.'Primary Email'
+                                                owninguser.'Primary Email' = ComboBox2_8.Selected.'Primary Email'
                                             ),
-                                            IsToday('Created On')
+                                            IsToday(createdon)
                                         )
                                     ),
                     //For Customer-----------------------------------------------------------------
@@ -427,13 +427,13 @@
                                         Filter(
                                             Filter(
                                                 offlineLeadCollection,
-                                                Party.'Customer Code' = LookUp(
+                                                zx_Party.'Customer Code' = LookUp(
                                                     'Parties.S',
                                                     Parties = 'Leads List View_1'.Customer.zx_Party.Parties
-                                                ).'Customer Code' && 'Owning User'.'Primary Email' = ComboBox2_8.Selected.'Primary Email'
+                                                ).'Customer Code' && owninguser.'Primary Email' = ComboBox2_8.Selected.'Primary Email'
                                             ),
                                             Text(
-                                                'Created On',
+                                               createdon,
                                                 "mmm"
                                             ) = Text(
                                                 Today(),
@@ -444,27 +444,27 @@
                                         Filter(
                                             Filter(
                                                 offlineLeadCollection,
-                                                Party.'Customer Code' = LookUp(
+                                                zx_Party.'Customer Code' = LookUp(
                                                     'Parties.S',
                                                     Parties = 'Leads List View_1'.Customer.zx_Party.Parties
-                                                ).'Customer Code' && 'Owning User'.'Primary Email' = ComboBox2_8.Selected.'Primary Email'
+                                                ).'Customer Code' && owninguser.'Primary Email' = ComboBox2_8.Selected.'Primary Email'
                                             ),
-                                            (DateValue('Created On') >= DateValue(Today()) - Weekday(Today()) + 2 && DateValue('Created On') <= DateValue(Today()) + (9 - Weekday(Today())))
+                                            (DateValue(createdon) >= DateValue(Today()) - Weekday(Today()) + 2 && DateValue(createdon) <= DateValue(Today()) + (9 - Weekday(Today())))
                                         ),
                                         "Today's Orders",
                                         Filter(
                                             Filter(
                                                 offlineLeadCollection,
-                                                Party.'Customer Code' = LookUp(
+                                                zx_Party.'Customer Code' = LookUp(
                                                     'Parties.S',
                                                     Parties = 'Leads List View_1'.Customer.zx_Party.Parties
-                                                ).'Customer Code' && 'Owning User'.'Primary Email' = ComboBox2_8.Selected.'Primary Email'
+                                                ).'Customer Code' && owninguser.'Primary Email' = ComboBox2_8.Selected.'Primary Email'
                                             ),
-                                            IsToday('Created On')
+                                            IsToday(createdon)
                                         )
                                     )
                                 ),
-                                'Lead Value',
+                                zx_leadvalue,
                                 SortOrder.Ascending
                             ),
                             'Sort gallery_5'.Selected.Title = "Lowest to Highest",
@@ -478,10 +478,10 @@
                                         Filter(
                                             Filter(
                                                 offlineLeadCollection,
-                                                'Owning User'.'Primary Email' = ComboBox2_8.Selected.'Primary Email'
+                                                owninguser.'Primary Email' = ComboBox2_8.Selected.'Primary Email'
                                             ),
                                             Text(
-                                                'Created On',
+                                               createdon,
                                                 "mmm"
                                             ) = Text(
                                                 Today(),
@@ -492,17 +492,17 @@
                                         Filter(
                                             Filter(
                                                 offlineLeadCollection,
-                                                'Owning User'.'Primary Email' = ComboBox2_8.Selected.'Primary Email'
+                                                owninguser.'Primary Email' = ComboBox2_8.Selected.'Primary Email'
                                             ),
-                                            (DateValue('Created On') >= DateValue(Today()) - Weekday(Today()) + 2 && DateValue('Created On') <= DateValue(Today()) + (9 - Weekday(Today())))
+                                            (DateValue(createdon) >= DateValue(Today()) - Weekday(Today()) + 2 && DateValue(createdon) <= DateValue(Today()) + (9 - Weekday(Today())))
                                         ),
                                         "Today's Leads",
                                         Filter(
                                             Filter(
                                                 offlineLeadCollection,
-                                                'Owning User'.'Primary Email' = ComboBox2_8.Selected.'Primary Email'
+                                                owninguser.'Primary Email' = ComboBox2_8.Selected.'Primary Email'
                                             ),
-                                            IsToday('Created On')
+                                            IsToday(createdon)
                                         )
                                     ),
                     //For Customer-----------------------------------------------------------------
@@ -512,13 +512,13 @@
                                         Filter(
                                             Filter(
                                                 offlineLeadCollection,
-                                                Party.'Customer Code' = LookUp(
+                                                zx_Party.'Customer Code' = LookUp(
                                                     'Parties.S',
                                                     Parties = 'Leads List View_1'.Customer.zx_Party.Parties
-                                                ).'Customer Code' && 'Owning User'.'Primary Email' = ComboBox2_8.Selected.'Primary Email'
+                                                ).'Customer Code' && owninguser.'Primary Email' = ComboBox2_8.Selected.'Primary Email'
                                             ),
                                             Text(
-                                                'Created On',
+                                               createdon,
                                                 "mmm"
                                             ) = Text(
                                                 Today(),
@@ -529,27 +529,27 @@
                                         Filter(
                                             Filter(
                                                 offlineLeadCollection,
-                                                Party.'Customer Code' = LookUp(
+                                                zx_Party.'Customer Code' = LookUp(
                                                     'Parties.S',
                                                     Parties = 'Leads List View_1'.Customer.zx_Party.Parties
-                                                ).'Customer Code' && 'Owning User'.'Primary Email' = ComboBox2_8.Selected.'Primary Email'
+                                                ).'Customer Code' && owninguser.'Primary Email' = ComboBox2_8.Selected.'Primary Email'
                                             ),
-                                            (DateValue('Created On') >= DateValue(Today()) - Weekday(Today()) + 2 && DateValue('Created On') <= DateValue(Today()) + (9 - Weekday(Today())))
+                                            (DateValue(createdon) >= DateValue(Today()) - Weekday(Today()) + 2 && DateValue(createdon) <= DateValue(Today()) + (9 - Weekday(Today())))
                                         ),
                                         "Today's Leads",
                                         Filter(
                                             Filter(
                                                 offlineLeadCollection,
-                                                Party.'Customer Code' = LookUp(
+                                                zx_Party.'Customer Code' = LookUp(
                                                     'Parties.S',
                                                     Parties = 'Leads List View_1'.Customer.zx_Party.Parties
-                                                ).'Customer Code' && 'Owning User'.'Primary Email' = ComboBox2_8.Selected.'Primary Email'
+                                                ).'Customer Code' && owninguser.'Primary Email' = ComboBox2_8.Selected.'Primary Email'
                                             ),
-                                            IsToday('Created On')
+                                            IsToday(createdon)
                                         )
                                     )
                                 ),
-                                'Lead Value',
+                                zx_leadvalue,
                                 SortOrder.Descending
                             )
                         ),
@@ -559,25 +559,25 @@
                             'Sort gallery_5'.Selected.Title = "Newest",
                             Sort(
                                 colFilterLeadData,
-                                'Created On',
+                               createdon,
                                 SortOrder.Descending
                             ),
                             'Sort gallery_5'.Selected.Title = "Oldest",
                             Sort(
                                 colFilterLeadData,
-                                'Created On',
+                               createdon,
                                 SortOrder.Ascending
                             ),
                             'Sort gallery_5'.Selected.Title = "Highest to Lowest",
                             Sort(
                                 colFilterLeadData,
-                                'Lead Value',
+                                zx_leadvalue,
                                 SortOrder.Descending
                             ),
                             'Sort gallery_5'.Selected.Title = "Lowest to Highest",
                             Sort(
                                 colFilterLeadData,
-                                'Lead Value',
+                                zx_leadvalue,
                                 SortOrder.Ascending
                             )
                         )
@@ -644,12 +644,12 @@
                         ThisItem
                     );
                     If(
-                        ThisItem.Party.'Customer Type' = 'Party Type Choices'.Retailer,
+                        ThisItem.zx_Party.'Customer Type' = 'Party Type Choices'.Retailer,
                         Set(
                             varSelectedRetailerAttachedDistributor,
                             LookUp(
                                 OfflinePartiesCollection,
-                                'Customer Code' = ThisItem.Party.'Customer Code'
+                                'Customer Code' = ThisItem.zx_Party.'Customer Code'
                             ).'Attached Distributor'.Parties
                         );
                         ,
@@ -660,7 +660,7 @@
                     );
                 Size: =16
                 TabIndex: =0
-                Text: =ThisItem.'Lead Id'
+                Text: =ThisItem.zx_leadsid
                 Tooltip: =
                 Width: =91
                 Wrap: =false
@@ -681,9 +681,9 @@
                      
                 Size: =_VarGblAppFonts.Size.Subtitle
                 TabIndex: =0
-                Text: =Text(ThisItem.'Created On',"dd-mm-yyyy")
+                Text: =Text(ThisItem.createdon,"dd-mm-yyyy")
                 Tooltip: |-
-                    ="Order Date: "& DateValue(ThisItem.'Created On')
+                    ="Order Date: "& DateValue(ThisItem.createdon)
                 Width: =127
                 Wrap: =false
                 X: =121
@@ -702,7 +702,7 @@
                      
                 TabIndex: =0
                 Text: |-
-                    ="Contact: " & ThisItem.Contact.'First Name'
+                    ="Contact: " & ThisItem.zx_Contact.'First Name'
                 Tooltip: =
                 Width: =300
                 X: =20
@@ -722,7 +722,7 @@
                      
                 TabIndex: =0
                 Text: |-
-                    ="Source: " &ThisItem.Source
+                    ="Source: " &ThisItem.zx_source
                 Tooltip: =
                 Width: =234
                 X: =20
@@ -742,7 +742,7 @@
                 HoverFill: =ColorFade(RGBA(56, 96, 178, 1), -20%)
                 OnSelect: =Select(Parent)
                 Size: =16
-                Text: =ThisItem.'Lead Stage '
+                Text: =ThisItem.zx_leadstage
                 Width: =115
                 X: =496
                 Y: =19
@@ -765,8 +765,8 @@
                 TabIndex: =0
                 Text: ="|"
                 Tooltip: |-
-                    ="Order Date: "& DateValue(ThisItem.'Created On')
-                Width: =31
+                    ="Order Date: "& DateValue(ThisItem.createdon)
+                Width: =79
                 Wrap: =false
                 X: =96
                 ZIndex: =10
@@ -784,7 +784,7 @@
                      
                 TabIndex: =0
                 Text: |-
-                    ="Commited: " &ThisItem.Commited
+                    ="Commited: " &ThisItem.zx_commited
                 Tooltip: =
                 Width: =234
                 X: =392
@@ -851,7 +851,7 @@
                 Height: =40
                 Icon: =Icon.Phone
                 OnSelect: |-
-                    =Launch("tel://" & ThisItem.'Mobile No.');
+                    =Launch("tel://" & ThisItem.zx_mobileno);
                     Navigate(
                         'Leads Detail Page',
                         ScreenTransition.Fade
@@ -1101,109 +1101,109 @@
                             !IsBlank(Value(Leadvalue_1.Text)) && IsBlank(radioCustomers_1.Selected) && IsBlank(radioStage_1.Selected) && IsBlank(radioCommit_1.Selected) && IsBlank(radioArea_2.Selected) && IsBlank(radioCompetitor_1.Selected) || (varCreateddate = true || varEstimated=true),
                             Filter(
                                 offlineLeadCollection,
-                                'Lead Value' = Value(Value(Leadvalue_1.Text)) && 'Owning User'.'Primary Email'= User().Email
+                                zx_leadvalue = Value(Value(Leadvalue_1.Text)) && owninguser.'Primary Email'= User().Email
                             ),
                             // Filter according to Customer--------------------------------------------------------
                             !IsBlank(radioCustomers_1.Selected) && IsBlank(Value(Leadvalue_1.Text)) && IsBlank(radioStage_1.Selected) && IsBlank(radioCommit_1.Selected) && IsBlank(radioArea_2.Selected) && IsBlank(radioCompetitor_1.Selected) || (varCreateddate = true || varEstimated=true),
                             Filter(
                                 offlineLeadCollection,
-                                Party.'Customer Name' = radioCustomers_1.Selected.'Customer Name' && 'Owning User'.'Primary Email'= User().Email
+                                zx_Party.'Customer Name' = radioCustomers_1.Selected.'Customer Name' && owninguser.'Primary Email'= User().Email
                             ),
                             // Filter according to Stage--------------------------------------------------------
                             !IsBlank(radioStage_1.Selected) && IsBlank(Value(Leadvalue_1.Text)) && IsBlank(radioCustomers_1.Selected) && IsBlank(radioCommit_1.Selected) && IsBlank(radioArea_2.Selected) && IsBlank(radioCompetitor_1.Selected) || (varCreateddate = true || varEstimated=true),
                             Filter(
                                 offlineLeadCollection,
-                                'Lead Stage ' = radioStage_1.Selected.Value && 'Owning User'.'Primary Email'= User().Email
+                                zx_leadstage = radioStage_1.Selected.Value && owninguser.'Primary Email'= User().Email
                             ),
                             // Filter according to commit--------------------------------------------------------
                             !IsBlank(radioCommit_1.Selected) && IsBlank(Value(Leadvalue_1.Text)) && IsBlank(radioCustomers_1.Selected) && IsBlank(radioStage_1.Selected) && IsBlank(radioArea_2.Selected) && IsBlank(radioCompetitor_1.Selected) || (varCreateddate = true || varEstimated=true),
                             Filter(
                                 offlineLeadCollection,
-                                Commited = radioCommit_1.Selected.Value && 'Owning User'.'Primary Email'= User().Email
+                                zx_commited = radioCommit_1.Selected.Value && owninguser.'Primary Email'= User().Email
                             ),
                             // Filter according to Area--------------------------------------------------------
                             !IsBlank(radioArea_2.Selected) && IsBlank(Value(Leadvalue_1.Text)) && IsBlank(radioCustomers_1.Selected) && IsBlank(radioStage_1.Selected) && IsBlank(radioCommit_1.Selected) && IsBlank(radioCompetitor_1.Selected) || (varCreateddate = true || varEstimated=true),
                             Filter(
                                 offlineLeadCollection,
-                                Area.'Area Name' = radioArea_2.Selected.Areaname && 'Owning User'.'Primary Email'= User().Email
+                                Area.'Area Name' = radioArea_2.Selected.Areaname && owninguser.'Primary Email'= User().Email
                             ),
                             // Filter according to Competitor--------------------------------------------------------
                             !IsBlank(radioCompetitor_1.Selected) && IsBlank(Value(Leadvalue_1.Text)) && IsBlank(radioCustomers_1.Selected) && IsBlank(radioStage_1.Selected) && IsBlank(radioCommit_1.Selected) && IsBlank(radioArea_2.Selected) || (varCreateddate = true || varEstimated=true),
                             Filter(
                                 offlineLeadCollection,
-                                Competitor.'Competitor Name' = radioCompetitor_1.Selected.'Competitor Name' && 'Owning User'.'Primary Email'= User().Email
+                                Competitor.'Competitor Name' = radioCompetitor_1.Selected.'Competitor Name' && owninguser.'Primary Email'= User().Email
                             ),
                             // Filter according to created date--------------------------------------------------------
                             !IsBlank(DateFrom_8.SelectedDate) && IsBlank(Value(Leadvalue_1.Text)) && IsBlank(radioCustomers_1.Selected) && IsBlank(radioStage_1.Selected) && IsBlank(radioCommit_1.Selected) && IsBlank(radioArea_2.Selected) && IsBlank(radioCompetitor_1.Selected) || varEstimated=true,
                             Filter(
                                 offlineLeadCollection,
-                                DateValue('Created On') >= DateValue(DateFrom_8.SelectedDate) && DateValue('Created On') <= DateValue(DateTo_8.SelectedDate) && 'Owning User'.'Primary Email'= User().Email
+                                DateValue('Created On') >= DateValue(DateFrom_8.SelectedDate) && DateValue('Created On') <= DateValue(DateTo_8.SelectedDate) && owninguser.'Primary Email'= User().Email
                             ),
                             // Filter according to expected closure date --------------------------------------------------------
                             !IsBlank(DateFrom_9.SelectedDate) && IsBlank(Value(Leadvalue_1.Text)) && IsBlank(radioCustomers_1.Selected) && IsBlank(radioStage_1.Selected) && IsBlank(radioCommit_1.Selected) && IsBlank(radioArea_2.Selected) && IsBlank(radioCompetitor_1.Selected) && IsBlank(DateFrom_8.SelectedDate),
                             Filter(
                                 offlineLeadCollection,
-                                DateValue('Expected Closure Date')  <=  DateValue(DateFrom_9.SelectedDate) && 'Owning User'.'Primary Email'= User().Email
+                                DateValue('Expected Closure Date')  <=  DateValue(DateFrom_9.SelectedDate) && owninguser.'Primary Email'= User().Email
                             ),
                             // Filter according to Stage and commit--------------------------------------------------------
                             !IsBlank(radioStage_1.Selected) && IsBlank(Value(Leadvalue_1.Text)) && IsBlank(radioCustomers_1.Selected) && !IsBlank(radioCommit_1.Selected) && IsBlank(radioArea_2.Selected) && IsBlank(radioCompetitor_1.Selected) || (varCreateddate = true || varEstimated=true),
                             Filter(
                                 offlineLeadCollection,
-                                'Lead Stage ' = radioStage_1.Selected.Value && Commited = radioCommit_1.Selected.Value && 'Owning User'.'Primary Email'= User().Email
+                                'Lead Stage ' = radioStage_1.Selected.Value && Commited = radioCommit_1.Selected.Value && owninguser.'Primary Email'= User().Email
                             ),
                              // Filter according to Stage and Created date------------------------------------------------
                             !IsBlank(radioStage_1.Selected) && IsBlank(Value(Leadvalue_1.Text)) && IsBlank(radioCustomers_1.Selected) && IsBlank(radioCommit_1.Selected) && IsBlank(radioArea_2.Selected) && IsBlank(radioCompetitor_1.Selected) && !IsBlank(DateFrom_8.SelectedDate) && IsBlank(DateFrom_9.SelectedDate),
                             Filter(
                                 offlineLeadCollection,
-                                'Lead Stage ' = radioStage_1.Selected.Value && DateValue('Created On') >= DateValue(DateFrom_8.SelectedDate) && DateValue('Created On') <= DateValue(DateTo_8.SelectedDate) && 'Owning User'.'Primary Email'= User().Email
+                                'Lead Stage ' = radioStage_1.Selected.Value && DateValue('Created On') >= DateValue(DateFrom_8.SelectedDate) && DateValue('Created On') <= DateValue(DateTo_8.SelectedDate) && owninguser.'Primary Email'= User().Email
                             ),
                             // Filter according to Stage and Lead value------------------------------------------------
                             !IsBlank(radioStage_1.Selected) && !IsBlank(Value(Leadvalue_1.Text)) && IsBlank(radioCustomers_1.Selected) && IsBlank(radioCommit_1.Selected) && IsBlank(radioArea_2.Selected) && IsBlank(radioCompetitor_1.Selected) || (varCreateddate = true || varEstimated=true),
                             Filter(
                                 offlineLeadCollection,
-                                'Lead Stage ' = radioStage_1.Selected.Value && 'Lead Value' = Value(Leadvalue_1.Text) && 'Owning User'.'Primary Email'= User().Email
+                                'Lead Stage ' = radioStage_1.Selected.Value && 'Lead Value' = Value(Leadvalue_1.Text) && owninguser.'Primary Email'= User().Email
                             ),
                             // Filter according to Stage and Estimated closure date-------------------------------------------
                             !IsBlank(radioStage_1.Selected) && IsBlank(Value(Leadvalue_1.Text)) && IsBlank(radioCustomers_1.Selected) && IsBlank(radioCommit_1.Selected) && IsBlank(radioArea_2.Selected) && IsBlank(radioCompetitor_1.Selected) && IsBlank(DateFrom_8.SelectedDate) && !IsBlank(DateFrom_9.SelectedDate),
                             Filter(
                                 offlineLeadCollection,
-                                'Lead Stage ' = radioStage_1.Selected.Value && DateValue('Expected Closure Date') <= DateValue(DateFrom_9.SelectedDate) && 'Owning User'.'Primary Email'= User().Email
+                                'Lead Stage ' = radioStage_1.Selected.Value && DateValue('Expected Closure Date') <= DateValue(DateFrom_9.SelectedDate) && owninguser.'Primary Email'= User().Email
                             ),
                              // Filter according to Stage and Customer-------------------------------------------
                             !IsBlank(radioStage_1.Selected) && IsBlank(Value(Leadvalue_1.Text)) && !IsBlank(radioCustomers_1.Selected) && IsBlank(radioCommit_1.Selected) && IsBlank(radioArea_2.Selected) && IsBlank(radioCompetitor_1.Selected) || (varCreateddate = true || varEstimated=true),
                             Filter(
                                 offlineLeadCollection,
-                                'Lead Stage ' = radioStage_1.Selected.Value && Party.'Customer Name' = radioCustomers_1.Selected.'Customer Name' && 'Owning User'.'Primary Email'= User().Email
+                                'Lead Stage ' = radioStage_1.Selected.Value && Party.'Customer Name' = radioCustomers_1.Selected.'Customer Name' && owninguser.'Primary Email'= User().Email
                             ),
                             // Filter according to Stage and Area-------------------------------------------
                             !IsBlank(radioStage_1.Selected) && IsBlank(Value(Leadvalue_1.Text)) && IsBlank(radioCustomers_1.Selected) && IsBlank(radioCommit_1.Selected) && !IsBlank(radioArea_2.Selected) && IsBlank(radioCompetitor_1.Selected) || (varCreateddate = true || varEstimated=true),
                             Filter(
                                 offlineLeadCollection,
-                                'Lead Stage ' = radioStage_1.Selected.Value && Area.'Area Name' = radioArea_2.Selected.Areaname && 'Owning User'.'Primary Email'= User().Email
+                                'Lead Stage ' = radioStage_1.Selected.Value && Area.'Area Name' = radioArea_2.Selected.Areaname && owninguser.'Primary Email'= User().Email
                             ),
                             // Filter according to Stage and Competitor-------------------------------------------
                             !IsBlank(radioStage_1.Selected) && IsBlank(Value(Leadvalue_1.Text)) && IsBlank(radioCustomers_1.Selected) && IsBlank(radioCommit_1.Selected) && IsBlank(radioArea_2.Selected) && !IsBlank(radioCompetitor_1.Selected) || (varCreateddate = true || varEstimated=true),
                             Filter(
                                 offlineLeadCollection,
-                                'Lead Stage ' = radioStage_1.Selected.Value && Competitor.'Competitor Name' = radioCompetitor_1.Selected.'Competitor Name' && 'Owning User'.'Primary Email'= User().Email
+                                'Lead Stage ' = radioStage_1.Selected.Value && Competitor.'Competitor Name' = radioCompetitor_1.Selected.'Competitor Name' && owninguser.'Primary Email'= User().Email
                             ),
                             // Filter according to Stage,commit and created date--------------------------------------------------
                             !IsBlank(radioStage_1.Selected) && IsBlank(Value(Leadvalue_1.Text)) && IsBlank(radioCustomers_1.Selected) && !IsBlank(radioCommit_1.Selected) && IsBlank(radioArea_2.Selected) && IsBlank(radioCompetitor_1.Selected) && !IsBlank(DateFrom_8.SelectedDate) && IsBlank(DateFrom_9.SelectedDate),
                             Filter(
                                 offlineLeadCollection,
-                                'Lead Stage ' = radioStage_1.Selected.Value && Commited = radioCommit_1.Selected.Value && DateValue('Created On') >= DateValue(DateFrom_8.SelectedDate) && DateValue('Created On') <= DateValue(DateTo_8.SelectedDate) && 'Owning User'.'Primary Email'= User().Email
+                                'Lead Stage ' = radioStage_1.Selected.Value && Commited = radioCommit_1.Selected.Value && DateValue('Created On') >= DateValue(DateFrom_8.SelectedDate) && DateValue('Created On') <= DateValue(DateTo_8.SelectedDate) && owninguser.'Primary Email'= User().Email
                             ),
                              // Filter according to Stage,commit and Lead Value--------------------------------------------------
                             !IsBlank(radioStage_1.Selected) && !IsBlank(Value(Leadvalue_1.Text)) && IsBlank(radioCustomers_1.Selected) && !IsBlank(radioCommit_1.Selected) && IsBlank(radioArea_2.Selected) && IsBlank(radioCompetitor_1.Selected) || (varCreateddate = true || varEstimated=true),
                             Filter(
                                 offlineLeadCollection,
-                                'Lead Stage ' = radioStage_1.Selected.Value && Commited = radioCommit_1.Selected.Value && 'Lead Value' = Value(Leadvalue_1.Text) && 'Owning User'.'Primary Email'= User().Email
+                                'Lead Stage ' = radioStage_1.Selected.Value && Commited = radioCommit_1.Selected.Value && 'Lead Value' = Value(Leadvalue_1.Text) && owninguser.'Primary Email'= User().Email
                             ),
                                 // Filter according to Stage,commit and Estimated closure date --------------------
                             !IsBlank(radioStage_1.Selected) && IsBlank(Value(Leadvalue_1.Text)) && IsBlank(radioCustomers_1.Selected) && !IsBlank(radioCommit_1.Selected) && IsBlank(radioArea_2.Selected) && IsBlank(radioCompetitor_1.Selected) && IsBlank(DateFrom_8.SelectedDate) && !IsBlank(DateFrom_9.SelectedDate),
                             Filter(
                                 offlineLeadCollection,
-                                'Lead Stage ' = radioStage_1.Selected.Value && Commited = radioCommit_1.Selected.Value && DateValue('Expected Closure Date') <= DateValue(DateFrom_9.SelectedDate) && 'Owning User'.'Primary Email'= User().Email
+                                'Lead Stage ' = radioStage_1.Selected.Value && Commited = radioCommit_1.Selected.Value && DateValue('Expected Closure Date') <= DateValue(DateFrom_9.SelectedDate) && owninguser.'Primary Email'= User().Email
                             ),
                     // Filter according to Stage,commit and Customer --------------------
                             !IsBlank(radioStage_1.Selected) && IsBlank(Value(Leadvalue_1.Text)) && !IsBlank(radioCustomers_1.Selected) && !IsBlank(radioCommit_1.Selected) && IsBlank(radioArea_2.Selected) && IsBlank(radioCompetitor_1.Selected) || (varCreateddate = true || varEstimated=true),
