@@ -47,7 +47,7 @@ Parties As screen:
                 =/*If(
                     _VarActivePartyTypeID = ThisItem.TabId,
                     ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//_VarGblAppColors.PrimaryRed,
-                    _VarGblAppColors.AccentBg
+                    ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Hover Color").'Default Value')
                 )*/
             BorderStyle: =BorderStyle.None
             Color: |-
@@ -101,7 +101,7 @@ Parties As screen:
             FontWeight: =FontWeight.Semibold
             Height: =60
             OnSelect: =Set(_VarActivePartyTypeID, ThisItem.TabId)
-            Size: =_VarGblAppFonts.Size.Medium
+            Size: =LookUp(c_EnvironmentVariable,'Display Name'="Text Medium Font Size").'Default Value'
             TabIndex: =0
             Text: =ThisItem.Title
             Width: =198
@@ -143,10 +143,11 @@ Parties As screen:
 
         Background_12 As button:
             BorderThickness: =0//1
-            Color: =_VarGblAppColors.AccentBg
+            Color: |
+                =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Hover Color").'Default Value')
             DisabledBorderColor: =RGBA(166, 166, 166, 1)
             DisabledColor: =RGBA(166, 166, 166, 1)
-            DisabledFill: =_VarGblAppColors.AccentBg
+            DisabledFill: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Hover Color").'Default Value')
             DisplayMode: =DisplayMode.Disabled
             Fill: =RGBA(56, 96, 178, 1)
             FontWeight: =FontWeight.Semibold
@@ -177,7 +178,7 @@ Parties As screen:
             DisabledColor: =RGBA(166, 166, 166, 1)
             FocusedBorderColor: =Color.Transparent
             FocusedBorderThickness: =01
-            Font: =_VarGblAppFonts.Heading
+            Font: =LookUp(c_EnvironmentVariable,'Display Name'="Common Heading Font").'Default Value'
             FontWeight: =FontWeight.Bold
             Height: =30
             OnSelect: |-
@@ -197,13 +198,13 @@ Parties As screen:
             Color: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Text Primary Color").'Default Value') //_VarGblAppColors.textbgbutton
             DisabledColor: =RGBA(166, 166, 166, 1)
             FocusedBorderThickness: =01
-            Font: =_VarGblAppFonts.Heading
+            Font: =Font.'Courier New'
             Height: =30
             OnSelect: |-
                 =Navigate('Customer 360 Screen',ScreenTransition.CoverRight);
                 
                 Set(varCustomerRecord,ThisItem)
-            Size: =_VarGblAppFonts.Size.Regular
+            Size: =LookUp(c_EnvironmentVariable,'Display Name'="Text Regular Font Size").'Default Value'
             TabIndex: =0
             Text: =ThisItem.Area.'Area Name'
             Width: =545
@@ -342,7 +343,7 @@ Parties As screen:
             Color: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Text Primary Color").'Default Value') //_VarGblAppColors.textbgbutton
             DisabledColor: =RGBA(166, 166, 166, 1)
             FocusedBorderThickness: =01
-            Font: =_VarGblAppFonts.Heading
+            Font: =LookUp(c_EnvironmentVariable,'Display Name'="Common Heading Font").'Default Value'
             FontWeight: =FontWeight.Semibold
             Height: =33
             OnSelect: |-
@@ -350,7 +351,7 @@ Parties As screen:
                 
                 Set(varCustomerRecord,ThisItem)
             Size: |-
-                =//_VarGblAppFonts.Size.Regular
+                =//LookUp(c_EnvironmentVariable,'Display Name'="Text Regular Font Size").'Default Value'
                 14
             TabIndex: =0
             Text: |-
@@ -398,7 +399,7 @@ Parties As screen:
             Color: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Text Primary Color").'Default Value') //_VarGblAppColors.textbgbutton
             DisabledColor: =RGBA(166, 166, 166, 1)
             FocusedBorderThickness: =01
-            Font: =_VarGblAppFonts.Heading
+            Font: =LookUp(c_EnvironmentVariable,'Display Name'="Common Heading Font").'Default Value'
             FontWeight: =FontWeight.Semibold
             Height: =33
             OnSelect: |-
@@ -406,7 +407,7 @@ Parties As screen:
                 
                 Set(varCustomerRecord,ThisItem)
             Size: |
-                =//_VarGblAppFonts.Size.Regular
+                =//LookUp(c_EnvironmentVariable,'Display Name'="Text Regular Font Size").'Default Value'
                 14
             TabIndex: =0
             Text: |-

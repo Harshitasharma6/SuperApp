@@ -1092,7 +1092,10 @@
                 FontWeight: =FontWeight.Bold
                 Height: =61
                 HoverColor: =RGBA(255, 255, 255, 1)
-                HoverFill: =ColorFade(_VarGblAppColors.PrimaryRed, 10%)
+                HoverFill: |-
+                    =ColorFade(
+                        _VarGblAppColors.PrimaryRed
+                        , 10%)
                 OnSelect: |
                     =ClearCollect(
                         colFilterLeadData,
@@ -1660,7 +1663,10 @@
                         false
                     );
                     Set(varCollectionEmpty,false);
-                Size: =_VarGblAppFonts.Size.Title
+                Size: |+
+                    =LookUp('Environment Variable Definitions', 'Display Name'="Text Title Font Size").'Default Value'
+                    //_VarGblAppFonts.Size.Title
+                    
                 Text: ="Apply Filters"
                 Visible: =varFilter
                 Width: =274
@@ -1676,7 +1682,10 @@
                 FontWeight: =FontWeight.Semibold
                 Height: =61
                 HoverColor: =RGBA(255, 255, 255, 1)
-                HoverFill: =ColorFade(_VarGblAppColors.PrimaryRed, 10%)
+                HoverFill: |-
+                    =ColorFade(
+                        _VarGblAppColors.PrimaryRed
+                    , 10%)
                 OnSelect: |-
                     =Reset(DateFrom_8);
                     Reset(DateTo_8);

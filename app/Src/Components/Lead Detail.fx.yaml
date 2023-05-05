@@ -2292,7 +2292,10 @@
                     !_VarFilterModal
                 )
             PaddingTop: =3
-            Size: =_VarGblAppFonts.Size.Title
+            Size: |+
+                =LookUp('Environment Variable Definitions', 'Display Name'="Text Title Font Size").'Default Value'
+                //_VarGblAppFonts.Size.Title
+                
             Text: ="APPLY"
             Visible: =_VarFilterModal
             Width: =274

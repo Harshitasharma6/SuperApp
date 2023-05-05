@@ -1672,7 +1672,10 @@
             FontWeight: =FontWeight.Semibold
             Height: =50
             HoverColor: =RGBA(255, 255, 255, 1)
-            HoverFill: =ColorFade(_VarGblAppColors.PrimaryRed, 10%)
+            HoverFill: |-
+                =ColorFade(
+                    _VarGblAppColors.PrimaryRed
+                    , 10%)
             OnSelect: |-
                 =Set(
                     _VarFilterModal,
@@ -1825,7 +1828,10 @@
             FontWeight: =FontWeight.Semibold
             Height: =50
             HoverColor: =RGBA(255, 255, 255, 1)
-            HoverFill: =ColorFade(_VarGblAppColors.PrimaryRed, 10%)
+            HoverFill: |-
+                =ColorFade(
+                    _VarGblAppColors.PrimaryRed
+                    , 10%)
             OnSelect: |-
                 =Reset(radioCategory);
                 Reset(radioProductGrp);

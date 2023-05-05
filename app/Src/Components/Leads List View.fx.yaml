@@ -359,7 +359,10 @@
             ChevronDisabledBackground: =RGBA(166, 166, 166, 1)
             ChevronDisabledFill: =RGBA(244, 244, 244, 1)
             ChevronFill: =_VarGblAppColors.PrimaryRed
-            ChevronHoverBackground: =ColorFade(_VarGblAppColors.PrimaryRed,50%)
+            ChevronHoverBackground: |-
+                =ColorFade(
+                    _VarGblAppColors.PrimaryRed
+                    ,50%)
             ChevronHoverFill: =RGBA(255, 255, 255, 1)
             Default: =ThisItem.'Lead Stage '
             DisabledBorderColor: =RGBA(166, 166, 166, 1)
@@ -406,7 +409,10 @@
             ChevronDisabledBackground: =RGBA(166, 166, 166, 1)
             ChevronDisabledFill: =RGBA(244, 244, 244, 1)
             ChevronFill: =_VarGblAppColors.PrimaryRed
-            ChevronHoverBackground: =ColorFade(_VarGblAppColors.PrimaryRed,50%)
+            ChevronHoverBackground: |-
+                =ColorFade(
+                    _VarGblAppColors.PrimaryRed
+                    ,50%)
             ChevronHoverFill: =RGBA(255, 255, 255, 1)
             Default: =ThisItem.Commited
             DisabledBorderColor: =RGBA(166, 166, 166, 1)
@@ -462,7 +468,11 @@
             DisabledBorderColor: =RGBA(166, 166, 166, 1)
             DisabledColor: =RGBA(166, 166, 166, 1)
             DisabledFill: =RGBA(244, 244, 244, 1)
-            Fill: =If(ThisItem.IsSelected, _VarGblAppColors.PrimaryRed, ColorFade( _VarGblAppColors.PrimaryBg,20%))
+            Fill: |-
+                =If(ThisItem.IsSelected, ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//_VarGblAppColors.PrimaryRed
+                , ColorFade( 
+                   ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Common Primary Background").'Default Value' )//_VarGblAppColors.PrimaryBg
+                    ,20%))
             Font: =Font.'Segoe UI'
             FontWeight: =FontWeight.Bold
             Height: =43

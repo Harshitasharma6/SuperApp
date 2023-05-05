@@ -631,7 +631,9 @@
         DisabledFill: =RGBA(244, 244, 244, 1)
         Fill: |-
             =//RGBA(56, 96, 178, 1)
-            ColorFade(_VarGblAppColors.PrimaryRed,-20%)
+            ColorFade(
+                _VarGblAppColors.PrimaryRed
+                ,-20%)
         FontWeight: =FontWeight.Semibold
         Height: =60
         HoverColor: =RGBA(255, 255, 255, 1)
@@ -715,7 +717,11 @@
             FontWeight: =FontWeight.Semibold
             Height: =60
             HoverColor: =RGBA(255, 255, 255, 1)
-            HoverFill: =ColorFade(_VarGblAppColors.PrimaryRed, 10%)
+            HoverFill: |-
+                =ColorFade(
+                    
+                    _VarGblAppColors.PrimaryRed
+                    , 10%)
             OnSelect: |-
                 =ClearCollect(
                     colFilterData,
@@ -1268,7 +1274,10 @@
                     varCollectionEmpty,
                     false
                 )
-            Size: =_VarGblAppFonts.Size.Title
+            Size: |+
+                =LookUp('Environment Variable Definitions', 'Display Name'="Text Title Font Size").'Default Value'
+                //_VarGblAppFonts.Size.Title
+                
             Text: ="Apply Filters"
             Visible: =varFilter
             Width: =274
@@ -1290,7 +1299,11 @@
             FontWeight: =FontWeight.Semibold
             Height: =60
             HoverColor: =RGBA(255, 255, 255, 1)
-            HoverFill: =ColorFade(_VarGblAppColors.PrimaryRed, 10%)
+            HoverFill: |-
+                =ColorFade(
+                    
+                    _VarGblAppColors.PrimaryRed
+                , 10%)
             OnSelect: |
                 =Reset(DateFrom_5);
                 Reset(DateTo_5);
@@ -1655,20 +1668,28 @@
                 DisabledFill: =RGBA(244, 244, 244, 1)
                 Fill: |-
                     =//Color.Transparent
-                    If(ThisItem.IsSelected,ColorFade(_VarGblAppColors.PrimaryRed,80%),Color.Transparent)
+                    If(ThisItem.IsSelected,ColorFade(
+                        _VarGblAppColors.PrimaryRed
+                        
+                        ,80%),Color.Transparent)
                 Font: =Font.'Segoe UI'
                 FontWeight: =FontWeight.Semibold
                 Height: =77
                 HoverColor: =RGBA(255, 255, 255, 1)
                 HoverFill: |-
                     =//ColorFade(Color.DimGrey,80%)
-                    If(ThisItem.IsSelected,ColorFade(_VarGblAppColors.PrimaryRed,80%),Color.Transparent)
+                    If(ThisItem.IsSelected,ColorFade(
+                        _VarGblAppColors.PrimaryRed
+                        ,80%),Color.Transparent)
                 OnSelect: =
                 PaddingLeft: =25
                 PressedColor: =Color.DimGrey
                 PressedFill: |-
                     =//ColorFade(Color.DimGrey,80%)
-                    If(ThisItem.IsSelected,ColorFade(_VarGblAppColors.PrimaryRed,80%),Color.Transparent)
+                    If(ThisItem.IsSelected,ColorFade(
+                        _VarGblAppColors.PrimaryRed
+                        
+                        ,80%),Color.Transparent)
                 Size: =20
                 Text: =ThisItem.Title
                 Width: =224

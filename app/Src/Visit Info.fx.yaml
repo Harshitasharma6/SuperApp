@@ -67,13 +67,13 @@
         title_4 As label:
             Align: =Align.Center
             BorderColor: =RGBA(0, 18, 107, 1)
-            Color: =If(_VarActivetopTabID= ThisItem.TabId, ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//_VarGblAppColors.PrimaryRed , _VarGblAppColors.PrimaryText)
+            Color: =If(_VarActivetopTabID= ThisItem.TabId, ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//_VarGblAppColors.PrimaryRed , ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Primary Text Color").'Default Value' )//_VarGblAppColors.PrimaryText)
             DisabledColor: =RGBA(166, 166, 166, 1)
             FocusedBorderThickness: =0.3
             FontWeight: =FontWeight.Semibold
             Height: =41
             OnSelect: =Set(_VarActivetopTabID, ThisItem.TabId)
-            Size: =_VarGblAppFonts.Size.Medium
+            Size: =LookUp(c_EnvironmentVariable,'Display Name'="Text Medium Font Size").'Default Value'
             TabIndex: =0
             Text: =ThisItem.Title
             Width: =Gallery3_1.TemplateWidth
@@ -81,7 +81,7 @@
             ZIndex: =2
 
         Border_4 As button:
-            BorderColor: =If(_VarActivetopTabID= ThisItem.TabId, ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//_VarGblAppColors.PrimaryRed , _VarGblAppColors.AccentBg)
+            BorderColor: =If(_VarActivetopTabID= ThisItem.TabId, ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//_VarGblAppColors.PrimaryRed , ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Hover Color").'Default Value'))
             DisabledBorderColor: =RGBA(166, 166, 166, 1)
             DisabledColor: =RGBA(166, 166, 166, 1)
             DisabledFill: =RGBA(244, 244, 244, 1)
@@ -166,13 +166,13 @@
         title_5 As label:
             Align: =Align.Center
             BorderColor: =RGBA(0, 18, 107, 1)
-            Color: =If(_VarActivetopTabID= ThisItem.TabId, ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//_VarGblAppColors.PrimaryRed , _VarGblAppColors.PrimaryText)
+            Color: =If(_VarActivetopTabID= ThisItem.TabId, ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//_VarGblAppColors.PrimaryRed , ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Primary Text Color").'Default Value' )//_VarGblAppColors.PrimaryText)
             DisabledColor: =RGBA(166, 166, 166, 1)
             FocusedBorderThickness: =0.3
             FontWeight: =FontWeight.Semibold
             Height: =41
             OnSelect: =Set(_VarActivetopTabID, ThisItem.TabId)
-            Size: =_VarGblAppFonts.Size.Medium
+            Size: =LookUp(c_EnvironmentVariable,'Display Name'="Text Medium Font Size").'Default Value'
             TabIndex: =0
             Text: =ThisItem.Title
             Width: =Gallery3_2.TemplateWidth
@@ -180,7 +180,7 @@
             ZIndex: =2
 
         Border_5 As button:
-            BorderColor: =If(_VarActivetopTabID= ThisItem.TabId, ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//_VarGblAppColors.PrimaryRed , _VarGblAppColors.AccentBg)
+            BorderColor: =If(_VarActivetopTabID= ThisItem.TabId, ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//_VarGblAppColors.PrimaryRed , ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Hover Color").'Default Value'))
             DisabledBorderColor: =RGBA(166, 166, 166, 1)
             DisabledColor: =RGBA(166, 166, 166, 1)
             DisabledFill: =RGBA(244, 244, 244, 1)
@@ -236,7 +236,7 @@
                     DisabledColor: =RGBA(166, 166, 166, 1)
                     FontWeight: =FontWeight.Semibold
                     Height: =60
-                    Size: =_VarGblAppFonts.Size.Medium
+                    Size: =LookUp(c_EnvironmentVariable,'Display Name'="Text Medium Font Size").'Default Value'
                     Text: ="Visibility Level *"
                     Width: =550
                     ZIndex: =1
@@ -281,7 +281,7 @@
                             )
                         )
                     PaddingTop: =3
-                    Size: =_VarGblAppFonts.Size.Title
+                    Size: =LookUp('Environment Variable Definitions', 'Display Name'="Text Title Font Size").'Default Value' //_VarGblAppFonts.Size.Title
                     Text: ="SUBMIT"
                     Width: =274
                     X: =138
@@ -314,7 +314,7 @@
                     DisabledColor: =RGBA(166, 166, 166, 1)
                     FontWeight: =FontWeight.Semibold
                     Height: =60
-                    Size: =_VarGblAppFonts.Size.Medium
+                    Size: =LookUp(c_EnvironmentVariable,'Display Name'="Text Medium Font Size").'Default Value'
                     Text: ="Attachment"
                     Width: =550
                     Y: =110
@@ -384,7 +384,7 @@
                     DisabledColor: =RGBA(166, 166, 166, 1)
                     FontWeight: =FontWeight.Semibold
                     Height: =60
-                    Size: =_VarGblAppFonts.Size.Medium
+                    Size: =LookUp(c_EnvironmentVariable,'Display Name'="Text Medium Font Size").'Default Value'
                     Text: ="Visibility Level *"
                     Width: =550
                     ZIndex: =1
@@ -429,7 +429,7 @@
                             )
                         )
                     PaddingTop: =3
-                    Size: =_VarGblAppFonts.Size.Title
+                    Size: =LookUp('Environment Variable Definitions', 'Display Name'="Text Title Font Size").'Default Value' //_VarGblAppFonts.Size.Title
                     Text: ="SUBMIT"
                     Width: =274
                     X: =138
@@ -462,7 +462,7 @@
                     DisabledColor: =RGBA(166, 166, 166, 1)
                     FontWeight: =FontWeight.Semibold
                     Height: =60
-                    Size: =_VarGblAppFonts.Size.Medium
+                    Size: =LookUp(c_EnvironmentVariable,'Display Name'="Text Medium Font Size").'Default Value'
                     Text: ="Attachment"
                     Width: =550
                     Y: =110
@@ -513,6 +513,7 @@
         ZIndex: =5
 
         newProductList_2 As newProductList:
+            Fill: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Hover Color").'Default Value')
             Height: =896
             OrderType: |-
                 =If(
@@ -563,7 +564,7 @@
         RadiusBottomRight: =50
         RadiusTopLeft: =50
         RadiusTopRight: =50
-        Size: =_VarGblAppFonts.Size.Regular
+        Size: =LookUp(c_EnvironmentVariable,'Display Name'="Text Regular Font Size").'Default Value'
         Text: |-
             =If(
                 _VarClickedVisitAccount.Party.'Customer Type' = 'Party Type Choices'.Distributor,

@@ -15,7 +15,10 @@ Header As CanvasComponent:
         FontWeight: =FontWeight.Semibold
         Height: =60
         PaddingTop: =2
-        Size: =_VarGblAppFonts.Size.Title
+        Size: |+
+            =LookUp('Environment Variable Definitions', 'Display Name'="Text Title Font Size").'Default Value'
+            //_VarGblAppFonts.Size.Title
+            
         Text: =Header.ScreenName
         Width: =441
         X: =81

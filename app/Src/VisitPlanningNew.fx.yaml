@@ -147,8 +147,11 @@ VisitPlanningNew As screen:
             Color: |-
                 =If(
                     ThisItem.IsSelected,
-                    ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Text Primary Color").'Default Value') //_VarGblAppColors.textbgbutton,
-                    ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//_VarGblAppColors.PrimaryRed
+                    ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Text Primary Color").'Default Value') 
+                    //_VarGblAppColors.textbgbutton
+                    ,
+                    ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )
+                    //ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//_VarGblAppColors.PrimaryRed
                 )
             DisabledBorderColor: =RGBA(0, 0, 0, 0)
             DisabledColor: =RGBA(166, 166, 166, 1)
@@ -391,7 +394,7 @@ VisitPlanningNew As screen:
         Rectangle1_34 As rectangle:
             AccessibleLabel: ="Rectangle1_7"
             BorderColor: =RGBA(0, 18, 107, 1)
-            Fill: =_VarGblAppColors.PrimaryBg
+            Fill: =ColorValue( LookUp('Environment Variable Definitions', 'Display Name'="Common Primary Background").'Default Value')//_VarGblAppColors.PrimaryBg
             Height: =2
             OnSelect: |-
                 =/*Navigate('Leads Detail Page',ScreenTransition.CoverRight);
@@ -408,7 +411,7 @@ VisitPlanningNew As screen:
             DisabledColor: =RGBA(166, 166, 166, 1)
             FocusedBorderColor: =Color.Transparent
             FocusedBorderThickness: =0.1
-            Font: =_VarGblAppFonts.Heading
+            Font: =LookUp(c_EnvironmentVariable,'Display Name'="Common Heading Font").'Default Value'
             FontWeight: =FontWeight.Bold
             OnSelect: |-
                 =/*Navigate(
@@ -451,7 +454,7 @@ VisitPlanningNew As screen:
             DisabledColor: =RGBA(166, 166, 166, 1)
             DisabledFill: =RGBA(244, 244, 244, 1)
             DisplayMode: =DisplayMode.View
-            Fill: =_VarGblAppColors.PrimaryBg
+            Fill: =ColorValue( LookUp('Environment Variable Definitions', 'Display Name'="Common Primary Background").'Default Value')//_VarGblAppColors.PrimaryBg
             FontWeight: =FontWeight.Semibold
             Height: =43
             HoverColor: =RGBA(255, 255, 255, 1)
@@ -720,7 +723,7 @@ VisitPlanningNew As screen:
             DisabledColor: =RGBA(166, 166, 166, 1)
             FocusedBorderColor: =Color.Transparent
             FocusedBorderThickness: =0.1
-            Font: =_VarGblAppFonts.Heading
+            Font: =LookUp(c_EnvironmentVariable,'Display Name'="Common Heading Font").'Default Value'
             Height: =35
             OnSelect: |-
                 =/*Navigate(
@@ -1000,7 +1003,7 @@ VisitPlanningNew As screen:
         RadiusBottomRight: =50
         RadiusTopLeft: =50
         RadiusTopRight: =50
-        Size: =_VarGblAppFonts.Size.Regular
+        Size: =LookUp(c_EnvironmentVariable,'Display Name'="Text Regular Font Size").'Default Value'
         Text: =CountRows(colAddLeadParty)
         Width: =30
         X: =596

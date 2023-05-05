@@ -129,7 +129,7 @@
     CancelIcon_6 As icon.Cancel:
         AccessibleLabel: ="Cancel Icon"
         BorderColor: =RGBA(0, 18, 107, 1)
-        Color: =_VarGblAppColors.HeaderBg
+        Color: = ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Border Color").'Default Value' )
         DisabledBorderColor: =RGBA(166, 166, 166, 1)
         DisabledColor: =RGBA(244, 244, 244, 1)
         Height: =42

@@ -118,12 +118,12 @@
                 ZIndex: =2
 
                 Background_8 As button:
-                    BorderColor: =_VarGblAppColors.LightText
+                    BorderColor: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Text Light Color").'Default Value')
                     BorderThickness: =1
-                    Color: =_VarGblAppColors.AccentBg
+                    Color: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Hover Color").'Default Value')
                     DisabledBorderColor: =RGBA(102, 182, 227, 1)
                     DisabledColor: =RGBA(166, 166, 166, 1)
-                    DisabledFill: =_VarGblAppColors.AccentBg
+                    DisabledFill: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Hover Color").'Default Value')
                     DisplayMode: =DisplayMode.Disabled
                     Fill: =RGBA(56, 96, 178, 1)
                     FontWeight: =FontWeight.Semibold
@@ -149,7 +149,7 @@
                     FontWeight: =FontWeight.Bold
                     Height: =32
                     OnSelect: =Select(Parent)
-                    Size: =_VarGblAppFonts.Size.Medium
+                    Size: =LookUp(c_EnvironmentVariable,'Display Name'="Text Medium Font Size").'Default Value'
                     Text: =ThisItem.Area.'Area Name'
                     Width: =216
                     X: =25
@@ -164,7 +164,7 @@
                     FontWeight: =FontWeight.Semibold
                     Height: =30
                     OnSelect: =Select(Parent)
-                    Size: =_VarGblAppFonts.Size.Regular
+                    Size: =LookUp(c_EnvironmentVariable,'Display Name'="Text Regular Font Size").'Default Value'
                     Text: |-
                         ="Area Code: "& ThisItem.Area.'Area Name'
                     Width: =290
@@ -185,7 +185,7 @@
 
                 Background_9 As button:
                     BorderThickness: =1
-                    Color: =_VarGblAppColors.AccentBg
+                    Color: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Hover Color").'Default Value')
                     DisabledBorderColor: =RGBA(153, 207, 236, 1)
                     DisabledColor: =RGBA(116, 116, 116, 1)
                     DisabledFill: =RGBA(255, 255, 255, 1)
@@ -213,7 +213,7 @@
 
                 Body1_14 As label:
                     BorderColor: =RGBA(0, 18, 107, 1)
-                    Color: =_VarGblAppColors.PrimaryText
+                    Color: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Primary Text Color").'Default Value' )//_VarGblAppColors.PrimaryText
                     DisabledColor: =RGBA(166, 166, 166, 1)
                     Font: =Font.'Segoe UI'
                     FontWeight: =FontWeight.Semibold
@@ -231,7 +231,7 @@
                 Body1Value_10 As label:
                     Align: =Align.Right
                     BorderColor: =RGBA(0, 18, 107, 1)
-                    Color: =_VarGblAppColors.PrimaryText
+                    Color: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Primary Text Color").'Default Value' )//_VarGblAppColors.PrimaryText
                     DisabledColor: =RGBA(166, 166, 166, 1)
                     Font: =Font.'Segoe UI'
                     FontWeight: =FontWeight.Semibold
@@ -248,7 +248,7 @@
 
                 Body1_15 As label:
                     BorderColor: =RGBA(0, 18, 107, 1)
-                    Color: =_VarGblAppColors.PrimaryText
+                    Color: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Primary Text Color").'Default Value' )//_VarGblAppColors.PrimaryText
                     DisabledColor: =RGBA(166, 166, 166, 1)
                     Font: =Font.'Segoe UI'
                     FontWeight: =FontWeight.Semibold
@@ -266,7 +266,7 @@
                 Body1Value_11 As label:
                     Align: =Align.Right
                     BorderColor: =RGBA(0, 18, 107, 1)
-                    Color: =_VarGblAppColors.PrimaryText
+                    Color: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Primary Text Color").'Default Value' )//_VarGblAppColors.PrimaryText
                     DisabledColor: =RGBA(166, 166, 166, 1)
                     Font: =Font.'Segoe UI'
                     FontWeight: =FontWeight.Semibold
@@ -306,7 +306,7 @@
                 TitleLbl_5 As label:
                     Align: =Align.Right
                     BorderColor: =RGBA(0, 18, 107, 1)
-                    Color: =_VarGblAppColors.PrimaryText
+                    Color: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Primary Text Color").'Default Value' )//_VarGblAppColors.PrimaryText
                     DisabledColor: =RGBA(166, 166, 166, 1)
                     Font: =Font.'Segoe UI'
                     FontWeight: =FontWeight.Semibold
@@ -336,14 +336,14 @@
                     Align: =Align.Center
                     BorderColor: =RGBA(0, 18, 107, 1)
                     Color: |-
-                        =//_VarGblAppColors.PrimaryText
+                        =//ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Primary Text Color").'Default Value' )//_VarGblAppColors.PrimaryText
                         Color.Black
                     DisabledColor: =RGBA(166, 166, 166, 1)
-                    Font: =_VarGblAppFonts.Heading
+                    Font: =LookUp(c_EnvironmentVariable,'Display Name'="Common Heading Font").'Default Value'
                     FontWeight: =FontWeight.Semibold
                     OnSelect: =
                     Size: |-
-                        =//_VarGblAppFonts.Size.Medium
+                        =//LookUp(c_EnvironmentVariable,'Display Name'="Text Medium Font Size").'Default Value'
                         17
                     Text: |-
                         ="All: " & CountRows(
@@ -360,13 +360,13 @@
                 ChartTitle2 As label:
                     Align: =Align.Right
                     BorderColor: =RGBA(0, 18, 107, 1)
-                    Color: =_VarGblAppColors.PrimaryText
+                    Color: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Primary Text Color").'Default Value' )//_VarGblAppColors.PrimaryText
                     DisabledColor: =RGBA(166, 166, 166, 1)
-                    Font: =_VarGblAppFonts.Heading
+                    Font: =LookUp(c_EnvironmentVariable,'Display Name'="Common Heading Font").'Default Value'
                     FontWeight: =FontWeight.Semibold
                     Height: =30
                     OnSelect: =
-                    Size: =_VarGblAppFonts.Size.Medium
+                    Size: =LookUp(c_EnvironmentVariable,'Display Name'="Text Medium Font Size").'Default Value'
                     Text: |-
                         ="Visits Completed: " & CountRows(
                             Filter(
@@ -382,13 +382,13 @@
                 ChartTitle3 As label:
                     Align: =Align.Right
                     BorderColor: =RGBA(0, 18, 107, 1)
-                    Color: =_VarGblAppColors.PrimaryText
+                    Color: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Primary Text Color").'Default Value' )//_VarGblAppColors.PrimaryText
                     DisabledColor: =RGBA(166, 166, 166, 1)
-                    Font: =_VarGblAppFonts.Heading
+                    Font: =LookUp(c_EnvironmentVariable,'Display Name'="Common Heading Font").'Default Value'
                     FontWeight: =FontWeight.Semibold
                     Height: =30
                     OnSelect: =
-                    Size: =_VarGblAppFonts.Size.Medium
+                    Size: =LookUp(c_EnvironmentVariable,'Display Name'="Text Medium Font Size").'Default Value'
                     Text: |-
                         ="Visits Not Completed: " & CountRows(
                             Filter(
@@ -404,13 +404,13 @@
                 ChartTitle4 As label:
                     Align: =Align.Right
                     BorderColor: =RGBA(0, 18, 107, 1)
-                    Color: =_VarGblAppColors.PrimaryText
+                    Color: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Primary Text Color").'Default Value' )//_VarGblAppColors.PrimaryText
                     DisabledColor: =RGBA(166, 166, 166, 1)
-                    Font: =_VarGblAppFonts.Heading
+                    Font: =LookUp(c_EnvironmentVariable,'Display Name'="Common Heading Font").'Default Value'
                     FontWeight: =FontWeight.Semibold
                     Height: =30
                     OnSelect: =
-                    Size: =_VarGblAppFonts.Size.Medium
+                    Size: =LookUp(c_EnvironmentVariable,'Display Name'="Text Medium Font Size").'Default Value'
                     Text: |-
                         ="Location Mismatched: " & 0
                     Width: =290
@@ -522,13 +522,13 @@
                 ChartTitle1_2 As label:
                     Align: =Align.Right
                     BorderColor: =RGBA(0, 18, 107, 1)
-                    Color: =_VarGblAppColors.PrimaryText
+                    Color: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Primary Text Color").'Default Value' )//_VarGblAppColors.PrimaryText
                     DisabledColor: =RGBA(166, 166, 166, 1)
-                    Font: =_VarGblAppFonts.Heading
+                    Font: =LookUp(c_EnvironmentVariable,'Display Name'="Common Heading Font").'Default Value'
                     FontWeight: =FontWeight.Bold
                     Height: =30
                     OnSelect: =
-                    Size: =_VarGblAppFonts.Size.Medium
+                    Size: =LookUp(c_EnvironmentVariable,'Display Name'="Text Medium Font Size").'Default Value'
                     Text: |-
                         ="All: " & CountRows(
                             Filter(
@@ -544,13 +544,13 @@
                 ChartTitle2_1 As label:
                     Align: =Align.Right
                     BorderColor: =RGBA(0, 18, 107, 1)
-                    Color: =_VarGblAppColors.PrimaryText
+                    Color: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Primary Text Color").'Default Value' )//_VarGblAppColors.PrimaryText
                     DisabledColor: =RGBA(166, 166, 166, 1)
-                    Font: =_VarGblAppFonts.Heading
+                    Font: =LookUp(c_EnvironmentVariable,'Display Name'="Common Heading Font").'Default Value'
                     FontWeight: =FontWeight.Bold
                     Height: =30
                     OnSelect: =
-                    Size: =_VarGblAppFonts.Size.Medium
+                    Size: =LookUp(c_EnvironmentVariable,'Display Name'="Text Medium Font Size").'Default Value'
                     Text: |-
                         ="Calls Completed: " & CountRows(
                             Filter(
@@ -566,13 +566,13 @@
                 ChartTitle3_1 As label:
                     Align: =Align.Right
                     BorderColor: =RGBA(0, 18, 107, 1)
-                    Color: =_VarGblAppColors.PrimaryText
+                    Color: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Primary Text Color").'Default Value' )//_VarGblAppColors.PrimaryText
                     DisabledColor: =RGBA(166, 166, 166, 1)
-                    Font: =_VarGblAppFonts.Heading
+                    Font: =LookUp(c_EnvironmentVariable,'Display Name'="Common Heading Font").'Default Value'
                     FontWeight: =FontWeight.Bold
                     Height: =30
                     OnSelect: =
-                    Size: =_VarGblAppFonts.Size.Medium
+                    Size: =LookUp(c_EnvironmentVariable,'Display Name'="Text Medium Font Size").'Default Value'
                     Text: |-
                         ="Visited Not Completed: " & CountRows(
                             Filter(
@@ -670,13 +670,13 @@
                 ChartTitle1_3 As label:
                     Align: =Align.Right
                     BorderColor: =RGBA(0, 18, 107, 1)
-                    Color: =_VarGblAppColors.PrimaryText
+                    Color: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Primary Text Color").'Default Value' )//_VarGblAppColors.PrimaryText
                     DisabledColor: =RGBA(166, 166, 166, 1)
-                    Font: =_VarGblAppFonts.Heading
+                    Font: =LookUp(c_EnvironmentVariable,'Display Name'="Common Heading Font").'Default Value'
                     FontWeight: =FontWeight.Bold
                     Height: =30
                     OnSelect: =
-                    Size: =_VarGblAppFonts.Size.Medium
+                    Size: =LookUp(c_EnvironmentVariable,'Display Name'="Text Medium Font Size").'Default Value'
                     Text: |-
                         ="Total Visits: " & CountRows(
                             Filter(
@@ -692,13 +692,13 @@
                 ChartTitle2_2 As label:
                     Align: =Align.Right
                     BorderColor: =RGBA(0, 18, 107, 1)
-                    Color: =_VarGblAppColors.PrimaryText
+                    Color: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Primary Text Color").'Default Value' )//_VarGblAppColors.PrimaryText
                     DisabledColor: =RGBA(166, 166, 166, 1)
-                    Font: =_VarGblAppFonts.Heading
+                    Font: =LookUp(c_EnvironmentVariable,'Display Name'="Common Heading Font").'Default Value'
                     FontWeight: =FontWeight.Bold
                     Height: =30
                     OnSelect: =
-                    Size: =_VarGblAppFonts.Size.Medium
+                    Size: =LookUp(c_EnvironmentVariable,'Display Name'="Text Medium Font Size").'Default Value'
                     Text: |-
                         ="Booked Order: " & CountRows(
                             Distinct(
@@ -724,13 +724,13 @@
                 ChartTitle3_2 As label:
                     Align: =Align.Right
                     BorderColor: =RGBA(0, 18, 107, 1)
-                    Color: =_VarGblAppColors.PrimaryText
+                    Color: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Primary Text Color").'Default Value' )//_VarGblAppColors.PrimaryText
                     DisabledColor: =RGBA(166, 166, 166, 1)
-                    Font: =_VarGblAppFonts.Heading
+                    Font: =LookUp(c_EnvironmentVariable,'Display Name'="Common Heading Font").'Default Value'
                     FontWeight: =FontWeight.Bold
                     Height: =30
                     OnSelect: =
-                    Size: =_VarGblAppFonts.Size.Medium
+                    Size: =LookUp(c_EnvironmentVariable,'Display Name'="Text Medium Font Size").'Default Value'
                     Text: |-
                         ="Order not Booked: " & CountRows(
                             Filter(
@@ -788,7 +788,7 @@
                 SearchFields: =["Title"]
                 SearchItems: =[]
                 SelectionColor: =Color.Black
-                SelectionFill: =_VarGblAppColors.PrimaryBg
+                SelectionFill: =ColorValue( LookUp('Environment Variable Definitions', 'Display Name'="Common Primary Background").'Default Value')//_VarGblAppColors.PrimaryBg
                 SelectionTagFill: =
                 SelectMultiple: =false
                 Size: =15
@@ -885,10 +885,10 @@
 
         Background_42 As button:
             BorderThickness: =1
-            Color: =_VarGblAppColors.AccentBg
+            Color: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Hover Color").'Default Value')
             DisabledBorderColor: =RGBA(166, 166, 166, 1)
             DisabledColor: =RGBA(166, 166, 166, 1)
-            DisabledFill: =_VarGblAppColors.AccentBg
+            DisabledFill: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Hover Color").'Default Value')
             DisplayMode: =DisplayMode.Disabled
             Fill: =RGBA(56, 96, 178, 1)
             FontWeight: =FontWeight.Semibold
@@ -919,7 +919,7 @@
             DisabledColor: =RGBA(166, 166, 166, 1)
             FocusedBorderColor: =Color.Transparent
             FocusedBorderThickness: =01
-            Font: =_VarGblAppFonts.Heading
+            Font: =LookUp(c_EnvironmentVariable,'Display Name'="Common Heading Font").'Default Value'
             FontWeight: =FontWeight.Bold
             Height: =30
             OnSelect: |-
@@ -939,12 +939,12 @@
             Color: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Text Primary Color").'Default Value') //_VarGblAppColors.textbgbutton
             DisabledColor: =RGBA(166, 166, 166, 1)
             FocusedBorderThickness: =01
-            Font: =_VarGblAppFonts.Heading
+            Font: =LookUp(c_EnvironmentVariable,'Display Name'="Common Heading Font").'Default Value'
             OnSelect: |-
                 =//Navigate('Customer 360 Screen',ScreenTransition.CoverRight);
                 
                 Set(varCustomerRecord,ThisItem)
-            Size: =_VarGblAppFonts.Size.Regular
+            Size: =LookUp(c_EnvironmentVariable,'Display Name'="Text Regular Font Size").'Default Value'
             TabIndex: =0
             Text: |
                 =ThisItem.Area.'Area Name'
@@ -1109,7 +1109,7 @@
             Color: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Text Primary Color").'Default Value') //_VarGblAppColors.textbgbutton
             DisabledColor: =RGBA(166, 166, 166, 1)
             FocusedBorderThickness: =01
-            Font: =_VarGblAppFonts.Heading
+            Font: =LookUp(c_EnvironmentVariable,'Display Name'="Common Heading Font").'Default Value'
             FontWeight: =FontWeight.Semibold
             Height: =33
             OnSelect: |-
@@ -1117,7 +1117,7 @@
                 
                 Set(varCustomerRecord,ThisItem)
             Size: |-
-                =//_VarGblAppFonts.Size.Regular
+                =//LookUp(c_EnvironmentVariable,'Display Name'="Text Regular Font Size").'Default Value'
                 14
             TabIndex: =0
             Text: |-
@@ -1166,7 +1166,7 @@
             Color: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Text Primary Color").'Default Value') //_VarGblAppColors.textbgbutton
             DisabledColor: =RGBA(166, 166, 166, 1)
             FocusedBorderThickness: =01
-            Font: =_VarGblAppFonts.Heading
+            Font: =LookUp(c_EnvironmentVariable,'Display Name'="Common Heading Font").'Default Value'
             FontWeight: =FontWeight.Semibold
             Height: =30
             OnSelect: |-
@@ -1685,7 +1685,7 @@
     Button1_2 As button:
         BorderColor: =ColorFade(Self.Fill, 20%)
         BorderThickness: =1
-        Color: =_VarGblAppColors.AccentBg
+        Color: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Hover Color").'Default Value')
         DisabledBorderColor: =RGBA(166, 166, 166, 1)
         DisabledColor: =RGBA(166, 166, 166, 1)
         DisabledFill: =RGBA(244, 244, 244, 1)
@@ -1694,7 +1694,9 @@
         FontWeight: =FontWeight.Semibold
         Height: =39
         HoverColor: =RGBA(255, 255, 255, 1)
-        HoverFill: =ColorFade(ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//_VarGblAppColors.PrimaryRed, -20%)
+        HoverFill: |-
+            =ColorFade(ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//_VarGblAppColors.PrimaryRed
+            , -20%)
         OnSelect: |-
             =/*Navigate(
                 'Area PJP Plan',
@@ -1705,7 +1707,7 @@
         RadiusBottomRight: =5
         RadiusTopLeft: =5
         RadiusTopRight: =5
-        Size: =_VarGblAppFonts.Size.Medium
+        Size: =LookUp(c_EnvironmentVariable,'Display Name'="Text Medium Font Size").'Default Value'
         Text: ="CREATE VISIT"
         Width: =206
         X: =424
@@ -2272,7 +2274,7 @@
                 Label31_2 As label:
                     Align: =Align.Center
                     BorderColor: =RGBA(0, 18, 107, 1)
-                    Color: =_VarGblAppColors.AccentBg
+                    Color: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Hover Color").'Default Value')
                     DisabledColor: =RGBA(166, 166, 166, 1)
                     Height: =37
                     OnSelect: =Select(Parent)

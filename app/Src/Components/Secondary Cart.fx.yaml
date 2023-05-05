@@ -351,7 +351,10 @@
         FontWeight: =FontWeight.Semibold
         Height: =50
         HoverColor: =RGBA(255, 255, 255, 1)
-        HoverFill: =ColorFade(_VarGblAppColors.PrimaryRed, -20%)
+        HoverFill: |-
+            =ColorFade(
+                _VarGblAppColors.PrimaryRed
+                , -20%)
         OnSelect: |
             =Set(
                 _VarOrderResponse,
