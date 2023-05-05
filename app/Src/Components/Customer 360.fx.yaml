@@ -340,7 +340,7 @@
         Items: |-
             =Table(
                 {
-                    Title: "Info",
+                    Title: "Information",
                     TabId: 1
                 },
                 {
@@ -422,7 +422,7 @@
             ZIndex: =2
 
         Border_2 As button:
-            BorderColor: =If(ThisItem.IsSelected, _VarGblAppColors.PrimaryRed , Color.White)
+            BorderColor: = Color.White
             Color: =
             DisabledBorderColor: =RGBA(166, 166, 166, 1)
             DisabledColor: =RGBA(166, 166, 166, 1)
@@ -444,6 +444,21 @@
             X: =1
             Y: =3
             ZIndex: =3
+
+        Rectangle1 As rectangle:
+            BorderColor: =RGBA(0, 0, 0, 0)
+            BorderStyle: =BorderStyle.None
+            BorderThickness: =2
+            DisabledFill: =RGBA(166, 166, 166, 1)
+            Fill: =If(ThisItem.IsSelected,_VarGblAppColors.PrimaryRed,_VarGblAppColors.AccentBg)
+            FocusedBorderThickness: =4
+            Height: =3
+            HoverFill: =RGBA(0, 120, 212, 1)
+            OnSelect: =Select(Parent)
+            PressedFill: =RGBA(0, 120, 212, 1)
+            X: =5
+            Y: =48
+            ZIndex: =4
 
     "'Bank Info Gallery' As gallery.galleryVertical":
         AccessibleLabel: ="Bank Info Gallery"

@@ -844,33 +844,6 @@
             Y: =30
             ZIndex: =25
 
-        Circle7_2 As circle:
-            AccessibleLabel: ="Text"
-            BorderColor: =RGBA(102, 182, 227, 1)
-            BorderThickness: =1
-            DisplayMode: |-
-                =If(
-                    LookUp(
-                        OfflineVisitCollection,
-                        zx_visitid = ThisItem.zx_visitid
-                    ).zx_visitstatus = 'Visit Status'.Completed,
-                    DisplayMode.Disabled,
-                    DisplayMode.Edit
-                )
-            Fill: =RGBA(0, 0, 0, 0)
-            Height: =50
-            OnSelect: |-
-                = Navigate(
-                                        'Visit Info',
-                                        ScreenTransition.CoverRight
-                                    );
-            TabIndex: =0
-            Visible: =If(ThisItem.'Visit Status'=[@'Visit Status'].Started,true,false)
-            Width: =50
-            X: =373
-            Y: =20
-            ZIndex: =26
-
         Group13 As group:
             Height: =5
             Width: =5
@@ -903,6 +876,33 @@
                 X: =32
                 Y: =30
                 ZIndex: =13
+
+        Circle7_2 As circle:
+            AccessibleLabel: ="Text"
+            BorderColor: =RGBA(102, 182, 227, 1)
+            BorderThickness: =1
+            DisplayMode: |-
+                =If(
+                    LookUp(
+                        OfflineVisitCollection,
+                        zx_visitid = ThisItem.zx_visitid
+                    ).zx_visitstatus = 'Visit Status'.Completed,
+                    DisplayMode.Disabled,
+                    DisplayMode.Edit
+                )
+            Fill: =RGBA(0, 0, 0, 0)
+            Height: =50
+            OnSelect: |-
+                = Navigate(
+                                        'Visit Info',
+                                        ScreenTransition.CoverRight
+                                    );
+            TabIndex: =0
+            Visible: =If(ThisItem.'Visit Status'=[@'Visit Status'].Started,true,false)
+            Width: =50
+            X: =373
+            Y: =20
+            ZIndex: =26
 
         Label2 As label:
             Align: =Align.Right
