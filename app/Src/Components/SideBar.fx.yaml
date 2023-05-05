@@ -134,7 +134,7 @@ SideBar As CanvasComponent:
             BorderColor: =RGBA(0, 18, 107, 1)
             Fill: =RGBA(166, 166, 166, 1)
             Height: =0.5
-            OnSelect: |-
+            OnSelect: |
                 =
                 Set(
                     _varsideNav,
@@ -155,18 +155,22 @@ SideBar As CanvasComponent:
                         ScreenTransition.CoverRight
                     )
                 )
-                Text
             Width: =630
             Y: =89
             ZIndex: =1
 
         Label35 As label:
             BorderColor: =RGBA(0, 18, 107, 1)
-            Color: =If(ThisItem.IsSelected, _VarGblAppColors.PrimaryRed, _VarGblAppColors.textbgbutton)
+            Color: |-
+                =//If(ThisItem.IsSelected, _VarGblAppColors.PrimaryRed, _VarGblAppColors.textbgbutton)
+                _VarGblAppColors.textbgbutton
             DisabledColor: =RGBA(166, 166, 166, 1)
             FocusedBorderThickness: =01
             FontWeight: =FontWeight.Bold
             Height: =70
+            HoverColor: |-
+                =//If(ThisItem.IsSelected, _VarGblAppColors.PrimaryRed, _VarGblAppColors.textbgbutton)
+                _VarGblAppColors.PrimaryRed
             OnSelect: |
                 =
                 Set(
@@ -199,10 +203,15 @@ SideBar As CanvasComponent:
         Icon22 As icon.ChevronRight:
             AccessibleLabel: ="Information regarding the particular module"
             BorderColor: =RGBA(0, 18, 107, 1)
-            Color: =If(ThisItem.IsSelected, _VarGblAppColors.PrimaryRed, _VarGblAppColors.textbgbutton)
+            Color: |-
+                =//If(ThisItem.IsSelected, _VarGblAppColors.PrimaryRed, _VarGblAppColors.textbgbutton)
+                _VarGblAppColors.textbgbutton
             DisabledBorderColor: =RGBA(166, 166, 166, 1)
             DisabledColor: =RGBA(244, 244, 244, 1)
             Height: =30
+            HoverColor: |-
+                =//If(ThisItem.IsSelected, _VarGblAppColors.PrimaryRed, _VarGblAppColors.textbgbutton)
+                _VarGblAppColors.PrimaryRed
             Icon: =Icon.ChevronRight
             OnSelect: |
                 =
@@ -309,15 +318,21 @@ SideBar As CanvasComponent:
         Button19 As button:
             BorderColor: =If(ThisItem.IsSelected, _VarGblAppColors.PrimaryRed, _VarGblAppColors.textbgbutton)
             BorderThickness: =1
-            Color: =If(ThisItem.IsSelected, _VarGblAppColors.PrimaryRed, _VarGblAppColors.textbgbutton)
+            Color: |-
+                =//If(ThisItem.IsSelected, _VarGblAppColors.PrimaryRed, _VarGblAppColors.textbgbutton)
+                _VarGblAppColors.textbgbutton
             DisabledBorderColor: =RGBA(166, 166, 166, 1)
             DisabledColor: =RGBA(166, 166, 166, 1)
             DisabledFill: =RGBA(244, 244, 244, 1)
             Fill: =RGBA(255, 255, 255, 1)
             FontWeight: =FontWeight.Bold
             Height: =63
-            HoverBorderColor: =//ColorFade(Self.BorderColor, 20%)
-            HoverColor: =If(ThisItem.IsSelected, _VarGblAppColors.PrimaryRed, _VarGblAppColors.textbgbutton)
+            HoverBorderColor: |-
+                =//If(ThisItem.IsSelected, _VarGblAppColors.PrimaryRed, _VarGblAppColors.textbgbutton)
+                _VarGblAppColors.PrimaryRed
+            HoverColor: |-
+                =//If(ThisItem.IsSelected, _VarGblAppColors.PrimaryRed, _VarGblAppColors.textbgbutton)
+                _VarGblAppColors.PrimaryRed
             HoverFill: =//ColorFade(RGBA(56, 96, 178, 1), -20%)
             OnSelect: |-
                 =Navigate(
@@ -340,10 +355,15 @@ SideBar As CanvasComponent:
         Icon23 As icon.ChevronRight:
             AccessibleLabel: ="icon23"
             BorderColor: =RGBA(0, 18, 107, 1)
-            Color: =If(ThisItem.IsSelected, _VarGblAppColors.PrimaryRed, _VarGblAppColors.textbgbutton)
+            Color: |-
+                =//If(ThisItem.IsSelected, _VarGblAppColors.PrimaryRed, _VarGblAppColors.textbgbutton)
+                _VarGblAppColors.textbgbutton
             DisabledBorderColor: =RGBA(166, 166, 166, 1)
             DisabledColor: =RGBA(244, 244, 244, 1)
             Height: =20
+            HoverColor: |-
+                =//If(ThisItem.IsSelected, _VarGblAppColors.PrimaryRed, _VarGblAppColors.textbgbutton)
+                _VarGblAppColors.PrimaryRed
             Icon: =Icon.ChevronRight
             OnSelect: |-
                 =Navigate(
