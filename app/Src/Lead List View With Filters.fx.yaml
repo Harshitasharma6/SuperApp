@@ -249,7 +249,21 @@
         DisabledColor: =RGBA(244, 244, 244, 1)
         Height: =42
         Icon: =Icon.Cancel
-        OnSelect: =Set(varNewLeadForm, false)
+        OnSelect: |-
+            =Reset(partyCmb);
+                Reset(ComboBox7_9);
+                Reset(TextInput6);
+                Reset(TextInput6_1);
+                Reset(areaCmbbx);
+                Reset(addressCmb);
+                Reset(skuCmb);
+               // Reset(leadAreaCmb);
+                Reset(closureCmb);
+                Reset(expectedValueCmb);
+                Reset(nextActionCmb);
+                Reset(nextActionCmbBx);
+                Reset(probabilityCmb);
+            Set(varNewLeadForm, false)
         TabIndex: =0
         Visible: =varNewLeadForm
         Width: =41
