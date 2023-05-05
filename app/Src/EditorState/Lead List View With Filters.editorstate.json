@@ -25667,7 +25667,14 @@
           "IsLockable": false,
           "NameMapSourceSchema": "?"
         },
-        "OnChange",
+        {
+          "AFDDataSourceName": "",
+          "AutoRuleBindingEnabled": false,
+          "AutoRuleBindingString": "If(\r\n    Len(Self.Text) < 10,\r\n    Notify(\"Please enter 10 digit number\");\r\n    Reset(TextInput6_1)\r\n)",
+          "InvariantPropertyName": "OnChange",
+          "IsLockable": false,
+          "NameMapSourceSchema": "?"
+        },
         "AccessibleLabel"
       ],
       "HasDynamicProperties": false,
