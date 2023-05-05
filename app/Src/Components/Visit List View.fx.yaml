@@ -16,7 +16,7 @@
         BorderStyle: =BorderStyle.None
         Height: =Parent.Height
         Items: |-
-            =/*SortByColumns(
+            =SortByColumns(
                 Sort(
                    // Filter(
                     Filter(
@@ -34,11 +34,11 @@
                     [@'Visit Status'].'Not Started',
                     [@'Visit Status'].Completed
                 ]
-            )*/
-            Sort(Filter(
+            )
+            /*Sort(Filter(
                 OfflineVisitCollection,
                 DateValue('Visit date') >= 'Visit List View'.VisitDate 
-            ),'Created On',SortOrder.Descending)
+            ),'Created On',SortOrder.Descending)*/
         Layout: =Layout.Vertical
         ShowScrollbar: =false
         TabIndex: =
