@@ -351,7 +351,9 @@ PlanPJPCart As screen:
         HoverColor: =RGBA(255, 255, 255, 1)
         HoverFill: =ColorFade(RGBA(56, 96, 178, 1), -20%)
         OnSelect: |-
-            =Patch(
+            =ForAll(
+                Gallery1_8.AllItems,
+            Patch(
                 'Beat.S',
                 Defaults('Beat.S'),
                 {
@@ -366,19 +368,25 @@ PlanPJPCart As screen:
                     Area: LookUp(
                         Areas_1,Area= _varSelectedArea1.Area
                     ),*/
-                    Owner: LookUp(
-                        Users,
-                        'Primary Email' = ComboBox3.Selected.'Primary Email'
-                    ),
-                    'Total No of Party': CountRows(
-                        Filter(
-                            OfflinePartiesCollection,
-                            zx_Area.Area = _varSelectedArea1.Area
-                        )
-                    ),
-                    Date:ClickedPjpdate
+                   Owner: LookUp(
+                            Users,
+                            'Primary Email' = ComboBox3.Selected.'Primary Email'
+                        ),
+                        'Total No of Party': CountRows(
+                            Filter(
+                                OfflinePartiesCollection As item,
+                                item.zx_Area.Area = ThisRecord.Area.Area
+                            )
+                        ),
+                        Date: ClickedPjpdate,
+                        Area: ThisRecord.Area
                 }
-            );
+            ));
+            
+            
+            
+            
+            
             Notify(
                 "Your record has been created",
                 NotificationType.Success,

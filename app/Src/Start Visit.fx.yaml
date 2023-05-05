@@ -859,8 +859,19 @@
         Height: =909
         Items: |-
             =//Filter(
-            OfflinePartiesCollection
+            //OfflinePartiesCollection
             //zx_customertype='Party Type Filter'.Selected.Title)
+            Filter(
+                'Parties.S',
+                (Area.Area in AddColumns(
+                    Filter(
+                        'Beat.S',
+                        'Created By'.'Primary Email' = User().Email && Date = Today()
+                    ),
+                    "AreaId",
+                    Area.Area
+                ).AreaId) && 'Customer Status' = 'Customer status'.Customer
+            )
         Layout: =Layout.Vertical
         ShowScrollbar: =false
         TabIndex: =
@@ -1690,6 +1701,22 @@
         X: =367
         Y: =22
         ZIndex: =16
+
+    Label1 As label:
+        BorderColor: =RGBA(0, 0, 0, 0)
+        BorderStyle: =BorderStyle.None
+        BorderThickness: =2
+        Color: =RGBA(51, 51, 51, 1)
+        DisabledBorderColor: =RGBA(0, 0, 0, 0)
+        DisabledColor: =RGBA(166, 166, 166, 1)
+        FocusedBorderThickness: =4
+        Font: =Font.'Segoe UI'
+        Height: =70
+        Size: =21
+        Text: =CountRows(Gallery1_9.AllItems)
+        Width: =74
+        X: =257
+        ZIndex: =17
 
     Group4_1 As group:
         Height: =5

@@ -334,7 +334,25 @@
                     DisplayMode.Disabled
                 )*/
                 //DisplayMode.Edit
-                If(IsBlank(LookUp('Beat.S',Area.Area=ThisItem.Area.Area && Date=ClickedPjpdate)), DisplayMode.Edit,DisplayMode.Disabled)
+                If(
+                    IsBlank(
+                        LookUp(
+                            'Beat.S',
+                            Area.Area = ThisItem.Area.Area && Date = ClickedPjpdate && 'Created By'.'Primary Email' = User().Email
+                        )
+                    ),
+                    If(
+                        CountRows(
+                            Filter(
+                                colAddAreaParty,
+                                Area.Area = ThisItem.Area.Area
+                            )
+                        ) = 0,
+                        DisplayMode.Edit,
+                        DisplayMode.Disabled
+                    ),
+                    DisplayMode.Disabled
+                )
             FocusedBorderThickness: =0.1
             Height: =40
             Icon: |-
@@ -456,7 +474,7 @@
             HoverBorderColor: =RGBA(0, 0, 0, 0)
             HoverColor: =RGBA(255, 255, 255, 1)
             HoverFill: =
-            OnSelect: =Notify("Beat plan already created", NotificationType.Error)
+            OnSelect: =Notify("Beat plan already added", NotificationType.Error)
             PressedBorderColor: =ColorFade(RGBA(0, 120, 212, 1), -50%)
             PressedColor: =RGBA(255, 255, 255, 1)
             PressedFill: =
