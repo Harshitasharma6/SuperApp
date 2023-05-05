@@ -142,7 +142,7 @@ Parties As screen:
         ZIndex: =6
 
         Background_12 As button:
-            BorderThickness: =1
+            BorderThickness: =0//1
             Color: =_VarGblAppColors.AccentBg
             DisabledBorderColor: =RGBA(166, 166, 166, 1)
             DisabledColor: =RGBA(166, 166, 166, 1)
@@ -186,7 +186,16 @@ Parties As screen:
                 Set(varCustomerRecord,ThisItem)
             Size: =_VarGblAppFonts.Size.Subtitle
             TabIndex: =0
-            Text: =ThisItem.zx_name
+            Text: |-
+                =ThisItem.zx_name & LookUp(
+                        Sort(
+                           OfflineVisitCollection,
+                            zx_visitdate,
+                            SortOrder.Descending
+                        ),
+                        zx_Party.Parties = ThisItem.zx_partiesid && 'Visit Status' = [@'Visit Status'].Completed
+                        
+                    ).zx_visitdate
             Width: =300
             X: =70
             Y: =15
@@ -208,7 +217,7 @@ Parties As screen:
             Text: =ThisItem.Area.'Area Name'
             Width: =545
             Wrap: =false
-            X: =65
+            X: =70
             Y: =38
             ZIndex: =3
 
@@ -216,7 +225,7 @@ Parties As screen:
             AccessibleLabel: ="Rectangle1_6"
             BorderColor: =RGBA(0, 18, 107, 1)
             Fill: =RGBA(202, 202, 202, 1)
-            Height: =0.5
+            Height: =1
             OnSelect: |-
                 =Navigate('Customer 360 Screen',ScreenTransition.CoverRight);
                 
@@ -231,7 +240,6 @@ Parties As screen:
             Color: =RGBA(0, 0, 0, 1)
             DisabledColor: =RGBA(166, 166, 166, 1)
             FocusedBorderThickness: =01
-            FontWeight: =FontWeight.Semibold
             Height: =33
             OnSelect: |-
                 =Navigate('Customer 360 Screen',ScreenTransition.CoverRight);
@@ -251,7 +259,6 @@ Parties As screen:
             Color: =RGBA(0, 0, 0, 1)
             DisabledColor: =RGBA(166, 166, 166, 1)
             FocusedBorderThickness: =01
-            FontWeight: =FontWeight.Semibold
             Height: =33
             OnSelect: |-
                 =Navigate('Customer 360 Screen',ScreenTransition.CoverRight);
@@ -271,7 +278,6 @@ Parties As screen:
             Color: =RGBA(0, 0, 0, 1)
             DisabledColor: =RGBA(166, 166, 166, 1)
             FocusedBorderThickness: =01
-            FontWeight: =FontWeight.Semibold
             Height: =33
             OnSelect: |-
                 =Navigate('Customer 360 Screen',ScreenTransition.CoverRight);
@@ -312,7 +318,7 @@ Parties As screen:
                             zx_visitdate,
                             SortOrder.Descending
                         ),
-                        zx_Party.Parties = ThisItem.zx_partiesid && 'Visit Status' = 
+                        zx_Party.Parties = ThisItem.zx_partiesid && 'Visit Status' = [@'Visit Status'].Completed
                         
                     ).zx_visitdate,
                     "dd/mm/yyyy"
@@ -327,8 +333,7 @@ Parties As screen:
             Color: =RGBA(0, 0, 0, 1)
             DisabledColor: =RGBA(166, 166, 166, 1)
             FocusedBorderThickness: =01
-            FontWeight: =FontWeight.Semibold
-            Height: =30
+            Height: =33
             OnSelect: |-
                 =Navigate('Customer 360 Screen',ScreenTransition.CoverRight);
                 
@@ -384,8 +389,7 @@ Parties As screen:
             Color: =RGBA(0, 0, 0, 1)
             DisabledColor: =RGBA(166, 166, 166, 1)
             FocusedBorderThickness: =01
-            FontWeight: =FontWeight.Semibold
-            Height: =30
+            Height: =33
             OnSelect: |-
                 =Navigate('Customer 360 Screen',ScreenTransition.CoverRight);
                 
@@ -395,7 +399,7 @@ Parties As screen:
                 ="Last Order Value :"
             Width: =180
             X: =320
-            Y: =125
+            Y: =164
             ZIndex: =18
 
         Body1_27 As label:
@@ -405,7 +409,7 @@ Parties As screen:
             FocusedBorderThickness: =01
             Font: =_VarGblAppFonts.Heading
             FontWeight: =FontWeight.Semibold
-            Height: =30
+            Height: =33
             OnSelect: |-
                 =Navigate('Customer 360 Screen',ScreenTransition.CoverRight);
                 
@@ -440,7 +444,7 @@ Parties As screen:
                 )
             Width: =130
             X: =480
-            Y: =125
+            Y: =164
             ZIndex: =19
 
         Body1_51 As label:
@@ -448,8 +452,7 @@ Parties As screen:
             Color: =RGBA(0, 0, 0, 1)
             DisabledColor: =RGBA(166, 166, 166, 1)
             FocusedBorderThickness: =01
-            FontWeight: =FontWeight.Semibold
-            Height: =30
+            Height: =33
             OnSelect: |-
                 =Navigate('Customer 360 Screen',ScreenTransition.CoverRight);
                 
@@ -459,14 +462,14 @@ Parties As screen:
                 ="Meeting Date :"
             Width: =180
             X: =320
-            Y: =164
+            Y: =125
             ZIndex: =22
 
         Label50 As label:
             BorderColor: =RGBA(0, 18, 107, 1)
             Color: =_VarGblAppColors.textbgbutton
             DisabledColor: =RGBA(166, 166, 166, 1)
-            Height: =30
+            Height: =33
             OnSelect: =Select(Parent)
             Size: =21
             Text: |-
@@ -474,7 +477,7 @@ Parties As screen:
                 ThisItem.zx_meetingdate
             Width: =151
             X: =459
-            Y: =164
+            Y: =125
             ZIndex: =23
 
         Label51 As label:
@@ -485,7 +488,7 @@ Parties As screen:
             OnSelect: =Select(Parent)
             Text: = ThisItem.zx_customercode
             Width: =140
-            X: =179
+            X: =140
             Y: =91
             ZIndex: =24
 
