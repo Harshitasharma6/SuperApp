@@ -1134,8 +1134,8 @@
                 )*/
                 Sort(
                     Filter(
-                        'Quote Headers',
-                        Lead.Leads = varLeadData.Leads
+                        'Quote Header.S',
+                        Lead.Leads = varLeadData.zx_leadsid
                     ),
                     'Created On',
                     SortOrder.Descending
@@ -2357,8 +2357,8 @@
             Items: |
                 =Sort(
                     Filter(
-                        'Order Headers',
-                        Lead.Leads = varLeadData.Leads && 'Quote / Order' = 'Quote Order Choice'.Order
+                        'Order Header.S',
+                        Lead.Leads = varLeadData.zx_leadsid && 'Quote / Order' = 'Quote Order Choice'.Order
                     ),
                     'Created On',
                     SortOrder.Descending

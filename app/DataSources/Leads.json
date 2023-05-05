@@ -1,0 +1,197 @@
+[
+  {
+    "CdsFCBContext": "{\"FileType\":true,\"ImageExternalStorage\":true}",
+    "EntitySetName": "cra62_leadses",
+    "IsHidden": false,
+    "IsSampleData": false,
+    "IsWritable": true,
+    "LogicalName": "cra62_leads",
+    "Name": "Leads",
+    "NativeCDSDataSourceInfoNameMapping": {
+      "_ownerid_value": "Owner",
+      "{Attachments}": "Attachments",
+      "cra62_address": "Address",
+      "cra62_Area": "Area",
+      "cra62_commited": "Commited",
+      "cra62_Contact": "Contact",
+      "cra62_cra62_productinterested_Lead_cra62_leads": "Product Interesteds",
+      "cra62_email": "Email",
+      "cra62_expectedclosuredate": "Expected Closure Date",
+      "cra62_KRA": "KRA",
+      "cra62_leadareasqft": "Lead Area (sqft)",
+      "cra62_leaddate": "Lead Date",
+      "cra62_leadid": "Lead Id",
+      "cra62_leadname": "Lead Name",
+      "cra62_leads_Annotations": "Notes",
+      "cra62_leads_AsyncOperations": "System Jobs",
+      "cra62_leads_BulkDeleteFailures": "Bulk Delete Failures",
+      "cra62_leads_DuplicateBaseRecord": "Duplicate Records (cra62_leads_DuplicateBaseRecord)",
+      "cra62_leads_DuplicateMatchingRecord": "Duplicate Records (cra62_leads_DuplicateMatchingRecord)",
+      "cra62_leads_MailboxTrackingFolders": "Mailbox Auto Tracking Folders",
+      "cra62_leads_PrincipalObjectAttributeAccesses": "Field Sharing",
+      "cra62_leads_ProcessSession": "Process Sessions",
+      "cra62_leads_SyncErrors": "Sync Errors",
+      "cra62_leadsid": "Leads",
+      "cra62_leadstage": "Lead Stage ",
+      "cra62_leadvalue": "Lead Value",
+      "cra62_leadvalue_base": "Lead Value (Base)",
+      "cra62_mobileno": "Mobile No.",
+      "cra62_new_orderheader_Lead_cra62_leads": "Order Headers",
+      "cra62_Party": "Party",
+      "cra62_probability": "Probability",
+      "cra62_ProductSKU": "Product SKU",
+      "cra62_source": "Source",
+      "createdby": "Created By",
+      "createdon": "Created On",
+      "createdonbehalfby": "Created By (Delegate)",
+      "exchangerate": "Exchange Rate",
+      "importsequencenumber": "Import Sequence Number",
+      "modifiedby": "Modified By",
+      "modifiedon": "Modified On",
+      "modifiedonbehalfby": "Modified By (Delegate)",
+      "new_new_leadactivities_Lead_cra62_leads": "Lead Activities",
+      "overriddencreatedon": "Record Created On",
+      "owningbusinessunit": "Owning Business Unit",
+      "owningteam": "Owning Team",
+      "owninguser": "Owning User",
+      "statecode": "Status",
+      "statuscode": "Status Reason",
+      "timezoneruleversionnumber": "Time Zone Rule Version Number",
+      "transactioncurrencyid": "Currency",
+      "utcconversiontimezonecode": "UTC Conversion Time Zone Code",
+      "versionnumber": "Version Number",
+      "zx_actualclosuredate": "Actual Closure Date",
+      "zx_assigndate": "Assign Date",
+      "zx_Competitor": "Competitor",
+      "zx_engagement": "Engagement",
+      "zx_estimatedvalue": "Estimated Value",
+      "zx_leaddays": "Lead Days",
+      "zx_leadstatus": "Lead Status",
+      "zx_new_invoice_Lead_cra62_leads": "Invoices",
+      "zx_new_visit_Lead_cra62_leads": "Visits",
+      "zx_nextaction": "Next Action",
+      "zx_nextactiondate": "Next Action Date",
+      "zx_noactiondays": "No Action Days",
+      "zx_ProductCategory1": "Product Category",
+      "zx_reasonforrejection": "Reason for Rejection",
+      "zx_stagedateupdate": "Stage date update",
+      "zx_zx_quoteheader_Lead_cra62_leads": "Quote Header.S"
+    },
+    "PreferredName": "Leads",
+    "Type": "NativeCDSDataSourceInfo"
+  },
+  {
+    "DisplayName": "Leads (Views)",
+    "Name": "_cra62_leads_views",
+    "RelatedEntityName": "Leads",
+    "TrimmedViewName": true,
+    "Type": "ViewInfo",
+    "ViewInfoNameMapping": {
+      "273837ab-389e-4bfd-8301-9c8a13dd56a8": "Leads Associated View",
+      "42e828fd-573e-4b87-9e71-6c45ea55d68c": "Leads Advanced Find View",
+      "9385efc4-f199-4be9-87d8-9174ef058aff": "Leads Lookup View",
+      "a21dbde9-9bb4-4036-9b50-33dc69e8b700": "Inactive Leads",
+      "b2e0ace6-4a0d-4b96-a6cc-ab31567b938e": "Active Leads"
+    }
+  },
+  {
+    "DisplayName": "Commited (Leads)",
+    "Name": "cra62_leads_cra62_commited",
+    "OptionSetInfoNameMapping": {
+      "0": "No",
+      "1": "Yes"
+    },
+    "OptionSetIsBooleanValued": true,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "cra62_commited",
+        "OptionSetReferenceEntityName": "Leads"
+      }
+    },
+    "OptionSetTypeKey": "BooleanType",
+    "RelatedColumnInvariantName": "cra62_commited",
+    "RelatedEntityName": "Leads",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Status (Leads)",
+    "Name": "cra62_leads_statecode",
+    "OptionSetInfoNameMapping": {
+      "0": "Active",
+      "1": "Inactive"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "statecode",
+        "OptionSetReferenceEntityName": "Leads"
+      }
+    },
+    "OptionSetTypeKey": "StateType",
+    "RelatedColumnInvariantName": "statecode",
+    "RelatedEntityName": "Leads",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Status Reason (Leads)",
+    "Name": "cra62_leads_statuscode",
+    "OptionSetInfoNameMapping": {
+      "1": "Active",
+      "2": "Inactive"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "statuscode",
+        "OptionSetReferenceEntityName": "Leads"
+      }
+    },
+    "OptionSetTypeKey": "StatusType",
+    "RelatedColumnInvariantName": "statuscode",
+    "RelatedEntityName": "Leads",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Engagement",
+    "Name": "zx_engagement",
+    "OptionSetInfoNameMapping": {
+      "128780000": "Neglected",
+      "128780001": "Hold"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": true,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "zx_engagement",
+        "OptionSetReferenceEntityName": "Leads"
+      }
+    },
+    "OptionSetTypeKey": "PicklistType",
+    "RelatedColumnInvariantName": "zx_engagement",
+    "RelatedEntityName": "Leads",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Lead Status",
+    "Name": "zx_leadstatus",
+    "OptionSetInfoNameMapping": {
+      "128780000": "Quoted",
+      "128780001": "Contracting"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": true,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "zx_leadstatus",
+        "OptionSetReferenceEntityName": "Leads"
+      }
+    },
+    "OptionSetTypeKey": "PicklistType",
+    "RelatedColumnInvariantName": "zx_leadstatus",
+    "RelatedEntityName": "Leads",
+    "Type": "OptionSetInfo"
+  }
+]
