@@ -757,6 +757,266 @@ Home As screen:
             Y: =10
             ZIndex: =2
 
+    HomeRct As rectangle:
+        BorderColor: =RGBA(0, 18, 107, 1)
+        Fill: =RGBA(255, 255, 255, 1)
+        Height: =74
+        Width: =640
+        ZIndex: =3
+
+    HomeLbl As label:
+        BorderColor: =RGBA(0, 18, 107, 1)
+        Color: =RGBA(0, 0, 0, 1)
+        DisabledColor: =RGBA(166, 166, 166, 1)
+        FontWeight: =FontWeight.Bold
+        Size: |+
+            =LookUp('Environment Variable Definitions', 'Display Name'="Text Title Font Size").'Default Value' //_VarGblAppFonts.Size.Title
+            
+        Text: ="Zoxima SFA"
+        Width: =363
+        X: =60
+        Y: =10
+        ZIndex: =4
+
+    HomeIcn As image:
+        BorderColor: =RGBA(0, 18, 107, 1)
+        DisabledBorderColor: =RGBA(166, 166, 166, 1)
+        DisabledFill: =RGBA(244, 244, 244, 1)
+        Height: =33
+        Image: =home
+        Width: =45
+        X: =5
+        Y: =10
+        ZIndex: =5
+
+    ProfileImg As image:
+        AccessibleLabel: ="Profile Image"
+        BorderColor: =RGBA(0, 18, 107, 1)
+        DisabledBorderColor: =RGBA(166, 166, 166, 1)
+        DisabledFill: =RGBA(244, 244, 244, 1)
+        Height: =50
+        Image: |-
+            =/*"https://imageio.forbes.com/specials-images/imageserve/5d3d7a55f1176b000897d627/Gene-Berdichevsky/960x0.jpg?format=jpg&width=960"*/
+            
+            User().Image
+        ImagePosition: =ImagePosition.Fill
+        OnSelect: =//Navigate('Profile Screen',ScreenTransition.CoverRight)
+        RadiusBottomLeft: =50
+        RadiusBottomRight: =50
+        RadiusTopLeft: =50
+        RadiusTopRight: =50
+        TabIndex: =0//-1
+        Width: =50
+        X: =564
+        Y: =9
+        ZIndex: =6
+
+    visitCartBackdrop_1 As rectangle:
+        AccessibleLabel: ="Backdrop"
+        BorderColor: =RGBA(0, 18, 107, 1)
+        DisplayMode: =DisplayMode.View
+        Fill: =RGBA(255, 255, 255, 0.31)
+        Height: =910
+        OnSelect: =Set(_VarConfirmPjpModal, false)
+        TabIndex: =0
+        Visible: =_VarOfflineDataLoading
+        Width: =640
+        Y: =226
+        ZIndex: =7
+
+    Circle3_2 As circle:
+        BorderColor: =RGBA(0, 18, 107, 1)
+        Fill: =If(Connection.Connected, Color.GreenYellow, Color.Red)
+        Height: =20
+        Visible: =false
+        Width: =20
+        X: =420
+        Y: =69
+        ZIndex: =8
+
+    Label12 As label:
+        Align: =Align.Center
+        BorderColor: =RGBA(0, 18, 107, 1)
+        Color: =RGBA(0, 0, 0, 1)
+        DisabledColor: =RGBA(166, 166, 166, 1)
+        FontWeight: =FontWeight.Lighter
+        Height: =70
+        Size: =18
+        Text: ="Loading Data For Offline Usage"
+        Visible: =_VarOfflineDataLoading
+        Width: =560
+        X: =80
+        Y: =599
+        ZIndex: =9
+
+    Image4 As image:
+        BorderColor: =RGBA(0, 18, 107, 1)
+        DisabledBorderColor: =RGBA(166, 166, 166, 1)
+        DisabledFill: =RGBA(244, 244, 244, 1)
+        Height: =60
+        Image: =windows
+        Visible: =_VarOfflineDataLoading
+        Width: =60
+        X: =327
+        Y: =536
+        ZIndex: =10
+
+    Audio1 As audioPlayback:
+        AccessibleLabel: ="Audio"
+        AutoStart: =
+        BorderColor: =RGBA(0, 18, 107, 1)
+        Fill: =RGBA(56, 96, 178, 1)
+        Media: |
+            =MicrosoftTranslator.TextToSpeech(
+                "Today's total visits are 12. You have completed 5 and 7 is pending. Your today's order Target is 30, but you have completed 13 yet. Please visit Taviska Traders for completing your target.",
+                "en",
+                {format: "audio/mp3"}
+            )
+        Start: =varSpeak
+        Visible: =false
+        X: =155
+        Y: =1025
+        ZIndex: =11
+
+    "'Bottom Bar_1' As 'Bottom Bar'":
+        Y: =1026
+        ZIndex: =12
+
+    Rectangle18 As rectangle:
+        AccessibleLabel: ="Home Screen"
+        BorderColor: =RGBA(0, 18, 107, 1)
+        Fill: =RGBA(250, 250, 250, 0.5)
+        Height: =981
+        OnSelect: |
+            =Set(
+                boxrec,
+                false
+            );
+            Set(
+                _VarLeaveModal,
+                false
+            );
+            Set(
+                _VarStartdayModal,
+                false
+            );
+            Set(
+                _VarAttendanceCamera,
+                false
+            );
+        TabIndex: =0//-1
+        Visible: |-
+            =If(
+                boxrec = true,
+                true
+            )
+        Width: =640
+        Y: =69
+        ZIndex: =13
+
+    "'Present type Gallery' As gallery.galleryVertical":
+        AccessibleLabel: ="Present"
+        BorderColor: =RGBA(0, 18, 107, 1)
+        Fill: =RGBA(255, 255, 255, 1)
+        FocusedBorderThickness: =
+        Height: =275
+        Items: =Choices(Present)
+        Layout: =Layout.Vertical
+        TabIndex: =0
+        TemplateSize: =73
+        Transition: =Transition.Push
+        Visible: =_VarStartdayModal
+        Y: =446
+        ZIndex: =14
+
+        Button8 As button:
+            BorderColor: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//_VarGblAppColors.PrimaryRed
+            BorderThickness: =3
+            Color: |-
+                =If(
+                    ThisItem.Value = _VarSelectedPresentType.Value,
+                    Color.White,
+                    ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//_VarGblAppColors.PrimaryRed
+                )
+            DisabledBorderColor: =RGBA(166, 166, 166, 1)
+            DisabledColor: =RGBA(166, 166, 166, 1)
+            DisabledFill: =RGBA(244, 244, 244, 1)
+            Fill: |
+                =If(ThisItem.Value = _VarSelectedPresentType.Value, ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//_VarGblAppColors.PrimaryRed
+                , RGBA(255, 255, 255, 1))
+            FontWeight: =FontWeight.Semibold
+            Height: =56
+            HoverColor: =RGBA(255, 255, 255, 1)
+            HoverFill: |-
+                =ColorFade(ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//_VarGblAppColors.PrimaryRed
+                , 10%)
+            OnSelect: =Set(_VarSelectedPresentType, ThisItem)
+            Size: =LookUp(c_EnvironmentVariable,'Display Name'="Text Medium Font Size").'Default Value'
+            Text: =ThisItem.Value
+            Width: =363
+            X: =134
+            Y: =9
+            ZIndex: =2
+
+    AttendanceRct As rectangle:
+        BorderColor: =RGBA(0, 18, 107, 1)
+        Fill: =RGBA(255, 255, 255, 1)
+        Height: =If(_VarAttendanceCamera,422, 200)
+        Visible: =_VarAttendanceCamera
+        Width: =598
+        Y: =266
+        ZIndex: =15
+
+    NextIcn As icon.NextArrow:
+        AccessibleLabel: ="Right Icon"
+        BorderColor: =RGBA(0, 18, 107, 1)
+        Color: =             ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Border Color").'Default Value' )
+        DisabledBorderColor: =RGBA(166, 166, 166, 1)
+        DisabledColor: =RGBA(244, 244, 244, 1)
+        DisplayMode: =If(IsBlank(_VarSelectedPresentType), DisplayMode.Disabled, DisplayMode.Edit)
+        Height: =51
+        Icon: =Icon.NextArrow
+        OnSelect: =Set(_VarAttendanceCamera, true)
+        TabIndex: =0
+        Visible: =_VarStartdayModal
+        X: =550
+        Y: =559
+        ZIndex: =18
+
+    PreviousIcn As icon.NextArrow:
+        AccessibleLabel: ="Back Icon"
+        BorderColor: =RGBA(0, 18, 107, 1)
+        Color: |-
+            =
+            ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Border Color").'Default Value' )
+        DisabledBorderColor: =RGBA(166, 166, 166, 1)
+        DisabledColor: =RGBA(244, 244, 244, 1)
+        Height: =51
+        Icon: =Icon.BackArrow
+        OnSelect: |-
+            =Set(_VarStartdayModal, true);
+            Set(_VarAttendanceCamera, false)
+        TabIndex: =-0
+        Visible: =_VarAttendanceCamera
+        X: =28
+        Y: =559
+        ZIndex: =19
+
+    "'Take Selfie Lbl' As label":
+        Align: =Align.Center
+        BorderColor: =RGBA(0, 18, 107, 1)
+        Color: =RGBA(0, 0, 0, 1)
+        DisabledColor: =RGBA(166, 166, 166, 1)
+        FontWeight: =FontWeight.Semibold
+        Height: =70
+        Size: =LookUp('Environment Variable Definitions', 'Display Name'="Text Title Font Size").'Default Value' //_VarGblAppFonts.Size.Title
+        Text: ="Take Selfie"
+        Visible: =_VarAttendanceCamera
+        Width: =560
+        X: =40
+        Y: =89
+        ZIndex: =20
+
     SubmitBtn As button:
         BorderColor: =RGBA(0, 0, 0, 1)
         BorderThickness: =0
@@ -819,226 +1079,9 @@ Home As screen:
         Text: ="SUBMIT"
         Visible: =_VarAttendanceCamera
         Width: =278
-        X: =223
+        X: =181
         Y: =559
-        ZIndex: =5
-
-    HomeRct As rectangle:
-        BorderColor: =RGBA(0, 18, 107, 1)
-        Fill: =RGBA(255, 255, 255, 1)
-        Height: =74
-        Width: =640
-        ZIndex: =6
-
-    HomeLbl As label:
-        BorderColor: =RGBA(0, 18, 107, 1)
-        Color: =RGBA(0, 0, 0, 1)
-        DisabledColor: =RGBA(166, 166, 166, 1)
-        FontWeight: =FontWeight.Bold
-        Size: |+
-            =LookUp('Environment Variable Definitions', 'Display Name'="Text Title Font Size").'Default Value' //_VarGblAppFonts.Size.Title
-            
-        Text: ="Zoxima SFA"
-        Width: =363
-        X: =60
-        Y: =10
-        ZIndex: =7
-
-    HomeIcn As image:
-        BorderColor: =RGBA(0, 18, 107, 1)
-        DisabledBorderColor: =RGBA(166, 166, 166, 1)
-        DisabledFill: =RGBA(244, 244, 244, 1)
-        Height: =33
-        Image: =home
-        Width: =45
-        X: =5
-        Y: =10
-        ZIndex: =8
-
-    ProfileImg As image:
-        AccessibleLabel: ="Profile Image"
-        BorderColor: =RGBA(0, 18, 107, 1)
-        DisabledBorderColor: =RGBA(166, 166, 166, 1)
-        DisabledFill: =RGBA(244, 244, 244, 1)
-        Height: =50
-        Image: |-
-            =/*"https://imageio.forbes.com/specials-images/imageserve/5d3d7a55f1176b000897d627/Gene-Berdichevsky/960x0.jpg?format=jpg&width=960"*/
-            
-            User().Image
-        ImagePosition: =ImagePosition.Fill
-        OnSelect: =//Navigate('Profile Screen',ScreenTransition.CoverRight)
-        RadiusBottomLeft: =50
-        RadiusBottomRight: =50
-        RadiusTopLeft: =50
-        RadiusTopRight: =50
-        TabIndex: =0//-1
-        Width: =50
-        X: =564
-        Y: =9
-        ZIndex: =9
-
-    Circle3_2 As circle:
-        BorderColor: =RGBA(0, 18, 107, 1)
-        Fill: =If(Connection.Connected, Color.GreenYellow, Color.Red)
-        Height: =20
-        Visible: =false
-        Width: =20
-        X: =420
-        Y: =69
-        ZIndex: =10
-
-    visitCartBackdrop_1 As rectangle:
-        AccessibleLabel: ="Backdrop"
-        BorderColor: =RGBA(0, 18, 107, 1)
-        DisplayMode: =DisplayMode.View
-        Fill: =RGBA(255, 255, 255, 0.31)
-        Height: =910
-        OnSelect: =Set(_VarConfirmPjpModal, false)
-        TabIndex: =0
-        Visible: =_VarOfflineDataLoading
-        Width: =640
-        Y: =226
-        ZIndex: =11
-
-    Label12 As label:
-        Align: =Align.Center
-        BorderColor: =RGBA(0, 18, 107, 1)
-        Color: =RGBA(0, 0, 0, 1)
-        DisabledColor: =RGBA(166, 166, 166, 1)
-        FontWeight: =FontWeight.Lighter
-        Height: =70
-        Size: =18
-        Text: ="Loading Data For Offline Usage"
-        Visible: =_VarOfflineDataLoading
-        Width: =560
-        X: =80
-        Y: =599
-        ZIndex: =12
-
-    Image4 As image:
-        BorderColor: =RGBA(0, 18, 107, 1)
-        DisabledBorderColor: =RGBA(166, 166, 166, 1)
-        DisabledFill: =RGBA(244, 244, 244, 1)
-        Height: =60
-        Image: =windows
-        Visible: =_VarOfflineDataLoading
-        Width: =60
-        X: =327
-        Y: =536
-        ZIndex: =13
-
-    Audio1 As audioPlayback:
-        AccessibleLabel: ="Audio"
-        AutoStart: =
-        BorderColor: =RGBA(0, 18, 107, 1)
-        Fill: =RGBA(56, 96, 178, 1)
-        Media: |
-            =MicrosoftTranslator.TextToSpeech(
-                "Today's total visits are 12. You have completed 5 and 7 is pending. Your today's order Target is 30, but you have completed 13 yet. Please visit Taviska Traders for completing your target.",
-                "en",
-                {format: "audio/mp3"}
-            )
-        Start: =varSpeak
-        Visible: =false
-        X: =155
-        Y: =1025
-        ZIndex: =14
-
-    "'Bottom Bar_1' As 'Bottom Bar'":
-        Y: =1026
-        ZIndex: =15
-
-    "'Take Selfie Lbl' As label":
-        Align: =Align.Center
-        BorderColor: =RGBA(0, 18, 107, 1)
-        Color: =RGBA(0, 0, 0, 1)
-        DisabledColor: =RGBA(166, 166, 166, 1)
-        FontWeight: =FontWeight.Semibold
-        Height: =70
-        Size: =LookUp('Environment Variable Definitions', 'Display Name'="Text Title Font Size").'Default Value' //_VarGblAppFonts.Size.Title
-        Text: ="Take Selfie"
-        Visible: =_VarAttendanceCamera
-        Width: =560
-        X: =40
-        Y: =89
-        ZIndex: =17
-
-    NextIcn As icon.NextArrow:
-        AccessibleLabel: ="Right Icon"
-        BorderColor: =RGBA(0, 18, 107, 1)
-        Color: =             ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Border Color").'Default Value' )
-        DisabledBorderColor: =RGBA(166, 166, 166, 1)
-        DisabledColor: =RGBA(244, 244, 244, 1)
-        DisplayMode: =If(IsBlank(_VarSelectedPresentType), DisplayMode.Disabled, DisplayMode.Edit)
-        Height: =51
-        Icon: =Icon.NextArrow
-        OnSelect: =Set(_VarAttendanceCamera, true)
-        TabIndex: =0
-        Visible: =_VarStartdayModal
-        X: =550
-        Y: =559
-        ZIndex: =18
-
-    AttendanceRct As rectangle:
-        BorderColor: =RGBA(0, 18, 107, 1)
-        Fill: =RGBA(255, 255, 255, 1)
-        Height: =If(_VarAttendanceCamera,422, 200)
-        Visible: =_VarAttendanceCamera
-        Width: =598
-        X: =42
-        Y: =246
-        ZIndex: =19
-
-    PreviousIcn As icon.NextArrow:
-        AccessibleLabel: ="Back Icon"
-        BorderColor: =RGBA(0, 18, 107, 1)
-        Color: |-
-            =
-            ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Border Color").'Default Value' )
-        DisabledBorderColor: =RGBA(166, 166, 166, 1)
-        DisabledColor: =RGBA(244, 244, 244, 1)
-        Height: =51
-        Icon: =Icon.BackArrow
-        OnSelect: |-
-            =Set(_VarStartdayModal, true);
-            Set(_VarAttendanceCamera, false)
-        TabIndex: =-0
-        Visible: =_VarAttendanceCamera
-        X: =28
-        Y: =559
-        ZIndex: =20
-
-    Rectangle18 As rectangle:
-        AccessibleLabel: ="Home Screen"
-        BorderColor: =RGBA(0, 18, 107, 1)
-        Fill: =RGBA(250, 250, 250, 0.5)
-        Height: =981
-        OnSelect: |
-            =Set(
-                boxrec,
-                false
-            );
-            Set(
-                _VarLeaveModal,
-                false
-            );
-            Set(
-                _VarStartdayModal,
-                false
-            );
-            Set(
-                _VarAttendanceCamera,
-                false
-            );
-        TabIndex: =0//-1
-        Visible: |-
-            =If(
-                boxrec = true,
-                true
-            )
-        Width: =640
-        Y: =69
-        ZIndex: =22
+        ZIndex: =21
 
     "'Attendance Image Take' As group":
         Height: =5
@@ -1060,9 +1103,9 @@ Home As screen:
             ImagePosition: =ImagePosition.Fill
             Visible: =_VarAttendanceCamera
             Width: =313
-            X: =205
-            Y: =343
-            ZIndex: =3
+            X: =150
+            Y: =375
+            ZIndex: =16
 
         AddMediaButton1 As addMedia:
             AccessibleLabel: ="Add Photo"
@@ -1076,51 +1119,7 @@ Home As screen:
             UseMobileCamera: =true
             Visible: =_VarAttendanceCamera
             Width: =313
-            X: =205
-            Y: =343
-            ZIndex: =4
-
-    "'Present type Gallery' As gallery.galleryVertical":
-        AccessibleLabel: ="Present"
-        BorderColor: =RGBA(0, 18, 107, 1)
-        Fill: =RGBA(255, 255, 255, 1)
-        FocusedBorderThickness: =
-        Height: =275
-        Items: =Choices(Present)
-        Layout: =Layout.Vertical
-        TabIndex: =0
-        TemplateSize: =73
-        Transition: =Transition.Push
-        Visible: =_VarStartdayModal
-        Y: =446
-        ZIndex: =23
-
-        Button8 As button:
-            BorderColor: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//_VarGblAppColors.PrimaryRed
-            BorderThickness: =3
-            Color: |-
-                =If(
-                    ThisItem.Value = _VarSelectedPresentType.Value,
-                    Color.White,
-                    ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//_VarGblAppColors.PrimaryRed
-                )
-            DisabledBorderColor: =RGBA(166, 166, 166, 1)
-            DisabledColor: =RGBA(166, 166, 166, 1)
-            DisabledFill: =RGBA(244, 244, 244, 1)
-            Fill: |
-                =If(ThisItem.Value = _VarSelectedPresentType.Value, ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//_VarGblAppColors.PrimaryRed
-                , RGBA(255, 255, 255, 1))
-            FontWeight: =FontWeight.Semibold
-            Height: =56
-            HoverColor: =RGBA(255, 255, 255, 1)
-            HoverFill: |-
-                =ColorFade(ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//_VarGblAppColors.PrimaryRed
-                , 10%)
-            OnSelect: =Set(_VarSelectedPresentType, ThisItem)
-            Size: =LookUp(c_EnvironmentVariable,'Display Name'="Text Medium Font Size").'Default Value'
-            Text: =ThisItem.Value
-            Width: =363
-            X: =134
-            Y: =9
-            ZIndex: =2
+            X: =150
+            Y: =375
+            ZIndex: =17
 
