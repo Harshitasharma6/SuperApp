@@ -3045,7 +3045,7 @@
                 ChevronFill: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//_VarGblAppColors.PrimaryRed
                 ChevronHoverBackground: =ColorFade(RGBA(56, 96, 178, 1), -20%)
                 ChevronHoverFill: =RGBA(255, 255, 255, 1)
-                Default: =varLeadData.Engagement
+                Default: =varLeadData.zx_engagement
                 DisabledBorderColor: =RGBA(166, 166, 166, 1)
                 DisabledColor: =RGBA(166, 166, 166, 1)
                 DisabledFill: =RGBA(244, 244, 244, 1)
@@ -3060,7 +3060,7 @@
                         Leads,
                         LookUp(
                             Leads,
-                            Leads = varLeadData.Leads
+                            Leads = varLeadData.zx_leadsid
                         ),
                         {Engagement: Dropdown2_1.Selected.Value}
                     );
@@ -3133,7 +3133,7 @@
                 ChevronFill: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//_VarGblAppColors.PrimaryRed
                 ChevronHoverBackground: =ColorFade(RGBA(56, 96, 178, 1), -20%)
                 ChevronHoverFill: =RGBA(255, 255, 255, 1)
-                Default: =varLeadData.'Lead Status'
+                Default: =varLeadData.zx_leadstatus
                 DisabledBorderColor: =RGBA(166, 166, 166, 1)
                 DisabledColor: =RGBA(166, 166, 166, 1)
                 DisabledFill: =RGBA(244, 244, 244, 1)
@@ -3144,13 +3144,13 @@
                 Items: =Choices('Lead Status')
                 OnChange: |-
                     =Patch(
-                        Leads,
+                        'Leads.S',
                         LookUp(
-                            Leads,
-                            Leads = varLeadData.Leads
+                            'Leads.S',
+                            Leads = varLeadData.zx_leadsid
                         ),
                         {
-                           'Lead Status':Dropdown2_2.Selected.Value
+                           //leadstatus:Dropdown2_2.Selected.Value
                         }
                     );
                     Notify(
@@ -4254,7 +4254,7 @@
                     Leads,
                     LookUp(
                         Leads,
-                        'Lead Id' = varLeadData.'Lead Id'
+                        'Lead Id' = varLeadData.lead
                     ),
                     {'Reason for Rejection': Label29_36.Text}
                 );
