@@ -1,0 +1,103 @@
+[
+  {
+    "CdsFCBContext": "{\"FileType\":true,\"ImageExternalStorage\":true}",
+    "EntitySetName": "new_productvariantses",
+    "IsHidden": false,
+    "IsSampleData": false,
+    "IsWritable": true,
+    "LogicalName": "new_productvariants",
+    "Name": "Product Variants",
+    "NativeCDSDataSourceInfoNameMapping": {
+      "_ownerid_value": "Owner",
+      "cra3a_new_orderlines_Variant_new_productvariant": "Order Lines",
+      "cra3a_Variant": "Variant",
+      "createdby": "Created By",
+      "createdon": "Created On",
+      "createdonbehalfby": "Created By (Delegate)",
+      "importsequencenumber": "Import Sequence Number",
+      "modifiedby": "Modified By",
+      "modifiedon": "Modified On",
+      "modifiedonbehalfby": "Modified By (Delegate)",
+      "new_name": "Name",
+      "new_new_productsku_ProductVariant_new_product": "Product SKUS",
+      "new_Product": "Product",
+      "new_productvariants_AsyncOperations": "System Jobs",
+      "new_productvariants_BulkDeleteFailures": "Bulk Delete Failures",
+      "new_productvariants_DuplicateBaseRecord": "Duplicate Records (new_productvariants_DuplicateBaseRecord)",
+      "new_productvariants_DuplicateMatchingRecord": "Duplicate Records (new_productvariants_DuplicateMatchingRecord)",
+      "new_productvariants_MailboxTrackingFolders": "Mailbox Auto Tracking Folders",
+      "new_productvariants_PrincipalObjectAttributeAccesses": "Field Sharing",
+      "new_productvariants_ProcessSession": "Process Sessions",
+      "new_productvariants_SyncErrors": "Sync Errors",
+      "new_productvariantsid": "Product Variants",
+      "new_variantcode": "Not req",
+      "new_variantname": "Variant Name",
+      "overriddencreatedon": "Record Created On",
+      "owningbusinessunit": "Owning Business Unit",
+      "owningteam": "Owning Team",
+      "owninguser": "Owning User",
+      "statecode": "Status",
+      "statuscode": "Status Reason",
+      "timezoneruleversionnumber": "Time Zone Rule Version Number",
+      "utcconversiontimezonecode": "UTC Conversion Time Zone Code",
+      "versionnumber": "Version Number",
+      "zx_zx_quoteline_Variant_new_productvariants": "Quote Line.S"
+    },
+    "PreferredName": "Product Variants",
+    "Type": "NativeCDSDataSourceInfo"
+  },
+  {
+    "DisplayName": "Product Variants (Views)",
+    "Name": "_new_productvariants_views",
+    "RelatedEntityName": "Product Variants",
+    "TrimmedViewName": true,
+    "Type": "ViewInfo",
+    "ViewInfoNameMapping": {
+      "046f675f-45b3-4b10-bcfd-288b3c761bf9": "Active Product Variants",
+      "24397bcf-d1eb-4f95-8b15-f956a738b75a": "Inactive Product Variants",
+      "62efafff-1e28-4e38-a332-b072ed3153f4": "Product Variants Lookup View",
+      "b141f20f-ceac-4013-a231-2a3773251a62": "Product Variants Advanced Find View",
+      "df67903a-cfbf-4395-982f-ff501c62c98d": "Product Variants Associated View"
+    }
+  },
+  {
+    "DisplayName": "Status (Product Variants)",
+    "Name": "new_productvariants_statecode",
+    "OptionSetInfoNameMapping": {
+      "0": "Active",
+      "1": "Inactive"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "statecode",
+        "OptionSetReferenceEntityName": "Product Variants"
+      }
+    },
+    "OptionSetTypeKey": "StateType",
+    "RelatedColumnInvariantName": "statecode",
+    "RelatedEntityName": "Product Variants",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Status Reason (Product Variants)",
+    "Name": "new_productvariants_statuscode",
+    "OptionSetInfoNameMapping": {
+      "1": "Active",
+      "2": "Inactive"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "statuscode",
+        "OptionSetReferenceEntityName": "Product Variants"
+      }
+    },
+    "OptionSetTypeKey": "StatusType",
+    "RelatedColumnInvariantName": "statuscode",
+    "RelatedEntityName": "Product Variants",
+    "Type": "OptionSetInfo"
+  }
+]

@@ -1,0 +1,125 @@
+[
+  {
+    "CdsFCBContext": "{\"FileType\":true,\"ImageExternalStorage\":true}",
+    "EntitySetName": "zx_quotelines",
+    "IsHidden": false,
+    "IsSampleData": false,
+    "IsWritable": true,
+    "LogicalName": "zx_quoteline",
+    "Name": "Quote Line.S",
+    "NativeCDSDataSourceInfoNameMapping": {
+      "_ownerid_value": "Owner",
+      "createdby": "Created By",
+      "createdon": "Created On",
+      "createdonbehalfby": "Created By (Delegate)",
+      "exchangerate": "Exchange Rate",
+      "importsequencenumber": "Import Sequence Number",
+      "modifiedby": "Modified By",
+      "modifiedon": "Modified On",
+      "modifiedonbehalfby": "Modified By (Delegate)",
+      "overriddencreatedon": "Record Created On",
+      "owningbusinessunit": "Owning Business Unit",
+      "owningteam": "Owning Team",
+      "owninguser": "Owning User",
+      "statecode": "Status",
+      "statuscode": "Status Reason",
+      "timezoneruleversionnumber": "Time Zone Rule Version Number",
+      "transactioncurrencyid": "Currency",
+      "utcconversiontimezonecode": "UTC Conversion Time Zone Code",
+      "versionnumber": "Version Number",
+      "zx_additionaldiscount": "Additional Discount %",
+      "zx_additionaldiscountamount": "Additional Discount Amount",
+      "zx_additionaldiscountamount_base": "Additional Discount Amount (Base)",
+      "zx_cgst": "CGST",
+      "zx_cgst_base": "CGST (Base)",
+      "zx_discount": "Discount %",
+      "zx_discountamount": "Discount Amount",
+      "zx_discountamount_base": "Discount Amount (Base)",
+      "zx_gst": "GST",
+      "zx_igst": "IGST",
+      "zx_igst_base": "IGST (Base)",
+      "zx_name": "Quote Line ID",
+      "zx_netprice": "Net Price",
+      "zx_pcgst": "PCGST %",
+      "zx_pigst": "PIGST %",
+      "zx_Product": "Product",
+      "zx_ProductSKU": "Product SKU",
+      "zx_psgst": "PSGST %",
+      "zx_quantity": "Quantity",
+      "zx_QuoteHeader": "Quote Header",
+      "zx_quoteline_AsyncOperations": "System Jobs",
+      "zx_quoteline_BulkDeleteFailures": "Bulk Delete Failures",
+      "zx_quoteline_DuplicateBaseRecord": "Duplicate Records (zx_quoteline_DuplicateBaseRecord)",
+      "zx_quoteline_DuplicateMatchingRecord": "Duplicate Records (zx_quoteline_DuplicateMatchingRecord)",
+      "zx_quoteline_MailboxTrackingFolders": "Mailbox Auto Tracking Folders",
+      "zx_quoteline_PrincipalObjectAttributeAccesses": "Field Sharing",
+      "zx_quoteline_ProcessSession": "Process Sessions",
+      "zx_quoteline_SyncErrors": "Sync Errors",
+      "zx_quotelineid": "Quote Line",
+      "zx_sgst": "SGST",
+      "zx_sgst_base": "SGST (Base)",
+      "zx_totaluamount": "TotalUAmount",
+      "zx_totalunitprice": "Total Unit Price",
+      "zx_totalunitprice_base": "Total Unit Price (Base)",
+      "zx_unitprice": "Unit Price",
+      "zx_unitprice_base": "Unit Price (Base)",
+      "zx_Variant": "Variant"
+    },
+    "PreferredName": "Quote Line.S",
+    "Type": "NativeCDSDataSourceInfo"
+  },
+  {
+    "DisplayName": "Quote Line.S (Views)",
+    "Name": "_zx_quoteline_views",
+    "RelatedEntityName": "Quote Line.S",
+    "TrimmedViewName": true,
+    "Type": "ViewInfo",
+    "ViewInfoNameMapping": {
+      "23c44e87-6992-4df6-9a0a-ba3aab75174d": "Quote Line Advanced Find View",
+      "7b3b5b9d-ced8-477b-a5ca-7c44ce3f7b5e": "Quote Line Lookup View",
+      "825c6128-96e0-4fe4-b81c-171271b9c8e1": "Active Quote Lines",
+      "a0486834-23f2-4e07-bdb7-02ed3e662e5e": "Inactive Quote Lines",
+      "af72808f-4a4f-42af-ab7b-abb2a3e8bcfa": "Quote Line Associated View"
+    }
+  },
+  {
+    "DisplayName": "Status (Quote Line.S)",
+    "Name": "zx_quoteline_statecode",
+    "OptionSetInfoNameMapping": {
+      "0": "Active",
+      "1": "Inactive"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "statecode",
+        "OptionSetReferenceEntityName": "Quote Line.S"
+      }
+    },
+    "OptionSetTypeKey": "StateType",
+    "RelatedColumnInvariantName": "statecode",
+    "RelatedEntityName": "Quote Line.S",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Status Reason (Quote Line.S)",
+    "Name": "zx_quoteline_statuscode",
+    "OptionSetInfoNameMapping": {
+      "1": "Active",
+      "2": "Inactive"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "statuscode",
+        "OptionSetReferenceEntityName": "Quote Line.S"
+      }
+    },
+    "OptionSetTypeKey": "StatusType",
+    "RelatedColumnInvariantName": "statuscode",
+    "RelatedEntityName": "Quote Line.S",
+    "Type": "OptionSetInfo"
+  }
+]

@@ -1,0 +1,104 @@
+[
+  {
+    "CdsFCBContext": "{\"FileType\":true,\"ImageExternalStorage\":true}",
+    "EntitySetName": "cra62_hsnmasters",
+    "IsHidden": false,
+    "IsSampleData": false,
+    "IsWritable": true,
+    "LogicalName": "cra62_hsnmaster",
+    "Name": "HSN Masters",
+    "NativeCDSDataSourceInfoNameMapping": {
+      "_ownerid_value": "Owner",
+      "cra62_cess": "Cess %",
+      "cra62_cgst": "CGST %",
+      "cra62_gst": "GST %",
+      "cra62_hsnmaster_AsyncOperations": "System Jobs",
+      "cra62_hsnmaster_BulkDeleteFailures": "Bulk Delete Failures",
+      "cra62_hsnmaster_DuplicateBaseRecord": "Duplicate Records (cra62_hsnmaster_DuplicateBaseRecord)",
+      "cra62_hsnmaster_DuplicateMatchingRecord": "Duplicate Records (cra62_hsnmaster_DuplicateMatchingRecord)",
+      "cra62_hsnmaster_MailboxTrackingFolders": "Mailbox Auto Tracking Folders",
+      "cra62_hsnmaster_PrincipalObjectAttributeAccesses": "Field Sharing",
+      "cra62_hsnmaster_ProcessSession": "Process Sessions",
+      "cra62_hsnmaster_SyncErrors": "Sync Errors",
+      "cra62_hsnmasterid": "HSN Master",
+      "cra62_igst": "IGST %",
+      "cra62_name": "Name",
+      "cra62_new_productsku_HSN_cra62_hsnmaster": "Product SKUS (cra62_new_productsku_HSN_cra62_hsnmaster)",
+      "cra62_sgst": "SGST %",
+      "createdby": "Created By",
+      "createdon": "Created On",
+      "createdonbehalfby": "Created By (Delegate)",
+      "importsequencenumber": "Import Sequence Number",
+      "modifiedby": "Modified By",
+      "modifiedon": "Modified On",
+      "modifiedonbehalfby": "Modified By (Delegate)",
+      "overriddencreatedon": "Record Created On",
+      "owningbusinessunit": "Owning Business Unit",
+      "owningteam": "Owning Team",
+      "owninguser": "Owning User",
+      "statecode": "Status",
+      "statuscode": "Status Reason",
+      "timezoneruleversionnumber": "Time Zone Rule Version Number",
+      "utcconversiontimezonecode": "UTC Conversion Time Zone Code",
+      "versionnumber": "Version Number",
+      "zx_new_product_Tax_cra62_hsnmaster": "Products",
+      "zx_new_productsku_HSNCode_cra62_hsnmaster": "Product SKUS (zx_new_productsku_HSNCode_cra62_hsnmaster)"
+    },
+    "PreferredName": "HSN Masters",
+    "Type": "NativeCDSDataSourceInfo"
+  },
+  {
+    "DisplayName": "HSN Masters (Views)",
+    "Name": "_cra62_hsnmaster_views",
+    "RelatedEntityName": "HSN Masters",
+    "TrimmedViewName": true,
+    "Type": "ViewInfo",
+    "ViewInfoNameMapping": {
+      "42564c8d-2c66-4daf-8778-e8ca5fb02f74": "HSN Master Advanced Find View",
+      "5b63a6e8-4dc4-427c-a8ff-176ddc0a5042": "HSN Master Associated View",
+      "86e373a4-2c37-4b89-80d3-c60db59ef83b": "Active HSN Masters",
+      "a47f41f9-5e9b-4bef-9cde-658a31035e03": "HSN Master Lookup View",
+      "dddcc959-298e-43b5-8f73-26bca7bd7824": "Inactive HSN Masters"
+    }
+  },
+  {
+    "DisplayName": "Status (HSN Masters)",
+    "Name": "cra62_hsnmaster_statecode",
+    "OptionSetInfoNameMapping": {
+      "0": "Active",
+      "1": "Inactive"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "statecode",
+        "OptionSetReferenceEntityName": "HSN Masters"
+      }
+    },
+    "OptionSetTypeKey": "StateType",
+    "RelatedColumnInvariantName": "statecode",
+    "RelatedEntityName": "HSN Masters",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Status Reason (HSN Masters)",
+    "Name": "cra62_hsnmaster_statuscode",
+    "OptionSetInfoNameMapping": {
+      "1": "Active",
+      "2": "Inactive"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "statuscode",
+        "OptionSetReferenceEntityName": "HSN Masters"
+      }
+    },
+    "OptionSetTypeKey": "StatusType",
+    "RelatedColumnInvariantName": "statuscode",
+    "RelatedEntityName": "HSN Masters",
+    "Type": "OptionSetInfo"
+  }
+]

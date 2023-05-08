@@ -759,8 +759,8 @@
                 =If(
                     CountRows(
                         Filter(
-                            'Product Interesteds',
-                            Lead.Leads = varLeadData.Leads
+                            'Product Interested.S',
+                            Lead.Leads = varLeadData.zx_leadsid
                         )
                     ) = 0,
                     Notify(
@@ -900,16 +900,16 @@
                         With(
                             {
                                 QuoteLines: Filter(
-                                    'Product Interesteds',
-                                    Lead.Leads = varLeadData.Leads
+                                    'Product Interested.S',
+                                    Lead.Leads = varLeadData.zx_leadsid
                                 )},
                                 Patch(
-                                'Quote Headers',              
-                                 Defaults('Quote Headers'),
+                                'Quote Header.S',              
+                                 Defaults('Quote Header.S'),
                                 {
                                    'Bill To':  LookUp(
                                         OfflinePartiesCollection,
-                                        'Customer Name' = varLeadData.Party.'Customer Name'
+                                        'Customer Name' = varLeadData.zx_Party.'Customer Name'
                                     ),
                                     'Approval Status':ApprovalChoiceQuoteHeader.Pending,
                                     Approver:LookUp(Users,'Primary Email'="sahil.sharma@zoxima.com"),
@@ -942,7 +942,7 @@
                                         QuoteLines,
                                         Discount
                                     ) / CountRows(QuoteLines),
-                                    'Status (zx_status)': QuoteStatus.Activated
+                                    'Status (statecode)': QuoteStatus.Activated
                                     
                                 }
                             )
@@ -952,16 +952,16 @@
                         !IsBlank(_VarnewQuoteHeaderResponse),
                         ForAll(
                             Filter(
-                                'Product Interesteds',
+                                'Product Interested.S',
                                 Lead.Leads = varLeadData.Leads
                             ) As ItemQuoteLine,
                 
                             Patch(
-                                'Quote Lines',
-                                Defaults('Quote Lines'),
+                                'Quote Line.S',
+                                Defaults('Quote Line.S'),
                                 {
                                     'Quote Header': LookUp(
-                                        'Quote Headers',
+                                        'Quote Header.S',
                                         'Quote ID' = _VarnewQuoteHeaderResponse.'Quote ID'),
                                        Product: LookUp(
                                         OfflineProductCollection,
@@ -1006,26 +1006,26 @@
                     ClearCollect(
                         OfflineQuoteHeadCollection,
                         Filter(
-                            'Quote Headers',
+                            'Quote Header.S',
                             'Created By'.'Primary Email' = User().Email
                         )
                     );
                     ClearCollect(
                         OfflineQuoteLinCollection,
-                        'Quote Lines'
+                        'Quote Line.S'
                     );
                 
                 );
                  With({
                            QuoteH: Filter(
-                                'Quote Lines',
+                                'Quote Line.S',
                              'Quote Header'.'Quote ID'=_VarnewQuoteHeaderResponse.'Quote ID'
                             )
                             },
                 
                             Patch(
-                                'Quote Headers',
-                                LookUp('Quote Headers','Quote ID'=_VarnewQuoteHeaderResponse.'Quote ID'),
+                                'Quote Header.S',
+                                LookUp('Quote Header.S','Quote ID'=_VarnewQuoteHeaderResponse.'Quote ID'),
                                 {  
                                     GST: Sum(QuoteH,GST)               
                                 }
@@ -1498,7 +1498,7 @@
                         2000
                     )*/
                     Patch(
-                        'Quote Headers',
+                        'Quote Header.S',
                         LookUp(
                             OfflineQuoteHeadCollection,
                             'Quote ID' = ThisItem.'Quote ID'
