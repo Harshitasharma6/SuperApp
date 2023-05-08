@@ -3102,7 +3102,7 @@
             Size: =24
             Text: =""
             Width: =610
-            Y: =10
+            Y: =18
             ZIndex: =1
 
         Rectangle1_17 As rectangle:
@@ -3115,7 +3115,7 @@
                 Navigate('Contact Detail Page',ScreenTransition.CoverRight);
             TabIndex: =0
             Width: ='Order Info Gallery_1'.TemplateWidth
-            Y: =75
+            Y: =84
             ZIndex: =2
 
         Body1_100 As label:
@@ -3149,10 +3149,11 @@
                 =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Text Primary Color").'Default Value')
             DisabledColor: =RGBA(166, 166, 166, 1)
             FocusedBorderThickness: =01
-            Font: |-
-                =LookUp(c_EnvironmentVariable, 'Display Name'="Text Heading Font").'Default Value'
+            Font: |+
+                =
                 
-                //_VarGblAppFonts.Heading
+                LookUp(c_EnvironmentVariable, 'Display Name'="Text Heading Font").'Default Value'
+                
             OnSelect: |-
                 =Set(varContactData,ThisItem);
                 //[anjali--]Navigate('Contact Detail Page',ScreenTransition.CoverRight);
@@ -3252,8 +3253,8 @@
             Fill: =RGBA(56, 96, 178, 1)
             Height: =50
             Width: =50
-            X: =451
-            Y: =16
+            X: =361
+            Y: =25
             ZIndex: =8
 
         Icon10_7 As icon.Waypoint:
@@ -3272,7 +3273,48 @@
             PaddingTop: =5
             TabIndex: =0
             Width: =50
-            X: =453
-            Y: =20
+            X: =363
+            Y: =29
             ZIndex: =9
+
+        Border_3 As button:
+            BorderColor: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )
+            BorderStyle: =BorderStyle.None
+            Color: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )
+            DisabledBorderColor: =RGBA(166, 166, 166, 1)
+            DisabledColor: =RGBA(166, 166, 166, 1)
+            DisabledFill: =RGBA(244, 244, 244, 1)
+            Fill: =ColorFade(ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' ), 80%)
+            FocusedBorderThickness: =2.5
+            Height: =45
+            HoverColor: =RGBA(255, 255, 255, 1)
+            HoverFill: =
+            OnSelect: =
+            Size: =24
+            Text: ="Fresh"
+            Width: =150
+            X: =451
+            Y: =25
+            ZIndex: =10
+
+        Border_5 As button:
+            BorderColor: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Text Secondary Color").'Default Value' )
+            BorderThickness: =1.5
+            Color: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )
+            DisabledBorderColor: =RGBA(166, 166, 166, 1)
+            DisabledColor: =RGBA(166, 166, 166, 1)
+            DisabledFill: =RGBA(244, 244, 244, 1)
+            Fill: =RGBA(255, 255, 255, 1)
+            FocusedBorderThickness: =2.5
+            Font: =Font.Arial
+            Height: =45
+            HoverColor: =RGBA(255, 255, 255, 1)
+            HoverFill: =
+            OnSelect: =
+            Size: =24
+            Text: ="Visit"
+            Width: =150
+            X: =451
+            Y: =127
+            ZIndex: =11
 
