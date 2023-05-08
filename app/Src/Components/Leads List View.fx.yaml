@@ -529,7 +529,9 @@
         ChevronBackground: =RGBA(0, 0, 0, 0)
         ChevronDisabledBackground: =RGBA(166, 166, 166, 1)
         ChevronDisabledFill: =RGBA(244, 244, 244, 1)
-        ChevronFill: =_VarGblAppColors.PrimaryRed
+        ChevronFill: |-
+            =
+            ColorValue(LookUp(c_EnvironmentVariable, 'Display Name'="Button Fill").'Default Value')
         ChevronHoverBackground: =ColorFade(RGBA(56, 96, 178, 1), -20%)
         ChevronHoverFill: =RGBA(255, 255, 255, 1)
         Default: =LookUp(Users,'Primary Email'=User().Email)
@@ -562,7 +564,9 @@
         DisabledBorderColor: =RGBA(166, 166, 166, 1)
         DisabledColor: =RGBA(166, 166, 166, 1)
         DisabledFill: =RGBA(244, 244, 244, 1)
-        Fill: =_VarGblAppColors.PrimaryRed
+        Fill: |-
+            =
+            ColorValue(LookUp(c_EnvironmentVariable, 'Display Name'="Button Fill").'Default Value')
         Font: =Font.'Segoe UI'
         FontWeight: =FontWeight.Semibold
         Height: =44
