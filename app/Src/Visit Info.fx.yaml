@@ -1,5 +1,7 @@
 "'Visit Info' As screen":
     LoadingSpinnerColor: =RGBA(0, 120, 212, 1)
+    OnVisible: |-
+        =If(IsBlank(varCustomerRecord.Longitude)|| IsBlank(varCustomerRecord.Latitude), UpdateContext({v_LocationNeeded:true}), UpdateContext({v_LocationNeeded:false}));
 
     "'Bottom Bar_11' As 'Bottom Bar'":
         Y: =1026
@@ -602,4 +604,86 @@
         Width: =640
         Y: =191
         ZIndex: =9
+
+    "'filter button_3' As button":
+        DisabledBorderColor: =RGBA(166, 166, 166, 1)
+        DisabledColor: =RGBA(166, 166, 166, 1)
+        DisabledFill: =RGBA(244, 244, 244, 1)
+        DisplayMode: =DisplayMode.Disabled
+        Fill: =RGBA(255, 255, 255, 1)
+        FontWeight: =FontWeight.Semibold
+        Height: =333
+        HoverColor: =RGBA(255, 255, 255, 1)
+        HoverFill: =ColorFade(RGBA(56, 96, 178, 1), -20%)
+        RadiusBottomLeft: =0
+        RadiusBottomRight: =0
+        RadiusTopLeft: =25
+        RadiusTopRight: =25
+        Size: =24
+        Text: =""
+        Visible: =v_LocationNeeded
+        Width: =640
+        Y: =528
+        ZIndex: =10
+
+    Button20_6 As button:
+        DisabledBorderColor: =RGBA(166, 166, 166, 1)
+        DisabledColor: =RGBA(166, 166, 166, 1)
+        DisabledFill: =RGBA(244, 244, 244, 1)
+        DisplayMode: =DisplayMode.View
+        Fill: |-
+            =//RGBA(204, 204, 204, 1)
+            ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//_VarGblAppColors.PrimaryRed
+        FontWeight: =FontWeight.Semibold
+        Height: =60
+        HoverColor: =RGBA(255, 255, 255, 1)
+        HoverFill: =ColorFade(RGBA(56, 96, 178, 1), -20%)
+        OnSelect: |
+            =
+            
+            
+            Patch('Parties.S', 
+            
+            varCustomerRecord, {Latitude:Location.Latitude, Longitude:Location.Longitude});
+            
+            UpdateContext({v_LocationNeeded: false});
+        RadiusBottomLeft: =15
+        RadiusBottomRight: =15
+        RadiusTopLeft: =15
+        RadiusTopRight: =15
+        Size: =24
+        Text: ="Yes"
+        Visible: =v_LocationNeeded
+        Width: =231
+        X: =49
+        Y: =742
+        ZIndex: =11
+
+    Button20_7 As button:
+        DisabledBorderColor: =RGBA(166, 166, 166, 1)
+        DisabledColor: =RGBA(166, 166, 166, 1)
+        DisabledFill: =RGBA(244, 244, 244, 1)
+        DisplayMode: =DisplayMode.View
+        Fill: |-
+            =//RGBA(204, 204, 204, 1)
+            ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//_VarGblAppColors.PrimaryRed
+        FontWeight: =FontWeight.Semibold
+        Height: =59
+        HoverColor: =RGBA(255, 255, 255, 1)
+        HoverFill: =ColorFade(RGBA(56, 96, 178, 1), -20%)
+        OnSelect: |-
+            =
+            UpdateContext({v_LocationNeeded: false});
+            Back();
+        RadiusBottomLeft: =15
+        RadiusBottomRight: =15
+        RadiusTopLeft: =15
+        RadiusTopRight: =15
+        Size: =24
+        Text: ="NO"
+        Visible: =v_LocationNeeded
+        Width: =231
+        X: =367
+        Y: =742
+        ZIndex: =12
 

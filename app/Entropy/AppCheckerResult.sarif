@@ -19650,6 +19650,42 @@
               "message": {
                 "text": "Error occurred running rule app-InefficientDelayLoading."
               }
+            },
+            {
+              "associatedRule": {
+                "id": "app-InefficientDelayLoading",
+                "index": 22
+              },
+              "descriptor": {
+                "id": "app-InefficientDelayLoading"
+              },
+              "message": {
+                "text": "Error occurred running rule app-InefficientDelayLoading."
+              }
+            },
+            {
+              "associatedRule": {
+                "id": "app-InefficientDelayLoading",
+                "index": 22
+              },
+              "descriptor": {
+                "id": "app-InefficientDelayLoading"
+              },
+              "message": {
+                "text": "Error occurred running rule app-InefficientDelayLoading."
+              }
+            },
+            {
+              "associatedRule": {
+                "id": "app-InefficientDelayLoading",
+                "index": 22
+              },
+              "descriptor": {
+                "id": "app-InefficientDelayLoading"
+              },
+              "message": {
+                "text": "Error occurred running rule app-InefficientDelayLoading."
+              }
             }
           ]
         }
@@ -44569,6 +44605,123 @@
           },
           "ruleId": "app-SuggestRemoteExecutionHint",
           "ruleIndex": 8
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Start Visit'.Button20_3.OnSelect"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Start Visit'.Button20_3.OnSelect",
+                  "relativeAddress": 0
+                },
+                "region": {
+                  "charLength": 14,
+                  "charOffset": 29,
+                  "snippet": {
+                    "text": "'Customer 360'"
+                  }
+                }
+              },
+              "properties": {
+                "member": "OnSelect",
+                "module": "Start Visit",
+                "type": "'Start Visit'.Button20_3"
+              }
+            }
+          ],
+          "message": {
+            "arguments": [
+              "Customer 360"
+            ],
+            "id": "issue"
+          },
+          "properties": {
+            "level": "High"
+          },
+          "ruleId": "app-ErrInvalidName",
+          "ruleIndex": 0
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Start Visit'.Button20_3.OnSelect"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Start Visit'.Button20_3.OnSelect",
+                  "relativeAddress": 0
+                },
+                "region": {
+                  "charLength": 15,
+                  "charOffset": 43,
+                  "snippet": {
+                    "text": ".CustomerRecord"
+                  }
+                }
+              },
+              "properties": {
+                "member": "OnSelect",
+                "module": "Start Visit",
+                "type": "'Start Visit'.Button20_3"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "High"
+          },
+          "ruleId": "app-ErrInvalidDot",
+          "ruleIndex": 2
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Start Visit'.Button20_3.OnSelect"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Start Visit'.Button20_3.OnSelect",
+                  "relativeAddress": 0
+                },
+                "region": {
+                  "charLength": 113,
+                  "charOffset": 6,
+                  "snippet": {
+                    "text": "Patch('Parties.S',\u00A0\r\n\r\n'Customer 360'.CustomerRecord, {Latitude:Location.Latitude, Longitude:Location.Longitude})"
+                  }
+                }
+              },
+              "properties": {
+                "member": "OnSelect",
+                "module": "Start Visit",
+                "type": "'Start Visit'.Button20_3"
+              }
+            }
+          ],
+          "message": {
+            "arguments": [
+              "Patch"
+            ],
+            "id": "issue"
+          },
+          "properties": {
+            "level": "High"
+          },
+          "ruleId": "app-ErrInvalidArgs-Func",
+          "ruleIndex": 1
         },
         {
           "locations": [
