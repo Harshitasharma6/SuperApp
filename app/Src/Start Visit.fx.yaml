@@ -1077,7 +1077,7 @@
                             ).zx_visitdate,"dd/mm/yyyy")
                     ),
                     "NA",
-                    "₹" & Text(LookUp(
+                     Text(LookUp(
                         Sort(
                             OfflineVisitCollection,
                             createdon,
@@ -1388,8 +1388,115 @@
                     DisplayMode.Edit
                 Fill: =RGBA(0, 0, 0, 0)
                 Height: =37
-                OnSelect: |
-                    =Set(
+                OnSelect: |+
+                    =If(
+                        LookUp(
+                            'Visit.S',
+                            Party.Parties = ThisItem.zx_partiesid && Text(
+                                'Visit date',
+                                "dd-mm-yyyy"
+                            ) = Text(
+                                Today(),
+                                "dd-mm-yyyy"
+                            ) && 'Owning User'.'Primary Email' = User().Email
+                        ).'Visit Status' = [@'Visit Status'].Completed,
+                        Notify(
+                            "Visit is Already Ended",
+                            NotificationType.Error,
+                            1000
+                        ),
+                        If(
+                            CountIf(
+                                'Attendance.S',
+                                User.'Primary Email' = User().Email && Date = Today() && !IsBlank('Check-out Time')
+                            ) > 0,
+                            Notify(
+                                "Your day has Ended, you can not start Visit",
+                                NotificationType.Error,
+                                2000
+                            ),
+                            If(
+                                CountIf(
+                                    'Attendance.S',
+                                    User.'Primary Email' = User().Email && Date = Today() && !IsBlank('Check-in Time')
+                                ) = 0,
+                                Notify(
+                                    "Kindly Start your day first",
+                                    NotificationType.Error,
+                                    2000
+                                ),
+                                If(
+                                    DateValue(
+                                        LookUp(
+                                            'Visit.S',
+                                            Party.Parties = ThisItem.zx_partiesid && createdby.'Primary Email' = User().Email
+                                        ).'Visit date'
+                                    ) >= Today(),
+                                    Patch(
+                                        'Visit.S',
+                                        LookUp(
+                                            'Visit.S',
+                                            Party.Parties = ThisItem.zx_partiesid && DateValue('Visit date') >= Today() && createdby.'Primary Email' = User().Email
+                                        ),
+                                        {
+                                            'Visit Status': 'Visit Status'.Started,
+                                            'Check-in Time': Now(),
+                                            'Check-in Geo Location Lat': Location.Latitude,
+                                            'Check-in Geo Location Long': Location.Longitude
+                                              /* 'Check-in Address': LookUp(
+                                                    'Parties.S',
+                                                    Address = ThisItem.zx_Party.Address
+                                                ).Address*/
+                                        }
+                                    ),
+                                    Patch(
+                                        'Visit.S',
+                                        Defaults('Visit.S'),
+                                        {
+                                            'Visit Status': 'Visit Status'.Started,
+                                            'Visit Type': 'Visit Type'.Planned,
+                                            'Visit date': Now(),
+                                            'Check-in Geo Location Lat': Location.Latitude,
+                                            'Check-in Geo Location Long': Location.Longitude,
+                                            Party: LookUp(
+                                                OfflinePartiesCollection,
+                                                zx_partiesid = ThisItem.zx_partiesid
+                                            )
+                                        }
+                                    );
+                                    Notify(
+                                        "Visit has been started",
+                                        NotificationType.Success,
+                                        700
+                                    );
+                                    Set(
+                                        _VarActivetopTabID,
+                                        1
+                                    );
+                                    Navigate(
+                                        'Visit Info',
+                                        ScreenTransition.CoverRight
+                                    );
+                                    Set(
+                                        dataVisit,
+                                        ThisItem
+                                    );
+                                    Set(
+                                        _VarClickedVisitAccount,
+                                        LookUp(
+                                            'Visit.S',
+                                            Party.Parties = ThisItem.zx_partiesid
+                                        )
+                                    );
+                                    Set(
+                                        varCustomerforDiscount,
+                                        LookUp(
+                                            'Visit.S',
+                                            Party.Parties = ThisItem.zx_partiesid
+                                        ).Party.Parties
+                                    );
+                                    
+                                    Set(
                             varParty,
                             ThisItem.'Customer Name'
                         );
@@ -1397,10 +1504,7 @@
                             varParties,
                             false
                         );
-                        Set(
-                            varCustomerforDiscount,
-                            ThisItem.Parties
-                        );
+                       
                        Set(
                             varCustomertype,
                             ThisItem.'Customer Type'
@@ -1517,6 +1621,41 @@
                             'Offer ID' = First(colOfferHeaderId).Value && ('Active From' <= Today()) && ('Active To' >= Today())
                         )
                     );
+                                    If(
+                                        LookUp(
+                                            'Visit.S',
+                                            Party.Parties = ThisItem.zx_partiesid
+                                        ).Party.'Customer Type' = 'Party Type Choices'.Retailer
+                            /*,
+                           Set(
+                                _varSelectedRetailerAttachedDistributor,
+                                LookUp(
+                                    OfflinePartiesCollection,
+                                    'Customer Code' = LookUp(
+                                        'Visit.S' ,              
+                                         Party.Parties = ThisItem.zx_partiesid
+                                         
+                                    ).Party.'Customer Code').'Attached Distributor'.Parties
+                            );*/
+                    ,
+                                        Set(
+                                            _varSelectedRetailerAttachedDistributor,
+                                            Blank()
+                                        )
+                                    )
+                                );
+                                ClearCollect(
+                                    OfflineVisitCollection,
+                                    Filter(
+                                        'Visit.S',
+                                        'Owning User'.'Primary Email' = User().Email
+                                    )
+                                );
+                            )
+                        )
+                    );
+                    
+                    
                 Width: =41
                 X: =530
                 Y: =23
@@ -1549,8 +1688,115 @@
                         square,
                         'play (1)'
                     )
-                OnSelect: |
-                    =Set(
+                OnSelect: |+
+                    =If(
+                        LookUp(
+                            'Visit.S',
+                            Party.Parties = ThisItem.zx_partiesid && Text(
+                                'Visit date',
+                                "dd-mm-yyyy"
+                            ) = Text(
+                                Today(),
+                                "dd-mm-yyyy"
+                            ) && 'Owning User'.'Primary Email' = User().Email
+                        ).'Visit Status' = [@'Visit Status'].Completed,
+                        Notify(
+                            "Visit is Already Ended",
+                            NotificationType.Error,
+                            1000
+                        ),
+                        If(
+                            CountIf(
+                                'Attendance.S',
+                                User.'Primary Email' = User().Email && Date = Today() && !IsBlank('Check-out Time')
+                            ) > 0,
+                            Notify(
+                                "Your day has Ended, you can not start Visit",
+                                NotificationType.Error,
+                                2000
+                            ),
+                            If(
+                                CountIf(
+                                    'Attendance.S',
+                                    User.'Primary Email' = User().Email && Date = Today() && !IsBlank('Check-in Time')
+                                ) = 0,
+                                Notify(
+                                    "Kindly Start your day first",
+                                    NotificationType.Error,
+                                    2000
+                                ),
+                                If(
+                                    DateValue(
+                                        LookUp(
+                                            'Visit.S',
+                                            Party.Parties = ThisItem.zx_partiesid && createdby.'Primary Email' = User().Email
+                                        ).'Visit date'
+                                    ) >= Today(),
+                                    Patch(
+                                        'Visit.S',
+                                        LookUp(
+                                            'Visit.S',
+                                            Party.Parties = ThisItem.zx_partiesid && DateValue('Visit date') >= Today() && createdby.'Primary Email' = User().Email
+                                        ),
+                                        {
+                                            'Visit Status': 'Visit Status'.Started,
+                                            'Check-in Time': Now(),
+                                            'Check-in Geo Location Lat': Location.Latitude,
+                                            'Check-in Geo Location Long': Location.Longitude
+                                              /* 'Check-in Address': LookUp(
+                                                    'Parties.S',
+                                                    Address = ThisItem.zx_Party.Address
+                                                ).Address*/
+                                        }
+                                    ),
+                                    Patch(
+                                        'Visit.S',
+                                        Defaults('Visit.S'),
+                                        {
+                                            'Visit Status': 'Visit Status'.Started,
+                                            'Visit Type': 'Visit Type'.Planned,
+                                            'Visit date': Now(),
+                                            'Check-in Geo Location Lat': Location.Latitude,
+                                            'Check-in Geo Location Long': Location.Longitude,
+                                            Party: LookUp(
+                                                OfflinePartiesCollection,
+                                                zx_partiesid = ThisItem.zx_partiesid
+                                            )
+                                        }
+                                    );
+                                    Notify(
+                                        "Visit has been started",
+                                        NotificationType.Success,
+                                        700
+                                    );
+                                    Set(
+                                        _VarActivetopTabID,
+                                        1
+                                    );
+                                    Navigate(
+                                        'Visit Info',
+                                        ScreenTransition.CoverRight
+                                    );
+                                    Set(
+                                        dataVisit,
+                                        ThisItem
+                                    );
+                                    Set(
+                                        _VarClickedVisitAccount,
+                                        LookUp(
+                                            'Visit.S',
+                                            Party.Parties = ThisItem.zx_partiesid
+                                        )
+                                    );
+                                    Set(
+                                        varCustomerforDiscount,
+                                        LookUp(
+                                            'Visit.S',
+                                            Party.Parties = ThisItem.zx_partiesid
+                                        ).Party.Parties
+                                    );
+                                    
+                                    Set(
                             varParty,
                             ThisItem.'Customer Name'
                         );
@@ -1558,10 +1804,7 @@
                             varParties,
                             false
                         );
-                        Set(
-                            varCustomerforDiscount,
-                            ThisItem.Parties
-                        );
+                       
                        Set(
                             varCustomertype,
                             ThisItem.'Customer Type'
@@ -1678,6 +1921,41 @@
                             'Offer ID' = First(colOfferHeaderId).Value && ('Active From' <= Today()) && ('Active To' >= Today())
                         )
                     );
+                                    If(
+                                        LookUp(
+                                            'Visit.S',
+                                            Party.Parties = ThisItem.zx_partiesid
+                                        ).Party.'Customer Type' = 'Party Type Choices'.Retailer
+                            /*,
+                           Set(
+                                _varSelectedRetailerAttachedDistributor,
+                                LookUp(
+                                    OfflinePartiesCollection,
+                                    'Customer Code' = LookUp(
+                                        'Visit.S' ,              
+                                         Party.Parties = ThisItem.zx_partiesid
+                                         
+                                    ).Party.'Customer Code').'Attached Distributor'.Parties
+                            );*/
+                    ,
+                                        Set(
+                                            _varSelectedRetailerAttachedDistributor,
+                                            Blank()
+                                        )
+                                    )
+                                );
+                                ClearCollect(
+                                    OfflineVisitCollection,
+                                    Filter(
+                                        'Visit.S',
+                                        'Owning User'.'Primary Email' = User().Email
+                                    )
+                                );
+                            )
+                        )
+                    );
+                    
+                    
                 Width: =21
                 X: =542
                 Y: =32

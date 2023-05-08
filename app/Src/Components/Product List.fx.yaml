@@ -103,7 +103,7 @@
         FocusedBorderThickness: =
         FontWeight: =FontWeight.Semibold
         Height: =55
-        HintText: ="Search By SKU Category or Name"
+        HintText: ="Search By Product Name"
         HoverBorderColor: =RGBA(0, 18, 107, 1)
         HoverColor: =RGBA(0, 0, 0, 1)
         HoverFill: =RGBA(237, 237, 237, 1)
@@ -134,23 +134,28 @@
         FocusedBorderColor: =Color.Transparent
         FocusedBorderThickness: =0.1
         Height: =936
-        Items: |+
-            =If(
-                varSelectedTabId = 1,
-                Filter(
-                    OfflineProductPriceCollection,
-                    'Price list'.Name = varPartyPricelist
-                ),
-                varSelectedTabId = 2,
-               Filter(OfflineProductPriceCollection,'Price list'.Name = varPartyPricelist &&'Product SKU'.'Product SKU' in  FirstN(colDistinctProduct,3)),
-                varSelectedTabId = 3,
-                Filter(
-                    OfflineProductPriceCollection,
-                    'Price list'.Name = varPartyPricelist && 'Product SKU'.Promoted = 'Promoted (Product SKU.S)'.Yes
+        Items: |-
+            =
+                If(
+                    varSelectedTabId = 1,
+                    Filter(
+                        OfflineProductPriceCollection,
+                        'Price list'.Name = varPartyPricelist
+                    ),
+                    varSelectedTabId = 2,
+                    Filter(
+                        OfflineProductPriceCollection,
+                        'Price list'.Name = varPartyPricelist && 'Product SKU'.'Product SKU' in FirstN(
+                            colDistinctProduct,
+                            3
+                        )
+                    ),
+                    varSelectedTabId = 3,
+                    Filter(
+                        OfflineProductPriceCollection,
+                        'Price list'.Name = varPartyPricelist && 'Product SKU'.Promoted = 'Promoted (Product SKU.S)'.Yes
+                    )
                 )
-            )
-            
-            
         Layout: =Layout.Vertical
         ShowScrollbar: =false
         TabIndex: =

@@ -2240,119 +2240,6 @@
             X: =240
             ZIndex: =2
 
-    Group3_1 As group:
-        Height: =5
-        Width: =5
-        X: =40
-        Y: =40
-        ZIndex: =34
-
-        backdrop_8 As rectangle:
-            BorderColor: =RGBA(0, 18, 107, 1)
-            DisplayMode: =DisplayMode.View
-            Fill: =RGBA(153, 153, 153, 0.59)
-            Height: =966
-            Visible: =g_LocationNeeded
-            Width: =App.Width
-            ZIndex: =29
-
-        "'filter button_6' As button":
-            DisabledBorderColor: =RGBA(166, 166, 166, 1)
-            DisabledColor: =RGBA(166, 166, 166, 1)
-            DisabledFill: =RGBA(244, 244, 244, 1)
-            DisplayMode: =DisplayMode.Disabled
-            Fill: =RGBA(255, 255, 255, 1)
-            FontWeight: =FontWeight.Semibold
-            Height: =333
-            HoverColor: =RGBA(255, 255, 255, 1)
-            HoverFill: =ColorFade(RGBA(56, 96, 178, 1), -20%)
-            RadiusBottomLeft: =0
-            RadiusBottomRight: =0
-            RadiusTopLeft: =25
-            RadiusTopRight: =25
-            Size: =24
-            Text: =""
-            Visible: =g_LocationNeeded
-            Width: =640
-            Y: =296
-            ZIndex: =30
-
-        Button20_12 As button:
-            DisabledBorderColor: =RGBA(166, 166, 166, 1)
-            DisabledColor: =RGBA(166, 166, 166, 1)
-            DisabledFill: =RGBA(244, 244, 244, 1)
-            DisplayMode: =DisplayMode.View
-            Fill: |-
-                =//RGBA(204, 204, 204, 1)
-                ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//_VarGblAppColors.PrimaryRed
-            FontWeight: =FontWeight.Semibold
-            Height: =60
-            HoverColor: =RGBA(255, 255, 255, 1)
-            HoverFill: =ColorFade(RGBA(56, 96, 178, 1), -20%)
-            OnSelect: |
-                =
-                
-                
-                Patch('Parties.S', 
-                
-                varCustomerRecord, {Latitude:Location.Latitude, Longitude:Location.Longitude});
-                 Set(g_LocationNeeded,false);
-                Refresh('Parties.S');
-            RadiusBottomLeft: =15
-            RadiusBottomRight: =15
-            RadiusTopLeft: =15
-            RadiusTopRight: =15
-            Size: =24
-            Text: ="Yes"
-            Visible: =g_LocationNeeded
-            Width: =231
-            X: =49
-            Y: =510
-            ZIndex: =31
-
-        Button20_10 As button:
-            DisabledBorderColor: =RGBA(166, 166, 166, 1)
-            DisabledColor: =RGBA(166, 166, 166, 1)
-            DisabledFill: =RGBA(244, 244, 244, 1)
-            DisplayMode: =DisplayMode.View
-            Fill: |-
-                =//RGBA(204, 204, 204, 1)
-                ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//_VarGblAppColors.PrimaryRed
-            FontWeight: =FontWeight.Semibold
-            Height: =59
-            HoverColor: =RGBA(255, 255, 255, 1)
-            HoverFill: =ColorFade(RGBA(56, 96, 178, 1), -20%)
-            OnSelect: |-
-                =
-                Set(g_LocationNeeded,false);
-                Back();
-            RadiusBottomLeft: =15
-            RadiusBottomRight: =15
-            RadiusTopLeft: =15
-            RadiusTopRight: =15
-            Size: =24
-            Text: ="NO"
-            Visible: =g_LocationNeeded
-            Width: =231
-            X: =367
-            Y: =510
-            ZIndex: =32
-
-        Label4_5 As label:
-            Align: =Align.Center
-            BorderColor: =RGBA(0, 18, 107, 1)
-            Color: =RGBA(0, 0, 0, 1)
-            DisabledColor: =RGBA(166, 166, 166, 1)
-            FontWeight: =FontWeight.Semibold
-            Height: =130
-            Size: =LookUp(c_EnvironmentVariable,'Display Name'="Text Medium Font Size").'Default Value'
-            Text: ="Customer Location is missing. Do you want to add your location? If yes Press ""Yes"""
-            Visible: =g_LocationNeeded
-            Width: =550
-            X: =22
-            Y: =339
-            ZIndex: =33
-
     Gallery1_2 As gallery.galleryVertical:
         AccessibleLabel: ="List View"
         BorderColor: =RGBA(0, 18, 107, 1)
@@ -3216,6 +3103,119 @@
             X: =493
             Y: =236
             ZIndex: =27
+
+    Group3_1 As group:
+        Height: =5
+        Width: =5
+        X: =40
+        Y: =40
+        ZIndex: =34
+
+        backdrop_8 As rectangle:
+            BorderColor: =RGBA(0, 18, 107, 1)
+            DisplayMode: =DisplayMode.View
+            Fill: =RGBA(153, 153, 153, 0.59)
+            Height: =966
+            Visible: =g_LocationNeeded
+            Width: =App.Width
+            ZIndex: =29
+
+        "'filter button_6' As button":
+            DisabledBorderColor: =RGBA(166, 166, 166, 1)
+            DisabledColor: =RGBA(166, 166, 166, 1)
+            DisabledFill: =RGBA(244, 244, 244, 1)
+            DisplayMode: =DisplayMode.Disabled
+            Fill: =RGBA(255, 255, 255, 1)
+            FontWeight: =FontWeight.Semibold
+            Height: =333
+            HoverColor: =RGBA(255, 255, 255, 1)
+            HoverFill: =ColorFade(RGBA(56, 96, 178, 1), -20%)
+            RadiusBottomLeft: =0
+            RadiusBottomRight: =0
+            RadiusTopLeft: =25
+            RadiusTopRight: =25
+            Size: =24
+            Text: =""
+            Visible: =g_LocationNeeded
+            Width: =640
+            Y: =296
+            ZIndex: =30
+
+        Button20_12 As button:
+            DisabledBorderColor: =RGBA(166, 166, 166, 1)
+            DisabledColor: =RGBA(166, 166, 166, 1)
+            DisabledFill: =RGBA(244, 244, 244, 1)
+            DisplayMode: =DisplayMode.View
+            Fill: |-
+                =//RGBA(204, 204, 204, 1)
+                ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//_VarGblAppColors.PrimaryRed
+            FontWeight: =FontWeight.Semibold
+            Height: =60
+            HoverColor: =RGBA(255, 255, 255, 1)
+            HoverFill: =ColorFade(RGBA(56, 96, 178, 1), -20%)
+            OnSelect: |
+                =
+                
+                
+                Patch('Parties.S', 
+                
+                varCustomerRecord, {Latitude:Location.Latitude, Longitude:Location.Longitude});
+                 Set(g_LocationNeeded,false);
+                Refresh('Parties.S');
+            RadiusBottomLeft: =15
+            RadiusBottomRight: =15
+            RadiusTopLeft: =15
+            RadiusTopRight: =15
+            Size: =24
+            Text: ="Yes"
+            Visible: =g_LocationNeeded
+            Width: =231
+            X: =49
+            Y: =510
+            ZIndex: =31
+
+        Button20_10 As button:
+            DisabledBorderColor: =RGBA(166, 166, 166, 1)
+            DisabledColor: =RGBA(166, 166, 166, 1)
+            DisabledFill: =RGBA(244, 244, 244, 1)
+            DisplayMode: =DisplayMode.View
+            Fill: |-
+                =//RGBA(204, 204, 204, 1)
+                ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//_VarGblAppColors.PrimaryRed
+            FontWeight: =FontWeight.Semibold
+            Height: =59
+            HoverColor: =RGBA(255, 255, 255, 1)
+            HoverFill: =ColorFade(RGBA(56, 96, 178, 1), -20%)
+            OnSelect: |-
+                =
+                Set(g_LocationNeeded,false);
+                Back();
+            RadiusBottomLeft: =15
+            RadiusBottomRight: =15
+            RadiusTopLeft: =15
+            RadiusTopRight: =15
+            Size: =24
+            Text: ="NO"
+            Visible: =g_LocationNeeded
+            Width: =231
+            X: =367
+            Y: =510
+            ZIndex: =32
+
+        Label4_5 As label:
+            Align: =Align.Center
+            BorderColor: =RGBA(0, 18, 107, 1)
+            Color: =RGBA(0, 0, 0, 1)
+            DisabledColor: =RGBA(166, 166, 166, 1)
+            FontWeight: =FontWeight.Semibold
+            Height: =130
+            Size: =LookUp(c_EnvironmentVariable,'Display Name'="Text Medium Font Size").'Default Value'
+            Text: ="Customer Location is missing. Do you want to add your location? If yes Press ""Yes"""
+            Visible: =g_LocationNeeded
+            Width: =550
+            X: =22
+            Y: =339
+            ZIndex: =33
 
     "'Product Code Lbl_6' As label":
         BorderColor: =RGBA(0, 18, 107, 1)
