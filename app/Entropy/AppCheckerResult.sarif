@@ -20106,78 +20106,6 @@
               "message": {
                 "text": "Error occurred running rule app-InefficientDelayLoading."
               }
-            },
-            {
-              "associatedRule": {
-                "id": "app-InefficientDelayLoading",
-                "index": 27
-              },
-              "descriptor": {
-                "id": "app-InefficientDelayLoading"
-              },
-              "message": {
-                "text": "Error occurred running rule app-InefficientDelayLoading."
-              }
-            },
-            {
-              "associatedRule": {
-                "id": "app-InefficientDelayLoading",
-                "index": 27
-              },
-              "descriptor": {
-                "id": "app-InefficientDelayLoading"
-              },
-              "message": {
-                "text": "Error occurred running rule app-InefficientDelayLoading."
-              }
-            },
-            {
-              "associatedRule": {
-                "id": "app-InefficientDelayLoading",
-                "index": 27
-              },
-              "descriptor": {
-                "id": "app-InefficientDelayLoading"
-              },
-              "message": {
-                "text": "Error occurred running rule app-InefficientDelayLoading."
-              }
-            },
-            {
-              "associatedRule": {
-                "id": "app-InefficientDelayLoading",
-                "index": 27
-              },
-              "descriptor": {
-                "id": "app-InefficientDelayLoading"
-              },
-              "message": {
-                "text": "Error occurred running rule app-InefficientDelayLoading."
-              }
-            },
-            {
-              "associatedRule": {
-                "id": "app-InefficientDelayLoading",
-                "index": 27
-              },
-              "descriptor": {
-                "id": "app-InefficientDelayLoading"
-              },
-              "message": {
-                "text": "Error occurred running rule app-InefficientDelayLoading."
-              }
-            },
-            {
-              "associatedRule": {
-                "id": "app-InefficientDelayLoading",
-                "index": 27
-              },
-              "descriptor": {
-                "id": "app-InefficientDelayLoading"
-              },
-              "message": {
-                "text": "Error occurred running rule app-InefficientDelayLoading."
-              }
             }
           ]
         }
@@ -22228,8 +22156,48 @@
                   "relativeAddress": 0
                 },
                 "region": {
+                  "charOffset": 5674,
+                  "snippet": {
+                    "text": ""
+                  }
+                }
+              },
+              "properties": {
+                "member": "OnSelect",
+                "module": "Lead Detail",
+                "type": "'Lead Detail'.'Product Interested'.Button9_15"
+              }
+            }
+          ],
+          "message": {
+            "arguments": [
+              "Eof",
+              "ParenClose"
+            ],
+            "id": "issue"
+          },
+          "properties": {
+            "level": "High"
+          },
+          "ruleId": "app-ErrExpectedFound-Ex-Fnd",
+          "ruleIndex": 4
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Lead Detail'.'Product Interested'.Button9_15.OnSelect"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Lead Detail'.'Product Interested'.Button9_15.OnSelect",
+                  "relativeAddress": 0
+                },
+                "region": {
                   "charLength": 1,
-                  "charOffset": 1178,
+                  "charOffset": 1419,
                   "snippet": {
                     "text": "="
                   }
@@ -22269,10 +22237,10 @@
                   "relativeAddress": 0
                 },
                 "region": {
-                  "charLength": 1217,
+                  "charLength": 1480,
                   "charOffset": 536,
                   "snippet": {
-                    "text": "Patch(\r\n                'Quote Header.S',              \r\n                 Defaults('Quote Header.S'),\r\n                {\r\n                    'Bill To':LookUp(\r\n                        OfflinePartiesCollection,\r\n                        'Customer Name' = varLeadData.zx_Party.'Customer Name'\r\n                    ),\r\n                    'Approval Status':ApprovalChoiceQuoteHeader.Pending,\r\n                    Approver:LookUp(Users,'Primary Email'=User().Email),\r\n                    Version: \r\n                        1.0,\r\n                        Lead: LookUp(\r\n                        offlineLeadCollection,\r\n                        Leads = varLeadData.zx_leadsid\r\n                    ),\r\n                    'Total Price':Sum(\r\n                        QuoteLines,\r\n                        'Total Amount'\r\n                    ),\r\n                     Quantity: Sum(\r\n                        QuoteLines,\r\n                        Quantity\r\n                    ),\r\n                    Discount: Sum(\r\n                        QuoteLines,\r\n                        Discount\r\n                    ) / CountRows(QuoteLines),\r\n                    'Status (zx_status)': QuoteStatus.Activated\r\n                }\r\n            )"
+                    "text": "Patch(\r\n                'Quote Header.S',              \r\n                 Defaults('Quote Header.S'),\r\n                {\r\n                   'Bill To':  LookUp(\r\n                        OfflinePartiesCollection,\r\n                        'Customer Name' = varLeadData.zx_Party.'Customer Name'\r\n                    ),\r\n                    'Approval Status':ApprovalChoiceQuoteHeader.Pending,\r\n                    Approver:LookUp(Users,'Primary Email'=\"sahil.sharma@zoxima.com\"),\r\n                    Version: \r\n                        1.0,\r\n                        /*(LookUp(\r\n                            OfflineOrderHeaderCollection,\r\n                            Lead.Leads = varLeadData.Leads\r\n                        ).'Quote Version' + 0.1)\r\n                    ),*/\r\n                    Lead: LookUp(\r\n                        offlineLeadCollection,\r\n                        Leads = varLeadData.zx_leadsid\r\n                    ),\r\n                    'Total Price':Sum(\r\n                        QuoteLines,\r\n                        'Total Amount'\r\n                    ),\r\n                     Quantity: Sum(\r\n                        QuoteLines,\r\n                        Quantity\r\n                    ),\r\n                    Discount: Sum(\r\n                        QuoteLines,\r\n                        Discount\r\n                    ) / CountRows(QuoteLines),\r\n                    'Status (statecode)': QuoteStatus.Activated\r\n                    \r\n                }\r\n            )"
                   }
                 }
               },
@@ -22309,10 +22277,50 @@
                   "relativeAddress": 0
                 },
                 "region": {
-                  "charLength": 1083,
+                  "charLength": 1346,
                   "charOffset": 655,
                   "snippet": {
-                    "text": "{\r\n                    'Bill To':LookUp(\r\n                        OfflinePartiesCollection,\r\n                        'Customer Name' = varLeadData.zx_Party.'Customer Name'\r\n                    ),\r\n                    'Approval Status':ApprovalChoiceQuoteHeader.Pending,\r\n                    Approver:LookUp(Users,'Primary Email'=User().Email),\r\n                    Version: \r\n                        1.0,\r\n                        Lead: LookUp(\r\n                        offlineLeadCollection,\r\n                        Leads = varLeadData.zx_leadsid\r\n                    ),\r\n                    'Total Price':Sum(\r\n                        QuoteLines,\r\n                        'Total Amount'\r\n                    ),\r\n                     Quantity: Sum(\r\n                        QuoteLines,\r\n                        Quantity\r\n                    ),\r\n                    Discount: Sum(\r\n                        QuoteLines,\r\n                        Discount\r\n                    ) / CountRows(QuoteLines),\r\n                    'Status (zx_status)': QuoteStatus.Activated\r\n                }"
+                    "text": "{\r\n                   'Bill To':  LookUp(\r\n                        OfflinePartiesCollection,\r\n                        'Customer Name' = varLeadData.zx_Party.'Customer Name'\r\n                    ),\r\n                    'Approval Status':ApprovalChoiceQuoteHeader.Pending,\r\n                    Approver:LookUp(Users,'Primary Email'=\"sahil.sharma@zoxima.com\"),\r\n                    Version: \r\n                        1.0,\r\n                        /*(LookUp(\r\n                            OfflineOrderHeaderCollection,\r\n                            Lead.Leads = varLeadData.Leads\r\n                        ).'Quote Version' + 0.1)\r\n                    ),*/\r\n                    Lead: LookUp(\r\n                        offlineLeadCollection,\r\n                        Leads = varLeadData.zx_leadsid\r\n                    ),\r\n                    'Total Price':Sum(\r\n                        QuoteLines,\r\n                        'Total Amount'\r\n                    ),\r\n                     Quantity: Sum(\r\n                        QuoteLines,\r\n                        Quantity\r\n                    ),\r\n                    Discount: Sum(\r\n                        QuoteLines,\r\n                        Discount\r\n                    ) / CountRows(QuoteLines),\r\n                    'Status (statecode)': QuoteStatus.Activated\r\n                    \r\n                }"
+                  }
+                }
+              },
+              "properties": {
+                "member": "OnSelect",
+                "module": "Lead Detail",
+                "type": "'Lead Detail'.'Product Interested'.Button9_15"
+              }
+            }
+          ],
+          "message": {
+            "arguments": [
+              "OptionSetValue (QuoteStatus)"
+            ],
+            "id": "issue"
+          },
+          "properties": {
+            "level": "High"
+          },
+          "ruleId": "app-ErrBadSchema-ExpectedType",
+          "ruleIndex": 5
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Lead Detail'.'Product Interested'.Button9_15.OnSelect"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Lead Detail'.'Product Interested'.Button9_15.OnSelect",
+                  "relativeAddress": 0
+                },
+                "region": {
+                  "charLength": 1346,
+                  "charOffset": 655,
+                  "snippet": {
+                    "text": "{\r\n                   'Bill To':  LookUp(\r\n                        OfflinePartiesCollection,\r\n                        'Customer Name' = varLeadData.zx_Party.'Customer Name'\r\n                    ),\r\n                    'Approval Status':ApprovalChoiceQuoteHeader.Pending,\r\n                    Approver:LookUp(Users,'Primary Email'=\"sahil.sharma@zoxima.com\"),\r\n                    Version: \r\n                        1.0,\r\n                        /*(LookUp(\r\n                            OfflineOrderHeaderCollection,\r\n                            Lead.Leads = varLeadData.Leads\r\n                        ).'Quote Version' + 0.1)\r\n                    ),*/\r\n                    Lead: LookUp(\r\n                        offlineLeadCollection,\r\n                        Leads = varLeadData.zx_leadsid\r\n                    ),\r\n                    'Total Price':Sum(\r\n                        QuoteLines,\r\n                        'Total Amount'\r\n                    ),\r\n                     Quantity: Sum(\r\n                        QuoteLines,\r\n                        Quantity\r\n                    ),\r\n                    Discount: Sum(\r\n                        QuoteLines,\r\n                        Discount\r\n                    ) / CountRows(QuoteLines),\r\n                    'Status (statecode)': QuoteStatus.Activated\r\n                    \r\n                }"
                   }
                 }
               },
@@ -22333,7 +22341,7 @@
             "level": "High"
           },
           "ruleId": "app-ErrBadSchema-ExpectedType",
-          "ruleIndex": 4
+          "ruleIndex": 5
         },
         {
           "locations": [
@@ -22349,10 +22357,10 @@
                   "relativeAddress": 0
                 },
                 "region": {
-                  "charLength": 1083,
+                  "charLength": 1346,
                   "charOffset": 655,
                   "snippet": {
-                    "text": "{\r\n                    'Bill To':LookUp(\r\n                        OfflinePartiesCollection,\r\n                        'Customer Name' = varLeadData.zx_Party.'Customer Name'\r\n                    ),\r\n                    'Approval Status':ApprovalChoiceQuoteHeader.Pending,\r\n                    Approver:LookUp(Users,'Primary Email'=User().Email),\r\n                    Version: \r\n                        1.0,\r\n                        Lead: LookUp(\r\n                        offlineLeadCollection,\r\n                        Leads = varLeadData.zx_leadsid\r\n                    ),\r\n                    'Total Price':Sum(\r\n                        QuoteLines,\r\n                        'Total Amount'\r\n                    ),\r\n                     Quantity: Sum(\r\n                        QuoteLines,\r\n                        Quantity\r\n                    ),\r\n                    Discount: Sum(\r\n                        QuoteLines,\r\n                        Discount\r\n                    ) / CountRows(QuoteLines),\r\n                    'Status (zx_status)': QuoteStatus.Activated\r\n                }"
+                    "text": "{\r\n                   'Bill To':  LookUp(\r\n                        OfflinePartiesCollection,\r\n                        'Customer Name' = varLeadData.zx_Party.'Customer Name'\r\n                    ),\r\n                    'Approval Status':ApprovalChoiceQuoteHeader.Pending,\r\n                    Approver:LookUp(Users,'Primary Email'=\"sahil.sharma@zoxima.com\"),\r\n                    Version: \r\n                        1.0,\r\n                        /*(LookUp(\r\n                            OfflineOrderHeaderCollection,\r\n                            Lead.Leads = varLeadData.Leads\r\n                        ).'Quote Version' + 0.1)\r\n                    ),*/\r\n                    Lead: LookUp(\r\n                        offlineLeadCollection,\r\n                        Leads = varLeadData.zx_leadsid\r\n                    ),\r\n                    'Total Price':Sum(\r\n                        QuoteLines,\r\n                        'Total Amount'\r\n                    ),\r\n                     Quantity: Sum(\r\n                        QuoteLines,\r\n                        Quantity\r\n                    ),\r\n                    Discount: Sum(\r\n                        QuoteLines,\r\n                        Discount\r\n                    ) / CountRows(QuoteLines),\r\n                    'Status (statecode)': QuoteStatus.Activated\r\n                    \r\n                }"
                   }
                 }
               },
@@ -22374,7 +22382,7 @@
             "level": "High"
           },
           "ruleId": "app-ErrColumnMissing-ColName-ExpectedType",
-          "ruleIndex": 5
+          "ruleIndex": 6
         },
         {
           "locations": [
@@ -22390,10 +22398,10 @@
                   "relativeAddress": 0
                 },
                 "region": {
-                  "charLength": 1083,
+                  "charLength": 1346,
                   "charOffset": 655,
                   "snippet": {
-                    "text": "{\r\n                    'Bill To':LookUp(\r\n                        OfflinePartiesCollection,\r\n                        'Customer Name' = varLeadData.zx_Party.'Customer Name'\r\n                    ),\r\n                    'Approval Status':ApprovalChoiceQuoteHeader.Pending,\r\n                    Approver:LookUp(Users,'Primary Email'=User().Email),\r\n                    Version: \r\n                        1.0,\r\n                        Lead: LookUp(\r\n                        offlineLeadCollection,\r\n                        Leads = varLeadData.zx_leadsid\r\n                    ),\r\n                    'Total Price':Sum(\r\n                        QuoteLines,\r\n                        'Total Amount'\r\n                    ),\r\n                     Quantity: Sum(\r\n                        QuoteLines,\r\n                        Quantity\r\n                    ),\r\n                    Discount: Sum(\r\n                        QuoteLines,\r\n                        Discount\r\n                    ) / CountRows(QuoteLines),\r\n                    'Status (zx_status)': QuoteStatus.Activated\r\n                }"
+                    "text": "{\r\n                   'Bill To':  LookUp(\r\n                        OfflinePartiesCollection,\r\n                        'Customer Name' = varLeadData.zx_Party.'Customer Name'\r\n                    ),\r\n                    'Approval Status':ApprovalChoiceQuoteHeader.Pending,\r\n                    Approver:LookUp(Users,'Primary Email'=\"sahil.sharma@zoxima.com\"),\r\n                    Version: \r\n                        1.0,\r\n                        /*(LookUp(\r\n                            OfflineOrderHeaderCollection,\r\n                            Lead.Leads = varLeadData.Leads\r\n                        ).'Quote Version' + 0.1)\r\n                    ),*/\r\n                    Lead: LookUp(\r\n                        offlineLeadCollection,\r\n                        Leads = varLeadData.zx_leadsid\r\n                    ),\r\n                    'Total Price':Sum(\r\n                        QuoteLines,\r\n                        'Total Amount'\r\n                    ),\r\n                     Quantity: Sum(\r\n                        QuoteLines,\r\n                        Quantity\r\n                    ),\r\n                    Discount: Sum(\r\n                        QuoteLines,\r\n                        Discount\r\n                    ) / CountRows(QuoteLines),\r\n                    'Status (statecode)': QuoteStatus.Activated\r\n                    \r\n                }"
                   }
                 }
               },
@@ -22414,7 +22422,7 @@
             "level": "High"
           },
           "ruleId": "app-ErrBadSchema-ExpectedType",
-          "ruleIndex": 4
+          "ruleIndex": 5
         },
         {
           "locations": [
@@ -22430,10 +22438,10 @@
                   "relativeAddress": 0
                 },
                 "region": {
-                  "charLength": 1083,
+                  "charLength": 1346,
                   "charOffset": 655,
                   "snippet": {
-                    "text": "{\r\n                    'Bill To':LookUp(\r\n                        OfflinePartiesCollection,\r\n                        'Customer Name' = varLeadData.zx_Party.'Customer Name'\r\n                    ),\r\n                    'Approval Status':ApprovalChoiceQuoteHeader.Pending,\r\n                    Approver:LookUp(Users,'Primary Email'=User().Email),\r\n                    Version: \r\n                        1.0,\r\n                        Lead: LookUp(\r\n                        offlineLeadCollection,\r\n                        Leads = varLeadData.zx_leadsid\r\n                    ),\r\n                    'Total Price':Sum(\r\n                        QuoteLines,\r\n                        'Total Amount'\r\n                    ),\r\n                     Quantity: Sum(\r\n                        QuoteLines,\r\n                        Quantity\r\n                    ),\r\n                    Discount: Sum(\r\n                        QuoteLines,\r\n                        Discount\r\n                    ) / CountRows(QuoteLines),\r\n                    'Status (zx_status)': QuoteStatus.Activated\r\n                }"
+                    "text": "{\r\n                   'Bill To':  LookUp(\r\n                        OfflinePartiesCollection,\r\n                        'Customer Name' = varLeadData.zx_Party.'Customer Name'\r\n                    ),\r\n                    'Approval Status':ApprovalChoiceQuoteHeader.Pending,\r\n                    Approver:LookUp(Users,'Primary Email'=\"sahil.sharma@zoxima.com\"),\r\n                    Version: \r\n                        1.0,\r\n                        /*(LookUp(\r\n                            OfflineOrderHeaderCollection,\r\n                            Lead.Leads = varLeadData.Leads\r\n                        ).'Quote Version' + 0.1)\r\n                    ),*/\r\n                    Lead: LookUp(\r\n                        offlineLeadCollection,\r\n                        Leads = varLeadData.zx_leadsid\r\n                    ),\r\n                    'Total Price':Sum(\r\n                        QuoteLines,\r\n                        'Total Amount'\r\n                    ),\r\n                     Quantity: Sum(\r\n                        QuoteLines,\r\n                        Quantity\r\n                    ),\r\n                    Discount: Sum(\r\n                        QuoteLines,\r\n                        Discount\r\n                    ) / CountRows(QuoteLines),\r\n                    'Status (statecode)': QuoteStatus.Activated\r\n                    \r\n                }"
                   }
                 }
               },
@@ -22456,7 +22464,7 @@
             "level": "High"
           },
           "ruleId": "app-ErrColumnTypeMismatch-ColName-ExpectedType-ActualType",
-          "ruleIndex": 6
+          "ruleIndex": 7
         },
         {
           "locations": [
@@ -22473,7 +22481,7 @@
                 },
                 "region": {
                   "charLength": 23,
-                  "charOffset": 3427,
+                  "charOffset": 3799,
                   "snippet": {
                     "text": "LookUp(TaxN,TName=Name)"
                   }
@@ -22496,7 +22504,7 @@
             "level": "Medium"
           },
           "ruleId": "app-SuggestRemoteExecutionHint",
-          "ruleIndex": 7
+          "ruleIndex": 8
         },
         {
           "locations": [
@@ -22513,7 +22521,7 @@
                 },
                 "region": {
                   "charLength": 6,
-                  "charOffset": 3450,
+                  "charOffset": 3822,
                   "snippet": {
                     "text": ".TName"
                   }
@@ -22536,7 +22544,7 @@
             "level": "Medium"
           },
           "ruleId": "app-SuggestRemoteExecutionHint",
-          "ruleIndex": 7
+          "ruleIndex": 8
         },
         {
           "locations": [
@@ -22553,7 +22561,7 @@
                 },
                 "region": {
                   "charLength": 1,
-                  "charOffset": 3426,
+                  "charOffset": 3798,
                   "snippet": {
                     "text": "="
                   }
@@ -22576,7 +22584,7 @@
             "level": "Medium"
           },
           "ruleId": "app-SuggestRemoteExecutionHint",
-          "ruleIndex": 7
+          "ruleIndex": 8
         },
         {
           "locations": [
@@ -22593,7 +22601,7 @@
                 },
                 "region": {
                   "charLength": 23,
-                  "charOffset": 3556,
+                  "charOffset": 3928,
                   "snippet": {
                     "text": "LookUp(TaxN,TName=Name)"
                   }
@@ -22616,7 +22624,7 @@
             "level": "Medium"
           },
           "ruleId": "app-SuggestRemoteExecutionHint",
-          "ruleIndex": 7
+          "ruleIndex": 8
         },
         {
           "locations": [
@@ -22633,7 +22641,7 @@
                 },
                 "region": {
                   "charLength": 6,
-                  "charOffset": 3579,
+                  "charOffset": 3951,
                   "snippet": {
                     "text": ".TName"
                   }
@@ -22656,7 +22664,7 @@
             "level": "Medium"
           },
           "ruleId": "app-SuggestRemoteExecutionHint",
-          "ruleIndex": 7
+          "ruleIndex": 8
         },
         {
           "locations": [
@@ -22673,7 +22681,7 @@
                 },
                 "region": {
                   "charLength": 1,
-                  "charOffset": 3555,
+                  "charOffset": 3927,
                   "snippet": {
                     "text": "="
                   }
@@ -22696,7 +22704,7 @@
             "level": "Medium"
           },
           "ruleId": "app-SuggestRemoteExecutionHint",
-          "ruleIndex": 7
+          "ruleIndex": 8
         },
         {
           "locations": [
@@ -22713,7 +22721,7 @@
                 },
                 "region": {
                   "charLength": 23,
-                  "charOffset": 3685,
+                  "charOffset": 4057,
                   "snippet": {
                     "text": "LookUp(TaxN,TName=Name)"
                   }
@@ -22736,7 +22744,7 @@
             "level": "Medium"
           },
           "ruleId": "app-SuggestRemoteExecutionHint",
-          "ruleIndex": 7
+          "ruleIndex": 8
         },
         {
           "locations": [
@@ -22753,7 +22761,7 @@
                 },
                 "region": {
                   "charLength": 6,
-                  "charOffset": 3708,
+                  "charOffset": 4080,
                   "snippet": {
                     "text": ".TName"
                   }
@@ -22776,7 +22784,7 @@
             "level": "Medium"
           },
           "ruleId": "app-SuggestRemoteExecutionHint",
-          "ruleIndex": 7
+          "ruleIndex": 8
         },
         {
           "locations": [
@@ -22793,7 +22801,7 @@
                 },
                 "region": {
                   "charLength": 1,
-                  "charOffset": 3684,
+                  "charOffset": 4056,
                   "snippet": {
                     "text": "="
                   }
@@ -22816,7 +22824,7 @@
             "level": "Medium"
           },
           "ruleId": "app-SuggestRemoteExecutionHint",
-          "ruleIndex": 7
+          "ruleIndex": 8
         },
         {
           "locations": [
@@ -22833,7 +22841,7 @@
                 },
                 "region": {
                   "charLength": 23,
-                  "charOffset": 3819,
+                  "charOffset": 4191,
                   "snippet": {
                     "text": "LookUp(TaxN,TName=Name)"
                   }
@@ -22856,7 +22864,7 @@
             "level": "Medium"
           },
           "ruleId": "app-SuggestRemoteExecutionHint",
-          "ruleIndex": 7
+          "ruleIndex": 8
         },
         {
           "locations": [
@@ -22873,7 +22881,7 @@
                 },
                 "region": {
                   "charLength": 6,
-                  "charOffset": 3842,
+                  "charOffset": 4214,
                   "snippet": {
                     "text": ".TName"
                   }
@@ -22896,7 +22904,7 @@
             "level": "Medium"
           },
           "ruleId": "app-SuggestRemoteExecutionHint",
-          "ruleIndex": 7
+          "ruleIndex": 8
         },
         {
           "locations": [
@@ -22913,7 +22921,7 @@
                 },
                 "region": {
                   "charLength": 1,
-                  "charOffset": 3818,
+                  "charOffset": 4190,
                   "snippet": {
                     "text": "="
                   }
@@ -22936,7 +22944,7 @@
             "level": "Medium"
           },
           "ruleId": "app-SuggestRemoteExecutionHint",
-          "ruleIndex": 7
+          "ruleIndex": 8
         },
         {
           "locations": [
@@ -22953,7 +22961,7 @@
                 },
                 "region": {
                   "charLength": 23,
-                  "charOffset": 3918,
+                  "charOffset": 4290,
                   "snippet": {
                     "text": "LookUp(TaxN,TName=Name)"
                   }
@@ -22976,7 +22984,7 @@
             "level": "Medium"
           },
           "ruleId": "app-SuggestRemoteExecutionHint",
-          "ruleIndex": 7
+          "ruleIndex": 8
         },
         {
           "locations": [
@@ -22993,7 +23001,7 @@
                 },
                 "region": {
                   "charLength": 6,
-                  "charOffset": 3941,
+                  "charOffset": 4313,
                   "snippet": {
                     "text": ".TName"
                   }
@@ -23016,7 +23024,7 @@
             "level": "Medium"
           },
           "ruleId": "app-SuggestRemoteExecutionHint",
-          "ruleIndex": 7
+          "ruleIndex": 8
         },
         {
           "locations": [
@@ -23033,7 +23041,7 @@
                 },
                 "region": {
                   "charLength": 1,
-                  "charOffset": 3917,
+                  "charOffset": 4289,
                   "snippet": {
                     "text": "="
                   }
@@ -23056,7 +23064,7 @@
             "level": "Medium"
           },
           "ruleId": "app-SuggestRemoteExecutionHint",
-          "ruleIndex": 7
+          "ruleIndex": 8
         },
         {
           "locations": [
@@ -23073,7 +23081,7 @@
                 },
                 "region": {
                   "charLength": 23,
-                  "charOffset": 4017,
+                  "charOffset": 4389,
                   "snippet": {
                     "text": "LookUp(TaxN,TName=Name)"
                   }
@@ -23096,7 +23104,7 @@
             "level": "Medium"
           },
           "ruleId": "app-SuggestRemoteExecutionHint",
-          "ruleIndex": 7
+          "ruleIndex": 8
         },
         {
           "locations": [
@@ -23113,7 +23121,7 @@
                 },
                 "region": {
                   "charLength": 6,
-                  "charOffset": 4040,
+                  "charOffset": 4412,
                   "snippet": {
                     "text": ".TName"
                   }
@@ -23136,7 +23144,7 @@
             "level": "Medium"
           },
           "ruleId": "app-SuggestRemoteExecutionHint",
-          "ruleIndex": 7
+          "ruleIndex": 8
         },
         {
           "locations": [
@@ -23153,7 +23161,7 @@
                 },
                 "region": {
                   "charLength": 1,
-                  "charOffset": 4016,
+                  "charOffset": 4388,
                   "snippet": {
                     "text": "="
                   }
@@ -23176,7 +23184,7 @@
             "level": "Medium"
           },
           "ruleId": "app-SuggestRemoteExecutionHint",
-          "ruleIndex": 7
+          "ruleIndex": 8
         },
         {
           "locations": [
@@ -23193,7 +23201,7 @@
                 },
                 "region": {
                   "charLength": 2547,
-                  "charOffset": 2004,
+                  "charOffset": 2376,
                   "snippet": {
                     "text": "Patch(\r\n                'Quote Line.S',\r\n                Defaults('Quote Line.S'),\r\n                {\r\n                    'Quote Header': LookUp(\r\n                        'Quote Header.S',\r\n                        'Quote ID' = _VarnewQuoteHeaderResponse.'Quote ID'),\r\n                       Product: LookUp(\r\n                        OfflineProductCollection,\r\n                        Product = LookUp(\r\n                            OfflineProductSKUCollection,\r\n                            'Product SKU' = ItemQuoteLine.'Product SKU'.'Product SKU'\r\n                        ).Product.Product\r\n                    ),\r\n                    'Product SKU': LookUp(\r\n                        OfflineProductSKUCollection,\r\n                        'Product SKU' = ItemQuoteLine.'Product SKU'.'Product SKU'\r\n                    ),\r\n                    Variant: LookUp(\r\n                        OfflineProductVariantCollection,\r\n                        'Product Variants' = LookUp(\r\n                            OfflineProductSKUCollection,\r\n                            'Product SKU' = ItemQuoteLine.'Product SKU'.'Product SKU'\r\n                        ).'Product Variant'.'Product Variants'\r\n                    ),\r\n                   'Discount %':_VarnewQuoteHeaderResponse.Discount, //ItemQuoteLine.Discount,\r\n                    'Total Unit Price': ItemQuoteLine.'Total Amount',\r\n                    IGST: LookUp('HSN Masters',Name=LookUp(TaxN,TName=Name).TName).'IGST %' * ItemQuoteLine.'Total Amount'/100,\r\n                    CGST: LookUp('HSN Masters',Name=LookUp(TaxN,TName=Name).TName).'CGST %' * ItemQuoteLine.'Total Amount'/100,\r\n                    SGST: LookUp('HSN Masters',Name=LookUp(TaxN,TName=Name).TName).'SGST %' * ItemQuoteLine.'Total Amount'/100,\r\n                    'PIGST %': LookUp('HSN Masters',Name=LookUp(TaxN,TName=Name).TName).'IGST %',\r\n                    'PSGST %': LookUp('HSN Masters',Name=LookUp(TaxN,TName=Name).TName).'SGST %',\r\n                    'PCGST %': LookUp('HSN Masters',Name=LookUp(TaxN,TName=Name).TName).'CGST %',\r\n                    Quantity: ItemQuoteLine.Quantity,\r\n                    'Unit Price': LookUp(\r\n                        OfflineProductPriceCollection,\r\n                        'Product SKU'.'Product SKU' = LookUp(\r\n                            OfflineProductSKUCollection,\r\n                            'Product SKU' = ItemQuoteLine.'Product SKU'.'Product SKU'\r\n                        ).'Product SKU'\r\n                    ).'Ex-Factory'                     \r\n                }\r\n            )"
                   }
@@ -23233,7 +23241,7 @@
                 },
                 "region": {
                   "charLength": 2432,
-                  "charOffset": 2104,
+                  "charOffset": 2476,
                   "snippet": {
                     "text": "{\r\n                    'Quote Header': LookUp(\r\n                        'Quote Header.S',\r\n                        'Quote ID' = _VarnewQuoteHeaderResponse.'Quote ID'),\r\n                       Product: LookUp(\r\n                        OfflineProductCollection,\r\n                        Product = LookUp(\r\n                            OfflineProductSKUCollection,\r\n                            'Product SKU' = ItemQuoteLine.'Product SKU'.'Product SKU'\r\n                        ).Product.Product\r\n                    ),\r\n                    'Product SKU': LookUp(\r\n                        OfflineProductSKUCollection,\r\n                        'Product SKU' = ItemQuoteLine.'Product SKU'.'Product SKU'\r\n                    ),\r\n                    Variant: LookUp(\r\n                        OfflineProductVariantCollection,\r\n                        'Product Variants' = LookUp(\r\n                            OfflineProductSKUCollection,\r\n                            'Product SKU' = ItemQuoteLine.'Product SKU'.'Product SKU'\r\n                        ).'Product Variant'.'Product Variants'\r\n                    ),\r\n                   'Discount %':_VarnewQuoteHeaderResponse.Discount, //ItemQuoteLine.Discount,\r\n                    'Total Unit Price': ItemQuoteLine.'Total Amount',\r\n                    IGST: LookUp('HSN Masters',Name=LookUp(TaxN,TName=Name).TName).'IGST %' * ItemQuoteLine.'Total Amount'/100,\r\n                    CGST: LookUp('HSN Masters',Name=LookUp(TaxN,TName=Name).TName).'CGST %' * ItemQuoteLine.'Total Amount'/100,\r\n                    SGST: LookUp('HSN Masters',Name=LookUp(TaxN,TName=Name).TName).'SGST %' * ItemQuoteLine.'Total Amount'/100,\r\n                    'PIGST %': LookUp('HSN Masters',Name=LookUp(TaxN,TName=Name).TName).'IGST %',\r\n                    'PSGST %': LookUp('HSN Masters',Name=LookUp(TaxN,TName=Name).TName).'SGST %',\r\n                    'PCGST %': LookUp('HSN Masters',Name=LookUp(TaxN,TName=Name).TName).'CGST %',\r\n                    Quantity: ItemQuoteLine.Quantity,\r\n                    'Unit Price': LookUp(\r\n                        OfflineProductPriceCollection,\r\n                        'Product SKU'.'Product SKU' = LookUp(\r\n                            OfflineProductSKUCollection,\r\n                            'Product SKU' = ItemQuoteLine.'Product SKU'.'Product SKU'\r\n                        ).'Product SKU'\r\n                    ).'Ex-Factory'                     \r\n                }"
                   }
@@ -23256,7 +23264,7 @@
             "level": "High"
           },
           "ruleId": "app-ErrBadSchema-ExpectedType",
-          "ruleIndex": 4
+          "ruleIndex": 5
         },
         {
           "locations": [
@@ -23273,7 +23281,7 @@
                 },
                 "region": {
                   "charLength": 2432,
-                  "charOffset": 2104,
+                  "charOffset": 2476,
                   "snippet": {
                     "text": "{\r\n                    'Quote Header': LookUp(\r\n                        'Quote Header.S',\r\n                        'Quote ID' = _VarnewQuoteHeaderResponse.'Quote ID'),\r\n                       Product: LookUp(\r\n                        OfflineProductCollection,\r\n                        Product = LookUp(\r\n                            OfflineProductSKUCollection,\r\n                            'Product SKU' = ItemQuoteLine.'Product SKU'.'Product SKU'\r\n                        ).Product.Product\r\n                    ),\r\n                    'Product SKU': LookUp(\r\n                        OfflineProductSKUCollection,\r\n                        'Product SKU' = ItemQuoteLine.'Product SKU'.'Product SKU'\r\n                    ),\r\n                    Variant: LookUp(\r\n                        OfflineProductVariantCollection,\r\n                        'Product Variants' = LookUp(\r\n                            OfflineProductSKUCollection,\r\n                            'Product SKU' = ItemQuoteLine.'Product SKU'.'Product SKU'\r\n                        ).'Product Variant'.'Product Variants'\r\n                    ),\r\n                   'Discount %':_VarnewQuoteHeaderResponse.Discount, //ItemQuoteLine.Discount,\r\n                    'Total Unit Price': ItemQuoteLine.'Total Amount',\r\n                    IGST: LookUp('HSN Masters',Name=LookUp(TaxN,TName=Name).TName).'IGST %' * ItemQuoteLine.'Total Amount'/100,\r\n                    CGST: LookUp('HSN Masters',Name=LookUp(TaxN,TName=Name).TName).'CGST %' * ItemQuoteLine.'Total Amount'/100,\r\n                    SGST: LookUp('HSN Masters',Name=LookUp(TaxN,TName=Name).TName).'SGST %' * ItemQuoteLine.'Total Amount'/100,\r\n                    'PIGST %': LookUp('HSN Masters',Name=LookUp(TaxN,TName=Name).TName).'IGST %',\r\n                    'PSGST %': LookUp('HSN Masters',Name=LookUp(TaxN,TName=Name).TName).'SGST %',\r\n                    'PCGST %': LookUp('HSN Masters',Name=LookUp(TaxN,TName=Name).TName).'CGST %',\r\n                    Quantity: ItemQuoteLine.Quantity,\r\n                    'Unit Price': LookUp(\r\n                        OfflineProductPriceCollection,\r\n                        'Product SKU'.'Product SKU' = LookUp(\r\n                            OfflineProductSKUCollection,\r\n                            'Product SKU' = ItemQuoteLine.'Product SKU'.'Product SKU'\r\n                        ).'Product SKU'\r\n                    ).'Ex-Factory'                     \r\n                }"
                   }
@@ -23297,7 +23305,7 @@
             "level": "High"
           },
           "ruleId": "app-ErrColumnMissing-ColName-ExpectedType",
-          "ruleIndex": 5
+          "ruleIndex": 6
         },
         {
           "locations": [
@@ -23314,7 +23322,7 @@
                 },
                 "region": {
                   "charLength": 2432,
-                  "charOffset": 2104,
+                  "charOffset": 2476,
                   "snippet": {
                     "text": "{\r\n                    'Quote Header': LookUp(\r\n                        'Quote Header.S',\r\n                        'Quote ID' = _VarnewQuoteHeaderResponse.'Quote ID'),\r\n                       Product: LookUp(\r\n                        OfflineProductCollection,\r\n                        Product = LookUp(\r\n                            OfflineProductSKUCollection,\r\n                            'Product SKU' = ItemQuoteLine.'Product SKU'.'Product SKU'\r\n                        ).Product.Product\r\n                    ),\r\n                    'Product SKU': LookUp(\r\n                        OfflineProductSKUCollection,\r\n                        'Product SKU' = ItemQuoteLine.'Product SKU'.'Product SKU'\r\n                    ),\r\n                    Variant: LookUp(\r\n                        OfflineProductVariantCollection,\r\n                        'Product Variants' = LookUp(\r\n                            OfflineProductSKUCollection,\r\n                            'Product SKU' = ItemQuoteLine.'Product SKU'.'Product SKU'\r\n                        ).'Product Variant'.'Product Variants'\r\n                    ),\r\n                   'Discount %':_VarnewQuoteHeaderResponse.Discount, //ItemQuoteLine.Discount,\r\n                    'Total Unit Price': ItemQuoteLine.'Total Amount',\r\n                    IGST: LookUp('HSN Masters',Name=LookUp(TaxN,TName=Name).TName).'IGST %' * ItemQuoteLine.'Total Amount'/100,\r\n                    CGST: LookUp('HSN Masters',Name=LookUp(TaxN,TName=Name).TName).'CGST %' * ItemQuoteLine.'Total Amount'/100,\r\n                    SGST: LookUp('HSN Masters',Name=LookUp(TaxN,TName=Name).TName).'SGST %' * ItemQuoteLine.'Total Amount'/100,\r\n                    'PIGST %': LookUp('HSN Masters',Name=LookUp(TaxN,TName=Name).TName).'IGST %',\r\n                    'PSGST %': LookUp('HSN Masters',Name=LookUp(TaxN,TName=Name).TName).'SGST %',\r\n                    'PCGST %': LookUp('HSN Masters',Name=LookUp(TaxN,TName=Name).TName).'CGST %',\r\n                    Quantity: ItemQuoteLine.Quantity,\r\n                    'Unit Price': LookUp(\r\n                        OfflineProductPriceCollection,\r\n                        'Product SKU'.'Product SKU' = LookUp(\r\n                            OfflineProductSKUCollection,\r\n                            'Product SKU' = ItemQuoteLine.'Product SKU'.'Product SKU'\r\n                        ).'Product SKU'\r\n                    ).'Ex-Factory'                     \r\n                }"
                   }
@@ -23337,7 +23345,7 @@
             "level": "High"
           },
           "ruleId": "app-ErrBadSchema-ExpectedType",
-          "ruleIndex": 4
+          "ruleIndex": 5
         },
         {
           "locations": [
@@ -23354,7 +23362,7 @@
                 },
                 "region": {
                   "charLength": 2432,
-                  "charOffset": 2104,
+                  "charOffset": 2476,
                   "snippet": {
                     "text": "{\r\n                    'Quote Header': LookUp(\r\n                        'Quote Header.S',\r\n                        'Quote ID' = _VarnewQuoteHeaderResponse.'Quote ID'),\r\n                       Product: LookUp(\r\n                        OfflineProductCollection,\r\n                        Product = LookUp(\r\n                            OfflineProductSKUCollection,\r\n                            'Product SKU' = ItemQuoteLine.'Product SKU'.'Product SKU'\r\n                        ).Product.Product\r\n                    ),\r\n                    'Product SKU': LookUp(\r\n                        OfflineProductSKUCollection,\r\n                        'Product SKU' = ItemQuoteLine.'Product SKU'.'Product SKU'\r\n                    ),\r\n                    Variant: LookUp(\r\n                        OfflineProductVariantCollection,\r\n                        'Product Variants' = LookUp(\r\n                            OfflineProductSKUCollection,\r\n                            'Product SKU' = ItemQuoteLine.'Product SKU'.'Product SKU'\r\n                        ).'Product Variant'.'Product Variants'\r\n                    ),\r\n                   'Discount %':_VarnewQuoteHeaderResponse.Discount, //ItemQuoteLine.Discount,\r\n                    'Total Unit Price': ItemQuoteLine.'Total Amount',\r\n                    IGST: LookUp('HSN Masters',Name=LookUp(TaxN,TName=Name).TName).'IGST %' * ItemQuoteLine.'Total Amount'/100,\r\n                    CGST: LookUp('HSN Masters',Name=LookUp(TaxN,TName=Name).TName).'CGST %' * ItemQuoteLine.'Total Amount'/100,\r\n                    SGST: LookUp('HSN Masters',Name=LookUp(TaxN,TName=Name).TName).'SGST %' * ItemQuoteLine.'Total Amount'/100,\r\n                    'PIGST %': LookUp('HSN Masters',Name=LookUp(TaxN,TName=Name).TName).'IGST %',\r\n                    'PSGST %': LookUp('HSN Masters',Name=LookUp(TaxN,TName=Name).TName).'SGST %',\r\n                    'PCGST %': LookUp('HSN Masters',Name=LookUp(TaxN,TName=Name).TName).'CGST %',\r\n                    Quantity: ItemQuoteLine.Quantity,\r\n                    'Unit Price': LookUp(\r\n                        OfflineProductPriceCollection,\r\n                        'Product SKU'.'Product SKU' = LookUp(\r\n                            OfflineProductSKUCollection,\r\n                            'Product SKU' = ItemQuoteLine.'Product SKU'.'Product SKU'\r\n                        ).'Product SKU'\r\n                    ).'Ex-Factory'                     \r\n                }"
                   }
@@ -23378,7 +23386,7 @@
             "level": "High"
           },
           "ruleId": "app-ErrColumnMissing-ColName-ExpectedType",
-          "ruleIndex": 5
+          "ruleIndex": 6
         },
         {
           "locations": [
@@ -23395,7 +23403,7 @@
                 },
                 "region": {
                   "charLength": 2432,
-                  "charOffset": 2104,
+                  "charOffset": 2476,
                   "snippet": {
                     "text": "{\r\n                    'Quote Header': LookUp(\r\n                        'Quote Header.S',\r\n                        'Quote ID' = _VarnewQuoteHeaderResponse.'Quote ID'),\r\n                       Product: LookUp(\r\n                        OfflineProductCollection,\r\n                        Product = LookUp(\r\n                            OfflineProductSKUCollection,\r\n                            'Product SKU' = ItemQuoteLine.'Product SKU'.'Product SKU'\r\n                        ).Product.Product\r\n                    ),\r\n                    'Product SKU': LookUp(\r\n                        OfflineProductSKUCollection,\r\n                        'Product SKU' = ItemQuoteLine.'Product SKU'.'Product SKU'\r\n                    ),\r\n                    Variant: LookUp(\r\n                        OfflineProductVariantCollection,\r\n                        'Product Variants' = LookUp(\r\n                            OfflineProductSKUCollection,\r\n                            'Product SKU' = ItemQuoteLine.'Product SKU'.'Product SKU'\r\n                        ).'Product Variant'.'Product Variants'\r\n                    ),\r\n                   'Discount %':_VarnewQuoteHeaderResponse.Discount, //ItemQuoteLine.Discount,\r\n                    'Total Unit Price': ItemQuoteLine.'Total Amount',\r\n                    IGST: LookUp('HSN Masters',Name=LookUp(TaxN,TName=Name).TName).'IGST %' * ItemQuoteLine.'Total Amount'/100,\r\n                    CGST: LookUp('HSN Masters',Name=LookUp(TaxN,TName=Name).TName).'CGST %' * ItemQuoteLine.'Total Amount'/100,\r\n                    SGST: LookUp('HSN Masters',Name=LookUp(TaxN,TName=Name).TName).'SGST %' * ItemQuoteLine.'Total Amount'/100,\r\n                    'PIGST %': LookUp('HSN Masters',Name=LookUp(TaxN,TName=Name).TName).'IGST %',\r\n                    'PSGST %': LookUp('HSN Masters',Name=LookUp(TaxN,TName=Name).TName).'SGST %',\r\n                    'PCGST %': LookUp('HSN Masters',Name=LookUp(TaxN,TName=Name).TName).'CGST %',\r\n                    Quantity: ItemQuoteLine.Quantity,\r\n                    'Unit Price': LookUp(\r\n                        OfflineProductPriceCollection,\r\n                        'Product SKU'.'Product SKU' = LookUp(\r\n                            OfflineProductSKUCollection,\r\n                            'Product SKU' = ItemQuoteLine.'Product SKU'.'Product SKU'\r\n                        ).'Product SKU'\r\n                    ).'Ex-Factory'                     \r\n                }"
                   }
@@ -23418,7 +23426,7 @@
             "level": "High"
           },
           "ruleId": "app-ErrBadSchema-ExpectedType",
-          "ruleIndex": 4
+          "ruleIndex": 5
         },
         {
           "locations": [
@@ -23435,7 +23443,7 @@
                 },
                 "region": {
                   "charLength": 2432,
-                  "charOffset": 2104,
+                  "charOffset": 2476,
                   "snippet": {
                     "text": "{\r\n                    'Quote Header': LookUp(\r\n                        'Quote Header.S',\r\n                        'Quote ID' = _VarnewQuoteHeaderResponse.'Quote ID'),\r\n                       Product: LookUp(\r\n                        OfflineProductCollection,\r\n                        Product = LookUp(\r\n                            OfflineProductSKUCollection,\r\n                            'Product SKU' = ItemQuoteLine.'Product SKU'.'Product SKU'\r\n                        ).Product.Product\r\n                    ),\r\n                    'Product SKU': LookUp(\r\n                        OfflineProductSKUCollection,\r\n                        'Product SKU' = ItemQuoteLine.'Product SKU'.'Product SKU'\r\n                    ),\r\n                    Variant: LookUp(\r\n                        OfflineProductVariantCollection,\r\n                        'Product Variants' = LookUp(\r\n                            OfflineProductSKUCollection,\r\n                            'Product SKU' = ItemQuoteLine.'Product SKU'.'Product SKU'\r\n                        ).'Product Variant'.'Product Variants'\r\n                    ),\r\n                   'Discount %':_VarnewQuoteHeaderResponse.Discount, //ItemQuoteLine.Discount,\r\n                    'Total Unit Price': ItemQuoteLine.'Total Amount',\r\n                    IGST: LookUp('HSN Masters',Name=LookUp(TaxN,TName=Name).TName).'IGST %' * ItemQuoteLine.'Total Amount'/100,\r\n                    CGST: LookUp('HSN Masters',Name=LookUp(TaxN,TName=Name).TName).'CGST %' * ItemQuoteLine.'Total Amount'/100,\r\n                    SGST: LookUp('HSN Masters',Name=LookUp(TaxN,TName=Name).TName).'SGST %' * ItemQuoteLine.'Total Amount'/100,\r\n                    'PIGST %': LookUp('HSN Masters',Name=LookUp(TaxN,TName=Name).TName).'IGST %',\r\n                    'PSGST %': LookUp('HSN Masters',Name=LookUp(TaxN,TName=Name).TName).'SGST %',\r\n                    'PCGST %': LookUp('HSN Masters',Name=LookUp(TaxN,TName=Name).TName).'CGST %',\r\n                    Quantity: ItemQuoteLine.Quantity,\r\n                    'Unit Price': LookUp(\r\n                        OfflineProductPriceCollection,\r\n                        'Product SKU'.'Product SKU' = LookUp(\r\n                            OfflineProductSKUCollection,\r\n                            'Product SKU' = ItemQuoteLine.'Product SKU'.'Product SKU'\r\n                        ).'Product SKU'\r\n                    ).'Ex-Factory'                     \r\n                }"
                   }
@@ -23459,7 +23467,167 @@
             "level": "High"
           },
           "ruleId": "app-ErrColumnMissing-ColName-ExpectedType",
-          "ruleIndex": 5
+          "ruleIndex": 6
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Lead Detail'.'Product Interested'.Button9_15.OnSelect"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Lead Detail'.'Product Interested'.Button9_15.OnSelect",
+                  "relativeAddress": 0
+                },
+                "region": {
+                  "charLength": 26,
+                  "charOffset": 4976,
+                  "snippet": {
+                    "text": "OfflineQuoteHeadCollection"
+                  }
+                }
+              },
+              "properties": {
+                "member": "OnSelect",
+                "module": "Lead Detail",
+                "type": "'Lead Detail'.'Product Interested'.Button9_15"
+              }
+            }
+          ],
+          "message": {
+            "arguments": [
+              "OfflineQuoteHeadCollection"
+            ],
+            "id": "issue"
+          },
+          "properties": {
+            "level": "High"
+          },
+          "ruleId": "app-ErrInvalidName",
+          "ruleIndex": 0
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Lead Detail'.'Product Interested'.Button9_15.OnSelect"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Lead Detail'.'Product Interested'.Button9_15.OnSelect",
+                  "relativeAddress": 0
+                },
+                "region": {
+                  "charLength": 173,
+                  "charOffset": 4953,
+                  "snippet": {
+                    "text": "ClearCollect(\r\n        OfflineQuoteHeadCollection,\r\n        Filter(\r\n            'Quote Header.S',\r\n            'Created By'.'Primary Email' = User().Email\r\n        )\r\n    )"
+                  }
+                }
+              },
+              "properties": {
+                "member": "OnSelect",
+                "module": "Lead Detail",
+                "type": "'Lead Detail'.'Product Interested'.Button9_15"
+              }
+            }
+          ],
+          "message": {
+            "arguments": [
+              "ClearCollect"
+            ],
+            "id": "issue"
+          },
+          "properties": {
+            "level": "High"
+          },
+          "ruleId": "app-ErrInvalidArgs-Func",
+          "ruleIndex": 1
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Lead Detail'.'Product Interested'.Button9_15.OnSelect"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Lead Detail'.'Product Interested'.Button9_15.OnSelect",
+                  "relativeAddress": 0
+                },
+                "region": {
+                  "charLength": 25,
+                  "charOffset": 5156,
+                  "snippet": {
+                    "text": "OfflineQuoteLinCollection"
+                  }
+                }
+              },
+              "properties": {
+                "member": "OnSelect",
+                "module": "Lead Detail",
+                "type": "'Lead Detail'.'Product Interested'.Button9_15"
+              }
+            }
+          ],
+          "message": {
+            "arguments": [
+              "OfflineQuoteLinCollection"
+            ],
+            "id": "issue"
+          },
+          "properties": {
+            "level": "High"
+          },
+          "ruleId": "app-ErrInvalidName",
+          "ruleIndex": 0
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Lead Detail'.'Product Interested'.Button9_15.OnSelect"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Lead Detail'.'Product Interested'.Button9_15.OnSelect",
+                  "relativeAddress": 0
+                },
+                "region": {
+                  "charLength": 80,
+                  "charOffset": 5133,
+                  "snippet": {
+                    "text": "ClearCollect(\r\n        OfflineQuoteLinCollection,\r\n        'Quote Line.S'\r\n    )"
+                  }
+                }
+              },
+              "properties": {
+                "member": "OnSelect",
+                "module": "Lead Detail",
+                "type": "'Lead Detail'.'Product Interested'.Button9_15"
+              }
+            }
+          ],
+          "message": {
+            "arguments": [
+              "ClearCollect"
+            ],
+            "id": "issue"
+          },
+          "properties": {
+            "level": "High"
+          },
+          "ruleId": "app-ErrInvalidArgs-Func",
+          "ruleIndex": 1
         },
         {
           "locations": [
@@ -25740,7 +25908,7 @@
             "level": "High"
           },
           "ruleId": "app-ErrBadType",
-          "ruleIndex": 8
+          "ruleIndex": 9
         },
         {
           "locations": [
@@ -28978,7 +29146,7 @@
             "level": "High"
           },
           "ruleId": "app-ErrColDNE-Name",
-          "ruleIndex": 9
+          "ruleIndex": 10
         },
         {
           "locations": [
@@ -29572,7 +29740,7 @@
             "level": "High"
           },
           "ruleId": "app-ErrColDNE-Name",
-          "ruleIndex": 9
+          "ruleIndex": 10
         },
         {
           "locations": [
@@ -31033,7 +31201,7 @@
             "level": "High"
           },
           "ruleId": "app-ErrColDNE-Name",
-          "ruleIndex": 9
+          "ruleIndex": 10
         },
         {
           "locations": [
@@ -31070,7 +31238,7 @@
             "level": "High"
           },
           "ruleId": "app-ErrSearchWrongType",
-          "ruleIndex": 10
+          "ruleIndex": 11
         },
         {
           "locations": [
@@ -31271,6 +31439,207 @@
           },
           "ruleId": "app-ErrInvalidName",
           "ruleIndex": 0
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Lead Detail'.'Quotes Cont'.'Order Gallery_1'.Button9_16.OnSelect"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Lead Detail'.'Quotes Cont'.'Order Gallery_1'.Button9_16.OnSelect",
+                  "relativeAddress": 0
+                },
+                "region": {
+                  "charLength": 26,
+                  "charOffset": 345,
+                  "snippet": {
+                    "text": "OfflineQuoteHeadCollection"
+                  }
+                }
+              },
+              "properties": {
+                "member": "OnSelect",
+                "module": "Lead Detail",
+                "type": "'Lead Detail'.'Quotes Cont'.'Order Gallery_1'.Button9_16"
+              }
+            }
+          ],
+          "message": {
+            "arguments": [
+              "OfflineQuoteHeadCollection"
+            ],
+            "id": "issue"
+          },
+          "properties": {
+            "level": "High"
+          },
+          "ruleId": "app-ErrInvalidName",
+          "ruleIndex": 0
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Lead Detail'.'Quotes Cont'.'Order Gallery_1'.Button9_16.OnSelect"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Lead Detail'.'Quotes Cont'.'Order Gallery_1'.Button9_16.OnSelect",
+                  "relativeAddress": 0
+                },
+                "region": {
+                  "charLength": 93,
+                  "charOffset": 328,
+                  "snippet": {
+                    "text": "LookUp(\r\n        OfflineQuoteHeadCollection,\r\n        'Quote ID' = ThisItem.'Quote ID'\r\n    )"
+                  }
+                }
+              },
+              "properties": {
+                "member": "OnSelect",
+                "module": "Lead Detail",
+                "type": "'Lead Detail'.'Quotes Cont'.'Order Gallery_1'.Button9_16"
+              }
+            }
+          ],
+          "message": {
+            "arguments": [
+              "LookUp"
+            ],
+            "id": "issue"
+          },
+          "properties": {
+            "level": "High"
+          },
+          "ruleId": "app-ErrInvalidArgs-Func",
+          "ruleIndex": 1
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Lead Detail'.'Quotes Cont'.'Order Gallery_1'.Button9_16.OnSelect"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Lead Detail'.'Quotes Cont'.'Order Gallery_1'.Button9_16.OnSelect",
+                  "relativeAddress": 0
+                },
+                "region": {
+                  "charLength": 10,
+                  "charOffset": 382,
+                  "snippet": {
+                    "text": "'Quote ID'"
+                  }
+                }
+              },
+              "properties": {
+                "member": "OnSelect",
+                "module": "Lead Detail",
+                "type": "'Lead Detail'.'Quotes Cont'.'Order Gallery_1'.Button9_16"
+              }
+            }
+          ],
+          "message": {
+            "arguments": [
+              "Quote ID"
+            ],
+            "id": "issue"
+          },
+          "properties": {
+            "level": "High"
+          },
+          "ruleId": "app-ErrInvalidName",
+          "ruleIndex": 0
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Lead Detail'.'Quotes Cont'.'Order Gallery_1'.Button9_16.OnSelect"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Lead Detail'.'Quotes Cont'.'Order Gallery_1'.Button9_16.OnSelect",
+                  "relativeAddress": 0
+                },
+                "region": {
+                  "charLength": 1,
+                  "charOffset": 393,
+                  "snippet": {
+                    "text": "="
+                  }
+                }
+              },
+              "properties": {
+                "member": "OnSelect",
+                "module": "Lead Detail",
+                "type": "'Lead Detail'.'Quotes Cont'.'Order Gallery_1'.Button9_16"
+              }
+            }
+          ],
+          "message": {
+            "arguments": [
+              "Error",
+              "Text"
+            ],
+            "id": "issue"
+          },
+          "properties": {
+            "level": "High"
+          },
+          "ruleId": "app-ErrIncompatibleTypesForEquality-Left-Right",
+          "ruleIndex": 3
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Lead Detail'.'Quotes Cont'.'Order Gallery_1'.Button9_16.OnSelect"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Lead Detail'.'Quotes Cont'.'Order Gallery_1'.Button9_16.OnSelect",
+                  "relativeAddress": 0
+                },
+                "region": {
+                  "charLength": 207,
+                  "charOffset": 293,
+                  "snippet": {
+                    "text": "Patch(\r\n    'Quote Header.S',\r\n    LookUp(\r\n        OfflineQuoteHeadCollection,\r\n        'Quote ID' = ThisItem.'Quote ID'\r\n    ),\r\n    {'Approval Status': ApprovalChoiceQuoteHeader.'Pending for Approval'}\r\n)"
+                  }
+                }
+              },
+              "properties": {
+                "member": "OnSelect",
+                "module": "Lead Detail",
+                "type": "'Lead Detail'.'Quotes Cont'.'Order Gallery_1'.Button9_16"
+              }
+            }
+          ],
+          "message": {
+            "arguments": [
+              "Patch"
+            ],
+            "id": "issue"
+          },
+          "properties": {
+            "level": "High"
+          },
+          "ruleId": "app-ErrInvalidArgs-Func",
+          "ruleIndex": 1
         },
         {
           "locations": [
@@ -33896,7 +34265,7 @@
             "level": "High"
           },
           "ruleId": "app-ErrTableDoesNotAcceptThisType",
-          "ruleIndex": 11
+          "ruleIndex": 12
         },
         {
           "locations": [
@@ -33933,7 +34302,7 @@
             "level": "High"
           },
           "ruleId": "app-ErrTableDoesNotAcceptThisType",
-          "ruleIndex": 11
+          "ruleIndex": 12
         },
         {
           "locations": [
@@ -33970,7 +34339,7 @@
             "level": "High"
           },
           "ruleId": "app-ErrTableDoesNotAcceptThisType",
-          "ruleIndex": 11
+          "ruleIndex": 12
         },
         {
           "locations": [
@@ -34007,7 +34376,7 @@
             "level": "High"
           },
           "ruleId": "app-ErrTableDoesNotAcceptThisType",
-          "ruleIndex": 11
+          "ruleIndex": 12
         },
         {
           "locations": [
@@ -34244,7 +34613,7 @@
             "level": "High"
           },
           "ruleId": "app-ErrTableDoesNotAcceptThisType",
-          "ruleIndex": 11
+          "ruleIndex": 12
         },
         {
           "locations": [
@@ -34281,7 +34650,7 @@
             "level": "High"
           },
           "ruleId": "app-ErrTableDoesNotAcceptThisType",
-          "ruleIndex": 11
+          "ruleIndex": 12
         },
         {
           "locations": [
@@ -34318,7 +34687,7 @@
             "level": "High"
           },
           "ruleId": "app-ErrTableDoesNotAcceptThisType",
-          "ruleIndex": 11
+          "ruleIndex": 12
         },
         {
           "locations": [
@@ -34355,7 +34724,7 @@
             "level": "High"
           },
           "ruleId": "app-ErrTableDoesNotAcceptThisType",
-          "ruleIndex": 11
+          "ruleIndex": 12
         },
         {
           "locations": [
@@ -38164,7 +38533,7 @@
             "level": "High"
           },
           "ruleId": "app-ErrColumnDoesNotExist-Name-Similar",
-          "ruleIndex": 12
+          "ruleIndex": 13
         },
         {
           "locations": [
@@ -38286,7 +38655,7 @@
             "level": "High"
           },
           "ruleId": "app-ErrTypeError-Arg-Expected-Found",
-          "ruleIndex": 13
+          "ruleIndex": 14
         },
         {
           "locations": [
@@ -38363,7 +38732,7 @@
             "level": "High"
           },
           "ruleId": "app-ErrBadType",
-          "ruleIndex": 8
+          "ruleIndex": 9
         },
         {
           "locations": [
@@ -38448,6 +38817,1349 @@
             {
               "logicalLocations": [
                 {
+                  "fullyQualifiedName": "'Primary Cart'.btnCnfrm.OnSelect"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Primary Cart'.btnCnfrm.OnSelect",
+                  "relativeAddress": 0
+                },
+                "region": {
+                  "charLength": 658,
+                  "charOffset": 6532,
+                  "snippet": {
+                    "text": "Set(\r\n    _varInvoiceResponse,\r\n    Patch(\r\n        'Invoice.S',\r\n        Defaults('Invoice.S'),\r\n        {\r\n            'Order No.': LookUp(\r\n                'Order Header.S',\r\n                'Order ID' = _VarOrderResponse.'Order ID'\r\n            ),\r\n            Party: LookUp(\r\n                OfflinePartiesCollection,\r\n                'Customer Name' = varParty\r\n            ),\r\n            'Total Discount': _VarOrderResponse.Discount,\r\n            'Total Amount': _VarOrderResponse.'Total Bill Amount',\r\n            CGST: _VarOrderResponse.CGST,\r\n            SGST: _VarOrderResponse.SGST,\r\n            IGST: _VarOrderResponse.IGST\r\n        }\r\n    )\r\n)"
+                  }
+                }
+              },
+              "properties": {
+                "member": "OnSelect",
+                "module": "Primary Cart",
+                "type": "'Primary Cart'.btnCnfrm"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "High"
+          },
+          "ruleId": "app-ErrIncompatibleCtxtVariableTypes",
+          "ruleIndex": 15
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Product List'.'Product Gallery_5'.'Variant ComboBox_7'.BorderColor"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Product List'.'Product Gallery_5'.'Variant ComboBox_7'.BorderColor",
+                  "relativeAddress": 0
+                },
+                "region": {
+                  "charLength": 16,
+                  "charOffset": 0,
+                  "snippet": {
+                    "text": "_VarGblAppColors"
+                  }
+                }
+              },
+              "properties": {
+                "member": "BorderColor",
+                "module": "Product List",
+                "type": "'Product List'.'Product Gallery_5'.'Variant ComboBox_7'"
+              }
+            }
+          ],
+          "message": {
+            "arguments": [
+              "_VarGblAppColors"
+            ],
+            "id": "issue"
+          },
+          "properties": {
+            "level": "High"
+          },
+          "ruleId": "app-ErrInvalidName",
+          "ruleIndex": 0
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Product List'.'Product Gallery_5'.'Variant ComboBox_7'.BorderColor"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Product List'.'Product Gallery_5'.'Variant ComboBox_7'.BorderColor",
+                  "relativeAddress": 0
+                },
+                "region": {
+                  "charLength": 14,
+                  "charOffset": 16,
+                  "snippet": {
+                    "text": ".SecondaryText"
+                  }
+                }
+              },
+              "properties": {
+                "member": "BorderColor",
+                "module": "Product List",
+                "type": "'Product List'.'Product Gallery_5'.'Variant ComboBox_7'"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "High"
+          },
+          "ruleId": "app-ErrInvalidDot",
+          "ruleIndex": 2
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Product List'.'Product Gallery_5'.'Variant ComboBox_7'.DisabledColor"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Product List'.'Product Gallery_5'.'Variant ComboBox_7'.DisabledColor",
+                  "relativeAddress": 0
+                },
+                "region": {
+                  "charLength": 16,
+                  "charOffset": 0,
+                  "snippet": {
+                    "text": "_VarGblAppColors"
+                  }
+                }
+              },
+              "properties": {
+                "member": "DisabledColor",
+                "module": "Product List",
+                "type": "'Product List'.'Product Gallery_5'.'Variant ComboBox_7'"
+              }
+            }
+          ],
+          "message": {
+            "arguments": [
+              "_VarGblAppColors"
+            ],
+            "id": "issue"
+          },
+          "properties": {
+            "level": "High"
+          },
+          "ruleId": "app-ErrInvalidName",
+          "ruleIndex": 0
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Product List'.'Product Gallery_5'.'Variant ComboBox_7'.DisabledColor"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Product List'.'Product Gallery_5'.'Variant ComboBox_7'.DisabledColor",
+                  "relativeAddress": 0
+                },
+                "region": {
+                  "charLength": 14,
+                  "charOffset": 16,
+                  "snippet": {
+                    "text": ".SecondaryText"
+                  }
+                }
+              },
+              "properties": {
+                "member": "DisabledColor",
+                "module": "Product List",
+                "type": "'Product List'.'Product Gallery_5'.'Variant ComboBox_7'"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "High"
+          },
+          "ruleId": "app-ErrInvalidDot",
+          "ruleIndex": 2
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Product List'.'Product Gallery_5'.'Variant ComboBox_7'.Size"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Product List'.'Product Gallery_5'.'Variant ComboBox_7'.Size",
+                  "relativeAddress": 0
+                },
+                "region": {
+                  "charLength": 15,
+                  "charOffset": 0,
+                  "snippet": {
+                    "text": "_VarGblAppFonts"
+                  }
+                }
+              },
+              "properties": {
+                "member": "Size",
+                "module": "Product List",
+                "type": "'Product List'.'Product Gallery_5'.'Variant ComboBox_7'"
+              }
+            }
+          ],
+          "message": {
+            "arguments": [
+              "_VarGblAppFonts"
+            ],
+            "id": "issue"
+          },
+          "properties": {
+            "level": "High"
+          },
+          "ruleId": "app-ErrInvalidName",
+          "ruleIndex": 0
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Product List'.'Product Gallery_5'.'Variant ComboBox_7'.Size"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Product List'.'Product Gallery_5'.'Variant ComboBox_7'.Size",
+                  "relativeAddress": 0
+                },
+                "region": {
+                  "charLength": 5,
+                  "charOffset": 15,
+                  "snippet": {
+                    "text": ".Size"
+                  }
+                }
+              },
+              "properties": {
+                "member": "Size",
+                "module": "Product List",
+                "type": "'Product List'.'Product Gallery_5'.'Variant ComboBox_7'"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "High"
+          },
+          "ruleId": "app-ErrInvalidDot",
+          "ruleIndex": 2
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Product List'.'Product Gallery_5'.'Variant ComboBox_7'.Size"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Product List'.'Product Gallery_5'.'Variant ComboBox_7'.Size",
+                  "relativeAddress": 0
+                },
+                "region": {
+                  "charLength": 7,
+                  "charOffset": 20,
+                  "snippet": {
+                    "text": ".Medium"
+                  }
+                }
+              },
+              "properties": {
+                "member": "Size",
+                "module": "Product List",
+                "type": "'Product List'.'Product Gallery_5'.'Variant ComboBox_7'"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "High"
+          },
+          "ruleId": "app-ErrInvalidDot",
+          "ruleIndex": 2
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Product List'.'Product Gallery_5'.'Variant ComboBox_7'.Color"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Product List'.'Product Gallery_5'.'Variant ComboBox_7'.Color",
+                  "relativeAddress": 0
+                },
+                "region": {
+                  "charLength": 16,
+                  "charOffset": 0,
+                  "snippet": {
+                    "text": "_VarGblAppColors"
+                  }
+                }
+              },
+              "properties": {
+                "member": "Color",
+                "module": "Product List",
+                "type": "'Product List'.'Product Gallery_5'.'Variant ComboBox_7'"
+              }
+            }
+          ],
+          "message": {
+            "arguments": [
+              "_VarGblAppColors"
+            ],
+            "id": "issue"
+          },
+          "properties": {
+            "level": "High"
+          },
+          "ruleId": "app-ErrInvalidName",
+          "ruleIndex": 0
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Product List'.'Product Gallery_5'.'Variant ComboBox_7'.Color"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Product List'.'Product Gallery_5'.'Variant ComboBox_7'.Color",
+                  "relativeAddress": 0
+                },
+                "region": {
+                  "charLength": 12,
+                  "charOffset": 16,
+                  "snippet": {
+                    "text": ".PrimaryText"
+                  }
+                }
+              },
+              "properties": {
+                "member": "Color",
+                "module": "Product List",
+                "type": "'Product List'.'Product Gallery_5'.'Variant ComboBox_7'"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "High"
+          },
+          "ruleId": "app-ErrInvalidDot",
+          "ruleIndex": 2
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Product List'.'Product Gallery_5'.'Variant ComboBox_7'.SelectionTagColor"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Product List'.'Product Gallery_5'.'Variant ComboBox_7'.SelectionTagColor",
+                  "relativeAddress": 0
+                },
+                "region": {
+                  "charLength": 16,
+                  "charOffset": 0,
+                  "snippet": {
+                    "text": "_VarGblAppColors"
+                  }
+                }
+              },
+              "properties": {
+                "member": "SelectionTagColor",
+                "module": "Product List",
+                "type": "'Product List'.'Product Gallery_5'.'Variant ComboBox_7'"
+              }
+            }
+          ],
+          "message": {
+            "arguments": [
+              "_VarGblAppColors"
+            ],
+            "id": "issue"
+          },
+          "properties": {
+            "level": "High"
+          },
+          "ruleId": "app-ErrInvalidName",
+          "ruleIndex": 0
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Product List'.'Product Gallery_5'.'Variant ComboBox_7'.SelectionTagColor"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Product List'.'Product Gallery_5'.'Variant ComboBox_7'.SelectionTagColor",
+                  "relativeAddress": 0
+                },
+                "region": {
+                  "charLength": 12,
+                  "charOffset": 16,
+                  "snippet": {
+                    "text": ".PrimaryText"
+                  }
+                }
+              },
+              "properties": {
+                "member": "SelectionTagColor",
+                "module": "Product List",
+                "type": "'Product List'.'Product Gallery_5'.'Variant ComboBox_7'"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "High"
+          },
+          "ruleId": "app-ErrInvalidDot",
+          "ruleIndex": 2
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Product List'.'Product Gallery_5'.'Variant ComboBox_7'.SelectionTagFill"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Product List'.'Product Gallery_5'.'Variant ComboBox_7'.SelectionTagFill",
+                  "relativeAddress": 0
+                },
+                "region": {
+                  "charLength": 16,
+                  "charOffset": 0,
+                  "snippet": {
+                    "text": "_VarGblAppColors"
+                  }
+                }
+              },
+              "properties": {
+                "member": "SelectionTagFill",
+                "module": "Product List",
+                "type": "'Product List'.'Product Gallery_5'.'Variant ComboBox_7'"
+              }
+            }
+          ],
+          "message": {
+            "arguments": [
+              "_VarGblAppColors"
+            ],
+            "id": "issue"
+          },
+          "properties": {
+            "level": "High"
+          },
+          "ruleId": "app-ErrInvalidName",
+          "ruleIndex": 0
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Product List'.'Product Gallery_5'.'Variant ComboBox_7'.SelectionTagFill"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Product List'.'Product Gallery_5'.'Variant ComboBox_7'.SelectionTagFill",
+                  "relativeAddress": 0
+                },
+                "region": {
+                  "charLength": 16,
+                  "charOffset": 16,
+                  "snippet": {
+                    "text": ".BackgroundColor"
+                  }
+                }
+              },
+              "properties": {
+                "member": "SelectionTagFill",
+                "module": "Product List",
+                "type": "'Product List'.'Product Gallery_5'.'Variant ComboBox_7'"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "High"
+          },
+          "ruleId": "app-ErrInvalidDot",
+          "ruleIndex": 2
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Product List'.'Product Gallery_5'.'Variant ComboBox_7'.ChevronFill"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Product List'.'Product Gallery_5'.'Variant ComboBox_7'.ChevronFill",
+                  "relativeAddress": 0
+                },
+                "region": {
+                  "charLength": 16,
+                  "charOffset": 0,
+                  "snippet": {
+                    "text": "_VarGblAppColors"
+                  }
+                }
+              },
+              "properties": {
+                "member": "ChevronFill",
+                "module": "Product List",
+                "type": "'Product List'.'Product Gallery_5'.'Variant ComboBox_7'"
+              }
+            }
+          ],
+          "message": {
+            "arguments": [
+              "_VarGblAppColors"
+            ],
+            "id": "issue"
+          },
+          "properties": {
+            "level": "High"
+          },
+          "ruleId": "app-ErrInvalidName",
+          "ruleIndex": 0
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Product List'.'Product Gallery_5'.'Variant ComboBox_7'.ChevronFill"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Product List'.'Product Gallery_5'.'Variant ComboBox_7'.ChevronFill",
+                  "relativeAddress": 0
+                },
+                "region": {
+                  "charLength": 14,
+                  "charOffset": 16,
+                  "snippet": {
+                    "text": ".SecondaryText"
+                  }
+                }
+              },
+              "properties": {
+                "member": "ChevronFill",
+                "module": "Product List",
+                "type": "'Product List'.'Product Gallery_5'.'Variant ComboBox_7'"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "High"
+          },
+          "ruleId": "app-ErrInvalidDot",
+          "ruleIndex": 2
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Product List'.'Product Gallery_5'.'Variant ComboBox_7'.SelectionColor"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Product List'.'Product Gallery_5'.'Variant ComboBox_7'.SelectionColor",
+                  "relativeAddress": 0
+                },
+                "region": {
+                  "charLength": 16,
+                  "charOffset": 0,
+                  "snippet": {
+                    "text": "_VarGblAppColors"
+                  }
+                }
+              },
+              "properties": {
+                "member": "SelectionColor",
+                "module": "Product List",
+                "type": "'Product List'.'Product Gallery_5'.'Variant ComboBox_7'"
+              }
+            }
+          ],
+          "message": {
+            "arguments": [
+              "_VarGblAppColors"
+            ],
+            "id": "issue"
+          },
+          "properties": {
+            "level": "High"
+          },
+          "ruleId": "app-ErrInvalidName",
+          "ruleIndex": 0
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Product List'.'Product Gallery_5'.'Variant ComboBox_7'.SelectionColor"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Product List'.'Product Gallery_5'.'Variant ComboBox_7'.SelectionColor",
+                  "relativeAddress": 0
+                },
+                "region": {
+                  "charLength": 12,
+                  "charOffset": 16,
+                  "snippet": {
+                    "text": ".PrimaryText"
+                  }
+                }
+              },
+              "properties": {
+                "member": "SelectionColor",
+                "module": "Product List",
+                "type": "'Product List'.'Product Gallery_5'.'Variant ComboBox_7'"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "High"
+          },
+          "ruleId": "app-ErrInvalidDot",
+          "ruleIndex": 2
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Product List'.'Product Gallery_5'.'Product Price Lbl_21'.Size"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Product List'.'Product Gallery_5'.'Product Price Lbl_21'.Size",
+                  "relativeAddress": 0
+                },
+                "region": {
+                  "charLength": 15,
+                  "charOffset": 0,
+                  "snippet": {
+                    "text": "_VarGblAppFonts"
+                  }
+                }
+              },
+              "properties": {
+                "member": "Size",
+                "module": "Product List",
+                "type": "'Product List'.'Product Gallery_5'.'Product Price Lbl_21'"
+              }
+            }
+          ],
+          "message": {
+            "arguments": [
+              "_VarGblAppFonts"
+            ],
+            "id": "issue"
+          },
+          "properties": {
+            "level": "High"
+          },
+          "ruleId": "app-ErrInvalidName",
+          "ruleIndex": 0
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Product List'.'Product Gallery_5'.'Product Price Lbl_21'.Size"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Product List'.'Product Gallery_5'.'Product Price Lbl_21'.Size",
+                  "relativeAddress": 0
+                },
+                "region": {
+                  "charLength": 5,
+                  "charOffset": 15,
+                  "snippet": {
+                    "text": ".Size"
+                  }
+                }
+              },
+              "properties": {
+                "member": "Size",
+                "module": "Product List",
+                "type": "'Product List'.'Product Gallery_5'.'Product Price Lbl_21'"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "High"
+          },
+          "ruleId": "app-ErrInvalidDot",
+          "ruleIndex": 2
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Product List'.'Product Gallery_5'.'Product Price Lbl_21'.Size"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Product List'.'Product Gallery_5'.'Product Price Lbl_21'.Size",
+                  "relativeAddress": 0
+                },
+                "region": {
+                  "charLength": 7,
+                  "charOffset": 20,
+                  "snippet": {
+                    "text": ".Medium"
+                  }
+                }
+              },
+              "properties": {
+                "member": "Size",
+                "module": "Product List",
+                "type": "'Product List'.'Product Gallery_5'.'Product Price Lbl_21'"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "High"
+          },
+          "ruleId": "app-ErrInvalidDot",
+          "ruleIndex": 2
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Product List'.'Product Gallery_5'.'Product Price Lbl_21'.Color"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Product List'.'Product Gallery_5'.'Product Price Lbl_21'.Color",
+                  "relativeAddress": 0
+                },
+                "region": {
+                  "charLength": 16,
+                  "charOffset": 0,
+                  "snippet": {
+                    "text": "_VarGblAppColors"
+                  }
+                }
+              },
+              "properties": {
+                "member": "Color",
+                "module": "Product List",
+                "type": "'Product List'.'Product Gallery_5'.'Product Price Lbl_21'"
+              }
+            }
+          ],
+          "message": {
+            "arguments": [
+              "_VarGblAppColors"
+            ],
+            "id": "issue"
+          },
+          "properties": {
+            "level": "High"
+          },
+          "ruleId": "app-ErrInvalidName",
+          "ruleIndex": 0
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Product List'.'Product Gallery_5'.'Product Price Lbl_21'.Color"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Product List'.'Product Gallery_5'.'Product Price Lbl_21'.Color",
+                  "relativeAddress": 0
+                },
+                "region": {
+                  "charLength": 11,
+                  "charOffset": 16,
+                  "snippet": {
+                    "text": ".PrimaryRed"
+                  }
+                }
+              },
+              "properties": {
+                "member": "Color",
+                "module": "Product List",
+                "type": "'Product List'.'Product Gallery_5'.'Product Price Lbl_21'"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "High"
+          },
+          "ruleId": "app-ErrInvalidDot",
+          "ruleIndex": 2
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Product List'.'Product Gallery_5'.'Product Price Lbl_20'.Color"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Product List'.'Product Gallery_5'.'Product Price Lbl_20'.Color",
+                  "relativeAddress": 0
+                },
+                "region": {
+                  "charLength": 16,
+                  "charOffset": 91,
+                  "snippet": {
+                    "text": "_VarGblAppColors"
+                  }
+                }
+              },
+              "properties": {
+                "member": "Color",
+                "module": "Product List",
+                "type": "'Product List'.'Product Gallery_5'.'Product Price Lbl_20'"
+              }
+            }
+          ],
+          "message": {
+            "arguments": [
+              "_VarGblAppColors"
+            ],
+            "id": "issue"
+          },
+          "properties": {
+            "level": "High"
+          },
+          "ruleId": "app-ErrInvalidName",
+          "ruleIndex": 0
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Product List'.'Product Gallery_5'.'Product Price Lbl_20'.Color"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Product List'.'Product Gallery_5'.'Product Price Lbl_20'.Color",
+                  "relativeAddress": 0
+                },
+                "region": {
+                  "charLength": 11,
+                  "charOffset": 107,
+                  "snippet": {
+                    "text": ".PrimaryRed"
+                  }
+                }
+              },
+              "properties": {
+                "member": "Color",
+                "module": "Product List",
+                "type": "'Product List'.'Product Gallery_5'.'Product Price Lbl_20'"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "High"
+          },
+          "ruleId": "app-ErrInvalidDot",
+          "ruleIndex": 2
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Product List'.'Product Gallery_5'.'Product Price Lbl_20'.Color"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Product List'.'Product Gallery_5'.'Product Price Lbl_20'.Color",
+                  "relativeAddress": 0
+                },
+                "region": {
+                  "charLength": 93,
+                  "charOffset": 26,
+                  "snippet": {
+                    "text": "If('Product Discount Lbl_12'.Visible=true,RGBA(165, 162, 162, 1),_VarGblAppColors.PrimaryRed)"
+                  }
+                }
+              },
+              "properties": {
+                "member": "Color",
+                "module": "Product List",
+                "type": "'Product List'.'Product Gallery_5'.'Product Price Lbl_20'"
+              }
+            }
+          ],
+          "message": {
+            "arguments": [
+              "If"
+            ],
+            "id": "issue"
+          },
+          "properties": {
+            "level": "High"
+          },
+          "ruleId": "app-ErrInvalidArgs-Func",
+          "ruleIndex": 1
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Product List'.'Product Gallery_5'.'Product Discount Lbl_12'.Color"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Product List'.'Product Gallery_5'.'Product Discount Lbl_12'.Color",
+                  "relativeAddress": 0
+                },
+                "region": {
+                  "charLength": 16,
+                  "charOffset": 0,
+                  "snippet": {
+                    "text": "_VarGblAppColors"
+                  }
+                }
+              },
+              "properties": {
+                "member": "Color",
+                "module": "Product List",
+                "type": "'Product List'.'Product Gallery_5'.'Product Discount Lbl_12'"
+              }
+            }
+          ],
+          "message": {
+            "arguments": [
+              "_VarGblAppColors"
+            ],
+            "id": "issue"
+          },
+          "properties": {
+            "level": "High"
+          },
+          "ruleId": "app-ErrInvalidName",
+          "ruleIndex": 0
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Product List'.'Product Gallery_5'.'Product Discount Lbl_12'.Color"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Product List'.'Product Gallery_5'.'Product Discount Lbl_12'.Color",
+                  "relativeAddress": 0
+                },
+                "region": {
+                  "charLength": 11,
+                  "charOffset": 16,
+                  "snippet": {
+                    "text": ".PrimaryRed"
+                  }
+                }
+              },
+              "properties": {
+                "member": "Color",
+                "module": "Product List",
+                "type": "'Product List'.'Product Gallery_5'.'Product Discount Lbl_12'"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "High"
+          },
+          "ruleId": "app-ErrInvalidDot",
+          "ruleIndex": 2
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Product List'.'Product Gallery_5'.'Quantity Input_8'.Size"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Product List'.'Product Gallery_5'.'Quantity Input_8'.Size",
+                  "relativeAddress": 0
+                },
+                "region": {
+                  "charLength": 15,
+                  "charOffset": 0,
+                  "snippet": {
+                    "text": "_VarGblAppFonts"
+                  }
+                }
+              },
+              "properties": {
+                "member": "Size",
+                "module": "Product List",
+                "type": "'Product List'.'Product Gallery_5'.'Quantity Input_8'"
+              }
+            }
+          ],
+          "message": {
+            "arguments": [
+              "_VarGblAppFonts"
+            ],
+            "id": "issue"
+          },
+          "properties": {
+            "level": "High"
+          },
+          "ruleId": "app-ErrInvalidName",
+          "ruleIndex": 0
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Product List'.'Product Gallery_5'.'Quantity Input_8'.Size"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Product List'.'Product Gallery_5'.'Quantity Input_8'.Size",
+                  "relativeAddress": 0
+                },
+                "region": {
+                  "charLength": 5,
+                  "charOffset": 15,
+                  "snippet": {
+                    "text": ".Size"
+                  }
+                }
+              },
+              "properties": {
+                "member": "Size",
+                "module": "Product List",
+                "type": "'Product List'.'Product Gallery_5'.'Quantity Input_8'"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "High"
+          },
+          "ruleId": "app-ErrInvalidDot",
+          "ruleIndex": 2
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Product List'.'Product Gallery_5'.'Quantity Input_8'.Size"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Product List'.'Product Gallery_5'.'Quantity Input_8'.Size",
+                  "relativeAddress": 0
+                },
+                "region": {
+                  "charLength": 7,
+                  "charOffset": 20,
+                  "snippet": {
+                    "text": ".Medium"
+                  }
+                }
+              },
+              "properties": {
+                "member": "Size",
+                "module": "Product List",
+                "type": "'Product List'.'Product Gallery_5'.'Quantity Input_8'"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "High"
+          },
+          "ruleId": "app-ErrInvalidDot",
+          "ruleIndex": 2
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Product List'.'Product Gallery_5'.'Quantity Input_8'.Color"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Product List'.'Product Gallery_5'.'Quantity Input_8'.Color",
+                  "relativeAddress": 0
+                },
+                "region": {
+                  "charLength": 16,
+                  "charOffset": 0,
+                  "snippet": {
+                    "text": "_VarGblAppColors"
+                  }
+                }
+              },
+              "properties": {
+                "member": "Color",
+                "module": "Product List",
+                "type": "'Product List'.'Product Gallery_5'.'Quantity Input_8'"
+              }
+            }
+          ],
+          "message": {
+            "arguments": [
+              "_VarGblAppColors"
+            ],
+            "id": "issue"
+          },
+          "properties": {
+            "level": "High"
+          },
+          "ruleId": "app-ErrInvalidName",
+          "ruleIndex": 0
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Product List'.'Product Gallery_5'.'Quantity Input_8'.Color"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Product List'.'Product Gallery_5'.'Quantity Input_8'.Color",
+                  "relativeAddress": 0
+                },
+                "region": {
+                  "charLength": 12,
+                  "charOffset": 16,
+                  "snippet": {
+                    "text": ".PrimaryText"
+                  }
+                }
+              },
+              "properties": {
+                "member": "Color",
+                "module": "Product List",
+                "type": "'Product List'.'Product Gallery_5'.'Quantity Input_8'"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "High"
+          },
+          "ruleId": "app-ErrInvalidDot",
+          "ruleIndex": 2
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Product List'.'Product Gallery_5'.'Quantity Input_8'.BorderColor"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Product List'.'Product Gallery_5'.'Quantity Input_8'.BorderColor",
+                  "relativeAddress": 0
+                },
+                "region": {
+                  "charLength": 16,
+                  "charOffset": 0,
+                  "snippet": {
+                    "text": "_VarGblAppColors"
+                  }
+                }
+              },
+              "properties": {
+                "member": "BorderColor",
+                "module": "Product List",
+                "type": "'Product List'.'Product Gallery_5'.'Quantity Input_8'"
+              }
+            }
+          ],
+          "message": {
+            "arguments": [
+              "_VarGblAppColors"
+            ],
+            "id": "issue"
+          },
+          "properties": {
+            "level": "High"
+          },
+          "ruleId": "app-ErrInvalidName",
+          "ruleIndex": 0
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Product List'.'Product Gallery_5'.'Quantity Input_8'.BorderColor"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Product List'.'Product Gallery_5'.'Quantity Input_8'.BorderColor",
+                  "relativeAddress": 0
+                },
+                "region": {
+                  "charLength": 14,
+                  "charOffset": 16,
+                  "snippet": {
+                    "text": ".SecondaryText"
+                  }
+                }
+              },
+              "properties": {
+                "member": "BorderColor",
+                "module": "Product List",
+                "type": "'Product List'.'Product Gallery_5'.'Quantity Input_8'"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "High"
+          },
+          "ruleId": "app-ErrInvalidDot",
+          "ruleIndex": 2
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
                   "fullyQualifiedName": "'Secondary Cart'.btnCnfrm_1.OnSelect"
                 }
               ],
@@ -38522,7 +40234,7 @@
             "level": "High"
           },
           "ruleId": "app-ErrColumnDoesNotExist-Name-Similar",
-          "ruleIndex": 12
+          "ruleIndex": 13
         },
         {
           "locations": [
@@ -38644,7 +40356,7 @@
             "level": "High"
           },
           "ruleId": "app-ErrTypeError-Arg-Expected-Found",
-          "ruleIndex": 13
+          "ruleIndex": 14
         },
         {
           "locations": [
@@ -38721,7 +40433,7 @@
             "level": "High"
           },
           "ruleId": "app-ErrBadType",
-          "ruleIndex": 8
+          "ruleIndex": 9
         },
         {
           "locations": [
@@ -38806,6 +40518,43 @@
             {
               "logicalLocations": [
                 {
+                  "fullyQualifiedName": "'Secondary Cart'.btnCnfrm_1.OnSelect"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Secondary Cart'.btnCnfrm_1.OnSelect",
+                  "relativeAddress": 0
+                },
+                "region": {
+                  "charLength": 658,
+                  "charOffset": 6669,
+                  "snippet": {
+                    "text": "Set(\r\n    _varInvoiceResponse,\r\n    Patch(\r\n        'Invoice.S',\r\n        Defaults('Invoice.S'),\r\n        {\r\n            'Order No.': LookUp(\r\n                'Order Header.S',\r\n                'Order ID' = _VarOrderResponse.'Order ID'\r\n            ),\r\n            Party: LookUp(\r\n                OfflinePartiesCollection,\r\n                'Customer Name' = varParty\r\n            ),\r\n            'Total Discount': _VarOrderResponse.Discount,\r\n            'Total Amount': _VarOrderResponse.'Total Bill Amount',\r\n            CGST: _VarOrderResponse.CGST,\r\n            SGST: _VarOrderResponse.SGST,\r\n            IGST: _VarOrderResponse.IGST\r\n        }\r\n    )\r\n)"
+                  }
+                }
+              },
+              "properties": {
+                "member": "OnSelect",
+                "module": "Secondary Cart",
+                "type": "'Secondary Cart'.btnCnfrm_1"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "High"
+          },
+          "ruleId": "app-ErrIncompatibleCtxtVariableTypes",
+          "ruleIndex": 15
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
                   "fullyQualifiedName": "'New Lead List'.Button9_7.OnSelect"
                 }
               ],
@@ -38876,7 +40625,7 @@
             "level": "High"
           },
           "ruleId": "app-ErrSearchWrongType",
-          "ruleIndex": 10
+          "ruleIndex": 11
         },
         {
           "locations": [
@@ -39117,7 +40866,7 @@
             "level": "High"
           },
           "ruleId": "app-ErrIncompatibleRulePropTypes-PropKind-RuleKind",
-          "ruleIndex": 14
+          "ruleIndex": 16
         },
         {
           "locations": [
@@ -39919,6 +41668,923 @@
           },
           "ruleId": "app-ErrInvalidDot",
           "ruleIndex": 2
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Quote Info_2'.Canvas4_4.DataCard5_4.HDisc.OnChange"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Quote Info_2'.Canvas4_4.DataCard5_4.HDisc.OnChange",
+                  "relativeAddress": 0
+                },
+                "region": {
+                  "charLength": 15,
+                  "charOffset": 1235,
+                  "snippet": {
+                    "text": "'Quote Headers'"
+                  }
+                }
+              },
+              "properties": {
+                "member": "OnChange",
+                "module": "Quote Info_2",
+                "type": "'Quote Info_2'.Canvas4_4.DataCard5_4.HDisc"
+              }
+            }
+          ],
+          "message": {
+            "arguments": [
+              "Quote Headers"
+            ],
+            "id": "issue"
+          },
+          "properties": {
+            "level": "High"
+          },
+          "ruleId": "app-ErrInvalidName",
+          "ruleIndex": 0
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Quote Info_2'.Canvas4_4.DataCard5_4.HDisc.OnChange"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Quote Info_2'.Canvas4_4.DataCard5_4.HDisc.OnChange",
+                  "relativeAddress": 0
+                },
+                "region": {
+                  "charLength": 15,
+                  "charOffset": 1274,
+                  "snippet": {
+                    "text": "'Quote Headers'"
+                  }
+                }
+              },
+              "properties": {
+                "member": "OnChange",
+                "module": "Quote Info_2",
+                "type": "'Quote Info_2'.Canvas4_4.DataCard5_4.HDisc"
+              }
+            }
+          ],
+          "message": {
+            "arguments": [
+              "Quote Headers"
+            ],
+            "id": "issue"
+          },
+          "properties": {
+            "level": "High"
+          },
+          "ruleId": "app-ErrInvalidName",
+          "ruleIndex": 0
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Quote Info_2'.Canvas4_4.DataCard5_4.HDisc.OnChange"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Quote Info_2'.Canvas4_4.DataCard5_4.HDisc.OnChange",
+                  "relativeAddress": 0
+                },
+                "region": {
+                  "charLength": 100,
+                  "charOffset": 1257,
+                  "snippet": {
+                    "text": "LookUp(\r\n        'Quote Headers',\r\n        'Quote ID' = _VarnewQuoteHeaderResponse.'Quote ID'\r\n    )"
+                  }
+                }
+              },
+              "properties": {
+                "member": "OnChange",
+                "module": "Quote Info_2",
+                "type": "'Quote Info_2'.Canvas4_4.DataCard5_4.HDisc"
+              }
+            }
+          ],
+          "message": {
+            "arguments": [
+              "LookUp"
+            ],
+            "id": "issue"
+          },
+          "properties": {
+            "level": "High"
+          },
+          "ruleId": "app-ErrInvalidArgs-Func",
+          "ruleIndex": 1
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Quote Info_2'.Canvas4_4.DataCard5_4.HDisc.OnChange"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Quote Info_2'.Canvas4_4.DataCard5_4.HDisc.OnChange",
+                  "relativeAddress": 0
+                },
+                "region": {
+                  "charLength": 10,
+                  "charOffset": 1300,
+                  "snippet": {
+                    "text": "'Quote ID'"
+                  }
+                }
+              },
+              "properties": {
+                "member": "OnChange",
+                "module": "Quote Info_2",
+                "type": "'Quote Info_2'.Canvas4_4.DataCard5_4.HDisc"
+              }
+            }
+          ],
+          "message": {
+            "arguments": [
+              "Quote ID"
+            ],
+            "id": "issue"
+          },
+          "properties": {
+            "level": "High"
+          },
+          "ruleId": "app-ErrInvalidName",
+          "ruleIndex": 0
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Quote Info_2'.Canvas4_4.DataCard5_4.HDisc.OnChange"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Quote Info_2'.Canvas4_4.DataCard5_4.HDisc.OnChange",
+                  "relativeAddress": 0
+                },
+                "region": {
+                  "charLength": 1,
+                  "charOffset": 1311,
+                  "snippet": {
+                    "text": "="
+                  }
+                }
+              },
+              "properties": {
+                "member": "OnChange",
+                "module": "Quote Info_2",
+                "type": "'Quote Info_2'.Canvas4_4.DataCard5_4.HDisc"
+              }
+            }
+          ],
+          "message": {
+            "arguments": [
+              "Error",
+              "Text"
+            ],
+            "id": "issue"
+          },
+          "properties": {
+            "level": "High"
+          },
+          "ruleId": "app-ErrIncompatibleTypesForEquality-Left-Right",
+          "ruleIndex": 3
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Quote Info_2'.Canvas4_4.DataCard5_4.HDisc.OnChange"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Quote Info_2'.Canvas4_4.DataCard5_4.HDisc.OnChange",
+                  "relativeAddress": 0
+                },
+                "region": {
+                  "charLength": 486,
+                  "charOffset": 1223,
+                  "snippet": {
+                    "text": "Patch(\r\n    'Quote Headers',\r\n    LookUp(\r\n        'Quote Headers',\r\n        'Quote ID' = _VarnewQuoteHeaderResponse.'Quote ID'\r\n    ),\r\n    {'DiscountP %' : Value(HDisc.Text),\r\n    Version: If(\r\n                        IsBlank(\r\n                            _VarnewQuoteHeaderResponse.Version\r\n                        ),\r\n                        1.0,\r\n                        \r\n                        Sum(_VarnewQuoteHeaderResponse.Version + 0.1)\r\n                    )\r\n    \r\n    }\r\n)"
+                  }
+                }
+              },
+              "properties": {
+                "member": "OnChange",
+                "module": "Quote Info_2",
+                "type": "'Quote Info_2'.Canvas4_4.DataCard5_4.HDisc"
+              }
+            }
+          ],
+          "message": {
+            "arguments": [
+              "Patch"
+            ],
+            "id": "issue"
+          },
+          "properties": {
+            "level": "High"
+          },
+          "ruleId": "app-ErrInvalidArgs-Func",
+          "ruleIndex": 1
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Quote Info_2'.Canvas4_4.DataCard5_4.HDisc.OnChange"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Quote Info_2'.Canvas4_4.DataCard5_4.HDisc.OnChange",
+                  "relativeAddress": 0
+                },
+                "region": {
+                  "charLength": 342,
+                  "charOffset": 1364,
+                  "snippet": {
+                    "text": "{'DiscountP %' : Value(HDisc.Text),\r\n    Version: If(\r\n                        IsBlank(\r\n                            _VarnewQuoteHeaderResponse.Version\r\n                        ),\r\n                        1.0,\r\n                        \r\n                        Sum(_VarnewQuoteHeaderResponse.Version + 0.1)\r\n                    )\r\n    \r\n    }"
+                  }
+                }
+              },
+              "properties": {
+                "member": "OnChange",
+                "module": "Quote Info_2",
+                "type": "'Quote Info_2'.Canvas4_4.DataCard5_4.HDisc"
+              }
+            }
+          ],
+          "message": {
+            "arguments": [
+              "DiscountP %"
+            ],
+            "id": "issue"
+          },
+          "properties": {
+            "level": "High"
+          },
+          "ruleId": "app-ErrColDNE-Name",
+          "ruleIndex": 10
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Quote Info_2'.Canvas4_4.DataCard5_4.HDisc.OnChange"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Quote Info_2'.Canvas4_4.DataCard5_4.HDisc.OnChange",
+                  "relativeAddress": 0
+                },
+                "region": {
+                  "charLength": 25,
+                  "charOffset": 1754,
+                  "snippet": {
+                    "text": "OfflineQuoteLinCollection"
+                  }
+                }
+              },
+              "properties": {
+                "member": "OnChange",
+                "module": "Quote Info_2",
+                "type": "'Quote Info_2'.Canvas4_4.DataCard5_4.HDisc"
+              }
+            }
+          ],
+          "message": {
+            "arguments": [
+              "OfflineQuoteLinCollection"
+            ],
+            "id": "issue"
+          },
+          "properties": {
+            "level": "High"
+          },
+          "ruleId": "app-ErrInvalidName",
+          "ruleIndex": 0
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Quote Info_2'.Canvas4_4.DataCard5_4.HDisc.OnChange"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Quote Info_2'.Canvas4_4.DataCard5_4.HDisc.OnChange",
+                  "relativeAddress": 0
+                },
+                "region": {
+                  "charLength": 137,
+                  "charOffset": 1733,
+                  "snippet": {
+                    "text": "Filter(\r\n            OfflineQuoteLinCollection,\r\n             'Quote Header'.'Quote ID'= _VarnewQuoteHeaderResponse.'Quote ID'\r\n        )"
+                  }
+                }
+              },
+              "properties": {
+                "member": "OnChange",
+                "module": "Quote Info_2",
+                "type": "'Quote Info_2'.Canvas4_4.DataCard5_4.HDisc"
+              }
+            }
+          ],
+          "message": {
+            "arguments": [
+              "Filter"
+            ],
+            "id": "issue"
+          },
+          "properties": {
+            "level": "High"
+          },
+          "ruleId": "app-ErrInvalidArgs-Func",
+          "ruleIndex": 1
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Quote Info_2'.Canvas4_4.DataCard5_4.HDisc.OnChange"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Quote Info_2'.Canvas4_4.DataCard5_4.HDisc.OnChange",
+                  "relativeAddress": 0
+                },
+                "region": {
+                  "charLength": 14,
+                  "charOffset": 1795,
+                  "snippet": {
+                    "text": "'Quote Header'"
+                  }
+                }
+              },
+              "properties": {
+                "member": "OnChange",
+                "module": "Quote Info_2",
+                "type": "'Quote Info_2'.Canvas4_4.DataCard5_4.HDisc"
+              }
+            }
+          ],
+          "message": {
+            "arguments": [
+              "Quote Header"
+            ],
+            "id": "issue"
+          },
+          "properties": {
+            "level": "High"
+          },
+          "ruleId": "app-ErrInvalidName",
+          "ruleIndex": 0
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Quote Info_2'.Canvas4_4.DataCard5_4.HDisc.OnChange"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Quote Info_2'.Canvas4_4.DataCard5_4.HDisc.OnChange",
+                  "relativeAddress": 0
+                },
+                "region": {
+                  "charLength": 11,
+                  "charOffset": 1809,
+                  "snippet": {
+                    "text": ".'Quote ID'"
+                  }
+                }
+              },
+              "properties": {
+                "member": "OnChange",
+                "module": "Quote Info_2",
+                "type": "'Quote Info_2'.Canvas4_4.DataCard5_4.HDisc"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "High"
+          },
+          "ruleId": "app-ErrInvalidDot",
+          "ruleIndex": 2
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Quote Info_2'.Canvas4_4.DataCard5_4.HDisc.OnChange"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Quote Info_2'.Canvas4_4.DataCard5_4.HDisc.OnChange",
+                  "relativeAddress": 0
+                },
+                "region": {
+                  "charLength": 1,
+                  "charOffset": 1820,
+                  "snippet": {
+                    "text": "="
+                  }
+                }
+              },
+              "properties": {
+                "member": "OnChange",
+                "module": "Quote Info_2",
+                "type": "'Quote Info_2'.Canvas4_4.DataCard5_4.HDisc"
+              }
+            }
+          ],
+          "message": {
+            "arguments": [
+              "Error",
+              "Text"
+            ],
+            "id": "issue"
+          },
+          "properties": {
+            "level": "High"
+          },
+          "ruleId": "app-ErrIncompatibleTypesForEquality-Left-Right",
+          "ruleIndex": 3
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Quote Info_2'.Canvas4_4.DataCard5_4.HDisc.OnChange"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Quote Info_2'.Canvas4_4.DataCard5_4.HDisc.OnChange",
+                  "relativeAddress": 0
+                },
+                "region": {
+                  "charLength": 13,
+                  "charOffset": 1910,
+                  "snippet": {
+                    "text": "'Quote Lines'"
+                  }
+                }
+              },
+              "properties": {
+                "member": "OnChange",
+                "module": "Quote Info_2",
+                "type": "'Quote Info_2'.Canvas4_4.DataCard5_4.HDisc"
+              }
+            }
+          ],
+          "message": {
+            "arguments": [
+              "Quote Lines"
+            ],
+            "id": "issue"
+          },
+          "properties": {
+            "level": "High"
+          },
+          "ruleId": "app-ErrInvalidName",
+          "ruleIndex": 0
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Quote Info_2'.Canvas4_4.DataCard5_4.HDisc.OnChange"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Quote Info_2'.Canvas4_4.DataCard5_4.HDisc.OnChange",
+                  "relativeAddress": 0
+                },
+                "region": {
+                  "charLength": 13,
+                  "charOffset": 1963,
+                  "snippet": {
+                    "text": "'Quote Lines'"
+                  }
+                }
+              },
+              "properties": {
+                "member": "OnChange",
+                "module": "Quote Info_2",
+                "type": "'Quote Info_2'.Canvas4_4.DataCard5_4.HDisc"
+              }
+            }
+          ],
+          "message": {
+            "arguments": [
+              "Quote Lines"
+            ],
+            "id": "issue"
+          },
+          "properties": {
+            "level": "High"
+          },
+          "ruleId": "app-ErrInvalidName",
+          "ruleIndex": 0
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Quote Info_2'.Canvas4_4.DataCard5_4.HDisc.OnChange"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Quote Info_2'.Canvas4_4.DataCard5_4.HDisc.OnChange",
+                  "relativeAddress": 0
+                },
+                "region": {
+                  "charLength": 110,
+                  "charOffset": 1938,
+                  "snippet": {
+                    "text": "LookUp(\r\n                'Quote Lines',\r\n                'Quote Line ID' = LQID.'Quote Line ID'\r\n            )"
+                  }
+                }
+              },
+              "properties": {
+                "member": "OnChange",
+                "module": "Quote Info_2",
+                "type": "'Quote Info_2'.Canvas4_4.DataCard5_4.HDisc"
+              }
+            }
+          ],
+          "message": {
+            "arguments": [
+              "LookUp"
+            ],
+            "id": "issue"
+          },
+          "properties": {
+            "level": "High"
+          },
+          "ruleId": "app-ErrInvalidArgs-Func",
+          "ruleIndex": 1
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Quote Info_2'.Canvas4_4.DataCard5_4.HDisc.OnChange"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Quote Info_2'.Canvas4_4.DataCard5_4.HDisc.OnChange",
+                  "relativeAddress": 0
+                },
+                "region": {
+                  "charLength": 15,
+                  "charOffset": 1995,
+                  "snippet": {
+                    "text": "'Quote Line ID'"
+                  }
+                }
+              },
+              "properties": {
+                "member": "OnChange",
+                "module": "Quote Info_2",
+                "type": "'Quote Info_2'.Canvas4_4.DataCard5_4.HDisc"
+              }
+            }
+          ],
+          "message": {
+            "arguments": [
+              "Quote Line ID"
+            ],
+            "id": "issue"
+          },
+          "properties": {
+            "level": "High"
+          },
+          "ruleId": "app-ErrInvalidName",
+          "ruleIndex": 0
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Quote Info_2'.Canvas4_4.DataCard5_4.HDisc.OnChange"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Quote Info_2'.Canvas4_4.DataCard5_4.HDisc.OnChange",
+                  "relativeAddress": 0
+                },
+                "region": {
+                  "charLength": 16,
+                  "charOffset": 2017,
+                  "snippet": {
+                    "text": ".'Quote Line ID'"
+                  }
+                }
+              },
+              "properties": {
+                "member": "OnChange",
+                "module": "Quote Info_2",
+                "type": "'Quote Info_2'.Canvas4_4.DataCard5_4.HDisc"
+              }
+            }
+          ],
+          "message": {
+            "arguments": [
+              "Quote Line ID"
+            ],
+            "id": "issue"
+          },
+          "properties": {
+            "level": "High"
+          },
+          "ruleId": "app-ErrInvalidName",
+          "ruleIndex": 0
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Quote Info_2'.Canvas4_4.DataCard5_4.HDisc.OnChange"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Quote Info_2'.Canvas4_4.DataCard5_4.HDisc.OnChange",
+                  "relativeAddress": 0
+                },
+                "region": {
+                  "charLength": 1,
+                  "charOffset": 2011,
+                  "snippet": {
+                    "text": "="
+                  }
+                }
+              },
+              "properties": {
+                "member": "OnChange",
+                "module": "Quote Info_2",
+                "type": "'Quote Info_2'.Canvas4_4.DataCard5_4.HDisc"
+              }
+            }
+          ],
+          "message": {
+            "arguments": [
+              "Error",
+              "Error"
+            ],
+            "id": "issue"
+          },
+          "properties": {
+            "level": "High"
+          },
+          "ruleId": "app-ErrIncompatibleTypesForEquality-Left-Right",
+          "ruleIndex": 3
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Quote Info_2'.Canvas4_4.DataCard5_4.HDisc.OnChange"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Quote Info_2'.Canvas4_4.DataCard5_4.HDisc.OnChange",
+                  "relativeAddress": 0
+                },
+                "region": {
+                  "charLength": 249,
+                  "charOffset": 1890,
+                  "snippet": {
+                    "text": "Patch(\r\n            'Quote Lines',\r\n            LookUp(\r\n                'Quote Lines',\r\n                'Quote Line ID' = LQID.'Quote Line ID'\r\n            ),\r\n            {\r\n                'Discount %': Value(HDisc.Text)\r\n            }\r\n        )"
+                  }
+                }
+              },
+              "properties": {
+                "member": "OnChange",
+                "module": "Quote Info_2",
+                "type": "'Quote Info_2'.Canvas4_4.DataCard5_4.HDisc"
+              }
+            }
+          ],
+          "message": {
+            "arguments": [
+              "Patch"
+            ],
+            "id": "issue"
+          },
+          "properties": {
+            "level": "High"
+          },
+          "ruleId": "app-ErrInvalidArgs-Func",
+          "ruleIndex": 1
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Quote Info_2'.Canvas4_4.DataCard5_4.HDisc.OnChange"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Quote Info_2'.Canvas4_4.DataCard5_4.HDisc.OnChange",
+                  "relativeAddress": 0
+                },
+                "region": {
+                  "charLength": 65,
+                  "charOffset": 2063,
+                  "snippet": {
+                    "text": "{\r\n                'Discount %': Value(HDisc.Text)\r\n            }"
+                  }
+                }
+              },
+              "properties": {
+                "member": "OnChange",
+                "module": "Quote Info_2",
+                "type": "'Quote Info_2'.Canvas4_4.DataCard5_4.HDisc"
+              }
+            }
+          ],
+          "message": {
+            "arguments": [
+              "Discount %"
+            ],
+            "id": "issue"
+          },
+          "properties": {
+            "level": "High"
+          },
+          "ruleId": "app-ErrColDNE-Name",
+          "ruleIndex": 10
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Quote Info_2'.Canvas4_4.DataCard5_4.HDisc.OnChange"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Quote Info_2'.Canvas4_4.DataCard5_4.HDisc.OnChange",
+                  "relativeAddress": 0
+                },
+                "region": {
+                  "charLength": 430,
+                  "charOffset": 1716,
+                  "snippet": {
+                    "text": "ForAll(\r\n        Filter(\r\n            OfflineQuoteLinCollection,\r\n             'Quote Header'.'Quote ID'= _VarnewQuoteHeaderResponse.'Quote ID'\r\n        ) As LQID ,\r\n        Patch(\r\n            'Quote Lines',\r\n            LookUp(\r\n                'Quote Lines',\r\n                'Quote Line ID' = LQID.'Quote Line ID'\r\n            ),\r\n            {\r\n                'Discount %': Value(HDisc.Text)\r\n            }\r\n        )\r\n    )"
+                  }
+                }
+              },
+              "properties": {
+                "member": "OnChange",
+                "module": "Quote Info_2",
+                "type": "'Quote Info_2'.Canvas4_4.DataCard5_4.HDisc"
+              }
+            }
+          ],
+          "message": {
+            "arguments": [
+              "ForAll"
+            ],
+            "id": "issue"
+          },
+          "properties": {
+            "level": "High"
+          },
+          "ruleId": "app-ErrInvalidArgs-Func",
+          "ruleIndex": 1
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Quote Info_2'.Canvas4_4.DataCard5_4.HDisc.OnChange"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Quote Info_2'.Canvas4_4.DataCard5_4.HDisc.OnChange",
+                  "relativeAddress": 0
+                },
+                "region": {
+                  "charLength": 1,
+                  "charOffset": 1709,
+                  "snippet": {
+                    "text": ";"
+                  }
+                }
+              },
+              "properties": {
+                "member": "OnChange",
+                "module": "Quote Info_2",
+                "type": "'Quote Info_2'.Canvas4_4.DataCard5_4.HDisc"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "High"
+          },
+          "ruleId": "app-ErrTypeError",
+          "ruleIndex": 17
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Quote Info_2'.Canvas4_4.DataCard5_4.HDisc.OnChange"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Quote Info_2'.Canvas4_4.DataCard5_4.HDisc.OnChange",
+                  "relativeAddress": 0
+                },
+                "region": {
+                  "charLength": 2949,
+                  "charOffset": 0,
+                  "snippet": {
+                    "text": "If(\r\n    !IsBlank(HDisc.Text),\r\n    \r\n/*\r\nPatch(\r\n    varOrderData,\r\n    LookUp('Order Headers','Order ID'=varOrderData.'Order ID'\r\n    ),\r\n    {\r\n        'Discount %':Value(HDisc.Text)\r\n    }\r\n);*/\r\n\r\n/*Set(\r\n    varOrderData,\r\n    LookUp(\r\n        'Order Headers',\r\n        'Order ID' = varOrderData.new_orderid\r\n    )\r\n);*/\r\n\r\n    /*ForAll(\r\n        Filter(\r\n            OfflineOrderLineCollection,\r\n            'Order Header'.'Order ID' = varOrderData.'Order ID'\r\n        ) As LID,\r\n        Patch(\r\n            OfflineOrderLineCollection,\r\n            LookUp(\r\n                OfflineOrderLineCollection,\r\n                'Order Line ID' = LID.'Order Line ID'\r\n            ),\r\n            {'Discount %': Value(HDisc.Text)\r\n            }\r\n        )\r\n    );\r\n\r\n    ForAll(\r\n        Filter(\r\n            OfflineOrderLineCollection,\r\n            'Order Header'.'Order ID' = varOrderData.'Order ID'\r\n        ) As LID ,\r\n        Patch(\r\n            'Order Lines',\r\n            LookUp(\r\n                'Order Lines',\r\n                'Order Line ID' = LID.'Order Line ID'\r\n            ),\r\n            {'Discount %': Value(HDisc.Text)\r\n            }\r\n        )\r\n    );*/\r\n    ////////////////////////Quote header///////\r\n     Patch(\r\n    'Quote Headers',\r\n    LookUp(\r\n        'Quote Headers',\r\n        'Quote ID' = _VarnewQuoteHeaderResponse.'Quote ID'\r\n    ),\r\n    {'DiscountP %' : Value(HDisc.Text),\r\n    Version: If(\r\n                        IsBlank(\r\n                            _VarnewQuoteHeaderResponse.Version\r\n                        ),\r\n                        1.0,\r\n                        \r\n                        Sum(_VarnewQuoteHeaderResponse.Version + 0.1)\r\n                    )\r\n    \r\n    }\r\n);\r\n    ForAll(\r\n        Filter(\r\n            OfflineQuoteLinCollection,\r\n             'Quote Header'.'Quote ID'= _VarnewQuoteHeaderResponse.'Quote ID'\r\n        ) As LQID ,\r\n        Patch(\r\n            'Quote Lines',\r\n            LookUp(\r\n                'Quote Lines',\r\n                'Quote Line ID' = LQID.'Quote Line ID'\r\n            ),\r\n            {\r\n                'Discount %': Value(HDisc.Text)\r\n            }\r\n        )\r\n    );\r\n\r\n  /*  Patch(\r\n    'Order Headers',\r\n    LookUp(\r\n        'Order Headers',\r\n        'Order ID' = varOrderData.new_orderid\r\n    ),\r\n    {'Discount %' : Value(HDisc.Text),\r\n    'Quote Version': If(\r\n                        IsBlank(\r\n                            varOrderData.'Quote Version'\r\n                        ),\r\n                        1.0,\r\n                        \r\n                        Sum(varOrderData.'Quote Version' + 0.1)\r\n                    ),\r\n                    'Total Bill Amount (new_totalbillamount)':Sum(LookUp('Order Lines','Order Header'.'Order ID'=varOrderData.'Order ID').'LNet Price '),\r\n                    Quantity: Sum(LookUp('Order Lines','Order Header'.'Order ID'=varOrderData.'Order ID').Quantity)\r\n    \r\n    }\r\n);*/\r\n    \r\n    ,Notify(\"Enter correct Discount\")\r\n)"
+                  }
+                }
+              },
+              "properties": {
+                "member": "OnChange",
+                "module": "Quote Info_2",
+                "type": "'Quote Info_2'.Canvas4_4.DataCard5_4.HDisc"
+              }
+            }
+          ],
+          "message": {
+            "arguments": [
+              "If"
+            ],
+            "id": "issue"
+          },
+          "properties": {
+            "level": "High"
+          },
+          "ruleId": "app-ErrInvalidArgs-Func",
+          "ruleIndex": 1
         },
         {
           "locations": [
@@ -44822,7 +47488,7 @@
             "level": "High"
           },
           "ruleId": "app-ErrColDNE-Name",
-          "ruleIndex": 9
+          "ruleIndex": 10
         },
         {
           "locations": [
@@ -45695,7 +48361,7 @@
             "level": "High"
           },
           "ruleId": "app-ErrColDNE-Name",
-          "ruleIndex": 9
+          "ruleIndex": 10
         },
         {
           "locations": [
@@ -46295,7 +48961,7 @@
             "level": "High"
           },
           "ruleId": "app-ErrColDNE-Name",
-          "ruleIndex": 9
+          "ruleIndex": 10
         },
         {
           "locations": [
@@ -46576,7 +49242,7 @@
             "level": "High"
           },
           "ruleId": "app-ErrColDNE-Name",
-          "ruleIndex": 9
+          "ruleIndex": 10
         },
         {
           "locations": [
@@ -50211,7 +52877,7 @@
             "level": "High"
           },
           "ruleId": "app-ErrColDNE-Name",
-          "ruleIndex": 9
+          "ruleIndex": 10
         },
         {
           "locations": [
@@ -50446,7 +53112,7 @@
             "level": "High"
           },
           "ruleId": "app-ErrBadType",
-          "ruleIndex": 8
+          "ruleIndex": 9
         },
         {
           "locations": [
@@ -51671,7 +54337,7 @@
             "level": "High"
           },
           "ruleId": "app-ErrColDNE-Name",
-          "ruleIndex": 9
+          "ruleIndex": 10
         },
         {
           "locations": [
@@ -51748,7 +54414,7 @@
             "level": "High"
           },
           "ruleId": "app-ErrTypeError",
-          "ruleIndex": 15
+          "ruleIndex": 17
         },
         {
           "locations": [
@@ -52767,7 +55433,7 @@
             "level": "High"
           },
           "ruleId": "app-ErrColDNE-Name",
-          "ruleIndex": 9
+          "ruleIndex": 10
         },
         {
           "locations": [
@@ -52844,7 +55510,7 @@
             "level": "High"
           },
           "ruleId": "app-ErrBadType",
-          "ruleIndex": 8
+          "ruleIndex": 9
         },
         {
           "locations": [
@@ -52921,7 +55587,7 @@
             "level": "High"
           },
           "ruleId": "app-ErrBadType",
-          "ruleIndex": 8
+          "ruleIndex": 9
         },
         {
           "locations": [
@@ -54025,7 +56691,7 @@
             "level": "High"
           },
           "ruleId": "app-ErrColDNE-Name",
-          "ruleIndex": 9
+          "ruleIndex": 10
         },
         {
           "locations": [
@@ -54099,7 +56765,7 @@
             "level": "High"
           },
           "ruleId": "app-ErrIncompatibleCtxtVariableTypes",
-          "ruleIndex": 16
+          "ruleIndex": 15
         },
         {
           "locations": [
@@ -54136,7 +56802,7 @@
             "level": "High"
           },
           "ruleId": "app-ErrIncompatibleCtxtVariableTypes",
-          "ruleIndex": 16
+          "ruleIndex": 15
         },
         {
           "locations": [
@@ -54732,7 +57398,7 @@
             "level": "High"
           },
           "ruleId": "app-ErrColDNE-Name",
-          "ruleIndex": 9
+          "ruleIndex": 10
         },
         {
           "locations": [
@@ -55013,7 +57679,7 @@
             "level": "High"
           },
           "ruleId": "app-ErrColDNE-Name",
-          "ruleIndex": 9
+          "ruleIndex": 10
         },
         {
           "locations": [
@@ -55761,7 +58427,7 @@
             "level": "High"
           },
           "ruleId": "app-ErrBadType-ExpectedTypesCSV",
-          "ruleIndex": 17
+          "ruleIndex": 18
         },
         {
           "locations": [
@@ -56042,7 +58708,7 @@
             "level": "High"
           },
           "ruleId": "app-ErrColDNE-Name",
-          "ruleIndex": 9
+          "ruleIndex": 10
         },
         {
           "locations": [
@@ -56082,7 +58748,7 @@
             "level": "High"
           },
           "ruleId": "app-ErrBadType-ExpectedTypesCSV",
-          "ruleIndex": 17
+          "ruleIndex": 18
         },
         {
           "locations": [
@@ -56122,7 +58788,7 @@
             "level": "High"
           },
           "ruleId": "app-ErrBadType-ExpectedTypesCSV",
-          "ruleIndex": 17
+          "ruleIndex": 18
         },
         {
           "locations": [
@@ -56403,7 +59069,7 @@
             "level": "High"
           },
           "ruleId": "app-ErrColDNE-Name",
-          "ruleIndex": 9
+          "ruleIndex": 10
         },
         {
           "locations": [
@@ -56443,7 +59109,7 @@
             "level": "High"
           },
           "ruleId": "app-ErrBadType-ExpectedTypesCSV",
-          "ruleIndex": 17
+          "ruleIndex": 18
         },
         {
           "locations": [
@@ -56724,7 +59390,7 @@
             "level": "High"
           },
           "ruleId": "app-ErrColDNE-Name",
-          "ruleIndex": 9
+          "ruleIndex": 10
         },
         {
           "locations": [
@@ -57005,7 +59671,7 @@
             "level": "High"
           },
           "ruleId": "app-ErrColDNE-Name",
-          "ruleIndex": 9
+          "ruleIndex": 10
         },
         {
           "locations": [
@@ -57286,7 +59952,7 @@
             "level": "High"
           },
           "ruleId": "app-ErrColDNE-Name",
-          "ruleIndex": 9
+          "ruleIndex": 10
         },
         {
           "locations": [
@@ -57567,7 +60233,7 @@
             "level": "High"
           },
           "ruleId": "app-ErrColDNE-Name",
-          "ruleIndex": 9
+          "ruleIndex": 10
         },
         {
           "locations": [
@@ -58637,7 +61303,7 @@
             "level": "High"
           },
           "ruleId": "app-ErrColDNE-Name",
-          "ruleIndex": 9
+          "ruleIndex": 10
         },
         {
           "locations": [
@@ -58918,7 +61584,7 @@
             "level": "High"
           },
           "ruleId": "app-ErrColDNE-Name",
-          "ruleIndex": 9
+          "ruleIndex": 10
         },
         {
           "locations": [
@@ -59199,7 +61865,7 @@
             "level": "High"
           },
           "ruleId": "app-ErrColDNE-Name",
-          "ruleIndex": 9
+          "ruleIndex": 10
         },
         {
           "locations": [
@@ -59236,7 +61902,7 @@
             "level": "High"
           },
           "ruleId": "app-ErrIncompatibleCtxtVariableTypes",
-          "ruleIndex": 16
+          "ruleIndex": 15
         },
         {
           "locations": [
@@ -59273,7 +61939,7 @@
             "level": "High"
           },
           "ruleId": "app-ErrIncompatibleCtxtVariableTypes",
-          "ruleIndex": 16
+          "ruleIndex": 15
         },
         {
           "locations": [
@@ -59313,7 +61979,7 @@
             "level": "Medium"
           },
           "ruleId": "app-SuggestRemoteExecutionHint",
-          "ruleIndex": 7
+          "ruleIndex": 8
         },
         {
           "locations": [
@@ -59353,7 +62019,7 @@
             "level": "Medium"
           },
           "ruleId": "app-SuggestRemoteExecutionHint",
-          "ruleIndex": 7
+          "ruleIndex": 8
         },
         {
           "locations": [
@@ -59393,7 +62059,7 @@
             "level": "Medium"
           },
           "ruleId": "app-SuggestRemoteExecutionHint",
-          "ruleIndex": 7
+          "ruleIndex": 8
         },
         {
           "locations": [
@@ -59433,7 +62099,7 @@
             "level": "Medium"
           },
           "ruleId": "app-SuggestRemoteExecutionHint",
-          "ruleIndex": 7
+          "ruleIndex": 8
         },
         {
           "locations": [
@@ -59473,7 +62139,7 @@
             "level": "Medium"
           },
           "ruleId": "app-SuggestRemoteExecutionHint",
-          "ruleIndex": 7
+          "ruleIndex": 8
         },
         {
           "locations": [
@@ -59513,7 +62179,7 @@
             "level": "Medium"
           },
           "ruleId": "app-SuggestRemoteExecutionHint",
-          "ruleIndex": 7
+          "ruleIndex": 8
         },
         {
           "locations": [
@@ -59553,7 +62219,7 @@
             "level": "Medium"
           },
           "ruleId": "app-SuggestRemoteExecutionHint",
-          "ruleIndex": 7
+          "ruleIndex": 8
         },
         {
           "locations": [
@@ -59593,7 +62259,7 @@
             "level": "Medium"
           },
           "ruleId": "app-SuggestRemoteExecutionHint",
-          "ruleIndex": 7
+          "ruleIndex": 8
         },
         {
           "locations": [
@@ -59633,7 +62299,7 @@
             "level": "Medium"
           },
           "ruleId": "app-SuggestRemoteExecutionHint",
-          "ruleIndex": 7
+          "ruleIndex": 8
         },
         {
           "locations": [
@@ -59673,7 +62339,7 @@
             "level": "Medium"
           },
           "ruleId": "app-SuggestRemoteExecutionHint",
-          "ruleIndex": 7
+          "ruleIndex": 8
         },
         {
           "locations": [
@@ -59713,7 +62379,7 @@
             "level": "Medium"
           },
           "ruleId": "app-SuggestRemoteExecutionHint",
-          "ruleIndex": 7
+          "ruleIndex": 8
         },
         {
           "locations": [
@@ -59753,7 +62419,7 @@
             "level": "Medium"
           },
           "ruleId": "app-SuggestRemoteExecutionHint",
-          "ruleIndex": 7
+          "ruleIndex": 8
         },
         {
           "locations": [
@@ -59793,7 +62459,7 @@
             "level": "Medium"
           },
           "ruleId": "app-SuggestRemoteExecutionHint",
-          "ruleIndex": 7
+          "ruleIndex": 8
         },
         {
           "locations": [
@@ -59833,7 +62499,7 @@
             "level": "Medium"
           },
           "ruleId": "app-SuggestRemoteExecutionHint",
-          "ruleIndex": 7
+          "ruleIndex": 8
         },
         {
           "locations": [
@@ -59873,7 +62539,7 @@
             "level": "Medium"
           },
           "ruleId": "app-SuggestRemoteExecutionHint",
-          "ruleIndex": 7
+          "ruleIndex": 8
         },
         {
           "locations": [
@@ -59913,7 +62579,7 @@
             "level": "Medium"
           },
           "ruleId": "app-SuggestRemoteExecutionHint",
-          "ruleIndex": 7
+          "ruleIndex": 8
         },
         {
           "locations": [
@@ -59953,7 +62619,7 @@
             "level": "Medium"
           },
           "ruleId": "app-SuggestRemoteExecutionHint",
-          "ruleIndex": 7
+          "ruleIndex": 8
         },
         {
           "locations": [
@@ -59993,7 +62659,7 @@
             "level": "Medium"
           },
           "ruleId": "app-SuggestRemoteExecutionHint",
-          "ruleIndex": 7
+          "ruleIndex": 8
         },
         {
           "locations": [
@@ -60033,7 +62699,7 @@
             "level": "Medium"
           },
           "ruleId": "app-SuggestRemoteExecutionHint",
-          "ruleIndex": 7
+          "ruleIndex": 8
         },
         {
           "locations": [
@@ -60073,7 +62739,7 @@
             "level": "Medium"
           },
           "ruleId": "app-SuggestRemoteExecutionHint",
-          "ruleIndex": 7
+          "ruleIndex": 8
         },
         {
           "locations": [
@@ -60113,7 +62779,7 @@
             "level": "Medium"
           },
           "ruleId": "app-SuggestRemoteExecutionHint",
-          "ruleIndex": 7
+          "ruleIndex": 8
         },
         {
           "locations": [
@@ -60153,7 +62819,124 @@
             "level": "Medium"
           },
           "ruleId": "app-SuggestRemoteExecutionHint",
-          "ruleIndex": 7
+          "ruleIndex": 8
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Start Visit'.Button20_3.OnSelect"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Start Visit'.Button20_3.OnSelect",
+                  "relativeAddress": 0
+                },
+                "region": {
+                  "charLength": 14,
+                  "charOffset": 29,
+                  "snippet": {
+                    "text": "'Customer 360'"
+                  }
+                }
+              },
+              "properties": {
+                "member": "OnSelect",
+                "module": "Start Visit",
+                "type": "'Start Visit'.Button20_3"
+              }
+            }
+          ],
+          "message": {
+            "arguments": [
+              "Customer 360"
+            ],
+            "id": "issue"
+          },
+          "properties": {
+            "level": "High"
+          },
+          "ruleId": "app-ErrInvalidName",
+          "ruleIndex": 0
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Start Visit'.Button20_3.OnSelect"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Start Visit'.Button20_3.OnSelect",
+                  "relativeAddress": 0
+                },
+                "region": {
+                  "charLength": 15,
+                  "charOffset": 43,
+                  "snippet": {
+                    "text": ".CustomerRecord"
+                  }
+                }
+              },
+              "properties": {
+                "member": "OnSelect",
+                "module": "Start Visit",
+                "type": "'Start Visit'.Button20_3"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "High"
+          },
+          "ruleId": "app-ErrInvalidDot",
+          "ruleIndex": 2
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Start Visit'.Button20_3.OnSelect"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Start Visit'.Button20_3.OnSelect",
+                  "relativeAddress": 0
+                },
+                "region": {
+                  "charLength": 113,
+                  "charOffset": 6,
+                  "snippet": {
+                    "text": "Patch('Parties.S',\u00A0\r\n\r\n'Customer 360'.CustomerRecord, {Latitude:Location.Latitude, Longitude:Location.Longitude})"
+                  }
+                }
+              },
+              "properties": {
+                "member": "OnSelect",
+                "module": "Start Visit",
+                "type": "'Start Visit'.Button20_3"
+              }
+            }
+          ],
+          "message": {
+            "arguments": [
+              "Patch"
+            ],
+            "id": "issue"
+          },
+          "properties": {
+            "level": "High"
+          },
+          "ruleId": "app-ErrInvalidArgs-Func",
+          "ruleIndex": 1
         },
         {
           "locations": [
@@ -61070,7 +63853,7 @@
             "level": "High"
           },
           "ruleId": "app-ErrColDNE-Name",
-          "ruleIndex": 9
+          "ruleIndex": 10
         },
         {
           "locations": [
@@ -61351,7 +64134,7 @@
             "level": "High"
           },
           "ruleId": "app-ErrColDNE-Name",
-          "ruleIndex": 9
+          "ruleIndex": 10
         },
         {
           "locations": [
@@ -65024,7 +67807,7 @@
             "level": "High"
           },
           "ruleId": "app-ErrExpectedFound-Ex-Fnd",
-          "ruleIndex": 18
+          "ruleIndex": 4
         },
         {
           "locations": [
@@ -65064,7 +67847,7 @@
             "level": "Medium"
           },
           "ruleId": "app-SuggestRemoteExecutionHint",
-          "ruleIndex": 7
+          "ruleIndex": 8
         },
         {
           "locations": [
@@ -65104,7 +67887,7 @@
             "level": "Medium"
           },
           "ruleId": "app-SuggestRemoteExecutionHint",
-          "ruleIndex": 7
+          "ruleIndex": 8
         },
         {
           "locations": [
@@ -65144,7 +67927,7 @@
             "level": "Medium"
           },
           "ruleId": "app-SuggestRemoteExecutionHint",
-          "ruleIndex": 7
+          "ruleIndex": 8
         },
         {
           "locations": [
@@ -67700,36 +70483,6 @@
             {
               "logicalLocations": [
                 {
-                  "fullyQualifiedName": "'Lead Detail'.'Product Interested'.Button9_15.OnSelect"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "'Lead Detail'.'Product Interested'.Button9_15.OnSelect",
-                  "relativeAddress": 0
-                }
-              },
-              "properties": {
-                "member": "OnSelect",
-                "module": "Lead Detail",
-                "type": "'Lead Detail'.'Product Interested'.Button9_15"
-              }
-            }
-          ],
-          "message": {
-            "id": "issue"
-          },
-          "properties": {
-            "level": "Medium"
-          },
-          "ruleId": "app-CollectDelegatableDataSource",
-          "ruleIndex": 25
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
                   "fullyQualifiedName": "App.OnStart"
                 }
               ],
@@ -68004,6 +70757,23 @@
               }
             },
             {
+              "id": "app-ErrExpectedFound-Ex-Fnd",
+              "messageStrings": {
+                "issue": {
+                  "text": "Unexpected characters. The formula contains '{0}' where '{1}' is expected."
+                }
+              },
+              "properties": {
+                "componentType": "app",
+                "howToFix": [
+                  "Remove or replace the unexpected characters with an expected character."
+                ],
+                "level": "High",
+                "primaryCategory": "formula",
+                "whyFix": ""
+              }
+            },
+            {
               "id": "app-ErrBadSchema-ExpectedType",
               "messageStrings": {
                 "issue": {
@@ -68158,6 +70928,23 @@
               }
             },
             {
+              "id": "app-ErrIncompatibleCtxtVariableTypes",
+              "messageStrings": {
+                "issue": {
+                  "text": "Incompatible type. We can't evaluate your formula because the context variable types are incompatible with the types of values in other places in your app."
+                }
+              },
+              "properties": {
+                "componentType": "app",
+                "howToFix": [
+                  "Look at places where you use a context variable and make sure that the type (e.g., text, number, date, record, table) is compatible."
+                ],
+                "level": "High",
+                "primaryCategory": "formula",
+                "whyFix": ""
+              }
+            },
+            {
               "id": "app-ErrIncompatibleRulePropTypes-PropKind-RuleKind",
               "messageStrings": {
                 "issue": {
@@ -68192,23 +70979,6 @@
               }
             },
             {
-              "id": "app-ErrIncompatibleCtxtVariableTypes",
-              "messageStrings": {
-                "issue": {
-                  "text": "Incompatible type. We can't evaluate your formula because the context variable types are incompatible with the types of values in other places in your app."
-                }
-              },
-              "properties": {
-                "componentType": "app",
-                "howToFix": [
-                  "Look at places where you use a context variable and make sure that the type (e.g., text, number, date, record, table) is compatible."
-                ],
-                "level": "High",
-                "primaryCategory": "formula",
-                "whyFix": ""
-              }
-            },
-            {
               "id": "app-ErrBadType-ExpectedTypesCSV",
               "messageStrings": {
                 "issue": {
@@ -68217,23 +70987,6 @@
               },
               "properties": {
                 "componentType": "app",
-                "level": "High",
-                "primaryCategory": "formula",
-                "whyFix": ""
-              }
-            },
-            {
-              "id": "app-ErrExpectedFound-Ex-Fnd",
-              "messageStrings": {
-                "issue": {
-                  "text": "Unexpected characters. The formula contains '{0}' where '{1}' is expected."
-                }
-              },
-              "properties": {
-                "componentType": "app",
-                "howToFix": [
-                  "Remove or replace the unexpected characters with an expected character."
-                ],
                 "level": "High",
                 "primaryCategory": "formula",
                 "whyFix": ""
@@ -68376,7 +71129,7 @@
                 ],
                 "level": "Medium",
                 "primaryCategory": "performance",
-                "whyFix": "Each control consumes resources, and an app may become slow or unresponsive if a screen has too many controls. The estimated complexity of \"Start Visit\" is 347, which exceeds the maximum threshold recommended (300)."
+                "whyFix": "Each control consumes resources, and an app may become slow or unresponsive if a screen has too many controls. The estimated complexity of \"Start Visit\" is 350, which exceeds the maximum threshold recommended (300)."
               }
             },
             {

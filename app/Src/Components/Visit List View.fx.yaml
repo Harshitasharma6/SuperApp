@@ -859,11 +859,15 @@
                 )
             Fill: =RGBA(0, 0, 0, 0)
             Height: =50
-            OnSelect: |-
-                = Navigate(
-                                        'Visit Info',
-                                        ScreenTransition.CoverRight
-                                    );
+            OnSelect: |
+                =Navigate(
+                    'Visit Info',
+                    ScreenTransition.CoverRight
+                );
+                Set(
+                    dataVisit,
+                    ThisItem
+                );
             TabIndex: =0
             Visible: =If(ThisItem.'Visit Status'=[@'Visit Status'].Started,true,false)
             Width: =50
