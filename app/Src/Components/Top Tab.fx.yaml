@@ -45,7 +45,7 @@
             FontWeight: =FontWeight.Semibold
             Height: =60
             OnSelect: =Set(_VarActivetopTabID, ThisItem.TabId)
-            Size: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Hover Color").'Default Value')
+            Size: =LookUp(c_EnvironmentVariable,'Display Name'="Text Medium Font Size").'Default Value'
             TabIndex: =0
             Text: =ThisItem.Title
             Width: =Gallery3.TemplateWidth

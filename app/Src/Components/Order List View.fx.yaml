@@ -421,9 +421,15 @@
             Color: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Hover Color").'Default Value')
             DisabledBorderColor: =RGBA(166, 166, 166, 1)
             DisabledColor: =RGBA(116, 116, 116, 1)
-            DisabledFill: =_VarGblAppColors.BottomListBg
+            DisabledFill: |-
+                =//_VarGblAppColors.BottomListBg
+                
+                ColorValue(LookUp(c_EnvironmentVariable, 'Display Name'="Button Border Color").'Default Value')
             DisplayMode: =DisplayMode.Disabled
-            Fill: =_VarGblAppColors.BottomListBg
+            Fill: |-
+                =//_VarGblAppColors.BottomListBg
+                
+                ColorValue(LookUp(c_EnvironmentVariable, 'Display Name'="Button Border Color").'Default Value')
             FontWeight: =FontWeight.Semibold
             Height: =55
             HoverColor: =RGBA(255, 255, 255, 1)

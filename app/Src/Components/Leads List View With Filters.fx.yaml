@@ -141,7 +141,8 @@
             DisabledFill: =RGBA(244, 244, 244, 1)
             Fill: |-
                 =If(ThisItem.IsSelected && CountRows(colLeadFilter)=0, 
-                ColorValue(LookUp(c_EnvironmentVariable, 'Display Name'="Button Fill").'Default Value'),ColorValue( LookUp('Environment Variable Definitions', 'Display Name'="Common Primary Background").'Default Value')//_VarGblAppColors.PrimaryBg)
+                ColorValue(LookUp(c_EnvironmentVariable, 'Display Name'="Button Fill").'Default Value'),ColorValue( LookUp('Environment Variable Definitions', 'Display Name'="Common Primary Background").'Default Value')//_VarGblAppColors.PrimaryBg
+                )
             Font: =Font.'Segoe UI'
             FontWeight: =FontWeight.Bold
             Height: =43
@@ -633,7 +634,9 @@
 
             Body1_171 As label:
                 BorderColor: =RGBA(0, 18, 107, 1)
-                Color: =_VarGblAppColors.PrimaryText
+                Color: |-
+                    =//_VarGblAppColors.PrimaryText
+                    ColorValue(LookUp(c_EnvironmentVariable, 'Display Name'="Text Primary Color").'Default Value')
                 DisabledColor: =RGBA(166, 166, 166, 1)
                 FocusedBorderColor: =Color.Transparent
                 FocusedBorderThickness: =0.1
@@ -678,7 +681,7 @@
 
             Body1_173 As label:
                 BorderColor: =RGBA(0, 18, 107, 1)
-                Color: =_VarGblAppColors.textbgbutton
+                Color: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Text Primary Color").'Default Value')
                 DisabledColor: =RGBA(166, 166, 166, 1)
                 FocusedBorderThickness: =01
                 Font: |-
@@ -771,7 +774,9 @@
             Body1_200 As label:
                 Align: =Align.Center
                 BorderColor: =RGBA(0, 18, 107, 1)
-                Color: =_VarGblAppColors.PrimaryText
+                Color: |-
+                    =//_VarGblAppColors.PrimaryText
+                    ColorValue(LookUp(c_EnvironmentVariable, 'Display Name'="Text Primary Color").'Default Value')
                 DisabledColor: =RGBA(166, 166, 166, 1)
                 FocusedBorderThickness: =01
                 Font: |-
@@ -837,8 +842,8 @@
                 ZIndex: =13
 
             Button6_2 As button:
-                BorderColor: =_VarGblAppColors.textbgbutton
-                Color: =_VarGblAppColors.textbgbutton
+                BorderColor: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Text Primary Color").'Default Value')
+                Color: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Text Primary Color").'Default Value')
                 DisabledBorderColor: =RGBA(166, 166, 166, 1)
                 DisabledColor: =RGBA(166, 166, 166, 1)
                 DisabledFill: =RGBA(244, 244, 244, 1)

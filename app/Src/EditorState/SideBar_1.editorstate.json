@@ -12,7 +12,14 @@
           "IsLockable": false,
           "NameMapSourceSchema": "?"
         },
-        "BorderColor",
+        {
+          "AFDDataSourceName": "",
+          "AutoRuleBindingEnabled": false,
+          "AutoRuleBindingString": "If(ThisItem.IsSelected, ColorValue(LookUp(c_EnvironmentVariable,'Display Name'=\"Button Fill\").'Default Value' )//_VarGblAppColors.PrimaryRed, _VarGblAppColors.textbgbutton)",
+          "InvariantPropertyName": "BorderColor",
+          "IsLockable": false,
+          "NameMapSourceSchema": "?"
+        },
         "DisabledBorderColor",
         "PressedBorderColor",
         "HoverBorderColor",
