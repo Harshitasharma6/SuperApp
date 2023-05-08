@@ -28,6 +28,7 @@
         ZIndex: =1
 
     Button49 As button:
+        BorderThickness: =1
         DisabledBorderColor: =RGBA(153, 207, 236, 1)
         DisabledColor: =RGBA(166, 166, 166, 1)
         DisabledFill: =RGBA(255, 255, 255, 1)
@@ -37,6 +38,8 @@
         Height: =766
         HoverColor: =RGBA(255, 255, 255, 1)
         HoverFill: =ColorFade(RGBA(56, 96, 178, 1), -20%)
+        PaddingLeft: |
+            =5
         RadiusBottomLeft: =15
         RadiusBottomRight: =15
         RadiusTopLeft: =15
@@ -616,7 +619,9 @@
 
         Label10_8 As label:
             BorderColor: =RGBA(0, 18, 107, 1)
-            Color: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Text Primary Color").'Default Value')
+            Color: |-
+                =If(ThisItem.Value.Title="Credit Limit",ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Text Primary Color").'Default Value'),
+                    ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Text Secondary Color").'Default Value'))
             DisabledColor: =RGBA(166, 166, 166, 1)
             FontWeight: |-
                 =
@@ -906,7 +911,7 @@
                 ="Order To: " & ThisItem.'Order To'.'Customer Name'
             Width: =250
             X: =25
-            Y: =85
+            Y: =94
             ZIndex: =7
 
         Body1_75 As label:
@@ -934,7 +939,7 @@
                 ="Total Bill Amount: " &"₹"&ThisItem.'Total Bill Amount'
             Width: =290
             X: =320
-            Y: =132
+            Y: =150
             ZIndex: =8
 
         Body1_55 As label:
@@ -962,7 +967,7 @@
                 "Total Tax: " &"₹"& Sum(ThisItem.CGST,ThisItem.SGST,ThisItem.IGST)
             Width: =290
             X: =25
-            Y: =132
+            Y: =141
             ZIndex: =9
 
         Circle18_2 As circle:
@@ -977,15 +982,16 @@
 
         Label79_1 As label:
             BorderColor: =RGBA(0, 18, 107, 1)
-            Color: =ColorFade(ColorValue(LookUp(c_EnvironmentVariable, 'Display Name'="Text Primary Color").'Default Value'), 20%)
+            Color: =ColorFade(ColorValue(LookUp(c_EnvironmentVariable, 'Display Name'="Text Secondary Color").'Default Value'), 20%)
             DisabledColor: =RGBA(166, 166, 166, 1)
-            FontWeight: =FontWeight.Bold
+            FontWeight: =FontWeight.Semibold
             Height: =75
             OnSelect: =Select(Parent)
             Size: =16
             Text: =ThisItem.'Order ID'
             Width: =290
-            X: =216
+            X: =198
+            Y: =2
             ZIndex: =11
 
         Label80_2 As label:
@@ -1018,13 +1024,13 @@
                 =
                 LookUp('Environment Variable Definitions', 'Display Name'="Text Sub Title Font Size").'Default Value'
             TabIndex: =0
-            Text: =Text(ThisItem.'Order Date', "dd/mm/yyyy")
+            Text: =Text(ThisItem.'Order Date', "dd mm yyyy")
             Tooltip: |-
                 =
                 "Total Tax: " &"₹"& Sum(ThisItem.CGST,ThisItem.SGST,ThisItem.IGST)
             Width: =200
             X: =132
-            Y: =132
+            Y: =141
             ZIndex: =13
 
         Body1_98 As label:
@@ -1049,7 +1055,7 @@
                 ="Order To: " & ThisItem.'Order To'.'Customer Name'
             Width: =200
             X: =182
-            Y: =85
+            Y: =94
             ZIndex: =14
 
     "'Activity gallery_1' As gallery.galleryVertical":
@@ -2073,7 +2079,7 @@
             Color: |-
                 =
                 If(ThisItem.Title="First Name",
-                RGBA(0, 0, 0, 1),ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Text Primary Color").'Default Value'))
+                ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Text Primary Color").'Default Value'),ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Text Secondary Color").'Default Value'))
             DisabledColor: =RGBA(166, 166, 166, 1)
             FontWeight: |-
                 =If(ThisItem.Title="First Name",
@@ -2275,7 +2281,7 @@
                 
                 
                 If(ThisItem.Value.Title="Bank Name",
-                RGBA(0, 0, 0, 1),ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Text Primary Color").'Default Value'))
+                ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Text Primary Color").'Default Value'),ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Text Secondary Color").'Default Value') )
             DisabledColor: =RGBA(166, 166, 166, 1)
             FontWeight: |-
                 =
