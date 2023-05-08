@@ -929,21 +929,24 @@ Home As screen:
         Y: =446
         ZIndex: =14
 
+        HtmlText2 As htmlViewer:
+            Height: =73
+            HtmlText: |
+                ="<div style='margin-left:10px;width:363px;height:56px;background-color:#;box-shadow:0 3px 6px 1px  #ccc; border-radius:15px'></div>"
+            OnSelect: =Select(Parent)
+            Width: =414
+            X: =120
+            ZIndex: =1
+
         Button8 As button:
             BorderColor: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//_VarGblAppColors.PrimaryRed
+            BorderStyle: =BorderStyle.None
             BorderThickness: =3
-            Color: |-
-                =If(
-                    ThisItem.Value = _VarSelectedPresentType.Value,
-                    Color.White,
-                    ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//_VarGblAppColors.PrimaryRed
-                )
+            Color: =RGBA(0, 0, 0, 1)
             DisabledBorderColor: =RGBA(166, 166, 166, 1)
             DisabledColor: =RGBA(166, 166, 166, 1)
             DisabledFill: =RGBA(244, 244, 244, 1)
-            Fill: |
-                =If(ThisItem.Value = _VarSelectedPresentType.Value, ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//_VarGblAppColors.PrimaryRed
-                , RGBA(255, 255, 255, 1))
+            Fill: =RGBA(255, 255, 255, 1)
             FontWeight: =FontWeight.Semibold
             Height: =56
             HoverColor: =RGBA(255, 255, 255, 1)

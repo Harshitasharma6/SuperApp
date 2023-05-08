@@ -914,7 +914,7 @@
               },
               {
                 "Category": "Design",
-                "InvariantScript": "If(ThisItem.IsSelected, \r\nColorValue(LookUp(c_EnvironmentVariable, 'Display Name'=\"Button Fill\").'Default Value'),ColorFade( _VarGblAppColors.PrimaryBg,20%))",
+                "InvariantScript": "If(ThisItem.IsSelected, _VarGblAppColors.PrimaryRed,ColorFade( _VarGblAppColors.PrimaryBg,20%))",
                 "Property": "Fill",
                 "RuleProviderType": "Unknown"
               },
@@ -2950,7 +2950,7 @@
               },
               {
                 "Category": "Design",
-                "InvariantScript": "\r\nColorValue(LookUp(c_EnvironmentVariable, 'Display Name'=\"Button Fill\").'Default Value')",
+                "InvariantScript": "_VarGblAppColors.PrimaryRed",
                 "Property": "Color",
                 "RuleProviderType": "Unknown"
               },
@@ -3400,7 +3400,7 @@
               },
               {
                 "Category": "Design",
-                "InvariantScript": "\r\nColorValue(LookUp(c_EnvironmentVariable, 'Display Name'=\"Button Fill\").'Default Value')",
+                "InvariantScript": "_VarGblAppColors.PrimaryRed",
                 "Property": "Color",
                 "RuleProviderType": "Unknown"
               },
@@ -3557,7 +3557,7 @@
               },
               {
                 "Category": "Design",
-                "InvariantScript": "\r\nColorValue(LookUp(c_EnvironmentVariable, 'Display Name'=\"Button Fill\").'Default Value')",
+                "InvariantScript": "_VarGblAppColors.PrimaryRed",
                 "Property": "Color",
                 "RuleProviderType": "Unknown"
               },
@@ -3832,7 +3832,7 @@
               },
               {
                 "Category": "Design",
-                "InvariantScript": "\r\nColorValue(LookUp(c_EnvironmentVariable, 'Display Name'=\"Button Fill\").'Default Value')",
+                "InvariantScript": "_VarGblAppColors.PrimaryRed",
                 "Property": "Color",
                 "RuleProviderType": "Unknown"
               },
@@ -5273,7 +5273,7 @@
               },
               {
                 "Category": "Design",
-                "InvariantScript": "\r\nColorValue(LookUp(c_EnvironmentVariable, 'Display Name'=\"Button Fill\").'Default Value')",
+                "InvariantScript": "_VarGblAppColors.PrimaryRed",
                 "Property": "ChevronFill",
                 "RuleProviderType": "Unknown"
               },
@@ -5297,7 +5297,7 @@
               },
               {
                 "Category": "Design",
-                "InvariantScript": "ColorFade(\r\n    \r\nColorValue(LookUp(c_EnvironmentVariable, 'Display Name'=\"Button Fill\").'Default Value')\r\n    ,50%)",
+                "InvariantScript": "ColorFade(\r\n    _VarGblAppColors.PrimaryRed\r\n    ,50%)",
                 "Property": "ChevronHoverBackground",
                 "RuleProviderType": "Unknown"
               },
@@ -6202,7 +6202,7 @@
               },
               {
                 "Category": "Design",
-                "InvariantScript": "\r\nColorValue(LookUp(c_EnvironmentVariable, 'Display Name'=\"Button Fill\").'Default Value')",
+                "InvariantScript": "_VarGblAppColors.PrimaryRed",
                 "Property": "ChevronFill",
                 "RuleProviderType": "Unknown"
               },
@@ -6226,7 +6226,7 @@
               },
               {
                 "Category": "Design",
-                "InvariantScript": "ColorFade(\r\n    \r\nColorValue(LookUp(c_EnvironmentVariable, 'Display Name'=\"Button Fill\").'Default Value')\r\n    ,50%)",
+                "InvariantScript": "ColorFade(\r\n    _VarGblAppColors.PrimaryRed\r\n    ,50%)",
                 "Property": "ChevronHoverBackground",
                 "RuleProviderType": "Unknown"
               },
@@ -7605,7 +7605,7 @@
       "DataSource",
       "Customer"
     ],
-    "LastModifiedTimestamp": "638191153152737771",
+    "LastModifiedTimestamp": "638191152190172468",
     "Name": "Leads List View",
     "Rules": [
       {
@@ -7695,7 +7695,7 @@
   "IsPcfControl": false,
   "IsPremiumPcfControl": false,
   "IsWidgetTemplate": false,
-  "LastModifiedTimestamp": "638191153152737771",
+  "LastModifiedTimestamp": "638191152190172468",
   "Name": "48c8cdcee9af4edea9fc254f7ef68583",
   "OverridableProperties": {},
   "Version": "638186926864122636"
