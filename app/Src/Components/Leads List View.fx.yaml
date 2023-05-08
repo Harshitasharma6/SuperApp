@@ -140,9 +140,15 @@
             Color: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Hover Color").'Default Value')
             DisabledBorderColor: =RGBA(166, 166, 166, 1)
             DisabledColor: =RGBA(116, 116, 116, 1)
-            DisabledFill: =_VarGblAppColors.BottomListBg
+            DisabledFill: |-
+                =//_VarGblAppColors.BottomListBg
+                
+                ColorValue(LookUp(c_EnvironmentVariable, 'Display Name'="Button Border Color").'Default Value')
             DisplayMode: =DisplayMode.Disabled
-            Fill: =_VarGblAppColors.BottomListBg
+            Fill: |-
+                =//_VarGblAppColors.BottomListBg
+                
+                ColorValue(LookUp(c_EnvironmentVariable, 'Display Name'="Button Border Color").'Default Value')
             FontWeight: =FontWeight.Semibold
             Height: =55
             HoverColor: =RGBA(255, 255, 255, 1)
@@ -544,7 +550,9 @@
             DisabledFill: =RGBA(244, 244, 244, 1)
             Fill: |-
                 =If(ThisItem.IsSelected, 
-                ColorValue(LookUp(c_EnvironmentVariable, 'Display Name'="Button Fill").'Default Value'),ColorFade( ColorValue( LookUp('Environment Variable Definitions', 'Display Name'="Common Primary Background").'Default Value')//_VarGblAppColors.PrimaryBg,20%))
+                ColorValue(LookUp(c_EnvironmentVariable, 'Display Name'="Button Fill").'Default Value'),ColorFade( ColorValue( LookUp('Environment Variable Definitions', 'Display Name'="Common Primary Background").'Default Value')//_VarGblAppColors.PrimaryBg
+                ,20%)
+                )
             Font: =Font.'Segoe UI'
             FontWeight: =FontWeight.Bold
             Height: =29.5

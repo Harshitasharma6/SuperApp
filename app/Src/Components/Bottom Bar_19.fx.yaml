@@ -100,8 +100,8 @@
             BorderColor: =RGBA(0, 18, 107, 1)
             Color: |+
                 =//_VarGblAppColors.PrimaryRed
-                If(ThisItem.IsSelected,
-                LookUp(c_EnvironmentVariable, 'Display Name'="Button Fill").'Default Value',_VarGblAppColors.textbgbutton)
+                If(ThisItem.IsSelected,ColorValue(
+                LookUp(c_EnvironmentVariable, 'Display Name'="Button Fill").'Default Value'),ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Text Primary Color").'Default Value'))
                 
             DisabledColor: =RGBA(166, 166, 166, 1)
             FocusedBorderThickness: =0.3
@@ -112,7 +112,7 @@
                 If(ThisItem.Title = varUser.'First Name',Set(_varsideNav,!_varsideNav),
                 Navigate(ThisItem.Screen, ScreenTransition.CoverRight);
                 Set(_varsideNav, false))
-            Size: =_VarGblAppFonts.Size.Regular
+            Size: =LookUp(c_EnvironmentVariable,'Display Name'="Text Regular Font Size").'Default Value'
             TabIndex: =0
             Text: =ThisItem.Title
             Width: =Parent.TemplateWidth

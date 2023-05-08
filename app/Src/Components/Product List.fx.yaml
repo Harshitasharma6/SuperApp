@@ -45,7 +45,8 @@
             BorderColor: =RGBA(0, 18, 107, 1)
             Color: |-
                 =//RGBA(0, 0, 0, 1)
-                If(ThisItem.IsSelected,ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//_VarGblAppColors.PrimaryRed,_VarGblAppColors.textbgbutton)
+                If(ThisItem.IsSelected,ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//_VarGblAppColors.PrimaryRed
+                ,ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Text Primary Color").'Default Value'))
             DisabledColor: =RGBA(166, 166, 166, 1)
             FocusedBorderThickness: =1
             Font: =Font.'Segoe UI'
@@ -92,7 +93,9 @@
     "'Search Input_3' As text":
         AccessibleLabel: ="Search Input"
         BorderColor: =RGBA(102, 182, 227, 1)
-        Color: =_VarGblAppColors.SecondaryText
+        Color: |-
+            =//_VarGblAppColors.SecondaryText
+            ColorValue(LookUp(c_EnvironmentVariable, 'Display Name'="Text Secondary Color").'Default Value')
         Default: =""
         DisabledBorderColor: =RGBA(166, 166, 166, 1)
         DisabledColor: =RGBA(166, 166, 166, 1)
@@ -158,7 +161,7 @@
         ZIndex: =6
 
         "'Product BG_6' As button":
-            BorderColor: =_VarGblAppColors.LightText
+            BorderColor: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Text Light Color").'Default Value')
             BorderThickness: =1
             Color: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Hover Color").'Default Value')
             DisabledBorderColor: =RGBA(166, 166, 166, 1)
@@ -318,14 +321,20 @@
 
         "'Variant ComboBox_5' As combobox":
             AccessibleLabel: ="Variant"
-            BorderColor: =_VarGblAppColors.SecondaryText
+            BorderColor: |-
+                =//_VarGblAppColors.SecondaryText
+                ColorValue(LookUp(c_EnvironmentVariable, 'Display Name'="Text Secondary Color").'Default Value')
             ChevronBackground: =RGBA(255, 255, 255, 1)
             ChevronDisabledBackground: =RGBA(166, 166, 166, 1)
             ChevronDisabledFill: =RGBA(244, 244, 244, 1)
-            ChevronFill: =_VarGblAppColors.SecondaryText
+            ChevronFill: |-
+                =//_VarGblAppColors.SecondaryText
+                ColorValue(LookUp(c_EnvironmentVariable, 'Display Name'="Text Secondary Color").'Default Value')
             ChevronHoverBackground: =
             ChevronHoverFill: =
-            Color: =_VarGblAppColors.PrimaryText
+            Color: |-
+                =//_VarGblAppColors.PrimaryText
+                ColorValue(LookUp(c_EnvironmentVariable, 'Display Name'="Text Primary Color").'Default Value')
             Default: |-
                 =/*First(
                    AddColumns(
@@ -349,7 +358,9 @@
                 )
                 )*/
             DisabledBorderColor: =RGBA(166, 166, 166, 1)
-            DisabledColor: =_VarGblAppColors.SecondaryText
+            DisabledColor: |-
+                =//_VarGblAppColors.SecondaryText
+                ColorValue(LookUp(c_EnvironmentVariable, 'Display Name'="Text Secondary Color").'Default Value')
             DisabledFill: =RGBA(244, 244, 244, 1)
             DisplayFields: =["VariantName"]
             FontWeight: =FontWeight.Semibold
@@ -373,9 +384,13 @@
             PressedFill: =RGBA(0, 18, 107, 1)
             SearchFields: =["VariantName"]
             SearchItems: =[]
-            SelectionColor: =_VarGblAppColors.PrimaryText
+            SelectionColor: |-
+                =//_VarGblAppColors.PrimaryText
+                ColorValue(LookUp(c_EnvironmentVariable, 'Display Name'="Text Primary Color").'Default Value')
             SelectionFill: =RGBA(230, 230, 230, 1)
-            SelectionTagColor: =_VarGblAppColors.PrimaryText
+            SelectionTagColor: |-
+                =//_VarGblAppColors.PrimaryText
+                ColorValue(LookUp(c_EnvironmentVariable, 'Display Name'="Text Primary Color").'Default Value')
             SelectionTagFill: |-
                 =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Screen Background Color").'Default Value')
                 //_VarGblAppColors.BackgroundColor
@@ -726,9 +741,13 @@
             "'Quantity Input_4' As text":
                 AccessibleLabel: ="Quantity"
                 Align: =Align.Center
-                BorderColor: =_VarGblAppColors.SecondaryText
+                BorderColor: |-
+                    =//_VarGblAppColors.SecondaryText
+                    ColorValue(LookUp(c_EnvironmentVariable, 'Display Name'="Text Secondary Color").'Default Value')
                 BorderThickness: =2
-                Color: =_VarGblAppColors.PrimaryText
+                Color: |-
+                    =//_VarGblAppColors.PrimaryText
+                    ColorValue(LookUp(c_EnvironmentVariable, 'Display Name'="Text Primary Color").'Default Value')
                 Default: |-
                     =If(
                         'Product List'.OrderType = "Primary",
@@ -1202,7 +1221,7 @@
         ZIndex: =7
 
         "'Product BG_7' As button":
-            BorderColor: =_VarGblAppColors.LightText
+            BorderColor: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Text Light Color").'Default Value')
             BorderThickness: =0
             Color: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Hover Color").'Default Value')
             DisabledBorderColor: =RGBA(166, 166, 166, 1)
@@ -1231,7 +1250,8 @@
             BorderColor: =RGBA(0, 18, 107, 1)
             Color: |-
                 =//RGBA(0, 18, 107, 1)
-                _VarGblAppColors.SecondaryText
+                //_VarGblAppColors.SecondaryText
+                ColorValue(LookUp(c_EnvironmentVariable, 'Display Name'="Text Secondary Color").'Default Value')
             DisabledBorderColor: =RGBA(166, 166, 166, 1)
             DisabledColor: =RGBA(244, 244, 244, 1)
             Height: =42
@@ -1308,7 +1328,7 @@
                     ZIndex: =1
 
                     "'Product BG_9' As button":
-                        BorderColor: =_VarGblAppColors.LightText
+                        BorderColor: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Text Light Color").'Default Value')
                         BorderThickness: =1
                         Color: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Hover Color").'Default Value')
                         DisabledBorderColor: =RGBA(166, 166, 166, 1)
@@ -1727,7 +1747,7 @@
             ZIndex: =6
 
             "'Product BG_8' As button":
-                BorderColor: =_VarGblAppColors.LightText
+                BorderColor: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Text Light Color").'Default Value')
                 BorderThickness: =1
                 Color: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Hover Color").'Default Value')
                 DisabledBorderColor: =RGBA(166, 166, 166, 1)
