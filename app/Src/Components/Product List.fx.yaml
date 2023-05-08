@@ -299,14 +299,14 @@
 
         "'Variant ComboBox_7' As combobox":
             AccessibleLabel: ="Variant"
-            BorderColor: =_VarGblAppColors.SecondaryText
+            BorderColor: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Text Primary Color").'Default Value')
             ChevronBackground: =RGBA(255, 255, 255, 1)
             ChevronDisabledBackground: =RGBA(166, 166, 166, 1)
             ChevronDisabledFill: =RGBA(244, 244, 244, 1)
-            ChevronFill: =_VarGblAppColors.SecondaryText
+            ChevronFill: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Text Primary Color").'Default Value')
             ChevronHoverBackground: =
             ChevronHoverFill: =
-            Color: =_VarGblAppColors.PrimaryText
+            Color: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Text Primary Color").'Default Value')
             Default: |-
                 =/*First(
                    AddColumns(
@@ -330,7 +330,7 @@
                 )
                 )*/
             DisabledBorderColor: =RGBA(166, 166, 166, 1)
-            DisabledColor: =_VarGblAppColors.SecondaryText
+            DisabledColor: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Text Primary Color").'Default Value')
             DisabledFill: =RGBA(244, 244, 244, 1)
             DisplayFields: =["VariantName"]
             FontWeight: =FontWeight.Semibold
@@ -354,12 +354,12 @@
             PressedFill: =RGBA(0, 18, 107, 1)
             SearchFields: =["VariantName"]
             SearchItems: =[]
-            SelectionColor: =_VarGblAppColors.PrimaryText
+            SelectionColor: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Text Primary Color").'Default Value')
             SelectionFill: =RGBA(230, 230, 230, 1)
-            SelectionTagColor: =_VarGblAppColors.PrimaryText
-            SelectionTagFill: =_VarGblAppColors.BackgroundColor
+            SelectionTagColor: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Text Primary Color").'Default Value')
+            SelectionTagFill: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Text Primary Color").'Default Value')
             SelectMultiple: =false
-            Size: =_VarGblAppFonts.Size.Medium
+            Size: =15
             Visible: =false
             Width: =150
             X: =162
@@ -520,9 +520,7 @@
             FontWeight: =FontWeight.Semibold
             Height: =30
             OnSelect: =Select(Parent)
-            Size: |-
-                =//_VarGblAppFonts.Size.Medium
-                14
+            Size: =15
             Text: |-
                 =If(
                     IsBlank(
@@ -618,7 +616,7 @@
             "'Quantity Input_8' As text":
                 AccessibleLabel: ="Quantity"
                 Align: =Align.Center
-                BorderColor: =//_VarGblAppColors.SecondaryText
+                BorderColor: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Text Primary Color").'Default Value')
                 BorderThickness: =2
                 Color: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'= "Button Fill").'Default Value')
                 Default: |-
@@ -1072,7 +1070,9 @@
                 RadiusTopLeft: =10
                 RadiusTopRight: =10
                 Reset: =
-                Size: =//_VarGblAppFonts.Size.Medium
+                Size: |-
+                    =//_VarGblAppFonts.Size.Medium
+                    15
                 Width: =62
                 X: =115
                 Y: =390
