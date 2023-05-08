@@ -259,10 +259,10 @@
             OnSelect: =Select(Parent)
             Size: =LookUp(c_EnvironmentVariable,'Display Name'="Text Medium Font Size").'Default Value'
             Text: |-
-                ="Discount: "
-            Width: =130
+                ="Discount Price: "
+            Width: =172
             Wrap: =false
-            X: =362
+            X: =332
             Y: =119
             ZIndex: =14
 
@@ -309,9 +309,11 @@
             Size: |
                 =16
             Text: |-
-                =  "₹" & Text(((ThisItem.baseUnitPrice - (ThisItem.baseUnitPrice * (ThisItem.discount/100))) * ThisItem.quantity)+ ThisItem.igstAmount + ThisItem.cgstAmount+ ThisItem.sgstAmount+ ThisItem.cessAmount,"[$-hi-IN]##,##,##,###",
-                                        "hi-IN")
-                  
+                ="₹" & Text(
+                    ((ThisItem.baseUnitPrice - (ThisItem.baseUnitPrice * (ThisItem.discount / 100))) * ThisItem.quantity) + ThisItem.igstAmount + ThisItem.cgstAmount + ThisItem.sgstAmount + ThisItem.cessAmount,
+                    /*"[$-hi-IN]##,##,##,###",
+                    "hi-IN"*/  "[$-en-US]#.00"
+                )
             Width: =95
             X: =504
             Y: =162
@@ -324,8 +326,14 @@
             FontWeight: =FontWeight.Bold
             Size: =16
             Text: |-
-                ="₹" & (ThisItem.baseUnitPrice-(ThisItem.baseUnitPrice * (ThisItem.discount/100))) * ThisItem.quantity
-                 
+                =Concatenate(
+                    "₹",
+                    Text(
+                        ThisItem.baseUnitPrice * (ThisItem.discount / 100) * ThisItem.quantity,
+                       /* "[$-hi-IN]##,##,##,###",
+                        "hi-IN"*/  "[$-en-US]#.00"
+                    )
+                )
             Width: =96
             X: =504
             Y: =119
@@ -362,7 +370,7 @@
             =ColorFade(
                 ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//_VarGblAppColors.PrimaryRed
                 , -20%)
-        OnSelect: |+
+        OnSelect: |
             =Set(
                 _VarOrderResponse,
                 Patch(
@@ -378,7 +386,7 @@
                             'Customer Name' = "Zoxima Solutions"
                         ),
                         'Order Status': 'Order Status Choice'.Open,
-                     'Order Type': 'Order Type Choice'.Primary,
+                        'Order Type': 'Order Type Choice'.Primary,
                         SGST: /*(Sum(
                             colPrimaryCart,
                             baseUnitPrice * quantity
@@ -424,15 +432,15 @@
                             colPrimaryCart,
                             quantity
                         ),
-                        'Discount %': Sum(
-                            colPrimaryCart,
-                            (baseUnitPrice * (discount / 100)) * quantity// after discount
-                        ) / CountRows(colPrimaryCart),
-                        Discount:Sum(
+                        'Discount%': Sum(
                             colPrimaryCart,
                             discount
                         ),
-                        'Order Date':Today(),
+                        'Discount ': Sum(
+                            colPrimaryCart,
+                            (baseUnitPrice * (discount / 100)) * quantity// after discount
+                        ) ,
+                        'Order Date': Today(),
                         'Total Price': Sum(
                             colPrimaryCart,
                             (baseUnitPrice * quantity)
@@ -481,7 +489,10 @@
                             'Discount Amount': ItemOrderLine.baseUnitPrice * (ItemOrderLine.discount / 100) * ItemOrderLine.quantity,
                             'Total Unit Price': (ItemOrderLine.baseUnitPrice - (ItemOrderLine.baseUnitPrice*(ItemOrderLine.discount / 100))) * Value(ItemOrderLine.quantity),
                             Quantity: Value(ItemOrderLine.quantity),
-                            Variant: LookUp(OfflineProductVariantCollection,Variant.'Variant Code'= ItemOrderLine.Variant)
+                            Variant: LookUp(
+                                OfflineProductVariantCollection,
+                                Variant.'Variant Code' = ItemOrderLine.Variant
+                            )
                         }
                     );
                     //Stock Update ____________________________________________________________________________________________________________
@@ -539,7 +550,7 @@
             );
             //Invoice Header Logic--------------------------------------------------------------------------
             Set(
-                _varInvoiceResponse,
+                _varInvoiceResponsee,
                 Patch(
                     'Invoice.S',
                     Defaults('Invoice.S'),
@@ -552,7 +563,7 @@
                             OfflinePartiesCollection,
                             'Customer Name' = varParty
                         ),
-                        'Total Discount': _VarOrderResponse.Discount,
+                        'Total Discount': _VarOrderResponse.'Discount%',
                         'Total Amount': _VarOrderResponse.'Total Bill Amount',
                         CGST: _VarOrderResponse.CGST,
                         SGST: _VarOrderResponse.SGST,
@@ -562,7 +573,7 @@
             );
             //Invoice Line Logic:-----------------------------------------------------------------------------------
             If(
-                !IsBlank(_varInvoiceResponse),
+                !IsBlank(_varInvoiceResponsee),
                 ForAll(
                     colPrimaryCart As InvoiceLine,
                     Patch(
@@ -577,7 +588,7 @@
                             ),
                             Invoice: LookUp(
                                 'Invoice.S',
-                                'Invoice Id' = _varInvoiceResponse.'Invoice Id'
+                                'Invoice Id' = _varInvoiceResponsee.'Invoice Id'
                             ),
                             Quantity: Value(InvoiceLine.quantity),
                             'Discounted Base Price': Sum(
@@ -617,7 +628,7 @@
             Clear(colPrimaryCart);
             Clear(colSecondaryCart);
             Navigate(
-                'Customer 360 Screen',
+                'Primary Order Screen',
                 ScreenTransition.CoverRight
             );
             /*Reset(DataCardValue30_3);
@@ -625,7 +636,6 @@
             Reset(TextInput3_6);
             Reset(TextInput3_5);
             Reset(ComboBox4_1)*/
-            
         Size: =20
         Text: ="Place Order"
         Width: =258

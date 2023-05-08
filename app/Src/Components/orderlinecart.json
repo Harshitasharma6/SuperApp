@@ -1837,7 +1837,7 @@
               },
               {
                 "Category": "Data",
-                "InvariantScript": "\"Variant: \" ",
+                "InvariantScript": "\"Total Price: \" ",
                 "Property": "Text",
                 "RuleProviderType": "Unknown"
               },
@@ -2203,7 +2203,7 @@
               },
               {
                 "Category": "Data",
-                "InvariantScript": "LookUp(OfflineProductSKUCollection,'Product SKU'= ThisItem.'Product SKU'.'Product SKU').Variant.'Variant Name'",
+                "InvariantScript": "/*LookUp(\r\n    OfflineProductSKUCollection,\r\n    'Product SKU' = ThisItem.'Product SKU'.'Product SKU'\r\n).Variant.'Variant Name'*/\r\n\"₹\"&ThisItem.'Unit Price' * ThisItem.Quantity",
                 "Property": "Text",
                 "RuleProviderType": "Unknown"
               },
@@ -3694,7 +3694,7 @@
               },
               {
                 "Category": "Data",
-                "InvariantScript": "\"₹\" & ThisItem.'Discount Amount'\r\n ",
+                "InvariantScript": "If(ThisItem.'Discount Amount' = 0,\"₹0.00\",Concatenate(\r\n                \"₹\",\r\n                Text(\r\n                    ThisItem.'Discount Amount',\r\n                    /*\"[$-hi-IN]##,##,##,###\",\r\n                    \"hi-IN\"*/  \"[$-en-US]#.00\"\r\n                )\r\n            ))\r\n ",
                 "Property": "Text",
                 "RuleProviderType": "Unknown"
               },
@@ -4849,7 +4849,7 @@
               },
               {
                 "Category": "Data",
-                "InvariantScript": "\"Total Price: \"",
+                "InvariantScript": "\"Net Price: \"",
                 "Property": "Text",
                 "RuleProviderType": "Unknown"
               },
@@ -5761,7 +5761,7 @@
       "ZIndex",
       "CartType"
     ],
-    "LastModifiedTimestamp": "638191299766971137",
+    "LastModifiedTimestamp": "638191312234046779",
     "Name": "orderlinecart",
     "Rules": [
       {
@@ -5836,7 +5836,7 @@
   "IsPcfControl": false,
   "IsPremiumPcfControl": false,
   "IsWidgetTemplate": false,
-  "LastModifiedTimestamp": "638191299766971137",
+  "LastModifiedTimestamp": "638191312234046779",
   "Name": "90883600ac594eda95a316e72190f825",
   "OverridableProperties": {},
   "TemplateOriginalName": "96ce68581def46fcab13b78f74ddacdc",
