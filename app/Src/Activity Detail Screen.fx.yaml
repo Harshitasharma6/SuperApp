@@ -1,10 +1,6 @@
 "'Activity Detail Screen' As screen":
     LoadingSpinnerColor: =RGBA(0, 120, 212, 1)
 
-    Header_19 As Header_17:
-        Fill: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Screen Background Color").'Default Value') //ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Screen Background Color").'Default Value') //_VarGblAppColors.BackgroundColor
-        ScreenName: =varActivityData.zx_leadactivitiesid
-
     "'Detail Page_3' As 'Detail Page'":
         DataSource: |-
             =Table({
@@ -44,41 +40,4 @@
         Height: =962
         Y: =80
         ZIndex: =2
-
-    "'Bottom Bar_21' As 'Bottom Bar_19'":
-        NavItems: |-
-            =Table(
-                {
-                    Title: "Orders",
-                    Icon : 'shopping-cart',
-                    Screen: 'Customer 360 Screen',
-                    Id: 1
-                },
-                {
-                    Title: "Visit",
-                    Icon: location,
-                    Screen:'Start Visit',
-                    Id:2
-                },
-                 {
-                    Title: "Home",
-                    Icon:home,
-                    Screen: Home,
-                    Id:3
-                },
-                 {
-                    Title: "Parties",
-                    Icon: people,
-                    Screen: Parties,
-                    Id:4
-                },
-                {
-                    Title: varUser.'First Name',
-                    Icon: User().Image,
-                    Screen: Sidebar,
-                    Id:5
-                }
-            )
-        Y: =996
-        ZIndex: =3
 

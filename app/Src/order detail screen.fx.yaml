@@ -97,20 +97,22 @@
                                 "₹",
                                 Text(
                                     varOrderData.'Total Price',
-                                    "[$-hi-IN]##,##,##,###",
-                                    "hi-IN"
+                                   /* "[$-hi-IN]##,##,##,###",
+                                    "hi-IN"*/
+                                     "[$-en-US]#.00"
                                 )
                             )
                         },
                         {
-                            Title: "Discount",
+                            Title: "Disc. Price",
                             Value: Concatenate(
+                                "₹",
                                 Text(
-                                    varOrderData.'Discount %',
-                                    "[$-hi-IN]##,##,##,###",
-                                    "hi-IN"
-                                ),
-                                "%"
+                                    varOrderData.'Discount ',
+                                   /* "[$-hi-IN]##,##,##,###",
+                                    "hi-IN"*/
+                                     "[$-en-US]#.00"
+                                )
                             )
                         },
                         {
@@ -119,66 +121,71 @@
                                 "₹",
                                 Text(
                                     varOrderData.'Total Bill Amount',
-                                    "[$-hi-IN]##,##,##,###",
-                                    "hi-IN"
+                                  /*  "[$-hi-IN]##,##,##,###",
+                                    "hi-IN"*/
+                                     "[$-en-US]#.00"
                                 )
                             )
                         },
                         {
                             Title: "Tax",
-                            Value: 
-                                Concatenate(
-                                    "₹",
-                                    Text(
-                                        Sum(varOrderData.IGST) + Sum(varOrderData.CGST) + Sum(varOrderData.SGST) + Sum(varOrderData.'Cess %'),
-                                        "[$-hi-IN]##,##,##,###",
-                                        "hi-IN"
-                                    )
-                                )
-                        },
-                        {
-                            Title: "Disc. Price",
                             Value: Concatenate(
                                 "₹",
                                 Text(
-                                    varOrderData.Discount,
+                                    Sum(varOrderData.IGST) + Sum(varOrderData.CGST) + Sum(varOrderData.SGST) + Sum(varOrderData.'Cess %'),
+                                   /* "[$-hi-IN]##,##,##,###",
+                                    "hi-IN"*/
+                                     "[$-en-US]#.00"
+                                )
+                            )
+                        },
+                        {
+                            Title: "Discount",
+                            Value: Concatenate(
+                                Text(
+                                    varOrderData.'Discount%',
                                     "[$-hi-IN]##,##,##,###",
                                     "hi-IN"
-                                )
+                                    
+                                ),
+                                "%"
                             )
                         },
                         {
                             Title: "IGST",
-                            Value: Concatenate(
+                            Value: If(varOrderData.IGST = 0,"₹0.00",Concatenate(
                                 "₹",
                                 Text(
-                                    varOrderData.IGST,
-                                    "[$-hi-IN]##,##,##,###",
-                                    "hi-IN"
+                                     varOrderData.IGST,
+                                   /* "[$-hi-IN]##,##,##,###",
+                                    "hi-IN"*/
+                                     "[$-en-US]#.00"
                                 )
-                            )
+                            ))
                         },
                         {
                             Title: "CGST",
-                            Value: Concatenate(
+                            Value: If(varOrderData.CGST = 0,"₹0.00",Concatenate(
                                 "₹",
                                 Text(
                                     varOrderData.CGST,
-                                    "[$-hi-IN]##,##,##,###",
-                                    "hi-IN"
+                                    /*"[$-hi-IN]##,##,##,###",
+                                    "hi-IN"*/
+                                     "[$-en-US]#.00"
                                 )
-                            )
+                            ))
                         },
                         {
                             Title: "SGST",
-                            Value: Concatenate(
+                            Value: If(varOrderData.SGST = 0,"₹0.00",Concatenate(
                                 "₹",
                                 Text(
                                     varOrderData.SGST,
-                                    "[$-hi-IN]##,##,##,###",
-                                    "hi-IN"
+                                   /* "[$-hi-IN]##,##,##,###",
+                                    "hi-IN"*/
+                                     "[$-en-US]#.00"
                                 )
-                            )
+                            ))
                         },
                         {
                             Title: "CESS",
@@ -186,8 +193,8 @@
                                 "₹",
                                 Text(
                                     varOrderData.'Cess %',
-                                    "[$-hi-IN]##,##,##,###",
-                                    "hi-IN"
+                                   /* "[$-hi-IN]##,##,##,###",
+                                    "hi-IN"*/  "[$-en-US]#.00"
                                 )
                             )
                         },

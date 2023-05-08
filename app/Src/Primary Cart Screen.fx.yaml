@@ -81,7 +81,6 @@
                                 "dd-mm-yy"
                             )
                         },
-                        
                         {
                             Title: "Supplier",
                             Value: varParty
@@ -97,8 +96,9 @@
                                             colPrimaryCart,
                                             (baseUnitPrice * quantity)
                                         ),
-                                        "[$-hi-IN]##,##,##,###",
-                                        "hi-IN"
+                                        //"[$-hi-IN]##,##,##,###",
+                                       // "hi-IN"
+                                        "[$-en-US]#.00"
                                     )
                                 ),
                                 Concatenate(
@@ -108,8 +108,9 @@
                                             colSecondaryCart,
                                             (baseUnitPrice * quantity)
                                         ),
-                                        "[$-hi-IN]##,##,##,###",
-                                        "hi-IN"
+                                       /* "[$-hi-IN]##,##,##,###",
+                                        "hi-IN"*/
+                                        "[$-en-US]#.00"
                                     )
                                 )
                             )
@@ -128,8 +129,9 @@
                                             ),
                                             2
                                         ),
-                                        "[$-hi-IN]##,##,##,###",
-                                        "hi-IN"
+                                       /* "[$-hi-IN]##,##,##,###",
+                                        "hi-IN"*/
+                                        "[$-en-US]#.00"
                                     )
                                 ),
                                 Concatenate(
@@ -142,8 +144,9 @@
                                             ),
                                             2
                                         ),
-                                        "[$-hi-IN]##,##,##,###",
-                                        "hi-IN"
+                                        /*"[$-hi-IN]##,##,##,###",
+                                        "hi-IN"*/
+                                        "[$-en-US]#.00"
                                     )
                                 )
                             )
@@ -151,7 +154,7 @@
                         {
                             Title: "Net Price",
                             Value: If(
-                                'Product List_1'.OrderType= "Primary",
+                                'Product List_1'.OrderType = "Primary",
                                 Concatenate(
                                     "₹",
                                     Text(
@@ -171,8 +174,9 @@
                                             colPrimaryCart,
                                             cessAmount
                                         )),
-                                        "[$-hi-IN]##,##,##,###",
-                                        "hi-IN"
+                                        /*"[$-hi-IN]##,##,##,###",
+                                        "hi-IN"*/
+                                        "[$-en-US]#.00"
                                     )
                                 ),
                                 Concatenate(
@@ -194,8 +198,9 @@
                                             colSecondaryCart,
                                             cessAmount
                                         )),
-                                        "[$-hi-IN]##,##,##,###",
-                                        "hi-IN"
+                                       /* "[$-hi-IN]##,##,##,###",
+                                        "hi-IN"*/
+                                        "[$-en-US]#.00"
                                     )
                                 )
                             )
@@ -226,8 +231,9 @@
                                             colPrimaryCart,
                                             (baseUnitPrice - (baseUnitPrice * (discount / 100))) * quantity
                                         ),
-                                        "[$-hi-IN]##,##,##,###",
-                                        "hi-IN"
+                                      /*  "[$-hi-IN]##,##,##,###",
+                                        "hi-IN"*/
+                                        "[$-en-US]#.00"
                                     )
                                 ),
                                 Concatenate(
@@ -252,14 +258,15 @@
                                             colSecondaryCart,
                                             (baseUnitPrice - (baseUnitPrice * (discount / 100))) * quantity
                                         ),
-                                        "[$-hi-IN]##,##,##,###",
-                                        "hi-IN"
+                                       /* "[$-hi-IN]##,##,##,###",
+                                        "hi-IN"*/
+                                        "[$-en-US]#.00"
                                     )
                                 )
                             )
                         },
                         {
-                            Title: "Disc. Price",
+                            Title: "Disc.Price",
                             Value: If(
                                 'Product List_1'.OrderType = "Primary",
                                 Concatenate(
@@ -269,8 +276,9 @@
                                             colPrimaryCart,
                                             (baseUnitPrice - (baseUnitPrice * (discount / 100))) * quantity
                                         ),
-                                        "[$-hi-IN]##,##,##,###",
-                                        "hi-IN"
+                                       /* "[$-hi-IN]##,##,##,###",
+                                        "hi-IN"*/
+                                        "[$-en-US]#.00"
                                     )
                                 ),
                                 Concatenate(
@@ -280,8 +288,9 @@
                                             colSecondaryCart,
                                             (baseUnitPrice - (baseUnitPrice * (discount / 100))) * quantity
                                         ),
-                                        "[$-hi-IN]##,##,##,###",
-                                        "hi-IN"
+                                      /*  "[$-hi-IN]##,##,##,###",
+                                        "hi-IN"*/
+                                        "[$-en-US]#.00"
                                     )
                                 )
                             )
@@ -295,8 +304,9 @@
                                         colPrimaryCart,
                                         igstAmount
                                     ),
-                                    "[$-hi-IN]##,##,##,###",
-                                    "hi-IN"
+                                    /*"[$-hi-IN]##,##,##,###",
+                                    "hi-IN"*/
+                                    "[$-en-US]#.00"
                                 )
                             )
                         },
@@ -309,8 +319,9 @@
                                         colPrimaryCart,
                                         cgstAmount
                                     ),
-                                    "[$-hi-IN]##,##,##,###",
-                                    "hi-IN"
+                                    /*"[$-hi-IN]##,##,##,###",
+                                    "hi-IN"*/
+                                    "[$-en-US]#.00"
                                 )
                             )
                         },
@@ -323,13 +334,14 @@
                                         colPrimaryCart,
                                         sgstAmount
                                     ),
-                                    "[$-hi-IN]##,##,##,###",
-                                    "hi-IN"
+                                   /* "[$-hi-IN]##,##,##,###",
+                                    "hi-IN"*/
+                                    "[$-en-US]#.00"
                                 )
                             )
                         },
                         {
-                            Title: "CESS",
+                            Title: "Cess",
                             Value: Concatenate(
                                 "₹",
                                 Text(
@@ -337,8 +349,9 @@
                                         colPrimaryCart,
                                         cessAmount
                                     ),
-                                    "[$-hi-IN]##,##,##,###",
-                                    "hi-IN"
+                                   /* "[$-hi-IN]##,##,##,###",
+                                    "hi-IN"*/
+                                    "[$-en-US]#.00"
                                 )
                             )
                         },

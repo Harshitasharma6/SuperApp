@@ -98,8 +98,8 @@
                                             colPrimaryCart,
                                             (baseUnitPrice * quantity)
                                         ),
-                                        "[$-hi-IN]##,##,##,###",
-                                        "hi-IN"
+                                       /* "[$-hi-IN]##,##,##,###",
+                                        "hi-IN"*/  "[$-en-US]#.00"
                                     )
                                 ),
                                 Concatenate(
@@ -109,8 +109,8 @@
                                             colSecondaryCart,
                                             (baseUnitPrice * quantity)
                                         ),
-                                        "[$-hi-IN]##,##,##,###",
-                                        "hi-IN"
+                                       /* "[$-hi-IN]##,##,##,###",
+                                        "hi-IN"*/  "[$-en-US]#.00"
                                     )
                                 )
                             )
@@ -129,8 +129,8 @@
                                             ),
                                             2
                                         ),
-                                        "[$-hi-IN]##,##,##,###",
-                                        "hi-IN"
+                                        /*"[$-hi-IN]##,##,##,###",
+                                        "hi-IN"*/  "[$-en-US]#.00"
                                     )
                                 ),
                                 Concatenate(
@@ -143,8 +143,8 @@
                                             ),
                                             2
                                         ),
-                                        "[$-hi-IN]##,##,##,###",
-                                        "hi-IN"
+                                       /* "[$-hi-IN]##,##,##,###",
+                                        "hi-IN"*/ "[$-en-US]#.00"
                                     )
                                 )
                             )
@@ -172,8 +172,8 @@
                                             colPrimaryCart,
                                             cessAmount
                                         )),
-                                        "[$-hi-IN]##,##,##,###",
-                                        "hi-IN"
+                                        /*"[$-hi-IN]##,##,##,###",
+                                        "hi-IN"*/  "[$-en-US]#.00"
                                     )
                                 ),
                                 Concatenate(
@@ -195,8 +195,8 @@
                                             colSecondaryCart,
                                             cessAmount
                                         )),
-                                        "[$-hi-IN]##,##,##,###",
-                                        "hi-IN"
+                                       /* "[$-hi-IN]##,##,##,###",
+                                        "hi-IN"*/  "[$-en-US]#.00"
                                     )
                                 )
                             )
@@ -227,8 +227,8 @@
                                             colPrimaryCart,
                                             (baseUnitPrice - (baseUnitPrice * (discount / 100))) * quantity
                                         ),
-                                        "[$-hi-IN]##,##,##,###",
-                                        "hi-IN"
+                                        /*"[$-hi-IN]##,##,##,###",
+                                        "hi-IN"*/  "[$-en-US]#.00"
                                     )
                                 ),
                                 Concatenate(
@@ -253,8 +253,8 @@
                                             colSecondaryCart,
                                             (baseUnitPrice - (baseUnitPrice * (discount / 100))) * quantity
                                         ),
-                                        "[$-hi-IN]##,##,##,###",
-                                        "hi-IN"
+                                       /* "[$-hi-IN]##,##,##,###",
+                                        "hi-IN"*/  "[$-en-US]#.00"
                                     )
                                 )
                             )
@@ -270,8 +270,8 @@
                                             colPrimaryCart,
                                             (baseUnitPrice - (baseUnitPrice * (discount / 100))) * quantity
                                         ),
-                                        "[$-hi-IN]##,##,##,###",
-                                        "hi-IN"
+                                       /* "[$-hi-IN]##,##,##,###",
+                                        "hi-IN"*/  "[$-en-US]#.00"
                                     )
                                 ),
                                 Concatenate(
@@ -281,8 +281,8 @@
                                             colSecondaryCart,
                                             (baseUnitPrice - (baseUnitPrice * (discount / 100))) * quantity
                                         ),
-                                        "[$-hi-IN]##,##,##,###",
-                                        "hi-IN"
+                                       /* "[$-hi-IN]##,##,##,###",
+                                        "hi-IN"*/  "[$-en-US]#.00"
                                     )
                                 )
                             )
@@ -293,11 +293,11 @@
                                 "₹",
                                 Text(
                                     Sum(
-                                        colPrimaryCart,
+                                        colSecondaryCart,
                                         igstAmount
                                     ),
-                                    "[$-hi-IN]##,##,##,###",
-                                    "hi-IN"
+                                   /* "[$-hi-IN]##,##,##,###",
+                                    "hi-IN"*/  "[$-en-US]#.00"
                                 )
                             )
                         },
@@ -307,11 +307,11 @@
                                 "₹",
                                 Text(
                                     Sum(
-                                        colPrimaryCart,
+                                        colSecondaryCart,
                                         cgstAmount
                                     ),
-                                    "[$-hi-IN]##,##,##,###",
-                                    "hi-IN"
+                                   /* "[$-hi-IN]##,##,##,###",
+                                    "hi-IN"*/  "[$-en-US]#.00"
                                 )
                             )
                         },
@@ -321,25 +321,25 @@
                                 "₹",
                                 Text(
                                     Sum(
-                                        colPrimaryCart,
+                                        colSecondaryCart,
                                         sgstAmount
                                     ),
-                                    "[$-hi-IN]##,##,##,###",
-                                    "hi-IN"
+                                  /*  "[$-hi-IN]##,##,##,###",
+                                    "hi-IN"*/  "[$-en-US]#.00"
                                 )
                             )
                         },
                         {
-                            Title: "CESS",
+                            Title: "Cess",
                             Value: Concatenate(
                                 "₹",
                                 Text(
                                     Sum(
-                                        colPrimaryCart,
+                                        colSecondaryCart,
                                         cessAmount
                                     ),
-                                    "[$-hi-IN]##,##,##,###",
-                                    "hi-IN"
+                                   /* "[$-hi-IN]##,##,##,###",
+                                    "hi-IN"*/  "[$-en-US]#.00"
                                 )
                             )
                         },
