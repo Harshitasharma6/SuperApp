@@ -14,3 +14,257 @@
         ScreenName: ="SalesOrder"
         ZIndex: =3
 
+    PartiesBackdrop_1 As rectangle:
+        AccessibleLabel: ="Backdrop"
+        BorderColor: =RGBA(0, 18, 107, 1)
+        DisplayMode: =DisplayMode.View
+        Fill: =RGBA(0, 0, 0, 0.54)
+        Height: =1136
+        OnSelect: =Set(varParties, false)
+        TabIndex: =0
+        Visible: =varParties
+        Width: =640
+        ZIndex: =10
+
+    parties_1 As rectangle:
+        BorderColor: =RGBA(0, 18, 107, 1)
+        DisplayMode: =DisplayMode.View
+        Fill: |-
+            =//_VarGblAppColors.BackgroundColor
+            ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Screen Background Color").'Default Value' )//ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//_VarGblAppColors.PrimaryRed
+        Height: =344
+        Visible: =varParties
+        Width: =574
+        X: =33
+        Y: =374
+        ZIndex: =11
+
+    CancelIcon_3 As icon.Cancel:
+        AccessibleLabel: ="Cancel Icon"
+        BorderColor: =RGBA(0, 18, 107, 1)
+        Color: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Text Primary Color").'Default Value' )//ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//_VarGblAppColors.PrimaryRed
+        DisabledBorderColor: =RGBA(166, 166, 166, 1)
+        DisabledColor: =RGBA(244, 244, 244, 1)
+        Height: =38
+        Icon: =Icon.Cancel
+        OnSelect: =Set(varParties, false)
+        TabIndex: =0
+        Visible: =varParties
+        Width: =35
+        X: =560
+        Y: =387
+        ZIndex: =12
+
+    Button11_1 As button:
+        DisabledBorderColor: =RGBA(166, 166, 166, 1)
+        DisabledColor: =RGBA(166, 166, 166, 1)
+        DisabledFill: =RGBA(244, 244, 244, 1)
+        DisplayMode: =If(IsBlank( ComboBox1_1.Selected), DisplayMode.Disabled, DisplayMode.Edit)
+        Fill: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//_VarGblAppColors.PrimaryRed
+        FontWeight: =FontWeight.Semibold
+        Height: =60
+        HoverColor: =RGBA(255, 255, 255, 1)
+        HoverFill: =ColorFade(Self.Fill, -20%)
+        OnSelect: |
+            =If(
+                IsBlank(ComboBox1_1.Selected.'Customer Name'),
+                Notify(
+                    "Party is required",
+                    NotificationType.Error,
+                    2000
+                ),
+                Navigate(
+                    'Order Screen',
+                    ScreenTransition.CoverRight
+                );
+                Set(
+                    varParty,
+                    ComboBox1_1.Selected.'Customer Name'
+                );
+                Set(
+                    varParties,
+                    false
+                );
+                Set(
+                    varCustomerforDiscount,
+                    ComboBox1_1.Selected.Parties
+                );
+                Set(
+                    varCustomertype,
+                    ComboBox1_1.Selected.'Customer Type'
+                );
+                Set(
+                    varpaymentterm,
+                    ComboBox1_1.Selected.'Payment Terms'.Name
+                );
+                
+            );
+            Set(
+                varOrderfrom,
+                LookUp(
+                    OfflinePartiesCollection,
+                    'Customer Code' = ComboBox1_1.Selected.'Customer Code'
+                ).State.Name
+            );
+            Set(
+                varOrderfromRegion,
+                LookUp(
+                    OfflinePartiesCollection,
+                    'Customer Code' = ComboBox1_1.Selected.'Customer Code'
+                ).Region.Name
+            );
+            /*Set(
+                varOrderTo,
+                LookUp(
+                    colZoximaParty,
+                    'Customer Code' = First(colZoximaParty).'Customer Code'
+                ).State.'State Name'
+            );*/
+            
+            Set(
+                varPartyPricelist,
+                ComboBox1_1.Selected.'Price List'.Name
+            );
+            ClearCollect(
+                colPartyOrder,
+                Sort(
+                    Filter(
+                        OfflineOrderHeaderCollection,
+                        'Order From'.Parties = ComboBox1_1.Selected.Parties
+                    ),
+                    'Created On',
+                    SortOrder.Descending
+                )
+            );
+            ForAll(
+                colPartyOrder As oneline,
+                Collect(
+                    colOrderlineproduct,
+                    Filter(
+                        'Order Lines.S',
+                        'Order Header'.'Order Header' = oneline.'Order Header'
+                    )
+                )
+            );
+            ClearCollect(
+                colDistinctProduct,
+                Distinct(
+                    colOrderlineproduct,
+                    'Product SKU'.'Product SKU'
+                )
+            );
+            ClearCollect(
+                colCustomerMapping,
+                LookUp(
+                    OfflineProductOfferMappingCollection,
+                    Customer.Parties = GUID(varCustomerforDiscount)
+                )
+            );
+            ClearCollect(
+                colStateMapping,
+                LookUp(
+                    OfflineProductOfferMappingCollection,
+                    Customer.State.Name = varOrderfrom
+                )
+            );
+            ClearCollect(
+                colRegionMapping,
+                LookUp(
+                    OfflineProductOfferMappingCollection,
+                    Customer.Region.Name = varOrderfromRegion
+                )
+            );
+            If(
+                !IsBlank(colCustomerMapping),
+                ClearCollect(
+                    colOfferHeaderId,
+                    LookUp(
+                        OfflineProductOfferHeaderCollection,
+                        'Product Offer Header' = First(colCustomerMapping).'Product Offers'.'Product Offer Header'
+                    ).'Offer ID'
+                ),
+                !IsBlank(colStateMapping),
+                ClearCollect(
+                    colOfferHeaderId,
+                    LookUp(
+                        OfflineProductOfferHeaderCollection,
+                        'Product Offer Header' = First(colStateMapping).'Product Offers'.'Product Offer Header'
+                    ).'Offer ID'
+                ),
+                !IsBlank(colRegionMapping),
+                ClearCollect(
+                    colOfferHeaderId,
+                    LookUp(
+                        OfflineProductOfferHeaderCollection,
+                        'Product Offer Header' = First(colStateMapping).'Product Offers'.'Product Offer Header'
+                    ).'Offer ID'
+                )
+            );
+            ClearCollect(
+                colOfferHeader,
+                Filter(
+                    OfflineProductOfferHeaderCollection,
+                    'Offer ID' = First(colOfferHeaderId).Value && ('Active From' <= Today()) && ('Active To' >= Today())
+                )
+            );
+        Size: =20
+        Text: ="PROCEED"
+        Visible: =varParties
+        Width: =280
+        X: =187
+        Y: =607
+        ZIndex: =13
+
+    ComboBox1_1 As combobox:
+        AccessibleLabel: ="ComboBox1"
+        BorderColor: =Color.Black
+        ChevronBackground: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//_VarGblAppColors.PrimaryRed
+        ChevronDisabledBackground: =RGBA(166, 166, 166, 1)
+        ChevronDisabledFill: =RGBA(244, 244, 244, 1)
+        ChevronHoverBackground: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//_VarGblAppColors.PrimaryRed
+        ChevronHoverFill: =RGBA(255, 255, 255, 1)
+        DisabledBorderColor: =RGBA(166, 166, 166, 1)
+        DisabledColor: =RGBA(166, 166, 166, 1)
+        DisabledFill: =RGBA(244, 244, 244, 1)
+        DisplayFields: =["zx_name","zx_customercode"]
+        Height: =65
+        HoverColor: =RGBA(0, 0, 0, 1)
+        HoverFill: =RGBA(186, 202, 226, 1)
+        InputTextPlaceholder: ="Search Party"
+        Items: |-
+            =Filter(
+                OfflinePartiesCollection,
+                ('Customer Type' = 'Party Type Choices'.Distributor || 'Customer Type' = 'Party Type Choices'.Dealer)
+            )
+        PressedColor: =RGBA(255, 255, 255, 1)
+        PressedFill: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//_VarGblAppColors.PrimaryRed
+        SearchFields: =["zx_name"]
+        SearchItems: |-
+            =Search(Filter(
+                OfflinePartiesCollection,
+                ('Customer Type' = 'Party Type Choices'.Distributor || 'Customer Type' = 'Party Type Choices'.Dealer)
+            ),ComboBox1_1.SearchText,"zx_name")
+        SelectionFill: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//_VarGblAppColors.PrimaryRed
+        SelectMultiple: =false
+        Size: =21
+        Template: =ListItemTemplate.Double
+        Visible: =varParties
+        Width: =505
+        X: =77
+        Y: =489
+        ZIndex: =14
+
+    Label16_1 As label:
+        BorderColor: =RGBA(0, 18, 107, 1)
+        Color: =RGBA(0, 0, 0, 1)
+        DisabledColor: =RGBA(166, 166, 166, 1)
+        FontWeight: =FontWeight.Bold
+        Height: =56
+        Size: =21
+        Text: ="Select Distributor or Dealer"
+        Visible: =varParties
+        Width: =483
+        X: =77
+        Y: =406
+        ZIndex: =15
+

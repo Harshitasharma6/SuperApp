@@ -1061,7 +1061,9 @@ VisitPlanningNew As screen:
 
             Label28_9 As label:
                 BorderColor: =RGBA(0, 18, 107, 1)
-                Color: =If(ThisItem.IsSelected, ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//_VarGblAppColors.PrimaryRed, RGBA(0, 0, 0, 1))
+                Color: |-
+                    =If(ThisItem.IsSelected, ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' ))
+                    /*ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' ),_VarGblAppColors.PrimaryRed, RGBA(0, 0, 0, 1))*/
                 DisabledColor: =RGBA(166, 166, 166, 1)
                 FocusedBorderThickness: =01
                 FontWeight: =FontWeight.Semibold
