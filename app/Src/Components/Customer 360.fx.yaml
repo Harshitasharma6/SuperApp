@@ -839,7 +839,7 @@
                 =LookUp(c_EnvironmentVariable, 'Display Name'="Text Heading Font").'Default Value'
                 
                 //_VarGblAppFonts.Heading
-            FontWeight: =FontWeight.Bold
+            FontWeight: =FontWeight.Semibold
             Height: =75
             OnSelect: |-
                 =Navigate('Order Info',ScreenTransition.CoverRight);
@@ -894,7 +894,6 @@
                 =LookUp(c_EnvironmentVariable, 'Display Name'="Text Heading Font").'Default Value'
                 
                 //_VarGblAppFonts.Heading
-            FontWeight: =FontWeight.Semibold
             OnSelect: |-
                 =Navigate('Order Info',ScreenTransition.CoverRight);
                 Set(varOrderData, ThisItem)
@@ -949,7 +948,6 @@
                 =LookUp(c_EnvironmentVariable, 'Display Name'="Text Heading Font").'Default Value'
                 
                 //_VarGblAppFonts.Heading
-            FontWeight: =FontWeight.Semibold
             Height: =39
             OnSelect: |-
                 =Navigate('Order Info',ScreenTransition.CoverRight);
@@ -1002,6 +1000,32 @@
             X: =26
             Y: =16
             ZIndex: =12
+
+        Body1_90 As label:
+            BorderColor: =RGBA(0, 18, 107, 1)
+            Color: =RGBA(0, 0, 0, 1)
+            DisabledColor: =RGBA(166, 166, 166, 1)
+            FocusedBorderThickness: =01
+            Font: |-
+                =LookUp(c_EnvironmentVariable, 'Display Name'="Text Heading Font").'Default Value'
+                
+                //_VarGblAppFonts.Heading
+            Height: =39
+            OnSelect: |-
+                =Navigate('Order Info',ScreenTransition.CoverRight);
+                Set(varOrderData, ThisItem)
+                 
+            Size: |-
+                =
+                LookUp('Environment Variable Definitions', 'Display Name'="Text Sub Title Font Size").'Default Value'
+            TabIndex: =0
+            Text: = ThisItem.'Order Date'
+            Tooltip: |-
+                =
+                "Total Tax: " &"₹"& Sum(ThisItem.CGST,ThisItem.SGST,ThisItem.IGST)
+            X: =141
+            Y: =132
+            ZIndex: =13
 
     "'Activity gallery_1' As gallery.galleryVertical":
         AccessibleLabel: ="Orderline Gallery"
@@ -2138,7 +2162,11 @@
             Height: =30
             Icon: =Icon.Waypoint
             OnSelect: |+
-                =If(IsBlank('Customer 360'.CustomerRecord.zx_longitude)|| IsBlank('Customer 360'.CustomerRecord.zx_latitude), Set(g_LocationNeeded,true), Launch("http://www.google.com/maps/place/" & 'Customer 360'.CustomerRecord.zx_latitude & "," & 'Customer 360'.CustomerRecord.zx_longitude););
+                =If(IsBlank('Customer 360'.CustomerRecord.zx_longitude)|| IsBlank('Customer 360'.CustomerRecord.zx_latitude), Set(g_LocationNeeded,true), Launch("http://www.google.com/maps/place/" & 
+                
+                
+                LookUp('Parties.S', Parties='Customer 360'.CustomerRecord.zx_partiesid).Latitude & "," & 
+                LookUp('Parties.S', Parties='Customer 360'.CustomerRecord.zx_partiesid).Longitude););
                 
                 
             TabIndex: =0//-1
@@ -2315,7 +2343,8 @@
                 Patch('Parties.S', 
                 
                 varCustomerRecord, {Latitude:Location.Latitude, Longitude:Location.Longitude});
-                 Set(g_LocationNeeded,false)
+                 Set(g_LocationNeeded,false);
+                Refresh('Parties.S');
             RadiusBottomLeft: =15
             RadiusBottomRight: =15
             RadiusTopLeft: =15
