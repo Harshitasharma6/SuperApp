@@ -679,7 +679,7 @@
           },
           {
             "Category": "Design",
-            "InvariantScript": "95",
+            "InvariantScript": "Label7_4.Y+Label7_4.Height+5",
             "Property": "Height",
             "RuleProviderType": "Unknown"
           },
@@ -1264,7 +1264,7 @@
           },
           {
             "Category": "Design",
-            "InvariantScript": "38",
+            "InvariantScript": "Button47.Height/2-Self.Height/2+Button47.Y",
             "Property": "Y",
             "RuleProviderType": "Unknown"
           },
@@ -1463,7 +1463,7 @@
           },
           {
             "Category": "Design",
-            "InvariantScript": "38",
+            "InvariantScript": "Button47.Height/2-Self.Height/2+Button47.Y",
             "Property": "Y",
             "RuleProviderType": "Unknown"
           },
@@ -1689,7 +1689,7 @@
           },
           {
             "Category": "Design",
-            "InvariantScript": "48",
+            "InvariantScript": "Button47.Height/2-Self.Height/2+Button47.Y",
             "Property": "Y",
             "RuleProviderType": "Unknown"
           },
@@ -1957,7 +1957,7 @@
           },
           {
             "Category": "Design",
-            "InvariantScript": "48",
+            "InvariantScript": "Button47.Height/2-Self.Height/2+Button47.Y",
             "Property": "Y",
             "RuleProviderType": "Unknown"
           },
@@ -2106,8 +2106,22 @@
             "IsLockable": false,
             "NameMapSourceSchema": "?"
           },
-          "Width",
-          "Height",
+          {
+            "AFDDataSourceName": "",
+            "AutoRuleBindingEnabled": false,
+            "AutoRuleBindingString": "",
+            "InvariantPropertyName": "Width",
+            "IsLockable": false,
+            "NameMapSourceSchema": "?"
+          },
+          {
+            "AFDDataSourceName": "",
+            "AutoRuleBindingEnabled": false,
+            "AutoRuleBindingString": "",
+            "InvariantPropertyName": "Height",
+            "IsLockable": false,
+            "NameMapSourceSchema": "?"
+          },
           "DisplayMode",
           "ZIndex",
           "LineHeight",
@@ -2127,7 +2141,15 @@
           "PaddingTop",
           "PaddingRight",
           "PaddingBottom",
-          "PaddingLeft"
+          "PaddingLeft",
+          {
+            "AFDDataSourceName": "",
+            "AutoRuleBindingEnabled": false,
+            "AutoRuleBindingString": "",
+            "InvariantPropertyName": "AutoHeight",
+            "IsLockable": false,
+            "NameMapSourceSchema": "?"
+          }
         ],
         "ControlUniqueId": "108",
         "HasDynamicProperties": false,
@@ -2152,7 +2174,7 @@
           },
           {
             "Category": "Data",
-            "InvariantScript": "'Customer 360'.CustomerRecord.zx_address",
+            "InvariantScript": "'Customer 360'.CustomerRecord.zx_address& 'Customer 360'.CustomerRecord.zx_address",
             "Property": "Text",
             "RuleProviderType": "Unknown"
           },
@@ -2290,13 +2312,13 @@
           },
           {
             "Category": "Design",
-            "InvariantScript": "604",
+            "InvariantScript": "400",
             "Property": "Width",
             "RuleProviderType": "Unknown"
           },
           {
             "Category": "Design",
-            "InvariantScript": "44",
+            "InvariantScript": "65",
             "Property": "Height",
             "RuleProviderType": "Unknown"
           },
@@ -2376,6 +2398,12 @@
             "Category": "Design",
             "InvariantScript": "5",
             "Property": "PaddingLeft",
+            "RuleProviderType": "Unknown"
+          },
+          {
+            "Category": "Design",
+            "InvariantScript": "true",
+            "Property": "AutoHeight",
             "RuleProviderType": "Unknown"
           }
         ],
@@ -3606,7 +3634,7 @@
           },
           {
             "Category": "Design",
-            "InvariantScript": "122",
+            "InvariantScript": "Button47.Y+Button47.Height+5",
             "Property": "Y",
             "RuleProviderType": "Unknown"
           },
@@ -13384,7 +13412,7 @@
           },
           {
             "Category": "Design",
-            "InvariantScript": "175",
+            "InvariantScript": "'Top Gallery'.Y+'Top Gallery'.Height",
             "Property": "Y",
             "RuleProviderType": "Unknown"
           },
@@ -13396,7 +13424,7 @@
           },
           {
             "Category": "Design",
-            "InvariantScript": "789",
+            "InvariantScript": "'Customer 360'.Height-Self.Y-20",
             "Property": "Height",
             "RuleProviderType": "Unknown"
           },
@@ -13743,7 +13771,7 @@
           },
           {
             "Category": "Design",
-            "InvariantScript": "766",
+            "InvariantScript": "'Customer 360'.Height-Self.Y-20",
             "Property": "Height",
             "RuleProviderType": "Unknown"
           },
@@ -15122,7 +15150,7 @@
           },
           {
             "Category": "Design",
-            "InvariantScript": "'Customer 360'.Height - 205\r\n",
+            "InvariantScript": "'Customer 360'.Height-Self.Y-20",
             "Property": "Height",
             "RuleProviderType": "Unknown"
           },
@@ -15134,7 +15162,7 @@
           },
           {
             "Category": "Design",
-            "InvariantScript": "190",
+            "InvariantScript": "'Top Gallery'.Y+'Top Gallery'.Height",
             "Property": "Y",
             "RuleProviderType": "Unknown"
           },
@@ -18415,7 +18443,7 @@
           },
           {
             "Category": "Design",
-            "InvariantScript": "'Customer 360'.Height - 200",
+            "InvariantScript": "'Customer 360'.Height-Self.Y-20",
             "Property": "Height",
             "RuleProviderType": "Unknown"
           },
@@ -18809,7 +18837,7 @@
           },
           {
             "Category": "Design",
-            "InvariantScript": "410",
+            "InvariantScript": "'Customer 360'.Height-Self.Y-20",
             "Property": "Height",
             "RuleProviderType": "Unknown"
           },
@@ -23230,13 +23258,13 @@
           },
           {
             "Category": "Design",
-            "InvariantScript": "200",
+            "InvariantScript": "'Top Gallery'.Y+'Top Gallery'.Height",
             "Property": "Y",
             "RuleProviderType": "Unknown"
           },
           {
             "Category": "Design",
-            "InvariantScript": "'Customer 360'.Height-200",
+            "InvariantScript": "'Customer 360'.Height-Self.Y-20",
             "Property": "Height",
             "RuleProviderType": "Unknown"
           },
@@ -24309,7 +24337,7 @@
           },
           {
             "Category": "Design",
-            "InvariantScript": "200",
+            "InvariantScript": "'Top Gallery'.Y+'Top Gallery'.Height",
             "Property": "Y",
             "RuleProviderType": "Unknown"
           },
@@ -24345,7 +24373,7 @@
           },
           {
             "Category": "Design",
-            "InvariantScript": "397",
+            "InvariantScript": "'Customer 360'.Height-Self.Y-20",
             "Property": "Height",
             "RuleProviderType": "Unknown"
           },
@@ -24713,7 +24741,7 @@
           },
           {
             "Category": "Design",
-            "InvariantScript": "420",
+            "InvariantScript": "'Customer 360'.Height-Self.Y-20",
             "Property": "Height",
             "RuleProviderType": "Unknown"
           },
@@ -25733,7 +25761,7 @@
           },
           {
             "Category": "Design",
-            "InvariantScript": "408",
+            "InvariantScript": "'Customer 360'.Height-Self.Y-20",
             "Property": "Height",
             "RuleProviderType": "Unknown"
           },
@@ -25745,7 +25773,7 @@
           },
           {
             "Category": "Design",
-            "InvariantScript": "206",
+            "InvariantScript": "'Top Gallery'.Y+'Top Gallery'.Height",
             "Property": "Y",
             "RuleProviderType": "Unknown"
           },
@@ -29134,7 +29162,7 @@
           },
           {
             "Category": "Design",
-            "InvariantScript": "776",
+            "InvariantScript": "'Customer 360'.Height-Self.Y-20",
             "Property": "Height",
             "RuleProviderType": "Unknown"
           },
@@ -29146,7 +29174,7 @@
           },
           {
             "Category": "Design",
-            "InvariantScript": "183",
+            "InvariantScript": "'Top Gallery'.Y+'Top Gallery'.Height",
             "Property": "Y",
             "RuleProviderType": "Unknown"
           },
@@ -33641,7 +33669,7 @@
           },
           {
             "Category": "Design",
-            "InvariantScript": "778",
+            "InvariantScript": "'Customer 360'.Height-Self.Y-20",
             "Property": "Height",
             "RuleProviderType": "Unknown"
           },
@@ -33653,7 +33681,7 @@
           },
           {
             "Category": "Design",
-            "InvariantScript": "175",
+            "InvariantScript": "'Top Gallery'.Y+'Top Gallery'.Height",
             "Property": "Y",
             "RuleProviderType": "Unknown"
           },
@@ -38882,7 +38910,7 @@
           },
           {
             "Category": "Design",
-            "InvariantScript": "'Customer 360'.Height - 200",
+            "InvariantScript": "'Customer 360'.Height-Self.Y-20",
             "Property": "Height",
             "RuleProviderType": "Unknown"
           },
@@ -38942,7 +38970,7 @@
           },
           {
             "Category": "Design",
-            "InvariantScript": "207",
+            "InvariantScript": "'Top Gallery'.Y+'Top Gallery'.Height",
             "Property": "Y",
             "RuleProviderType": "Unknown"
           },
@@ -40272,7 +40300,7 @@
           },
           {
             "Category": "Design",
-            "InvariantScript": "207",
+            "InvariantScript": "'Top Gallery'.Y+'Top Gallery'.Height",
             "Property": "Y",
             "RuleProviderType": "Unknown"
           },
@@ -40308,7 +40336,7 @@
           },
           {
             "Category": "Design",
-            "InvariantScript": "'Customer 360'.Height - 200",
+            "InvariantScript": "'Customer 360'.Height-Self.Y-20",
             "Property": "Height",
             "RuleProviderType": "Unknown"
           },
@@ -43652,7 +43680,7 @@
           },
           {
             "Category": "Design",
-            "InvariantScript": "732",
+            "InvariantScript": "'Customer 360'.Height-Self.Y-20",
             "Property": "Height",
             "RuleProviderType": "Unknown"
           },
@@ -43664,7 +43692,7 @@
           },
           {
             "Category": "Design",
-            "InvariantScript": "234",
+            "InvariantScript": "'Top Gallery'.Y+'Top Gallery'.Height+60",
             "Property": "Y",
             "RuleProviderType": "Unknown"
           },
@@ -45555,7 +45583,7 @@
           },
           {
             "Category": "Design",
-            "InvariantScript": "50",
+            "InvariantScript": "'Customer 360'.Height-Self.Y-50",
             "Property": "Height",
             "RuleProviderType": "Unknown"
           },
@@ -45916,7 +45944,7 @@
       "ZIndex",
       "CustomerRecord"
     ],
-    "LastModifiedTimestamp": "638191525992125237",
+    "LastModifiedTimestamp": "638191539423722297",
     "Name": "Customer 360",
     "Rules": [
       {
@@ -45991,7 +46019,7 @@
   "IsPcfControl": false,
   "IsPremiumPcfControl": false,
   "IsWidgetTemplate": false,
-  "LastModifiedTimestamp": "638191525992125237",
+  "LastModifiedTimestamp": "638191539423722297",
   "Name": "8212172ba38544a3b255f9a6891f6d09",
   "OverridableProperties": {},
   "TemplateOriginalName": "8bea0d30eb314a2a830e78c99bbb86f3",
