@@ -40730,7 +40730,14 @@
                 "IsLockable": false,
                 "NameMapSourceSchema": "?"
               },
-              "DisabledBorderColor",
+              {
+                "AFDDataSourceName": "",
+                "AutoRuleBindingEnabled": false,
+                "AutoRuleBindingString": "RGBA(166, 166, 166, 1)",
+                "InvariantPropertyName": "DisabledBorderColor",
+                "IsLockable": false,
+                "NameMapSourceSchema": "?"
+              },
               "PressedBorderColor",
               "HoverBorderColor",
               "BorderStyle",
@@ -41044,7 +41051,7 @@
               },
               {
                 "Category": "Design",
-                "InvariantScript": "RGBA(166, 166, 166, 1)",
+                "InvariantScript": "ColorValue(LookUp(c_EnvironmentVariable,'Display Name'=\"Button Fill\").'Default Value' )//_VarGblAppColors.PrimaryRed",
                 "Property": "DisabledBorderColor",
                 "RuleProviderType": "Unknown"
               },
@@ -41056,7 +41063,7 @@
               },
               {
                 "Category": "Design",
-                "InvariantScript": "//_VarGblAppColors.LightText\r\nColorValue(LookUp(c_EnvironmentVariable, 'Display Name'=\"Text Secondary Color\").'Default Value')",
+                "InvariantScript": "ColorValue(LookUp(c_EnvironmentVariable,'Display Name'=\"Button Fill\").'Default Value' )//_VarGblAppColors.PrimaryRed",
                 "Property": "BorderColor",
                 "RuleProviderType": "Unknown"
               },
@@ -42968,7 +42975,7 @@
               },
               {
                 "Category": "Design",
-                "InvariantScript": "//_VarGblAppColors.PrimaryText\r\nColorValue(LookUp(c_EnvironmentVariable, 'Display Name'=\"Text Secondary Color\").'Default Value')",
+                "InvariantScript": "ColorValue(LookUp(c_EnvironmentVariable,'Display Name'=\"Button Fill\").'Default Value' )//_VarGblAppColors.PrimaryRed",
                 "Property": "Color",
                 "RuleProviderType": "Unknown"
               },
@@ -45986,7 +45993,7 @@
       "ZIndex",
       "CustomerRecord"
     ],
-    "LastModifiedTimestamp": "638191578733910874",
+    "LastModifiedTimestamp": "638191581113645951",
     "Name": "Customer 360",
     "Rules": [
       {
@@ -46061,7 +46068,7 @@
   "IsPcfControl": false,
   "IsPremiumPcfControl": false,
   "IsWidgetTemplate": false,
-  "LastModifiedTimestamp": "638191578733910874",
+  "LastModifiedTimestamp": "638191581113645951",
   "Name": "8212172ba38544a3b255f9a6891f6d09",
   "OverridableProperties": {},
   "TemplateOriginalName": "8bea0d30eb314a2a830e78c99bbb86f3",

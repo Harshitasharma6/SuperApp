@@ -1122,12 +1122,10 @@
             ZIndex: =1
 
         "'Product BG_1' As button":
-            BorderColor: |-
-                =//_VarGblAppColors.LightText
-                ColorValue(LookUp(c_EnvironmentVariable, 'Display Name'="Text Secondary Color").'Default Value')
+            BorderColor: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//_VarGblAppColors.PrimaryRed
             BorderThickness: =1
             Color: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Hover Color").'Default Value')
-            DisabledBorderColor: =RGBA(166, 166, 166, 1)
+            DisabledBorderColor: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//_VarGblAppColors.PrimaryRed
             DisabledColor: =RGBA(166, 166, 166, 1)
             DisabledFill: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Hover Color").'Default Value')
             DisplayMode: =DisplayMode.Disabled
@@ -1254,9 +1252,7 @@
         Body1_215 As label:
             Align: =Align.Center
             BorderColor: =RGBA(0, 18, 107, 1)
-            Color: |-
-                =//_VarGblAppColors.PrimaryText
-                ColorValue(LookUp(c_EnvironmentVariable, 'Display Name'="Text Secondary Color").'Default Value')
+            Color: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//_VarGblAppColors.PrimaryRed
             DisabledColor: =RGBA(166, 166, 166, 1)
             FocusedBorderThickness: =01
             Font: |-
