@@ -12,11 +12,12 @@ orderlinecart As CanvasComponent:
         AccessibleLabel: ="Cart"
         BorderColor: =RGBA(0, 18, 107, 1)
         FocusedBorderThickness: =
-        Height: =473
+        Height: =505
         Items: |-
             =//If(Cart_1.CartType = "Primary", colPrimaryCart, Cart_1.CartType="Secondary", colSecondaryCart)
             Filter(OfflineOrderLineCollection,'Order Header'.'Order Header'= varOrderData.'Order Header')
         Layout: =Layout.Vertical
+        ShowScrollbar: =false
         TabIndex: =0
         TemplateSize: =238
         Width: =orderlinecart.Width

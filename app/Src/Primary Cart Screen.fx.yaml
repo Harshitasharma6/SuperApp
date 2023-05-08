@@ -717,3 +717,295 @@
                 Y: =365
                 ZIndex: =12
 
+        btnCnfrm_2 As button:
+            DisabledBorderColor: =RGBA(166, 166, 166, 1)
+            DisabledColor: =RGBA(166, 166, 166, 1)
+            DisabledFill: =RGBA(244, 244, 244, 1)
+            DisplayMode: |-
+                =//DisplayMode.Edit
+                If(
+                    CountRows(colSecondaryCart) > 0 ,
+                    DisplayMode.Edit,
+                    DisplayMode.Disabled
+                )
+            Fill: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//_VarGblAppColors.PrimaryRed
+            FontWeight: =FontWeight.Semibold
+            Height: =50
+            HoverColor: =RGBA(255, 255, 255, 1)
+            HoverFill: |-
+                =ColorFade(
+                    ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//_VarGblAppColors.PrimaryRed
+                    , -20%)
+            OnSelect: |
+                =Set(
+                    _VarOrderResponse,
+                    Patch(
+                        'Order Header.S',
+                        Defaults('Order Header.S'),
+                        {
+                            'Order From': LookUp(
+                                OfflinePartiesCollection,
+                                'Customer Name' = varParty
+                            ),
+                            'Order To': LookUp(
+                                OfflinePartiesCollection,
+                                'Customer Name' = varSelectedRetailerAttachedDistributor
+                            ),
+                            'Order Status': 'Order Status Choice'.Open,
+                            'Order Type': 'Order Type Choice'.Secondary,
+                            SGST: /*(Sum(
+                                colPrimaryCart,
+                                baseUnitPrice * quantity
+                            ) * 0.09)*/
+                Sum(
+                                 colPrimaryCart,
+                                sgstAmount
+                            ),
+                            CGST: /*(Sum(
+                                colPrimaryCart,
+                                baseUnitPrice * quantity
+                            ) * 0.09)*/
+                Sum(
+                                 colPrimaryCart,
+                                cgstAmount
+                            ),
+                            'Payment Terms': LookUp(
+                                'Payment Terms.S',
+                                Name = ComboBox7_3.Selected.Name
+                            ),
+                            'Bill To': LookUp(
+                                OfflinePartiesCollection,
+                                'Customer Name' = ComboBox7_7.Selected.'Customer Name'
+                            ),
+                            'Ship To': LookUp(
+                                OfflinePartiesCollection,
+                                'Customer Name' = ComboBox7_8.Selected.'Customer Name'
+                            ),
+                            'Ship to Address': TextInput1_2.Text,
+                            'Cess %': Sum(
+                                 colPrimaryCart,
+                                cessAmount
+                            ),
+                            /*Attachment: {
+                               // FileName: First(DataCardValue30_3.Attachments).Name,
+                                Value: First(DataCardValue30_3.Attachments).Value
+                            },*/
+                            IGST: Sum(
+                                 colPrimaryCart,
+                                igstAmount
+                            ),
+                            Quantity: Sum(
+                                 colPrimaryCart,
+                                quantity
+                            ),
+                            'Discount%': Sum(
+                                 colPrimaryCart,
+                                discount
+                            ),
+                            'Discount ': Sum(
+                                 colPrimaryCart,
+                                (baseUnitPrice * (discount / 100)) * quantity// after discount
+                            ) ,
+                            'Order Date': Today(),
+                            'Total Price': Sum(
+                                 colPrimaryCart,
+                                (baseUnitPrice * quantity)
+                            ),
+                            // CountRows( colPrimaryCart),
+                            'Total Bill Amount': Sum(
+                                 colPrimaryCart,
+                                (baseUnitPrice - (baseUnitPrice*(discount / 100))) * quantity
+                            ) + Sum(
+                                 colPrimaryCart,
+                                igstAmount
+                            ) + Sum(
+                                 colPrimaryCart,
+                                cgstAmount
+                            ) + Sum(
+                                 colPrimaryCart,
+                                sgstAmount
+                            )
+                        }
+                    );
+                    
+                );
+                    // ORDERLINE PATCH IN ONLINE MODE ################################################################################
+                If(
+                    !IsBlank(_VarOrderResponse),
+                    ForAll(
+                         colPrimaryCart As ItemOrderLine,
+                        Patch(
+                            'Order Lines.S',
+                            Defaults('Order Lines.S'),
+                            {
+                                'Order Header': LookUp(
+                                    'Order Header.S',
+                                    'Order ID' = _VarOrderResponse.'Order ID'
+                                ),
+                                Product: LookUp(
+                                    OfflineProductCollection,
+                                    Product = ItemOrderLine.product
+                                ),
+                                'Product SKU': LookUp(
+                                    OfflineProductSKUCollection,
+                                    'Product SKU' = ItemOrderLine.productSKU
+                                ),
+                                'Unit Price': ItemOrderLine.baseUnitPrice,
+                                'Discount %': ItemOrderLine.discount,
+                                'Discount Amount': ItemOrderLine.baseUnitPrice * (ItemOrderLine.discount / 100) * ItemOrderLine.quantity,
+                                'Total Unit Price': (ItemOrderLine.baseUnitPrice - (ItemOrderLine.baseUnitPrice*(ItemOrderLine.discount / 100))) * Value(ItemOrderLine.quantity),
+                                Quantity: Value(ItemOrderLine.quantity),
+                                Variant: LookUp(
+                                    OfflineProductVariantCollection,
+                                    Variant.'Variant Code' = ItemOrderLine.Variant
+                                )
+                            }
+                        );
+                        //Stock Update ____________________________________________________________________________________________________________
+                If(
+                            IsBlank(
+                                LookUp(
+                                    'Stock.S',
+                                    'Product SKU'.'Product SKU' = ItemOrderLine.productSKU && Customer.Parties = GUID(varCustomerforDiscount)
+                                )
+                            ),
+                            Patch(
+                                'Stock.S',
+                                Defaults('Stock.S'),
+                                {
+                                    'Product SKU': LookUp(
+                                        OfflineProductSKUCollection,
+                                        'Product SKU' = ItemOrderLine.productSKU
+                                    ),
+                                    Customer: LookUp(
+                                        OfflinePartiesCollection,
+                                        Parties = GUID(varCustomerforDiscount)
+                                    ),
+                                    'Last Updated Date': Now(),
+                                    Quantity: Value(ItemOrderLine.quantity)
+                                }
+                            );
+                            ,
+                            //Update Stock________________________________________________
+                            Patch(
+                                'Stock.S',
+                                LookUp(
+                                    'Stock.S',
+                                    'Product SKU'.'Product SKU' = ItemOrderLine.productSKU && Customer.Parties = GUID(varCustomerforDiscount)
+                                ),
+                                {
+                                    'Product SKU': LookUp(
+                                        OfflineProductSKUCollection,
+                                        'Product SKU' = ItemOrderLine.productSKU
+                                    ),
+                                    Customer: LookUp(
+                                        OfflinePartiesCollection,
+                                        Parties = GUID(varCustomerforDiscount)
+                                    ),
+                                    'Last Updated Date': Now(),
+                                    Quantity: Value(
+                                        LookUp(
+                                            'Stock.S',
+                                            'Product SKU'.'Product SKU' = ItemOrderLine.productSKU && Customer.Parties = GUID(varCustomerforDiscount)
+                                        ).Quantity
+                                    ) + Value(ItemOrderLine.quantity)
+                                }
+                            );
+                        );
+                    )
+                );
+                //Invoice Header Logic--------------------------------------------------------------------------
+                Set(
+                    _varInvoiceResponsee,
+                    Patch(
+                        'Invoice.S',
+                        Defaults('Invoice.S'),
+                        {
+                            'Order No.': LookUp(
+                                'Order Header.S',
+                                'Order ID' = _VarOrderResponse.'Order ID'
+                            ),
+                            Party: LookUp(
+                                OfflinePartiesCollection,
+                                'Customer Name' = varParty
+                            ),
+                            'Total Discount': _VarOrderResponse. 'Discount%',
+                            'Total Amount': _VarOrderResponse.'Total Bill Amount',
+                            CGST: _VarOrderResponse.CGST,
+                            SGST: _VarOrderResponse.SGST,
+                            IGST: _VarOrderResponse.IGST
+                        }
+                    )
+                );
+                //Invoice Line Logic:-----------------------------------------------------------------------------------
+                If(
+                    !IsBlank(_varInvoiceResponsee),
+                    ForAll(
+                         colPrimaryCart As InvoiceLine,
+                        Patch(
+                            'Invoice Line.S',
+                            Defaults('Invoice Line.S'),
+                            {
+                                'Unit Price': InvoiceLine.baseUnitPrice,
+                                Discount: InvoiceLine.discount,
+                                'Product SKU': LookUp(
+                                    OfflineProductSKUCollection,
+                                    'Product SKU' = InvoiceLine.productSKU
+                                ),
+                                Invoice: LookUp(
+                                    'Invoice.S',
+                                    'Invoice Id' = _varInvoiceResponsee.'Invoice Id'
+                                ),
+                                Quantity: Value(InvoiceLine.quantity),
+                                'Discounted Base Price': Sum(
+                                     colPrimaryCart,
+                                    (baseUnitPrice - (baseUnitPrice*(discount / 100))) * quantity
+                                )
+                            }
+                        )
+                    )
+                );
+                Notify(
+                    "Stock has been updated.",
+                    NotificationType.Success,
+                    3000
+                );
+                Notify(
+                    "Order has been placed. Your order ID is " & _VarOrderResponse.'Order ID',
+                    NotificationType.Success,
+                    10000
+                );
+                ClearCollect(
+                    OfflineOrderHeaderCollection,
+                    'Order Header.S'
+                );
+                ClearCollect(
+                    OfflineOrderLineCollection,
+                    'Order Lines.S'
+                );
+                ClearCollect(
+                    OfflineInvoiceCollection,
+                    'Invoice.S'
+                );
+                ClearCollect(
+                    OfflineInvoiceLineCollection,
+                    'Invoice Line.S'
+                );
+                Clear(colPrimaryCart);
+                Clear( colPrimaryCart);
+                Navigate(
+                    'Secondary Order Screen',
+                    ScreenTransition.CoverRight
+                );
+                /*Reset(DataCardValue30_3);
+                Reset(TextInput3_7);
+                Reset(TextInput3_6);
+                Reset(TextInput3_5);
+                Reset(ComboBox4_1)*/
+            Size: =20
+            Text: ="Confirm"
+            Width: =258
+            X: =189
+            Y: =655
+            ZIndex: =14
+
