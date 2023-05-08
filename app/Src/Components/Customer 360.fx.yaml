@@ -3073,7 +3073,7 @@
     "'Contact Gallery_1' As gallery.'BrowseLayout_Vertical_OneTextVariant_ver4.0'":
         AccessibleLabel: ="Contact Gallery"
         BorderColor: =RGBA(0, 18, 107, 1)
-        Height: =739
+        Height: =778
         Items: =Sort(Filter('Lead Activities.S',Party.'Customer Code'='Customer 360'.CustomerRecord.zx_customercode),'Created On',SortOrder.Descending)
         Layout: =Layout.Vertical
         ShowScrollbar: =false
@@ -3082,7 +3082,7 @@
         Visible: ='Top Gallery'.Selected.TabId=8
         Width: =620
         X: =11
-        Y: =214
+        Y: =175
         ZIndex: =38
 
         Button5_15 As button:
@@ -3093,7 +3093,7 @@
             DisabledFill: =RGBA(244, 244, 244, 1)
             Fill: =RGBA(255, 255, 255, 1)
             FontWeight: =FontWeight.Semibold
-            Height: =183
+            Height: =201
             HoverColor: =RGBA(255, 255, 255, 1)
             HoverFill: =Color.White
             OnSelect: |-
@@ -3102,7 +3102,6 @@
             Size: =24
             Text: =""
             Width: =610
-            Y: =18
             ZIndex: =1
 
         Rectangle1_17 As rectangle:
@@ -3129,7 +3128,7 @@
                 
                 //_VarGblAppFonts.Heading
             FontWeight: =FontWeight.Bold
-            Height: =76
+            Height: =85
             OnSelect: |-
                 =Set(varContactData,ThisItem);
                 Navigate('Contact Detail Page',ScreenTransition.CoverRight);
@@ -3191,7 +3190,7 @@
             TabIndex: =0
             Text: =Text(ThisItem.'Created On',"mm/dd/yyyy")
             Tooltip: =
-            X: =Body1_100.X+Body1_100.Width
+            X: =116
             Y: =Body1_100.Y
             ZIndex: =5
 
@@ -3290,7 +3289,7 @@
             HoverColor: =RGBA(255, 255, 255, 1)
             HoverFill: =
             OnSelect: =
-            Size: =24
+            Size: =20
             Text: ="Fresh"
             Width: =150
             X: =451
@@ -3300,7 +3299,7 @@
         Border_5 As button:
             BorderColor: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Text Secondary Color").'Default Value' )
             BorderThickness: =1.5
-            Color: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )
+            Color: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Text Secondary Color").'Default Value' )
             DisabledBorderColor: =RGBA(166, 166, 166, 1)
             DisabledColor: =RGBA(166, 166, 166, 1)
             DisabledFill: =RGBA(244, 244, 244, 1)
@@ -3311,10 +3310,10 @@
             HoverColor: =RGBA(255, 255, 255, 1)
             HoverFill: =
             OnSelect: =
-            Size: =24
+            Size: =20
             Text: ="Visit"
             Width: =150
             X: =451
-            Y: =127
+            Y: =145
             ZIndex: =11
 
