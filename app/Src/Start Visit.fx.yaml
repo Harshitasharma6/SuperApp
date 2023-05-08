@@ -1388,132 +1388,135 @@
                     DisplayMode.Edit
                 Fill: =RGBA(0, 0, 0, 0)
                 Height: =37
-                OnSelect: |-
-                    =If(
-                     LookUp(
-                            'Visit.S',
-                            Party.Parties = ThisItem.zx_partiesid  &&Text('Visit date',"dd-mm-yyyy")=Text(Today(),"dd-mm-yyyy") && 'Owning User'.'Primary Email'=User().Email 
-                        ).'Visit Status' = [@'Visit Status'].Completed,
+                OnSelect: |
+                    =Set(
+                            varParty,
+                            ThisItem.'Customer Name'
+                        );
+                        Set(
+                            varParties,
+                            false
+                        );
+                        Set(
+                            varCustomerforDiscount,
+                            ThisItem.Parties
+                        );
+                       Set(
+                            varCustomertype,
+                            ThisItem.'Customer Type'
+                        );
+                        Set(
+                            varpaymentterm,
+                           ThisItem.'Payment Terms'.Name
+                        );
+                    Set(
+                        varOrderfrom,
+                        LookUp(
+                            OfflinePartiesCollection,
+                            'Customer Code' = ThisItem.'Customer Code'
+                        ).State.Name
+                    );
+                    Set(
+                        varOrderfromRegion,
+                        LookUp(
+                            OfflinePartiesCollection,
+                            'Customer Code' = ThisItem.'Customer Code'
+                        ).Region.Name
+                    );
+                    /*Set(
+                        varOrderTo,
+                        LookUp(
+                            colZoximaParty,
+                            'Customer Code' = First(colZoximaParty).'Customer Code'
+                        ).State.'State Name'
+                    );*/
                     
-                    
-                        Notify(
-                            "Visit is Already Ended",
-                            NotificationType.Error,
-                            1000
-                        ),
-                    
-                    
-                    If(
-                        DateValue(
-                            LookUp(
-                                'Visit.S',
-                                Party.Parties = ThisItem.zx_partiesid && createdby.'Primary Email' = User().Email
-                            ).'Visit date'
-                        ) >= Today(),
-                        Patch(
-                            'Visit.S',
-                            LookUp(
-                                'Visit.S',
-                                Party.Parties = ThisItem.zx_partiesid && DateValue('Visit date') >= Today() && createdby.'Primary Email' = User().Email
+                    Set(
+                        varPartyPricelist,
+                        ThisItem.'Price List'.Name
+                    );
+                    ClearCollect(
+                        colPartyOrder,
+                        Sort(
+                            Filter(
+                                OfflineOrderHeaderCollection,
+                                'Order From'.Parties = ThisItem.Parties
                             ),
-                            {
-                                'Visit Status': 'Visit Status'.Started,
-                                'Check-in Time': Now(),
-                                'Check-in Geo Location Lat': Location.Latitude,
-                                'Check-in Geo Location Long': Location.Longitude,
-                                Party: LookUp(
-                                    OfflinePartiesCollection,
-                                    zx_partiesid = ThisItem.zx_partiesid
-                                )
-                                              /* 'Check-in Address': LookUp(
-                                                    'Parties.S',
-                                                    Address = ThisItem.zx_Party.Address
-                                                ).Address*/
-                            }
-                        ),
-                        Patch(
-                            'Visit.S',
-                            Defaults('Visit.S'),
-                            {
-                                'Visit Status': 'Visit Status'.Started,
-                                'Visit Type': 'Visit Type'.Planned,
-                                'Visit date': Now(),
-                                'Check-in Geo Location Lat': Location.Latitude,
-                                'Check-in Geo Location Long': Location.Longitude,
-                                Party: LookUp(
-                                    OfflinePartiesCollection,
-                                    zx_partiesid = ThisItem.zx_partiesid
-                                )
-                            }
-                        );
-                        Notify(
-                            "Visit has been started",
-                            NotificationType.Success,
-                            700
-                        );
-                        Set(
-                            _VarActivetopTabID,
-                            1
-                        );
-                        Navigate(
-                            'Visit Info',
-                            ScreenTransition.CoverRight
-                        );
-                        Set(
-                            dataVisit,
-                            ThisItem
-                        );
-                        Set(
-                            varClickedVisitAccount,
-                            LookUp(
-                                'Visit.S',
-                                Party.Parties = ThisItem.zx_partiesid
-                            ).Party.Parties
-                        );
-                                   /* Set(
-                                        _varCustomerforDiscount,
-                                        LookUp('Visit.S', Party.Parties = ThisItem.zx_partiesid).Party.Parties
-                                    );*/
-                    If(
-                            LookUp(
-                                'Visit.S',
-                                Party.Parties = ThisItem.zx_partiesid
-                            ).Party.'Customer Type' = 'Party Type Choices'.Retailer
-                          /*  Set(
-                                _varSelectedRetailerAttachedDistributor,
-                                LookUp(
-                                    OfflinePartiesCollection,
-                                    zx_customercode = LookUp(
-                                        'Visit.S',
-                                        Party.Parties = ThisItem.zx_partiesid
-                                    ).Party.'Customer Code'
-                                ).zx_AttachedDistributor.Parties
-                            );*/
-                            ,
-                            Set(
-                                _varSelectedRetailerAttachedDistributor,
-                                Blank()
+                            'Created On',
+                            SortOrder.Descending
+                        )
+                    );
+                    ForAll(
+                        colPartyOrder As oneline,
+                        Collect(
+                            colOrderlineproduct,
+                            Filter(
+                                'Order Lines.S',
+                                'Order Header'.'Order Header' = oneline.'Order Header'
                             )
                         )
                     );
                     ClearCollect(
-                        OfflineVisitCollection,
-                        Filter(
-                            'Visit.S',
-                            'Owning User'.'Primary Email' = User().Email
+                        colDistinctProduct,
+                        Distinct(
+                            colOrderlineproduct,
+                            'Product SKU'.'Product SKU'
                         )
-                    );)
-                                    /*Set(
-                                        varVisitId,
-                                        LookUp('Visit.S', Party.Parties = ThisItem.zx_partiesid).Visit
-                                    );
-                                    ,
-                                    Notify(
-                                        "One Visit is Already Started.",
-                                        NotificationType.Warning,
-                                        1000
-                                    )
-                                )*/
+                    );
+                    ClearCollect(
+                        colCustomerMapping,
+                        LookUp(
+                            OfflineProductOfferMappingCollection,
+                            Customer.Parties = GUID(varCustomerforDiscount)
+                        )
+                    );
+                    ClearCollect(
+                        colStateMapping,
+                        LookUp(
+                            OfflineProductOfferMappingCollection,
+                            Customer.State.Name = varOrderfrom
+                        )
+                    );
+                    ClearCollect(
+                        colRegionMapping,
+                        LookUp(
+                            OfflineProductOfferMappingCollection,
+                            Customer.Region.Name = varOrderfromRegion
+                        )
+                    );
+                    If(
+                        !IsBlank(colCustomerMapping),
+                        ClearCollect(
+                            colOfferHeaderId,
+                            LookUp(
+                                OfflineProductOfferHeaderCollection,
+                                'Product Offer Header' = First(colCustomerMapping).'Product Offers'.'Product Offer Header'
+                            ).'Offer ID'
+                        ),
+                        !IsBlank(colStateMapping),
+                        ClearCollect(
+                            colOfferHeaderId,
+                            LookUp(
+                                OfflineProductOfferHeaderCollection,
+                                'Product Offer Header' = First(colStateMapping).'Product Offers'.'Product Offer Header'
+                            ).'Offer ID'
+                        ),
+                        !IsBlank(colRegionMapping),
+                        ClearCollect(
+                            colOfferHeaderId,
+                            LookUp(
+                                OfflineProductOfferHeaderCollection,
+                                'Product Offer Header' = First(colStateMapping).'Product Offers'.'Product Offer Header'
+                            ).'Offer ID'
+                        )
+                    );
+                    ClearCollect(
+                        colOfferHeader,
+                        Filter(
+                            OfflineProductOfferHeaderCollection,
+                            'Offer ID' = First(colOfferHeaderId).Value && ('Active From' <= Today()) && ('Active To' >= Today())
+                        )
+                    );
                 Width: =41
                 X: =530
                 Y: =23
@@ -1541,137 +1544,140 @@
                     If(
                        LookUp(
                             'Visit.S',
-                            Party.Parties = ThisItem.zx_partiesid  &&Text('Visit date',"dd-mm-yyyy")=Text(Today(),"dd-mm-yyyy") && 'Owning User'.'Primary Email'=User().Email 
+                            Party.Parties = ThisItem.zx_partiesid  && Text('Visit date',"dd-mm-yyyy")=Text(Today(),"dd-mm-yyyy") && 'Owning User'.'Primary Email'=User().Email 
                         ).'Visit Status'= 'Visit Status'.Started,
                         square,
                         'play (1)'
                     )
-                OnSelect: |-
-                    =If(
-                       LookUp(
-                            'Visit.S',
-                            Party.Parties = ThisItem.zx_partiesid  &&Text('Visit date',"dd-mm-yyyy")=Text(Today(),"dd-mm-yyyy") && 'Owning User'.'Primary Email'=User().Email 
-                        ).'Visit Status' = [@'Visit Status'].Completed,
+                OnSelect: |
+                    =Set(
+                            varParty,
+                            ThisItem.'Customer Name'
+                        );
+                        Set(
+                            varParties,
+                            false
+                        );
+                        Set(
+                            varCustomerforDiscount,
+                            ThisItem.Parties
+                        );
+                       Set(
+                            varCustomertype,
+                            ThisItem.'Customer Type'
+                        );
+                        Set(
+                            varpaymentterm,
+                           ThisItem.'Payment Terms'.Name
+                        );
+                    Set(
+                        varOrderfrom,
+                        LookUp(
+                            OfflinePartiesCollection,
+                            'Customer Code' = ThisItem.'Customer Code'
+                        ).State.Name
+                    );
+                    Set(
+                        varOrderfromRegion,
+                        LookUp(
+                            OfflinePartiesCollection,
+                            'Customer Code' = ThisItem.'Customer Code'
+                        ).Region.Name
+                    );
+                    /*Set(
+                        varOrderTo,
+                        LookUp(
+                            colZoximaParty,
+                            'Customer Code' = First(colZoximaParty).'Customer Code'
+                        ).State.'State Name'
+                    );*/
                     
-                        
-                        Notify(
-                            "Visit is Already Ended",
-                            NotificationType.Error,
-                            1000
-                        ),
-                        If(
-                            DateValue(
-                                LookUp(
-                                    'Visit.S',
-                                    Party.Parties = ThisItem.zx_partiesid && createdby.'Primary Email' = User().Email
-                                ).'Visit date'
-                            ) >= Today(),
-                            Patch(
-                                'Visit.S',
-                                LookUp(
-                                    'Visit.S',
-                                    Party.Parties = ThisItem.zx_partiesid && DateValue('Visit date') >= Today() && createdby.'Primary Email' = User().Email
-                                ),
-                                {
-                                    'Visit Status': 'Visit Status'.Started,
-                                    'Check-in Time': Now(),
-                                    'Check-in Geo Location Lat': Location.Latitude,
-                                    'Check-in Geo Location Long': Location.Longitude
-                                              /* 'Check-in Address': LookUp(
-                                                    'Parties.S',
-                                                    Address = ThisItem.zx_Party.Address
-                                                ).Address*/
-                                }
-                            ),
-                            Patch(
-                                'Visit.S',
-                                Defaults('Visit.S'),
-                                {
-                                    'Visit Status': 'Visit Status'.Started,
-                                    'Visit Type': 'Visit Type'.Planned,
-                                    'Visit date': Now(),
-                                    'Check-in Geo Location Lat': Location.Latitude,
-                                    'Check-in Geo Location Long': Location.Longitude,
-                                    Party: LookUp(
-                                        OfflinePartiesCollection,
-                                        zx_partiesid = ThisItem.zx_partiesid
-                                    )
-                                }
-                            );
-                            Notify(
-                                "Visit has been started",
-                                NotificationType.Success,
-                                700
-                            );
-                            Set(
-                                _VarActivetopTabID,
-                                1
-                            );
-                            Navigate(
-                                'Visit Info',
-                                ScreenTransition.CoverRight
-                            );
-                            Set(
-                                dataVisit,
-                                ThisItem
-                            );
-                            Set(
-                                _VarClickedVisitAccount,
-                                LookUp(
-                                    'Visit.S',
-                                    Party.Parties = ThisItem.zx_partiesid
-                                )
-                            );
-                            Set(
-                                _varCustomerforDiscount,
-                                LookUp(
-                                    'Visit.S',
-                                    Party.Parties = ThisItem.zx_partiesid
-                                ).Party.Parties
-                            );
-                            If(
-                                LookUp(
-                                    'Visit.S',
-                                    Party.Parties = ThisItem.zx_partiesid
-                                ).Party.'Customer Type' = 'Party Type Choices'.Retailer
-                            /*,
-                           Set(
-                                _varSelectedRetailerAttachedDistributor,
-                                LookUp(
-                                    OfflinePartiesCollection,
-                                    'Customer Code' = LookUp(
-                                        'Visit.S' ,              
-                                         Party.Parties = ThisItem.zx_partiesid
-                                         
-                                    ).Party.'Customer Code').'Attached Distributor'.Parties
-                            );*/
-                    ,
-                                Set(
-                                    _varSelectedRetailerAttachedDistributor,
-                                    Blank()
-                                )
-                            )
-                        );
-                        ClearCollect(
-                            OfflineVisitCollection,
+                    Set(
+                        varPartyPricelist,
+                        ThisItem.'Price List'.Name
+                    );
+                    ClearCollect(
+                        colPartyOrder,
+                        Sort(
                             Filter(
-                                'Visit.S',
-                                'Owning User'.'Primary Email' = User().Email
+                                OfflineOrderHeaderCollection,
+                                'Order From'.Parties = ThisItem.Parties
+                            ),
+                            'Created On',
+                            SortOrder.Descending
+                        )
+                    );
+                    ForAll(
+                        colPartyOrder As oneline,
+                        Collect(
+                            colOrderlineproduct,
+                            Filter(
+                                'Order Lines.S',
+                                'Order Header'.'Order Header' = oneline.'Order Header'
                             )
-                        );
-                        
-                    )
-                                    /*Set(
-                                        varVisitId,
-                                        LookUp('Visit.S', Party.Parties = ThisItem.zx_partiesid).Visit
-                                    );
-                                    ,
-                                    Notify(
-                                        "One Visit is Already Started.",
-                                        NotificationType.Warning,
-                                        1000
-                                    )
-                                )*/
+                        )
+                    );
+                    ClearCollect(
+                        colDistinctProduct,
+                        Distinct(
+                            colOrderlineproduct,
+                            'Product SKU'.'Product SKU'
+                        )
+                    );
+                    ClearCollect(
+                        colCustomerMapping,
+                        LookUp(
+                            OfflineProductOfferMappingCollection,
+                            Customer.Parties = GUID(varCustomerforDiscount)
+                        )
+                    );
+                    ClearCollect(
+                        colStateMapping,
+                        LookUp(
+                            OfflineProductOfferMappingCollection,
+                            Customer.State.Name = varOrderfrom
+                        )
+                    );
+                    ClearCollect(
+                        colRegionMapping,
+                        LookUp(
+                            OfflineProductOfferMappingCollection,
+                            Customer.Region.Name = varOrderfromRegion
+                        )
+                    );
+                    If(
+                        !IsBlank(colCustomerMapping),
+                        ClearCollect(
+                            colOfferHeaderId,
+                            LookUp(
+                                OfflineProductOfferHeaderCollection,
+                                'Product Offer Header' = First(colCustomerMapping).'Product Offers'.'Product Offer Header'
+                            ).'Offer ID'
+                        ),
+                        !IsBlank(colStateMapping),
+                        ClearCollect(
+                            colOfferHeaderId,
+                            LookUp(
+                                OfflineProductOfferHeaderCollection,
+                                'Product Offer Header' = First(colStateMapping).'Product Offers'.'Product Offer Header'
+                            ).'Offer ID'
+                        ),
+                        !IsBlank(colRegionMapping),
+                        ClearCollect(
+                            colOfferHeaderId,
+                            LookUp(
+                                OfflineProductOfferHeaderCollection,
+                                'Product Offer Header' = First(colStateMapping).'Product Offers'.'Product Offer Header'
+                            ).'Offer ID'
+                        )
+                    );
+                    ClearCollect(
+                        colOfferHeader,
+                        Filter(
+                            OfflineProductOfferHeaderCollection,
+                            'Offer ID' = First(colOfferHeaderId).Value && ('Active From' <= Today()) && ('Active To' >= Today())
+                        )
+                    );
                 Width: =21
                 X: =542
                 Y: =32
@@ -1791,33 +1797,6 @@
         X: =367
         Y: =22
         ZIndex: =16
-
-    Button3 As button:
-        BorderColor: =RGBA(0, 0, 0, 0)
-        DisabledBorderColor: =RGBA(0, 0, 0, 0)
-        DisabledColor: =RGBA(166, 166, 166, 1)
-        DisabledFill: =RGBA(244, 244, 244, 1)
-        Fill: =RGBA(0, 120, 212, 1)
-        FocusedBorderColor: =ColorFade(Self.Fill, -75%)
-        Font: =Font.'Segoe UI'
-        FontWeight: =FontWeight.Semibold
-        Height: =70
-        HoverBorderColor: =RGBA(0, 0, 0, 0)
-        HoverColor: =RGBA(255, 255, 255, 1)
-        HoverFill: =ColorFade(RGBA(0, 120, 212, 1), -10%)
-        PressedBorderColor: =ColorFade(RGBA(0, 120, 212, 1), -50%)
-        PressedColor: =RGBA(255, 255, 255, 1)
-        PressedFill: =ColorFade(RGBA(0, 120, 212, 1), -30%)
-        RadiusBottomLeft: =0
-        RadiusBottomRight: =0
-        RadiusTopLeft: =0
-        RadiusTopRight: =0
-        Size: =24
-        Text: |-
-            ="last commit 4 : 25"
-        Width: =280
-        Y: =959
-        ZIndex: =18
 
     Group4_1 As group:
         Height: =5
