@@ -663,7 +663,10 @@
         Height: =60
         HoverColor: =RGBA(255, 255, 255, 1)
         HoverFill: =//ColorFade(RGBA(56, 96, 178, 1), -20%)
-        OnSelect: =Set(varParties,true)
+        OnSelect: |-
+            =Set(varParties,true);
+            Clear(colPrimaryCart);
+            Clear(colSecondaryCart)
         RadiusBottomLeft: =50
         RadiusBottomRight: =50
         RadiusTopRight: =50
