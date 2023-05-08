@@ -21832,51 +21832,10 @@
                   "relativeAddress": 0
                 },
                 "region": {
-                  "charLength": 1,
-                  "charOffset": 1178,
+                  "charLength": 1239,
+                  "charOffset": 540,
                   "snippet": {
-                    "text": "="
-                  }
-                }
-              },
-              "properties": {
-                "member": "OnSelect",
-                "module": "Lead Detail",
-                "type": "'Lead Detail'.'Product Interested'.Button9_15"
-              }
-            }
-          ],
-          "message": {
-            "arguments": [
-              "Table",
-              "Guid"
-            ],
-            "id": "issue"
-          },
-          "properties": {
-            "level": "High"
-          },
-          "ruleId": "app-ErrIncompatibleTypesForEquality-Left-Right",
-          "ruleIndex": 3
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "'Lead Detail'.'Product Interested'.Button9_15.OnSelect"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "'Lead Detail'.'Product Interested'.Button9_15.OnSelect",
-                  "relativeAddress": 0
-                },
-                "region": {
-                  "charLength": 1217,
-                  "charOffset": 536,
-                  "snippet": {
-                    "text": "Patch(\r\n                'Quote Header.S',              \r\n                 Defaults('Quote Header.S'),\r\n                {\r\n                    'Bill To':LookUp(\r\n                        OfflinePartiesCollection,\r\n                        'Customer Name' = varLeadData.zx_Party.'Customer Name'\r\n                    ),\r\n                    'Approval Status':ApprovalChoiceQuoteHeader.Pending,\r\n                    Approver:LookUp(Users,'Primary Email'=User().Email),\r\n                    Version: \r\n                        1.0,\r\n                        Lead: LookUp(\r\n                        offlineLeadCollection,\r\n                        Leads = varLeadData.zx_leadsid\r\n                    ),\r\n                    'Total Price':Sum(\r\n                        QuoteLines,\r\n                        'Total Amount'\r\n                    ),\r\n                     Quantity: Sum(\r\n                        QuoteLines,\r\n                        Quantity\r\n                    ),\r\n                    Discount: Sum(\r\n                        QuoteLines,\r\n                        Discount\r\n                    ) / CountRows(QuoteLines),\r\n                    'Status (zx_status)': QuoteStatus.Activated\r\n                }\r\n            )"
+                    "text": "Patch(\r\n                'Quote Header.S',\r\n                Defaults('Quote Header.S'),\r\n                {\r\n                    'Bill To':LookUp(\r\n                        OfflinePartiesCollection,\r\n                        Parties = varLeadData.zx_Party.Parties\r\n                    ),\r\n                    'Approval Status': ApprovalChoiceQuoteHeader.Pending,\r\n                    Approver: LookUp(\r\n                        Users,\r\n                        'Primary Email' = User().Email\r\n                    ),\r\n                    Version: 1.0,\r\n                    Lead: LookUp(\r\n                        offlineLeadCollection,\r\n                        zx_leadsid = varLeadData.zx_leadsid\r\n                    ),\r\n                    'Total Price': Sum(\r\n                        QuoteLines,\r\n                        'Total Amount'\r\n                    ),\r\n                    Quantity: Sum(\r\n                        QuoteLines,\r\n                        Quantity\r\n                    ),\r\n                    Discount: Sum(\r\n                        QuoteLines,\r\n                        Discount\r\n                    ) / CountRows(QuoteLines),\r\n                    'Status (zx_status)': QuoteStatus.Activated\r\n                }\r\n            )"
                   }
                 }
               },
@@ -21913,10 +21872,10 @@
                   "relativeAddress": 0
                 },
                 "region": {
-                  "charLength": 1083,
-                  "charOffset": 655,
+                  "charLength": 1120,
+                  "charOffset": 644,
                   "snippet": {
-                    "text": "{\r\n                    'Bill To':LookUp(\r\n                        OfflinePartiesCollection,\r\n                        'Customer Name' = varLeadData.zx_Party.'Customer Name'\r\n                    ),\r\n                    'Approval Status':ApprovalChoiceQuoteHeader.Pending,\r\n                    Approver:LookUp(Users,'Primary Email'=User().Email),\r\n                    Version: \r\n                        1.0,\r\n                        Lead: LookUp(\r\n                        offlineLeadCollection,\r\n                        Leads = varLeadData.zx_leadsid\r\n                    ),\r\n                    'Total Price':Sum(\r\n                        QuoteLines,\r\n                        'Total Amount'\r\n                    ),\r\n                     Quantity: Sum(\r\n                        QuoteLines,\r\n                        Quantity\r\n                    ),\r\n                    Discount: Sum(\r\n                        QuoteLines,\r\n                        Discount\r\n                    ) / CountRows(QuoteLines),\r\n                    'Status (zx_status)': QuoteStatus.Activated\r\n                }"
+                    "text": "{\r\n                    'Bill To':LookUp(\r\n                        OfflinePartiesCollection,\r\n                        Parties = varLeadData.zx_Party.Parties\r\n                    ),\r\n                    'Approval Status': ApprovalChoiceQuoteHeader.Pending,\r\n                    Approver: LookUp(\r\n                        Users,\r\n                        'Primary Email' = User().Email\r\n                    ),\r\n                    Version: 1.0,\r\n                    Lead: LookUp(\r\n                        offlineLeadCollection,\r\n                        zx_leadsid = varLeadData.zx_leadsid\r\n                    ),\r\n                    'Total Price': Sum(\r\n                        QuoteLines,\r\n                        'Total Amount'\r\n                    ),\r\n                    Quantity: Sum(\r\n                        QuoteLines,\r\n                        Quantity\r\n                    ),\r\n                    Discount: Sum(\r\n                        QuoteLines,\r\n                        Discount\r\n                    ) / CountRows(QuoteLines),\r\n                    'Status (zx_status)': QuoteStatus.Activated\r\n                }"
                   }
                 }
               },
@@ -21953,10 +21912,10 @@
                   "relativeAddress": 0
                 },
                 "region": {
-                  "charLength": 1083,
-                  "charOffset": 655,
+                  "charLength": 1120,
+                  "charOffset": 644,
                   "snippet": {
-                    "text": "{\r\n                    'Bill To':LookUp(\r\n                        OfflinePartiesCollection,\r\n                        'Customer Name' = varLeadData.zx_Party.'Customer Name'\r\n                    ),\r\n                    'Approval Status':ApprovalChoiceQuoteHeader.Pending,\r\n                    Approver:LookUp(Users,'Primary Email'=User().Email),\r\n                    Version: \r\n                        1.0,\r\n                        Lead: LookUp(\r\n                        offlineLeadCollection,\r\n                        Leads = varLeadData.zx_leadsid\r\n                    ),\r\n                    'Total Price':Sum(\r\n                        QuoteLines,\r\n                        'Total Amount'\r\n                    ),\r\n                     Quantity: Sum(\r\n                        QuoteLines,\r\n                        Quantity\r\n                    ),\r\n                    Discount: Sum(\r\n                        QuoteLines,\r\n                        Discount\r\n                    ) / CountRows(QuoteLines),\r\n                    'Status (zx_status)': QuoteStatus.Activated\r\n                }"
+                    "text": "{\r\n                    'Bill To':LookUp(\r\n                        OfflinePartiesCollection,\r\n                        Parties = varLeadData.zx_Party.Parties\r\n                    ),\r\n                    'Approval Status': ApprovalChoiceQuoteHeader.Pending,\r\n                    Approver: LookUp(\r\n                        Users,\r\n                        'Primary Email' = User().Email\r\n                    ),\r\n                    Version: 1.0,\r\n                    Lead: LookUp(\r\n                        offlineLeadCollection,\r\n                        zx_leadsid = varLeadData.zx_leadsid\r\n                    ),\r\n                    'Total Price': Sum(\r\n                        QuoteLines,\r\n                        'Total Amount'\r\n                    ),\r\n                    Quantity: Sum(\r\n                        QuoteLines,\r\n                        Quantity\r\n                    ),\r\n                    Discount: Sum(\r\n                        QuoteLines,\r\n                        Discount\r\n                    ) / CountRows(QuoteLines),\r\n                    'Status (zx_status)': QuoteStatus.Activated\r\n                }"
                   }
                 }
               },
@@ -21994,10 +21953,10 @@
                   "relativeAddress": 0
                 },
                 "region": {
-                  "charLength": 1083,
-                  "charOffset": 655,
+                  "charLength": 1120,
+                  "charOffset": 644,
                   "snippet": {
-                    "text": "{\r\n                    'Bill To':LookUp(\r\n                        OfflinePartiesCollection,\r\n                        'Customer Name' = varLeadData.zx_Party.'Customer Name'\r\n                    ),\r\n                    'Approval Status':ApprovalChoiceQuoteHeader.Pending,\r\n                    Approver:LookUp(Users,'Primary Email'=User().Email),\r\n                    Version: \r\n                        1.0,\r\n                        Lead: LookUp(\r\n                        offlineLeadCollection,\r\n                        Leads = varLeadData.zx_leadsid\r\n                    ),\r\n                    'Total Price':Sum(\r\n                        QuoteLines,\r\n                        'Total Amount'\r\n                    ),\r\n                     Quantity: Sum(\r\n                        QuoteLines,\r\n                        Quantity\r\n                    ),\r\n                    Discount: Sum(\r\n                        QuoteLines,\r\n                        Discount\r\n                    ) / CountRows(QuoteLines),\r\n                    'Status (zx_status)': QuoteStatus.Activated\r\n                }"
+                    "text": "{\r\n                    'Bill To':LookUp(\r\n                        OfflinePartiesCollection,\r\n                        Parties = varLeadData.zx_Party.Parties\r\n                    ),\r\n                    'Approval Status': ApprovalChoiceQuoteHeader.Pending,\r\n                    Approver: LookUp(\r\n                        Users,\r\n                        'Primary Email' = User().Email\r\n                    ),\r\n                    Version: 1.0,\r\n                    Lead: LookUp(\r\n                        offlineLeadCollection,\r\n                        zx_leadsid = varLeadData.zx_leadsid\r\n                    ),\r\n                    'Total Price': Sum(\r\n                        QuoteLines,\r\n                        'Total Amount'\r\n                    ),\r\n                    Quantity: Sum(\r\n                        QuoteLines,\r\n                        Quantity\r\n                    ),\r\n                    Discount: Sum(\r\n                        QuoteLines,\r\n                        Discount\r\n                    ) / CountRows(QuoteLines),\r\n                    'Status (zx_status)': QuoteStatus.Activated\r\n                }"
                   }
                 }
               },
@@ -22034,10 +21993,10 @@
                   "relativeAddress": 0
                 },
                 "region": {
-                  "charLength": 1083,
-                  "charOffset": 655,
+                  "charLength": 1120,
+                  "charOffset": 644,
                   "snippet": {
-                    "text": "{\r\n                    'Bill To':LookUp(\r\n                        OfflinePartiesCollection,\r\n                        'Customer Name' = varLeadData.zx_Party.'Customer Name'\r\n                    ),\r\n                    'Approval Status':ApprovalChoiceQuoteHeader.Pending,\r\n                    Approver:LookUp(Users,'Primary Email'=User().Email),\r\n                    Version: \r\n                        1.0,\r\n                        Lead: LookUp(\r\n                        offlineLeadCollection,\r\n                        Leads = varLeadData.zx_leadsid\r\n                    ),\r\n                    'Total Price':Sum(\r\n                        QuoteLines,\r\n                        'Total Amount'\r\n                    ),\r\n                     Quantity: Sum(\r\n                        QuoteLines,\r\n                        Quantity\r\n                    ),\r\n                    Discount: Sum(\r\n                        QuoteLines,\r\n                        Discount\r\n                    ) / CountRows(QuoteLines),\r\n                    'Status (zx_status)': QuoteStatus.Activated\r\n                }"
+                    "text": "{\r\n                    'Bill To':LookUp(\r\n                        OfflinePartiesCollection,\r\n                        Parties = varLeadData.zx_Party.Parties\r\n                    ),\r\n                    'Approval Status': ApprovalChoiceQuoteHeader.Pending,\r\n                    Approver: LookUp(\r\n                        Users,\r\n                        'Primary Email' = User().Email\r\n                    ),\r\n                    Version: 1.0,\r\n                    Lead: LookUp(\r\n                        offlineLeadCollection,\r\n                        zx_leadsid = varLeadData.zx_leadsid\r\n                    ),\r\n                    'Total Price': Sum(\r\n                        QuoteLines,\r\n                        'Total Amount'\r\n                    ),\r\n                    Quantity: Sum(\r\n                        QuoteLines,\r\n                        Quantity\r\n                    ),\r\n                    Discount: Sum(\r\n                        QuoteLines,\r\n                        Discount\r\n                    ) / CountRows(QuoteLines),\r\n                    'Status (zx_status)': QuoteStatus.Activated\r\n                }"
                   }
                 }
               },
@@ -22076,10 +22035,10 @@
                   "relativeAddress": 0
                 },
                 "region": {
-                  "charLength": 23,
-                  "charOffset": 3427,
+                  "charLength": 99,
+                  "charOffset": 3399,
                   "snippet": {
-                    "text": "LookUp(TaxN,TName=Name)"
+                    "text": "LookUp(\r\n                        TaxN,\r\n                        TName = Name\r\n                    )"
                   }
                 }
               },
@@ -22117,7 +22076,7 @@
                 },
                 "region": {
                   "charLength": 6,
-                  "charOffset": 3450,
+                  "charOffset": 3498,
                   "snippet": {
                     "text": ".TName"
                   }
@@ -22157,7 +22116,7 @@
                 },
                 "region": {
                   "charLength": 1,
-                  "charOffset": 3426,
+                  "charOffset": 3397,
                   "snippet": {
                     "text": "="
                   }
@@ -22196,10 +22155,10 @@
                   "relativeAddress": 0
                 },
                 "region": {
-                  "charLength": 23,
-                  "charOffset": 3556,
+                  "charLength": 99,
+                  "charOffset": 3666,
                   "snippet": {
-                    "text": "LookUp(TaxN,TName=Name)"
+                    "text": "LookUp(\r\n                        TaxN,\r\n                        TName = Name\r\n                    )"
                   }
                 }
               },
@@ -22237,7 +22196,7 @@
                 },
                 "region": {
                   "charLength": 6,
-                  "charOffset": 3579,
+                  "charOffset": 3765,
                   "snippet": {
                     "text": ".TName"
                   }
@@ -22277,7 +22236,7 @@
                 },
                 "region": {
                   "charLength": 1,
-                  "charOffset": 3555,
+                  "charOffset": 3664,
                   "snippet": {
                     "text": "="
                   }
@@ -22316,10 +22275,10 @@
                   "relativeAddress": 0
                 },
                 "region": {
-                  "charLength": 23,
-                  "charOffset": 3685,
+                  "charLength": 99,
+                  "charOffset": 3933,
                   "snippet": {
-                    "text": "LookUp(TaxN,TName=Name)"
+                    "text": "LookUp(\r\n                        TaxN,\r\n                        TName = Name\r\n                    )"
                   }
                 }
               },
@@ -22357,7 +22316,7 @@
                 },
                 "region": {
                   "charLength": 6,
-                  "charOffset": 3708,
+                  "charOffset": 4032,
                   "snippet": {
                     "text": ".TName"
                   }
@@ -22397,7 +22356,7 @@
                 },
                 "region": {
                   "charLength": 1,
-                  "charOffset": 3684,
+                  "charOffset": 3931,
                   "snippet": {
                     "text": "="
                   }
@@ -22436,10 +22395,10 @@
                   "relativeAddress": 0
                 },
                 "region": {
-                  "charLength": 23,
-                  "charOffset": 3819,
+                  "charLength": 99,
+                  "charOffset": 4205,
                   "snippet": {
-                    "text": "LookUp(TaxN,TName=Name)"
+                    "text": "LookUp(\r\n                        TaxN,\r\n                        TName = Name\r\n                    )"
                   }
                 }
               },
@@ -22477,7 +22436,7 @@
                 },
                 "region": {
                   "charLength": 6,
-                  "charOffset": 3842,
+                  "charOffset": 4304,
                   "snippet": {
                     "text": ".TName"
                   }
@@ -22517,7 +22476,7 @@
                 },
                 "region": {
                   "charLength": 1,
-                  "charOffset": 3818,
+                  "charOffset": 4203,
                   "snippet": {
                     "text": "="
                   }
@@ -22556,10 +22515,10 @@
                   "relativeAddress": 0
                 },
                 "region": {
-                  "charLength": 23,
-                  "charOffset": 3918,
+                  "charLength": 99,
+                  "charOffset": 4440,
                   "snippet": {
-                    "text": "LookUp(TaxN,TName=Name)"
+                    "text": "LookUp(\r\n                        TaxN,\r\n                        TName = Name\r\n                    )"
                   }
                 }
               },
@@ -22597,7 +22556,7 @@
                 },
                 "region": {
                   "charLength": 6,
-                  "charOffset": 3941,
+                  "charOffset": 4539,
                   "snippet": {
                     "text": ".TName"
                   }
@@ -22637,7 +22596,7 @@
                 },
                 "region": {
                   "charLength": 1,
-                  "charOffset": 3917,
+                  "charOffset": 4438,
                   "snippet": {
                     "text": "="
                   }
@@ -22676,10 +22635,10 @@
                   "relativeAddress": 0
                 },
                 "region": {
-                  "charLength": 23,
-                  "charOffset": 4017,
+                  "charLength": 99,
+                  "charOffset": 4675,
                   "snippet": {
-                    "text": "LookUp(TaxN,TName=Name)"
+                    "text": "LookUp(\r\n                        TaxN,\r\n                        TName = Name\r\n                    )"
                   }
                 }
               },
@@ -22717,7 +22676,7 @@
                 },
                 "region": {
                   "charLength": 6,
-                  "charOffset": 4040,
+                  "charOffset": 4774,
                   "snippet": {
                     "text": ".TName"
                   }
@@ -22757,7 +22716,7 @@
                 },
                 "region": {
                   "charLength": 1,
-                  "charOffset": 4016,
+                  "charOffset": 4673,
                   "snippet": {
                     "text": "="
                   }
@@ -22796,10 +22755,10 @@
                   "relativeAddress": 0
                 },
                 "region": {
-                  "charLength": 2547,
+                  "charLength": 3238,
                   "charOffset": 2004,
                   "snippet": {
-                    "text": "Patch(\r\n                'Quote Line.S',\r\n                Defaults('Quote Line.S'),\r\n                {\r\n                    'Quote Header': LookUp(\r\n                        'Quote Header.S',\r\n                        'Quote ID' = _VarnewQuoteHeaderResponse.'Quote ID'),\r\n                       Product: LookUp(\r\n                        OfflineProductCollection,\r\n                        Product = LookUp(\r\n                            OfflineProductSKUCollection,\r\n                            'Product SKU' = ItemQuoteLine.'Product SKU'.'Product SKU'\r\n                        ).Product.Product\r\n                    ),\r\n                    'Product SKU': LookUp(\r\n                        OfflineProductSKUCollection,\r\n                        'Product SKU' = ItemQuoteLine.'Product SKU'.'Product SKU'\r\n                    ),\r\n                    Variant: LookUp(\r\n                        OfflineProductVariantCollection,\r\n                        'Product Variants' = LookUp(\r\n                            OfflineProductSKUCollection,\r\n                            'Product SKU' = ItemQuoteLine.'Product SKU'.'Product SKU'\r\n                        ).'Product Variant'.'Product Variants'\r\n                    ),\r\n                   'Discount %':_VarnewQuoteHeaderResponse.Discount, //ItemQuoteLine.Discount,\r\n                    'Total Unit Price': ItemQuoteLine.'Total Amount',\r\n                    IGST: LookUp('HSN Masters',Name=LookUp(TaxN,TName=Name).TName).'IGST %' * ItemQuoteLine.'Total Amount'/100,\r\n                    CGST: LookUp('HSN Masters',Name=LookUp(TaxN,TName=Name).TName).'CGST %' * ItemQuoteLine.'Total Amount'/100,\r\n                    SGST: LookUp('HSN Masters',Name=LookUp(TaxN,TName=Name).TName).'SGST %' * ItemQuoteLine.'Total Amount'/100,\r\n                    'PIGST %': LookUp('HSN Masters',Name=LookUp(TaxN,TName=Name).TName).'IGST %',\r\n                    'PSGST %': LookUp('HSN Masters',Name=LookUp(TaxN,TName=Name).TName).'SGST %',\r\n                    'PCGST %': LookUp('HSN Masters',Name=LookUp(TaxN,TName=Name).TName).'CGST %',\r\n                    Quantity: ItemQuoteLine.Quantity,\r\n                    'Unit Price': LookUp(\r\n                        OfflineProductPriceCollection,\r\n                        'Product SKU'.'Product SKU' = LookUp(\r\n                            OfflineProductSKUCollection,\r\n                            'Product SKU' = ItemQuoteLine.'Product SKU'.'Product SKU'\r\n                        ).'Product SKU'\r\n                    ).'Ex-Factory'                     \r\n                }\r\n            )"
+                    "text": "Patch(\r\n            'Quote Line.S',\r\n            Defaults('Quote Line.S'),\r\n            {\r\n                'Quote Header': LookUp(\r\n                    'Quote Header.S',\r\n                    'Quote ID' = _VarnewQuoteHeaderResponse.'Quote ID'\r\n                ),\r\n                Product: LookUp(\r\n                    OfflineProductCollection,\r\n                    Product = LookUp(\r\n                        OfflineProductSKUCollection,\r\n                        'Product SKU' = ItemQuoteLine.'Product SKU'.'Product SKU'\r\n                    ).Product.Product\r\n                ),\r\n                'Product SKU': LookUp(\r\n                    OfflineProductSKUCollection,\r\n                    'Product SKU' = ItemQuoteLine.'Product SKU'.'Product SKU'\r\n                ),\r\n                Variant: LookUp(\r\n                    OfflineProductVariantCollection,\r\n                    'Product Variants' = LookUp(\r\n                        OfflineProductSKUCollection,\r\n                        'Product SKU' = ItemQuoteLine.'Product SKU'.'Product SKU'\r\n                    ).'Product Variant'.'Product Variants'\r\n                ),\r\n                'Discount %': _VarnewQuoteHeaderResponse.Discount,\r\n                //ItemQuoteLine.Discount,\r\n                'Total Unit Price': ItemQuoteLine.'Total Amount',\r\n                IGST: LookUp(\r\n                    'HSN Masters',\r\n                    Name = LookUp(\r\n                        TaxN,\r\n                        TName = Name\r\n                    ).TName\r\n                ).'IGST %' * ItemQuoteLine.'Total Amount' / 100,\r\n                CGST: LookUp(\r\n                    'HSN Masters',\r\n                    Name = LookUp(\r\n                        TaxN,\r\n                        TName = Name\r\n                    ).TName\r\n                ).'CGST %' * ItemQuoteLine.'Total Amount' / 100,\r\n                SGST: LookUp(\r\n                    'HSN Masters',\r\n                    Name = LookUp(\r\n                        TaxN,\r\n                        TName = Name\r\n                    ).TName\r\n                ).'SGST %' * ItemQuoteLine.'Total Amount' / 100,\r\n                'PIGST %': LookUp(\r\n                    'HSN Masters',\r\n                    Name = LookUp(\r\n                        TaxN,\r\n                        TName = Name\r\n                    ).TName\r\n                ).'IGST %',\r\n                'PSGST %': LookUp(\r\n                    'HSN Masters',\r\n                    Name = LookUp(\r\n                        TaxN,\r\n                        TName = Name\r\n                    ).TName\r\n                ).'SGST %',\r\n                'PCGST %': LookUp(\r\n                    'HSN Masters',\r\n                    Name = LookUp(\r\n                        TaxN,\r\n                        TName = Name\r\n                    ).TName\r\n                ).'CGST %',\r\n                Quantity: ItemQuoteLine.Quantity,\r\n                'Unit Price': LookUp(\r\n                    OfflineProductPriceCollection,\r\n                    'Product SKU'.'Product SKU' = LookUp(\r\n                        OfflineProductSKUCollection,\r\n                        'Product SKU' = ItemQuoteLine.'Product SKU'.'Product SKU'\r\n                    ).'Product SKU'\r\n                ).'Ex-Factory'\r\n            }\r\n        )"
                   }
                 }
               },
@@ -22836,10 +22795,10 @@
                   "relativeAddress": 0
                 },
                 "region": {
-                  "charLength": 2432,
-                  "charOffset": 2104,
+                  "charLength": 3139,
+                  "charOffset": 2092,
                   "snippet": {
-                    "text": "{\r\n                    'Quote Header': LookUp(\r\n                        'Quote Header.S',\r\n                        'Quote ID' = _VarnewQuoteHeaderResponse.'Quote ID'),\r\n                       Product: LookUp(\r\n                        OfflineProductCollection,\r\n                        Product = LookUp(\r\n                            OfflineProductSKUCollection,\r\n                            'Product SKU' = ItemQuoteLine.'Product SKU'.'Product SKU'\r\n                        ).Product.Product\r\n                    ),\r\n                    'Product SKU': LookUp(\r\n                        OfflineProductSKUCollection,\r\n                        'Product SKU' = ItemQuoteLine.'Product SKU'.'Product SKU'\r\n                    ),\r\n                    Variant: LookUp(\r\n                        OfflineProductVariantCollection,\r\n                        'Product Variants' = LookUp(\r\n                            OfflineProductSKUCollection,\r\n                            'Product SKU' = ItemQuoteLine.'Product SKU'.'Product SKU'\r\n                        ).'Product Variant'.'Product Variants'\r\n                    ),\r\n                   'Discount %':_VarnewQuoteHeaderResponse.Discount, //ItemQuoteLine.Discount,\r\n                    'Total Unit Price': ItemQuoteLine.'Total Amount',\r\n                    IGST: LookUp('HSN Masters',Name=LookUp(TaxN,TName=Name).TName).'IGST %' * ItemQuoteLine.'Total Amount'/100,\r\n                    CGST: LookUp('HSN Masters',Name=LookUp(TaxN,TName=Name).TName).'CGST %' * ItemQuoteLine.'Total Amount'/100,\r\n                    SGST: LookUp('HSN Masters',Name=LookUp(TaxN,TName=Name).TName).'SGST %' * ItemQuoteLine.'Total Amount'/100,\r\n                    'PIGST %': LookUp('HSN Masters',Name=LookUp(TaxN,TName=Name).TName).'IGST %',\r\n                    'PSGST %': LookUp('HSN Masters',Name=LookUp(TaxN,TName=Name).TName).'SGST %',\r\n                    'PCGST %': LookUp('HSN Masters',Name=LookUp(TaxN,TName=Name).TName).'CGST %',\r\n                    Quantity: ItemQuoteLine.Quantity,\r\n                    'Unit Price': LookUp(\r\n                        OfflineProductPriceCollection,\r\n                        'Product SKU'.'Product SKU' = LookUp(\r\n                            OfflineProductSKUCollection,\r\n                            'Product SKU' = ItemQuoteLine.'Product SKU'.'Product SKU'\r\n                        ).'Product SKU'\r\n                    ).'Ex-Factory'                     \r\n                }"
+                    "text": "{\r\n                'Quote Header': LookUp(\r\n                    'Quote Header.S',\r\n                    'Quote ID' = _VarnewQuoteHeaderResponse.'Quote ID'\r\n                ),\r\n                Product: LookUp(\r\n                    OfflineProductCollection,\r\n                    Product = LookUp(\r\n                        OfflineProductSKUCollection,\r\n                        'Product SKU' = ItemQuoteLine.'Product SKU'.'Product SKU'\r\n                    ).Product.Product\r\n                ),\r\n                'Product SKU': LookUp(\r\n                    OfflineProductSKUCollection,\r\n                    'Product SKU' = ItemQuoteLine.'Product SKU'.'Product SKU'\r\n                ),\r\n                Variant: LookUp(\r\n                    OfflineProductVariantCollection,\r\n                    'Product Variants' = LookUp(\r\n                        OfflineProductSKUCollection,\r\n                        'Product SKU' = ItemQuoteLine.'Product SKU'.'Product SKU'\r\n                    ).'Product Variant'.'Product Variants'\r\n                ),\r\n                'Discount %': _VarnewQuoteHeaderResponse.Discount,\r\n                //ItemQuoteLine.Discount,\r\n                'Total Unit Price': ItemQuoteLine.'Total Amount',\r\n                IGST: LookUp(\r\n                    'HSN Masters',\r\n                    Name = LookUp(\r\n                        TaxN,\r\n                        TName = Name\r\n                    ).TName\r\n                ).'IGST %' * ItemQuoteLine.'Total Amount' / 100,\r\n                CGST: LookUp(\r\n                    'HSN Masters',\r\n                    Name = LookUp(\r\n                        TaxN,\r\n                        TName = Name\r\n                    ).TName\r\n                ).'CGST %' * ItemQuoteLine.'Total Amount' / 100,\r\n                SGST: LookUp(\r\n                    'HSN Masters',\r\n                    Name = LookUp(\r\n                        TaxN,\r\n                        TName = Name\r\n                    ).TName\r\n                ).'SGST %' * ItemQuoteLine.'Total Amount' / 100,\r\n                'PIGST %': LookUp(\r\n                    'HSN Masters',\r\n                    Name = LookUp(\r\n                        TaxN,\r\n                        TName = Name\r\n                    ).TName\r\n                ).'IGST %',\r\n                'PSGST %': LookUp(\r\n                    'HSN Masters',\r\n                    Name = LookUp(\r\n                        TaxN,\r\n                        TName = Name\r\n                    ).TName\r\n                ).'SGST %',\r\n                'PCGST %': LookUp(\r\n                    'HSN Masters',\r\n                    Name = LookUp(\r\n                        TaxN,\r\n                        TName = Name\r\n                    ).TName\r\n                ).'CGST %',\r\n                Quantity: ItemQuoteLine.Quantity,\r\n                'Unit Price': LookUp(\r\n                    OfflineProductPriceCollection,\r\n                    'Product SKU'.'Product SKU' = LookUp(\r\n                        OfflineProductSKUCollection,\r\n                        'Product SKU' = ItemQuoteLine.'Product SKU'.'Product SKU'\r\n                    ).'Product SKU'\r\n                ).'Ex-Factory'\r\n            }"
                   }
                 }
               },
@@ -22876,10 +22835,10 @@
                   "relativeAddress": 0
                 },
                 "region": {
-                  "charLength": 2432,
-                  "charOffset": 2104,
+                  "charLength": 3139,
+                  "charOffset": 2092,
                   "snippet": {
-                    "text": "{\r\n                    'Quote Header': LookUp(\r\n                        'Quote Header.S',\r\n                        'Quote ID' = _VarnewQuoteHeaderResponse.'Quote ID'),\r\n                       Product: LookUp(\r\n                        OfflineProductCollection,\r\n                        Product = LookUp(\r\n                            OfflineProductSKUCollection,\r\n                            'Product SKU' = ItemQuoteLine.'Product SKU'.'Product SKU'\r\n                        ).Product.Product\r\n                    ),\r\n                    'Product SKU': LookUp(\r\n                        OfflineProductSKUCollection,\r\n                        'Product SKU' = ItemQuoteLine.'Product SKU'.'Product SKU'\r\n                    ),\r\n                    Variant: LookUp(\r\n                        OfflineProductVariantCollection,\r\n                        'Product Variants' = LookUp(\r\n                            OfflineProductSKUCollection,\r\n                            'Product SKU' = ItemQuoteLine.'Product SKU'.'Product SKU'\r\n                        ).'Product Variant'.'Product Variants'\r\n                    ),\r\n                   'Discount %':_VarnewQuoteHeaderResponse.Discount, //ItemQuoteLine.Discount,\r\n                    'Total Unit Price': ItemQuoteLine.'Total Amount',\r\n                    IGST: LookUp('HSN Masters',Name=LookUp(TaxN,TName=Name).TName).'IGST %' * ItemQuoteLine.'Total Amount'/100,\r\n                    CGST: LookUp('HSN Masters',Name=LookUp(TaxN,TName=Name).TName).'CGST %' * ItemQuoteLine.'Total Amount'/100,\r\n                    SGST: LookUp('HSN Masters',Name=LookUp(TaxN,TName=Name).TName).'SGST %' * ItemQuoteLine.'Total Amount'/100,\r\n                    'PIGST %': LookUp('HSN Masters',Name=LookUp(TaxN,TName=Name).TName).'IGST %',\r\n                    'PSGST %': LookUp('HSN Masters',Name=LookUp(TaxN,TName=Name).TName).'SGST %',\r\n                    'PCGST %': LookUp('HSN Masters',Name=LookUp(TaxN,TName=Name).TName).'CGST %',\r\n                    Quantity: ItemQuoteLine.Quantity,\r\n                    'Unit Price': LookUp(\r\n                        OfflineProductPriceCollection,\r\n                        'Product SKU'.'Product SKU' = LookUp(\r\n                            OfflineProductSKUCollection,\r\n                            'Product SKU' = ItemQuoteLine.'Product SKU'.'Product SKU'\r\n                        ).'Product SKU'\r\n                    ).'Ex-Factory'                     \r\n                }"
+                    "text": "{\r\n                'Quote Header': LookUp(\r\n                    'Quote Header.S',\r\n                    'Quote ID' = _VarnewQuoteHeaderResponse.'Quote ID'\r\n                ),\r\n                Product: LookUp(\r\n                    OfflineProductCollection,\r\n                    Product = LookUp(\r\n                        OfflineProductSKUCollection,\r\n                        'Product SKU' = ItemQuoteLine.'Product SKU'.'Product SKU'\r\n                    ).Product.Product\r\n                ),\r\n                'Product SKU': LookUp(\r\n                    OfflineProductSKUCollection,\r\n                    'Product SKU' = ItemQuoteLine.'Product SKU'.'Product SKU'\r\n                ),\r\n                Variant: LookUp(\r\n                    OfflineProductVariantCollection,\r\n                    'Product Variants' = LookUp(\r\n                        OfflineProductSKUCollection,\r\n                        'Product SKU' = ItemQuoteLine.'Product SKU'.'Product SKU'\r\n                    ).'Product Variant'.'Product Variants'\r\n                ),\r\n                'Discount %': _VarnewQuoteHeaderResponse.Discount,\r\n                //ItemQuoteLine.Discount,\r\n                'Total Unit Price': ItemQuoteLine.'Total Amount',\r\n                IGST: LookUp(\r\n                    'HSN Masters',\r\n                    Name = LookUp(\r\n                        TaxN,\r\n                        TName = Name\r\n                    ).TName\r\n                ).'IGST %' * ItemQuoteLine.'Total Amount' / 100,\r\n                CGST: LookUp(\r\n                    'HSN Masters',\r\n                    Name = LookUp(\r\n                        TaxN,\r\n                        TName = Name\r\n                    ).TName\r\n                ).'CGST %' * ItemQuoteLine.'Total Amount' / 100,\r\n                SGST: LookUp(\r\n                    'HSN Masters',\r\n                    Name = LookUp(\r\n                        TaxN,\r\n                        TName = Name\r\n                    ).TName\r\n                ).'SGST %' * ItemQuoteLine.'Total Amount' / 100,\r\n                'PIGST %': LookUp(\r\n                    'HSN Masters',\r\n                    Name = LookUp(\r\n                        TaxN,\r\n                        TName = Name\r\n                    ).TName\r\n                ).'IGST %',\r\n                'PSGST %': LookUp(\r\n                    'HSN Masters',\r\n                    Name = LookUp(\r\n                        TaxN,\r\n                        TName = Name\r\n                    ).TName\r\n                ).'SGST %',\r\n                'PCGST %': LookUp(\r\n                    'HSN Masters',\r\n                    Name = LookUp(\r\n                        TaxN,\r\n                        TName = Name\r\n                    ).TName\r\n                ).'CGST %',\r\n                Quantity: ItemQuoteLine.Quantity,\r\n                'Unit Price': LookUp(\r\n                    OfflineProductPriceCollection,\r\n                    'Product SKU'.'Product SKU' = LookUp(\r\n                        OfflineProductSKUCollection,\r\n                        'Product SKU' = ItemQuoteLine.'Product SKU'.'Product SKU'\r\n                    ).'Product SKU'\r\n                ).'Ex-Factory'\r\n            }"
                   }
                 }
               },
@@ -22917,10 +22876,10 @@
                   "relativeAddress": 0
                 },
                 "region": {
-                  "charLength": 2432,
-                  "charOffset": 2104,
+                  "charLength": 3139,
+                  "charOffset": 2092,
                   "snippet": {
-                    "text": "{\r\n                    'Quote Header': LookUp(\r\n                        'Quote Header.S',\r\n                        'Quote ID' = _VarnewQuoteHeaderResponse.'Quote ID'),\r\n                       Product: LookUp(\r\n                        OfflineProductCollection,\r\n                        Product = LookUp(\r\n                            OfflineProductSKUCollection,\r\n                            'Product SKU' = ItemQuoteLine.'Product SKU'.'Product SKU'\r\n                        ).Product.Product\r\n                    ),\r\n                    'Product SKU': LookUp(\r\n                        OfflineProductSKUCollection,\r\n                        'Product SKU' = ItemQuoteLine.'Product SKU'.'Product SKU'\r\n                    ),\r\n                    Variant: LookUp(\r\n                        OfflineProductVariantCollection,\r\n                        'Product Variants' = LookUp(\r\n                            OfflineProductSKUCollection,\r\n                            'Product SKU' = ItemQuoteLine.'Product SKU'.'Product SKU'\r\n                        ).'Product Variant'.'Product Variants'\r\n                    ),\r\n                   'Discount %':_VarnewQuoteHeaderResponse.Discount, //ItemQuoteLine.Discount,\r\n                    'Total Unit Price': ItemQuoteLine.'Total Amount',\r\n                    IGST: LookUp('HSN Masters',Name=LookUp(TaxN,TName=Name).TName).'IGST %' * ItemQuoteLine.'Total Amount'/100,\r\n                    CGST: LookUp('HSN Masters',Name=LookUp(TaxN,TName=Name).TName).'CGST %' * ItemQuoteLine.'Total Amount'/100,\r\n                    SGST: LookUp('HSN Masters',Name=LookUp(TaxN,TName=Name).TName).'SGST %' * ItemQuoteLine.'Total Amount'/100,\r\n                    'PIGST %': LookUp('HSN Masters',Name=LookUp(TaxN,TName=Name).TName).'IGST %',\r\n                    'PSGST %': LookUp('HSN Masters',Name=LookUp(TaxN,TName=Name).TName).'SGST %',\r\n                    'PCGST %': LookUp('HSN Masters',Name=LookUp(TaxN,TName=Name).TName).'CGST %',\r\n                    Quantity: ItemQuoteLine.Quantity,\r\n                    'Unit Price': LookUp(\r\n                        OfflineProductPriceCollection,\r\n                        'Product SKU'.'Product SKU' = LookUp(\r\n                            OfflineProductSKUCollection,\r\n                            'Product SKU' = ItemQuoteLine.'Product SKU'.'Product SKU'\r\n                        ).'Product SKU'\r\n                    ).'Ex-Factory'                     \r\n                }"
+                    "text": "{\r\n                'Quote Header': LookUp(\r\n                    'Quote Header.S',\r\n                    'Quote ID' = _VarnewQuoteHeaderResponse.'Quote ID'\r\n                ),\r\n                Product: LookUp(\r\n                    OfflineProductCollection,\r\n                    Product = LookUp(\r\n                        OfflineProductSKUCollection,\r\n                        'Product SKU' = ItemQuoteLine.'Product SKU'.'Product SKU'\r\n                    ).Product.Product\r\n                ),\r\n                'Product SKU': LookUp(\r\n                    OfflineProductSKUCollection,\r\n                    'Product SKU' = ItemQuoteLine.'Product SKU'.'Product SKU'\r\n                ),\r\n                Variant: LookUp(\r\n                    OfflineProductVariantCollection,\r\n                    'Product Variants' = LookUp(\r\n                        OfflineProductSKUCollection,\r\n                        'Product SKU' = ItemQuoteLine.'Product SKU'.'Product SKU'\r\n                    ).'Product Variant'.'Product Variants'\r\n                ),\r\n                'Discount %': _VarnewQuoteHeaderResponse.Discount,\r\n                //ItemQuoteLine.Discount,\r\n                'Total Unit Price': ItemQuoteLine.'Total Amount',\r\n                IGST: LookUp(\r\n                    'HSN Masters',\r\n                    Name = LookUp(\r\n                        TaxN,\r\n                        TName = Name\r\n                    ).TName\r\n                ).'IGST %' * ItemQuoteLine.'Total Amount' / 100,\r\n                CGST: LookUp(\r\n                    'HSN Masters',\r\n                    Name = LookUp(\r\n                        TaxN,\r\n                        TName = Name\r\n                    ).TName\r\n                ).'CGST %' * ItemQuoteLine.'Total Amount' / 100,\r\n                SGST: LookUp(\r\n                    'HSN Masters',\r\n                    Name = LookUp(\r\n                        TaxN,\r\n                        TName = Name\r\n                    ).TName\r\n                ).'SGST %' * ItemQuoteLine.'Total Amount' / 100,\r\n                'PIGST %': LookUp(\r\n                    'HSN Masters',\r\n                    Name = LookUp(\r\n                        TaxN,\r\n                        TName = Name\r\n                    ).TName\r\n                ).'IGST %',\r\n                'PSGST %': LookUp(\r\n                    'HSN Masters',\r\n                    Name = LookUp(\r\n                        TaxN,\r\n                        TName = Name\r\n                    ).TName\r\n                ).'SGST %',\r\n                'PCGST %': LookUp(\r\n                    'HSN Masters',\r\n                    Name = LookUp(\r\n                        TaxN,\r\n                        TName = Name\r\n                    ).TName\r\n                ).'CGST %',\r\n                Quantity: ItemQuoteLine.Quantity,\r\n                'Unit Price': LookUp(\r\n                    OfflineProductPriceCollection,\r\n                    'Product SKU'.'Product SKU' = LookUp(\r\n                        OfflineProductSKUCollection,\r\n                        'Product SKU' = ItemQuoteLine.'Product SKU'.'Product SKU'\r\n                    ).'Product SKU'\r\n                ).'Ex-Factory'\r\n            }"
                   }
                 }
               },
@@ -22957,10 +22916,10 @@
                   "relativeAddress": 0
                 },
                 "region": {
-                  "charLength": 2432,
-                  "charOffset": 2104,
+                  "charLength": 3139,
+                  "charOffset": 2092,
                   "snippet": {
-                    "text": "{\r\n                    'Quote Header': LookUp(\r\n                        'Quote Header.S',\r\n                        'Quote ID' = _VarnewQuoteHeaderResponse.'Quote ID'),\r\n                       Product: LookUp(\r\n                        OfflineProductCollection,\r\n                        Product = LookUp(\r\n                            OfflineProductSKUCollection,\r\n                            'Product SKU' = ItemQuoteLine.'Product SKU'.'Product SKU'\r\n                        ).Product.Product\r\n                    ),\r\n                    'Product SKU': LookUp(\r\n                        OfflineProductSKUCollection,\r\n                        'Product SKU' = ItemQuoteLine.'Product SKU'.'Product SKU'\r\n                    ),\r\n                    Variant: LookUp(\r\n                        OfflineProductVariantCollection,\r\n                        'Product Variants' = LookUp(\r\n                            OfflineProductSKUCollection,\r\n                            'Product SKU' = ItemQuoteLine.'Product SKU'.'Product SKU'\r\n                        ).'Product Variant'.'Product Variants'\r\n                    ),\r\n                   'Discount %':_VarnewQuoteHeaderResponse.Discount, //ItemQuoteLine.Discount,\r\n                    'Total Unit Price': ItemQuoteLine.'Total Amount',\r\n                    IGST: LookUp('HSN Masters',Name=LookUp(TaxN,TName=Name).TName).'IGST %' * ItemQuoteLine.'Total Amount'/100,\r\n                    CGST: LookUp('HSN Masters',Name=LookUp(TaxN,TName=Name).TName).'CGST %' * ItemQuoteLine.'Total Amount'/100,\r\n                    SGST: LookUp('HSN Masters',Name=LookUp(TaxN,TName=Name).TName).'SGST %' * ItemQuoteLine.'Total Amount'/100,\r\n                    'PIGST %': LookUp('HSN Masters',Name=LookUp(TaxN,TName=Name).TName).'IGST %',\r\n                    'PSGST %': LookUp('HSN Masters',Name=LookUp(TaxN,TName=Name).TName).'SGST %',\r\n                    'PCGST %': LookUp('HSN Masters',Name=LookUp(TaxN,TName=Name).TName).'CGST %',\r\n                    Quantity: ItemQuoteLine.Quantity,\r\n                    'Unit Price': LookUp(\r\n                        OfflineProductPriceCollection,\r\n                        'Product SKU'.'Product SKU' = LookUp(\r\n                            OfflineProductSKUCollection,\r\n                            'Product SKU' = ItemQuoteLine.'Product SKU'.'Product SKU'\r\n                        ).'Product SKU'\r\n                    ).'Ex-Factory'                     \r\n                }"
+                    "text": "{\r\n                'Quote Header': LookUp(\r\n                    'Quote Header.S',\r\n                    'Quote ID' = _VarnewQuoteHeaderResponse.'Quote ID'\r\n                ),\r\n                Product: LookUp(\r\n                    OfflineProductCollection,\r\n                    Product = LookUp(\r\n                        OfflineProductSKUCollection,\r\n                        'Product SKU' = ItemQuoteLine.'Product SKU'.'Product SKU'\r\n                    ).Product.Product\r\n                ),\r\n                'Product SKU': LookUp(\r\n                    OfflineProductSKUCollection,\r\n                    'Product SKU' = ItemQuoteLine.'Product SKU'.'Product SKU'\r\n                ),\r\n                Variant: LookUp(\r\n                    OfflineProductVariantCollection,\r\n                    'Product Variants' = LookUp(\r\n                        OfflineProductSKUCollection,\r\n                        'Product SKU' = ItemQuoteLine.'Product SKU'.'Product SKU'\r\n                    ).'Product Variant'.'Product Variants'\r\n                ),\r\n                'Discount %': _VarnewQuoteHeaderResponse.Discount,\r\n                //ItemQuoteLine.Discount,\r\n                'Total Unit Price': ItemQuoteLine.'Total Amount',\r\n                IGST: LookUp(\r\n                    'HSN Masters',\r\n                    Name = LookUp(\r\n                        TaxN,\r\n                        TName = Name\r\n                    ).TName\r\n                ).'IGST %' * ItemQuoteLine.'Total Amount' / 100,\r\n                CGST: LookUp(\r\n                    'HSN Masters',\r\n                    Name = LookUp(\r\n                        TaxN,\r\n                        TName = Name\r\n                    ).TName\r\n                ).'CGST %' * ItemQuoteLine.'Total Amount' / 100,\r\n                SGST: LookUp(\r\n                    'HSN Masters',\r\n                    Name = LookUp(\r\n                        TaxN,\r\n                        TName = Name\r\n                    ).TName\r\n                ).'SGST %' * ItemQuoteLine.'Total Amount' / 100,\r\n                'PIGST %': LookUp(\r\n                    'HSN Masters',\r\n                    Name = LookUp(\r\n                        TaxN,\r\n                        TName = Name\r\n                    ).TName\r\n                ).'IGST %',\r\n                'PSGST %': LookUp(\r\n                    'HSN Masters',\r\n                    Name = LookUp(\r\n                        TaxN,\r\n                        TName = Name\r\n                    ).TName\r\n                ).'SGST %',\r\n                'PCGST %': LookUp(\r\n                    'HSN Masters',\r\n                    Name = LookUp(\r\n                        TaxN,\r\n                        TName = Name\r\n                    ).TName\r\n                ).'CGST %',\r\n                Quantity: ItemQuoteLine.Quantity,\r\n                'Unit Price': LookUp(\r\n                    OfflineProductPriceCollection,\r\n                    'Product SKU'.'Product SKU' = LookUp(\r\n                        OfflineProductSKUCollection,\r\n                        'Product SKU' = ItemQuoteLine.'Product SKU'.'Product SKU'\r\n                    ).'Product SKU'\r\n                ).'Ex-Factory'\r\n            }"
                   }
                 }
               },
@@ -22998,10 +22957,10 @@
                   "relativeAddress": 0
                 },
                 "region": {
-                  "charLength": 2432,
-                  "charOffset": 2104,
+                  "charLength": 3139,
+                  "charOffset": 2092,
                   "snippet": {
-                    "text": "{\r\n                    'Quote Header': LookUp(\r\n                        'Quote Header.S',\r\n                        'Quote ID' = _VarnewQuoteHeaderResponse.'Quote ID'),\r\n                       Product: LookUp(\r\n                        OfflineProductCollection,\r\n                        Product = LookUp(\r\n                            OfflineProductSKUCollection,\r\n                            'Product SKU' = ItemQuoteLine.'Product SKU'.'Product SKU'\r\n                        ).Product.Product\r\n                    ),\r\n                    'Product SKU': LookUp(\r\n                        OfflineProductSKUCollection,\r\n                        'Product SKU' = ItemQuoteLine.'Product SKU'.'Product SKU'\r\n                    ),\r\n                    Variant: LookUp(\r\n                        OfflineProductVariantCollection,\r\n                        'Product Variants' = LookUp(\r\n                            OfflineProductSKUCollection,\r\n                            'Product SKU' = ItemQuoteLine.'Product SKU'.'Product SKU'\r\n                        ).'Product Variant'.'Product Variants'\r\n                    ),\r\n                   'Discount %':_VarnewQuoteHeaderResponse.Discount, //ItemQuoteLine.Discount,\r\n                    'Total Unit Price': ItemQuoteLine.'Total Amount',\r\n                    IGST: LookUp('HSN Masters',Name=LookUp(TaxN,TName=Name).TName).'IGST %' * ItemQuoteLine.'Total Amount'/100,\r\n                    CGST: LookUp('HSN Masters',Name=LookUp(TaxN,TName=Name).TName).'CGST %' * ItemQuoteLine.'Total Amount'/100,\r\n                    SGST: LookUp('HSN Masters',Name=LookUp(TaxN,TName=Name).TName).'SGST %' * ItemQuoteLine.'Total Amount'/100,\r\n                    'PIGST %': LookUp('HSN Masters',Name=LookUp(TaxN,TName=Name).TName).'IGST %',\r\n                    'PSGST %': LookUp('HSN Masters',Name=LookUp(TaxN,TName=Name).TName).'SGST %',\r\n                    'PCGST %': LookUp('HSN Masters',Name=LookUp(TaxN,TName=Name).TName).'CGST %',\r\n                    Quantity: ItemQuoteLine.Quantity,\r\n                    'Unit Price': LookUp(\r\n                        OfflineProductPriceCollection,\r\n                        'Product SKU'.'Product SKU' = LookUp(\r\n                            OfflineProductSKUCollection,\r\n                            'Product SKU' = ItemQuoteLine.'Product SKU'.'Product SKU'\r\n                        ).'Product SKU'\r\n                    ).'Ex-Factory'                     \r\n                }"
+                    "text": "{\r\n                'Quote Header': LookUp(\r\n                    'Quote Header.S',\r\n                    'Quote ID' = _VarnewQuoteHeaderResponse.'Quote ID'\r\n                ),\r\n                Product: LookUp(\r\n                    OfflineProductCollection,\r\n                    Product = LookUp(\r\n                        OfflineProductSKUCollection,\r\n                        'Product SKU' = ItemQuoteLine.'Product SKU'.'Product SKU'\r\n                    ).Product.Product\r\n                ),\r\n                'Product SKU': LookUp(\r\n                    OfflineProductSKUCollection,\r\n                    'Product SKU' = ItemQuoteLine.'Product SKU'.'Product SKU'\r\n                ),\r\n                Variant: LookUp(\r\n                    OfflineProductVariantCollection,\r\n                    'Product Variants' = LookUp(\r\n                        OfflineProductSKUCollection,\r\n                        'Product SKU' = ItemQuoteLine.'Product SKU'.'Product SKU'\r\n                    ).'Product Variant'.'Product Variants'\r\n                ),\r\n                'Discount %': _VarnewQuoteHeaderResponse.Discount,\r\n                //ItemQuoteLine.Discount,\r\n                'Total Unit Price': ItemQuoteLine.'Total Amount',\r\n                IGST: LookUp(\r\n                    'HSN Masters',\r\n                    Name = LookUp(\r\n                        TaxN,\r\n                        TName = Name\r\n                    ).TName\r\n                ).'IGST %' * ItemQuoteLine.'Total Amount' / 100,\r\n                CGST: LookUp(\r\n                    'HSN Masters',\r\n                    Name = LookUp(\r\n                        TaxN,\r\n                        TName = Name\r\n                    ).TName\r\n                ).'CGST %' * ItemQuoteLine.'Total Amount' / 100,\r\n                SGST: LookUp(\r\n                    'HSN Masters',\r\n                    Name = LookUp(\r\n                        TaxN,\r\n                        TName = Name\r\n                    ).TName\r\n                ).'SGST %' * ItemQuoteLine.'Total Amount' / 100,\r\n                'PIGST %': LookUp(\r\n                    'HSN Masters',\r\n                    Name = LookUp(\r\n                        TaxN,\r\n                        TName = Name\r\n                    ).TName\r\n                ).'IGST %',\r\n                'PSGST %': LookUp(\r\n                    'HSN Masters',\r\n                    Name = LookUp(\r\n                        TaxN,\r\n                        TName = Name\r\n                    ).TName\r\n                ).'SGST %',\r\n                'PCGST %': LookUp(\r\n                    'HSN Masters',\r\n                    Name = LookUp(\r\n                        TaxN,\r\n                        TName = Name\r\n                    ).TName\r\n                ).'CGST %',\r\n                Quantity: ItemQuoteLine.Quantity,\r\n                'Unit Price': LookUp(\r\n                    OfflineProductPriceCollection,\r\n                    'Product SKU'.'Product SKU' = LookUp(\r\n                        OfflineProductSKUCollection,\r\n                        'Product SKU' = ItemQuoteLine.'Product SKU'.'Product SKU'\r\n                    ).'Product SKU'\r\n                ).'Ex-Factory'\r\n            }"
                   }
                 }
               },
@@ -23038,10 +22997,10 @@
                   "relativeAddress": 0
                 },
                 "region": {
-                  "charLength": 2432,
-                  "charOffset": 2104,
+                  "charLength": 3139,
+                  "charOffset": 2092,
                   "snippet": {
-                    "text": "{\r\n                    'Quote Header': LookUp(\r\n                        'Quote Header.S',\r\n                        'Quote ID' = _VarnewQuoteHeaderResponse.'Quote ID'),\r\n                       Product: LookUp(\r\n                        OfflineProductCollection,\r\n                        Product = LookUp(\r\n                            OfflineProductSKUCollection,\r\n                            'Product SKU' = ItemQuoteLine.'Product SKU'.'Product SKU'\r\n                        ).Product.Product\r\n                    ),\r\n                    'Product SKU': LookUp(\r\n                        OfflineProductSKUCollection,\r\n                        'Product SKU' = ItemQuoteLine.'Product SKU'.'Product SKU'\r\n                    ),\r\n                    Variant: LookUp(\r\n                        OfflineProductVariantCollection,\r\n                        'Product Variants' = LookUp(\r\n                            OfflineProductSKUCollection,\r\n                            'Product SKU' = ItemQuoteLine.'Product SKU'.'Product SKU'\r\n                        ).'Product Variant'.'Product Variants'\r\n                    ),\r\n                   'Discount %':_VarnewQuoteHeaderResponse.Discount, //ItemQuoteLine.Discount,\r\n                    'Total Unit Price': ItemQuoteLine.'Total Amount',\r\n                    IGST: LookUp('HSN Masters',Name=LookUp(TaxN,TName=Name).TName).'IGST %' * ItemQuoteLine.'Total Amount'/100,\r\n                    CGST: LookUp('HSN Masters',Name=LookUp(TaxN,TName=Name).TName).'CGST %' * ItemQuoteLine.'Total Amount'/100,\r\n                    SGST: LookUp('HSN Masters',Name=LookUp(TaxN,TName=Name).TName).'SGST %' * ItemQuoteLine.'Total Amount'/100,\r\n                    'PIGST %': LookUp('HSN Masters',Name=LookUp(TaxN,TName=Name).TName).'IGST %',\r\n                    'PSGST %': LookUp('HSN Masters',Name=LookUp(TaxN,TName=Name).TName).'SGST %',\r\n                    'PCGST %': LookUp('HSN Masters',Name=LookUp(TaxN,TName=Name).TName).'CGST %',\r\n                    Quantity: ItemQuoteLine.Quantity,\r\n                    'Unit Price': LookUp(\r\n                        OfflineProductPriceCollection,\r\n                        'Product SKU'.'Product SKU' = LookUp(\r\n                            OfflineProductSKUCollection,\r\n                            'Product SKU' = ItemQuoteLine.'Product SKU'.'Product SKU'\r\n                        ).'Product SKU'\r\n                    ).'Ex-Factory'                     \r\n                }"
+                    "text": "{\r\n                'Quote Header': LookUp(\r\n                    'Quote Header.S',\r\n                    'Quote ID' = _VarnewQuoteHeaderResponse.'Quote ID'\r\n                ),\r\n                Product: LookUp(\r\n                    OfflineProductCollection,\r\n                    Product = LookUp(\r\n                        OfflineProductSKUCollection,\r\n                        'Product SKU' = ItemQuoteLine.'Product SKU'.'Product SKU'\r\n                    ).Product.Product\r\n                ),\r\n                'Product SKU': LookUp(\r\n                    OfflineProductSKUCollection,\r\n                    'Product SKU' = ItemQuoteLine.'Product SKU'.'Product SKU'\r\n                ),\r\n                Variant: LookUp(\r\n                    OfflineProductVariantCollection,\r\n                    'Product Variants' = LookUp(\r\n                        OfflineProductSKUCollection,\r\n                        'Product SKU' = ItemQuoteLine.'Product SKU'.'Product SKU'\r\n                    ).'Product Variant'.'Product Variants'\r\n                ),\r\n                'Discount %': _VarnewQuoteHeaderResponse.Discount,\r\n                //ItemQuoteLine.Discount,\r\n                'Total Unit Price': ItemQuoteLine.'Total Amount',\r\n                IGST: LookUp(\r\n                    'HSN Masters',\r\n                    Name = LookUp(\r\n                        TaxN,\r\n                        TName = Name\r\n                    ).TName\r\n                ).'IGST %' * ItemQuoteLine.'Total Amount' / 100,\r\n                CGST: LookUp(\r\n                    'HSN Masters',\r\n                    Name = LookUp(\r\n                        TaxN,\r\n                        TName = Name\r\n                    ).TName\r\n                ).'CGST %' * ItemQuoteLine.'Total Amount' / 100,\r\n                SGST: LookUp(\r\n                    'HSN Masters',\r\n                    Name = LookUp(\r\n                        TaxN,\r\n                        TName = Name\r\n                    ).TName\r\n                ).'SGST %' * ItemQuoteLine.'Total Amount' / 100,\r\n                'PIGST %': LookUp(\r\n                    'HSN Masters',\r\n                    Name = LookUp(\r\n                        TaxN,\r\n                        TName = Name\r\n                    ).TName\r\n                ).'IGST %',\r\n                'PSGST %': LookUp(\r\n                    'HSN Masters',\r\n                    Name = LookUp(\r\n                        TaxN,\r\n                        TName = Name\r\n                    ).TName\r\n                ).'SGST %',\r\n                'PCGST %': LookUp(\r\n                    'HSN Masters',\r\n                    Name = LookUp(\r\n                        TaxN,\r\n                        TName = Name\r\n                    ).TName\r\n                ).'CGST %',\r\n                Quantity: ItemQuoteLine.Quantity,\r\n                'Unit Price': LookUp(\r\n                    OfflineProductPriceCollection,\r\n                    'Product SKU'.'Product SKU' = LookUp(\r\n                        OfflineProductSKUCollection,\r\n                        'Product SKU' = ItemQuoteLine.'Product SKU'.'Product SKU'\r\n                    ).'Product SKU'\r\n                ).'Ex-Factory'\r\n            }"
                   }
                 }
               },
@@ -52138,6 +52097,43 @@
             {
               "logicalLocations": [
                 {
+                  "fullyQualifiedName": "'Quote Info_2'.Canvas4_4.DataCard5_4.Button38.OnSelect"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Quote Info_2'.Canvas4_4.DataCard5_4.Button38.OnSelect",
+                  "relativeAddress": 0
+                },
+                "region": {
+                  "charLength": 1000,
+                  "charOffset": 5496,
+                  "snippet": {
+                    "text": "Set(\r\n        _varInvoiceResponse,\r\n        Patch(\r\n            Invoices,\r\n            Defaults(Invoices),\r\n            {\r\n                'Order No.': LookUp(\r\n                    'Order Headers',\r\n                    'Order ID' = _VarQuoteHeaderResponse.'Order ID'\r\n                ),\r\n                Party: LookUp(\r\n                    OfflinePartiesCollection,\r\n                    'Customer Name' = varParty\r\n                ),\r\n                'Total Discount': _VarQuoteHeaderResponse.Discount,\r\n                'Total Amount': _VarQuoteHeaderResponse.'Total Bill Amount (new_totalbillamount)',\r\n                CGST: _VarQuoteHeaderResponse.CGST,\r\n                SGST: _VarQuoteHeaderResponse.SGST,\r\n                IGST: _VarQuoteHeaderResponse.IGST,\r\n                'Gst Amount':_VarQuoteHeaderResponse.GSTAmount,\r\n                Lead: LookUp(\r\n                    offlineLeadCollection,\r\n                    Leads = varLeadData.Leads\r\n                )\r\n            }\r\n        )\r\n    )"
+                  }
+                }
+              },
+              "properties": {
+                "member": "OnSelect",
+                "module": "Quote Info_2",
+                "type": "'Quote Info_2'.Canvas4_4.DataCard5_4.Button38"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "High"
+          },
+          "ruleId": "app-ErrIncompatibleCtxtVariableTypes",
+          "ruleIndex": 13
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
                   "fullyQualifiedName": "'Quote Info_2'.Canvas4_4.DataCard5_4.Button41_6.Fill"
                 }
               ],
@@ -63513,36 +63509,6 @@
             {
               "logicalLocations": [
                 {
-                  "fullyQualifiedName": "App._varsideNav"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "App._varsideNav",
-                  "relativeAddress": 0
-                }
-              },
-              "properties": {
-                "member": "_varsideNav",
-                "module": "App",
-                "type": "App"
-              }
-            }
-          ],
-          "message": {
-            "id": "issue"
-          },
-          "properties": {
-            "level": "Medium"
-          },
-          "ruleId": "app-UnusedVariables",
-          "ruleIndex": 22
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
                   "fullyQualifiedName": "App.varcategory"
                 }
               ],
@@ -63734,6 +63700,36 @@
               },
               "properties": {
                 "member": "varSideNav",
+                "module": "App",
+                "type": "App"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "app-UnusedVariables",
+          "ruleIndex": 22
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "App._varsideNav"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "App._varsideNav",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "_varsideNav",
                 "module": "App",
                 "type": "App"
               }
