@@ -1354,11 +1354,11 @@
         FocusedBorderColor: =Color.Transparent
         FocusedBorderThickness: =0.1
         Height: =732
-        Items: =Filter(Stocks, Customer.'Customer Code' = 'Customer 360'.CustomerRecord.zx_customercode)
+        Items: =Filter('Stock.S', Customer.'Customer Name'= 'Customer 360'.CustomerRecord.zx_name)
         Layout: =Layout.Vertical
         ShowScrollbar: =false
         TabIndex: =
-        TemplateSize: =205
+        TemplateSize: =76
         Visible: ='Top Gallery'.Selected.TabId=9
         Y: =234
         ZIndex: =14
@@ -1402,8 +1402,8 @@
         "'Product BG_1' As button":
             BorderColor: |-
                 =//_VarGblAppColors.LightText
-                ColorValue(LookUp(c_EnvironmentVariable, 'Display Name'="Text Light Color").'Default Value')
-            BorderThickness: =0
+                ColorValue(LookUp(c_EnvironmentVariable, 'Display Name'="Text Secondary Color").'Default Value')
+            BorderThickness: =1
             Color: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Hover Color").'Default Value')
             DisabledBorderColor: =RGBA(166, 166, 166, 1)
             DisabledColor: =RGBA(166, 166, 166, 1)
@@ -1411,7 +1411,7 @@
             DisplayMode: =DisplayMode.Disabled
             Fill: =RGBA(56, 96, 178, 1)
             FontWeight: =FontWeight.Semibold
-            Height: =178
+            Height: =59
             HoverColor: =RGBA(255, 255, 255, 1)
             HoverFill: =ColorFade(RGBA(56, 96, 178, 1), -20%)
             OnSelect: =Select(Parent)
@@ -1423,36 +1423,27 @@
             Text: =""
             Width: =610
             X: =10
+            Y: =10
             ZIndex: =2
 
         "'Product Name Lbl_1' As label":
             BorderColor: =RGBA(0, 18, 107, 1)
-            Color: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//_VarGblAppColors.PrimaryRed
+            Color: =RGBA(0, 0, 0, 1)
             DisabledColor: =RGBA(166, 166, 166, 1)
             FocusedBorderColor: =Color.Transparent
             FocusedBorderThickness: =0.1
-            FontWeight: =FontWeight.Bold
+            FontWeight: =FontWeight.Semibold
             Height: =43
             OnSelect: |-
                 =//Set(varContactData,ThisItem);
                 Navigate('Contact Detail Page',ScreenTransition.CoverRight);
             Size: =LookUp(c_EnvironmentVariable,'Display Name'="Text Medium Font Size").'Default Value'
             TabIndex: =0
-            Text: |-
-                =LookUp(
-                    OfflineProductSKUCollection,
-                    'Product SKU' = ThisItem.'Product SKU'.'Product SKU'
-                ).Product.'Product Name' & " (" & LookUp(
-                    OfflineProductVariantCollection,
-                    'Product Variants' = LookUp(
-                        OfflineProductSKUCollection,
-                        'Product SKU' = ThisItem.'Product SKU'.'Product SKU'
-                    ).'Product Variant'.'Product Variants'
-                ).Variant.'Variant Name' & ")"
-            Width: =541
+            Text: =LookUp(OfflineProductSKUCollection,'Product SKU'=ThisItem.'Product SKU'.'Product SKU').Product.'Product Name'//&" ("&LookUp(OfflineProductVariantCollection,'Product Variants'=LookUp(OfflineProductSKUCollection,'Product SKU'=ThisItem.'Product SKU'.'Product SKU').'Product Variant'.'Product Variants').Variant.'Variant Name'&")"
+            Width: =300
             Wrap: =false
-            X: =20
-            Y: =12
+            X: =30
+            Y: =18
             ZIndex: =3
 
         "'Variant ComboBox_1' As combobox":
@@ -1537,6 +1528,65 @@
             X: =421
             Y: =93
             ZIndex: =4
+
+        Body1_215 As label:
+            Align: =Align.Center
+            BorderColor: =RGBA(0, 18, 107, 1)
+            Color: |-
+                =//_VarGblAppColors.PrimaryText
+                ColorValue(LookUp(c_EnvironmentVariable, 'Display Name'="Text Primary Color").'Default Value')
+            DisabledColor: =RGBA(166, 166, 166, 1)
+            FocusedBorderThickness: =01
+            Font: |-
+                =LookUp(c_EnvironmentVariable, 'Display Name'="Text Heading Font").'Default Value'
+                
+                //_VarGblAppFonts.Heading
+            OnSelect: |-
+                =Navigate('Leads Detail Page',ScreenTransition.CoverRight);
+                Set(varLeadData, ThisItem)
+                 
+            PaddingTop: =3
+            Size: =22
+            TabIndex: =0
+            Text: ="|"
+            Tooltip: |-
+                ="Order Date: "& DateValue(ThisItem.createdon)
+            Width: =25
+            Wrap: =false
+            X: =396
+            Y: =18
+            ZIndex: =5
+
+        "'Quantity Input_7' As text":
+            AccessibleLabel: ="Quan"
+            Align: =Align.Center
+            BorderColor: |-
+                =//_VarGblAppColors.SecondaryText
+                ColorValue(LookUp(c_EnvironmentVariable, 'Display Name'="Text Secondary Color").'Default Value')
+            BorderThickness: =2
+            Color: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Text Primary Cll").'Default Value' )//_VarGblAppColors.PrimaryRed
+            Default: =ThisItem.Quantity
+            DisabledBorderColor: =RGBA(166, 166, 166, 1)
+            DisabledColor: =RGBA(166, 166, 166, 1)
+            DisabledFill: =RGBA(244, 244, 244, 1)
+            FontWeight: =FontWeight.Semibold
+            Format: =TextFormat.Number
+            Height: =35
+            HintText: =""
+            HoverBorderColor: =RGBA(128, 128, 128, 1)
+            HoverColor: =RGBA(0, 0, 0, 1)
+            HoverFill: =RGBA(230, 230, 230, 1)
+            OnChange: =ThisItem.Quantity
+            OnSelect: =Select(Parent)
+            PaddingLeft: =5
+            RadiusBottomLeft: =15
+            RadiusBottomRight: =15
+            RadiusTopLeft: =15
+            RadiusTopRight: =15
+            Width: =60
+            X: =475
+            Y: =26
+            ZIndex: =6
 
     "'Lead Gallery_1' As gallery.galleryVertical":
         AccessibleLabel: ="Order Gallery"
@@ -2682,6 +2732,7 @@
                 Height: =50
                 OnSelect: |-
                     =Launch("tel://" & ThisItem.zx_Party.'Mobile No.')
+                Visible: =false
                 Width: =50
                 X: =431
                 Y: =18
@@ -2700,6 +2751,7 @@
                 PaddingLeft: =5
                 PaddingRight: =5
                 TabIndex: =0
+                Visible: =false
                 Width: =37
                 X: =436
                 Y: =25
@@ -2725,6 +2777,7 @@
                 PaddingLeft: =5
                 PaddingRight: =5
                 TabIndex: =0
+                Visible: =false
                 Width: =37
                 X: =496
                 Y: =25
@@ -2737,6 +2790,7 @@
                 Height: =50
                 OnSelect: |-
                     =Launch("http://www.google.com/maps/place/" & ThisItem.zx_Party.Latitude &"," & ThisItem.zx_Party.Longitude)
+                Visible: =false
                 Width: =50
                 X: =489
                 Y: =18
@@ -2789,6 +2843,7 @@
                 Height: =50
                 OnSelect: =
                 TabIndex: =0
+                Visible: =false
                 Width: =50
                 X: =549
                 Y: =18
@@ -3025,6 +3080,7 @@
                     Refresh('Parties.S');
                     Refresh('Visit.S')
                 TabIndex: =0
+                Visible: =false
                 Width: =30
                 X: =560
                 Y: =27
@@ -3224,10 +3280,9 @@
         FontWeight: =FontWeight.Semibold
         Height: =43
         OnSelect: =
-        Size: |-
-            =
-            LookUp('Environment Variable Definitions', 'Display Name'="Text Sub Title Font Size").'Default Value'
-        Text: ="Code "
+        Size: =LookUp(c_EnvironmentVariable,'Display Name'="Text Medium Font Size").'Default Value'
+        Text: ="Product"
+        Visible: ='Top Gallery'.Selected.TabId=9
         Width: =206
         Wrap: =false
         X: =40
@@ -3241,13 +3296,12 @@
         FontWeight: =FontWeight.Semibold
         Height: =43
         OnSelect: =
-        Size: |-
-            =
-            LookUp('Environment Variable Definitions', 'Display Name'="Text Sub Title Font Size").'Default Value'
+        Size: =LookUp(c_EnvironmentVariable,'Display Name'="Text Medium Font Size").'Default Value'
         Text: ="Quantity "
-        Width: =246
+        Visible: ='Top Gallery'.Selected.TabId=9
+        Width: =144
         Wrap: =false
-        X: =355
+        X: =468
         Y: =191
         ZIndex: =36
 
@@ -3260,6 +3314,7 @@
         Height: =1
         OnSelect: =
         TabIndex: =0
+        Visible: ='Top Gallery'.Selected.TabId=9
         Width: ='Order Info Gallery_1'.TemplateWidth
         X: =30
         Y: =182
