@@ -489,7 +489,7 @@ VisitPlanCart As screen:
                     ),
                     Lead: LookUp(
                         'Leads.S',
-                        zx_leadsid = varSelectVisitForPlanning.zx_leadsid
+                        Leads = varSelectVisitForPlanning.zx_leadsid
                     ),
                     'Visit date': Now(),
                     Party: LookUp(

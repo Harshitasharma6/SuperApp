@@ -21,13 +21,13 @@
                    // Filter(
                     Filter(
                         OfflineVisitCollection,
-                        zx_visitdate >= 'Visit List View'.VisitDate && 'Owning User'.'Primary Email' =User().Email
+                        'Visit date' >= 'Visit List View'.VisitDate && 'Owning User'.'Primary Email' =User().Email
             
                         // ComboBox2_1.Selected.'Primary Email
                     ),
                        // IsToday('Created On')
                    // ),
-                    createdon,
+                    'Created On',
                     SortOrder.Descending
                 ),
                 "zx_visitstatus",
