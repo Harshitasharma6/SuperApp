@@ -886,6 +886,7 @@ Home As screen:
         AccessibleLabel: ="Home Screen"
         BorderColor: =RGBA(0, 18, 107, 1)
         Fill: =RGBA(250, 250, 250, 0.5)
+        FocusedBorderThickness: =0
         Height: =981
         OnSelect: |
             =Set(
@@ -914,62 +915,6 @@ Home As screen:
         Y: =69
         ZIndex: =13
 
-    "'Present type Gallery' As gallery.galleryVertical":
-        AccessibleLabel: ="Present"
-        BorderColor: =RGBA(0, 18, 107, 1)
-        Fill: =RGBA(255, 255, 255, 1)
-        FocusedBorderThickness: =
-        Height: =275
-        Items: =Choices(Present)
-        Layout: =Layout.Vertical
-        TabIndex: =0
-        TemplateSize: =73
-        Transition: =Transition.Push
-        Visible: =_VarStartdayModal
-        Y: =446
-        ZIndex: =14
-
-        HtmlText2 As htmlViewer:
-            Height: =89
-            HtmlText: |-
-                ="<div style='margin:10px;width:363px;height:56px;background-color:#;box-shadow:0 3px 6px 1px  #ccc; border-radius:15px'></div>"
-            OnSelect: =Select(Parent)
-            Width: =414
-            X: =120
-            ZIndex: =1
-
-        Button8 As button:
-            BorderColor: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//_VarGblAppColors.PrimaryRed
-            BorderStyle: =BorderStyle.None
-            BorderThickness: =3
-            Color: =RGBA(0, 0, 0, 1)
-            DisabledBorderColor: =RGBA(166, 166, 166, 1)
-            DisabledColor: =RGBA(166, 166, 166, 1)
-            DisabledFill: =RGBA(244, 244, 244, 1)
-            Fill: =RGBA(255, 255, 255, 1)
-            FontWeight: =FontWeight.Semibold
-            Height: =56
-            HoverColor: =RGBA(255, 255, 255, 1)
-            HoverFill: |-
-                =ColorFade(ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//_VarGblAppColors.PrimaryRed
-                , 10%)
-            OnSelect: =Set(_VarSelectedPresentType, ThisItem)
-            Size: =LookUp(c_EnvironmentVariable,'Display Name'="Text Medium Font Size").'Default Value'
-            Text: =ThisItem.Value
-            Width: =363
-            X: =134
-            Y: =13
-            ZIndex: =2
-
-    AttendanceRct As rectangle:
-        BorderColor: =RGBA(0, 18, 107, 1)
-        Fill: =RGBA(255, 255, 255, 1)
-        Height: =If(_VarAttendanceCamera,422, 200)
-        Visible: =_VarAttendanceCamera
-        Width: =598
-        Y: =266
-        ZIndex: =15
-
     NextIcn As icon.NextArrow:
         AccessibleLabel: ="Right Icon"
         BorderColor: =RGBA(0, 18, 107, 1)
@@ -981,29 +926,36 @@ Home As screen:
         Icon: =Icon.NextArrow
         OnSelect: =Set(_VarAttendanceCamera, true)
         TabIndex: =0
-        Visible: =_VarStartdayModal
+        Visible: =//_VarStartdayModal
         X: =550
         Y: =559
-        ZIndex: =18
+        ZIndex: =16
 
-    PreviousIcn As icon.NextArrow:
-        AccessibleLabel: ="Back Icon"
+    AttendanceRct As rectangle:
         BorderColor: =RGBA(0, 18, 107, 1)
-        Color: |-
-            =
-            ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Border Color").'Default Value' )
-        DisabledBorderColor: =RGBA(166, 166, 166, 1)
-        DisabledColor: =RGBA(244, 244, 244, 1)
-        Height: =51
-        Icon: =Icon.BackArrow
-        OnSelect: |-
-            =Set(_VarStartdayModal, true);
-            Set(_VarAttendanceCamera, false)
-        TabIndex: =-0
+        DisabledFill: =RGBA(250, 250, 250, 1)
+        DisplayMode: =DisplayMode.Disabled
+        Fill: =RGBA(255, 255, 255, 1)
+        Height: =981
         Visible: =_VarAttendanceCamera
-        X: =28
-        Y: =559
-        ZIndex: =19
+        Width: =640
+        Y: =74
+        ZIndex: =17
+
+    Rectangle1 As rectangle:
+        BorderColor: =RGBA(0, 0, 0, 0)
+        BorderStyle: =BorderStyle.None
+        BorderThickness: =2
+        DisabledFill: =RGBA(255, 255, 255, 1)
+        DisplayMode: =DisplayMode.Disabled
+        Fill: =RGBA(255, 255, 255, 1)
+        FocusedBorderThickness: =4
+        Height: =69
+        HoverFill: =RGBA(0, 120, 212, 1)
+        PressedFill: =RGBA(0, 120, 212, 1)
+        Visible: =_VarAttendanceCamera
+        Width: =640
+        ZIndex: =18
 
     "'Take Selfie Lbl' As label":
         Align: =Align.Center
@@ -1017,7 +969,27 @@ Home As screen:
         Visible: =_VarAttendanceCamera
         Width: =560
         X: =40
-        Y: =89
+        Y: =166
+        ZIndex: =19
+
+    PreviousIcn As icon.NextArrow:
+        AccessibleLabel: ="Back Icon"
+        BorderColor: =RGBA(0, 18, 107, 1)
+        Color: |-
+            =
+            ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Border Color").'Default Value' )
+        DisabledBorderColor: =RGBA(166, 166, 166, 1)
+        DisabledColor: =RGBA(244, 244, 244, 1)
+        Height: =27
+        Icon: =Icon.ChevronLeft
+        OnSelect: |-
+            =Set(_VarStartdayModal, true);
+            Set(_VarAttendanceCamera, false)
+        TabIndex: =-0
+        Visible: =_VarAttendanceCamera
+        Width: =42
+        X: =18
+        Y: =21
         ZIndex: =20
 
     SubmitBtn As button:
@@ -1028,7 +1000,7 @@ Home As screen:
         DisabledFill: =RGBA(244, 244, 244, 1)
         Fill: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//_VarGblAppColors.PrimaryRed
         FontWeight: =FontWeight.Semibold
-        Height: =50
+        Height: =51
         HoverColor: =RGBA(255, 255, 255, 1)
         HoverFill: |-
             =ColorFade(ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//_VarGblAppColors.PrimaryRed
@@ -1078,12 +1050,16 @@ Home As screen:
             );
             Reset(AddMediaButton1)
         PaddingTop: =3
+        RadiusBottomLeft: =9
+        RadiusBottomRight: =9
+        RadiusTopLeft: =9
+        RadiusTopRight: =9
         Size: =LookUp('Environment Variable Definitions', 'Display Name'="Text Title Font Size").'Default Value' //_VarGblAppFonts.Size.Title
-        Text: ="SUBMIT"
+        Text: ="Submit"
         Visible: =_VarAttendanceCamera
-        Width: =278
-        X: =181
-        Y: =559
+        Width: =500
+        X: =70
+        Y: =719
         ZIndex: =21
 
     "'Attendance Image Take' As group":
@@ -1093,12 +1069,28 @@ Home As screen:
         Y: =40
         ZIndex: =22
 
+        AddMediaButton1 As addMedia:
+            AccessibleLabel: ="Add Photo"
+            BorderColor: =RGBA(0, 18, 107, 1)
+            ChangePictureText: =""
+            Color: =RGBA(153, 153, 153, 1)
+            Fill: =RGBA(255, 255, 255, 1)
+            Height: =323
+            Size: =14
+            Text: ="Tap to add photo"
+            UseMobileCamera: =true
+            Visible: =_VarAttendanceCamera
+            Width: =313
+            X: =164
+            Y: =330
+            ZIndex: =25
+
         UploadedImage1 As image:
             AccessibleLabel: ="Add Photo"
             BorderColor: =RGBA(0, 18, 107, 1)
             DisabledBorderColor: =RGBA(166, 166, 166, 1)
             DisabledFill: =RGBA(244, 244, 244, 1)
-            Height: =185
+            Height: =323
             Image: |-
                 =//If(IsBlank(AddMediaButton1.Media), SampleImage, AddMediaButton1.Media)
                 
@@ -1106,23 +1098,141 @@ Home As screen:
             ImagePosition: =ImagePosition.Fill
             Visible: =_VarAttendanceCamera
             Width: =313
-            X: =150
-            Y: =375
-            ZIndex: =16
+            X: =164
+            Y: =330
+            ZIndex: =26
 
-        AddMediaButton1 As addMedia:
-            AccessibleLabel: ="Add Photo"
+    Button13 As button:
+        BorderColor: =RGBA(0, 0, 0, 1)
+        BorderStyle: =BorderStyle.Dotted
+        DisabledBorderColor: =RGBA(0, 0, 0, 0.22)
+        DisabledColor: =RGBA(166, 166, 166, 1)
+        DisabledFill: =RGBA(255, 255, 255, 1)
+        DisplayMode: =DisplayMode.Disabled
+        Fill: =RGBA(0, 120, 212, 1)
+        FocusedBorderColor: =ColorFade(Self.Fill, -75%)
+        Font: =Font.'Segoe UI'
+        FontWeight: =FontWeight.Semibold
+        Height: =420
+        HoverBorderColor: =RGBA(0, 0, 0, 0)
+        HoverColor: =RGBA(255, 255, 255, 1)
+        HoverFill: =ColorFade(RGBA(0, 120, 212, 1), -10%)
+        PressedBorderColor: =ColorFade(RGBA(0, 120, 212, 1), -50%)
+        PressedColor: =RGBA(255, 255, 255, 1)
+        PressedFill: =ColorFade(RGBA(0, 120, 212, 1), -30%)
+        Size: =24
+        Text: =""
+        Visible: =_VarAttendanceCamera
+        Width: =500
+        X: =70
+        Y: =277
+        ZIndex: =24
+
+    Group2 As group:
+        Height: =5
+        Width: =5
+        X: =100
+        Y: =100
+        ZIndex: =28
+
+        Popup_Background As button:
+            BorderColor: =RGBA(0, 0, 0, 0)
+            DisabledBorderColor: =RGBA(0, 0, 0, 0)
+            DisabledColor: =RGBA(166, 166, 166, 1)
+            DisabledFill: =RGBA(255, 255, 255, 1)
+            DisplayMode: =DisplayMode.Disabled
+            Fill: =RGBA(0, 120, 212, 1)
+            FocusedBorderColor: =ColorFade(Self.Fill, -75%)
+            Font: =Font.'Segoe UI'
+            FontWeight: =FontWeight.Semibold
+            Height: =184
+            HoverBorderColor: =RGBA(0, 0, 0, 0)
+            HoverColor: =RGBA(255, 255, 255, 1)
+            HoverFill: =ColorFade(RGBA(0, 120, 212, 1), -10%)
+            PressedBorderColor: =ColorFade(RGBA(0, 120, 212, 1), -50%)
+            PressedColor: =RGBA(255, 255, 255, 1)
+            PressedFill: =ColorFade(RGBA(0, 120, 212, 1), -30%)
+            Size: =24
+            Text: =""
+            Visible: =_VarStartdayModal
+            Width: =586
+            X: =27
+            Y: =449
+            ZIndex: =14
+
+        "'Present type Gallery' As gallery.galleryVertical":
+            AccessibleLabel: ="Present"
             BorderColor: =RGBA(0, 18, 107, 1)
-            ChangePictureText: =""
-            Color: =RGBA(0, 0, 0, 1)
             Fill: =RGBA(255, 255, 255, 1)
-            Height: =185
-            Size: =14
-            Text: ="Click here to take photo"
-            UseMobileCamera: =true
-            Visible: =_VarAttendanceCamera
-            Width: =313
-            X: =150
-            Y: =375
-            ZIndex: =17
+            FocusedBorderThickness: =
+            Height: =161
+            Items: =Choices(Present)
+            Layout: =Layout.Vertical
+            TabIndex: =0
+            TemplateSize: =73
+            Transition: =Transition.Push
+            Visible: =_VarStartdayModal
+            Width: =585
+            X: =28
+            Y: =456
+            ZIndex: =15
+
+            Icon4 As icon.Add:
+                BorderColor: =RGBA(166, 166, 166, 1)
+                Color: =RGBA(179, 179, 179, 1)
+                DisabledBorderColor: =RGBA(0, 0, 0, 0)
+                DisabledColor: =RGBA(220, 220, 220, 1)
+                DisabledFill: =RGBA(0, 0, 0, 0)
+                FocusedBorderThickness: =4
+                Height: =15
+                HoverBorderColor: =RGBA(0, 0, 0, 0)
+                HoverColor: =ColorFade(RGBA(0, 120, 212, 1), -30%)
+                HoverFill: =RGBA(0, 0, 0, 0)
+                Icon: =Icon.ChevronRight
+                OnSelect: =Select(Parent)
+                PressedBorderColor: =RGBA(0, 0, 0, 0)
+                PressedColor: =ColorFade(RGBA(0, 120, 212, 1), -30%)
+                PressedFill: =RGBA(0, 0, 0, 0)
+                Width: =23
+                X: =412
+                Y: =35
+                ZIndex: =3
+
+        Image6 As image:
+            BorderColor: =RGBA(0, 0, 0, 0)
+            BorderStyle: =BorderStyle.None
+            BorderThickness: =2
+            DisabledBorderColor: =RGBA(0, 0, 0, 0)
+            DisabledFill: =RGBA(0, 0, 0, 0)
+            FocusedBorderThickness: =4
+            Height: =35
+            HoverBorderColor: =RGBA(0, 0, 0, 0)
+            HoverFill: =RGBA(0, 0, 0, 0)
+            Image: =In_office
+            PressedBorderColor: =RGBA(0, 0, 0, 0)
+            PressedFill: =RGBA(0, 0, 0, 0)
+            Visible: =_VarStartdayModal
+            Width: =30
+            X: =164
+            Y: =563
+            ZIndex: =22
+
+        Image6_1 As image:
+            BorderColor: =RGBA(0, 0, 0, 0)
+            BorderStyle: =BorderStyle.None
+            BorderThickness: =2
+            DisabledBorderColor: =RGBA(0, 0, 0, 0)
+            DisabledFill: =RGBA(0, 0, 0, 0)
+            FocusedBorderThickness: =4
+            Height: =35
+            HoverBorderColor: =RGBA(0, 0, 0, 0)
+            HoverFill: =RGBA(0, 0, 0, 0)
+            Image: =Market_place
+            PressedBorderColor: =RGBA(0, 0, 0, 0)
+            PressedFill: =RGBA(0, 0, 0, 0)
+            Visible: =_VarStartdayModal
+            Width: =30
+            X: =164
+            Y: =488
+            ZIndex: =23
 
