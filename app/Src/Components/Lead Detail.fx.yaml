@@ -1050,23 +1050,23 @@
             Height: =47
             HoverColor: =RGBA(255, 255, 255, 1)
             HoverFill: =ColorFade(Self.Fill, -20%)
-            OnSelect: |+
+            OnSelect: |-
                 =Set(
                         _VarQuoteHeaderResponse,
                         With(
                             {
                                 QuoteLines: Filter(
-                                    'Product Interesteds',
-                                    Lead.Leads = varLeadData.Leads
+                                    'Product Interested.S',
+                                    Lead.Leads = varLeadData.zx_leadsid
                                 )
                             },
                             Patch(
-                                'Order Headers',
+                                'Order Header.S',
                                 LookUp(
-                                'Order Headers',
+                                'Order Header.S',
                                 'Order ID' = varOrderData.'Order ID'),
                                 {
-                                    'Total Bill Amount (new_totalbillamount)': Sum(
+                                    'Total Bill Amount': Sum(
                                         QuoteLines,
                                         'Total Amount'
                                     ),
@@ -1104,9 +1104,9 @@
                             'Order Header'.'Order ID' = _VarQuoteHeaderResponse.'Order ID'
                         ) As LI,
                         Patch(
-                            'Order Lines',
+                            'Order Lines.S',
                             LookUp(
-                                'Order Lines',
+                                'Order Lines.S',
                                 //'Order Header'.'Order ID' = LI.'Order Header'.'Order ID'
                                 'Order Line ID' = LI.'Order Line ID'  && Product.'Product Code'= LI.Product.'Product Code' /*&& 'Product SKU'.'Product SKU' = LookUp('Product Interesteds',                 'Product SKU'.'Product SKU'='Product SKU'.'Product SKU').'Product SKU'*/
                             ),
@@ -1139,7 +1139,6 @@
                         );
                     )
                 )*/
-                
             Size: =16
             Text: ="Update"
             Visible: |-
