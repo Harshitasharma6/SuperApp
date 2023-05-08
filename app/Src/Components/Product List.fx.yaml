@@ -160,32 +160,7 @@
         Y: =195
         ZIndex: =6
 
-        "'Product BG_6' As button":
-            BorderColor: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Text Light Color").'Default Value')
-            BorderThickness: =1
-            Color: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Hover Color").'Default Value')
-            DisabledBorderColor: =RGBA(166, 166, 166, 1)
-            DisabledColor: =RGBA(166, 166, 166, 1)
-            DisabledFill: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Hover Color").'Default Value')
-            DisplayMode: =DisplayMode.Disabled
-            Fill: =RGBA(56, 96, 178, 1)
-            FontWeight: =FontWeight.Semibold
-            Height: =415
-            HoverColor: =RGBA(255, 255, 255, 1)
-            HoverFill: =ColorFade(RGBA(56, 96, 178, 1), -20%)
-            OnSelect: =Select(Parent)
-            RadiusBottomLeft: =15
-            RadiusBottomRight: =15
-            RadiusTopLeft: =15
-            RadiusTopRight: =15
-            Size: =24
-            Text: =""
-            Width: =297
-            X: =5
-            Y: =1
-            ZIndex: =1
-
-        "'Product Name Lbl_6' As label":
+        "'Product Name Lbl_11' As label":
             BorderColor: =RGBA(0, 18, 107, 1)
             Color: =RGBA(0, 0, 0, 1)
             DisabledColor: =RGBA(166, 166, 166, 1)
@@ -217,86 +192,88 @@
                 ThisItem.'Product SKU'.'Item Name'
             Width: =297
             X: =5
-            Y: =250
+            Y: =270
             ZIndex: =2
 
-        "'Product Code Lbl_7' As label":
+        "'Product Code Lbl_9' As label":
             BorderColor: =RGBA(0, 18, 107, 1)
             Color: =RGBA(0, 0, 0, 1)
             DisabledColor: =RGBA(166, 166, 166, 1)
             FontWeight: =FontWeight.Semibold
             Height: =30
             OnSelect: =Select(Parent)
-            Size: =LookUp(c_EnvironmentVariable,'Display Name'="Text Medium Font Size").'Default Value'
+            Size: |-
+                =//_VarGblAppFonts.Size.Medium
+                15
             Text: |-
                 ="SKU: "& ThisItem.'Product SKU'.'Item Code'
             Width: =206
             Wrap: =false
             X: =10
-            Y: =302
+            Y: =322
             ZIndex: =3
 
-        "'Product Price Lbl_7' As label":
+        "'Product Price Lbl_20' As label":
             BorderColor: =RGBA(0, 18, 107, 1)
-            Color: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//_VarGblAppColors.PrimaryRed
+            Color: |-
+                =//RGBA(165, 162, 162, 1)
+                If('Product Discount Lbl_12'.Visible=true,RGBA(165, 162, 162, 1),_VarGblAppColors.PrimaryRed)
             DisabledColor: =RGBA(166, 166, 166, 1)
             FontWeight: =FontWeight.Semibold
-            Height: =29
+            Height: =30
             OnSelect: =Select(Parent)
-            Size: =LookUp(c_EnvironmentVariable,'Display Name'="Text Medium Font Size").'Default Value'
+            Size: |-
+                =15
+                //_VarGblAppFonts.Size.Medium
             Strikethrough: |-
-                =/*If(
-                    If(
-                        !IsBlank(
-                            LookUp(
-                                OfflineProductOfferMappingCollection,
-                                Customer.'Parties (new_partiesid)' = GUID(varCustomerforDiscount)
-                            )
-                        ),
-                        LookUp(
-                            OfflineProductOfferHeaderCollection,
-                            'Product Offer Header' = LookUp(
-                                OfflineProductOfferMappingCollection,
-                                Customer.'Parties (new_partiesid)' = GUID(varCustomerforDiscount)
-                            ).'Product Offers'.'Product Offer Header'
-                        ).'Discount %',
-                        !IsBlank(
+                =If(
+                    If (
+                        !IsBlank(colCustomerMapping),
+                        If(
+                            !IsBlank(
+                                Filter(
+                                    OfflineProductOfferHeaderCollection,
+                                    'Offer ID' = First(colOfferHeaderId).Value && ('Active From' <= Today()) && ('Active To' >= Today())
+                                )
+                            ),
                             LookUp(
                                 OfflineProductOfferLinesCollection,
-                                'Product SKU'.'Product SKU' = ThisItem.'Product SKU'
-                            )
+                                'Product Offer Header'.'Offer ID' = First(colOfferHeaderId).Value && 'Product SKU'.'Product SKU' = ThisItem.'Product SKU'.'Product SKU'
+                            ).'Discount %',
+                            "0"
                         ),
-                        LookUp(
-                            OfflineProductOfferLinesCollection,
-                            'Product SKU'.'Product SKU' = ThisItem.'Product SKU'
-                        ).'Discount %',
-                        !IsBlank(
+                        !IsBlank(colStateMapping),
+                        If(
+                            !IsBlank(
+                                Filter(
+                                    OfflineProductOfferHeaderCollection,
+                                    'Offer ID' = First(colOfferHeaderId).Value && ('Active From' <= Today()) && ('Active To' >= Today())
+                                )
+                            ),
                             LookUp(
-                                OfflineProductOfferHeaderCollection,
-                                ('Active From' <= Today()) && ('Active To' >= Today()) && ('Product Category '.'Category Code' = ThisItem.'Product Category'.'Category Code') && ('Product Sub-Category '.'Sub-Category Code' = ThisItem.'Product Sub-Category'.'Sub-Category Code') && ('Product Group'.'Group Code' = ThisItem.'Product Group'.'Group Code') && (State.'State Name' = LookUp(
-                                    OfflinePartiesCollection As OneParty,
-                                    OneParty.'Parties (new_partiesid)' = GUID(varCustomerforDiscount)
-                                ).State.'State Name') && (Region.'Region Name' = LookUp(
-                                    OfflinePartiesCollection As OneParty,
-                                    OneParty.'Parties (new_partiesid)' = GUID(varCustomerforDiscount)
-                                ).Region.'Region Name')
-                            )
+                                OfflineProductOfferLinesCollection,
+                                'Product Offer Header'.'Offer ID' = First(colOfferHeaderId).Value && 'Product SKU'.'Product SKU' = ThisItem.'Product SKU'.'Product SKU'
+                            ).'Discount %',
+                            "0"
                         ),
-                        LookUp(
-                            OfflineProductOfferHeaderCollection,
-                            ('Active From' <= Today()) && ('Active To' >= Today()) && ('Product Category '.'Category Code' = ThisItem.'Product Category'.'Category Code') && ('Product Sub-Category '.'Sub-Category Code' = ThisItem.'Product Sub-Category'.'Sub-Category Code') && ('Product Group'.'Group Code' = ThisItem.'Product Group'.'Group Code') && (State.'State Name' = LookUp(
-                                OfflinePartiesCollection As OneParty,
-                                OneParty.'Parties (new_partiesid)' = GUID(varCustomerforDiscount)
-                            ).State.'State Name') && (Region.'Region Name' = LookUp(
-                                OfflinePartiesCollection As OneParty,
-                                OneParty.'Parties (new_partiesid)' = GUID(varCustomerforDiscount)
-                            ).Region.'Region Name')
-                        ).'Discount %',
-                        0
+                        !IsBlank(colRegionMapping),
+                        If(
+                            !IsBlank(
+                                Filter(
+                                    OfflineProductOfferHeaderCollection,
+                                    'Offer ID' = First(colOfferHeaderId).Value && ('Active From' <= Today()) && ('Active To' >= Today())
+                                )
+                            ),
+                            LookUp(
+                                OfflineProductOfferLinesCollection,
+                                'Product Offer Header'.'Offer ID' = First(colOfferHeaderId).Value && 'Product SKU'.'Product SKU' = ThisItem.'Product SKU'.'Product SKU'
+                            ).'Discount %',
+                            "0"
+                        )
                     ) > 0,
                     true,
                     false
-                )*/
+                )
             Text: |-
                 =/*If(
                     IsBlank(
@@ -315,26 +292,20 @@
                 "₹" & ThisItem.'Ex-Factory'
             Width: =110
             Wrap: =false
-            X: =10
-            Y: =333
+            X: =110
+            Y: =352
             ZIndex: =4
 
-        "'Variant ComboBox_5' As combobox":
+        "'Variant ComboBox_7' As combobox":
             AccessibleLabel: ="Variant"
-            BorderColor: |-
-                =//_VarGblAppColors.SecondaryText
-                ColorValue(LookUp(c_EnvironmentVariable, 'Display Name'="Text Secondary Color").'Default Value')
+            BorderColor: =_VarGblAppColors.SecondaryText
             ChevronBackground: =RGBA(255, 255, 255, 1)
             ChevronDisabledBackground: =RGBA(166, 166, 166, 1)
             ChevronDisabledFill: =RGBA(244, 244, 244, 1)
-            ChevronFill: |-
-                =//_VarGblAppColors.SecondaryText
-                ColorValue(LookUp(c_EnvironmentVariable, 'Display Name'="Text Secondary Color").'Default Value')
+            ChevronFill: =_VarGblAppColors.SecondaryText
             ChevronHoverBackground: =
             ChevronHoverFill: =
-            Color: |-
-                =//_VarGblAppColors.PrimaryText
-                ColorValue(LookUp(c_EnvironmentVariable, 'Display Name'="Text Primary Color").'Default Value')
+            Color: =_VarGblAppColors.PrimaryText
             Default: |-
                 =/*First(
                    AddColumns(
@@ -358,9 +329,7 @@
                 )
                 )*/
             DisabledBorderColor: =RGBA(166, 166, 166, 1)
-            DisabledColor: |-
-                =//_VarGblAppColors.SecondaryText
-                ColorValue(LookUp(c_EnvironmentVariable, 'Display Name'="Text Secondary Color").'Default Value')
+            DisabledColor: =_VarGblAppColors.SecondaryText
             DisabledFill: =RGBA(244, 244, 244, 1)
             DisplayFields: =["VariantName"]
             FontWeight: =FontWeight.Semibold
@@ -384,180 +353,128 @@
             PressedFill: =RGBA(0, 18, 107, 1)
             SearchFields: =["VariantName"]
             SearchItems: =[]
-            SelectionColor: |-
-                =//_VarGblAppColors.PrimaryText
-                ColorValue(LookUp(c_EnvironmentVariable, 'Display Name'="Text Primary Color").'Default Value')
+            SelectionColor: =_VarGblAppColors.PrimaryText
             SelectionFill: =RGBA(230, 230, 230, 1)
-            SelectionTagColor: |-
-                =//_VarGblAppColors.PrimaryText
-                ColorValue(LookUp(c_EnvironmentVariable, 'Display Name'="Text Primary Color").'Default Value')
-            SelectionTagFill: |-
-                =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Screen Background Color").'Default Value')
-                //_VarGblAppColors.BackgroundColor
+            SelectionTagColor: =_VarGblAppColors.PrimaryText
+            SelectionTagFill: =_VarGblAppColors.BackgroundColor
             SelectMultiple: =false
-            Size: =LookUp(c_EnvironmentVariable,'Display Name'="Text Medium Font Size").'Default Value'
+            Size: =_VarGblAppFonts.Size.Medium
             Visible: =false
             Width: =150
             X: =162
-            Y: =93
+            Y: =113
             ZIndex: =5
 
-        "'Product Discount Lbl_4' As label":
+        "'Product Discount Lbl_12' As label":
             BorderColor: =RGBA(0, 18, 107, 1)
-            Color: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//_VarGblAppColors.PrimaryRed
+            Color: =_VarGblAppColors.PrimaryRed
             DisabledColor: =RGBA(166, 166, 166, 1)
             FontWeight: =FontWeight.Semibold
-            Height: =If('Product Price Lbl_8'.Visible, 30, 0)
+            Height: =If('Product Price Lbl_21'.Visible, 30, 0)
             OnSelect: =Select(Parent)
-            Size: =LookUp(c_EnvironmentVariable,'Display Name'="Text Medium Font Size").'Default Value'
+            Size: |-
+                =//_VarGblAppFonts.Size.Medium
+                15
             Text: |-
-                =/*"(" &
-                If(
-                    !IsBlank(
-                        LookUp(
-                            OfflineProductOfferMappingCollection,
-                            Customer.'Parties (new_partiesid)' = GUID(varCustomerforDiscount)
-                        )
-                    ),
-                    LookUp(
-                        OfflineProductOfferHeaderCollection,
-                        'Product Offer Header' = LookUp(
-                            OfflineProductOfferMappingCollection,
-                            Customer.'Parties (new_partiesid)' = GUID(varCustomerforDiscount)
-                        ).'Product Offers'.'Product Offer Header'
-                    ).'Discount %',
-                    !IsBlank(
-                        LookUp(
-                            OfflineProductOfferMappingCollection,
-                            State.'State Name' = LookUp(
-                                Parties_1,
-                                'Parties (new_partiesid)' = GUID(varCustomerforDiscount)
-                            ).State.'State Name'
-                        )
-                    ),
-                    LookUp(
-                        OfflineProductOfferHeaderCollection,
-                        'Product Offer Header' = LookUp(
-                            OfflineProductOfferMappingCollection,
-                            State.'State Name' = LookUp(
-                                Parties_1,
-                                'Parties (new_partiesid)' = GUID(varCustomerforDiscount)
-                            ).State.'State Name'
-                        ).'Product Offers'.'Product Offer Header'
-                    ).'Discount %',
-                    !IsBlank(
-                        LookUp(
-                            OfflineProductOfferMappingCollection,
-                            Region.'Region Name' = LookUp(
-                                Parties_1,
-                                'Parties (new_partiesid)' = GUID(varCustomerforDiscount)
-                            ).Region.'Region Name'
-                        )
-                    ),
-                    LookUp(
-                        OfflineProductOfferHeaderCollection,
-                        'Product Offer Header' = LookUp(
-                            OfflineProductOfferMappingCollection,
-                            Region.'Region Name' = LookUp(
-                                Parties_1,
-                                'Parties (new_partiesid)' = GUID(varCustomerforDiscount)
-                            ).Region.'Region Name'
-                        ).'Product Offers'.'Product Offer Header'
-                    ).'Discount %',
-                    !IsBlank(
-                        LookUp(
-                            OfflineProductOfferLinesCollection,
-                            'Product SKU'.'Product SKU' = ThisItem.'Product SKU'
-                        )
-                    ),
-                    LookUp(
-                        OfflineProductOfferLinesCollection,
-                        'Product SKU'.'Product SKU' = ThisItem.'Product SKU'
-                    ).'Discount %',
-                    !IsBlank(
-                        LookUp(
-                            OfflineProductOfferHeaderCollection,
-                            ('Active From' <= Today()) && ('Active To' >= Today()) && ('Product Category '.'Category Code' = ThisItem.'Product Category'.'Category Code') && ('Product Sub-Category '.'Sub-Category Code' = ThisItem.'Product Sub-Category'.'Sub-Category Code') && ('Product Group'.'Group Code' = ThisItem.'Product Group'.'Group Code') && (State.'State Name' = LookUp(
-                                OfflinePartiesCollection As OneParty,
-                                OneParty.'Parties (new_partiesid)' = GUID(varCustomerforDiscount)
-                            ).State.'State Name') && (Region.'Region Name' = LookUp(
-                                OfflinePartiesCollection As OneParty,
-                                OneParty.'Parties (new_partiesid)' = GUID(varCustomerforDiscount)
-                            ).Region.'Region Name')
-                        )
-                    ),
-                    LookUp(
-                        OfflineProductOfferHeaderCollection,
-                        ('Active From' <= Today()) && ('Active To' >= Today()) && ('Product Category '.'Category Code' = ThisItem.'Product Category'.'Category Code') && ('Product Sub-Category '.'Sub-Category Code' = ThisItem.'Product Sub-Category'.'Sub-Category Code') && ('Product Group'.'Group Code' = ThisItem.'Product Group'.'Group Code') && (State.'State Name' = LookUp(
-                            OfflinePartiesCollection As OneParty,
-                            OneParty.'Parties (new_partiesid)' = GUID(varCustomerforDiscount)
-                        ).State.'State Name') && (Region.'Region Name' = LookUp(
-                            OfflinePartiesCollection As OneParty,
-                            OneParty.'Parties (new_partiesid)' = GUID(varCustomerforDiscount)
-                        ).Region.'Region Name')
-                    ).'Discount %',
-                    0
-                ) & "% Off" & ")"*/
-            Visible: |-
-                =/*If(
+                ="(" & If (
+                    !IsBlank(colCustomerMapping),
                     If(
                         !IsBlank(
-                            LookUp(
-                                OfflineProductOfferMappingCollection,
-                                Customer.'Parties (new_partiesid)' = GUID(varCustomerforDiscount)
-                            )
-                        ),
-                        LookUp(
-                            OfflineProductOfferHeaderCollection,
-                            'Product Offer Header' = LookUp(
-                                OfflineProductOfferMappingCollection,
-                                Customer.'Parties (new_partiesid)' = GUID(varCustomerforDiscount)
-                            ).'Product Offers'.'Product Offer Header'
-                        ).'Discount %',
-                        !IsBlank(
-                            LookUp(
-                                OfflineProductOfferLinesCollection,
-                                'Product SKU'.'Product SKU' = ThisItem.'Product SKU'
+                            Filter(
+                                OfflineProductOfferHeaderCollection,
+                                'Offer ID' = First(colOfferHeaderId).Value && ('Active From' <= Today()) && ('Active To' >= Today())
                             )
                         ),
                         LookUp(
                             OfflineProductOfferLinesCollection,
-                            'Product SKU'.'Product SKU' = ThisItem.'Product SKU'
+                            'Product Offer Header'.'Offer ID' = First(colOfferHeaderId).Value && 'Product SKU'.'Product SKU' = ThisItem.'Product SKU'.'Product SKU'
                         ).'Discount %',
+                        "0"
+                    ),
+                    !IsBlank(colStateMapping),
+                    If(
                         !IsBlank(
-                            LookUp(
+                            Filter(
                                 OfflineProductOfferHeaderCollection,
-                                ('Active From' <= Today()) && ('Active To' >= Today()) && ('Product Category '.'Category Code' = ThisItem.'Product Category'.'Category Code') && ('Product Sub-Category '.'Sub-Category Code' = ThisItem.'Product Sub-Category'.'Sub-Category Code') && ('Product Group'.'Group Code' = ThisItem.'Product Group'.'Group Code') && (State.'State Name' = LookUp(
-                                    OfflinePartiesCollection As OneParty,
-                                    OneParty.'Parties (new_partiesid)' = GUID(varCustomerforDiscount)
-                                ).State.'State Name') && (Region.'Region Name' = LookUp(
-                                    OfflinePartiesCollection As OneParty,
-                                    OneParty.'Parties (new_partiesid)' = GUID(varCustomerforDiscount)
-                                ).Region.'Region Name')
+                                'Offer ID' = First(colOfferHeaderId).Value && ('Active From' <= Today()) && ('Active To' >= Today())
                             )
                         ),
                         LookUp(
-                            OfflineProductOfferHeaderCollection,
-                            ('Active From' <= Today()) && ('Active To' >= Today()) && ('Product Category '.'Category Code' = ThisItem.'Product Category'.'Category Code') && ('Product Sub-Category '.'Sub-Category Code' = ThisItem.'Product Sub-Category'.'Sub-Category Code') && ('Product Group'.'Group Code' = ThisItem.'Product Group'.'Group Code') && (State.'State Name' = LookUp(
-                                OfflinePartiesCollection As OneParty,
-                                OneParty.'Parties (new_partiesid)' = GUID(varCustomerforDiscount)
-                            ).State.'State Name') && (Region.'Region Name' = LookUp(
-                                OfflinePartiesCollection As OneParty,
-                                OneParty.'Parties (new_partiesid)' = GUID(varCustomerforDiscount)
-                            ).Region.'Region Name')
+                            OfflineProductOfferLinesCollection,
+                            'Product Offer Header'.'Offer ID' = First(colOfferHeaderId).Value && 'Product SKU'.'Product SKU' = ThisItem.'Product SKU'.'Product SKU'
+                        ).'Discount %',
+                        "0"
+                    ),
+                    !IsBlank(colRegionMapping),
+                    If(
+                        !IsBlank(
+                            Filter(
+                                OfflineProductOfferHeaderCollection,
+                                'Offer ID' = First(colOfferHeaderId).Value && ('Active From' <= Today()) && ('Active To' >= Today())
+                            )
+                        ),
+                        LookUp(
+                            OfflineProductOfferLinesCollection,
+                            'Product Offer Header'.'Offer ID' = First(colOfferHeaderId).Value && 'Product SKU'.'Product SKU' = ThisItem.'Product SKU'.'Product SKU'
+                        ).'Discount %',
+                        "0"
+                    )
+                ) & "% Off)"
+            Visible: |
+                =If(
+                    If (
+                    !IsBlank(colCustomerMapping),
+                    If(
+                        !IsBlank(
+                            Filter(
+                                OfflineProductOfferHeaderCollection,
+                                'Offer ID' = First(colOfferHeaderId).Value && ('Active From' <= Today()) && ('Active To' >= Today())
+                            )
+                        ),
+                        LookUp(
+                            OfflineProductOfferLinesCollection,
+                            'Product Offer Header'.'Offer ID' = First(colOfferHeaderId).Value && 'Product SKU'.'Product SKU' = ThisItem.'Product SKU'.'Product SKU'
+                        ).'Discount %',
+                        "0"
+                    ),
+                    !IsBlank(colStateMapping),
+                    If(
+                        !IsBlank(
+                            Filter(
+                                OfflineProductOfferHeaderCollection,
+                                'Offer ID' = First(colOfferHeaderId).Value && ('Active From' <= Today()) && ('Active To' >= Today())
+                            )
+                        ),
+                        LookUp(
+                            OfflineProductOfferLinesCollection,
+                            'Product Offer Header'.'Offer ID' = First(colOfferHeaderId).Value && 'Product SKU'.'Product SKU' = ThisItem.'Product SKU'.'Product SKU'
+                        ).'Discount %',
+                        "0"
+                    ),
+                    !IsBlank(colRegionMapping),
+                    If(
+                        !IsBlank(
+                            Filter(
+                                OfflineProductOfferHeaderCollection,
+                                'Offer ID' = First(colOfferHeaderId).Value && ('Active From' <= Today()) && ('Active To' >= Today())
+                            )
+                        ),
+                        LookUp(
+                            OfflineProductOfferLinesCollection,
+                            'Product Offer Header'.'Offer ID' = First(colOfferHeaderId).Value && 'Product SKU'.'Product SKU' = ThisItem.'Product SKU'.'Product SKU'
                         ).'Discount %',
                         0
-                    ) > 0,
+                    ) )> 0,
                     true,
                     false
-                )*/
+                )
             Width: =104
             Wrap: =false
             X: =167
-            Y: =332
+            Y: =352
             ZIndex: =6
 
-        Button34 As button:
+        Button34_2 As button:
             BorderStyle: =BorderStyle.None
             DisabledBorderColor: =RGBA(166, 166, 166, 1)
             DisabledColor: =RGBA(166, 166, 166, 1)
@@ -577,9 +494,10 @@
             Text: =""
             Width: =297
             X: =5
+            Y: =20
             ZIndex: =9
 
-        Image3_4 As image:
+        Image3_6 As image:
             BorderColor: =RGBA(0, 18, 107, 1)
             DisabledBorderColor: =RGBA(166, 166, 166, 1)
             DisabledFill: =RGBA(244, 244, 244, 1)
@@ -591,163 +509,115 @@
                 ThisItem.'Image URL'
             Width: =256
             X: =25
-            Y: =20
+            Y: =40
             ZIndex: =10
 
-        "'Product Price Lbl_8' As label":
+        "'Product Price Lbl_21' As label":
             BorderColor: =RGBA(0, 18, 107, 1)
-            Color: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//_VarGblAppColors.PrimaryRed
+            Color: =_VarGblAppColors.PrimaryRed
             DisabledColor: =RGBA(166, 166, 166, 1)
             FontWeight: =FontWeight.Semibold
             Height: =30
             OnSelect: =Select(Parent)
-            Size: =LookUp(c_EnvironmentVariable,'Display Name'="Text Medium Font Size").'Default Value'
-            Text: |+
-                =
-                /*If(
+            Size: =_VarGblAppFonts.Size.Medium
+            Text: |-
+                =If(
                     IsBlank(
                         LookUp(
                             OfflineProductPriceCollection,
-                            'Product SKU'.'Product SKU' = ThisItem.'Product SKU' && 'Price list'.Name = varPricelist.Name
+                            'Product SKU'.'Product SKU' = ThisItem.'Product SKU'.'Product SKU' && 'Price list'.Name = varPartyPricelist
                         ).'Ex-Factory'
                     ),
                     "NA",
                     "₹" & LookUp(
                         OfflineProductPriceCollection,
-                        'Product SKU'.'Product SKU' = ThisItem.'Product SKU' && 'Price list'.Name = varPricelist.Name
+                        'Product SKU'.'Product SKU' = ThisItem.'Product SKU'.'Product SKU' && 'Price list'.Name = varPartyPricelist
                     ).'Ex-Factory' - ( LookUp(
                         OfflineProductPriceCollection,
-                        'Product SKU'.'Product SKU' = ThisItem.'Product SKU' && 'Price list'.Name = varPricelist.Name
-                    ).'Ex-Factory' * (If(
-                        !IsBlank(
-                            LookUp(
-                                OfflineProductOfferMappingCollection,
-                                Customer.'Parties (new_partiesid)' = GUID(varCustomerforDiscount)
-                            )
-                        ),
-                        LookUp(
-                            OfflineProductOfferHeaderCollection,
-                            'Product Offer Header' = LookUp(
-                                OfflineProductOfferMappingCollection,
-                                Customer.'Parties (new_partiesid)' = GUID(varCustomerforDiscount)
-                            ).'Product Offers'.'Product Offer Header'
-                        ).'Discount %',
-                        !IsBlank(
-                            LookUp(
-                                OfflineProductOfferMappingCollection,
-                                State.'State Name' = LookUp(
-                                    Parties_1,
-                                    'Parties (new_partiesid)' = GUID(varCustomerforDiscount)
-                                ).State.'State Name'
-                            )
-                        ),
-                        LookUp(
-                            OfflineProductOfferHeaderCollection,
-                            'Product Offer Header' = LookUp(
-                                OfflineProductOfferMappingCollection,
-                                State.'State Name' = LookUp(
-                                    Parties_1,
-                                    'Parties (new_partiesid)' = GUID(varCustomerforDiscount)
-                                ).State.'State Name'
-                            ).'Product Offers'.'Product Offer Header'
-                        ).'Discount %',
-                        !IsBlank(
-                            LookUp(
-                                OfflineProductOfferMappingCollection,
-                                Region.'Region Name' = LookUp(
-                                    Parties_1,
-                                    'Parties (new_partiesid)' = GUID(varCustomerforDiscount)
-                                ).Region.'Region Name'
-                            )
-                        ),
-                        LookUp(
-                            OfflineProductOfferHeaderCollection,
-                            'Product Offer Header' = LookUp(
-                                OfflineProductOfferMappingCollection,
-                                Region.'Region Name' = LookUp(
-                                    Parties_1,
-                                    'Parties (new_partiesid)' = GUID(varCustomerforDiscount)
-                                ).Region.'Region Name'
-                            ).'Product Offers'.'Product Offer Header'
-                        ).'Discount %',
-                        !IsBlank(
+                        'Product SKU'.'Product SKU' = ThisItem.'Product SKU'.'Product SKU' && 'Price list'.Name = varPartyPricelist
+                    ).'Ex-Factory' * (If (
+                        !IsBlank(colCustomerMapping),
+                        If(
+                            !IsBlank(
+                                Filter(
+                                    OfflineProductOfferHeaderCollection,
+                                    'Offer ID' = First(colOfferHeaderId).Value && ('Active From' <= Today()) && ('Active To' >= Today())
+                                )
+                            ),
                             LookUp(
                                 OfflineProductOfferLinesCollection,
-                                'Product SKU'.'Product SKU' = ThisItem.'Product SKU'
-                            )
+                                'Product Offer Header'.'Offer ID' = First(colOfferHeaderId).Value && 'Product SKU'.'Product SKU' = ThisItem.'Product SKU'.'Product SKU'
+                            ).'Discount %',
+                            "0"
                         ),
-                        LookUp(
-                            OfflineProductOfferLinesCollection,
-                            'Product SKU'.'Product SKU' = ThisItem.'Product SKU'
-                        ).'Discount %',
-                        !IsBlank(
+                        !IsBlank(colStateMapping),
+                        If(
+                            !IsBlank(
+                                Filter(
+                                    OfflineProductOfferHeaderCollection,
+                                    'Offer ID' = First(colOfferHeaderId).Value && ('Active From' <= Today()) && ('Active To' >= Today())
+                                )
+                            ),
                             LookUp(
-                                OfflineProductOfferHeaderCollection,
-                                ('Active From' <= Today()) && ('Active To' >= Today()) && ('Product Category '.'Category Code' = ThisItem.'Product Category'.'Category Code') && ('Product Sub-Category '.'Sub-Category Code' = ThisItem.'Product Sub-Category'.'Sub-Category Code') && ('Product Group'.'Group Code' = ThisItem.'Product Group'.'Group Code') && (State.'State Name' = LookUp(
-                                    OfflinePartiesCollection As OneParty,
-                                    OneParty.'Parties (new_partiesid)' = GUID(varCustomerforDiscount)
-                                ).State.'State Name') && (Region.'Region Name' = LookUp(
-                                    OfflinePartiesCollection As OneParty,
-                                    OneParty.'Parties (new_partiesid)' = GUID(varCustomerforDiscount)
-                                ).Region.'Region Name')
-                            )
+                                OfflineProductOfferLinesCollection,
+                                'Product Offer Header'.'Offer ID' = First(colOfferHeaderId).Value && 'Product SKU'.'Product SKU' = ThisItem.'Product SKU'.'Product SKU'
+                            ).'Discount %',
+                            "0"
                         ),
-                        LookUp(
-                            OfflineProductOfferHeaderCollection,
-                            ('Active From' <= Today()) && ('Active To' >= Today()) && ('Product Category '.'Category Code' = ThisItem.'Product Category'.'Category Code') && ('Product Sub-Category '.'Sub-Category Code' = ThisItem.'Product Sub-Category'.'Sub-Category Code') && ('Product Group'.'Group Code' = ThisItem.'Product Group'.'Group Code') && (State.'State Name' = LookUp(
-                                OfflinePartiesCollection As OneParty,
-                                OneParty.'Parties (new_partiesid)' = GUID(varCustomerforDiscount)
-                            ).State.'State Name') && (Region.'Region Name' = LookUp(
-                                OfflinePartiesCollection As OneParty,
-                                OneParty.'Parties (new_partiesid)' = GUID(varCustomerforDiscount)
-                            ).Region.'Region Name')
-                        ).'Discount %',
-                        0
-                    ))/100)
-                )*/
-                
-                
-                
-            Visible: ='Product Discount Lbl_4'.Visible
+                        !IsBlank(colRegionMapping),
+                        If(
+                            !IsBlank(
+                                Filter(
+                                    OfflineProductOfferHeaderCollection,
+                                    'Offer ID' = First(colOfferHeaderId).Value && ('Active From' <= Today()) && ('Active To' >= Today())
+                                )
+                            ),
+                            LookUp(
+                                OfflineProductOfferLinesCollection,
+                                'Product Offer Header'.'Offer ID' = First(colOfferHeaderId).Value && 'Product SKU'.'Product SKU' = ThisItem.'Product SKU'.'Product SKU'
+                            ).'Discount %',
+                            "0"
+                        )
+                    ) / 100))
+                )
+            Visible: ='Product Discount Lbl_12'.Visible
             Width: =Parent.TemplateWidth/3
             Wrap: =false
-            X: =10
-            Y: =332
+            X: =5
+            Y: =352
             ZIndex: =11
 
-        Group9 As group:
+        Group9_2 As group:
             Height: =5
             Width: =5
-            X: =40
-            Y: =40
-            ZIndex: =13
+            X: =-35
+            Y: =-20
+            ZIndex: =12
 
-            "'Quantityn Lbl_5' As label":
+            "'Quantityn Lbl_11' As label":
                 BorderColor: =RGBA(0, 18, 107, 1)
                 Color: =RGBA(0, 0, 0, 1)
                 DisabledColor: =RGBA(166, 166, 166, 1)
                 FontWeight: =FontWeight.Semibold
                 Height: =30
                 OnSelect: =Select(Parent)
-                Size: =LookUp(c_EnvironmentVariable,'Display Name'="Text Medium Font Size").'Default Value'
+                Size: |-
+                    =//_VarGblAppFonts.Size.Medium
+                    15
                 Text: |-
                     ="Quantity: "& ""
                 Width: =110
                 Wrap: =false
                 X: =10
-                Y: =365
+                Y: =385
                 ZIndex: =7
 
-            "'Quantity Input_4' As text":
+            "'Quantity Input_8' As text":
                 AccessibleLabel: ="Quantity"
                 Align: =Align.Center
-                BorderColor: |-
-                    =//_VarGblAppColors.SecondaryText
-                    ColorValue(LookUp(c_EnvironmentVariable, 'Display Name'="Text Secondary Color").'Default Value')
+                BorderColor: =_VarGblAppColors.SecondaryText
                 BorderThickness: =2
-                Color: |-
-                    =//_VarGblAppColors.PrimaryText
-                    ColorValue(LookUp(c_EnvironmentVariable, 'Display Name'="Text Primary Color").'Default Value')
+                Color: =_VarGblAppColors.PrimaryText
                 Default: |-
                     =If(
                         'Product List'.OrderType = "Primary",
@@ -821,8 +691,8 @@
                         ).Variant.'Variant Code'
                     );
                     If(
-                        'Quantity Input_4'.Text <> "" And Value('Quantity Input_4'.Text) <> RoundDown(
-                            Value('Quantity Input_4'.Text),
+                        'Quantity Input_8'.Text <> "" And Value('Quantity Input_8'.Text) <> RoundDown(
+                            Value('Quantity Input_8'.Text),
                             0
                         ),
                         Notify(
@@ -830,9 +700,9 @@
                             NotificationType.Information,
                             1000
                         );
-                        Reset('Quantity Input_4'),
+                        Reset('Quantity Input_8'),
                         If(
-                            Value('Quantity Input_4'.Text) > 0,
+                            Value('Quantity Input_8'.Text) > 0,
                             If(
                                 'Product List'.OrderType = "Primary",
                                 If(
@@ -855,57 +725,53 @@
                                             ).'Ex-Factory',
                                             //PRODUCT SKU BASED ON PRODUCT AND VARIANT SELECTED #############################################################
                                             productSKU: ThisItem.'Product SKU'.'Product SKU',
-                                            quantity: 'Quantity Input_4'.Text,
+                                            quantity: 'Quantity Input_8'.Text,
                                             //VARIANT BASED ON VARIANT SELECTED COMBOBOX ####################################################################
                                             Variant: varVariant,
                                             //DISCOUNT BASED ON OFFER HEADER AND LINES AND MAPPING__________________________________________________
-                                            discount: If(
-                                                !IsBlank(
-                                                    LookUp(
-                                                        OfflineProductOfferMappingCollection,
-                                                        Customer.Parties = GUID(varCustomerforDiscount)
-                                                    )
-                                                ),
-                                                LookUp(
-                                                    OfflineProductOfferHeaderCollection,
-                                                    'Product Offer Header' = LookUp(
-                                                        OfflineProductOfferMappingCollection,
-                                                        Customer.Parties = GUID(varCustomerforDiscount)
-                                                    ).'Product Offers'.'Product Offer Header'
-                                                ).'Discount %',
-                                                !IsBlank(
+                                            discount: If (
+                                                !IsBlank(colCustomerMapping),
+                                                If(
+                                                    !IsBlank(
+                                                        Filter(
+                                                            OfflineProductOfferHeaderCollection,
+                                                            'Offer ID' = First(colOfferHeaderId).Value && ('Active From' <= Today()) && ('Active To' >= Today())
+                                                        )
+                                                    ),
                                                     LookUp(
                                                         OfflineProductOfferLinesCollection,
-                                                        'Product SKU'.'Product SKU' = ThisItem.'Product SKU'.'Product SKU'
-                                                    )
+                                                        'Product Offer Header'.'Offer ID' = First(colOfferHeaderId).Value && 'Product SKU'.'Product SKU' = ThisItem.'Product SKU'.'Product SKU'
+                                                    ).'Discount %',
+                                                    "0"
                                                 ),
-                                                LookUp(
-                                                    OfflineProductOfferLinesCollection,
-                                                    'Product SKU'.'Product SKU' = ThisItem.'Product SKU'.'Product SKU'
-                                                ).'Discount %',
-                                                !IsBlank(
+                                                !IsBlank(colStateMapping),
+                                                If(
+                                                    !IsBlank(
+                                                        Filter(
+                                                            OfflineProductOfferHeaderCollection,
+                                                            'Offer ID' = First(colOfferHeaderId).Value && ('Active From' <= Today()) && ('Active To' >= Today())
+                                                        )
+                                                    ),
                                                     LookUp(
-                                                        OfflineProductOfferHeaderCollection,
-                                                        ('Active From' <= Today()) && ('Active To' >= Today()) && ('Product Category '.'Category Code' = varCategoryCode) && ('Product Sub-Category '.'Sub-Category Code' = varSubCategoryCode) && ('Product Group'.'Group Code' = varGroupCode) && (State.'State Name' = LookUp(
-                                                            OfflinePartiesCollection As OneParty,
-                                                            OneParty.Parties = GUID(varCustomerforDiscount)
-                                                        ).State.'State Name') && (Region.'Region Name' = LookUp(
-                                                            OfflinePartiesCollection As OneParty,
-                                                            OneParty.Parties = GUID(varCustomerforDiscount)
-                                                        ).Region.'Region Name')
-                                                    )
+                                                        OfflineProductOfferLinesCollection,
+                                                        'Product Offer Header'.'Offer ID' = First(colOfferHeaderId).Value && 'Product SKU'.'Product SKU' = ThisItem.'Product SKU'.'Product SKU'
+                                                    ).'Discount %',
+                                                    "0"
                                                 ),
-                                                LookUp(
-                                                    OfflineProductOfferHeaderCollection,
-                                                    ('Active From' <= Today()) && ('Active To' >= Today()) && ('Product Category '.'Category Code' = varCategoryCode) && ('Product Sub-Category '.'Sub-Category Code' = varSubCategoryCode) && ('Product Group'.'Group Code' = varGroupCode) && (State.'State Name' = LookUp(
-                                                        OfflinePartiesCollection As OneParty,
-                                                        OneParty.Parties = GUID(varCustomerforDiscount)
-                                                    ).State.'State Name') && (Region.'Region Name' = LookUp(
-                                                        OfflinePartiesCollection As OneParty,
-                                                        OneParty.Parties = GUID(varCustomerforDiscount)
-                                                    ).Region.'Region Name')
-                                                ).'Discount %',
-                                                0
+                                                !IsBlank(colRegionMapping),
+                                                If(
+                                                    !IsBlank(
+                                                        Filter(
+                                                            OfflineProductOfferHeaderCollection,
+                                                            'Offer ID' = First(colOfferHeaderId).Value && ('Active From' <= Today()) && ('Active To' >= Today())
+                                                        )
+                                                    ),
+                                                    LookUp(
+                                                        OfflineProductOfferLinesCollection,
+                                                        'Product Offer Header'.'Offer ID' = First(colOfferHeaderId).Value && 'Product SKU'.'Product SKU' = ThisItem.'Product SKU'.'Product SKU'
+                                                    ).'Discount %',
+                                                    "0"
+                                                )
                                             ),
                                             //If state is same then calculate CGST and SGST--------------------------------------
                                         // calculate CGST--------------------------------------------
@@ -930,7 +796,7 @@
                                             ) / 100) * ((LookUp(
                                                 OfflineProductPriceCollection,
                                                 'Product SKU'.'Product SKU' = ThisItem.'Product SKU'.'Product SKU' && 'Price list'.Name = varPartyPricelist
-                                            ).'Ex-Factory') * ('Quantity Input_4'.Text)),
+                                            ).'Ex-Factory') * ('Quantity Input_8'.Text)),
                                             // calculate SGST--------------------------------------------
                                             sgstAmount: (If(
                                                 varOrderfrom = varOrderTo,
@@ -953,7 +819,7 @@
                                             ) / 100) * ((LookUp(
                                                 OfflineProductPriceCollection,
                                                 'Product SKU'.'Product SKU' = ThisItem.'Product SKU'.'Product SKU' && 'Price list'.Name = varPartyPricelist
-                                            ).'Ex-Factory') * ('Quantity Input_4'.Text)),
+                                            ).'Ex-Factory') * ('Quantity Input_8'.Text)),
                                             //if state is not same then calculate IGST----------------------
                                             igstAmount: (If(
                                                 Not(varOrderfrom = varOrderTo),
@@ -976,7 +842,7 @@
                                             ) / 100) * ((LookUp(
                                                 OfflineProductPriceCollection,
                                                 'Product SKU'.'Product SKU' = ThisItem.'Product SKU'.'Product SKU' && 'Price list'.Name = varPartyPricelist
-                                            ).'Ex-Factory') * ('Quantity Input_4'.Text)),
+                                            ).'Ex-Factory') * ('Quantity Input_8'.Text)),
                                             //Calculate cess-----------------
                                             cessAmount: If(
                                                 IsBlank(
@@ -992,7 +858,7 @@
                                                 ).'Cess %') / 100) * ((LookUp(
                                                     OfflineProductPriceCollection,
                                                     'Product SKU'.'Product SKU' = ThisItem.'Product SKU'.'Product SKU' && 'Price list'.Name = varPartyPricelist
-                                                ).'Ex-Factory') * ('Quantity Input_4'.Text))
+                                                ).'Ex-Factory') * ('Quantity Input_8'.Text))
                                             )
                                         }
                                     );
@@ -1009,7 +875,7 @@
                                             colPrimaryCart,
                                             productSKU = ThisItem.'Product SKU'.'Product SKU'
                                         ),
-                                        {quantity: 'Quantity Input_4'.Text}
+                                        {quantity: 'Quantity Input_8'.Text}
                                     );
                                 );
                             // Secondary order-------------------------------------------
@@ -1034,57 +900,53 @@
                                             ).'Ex-Factory',
                                             //PRODUCT SKU BASED ON PRODUCT AND VARIANT SELECTED #############################################################
                                             productSKU: ThisItem.'Product SKU'.'Product SKU',
-                                            quantity: 'Quantity Input_4'.Text,
+                                            quantity: 'Quantity Input_8'.Text,
                                             //VARIANT BASED ON VARIANT SELECTED COMBOBOX ####################################################################
                                             Variant: varVariant,
                                             //DISCOUNT BASED ON OFFER HEADER AND LINES #############################################################
-                                            discount: If(
-                                                !IsBlank(
-                                                    LookUp(
-                                                        OfflineProductOfferMappingCollection,
-                                                        Customer.Parties = GUID(varCustomerforDiscount)
-                                                    )
-                                                ),
-                                                LookUp(
-                                                    OfflineProductOfferHeaderCollection,
-                                                    'Product Offer Header' = LookUp(
-                                                        OfflineProductOfferMappingCollection,
-                                                        Customer.Parties = GUID(varCustomerforDiscount)
-                                                    ).'Product Offers'.'Product Offer Header'
-                                                ).'Discount %',
-                                                !IsBlank(
+                                            discount: If (
+                                                !IsBlank(colCustomerMapping),
+                                                If(
+                                                    !IsBlank(
+                                                        Filter(
+                                                            OfflineProductOfferHeaderCollection,
+                                                            'Offer ID' = First(colOfferHeaderId).Value && ('Active From' <= Today()) && ('Active To' >= Today())
+                                                        )
+                                                    ),
                                                     LookUp(
                                                         OfflineProductOfferLinesCollection,
-                                                        'Product SKU'.'Product SKU' = ThisItem.'Product SKU'.'Product SKU'
-                                                    )
+                                                        'Product Offer Header'.'Offer ID' = First(colOfferHeaderId).Value && 'Product SKU'.'Product SKU' = ThisItem.'Product SKU'.'Product SKU'
+                                                    ).'Discount %',
+                                                    "0"
                                                 ),
-                                                LookUp(
-                                                    OfflineProductOfferLinesCollection,
-                                                    'Product SKU'.'Product SKU' = ThisItem.'Product SKU'.'Product SKU'
-                                                ).'Discount %',
-                                                !IsBlank(
+                                                !IsBlank(colStateMapping),
+                                                If(
+                                                    !IsBlank(
+                                                        Filter(
+                                                            OfflineProductOfferHeaderCollection,
+                                                            'Offer ID' = First(colOfferHeaderId).Value && ('Active From' <= Today()) && ('Active To' >= Today())
+                                                        )
+                                                    ),
                                                     LookUp(
-                                                        OfflineProductOfferHeaderCollection,
-                                                        ('Active From' <= Today()) && ('Active To' >= Today()) && ('Product Category '.'Category Code' = varCategoryCode) && ('Product Sub-Category '.'Sub-Category Code' = varSubCategoryCode) && ('Product Group'.'Group Code' = varGroupCode) && (State.'State Name' = LookUp(
-                                                            OfflinePartiesCollection As OneParty,
-                                                            OneParty.Parties = GUID(varCustomerforDiscount)
-                                                        ).State.'State Name') && (Region.'Region Name' = LookUp(
-                                                            OfflinePartiesCollection As OneParty,
-                                                            OneParty.Parties = GUID(varCustomerforDiscount)
-                                                        ).Region.'Region Name')
-                                                    )
+                                                        OfflineProductOfferLinesCollection,
+                                                        'Product Offer Header'.'Offer ID' = First(colOfferHeaderId).Value && 'Product SKU'.'Product SKU' = ThisItem.'Product SKU'.'Product SKU'
+                                                    ).'Discount %',
+                                                    "0"
                                                 ),
-                                                LookUp(
-                                                    OfflineProductOfferHeaderCollection,
-                                                    ('Active From' <= Today()) && ('Active To' >= Today()) && ('Product Category '.'Category Code' = varCategoryCode) && ('Product Sub-Category '.'Sub-Category Code' = varSubCategoryCode) && ('Product Group'.'Group Code' = varGroupCode) && (State.'State Name' = LookUp(
-                                                        OfflinePartiesCollection As OneParty,
-                                                        OneParty.Parties = GUID(varCustomerforDiscount)
-                                                    ).State.'State Name') && (Region.'Region Name' = LookUp(
-                                                        OfflinePartiesCollection As OneParty,
-                                                        OneParty.Parties = GUID(varCustomerforDiscount)
-                                                    ).Region.'Region Name')
-                                                ).'Discount %',
-                                                0
+                                                !IsBlank(colRegionMapping),
+                                                If(
+                                                    !IsBlank(
+                                                        Filter(
+                                                            OfflineProductOfferHeaderCollection,
+                                                            'Offer ID' = First(colOfferHeaderId).Value && ('Active From' <= Today()) && ('Active To' >= Today())
+                                                        )
+                                                    ),
+                                                    LookUp(
+                                                        OfflineProductOfferLinesCollection,
+                                                        'Product Offer Header'.'Offer ID' = First(colOfferHeaderId).Value && 'Product SKU'.'Product SKU' = ThisItem.'Product SKU'.'Product SKU'
+                                                    ).'Discount %',
+                                                    "0"
+                                                )
                                             ),
                                             //If state is same then calculate CGST and SGST--------------------------------------
                                         // calculate CGST--------------------------------------------
@@ -1109,7 +971,7 @@
                                             ) / 100) * ((LookUp(
                                                 OfflineProductPriceCollection,
                                                 'Product SKU'.'Product SKU' = ThisItem.'Product SKU'.'Product SKU' && 'Price list'.Name = varPartyPricelist
-                                            ).'Ex-Factory') * ('Quantity Input_4'.Text)),
+                                            ).'Ex-Factory') * ('Quantity Input_8'.Text)),
                                             // calculate SGST--------------------------------------------
                                             sgstAmount: (If(
                                                 varOrderfrom = varOrderTo,
@@ -1132,7 +994,7 @@
                                             ) / 100) * ((LookUp(
                                                 OfflineProductPriceCollection,
                                                 'Product SKU'.'Product SKU' = ThisItem.'Product SKU'.'Product SKU' && 'Price list'.Name = varPartyPricelist
-                                            ).'Ex-Factory') * ('Quantity Input_4'.Text)),
+                                            ).'Ex-Factory') * ('Quantity Input_8'.Text)),
                                             //if state is not same then calculate IGST----------------------
                                             igstAmount: (If(
                                                 Not(varOrderfrom = varOrderTo),
@@ -1155,7 +1017,7 @@
                                             ) / 100) * ((LookUp(
                                                 OfflineProductPriceCollection,
                                                 'Product SKU'.'Product SKU' = ThisItem.'Product SKU'.'Product SKU' && 'Price list'.Name = varPartyPricelist
-                                            ).'Ex-Factory') * ('Quantity Input_4'.Text)),
+                                            ).'Ex-Factory') * ('Quantity Input_8'.Text)),
                                             //Calculate cess-----------------
                                             cessAmount: If(
                                                 IsBlank(
@@ -1171,7 +1033,7 @@
                                                 ).'Cess %') / 100) * ((LookUp(
                                                     OfflineProductPriceCollection,
                                                     'Product SKU'.'Product SKU' = ThisItem.'Product SKU'.'Product SKU' && 'Price list'.Name = varPartyPricelist
-                                                ).'Ex-Factory') * ('Quantity Input_4'.Text))
+                                                ).'Ex-Factory') * ('Quantity Input_8'.Text))
                                             )
                                         }
                                     );
@@ -1188,7 +1050,7 @@
                                             colSecondaryCart,
                                             productSKU = ThisItem.'Product SKU'.'Product SKU'
                                         ),
-                                        {quantity: 'Quantity Input_4'.Text}
+                                        {quantity: 'Quantity Input_8'.Text}
                                     );
                                 );
                             ),
@@ -1207,10 +1069,10 @@
                 RadiusTopLeft: =10
                 RadiusTopRight: =10
                 Reset: =
-                Size: =LookUp(c_EnvironmentVariable,'Display Name'="Text Medium Font Size").'Default Value'
+                Size: =_VarGblAppFonts.Size.Medium
                 Width: =62
                 X: =115
-                Y: =370
+                Y: =390
                 ZIndex: =8
 
     containerFilter As groupContainer.manualLayoutContainer:

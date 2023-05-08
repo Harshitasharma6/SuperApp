@@ -796,131 +796,6 @@
                         2000
                     );
                     ,
-                    /*Set(
-                        _VarQuoteHeaderResponse,
-                        With(
-                            {
-                                QuoteLines: Filter(
-                                    'Product Interesteds',
-                                    Lead.Leads = varLeadData.Leads
-                                )
-                            },
-                            Patch(
-                                'Order Headers',
-                                Defaults('Order Headers'),
-                                {
-                                    'Order From': LookUp(
-                                        OfflinePartiesCollection,
-                                        'Customer Name' = varLeadData.Party.'Customer Name'
-                                    ),
-                                    'Order Status': 'Order Status Choice'.Open,
-                                    Quantity: Sum(
-                                        QuoteLines,
-                                        Quantity
-                                    ),
-                                    Discount: Sum(
-                                        QuoteLines,
-                                        Discount
-                                    ) / CountRows(QuoteLines),
-                                    'Total Bill Amount (new_totalbillamount)': Sum(
-                                        QuoteLines,
-                                        'Total Amount'
-                                    ),
-                                    'Quote / Order': 'Quote Order Choice'.Quote,
-                                    Lead: LookUp(
-                                        offlineLeadCollection,
-                                        Leads = varLeadData.Leads
-                                    ),
-                                    'Quote Version':/* If(
-                                        IsBlank(
-                                            LookUp(
-                                                OfflineOrderHeaderCollection,
-                                                Lead.Leads = varLeadData.Leads
-                                            )
-                                        ),*/
-                                        1.0,
-                                        /*(LookUp(
-                                            OfflineOrderHeaderCollection,
-                                            Lead.Leads = varLeadData.Leads
-                                        ).'Quote Version' + 0.1)
-                                    ),*/
-                                    /* Approver: LookUp(
-                                        Users,
-                                        'Primary Email' = "harkamal.singh@zoxima.com"
-                                    ),
-                                    'Approval Status': 'Approval Status Choice'.Pending
-                                }
-                            );
-                        )
-                    );
-                    
-                //__________________________________________________________________________________________________________________
-                If(
-                        !IsBlank(_VarQuoteHeaderResponse),
-                        ForAll(
-                            Filter(
-                                'Product Interesteds',
-                                Lead.Leads = varLeadData.Leads
-                            ) As ItemOrderLine,
-                            Patch(
-                                'Order Lines',
-                                Defaults('Order Lines'),
-                                {
-                                    'Order Header': LookUp(
-                                        'Order Headers',
-                                        'Order ID' = _VarQuoteHeaderResponse.'Order ID'
-                                    ),
-                                    Product: LookUp(
-                                        OfflineProductCollection,
-                                        Product = LookUp(
-                                            OfflineProductSKUCollection,
-                                            'Product SKU' = ItemOrderLine.'Product SKU'.'Product SKU'
-                                        ).Product.Product
-                                    ),
-                                    'Product SKU': LookUp(
-                                        OfflineProductSKUCollection,
-                                        'Product SKU' = ItemOrderLine.'Product SKU'.'Product SKU'
-                                    ),
-                                    Variant: LookUp(
-                                        OfflineProductVariantCollection,
-                                        'Product Variants' = LookUp(
-                                            OfflineProductSKUCollection,
-                                            'Product SKU' = ItemOrderLine.'Product SKU'.'Product SKU'
-                                        ).'Product Variant'.'Product Variants'
-                                    ),
-                                    'Discount %':_VarQuoteHeaderResponse.Discount, //ItemOrderLine.Discount,
-                                    'Total Unit Price': ItemOrderLine.'Total Amount',
-                                    IGST: LookUp('HSN Masters',Name=LookUp(TaxN,TName=Name).TName).'IGST %' * ItemOrderLine.'Total Amount'/100,
-                                    CGST: LookUp('HSN Masters',Name=LookUp(TaxN,TName=Name).TName).'CGST %' * ItemOrderLine.'Total Amount'/100,
-                                    SGST: LookUp('HSN Masters',Name=LookUp(TaxN,TName=Name).TName).'SGST %' * ItemOrderLine.'Total Amount'/100,
-                                    Quantity: ItemOrderLine.Quantity,
-                                    'Unit Price': LookUp(
-                                        OfflineProductPriceCollection,
-                                        'Product SKU'.'Product SKU' = LookUp(
-                                            OfflineProductSKUCollection,
-                                            'Product SKU' = ItemOrderLine.'Product SKU'.'Product SKU'
-                                        ).'Product SKU'
-                                    ).'Ex-Factory'
-                                }
-                            )
-                        )
-                    );
-                    ClearCollect(
-                        OfflineOrderHeaderCollection,
-                        Filter(
-                            'Order Headers',
-                            'Created By'.'Primary Email' = User().Email
-                        )
-                    );
-                    ClearCollect(
-                        OfflineOrderLineCollection,
-                        'Order Lines'
-                    );
-                    Notify(
-                        "Quote has been created successfully",
-                        NotificationType.Success,
-                        3000
-                    );*/
                     
                     Set(
                         _VarnewQuoteHeaderResponse,
@@ -940,13 +815,7 @@
                                     ),
                                     'Approval Status':ApprovalChoiceQuoteHeader.Pending,
                                     Approver:LookUp(Users,'Primary Email'="sahil.sharma@zoxima.com"),
-                                    Version: /*If(
-                                        IsBlank(
-                                            LookUp(
-                                                OfflineOrderHeaderCollection,
-                                                Lead.Leads = varLeadData.Leads
-                                            )
-                                        ),*/
+                                    Version: 
                                         1.0,
                                         /*(LookUp(
                                             OfflineOrderHeaderCollection,
@@ -955,7 +824,7 @@
                                     ),*/
                                     Lead: LookUp(
                                         offlineLeadCollection,
-                                        Leads = varLeadData.Leads
+                                        Leads = varLeadData.zx_leadsid
                                     ),
                                     'Total Price':Sum(
                                         QuoteLines,
@@ -980,7 +849,7 @@
                         ForAll(
                             Filter(
                                 'Product Interested.S',
-                                Lead.Leads = varLeadData.Leads
+                                Lead.Leads = varLeadData.zx_leadsid
                             ) As ItemQuoteLine,
                 
                             Patch(
@@ -2336,7 +2205,7 @@
             HoverFill: =RGBA(186, 202, 226, 1)
             InputTextPlaceholder: ="Select Product Group"
             IsSearchable: =false
-            Items: ='Product Groups'
+            Items: ='Product Group'
             OnChange: =
             PressedColor: =RGBA(255, 255, 255, 1)
             PressedFill: =RGBA(0, 18, 107, 1)

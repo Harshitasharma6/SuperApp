@@ -245,7 +245,7 @@
         Height: =60
         HoverColor: =RGBA(255, 255, 255, 1)
         HoverFill: =ColorFade(Self.Fill, -20%)
-        OnSelect: |-
+        OnSelect: |
             =If(
                 IsBlank(ComboBox1_3.Selected.'Customer Name'),
                 Notify(
@@ -260,6 +260,10 @@
                 Set(
                     varParty,
                     ComboBox1_3.Selected.'Customer Name'
+                );
+                Set(
+                    varCustomerforDiscount,
+                    ComboBox1_3.Selected.Parties
                 );
                 Set(
                     varSelectedRetailerAttachedDistributor,
@@ -284,26 +288,33 @@
                     varpaymentterm,
                     ComboBox1_3.Selected.'Payment Terms'.Name
                 );
+                
             );
             Set(
                 varOrderfrom,
                 LookUp(
                     OfflinePartiesCollection,
                     'Customer Code' = ComboBox1_3.Selected.'Customer Code'
-                ).State.'State Name'
+                ).State.Name
             );
             Set(
+                varOrderfromRegion,
+                LookUp(
+                    OfflinePartiesCollection,
+                    'Customer Code' = ComboBox1_3.Selected.'Customer Code'
+                ).Region.Name
+            );
+            /*Set(
                 varOrderTo,
                 LookUp(
                     colZoximaParty,
                     'Customer Code' = First(colZoximaParty).'Customer Code'
                 ).State.'State Name'
-            );
+            );*/
             Set(
                 varPartyPricelist,
                 ComboBox1_3.Selected.'Price List'.Name
             );
-            
             ClearCollect(
                 colPartyOrder,
                 Sort(
@@ -331,7 +342,61 @@
                     colOrderlineproduct,
                     'Product SKU'.'Product SKU'
                 )
-            )
+            );
+            ClearCollect(
+                colCustomerMapping,
+                LookUp(
+                    OfflineProductOfferMappingCollection,
+                    Customer.Parties = GUID(varCustomerforDiscount)
+                )
+            );
+            ClearCollect(
+                colStateMapping,
+                LookUp(
+                    OfflineProductOfferMappingCollection,
+                    Customer.State.Name = varOrderfrom
+                )
+            );
+            ClearCollect(
+                colRegionMapping,
+                LookUp(
+                    OfflineProductOfferMappingCollection,
+                    Customer.Region.Name = varOrderfromRegion
+                )
+            );
+            If(
+                !IsBlank(colCustomerMapping),
+                ClearCollect(
+                    colOfferHeaderId,
+                    LookUp(
+                        OfflineProductOfferHeaderCollection,
+                        'Product Offer Header' = First(colCustomerMapping).'Product Offers'.'Product Offer Header'
+                    ).'Offer ID'
+                ),
+                !IsBlank(colStateMapping),
+                ClearCollect(
+                    colOfferHeaderId,
+                    LookUp(
+                        OfflineProductOfferHeaderCollection,
+                        'Product Offer Header' = First(colStateMapping).'Product Offers'.'Product Offer Header'
+                    ).'Offer ID'
+                ),
+                !IsBlank(colRegionMapping),
+                ClearCollect(
+                    colOfferHeaderId,
+                    LookUp(
+                        OfflineProductOfferHeaderCollection,
+                        'Product Offer Header' = First(colStateMapping).'Product Offers'.'Product Offer Header'
+                    ).'Offer ID'
+                )
+            );
+            ClearCollect(
+                colOfferHeader,
+                Filter(
+                    OfflineProductOfferHeaderCollection,
+                    'Offer ID' = First(colOfferHeaderId).Value && ('Active From' <= Today()) && ('Active To' >= Today())
+                )
+            );
         Size: =20
         Text: ="PROCEED"
         Visible: =varParties
