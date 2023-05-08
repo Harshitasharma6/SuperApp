@@ -1,6 +1,8 @@
 "'Order List' As CanvasComponent":
     DataSource: =OfflineOrderHeaderCollection
-    Fill: =_VarGblAppColors.GreenColor
+    Fill: |-
+        =// _VarGblAppColors.GreenColor
+        ColorValue(LookUp(c_EnvironmentVariable, 'Display Name'="Light Red").'Default Value')
     Height: =App.Height
     Type: ="Text"
     Width: =App.Width
@@ -183,7 +185,7 @@
         Rectangle1_9 As rectangle:
             AccessibleLabel: ="Rectangle1_9"
             BorderColor: =RGBA(0, 18, 107, 1)
-            Fill: =_VarGblAppColors.PrimaryRed
+            Fill: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//_VarGblAppColors.PrimaryRed
             Height: =1
             OnSelect: |-
                 =Navigate('order detail screen',ScreenTransition.CoverRight);
@@ -199,7 +201,10 @@
             Color: =_VarGblAppColors.PrimaryText
             DisabledColor: =RGBA(166, 166, 166, 1)
             FocusedBorderThickness: =01
-            Font: =_VarGblAppFonts.Heading
+            Font: |-
+                =LookUp(c_EnvironmentVariable, 'Display Name'="Text Heading Font").'Default Value'
+                
+                //_VarGblAppFonts.Heading
             FontWeight: =FontWeight.Bold
             Height: =75
             OnSelect: |-
@@ -223,7 +228,10 @@
             Color: =RGBA(0, 0, 0, 1)
             DisabledColor: =RGBA(166, 166, 166, 1)
             FocusedBorderThickness: =01
-            Font: =_VarGblAppFonts.Heading
+            Font: |-
+                =LookUp(c_EnvironmentVariable, 'Display Name'="Text Heading Font").'Default Value'
+                
+                //_VarGblAppFonts.Heading
             FontWeight: =FontWeight.Semibold
             Height: =64
             OnSelect: |-
@@ -245,10 +253,13 @@
 
         Body1_48 As label:
             BorderColor: =RGBA(0, 18, 107, 1)
-            Color: =_VarGblAppColors.PrimaryRed
+            Color: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//_VarGblAppColors.PrimaryRed
             DisabledColor: =RGBA(166, 166, 166, 1)
             FocusedBorderThickness: =01
-            Font: =_VarGblAppFonts.Heading
+            Font: |-
+                =LookUp(c_EnvironmentVariable, 'Display Name'="Text Heading Font").'Default Value'
+                
+                //_VarGblAppFonts.Heading
             FontWeight: =FontWeight.Semibold
             Height: =39
             OnSelect: |-
@@ -273,7 +284,10 @@
             Color: =RGBA(0, 0, 0, 1)
             DisabledColor: =RGBA(166, 166, 166, 1)
             FocusedBorderThickness: =01
-            Font: =_VarGblAppFonts.Heading
+            Font: |-
+                =LookUp(c_EnvironmentVariable, 'Display Name'="Text Heading Font").'Default Value'
+                
+                //_VarGblAppFonts.Heading
             FontWeight: =FontWeight.Semibold
             Height: =39
             OnSelect: |-
@@ -297,7 +311,7 @@
         Circle18 As circle:
             AccessibleLabel: ="Text"
             BorderColor: =RGBA(0, 18, 107, 1)
-            Fill: =_VarGblAppColors.PrimaryRed
+            Fill: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//_VarGblAppColors.PrimaryRed
             Height: =50
             OnSelect: |-
                 =Navigate('order detail screen',ScreenTransition.CoverRight);
@@ -311,7 +325,7 @@
 
         Label79 As label:
             BorderColor: =RGBA(0, 18, 107, 1)
-            Color: =_VarGblAppColors.PrimaryRed
+            Color: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//_VarGblAppColors.PrimaryRed
             DisabledColor: =RGBA(166, 166, 166, 1)
             Height: =75
             OnSelect: |-
@@ -370,7 +384,7 @@
 
     Circle18_1 As circle:
         BorderColor: =RGBA(0, 18, 107, 1)
-        Fill: =_VarGblAppColors.PrimaryRed
+        Fill: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//_VarGblAppColors.PrimaryRed
         Height: =50
         OnSelect: =
         Width: =50
@@ -405,7 +419,7 @@
         Height: =38
         HoverDateFill: =RGBA(200, 200, 200, 1)
         IconBackground: =RGBA(255, 255, 255, 1)
-        IconFill: =_VarGblAppColors.PrimaryRed
+        IconFill: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//_VarGblAppColors.PrimaryRed
         InputTextPlaceholder: |-
             =//If(IsBlank(Self.SelectedDate), Text(Date(2001,12,31), Self.Format, Self.Language))
             Text(Today(),"dd/mm/yyyy")
@@ -443,7 +457,7 @@
             DisplayMode: =DisplayMode.View
             Fill: |-
                 =//RGBA(204, 204, 204, 1)
-                _VarGblAppColors.PrimaryRed
+                ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//_VarGblAppColors.PrimaryRed
             FontWeight: =FontWeight.Semibold
             Height: =70
             HoverColor: =RGBA(255, 255, 255, 1)
@@ -512,7 +526,7 @@
     Sort_7 As icon.ArrowsUpDown:
         AccessibleLabel: ="Sorting"
         BorderColor: =RGBA(0, 18, 107, 1)
-        Color: =_VarGblAppColors.PrimaryRed
+        Color: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//_VarGblAppColors.PrimaryRed
         DisabledBorderColor: =RGBA(166, 166, 166, 1)
         DisabledColor: =RGBA(244, 244, 244, 1)
         Height: =30
@@ -583,7 +597,7 @@
 
         Icon19_5 As icon.ArrowUp:
             BorderColor: =RGBA(0, 18, 107, 1)
-            Color: =_VarGblAppColors.PrimaryRed
+            Color: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//_VarGblAppColors.PrimaryRed
             DisabledBorderColor: =RGBA(166, 166, 166, 1)
             DisabledColor: =RGBA(244, 244, 244, 1)
             DisplayMode: =DisplayMode.View
@@ -597,7 +611,7 @@
 
     Icon20_4 As icon.ArrowsUpDown:
         BorderColor: =RGBA(0, 18, 107, 1)
-        Color: =_VarGblAppColors.PrimaryRed
+        Color: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//_VarGblAppColors.PrimaryRed
         DisabledBorderColor: =RGBA(166, 166, 166, 1)
         DisabledColor: =RGBA(244, 244, 244, 1)
         DisplayMode: =DisplayMode.View
@@ -638,7 +652,7 @@
         Fill: |-
             =//RGBA(56, 96, 178, 1)
             ColorFade(
-                _VarGblAppColors.PrimaryRed
+                ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//_VarGblAppColors.PrimaryRed
                 ,-20%)
         FontWeight: =FontWeight.Semibold
         Height: =60
@@ -717,7 +731,7 @@
             DisabledFill: =RGBA(244, 244, 244, 1)
             Fill: |-
                 =//RGBA(184, 0, 0, 1)
-                _VarGblAppColors.PrimaryRed
+                ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//_VarGblAppColors.PrimaryRed
             FocusedBorderThickness: =
             Font: =Font.'Segoe UI'
             FontWeight: =FontWeight.Semibold
@@ -726,7 +740,7 @@
             HoverFill: |-
                 =ColorFade(
                     
-                    _VarGblAppColors.PrimaryRed
+                    ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//_VarGblAppColors.PrimaryRed
                     , 10%)
             OnSelect: |-
                 =ClearCollect(
@@ -1300,7 +1314,7 @@
             DisabledFill: =RGBA(244, 244, 244, 1)
             Fill: |-
                 =//RGBA(184, 0, 0, 1)
-                _VarGblAppColors.PrimaryRed
+                ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//_VarGblAppColors.PrimaryRed
             Font: =Font.'Segoe UI'
             FontWeight: =FontWeight.Semibold
             Height: =60
@@ -1308,7 +1322,7 @@
             HoverFill: |-
                 =ColorFade(
                     
-                    _VarGblAppColors.PrimaryRed
+                    ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//_VarGblAppColors.PrimaryRed
                 , 10%)
             OnSelect: |
                 =Reset(DateFrom_5);
@@ -1375,7 +1389,7 @@
             Height: =63
             HoverDateFill: =RGBA(186, 202, 226, 1)
             IconBackground: =Color.Transparent
-            IconFill: =_VarGblAppColors.PrimaryRed
+            IconFill: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//_VarGblAppColors.PrimaryRed
             InputTextPlaceholder: =If(IsBlank(Self.SelectedDate), Text(Today(), "dd/mm/yyyy"))
             OnChange: =
             OnSelect: |-
@@ -1456,7 +1470,7 @@
             Height: =63
             HoverDateFill: =RGBA(186, 202, 226, 1)
             IconBackground: =Color.Transparent
-            IconFill: =_VarGblAppColors.PrimaryRed
+            IconFill: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//_VarGblAppColors.PrimaryRed
             InputTextPlaceholder: =If(IsBlank(Self.SelectedDate), Text(Today(), "dd/mm/yyyy"))
             OnChange: =If(!IsBlank(radioDate_5.SelectedText),Notify("You cannot select both option",NotificationType.Error,2000);Reset(radioDate_5))
             OnSelect: |-
@@ -1523,7 +1537,7 @@
                 //RGBA(153, 160, 196, 1)
                 If(
                     radioDate_5.Selected.Value,
-                    _VarGblAppColors.PrimaryBg,_VarGblAppColors.textbgbutton   
+                    ColorValue( LookUp('Environment Variable Definitions', 'Display Name'="Common Primary Background").'Default Value')//_VarGblAppColors.PrimaryBg,_VarGblAppColors.textbgbutton   
                 )
             DisplayMode: =If(IsBlank(DateFrom_5.SelectedDate),DisplayMode.Edit,DisplayMode.View)
             Font: =Font.'Segoe UI'
@@ -1561,7 +1575,7 @@
                 If(
                     //ThisItem.IsSelected,
                     radioDate_5.Selected.Value,
-                    _VarGblAppColors.PrimaryBg,_VarGblAppColors.textbgbutton   
+                    ColorValue( LookUp('Environment Variable Definitions', 'Display Name'="Common Primary Background").'Default Value')//_VarGblAppColors.PrimaryBg,_VarGblAppColors.textbgbutton   
                 )
             RadioSize: =40
             Size: =18
@@ -1584,7 +1598,7 @@
                 If(
                     //ThisItem.IsSelected,
                     radioSalesperson_5.Selected.'Full Name',
-                    _VarGblAppColors.PrimaryBg,_VarGblAppColors.textbgbutton   
+                    ColorValue( LookUp('Environment Variable Definitions', 'Display Name'="Common Primary Background").'Default Value')//_VarGblAppColors.PrimaryBg,_VarGblAppColors.textbgbutton   
                 )
             Default: =LookUp(Users,'Primary Email'=User().Email).'Full Name'
             Height: =466
@@ -1613,7 +1627,7 @@
                 If(
                     //ThisItem.IsSelected,
                     radioSalesperson_5.Selected.'Full Name',
-                    _VarGblAppColors.PrimaryBg,_VarGblAppColors.textbgbutton   
+                    ColorValue( LookUp('Environment Variable Definitions', 'Display Name'="Common Primary Background").'Default Value')//_VarGblAppColors.PrimaryBg,_VarGblAppColors.textbgbutton   
                 )
             RadioSize: =40
             Size: =18
@@ -1667,7 +1681,7 @@
                     If(
                         //ThisItem.IsSelected,
                         radioParty_1.Selected.'Customer Name',
-                        _VarGblAppColors.PrimaryBg,_VarGblAppColors.textbgbutton   
+                        ColorValue( LookUp('Environment Variable Definitions', 'Display Name'="Common Primary Background").'Default Value')//_VarGblAppColors.PrimaryBg,_VarGblAppColors.textbgbutton   
                     )
                 DisabledBorderColor: =RGBA(166, 166, 166, 1)
                 DisabledColor: =RGBA(166, 166, 166, 1)
@@ -1675,7 +1689,7 @@
                 Fill: |-
                     =//Color.Transparent
                     If(ThisItem.IsSelected,ColorFade(
-                        _VarGblAppColors.PrimaryRed
+                        ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//_VarGblAppColors.PrimaryRed
                         
                         ,80%),Color.Transparent)
                 Font: =Font.'Segoe UI'
@@ -1685,7 +1699,7 @@
                 HoverFill: |-
                     =//ColorFade(Color.DimGrey,80%)
                     If(ThisItem.IsSelected,ColorFade(
-                        _VarGblAppColors.PrimaryRed
+                        ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//_VarGblAppColors.PrimaryRed
                         ,80%),Color.Transparent)
                 OnSelect: =
                 PaddingLeft: =25
@@ -1693,7 +1707,7 @@
                 PressedFill: |-
                     =//ColorFade(Color.DimGrey,80%)
                     If(ThisItem.IsSelected,ColorFade(
-                        _VarGblAppColors.PrimaryRed
+                        ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//_VarGblAppColors.PrimaryRed
                         
                         ,80%),Color.Transparent)
                 Size: =20
@@ -1725,7 +1739,7 @@
                 DisplayMode: =DisplayMode.View
                 Fill: |-
                     =//RGBA(204, 204, 204, 1)
-                    _VarGblAppColors.PrimaryRed
+                    ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//_VarGblAppColors.PrimaryRed
                 FontWeight: =FontWeight.Semibold
                 Height: =82
                 HoverColor: =RGBA(255, 255, 255, 1)
@@ -1749,7 +1763,7 @@
                     //RGBA(153, 160, 196, 1)
                     If(
                         ThisItem.IsSelected,
-                        _VarGblAppColors.PrimaryBg,_VarGblAppColors.textbgbutton   
+                        ColorValue( LookUp('Environment Variable Definitions', 'Display Name'="Common Primary Background").'Default Value')//_VarGblAppColors.PrimaryBg,_VarGblAppColors.textbgbutton   
                     )
                 DisabledColor: =RGBA(166, 166, 166, 1)
                 FontWeight: =FontWeight.Bold
@@ -1773,7 +1787,7 @@
                     =//RGBA(153, 160, 196, 1)
                     If(
                         ThisItem.IsSelected,
-                        _VarGblAppColors.PrimaryBg,_VarGblAppColors.textbgbutton   
+                        ColorValue( LookUp('Environment Variable Definitions', 'Display Name'="Common Primary Background").'Default Value')//_VarGblAppColors.PrimaryBg,_VarGblAppColors.textbgbutton   
                     )
                 DisabledColor: =RGBA(166, 166, 166, 1)
                 Height: =45
@@ -1794,7 +1808,7 @@
                     //RGBA(153, 160, 196, 1)
                     If(
                         ThisItem.IsSelected,
-                        _VarGblAppColors.PrimaryBg,_VarGblAppColors.textbgbutton   
+                        ColorValue( LookUp('Environment Variable Definitions', 'Display Name'="Common Primary Background").'Default Value')//_VarGblAppColors.PrimaryBg,_VarGblAppColors.textbgbutton   
                     )
                 DisabledBorderColor: =RGBA(166, 166, 166, 1)
                 DisabledColor: =RGBA(244, 244, 244, 1)
@@ -1820,7 +1834,7 @@
                 If(
                     //ThisItem.IsSelected,
                     radioParty_1.Selected.'Customer Name',
-                    _VarGblAppColors.PrimaryBg,_VarGblAppColors.textbgbutton   
+                    ColorValue( LookUp('Environment Variable Definitions', 'Display Name'="Common Primary Background").'Default Value')//_VarGblAppColors.PrimaryBg,_VarGblAppColors.textbgbutton   
                 )
             Height: =466
             HoverColor: =RGBA(0, 18, 107, 1)
@@ -1855,7 +1869,7 @@
                 If(
                     //ThisItem.IsSelected,
                     radioParty_1.Selected.'Customer Name',
-                    _VarGblAppColors.PrimaryBg,_VarGblAppColors.textbgbutton   
+                    ColorValue( LookUp('Environment Variable Definitions', 'Display Name'="Common Primary Background").'Default Value')//_VarGblAppColors.PrimaryBg,_VarGblAppColors.textbgbutton   
                 )
             RadioSize: =40
             Size: =18
@@ -1902,8 +1916,8 @@
                 =RGBA(0, 0, 0, 1)
                 /*If(
                     //ThisItem.IsSelected,
-                    radioStatus.Selected.Value
-                    _VarGblAppColors.PrimaryBg,_VarGblAppColors.textbgbutton   
+                    radioStatus.Selected.Value,
+                    ColorValue( LookUp('Environment Variable Definitions', 'Display Name'="Common Primary Background").'Default Value')//_VarGblAppColors.PrimaryBg,_VarGblAppColors.textbgbutton   
                 )*/
             RadioSize: =40
             Size: =18

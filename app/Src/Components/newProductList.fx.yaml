@@ -45,7 +45,7 @@ newProductList As CanvasComponent:
             BorderColor: =RGBA(0, 18, 107, 1)
             Color: |-
                 =//RGBA(0, 0, 0, 1)
-                If(ThisItem.IsSelected,_VarGblAppColors.PrimaryRed,_VarGblAppColors.textbgbutton)
+                If(ThisItem.IsSelected,ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//_VarGblAppColors.PrimaryRed,_VarGblAppColors.textbgbutton)
             DisabledColor: =RGBA(166, 166, 166, 1)
             Font: =Font.'Segoe UI'
             FontWeight: =FontWeight.Semibold
@@ -115,7 +115,7 @@ newProductList As CanvasComponent:
 
     Divider_4 As rectangle:
         BorderColor: =RGBA(0, 18, 107, 1)
-        Fill: =_VarGblAppColors.PrimaryBg
+        Fill: =ColorValue( LookUp('Environment Variable Definitions', 'Display Name'="Common Primary Background").'Default Value')//_VarGblAppColors.PrimaryBg
         Height: =40
         Width: =2
         X: =533
@@ -377,7 +377,7 @@ newProductList As CanvasComponent:
 
         "'Product Discount Lbl_11' As label":
             BorderColor: =RGBA(0, 18, 107, 1)
-            Color: =_VarGblAppColors.PrimaryRed
+            Color: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//_VarGblAppColors.PrimaryRed
             DisabledColor: =RGBA(166, 166, 166, 1)
             FontWeight: =FontWeight.Semibold
             Height: =If('Product Price Lbl_18'.Visible, 30, 0)
@@ -569,7 +569,7 @@ newProductList As CanvasComponent:
 
         "'Product Price Lbl_18' As label":
             BorderColor: =RGBA(0, 18, 107, 1)
-            Color: =_VarGblAppColors.PrimaryRed
+            Color: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//_VarGblAppColors.PrimaryRed
             DisabledColor: =RGBA(166, 166, 166, 1)
             FontWeight: =FontWeight.Semibold
             Height: =30
@@ -1252,7 +1252,7 @@ newProductList As CanvasComponent:
 
     Icon31_1 As icon.Search:
         BorderColor: =RGBA(0, 18, 107, 1)
-        Color: =_VarGblAppColors.PrimaryRed
+        Color: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//_VarGblAppColors.PrimaryRed
         DisabledBorderColor: =RGBA(166, 166, 166, 1)
         DisabledColor: =RGBA(244, 244, 244, 1)
         Height: =30

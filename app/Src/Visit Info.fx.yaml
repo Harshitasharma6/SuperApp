@@ -596,18 +596,6 @@
         Y: =191
         ZIndex: =8
 
-        "'Order List View_1' As 'Order List View'":
-            Customer: =_VarClickedVisitAccount
-            Fill: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Screen Background Color").'Default Value') //ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Screen Background Color").'Default Value') //_VarGblAppColors.BackgroundColor
-            Height: =895
-            Type: |-
-                =If(
-                                _VarClickedVisitAccount.'Customer Type' = 'Party Type Choices'.Retailer,
-                                'Order Type Choice'.Secondary,
-                                'Order Type Choice'.Primary
-                            )
-            varvisitid: =varVisitId
-
     "'Customer Container' As groupContainer.manualLayoutContainer":
         Height: =896
         Visible: =_VarActivetopTabID=4

@@ -45,7 +45,7 @@
             BorderColor: =RGBA(0, 18, 107, 1)
             Color: |-
                 =//RGBA(0, 0, 0, 1)
-                If(ThisItem.IsSelected,_VarGblAppColors.PrimaryRed,_VarGblAppColors.textbgbutton)
+                If(ThisItem.IsSelected,ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//_VarGblAppColors.PrimaryRed,_VarGblAppColors.textbgbutton)
             DisabledColor: =RGBA(166, 166, 166, 1)
             FocusedBorderThickness: =1
             Font: =Font.'Segoe UI'
@@ -118,7 +118,7 @@
 
     Divider_3 As rectangle:
         BorderColor: =RGBA(0, 18, 107, 1)
-        Fill: =_VarGblAppColors.PrimaryBg
+        Fill: =ColorValue( LookUp('Environment Variable Definitions', 'Display Name'="Common Primary Background").'Default Value')//_VarGblAppColors.PrimaryBg
         Height: =40
         Width: =2
         X: =533
@@ -235,7 +235,7 @@
 
         "'Product Price Lbl_7' As label":
             BorderColor: =RGBA(0, 18, 107, 1)
-            Color: =_VarGblAppColors.PrimaryRed
+            Color: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//_VarGblAppColors.PrimaryRed
             DisabledColor: =RGBA(166, 166, 166, 1)
             FontWeight: =FontWeight.Semibold
             Height: =29
@@ -389,7 +389,7 @@
 
         "'Product Discount Lbl_4' As label":
             BorderColor: =RGBA(0, 18, 107, 1)
-            Color: =_VarGblAppColors.PrimaryRed
+            Color: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//_VarGblAppColors.PrimaryRed
             DisabledColor: =RGBA(166, 166, 166, 1)
             FontWeight: =FontWeight.Semibold
             Height: =If('Product Price Lbl_8'.Visible, 30, 0)
@@ -581,7 +581,7 @@
 
         "'Product Price Lbl_8' As label":
             BorderColor: =RGBA(0, 18, 107, 1)
-            Color: =_VarGblAppColors.PrimaryRed
+            Color: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//_VarGblAppColors.PrimaryRed
             DisabledColor: =RGBA(166, 166, 166, 1)
             FontWeight: =FontWeight.Semibold
             Height: =30
@@ -1349,7 +1349,7 @@
                 Rectangle15 As rectangle:
                     BorderColor: =RGBA(0, 18, 107, 1)
                     BorderThickness: =1
-                    Fill: =_VarGblAppColors.PrimaryRed
+                    Fill: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//_VarGblAppColors.PrimaryRed
                     Height: =506
                     Width: =1
                     X: =317
@@ -1396,10 +1396,10 @@
                                 }
                             )
                         )
-                    RadioBorderColor: =_VarGblAppColors.PrimaryRed
+                    RadioBorderColor: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//_VarGblAppColors.PrimaryRed
                     RadioSelectionFill: |-
                         =//RGBA(0, 0, 0, 1)
-                        _VarGblAppColors.PrimaryRed
+                        ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//_VarGblAppColors.PrimaryRed
                     RadioSize: =30
                     Size: =18
                     Visible: |-
@@ -1445,8 +1445,8 @@
                                 }
                             )
                         )
-                    RadioBorderColor: =_VarGblAppColors.PrimaryRed
-                    RadioSelectionFill: =_VarGblAppColors.PrimaryRed
+                    RadioBorderColor: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//_VarGblAppColors.PrimaryRed
+                    RadioSelectionFill: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//_VarGblAppColors.PrimaryRed
                     RadioSize: =30
                     Size: =18
                     Visible: |-
@@ -1526,8 +1526,8 @@
                                 }
                             )
                         )
-                    RadioBorderColor: =_VarGblAppColors.PrimaryRed
-                    RadioSelectionFill: =_VarGblAppColors.PrimaryRed
+                    RadioBorderColor: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//_VarGblAppColors.PrimaryRed
+                    RadioSelectionFill: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//_VarGblAppColors.PrimaryRed
                     RadioSize: =30
                     Size: =18
                     Visible: |-
@@ -1579,7 +1579,7 @@
                                 true
                             )
                         Height: =59
-                        HoverColor: =_VarGblAppColors.PrimaryRed
+                        HoverColor: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//_VarGblAppColors.PrimaryRed
                         OnCheck: |-
                             =If(
                                 IsBlank(
@@ -1659,14 +1659,14 @@
             DisabledBorderColor: =RGBA(166, 166, 166, 1)
             DisabledColor: =RGBA(166, 166, 166, 1)
             DisabledFill: =RGBA(244, 244, 244, 1)
-            Fill: =_VarGblAppColors.PrimaryRed
+            Fill: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//_VarGblAppColors.PrimaryRed
             FocusedBorderThickness: =
             FontWeight: =FontWeight.Semibold
             Height: =50
             HoverColor: =RGBA(255, 255, 255, 1)
             HoverFill: |-
                 =ColorFade(
-                    _VarGblAppColors.PrimaryRed
+                    ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//_VarGblAppColors.PrimaryRed
                     , 10%)
             OnSelect: |-
                 =Set(
@@ -1768,7 +1768,7 @@
             Icon19_1 As icon.Cancel:
                 AccessibleLabel: ="Remove the particular filter"
                 BorderColor: =RGBA(0, 18, 107, 1)
-                Color: =_VarGblAppColors.PrimaryRed
+                Color: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//_VarGblAppColors.PrimaryRed
                 DisabledBorderColor: =RGBA(166, 166, 166, 1)
                 DisabledColor: =RGBA(244, 244, 244, 1)
                 Height: =15
@@ -1809,7 +1809,7 @@
             BorderThickness: =0
             Color: |-
                 =//RGBA(255, 255, 255, 1)
-                _VarGblAppColors.PrimaryRed
+                ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//_VarGblAppColors.PrimaryRed
             DisabledBorderColor: =RGBA(166, 166, 166, 1)
             DisabledColor: =RGBA(166, 166, 166, 1)
             DisabledFill: =RGBA(244, 244, 244, 1)
@@ -1822,7 +1822,7 @@
             HoverColor: =RGBA(255, 255, 255, 1)
             HoverFill: |-
                 =ColorFade(
-                    _VarGblAppColors.PrimaryRed
+                    ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//_VarGblAppColors.PrimaryRed
                     , 10%)
             OnSelect: |-
                 =Reset(radioCategory);
@@ -1868,7 +1868,7 @@
 
     Icon31 As icon.Search:
         BorderColor: =RGBA(0, 18, 107, 1)
-        Color: =_VarGblAppColors.PrimaryRed
+        Color: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//_VarGblAppColors.PrimaryRed
         DisabledBorderColor: =RGBA(166, 166, 166, 1)
         DisabledColor: =RGBA(244, 244, 244, 1)
         Height: =30

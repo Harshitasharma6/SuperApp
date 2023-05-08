@@ -1177,43 +1177,6 @@ Home As screen:
             Y: =456
             ZIndex: =15
 
-            HtmlText2 As htmlViewer:
-                Height: =89
-                HtmlText: |-
-                    ="<div style='margin:10px;width:363px;height:56px;background-color:#;box-shadow:0 3px 6px 1px  #ccc; border-radius:15px'></div>"
-                OnSelect: |-
-                    =Set(_VarSelectedPresentType, ThisItem);
-                    Set(_VarAttendanceCamera, true)
-                Width: =414
-                X: =89
-                ZIndex: =1
-
-            Button8 As button:
-                BorderColor: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//_VarGblAppColors.PrimaryRed
-                BorderStyle: =BorderStyle.None
-                BorderThickness: =3
-                Color: =RGBA(0, 0, 0, 1)
-                DisabledBorderColor: =RGBA(166, 166, 166, 1)
-                DisabledColor: =RGBA(166, 166, 166, 1)
-                DisabledFill: =RGBA(244, 244, 244, 1)
-                Fill: =RGBA(255, 255, 255, 1)
-                FontWeight: =FontWeight.Semibold
-                Height: =56
-                HoverColor: =RGBA(0, 0, 0, 1)
-                HoverFill: |-
-                    =/*ColorFade(ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )*/
-                    //ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//_VarGblAppColors.PrimaryRed
-                    //, 10%)
-                OnSelect: |-
-                    =Set(_VarSelectedPresentType, ThisItem);
-                    Set(_VarAttendanceCamera, true)
-                Size: =LookUp(c_EnvironmentVariable,'Display Name'="Text Medium Font Size").'Default Value'
-                Text: =ThisItem.Value
-                Width: =368
-                X: =100
-                Y: =15
-                ZIndex: =2
-
             Icon4 As icon.Add:
                 BorderColor: =RGBA(166, 166, 166, 1)
                 Color: =RGBA(179, 179, 179, 1)
