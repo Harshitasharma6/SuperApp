@@ -90,7 +90,7 @@
         Layout: =Layout.Vertical
         ShowScrollbar: =false
         TabIndex: =0
-        TemplateSize: =223
+        TemplateSize: =201
         Visible: ='Top Gallery'.Selected.TabId=7
         Width: =620
         X: =10
@@ -121,12 +121,12 @@
             DisabledFill: =RGBA(244, 244, 244, 1)
             Fill: =RGBA(255, 255, 255, 1)
             FontWeight: =FontWeight.Semibold
-            Height: =204
+            Height: =183
             HoverColor: =RGBA(255, 255, 255, 1)
             HoverFill: =Color.White
             OnSelect: |-
                 =Set(varContactData,ThisItem);
-                //[Anjali--] Navigate('Contact Detail Page',ScreenTransition.CoverRight);
+                 Navigate('Contact Detail Page',ScreenTransition.CoverRight);
             Size: =24
             Text: =""
             Width: =610
@@ -143,12 +143,13 @@
                 Navigate('Contact Detail Page',ScreenTransition.CoverRight);
             TabIndex: =0
             Width: ='Order Info Gallery_1'.TemplateWidth
-            Y: =102
+            Y: =93
             ZIndex: =12
 
         Body1_63 As label:
             BorderColor: =RGBA(0, 18, 107, 1)
-            Color: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//_VarGblAppColors.PrimaryRed
+            Color: |
+                =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Text Primary Color").'Default Value')
             DisabledColor: =RGBA(166, 166, 166, 1)
             FocusedBorderThickness: =01
             Font: |-
@@ -172,14 +173,14 @@
 
         Body1_65 As label:
             BorderColor: =RGBA(0, 18, 107, 1)
-            Color: =RGBA(0, 0, 0, 1)
+            Color: |
+                =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Text Primary Color").'Default Value')
             DisabledColor: =RGBA(166, 166, 166, 1)
             FocusedBorderThickness: =01
             Font: |-
                 =LookUp(c_EnvironmentVariable, 'Display Name'="Text Heading Font").'Default Value'
                 
                 //_VarGblAppFonts.Heading
-            Height: =52
             OnSelect: |-
                 =Set(varContactData,ThisItem);
                 //[anjali--]Navigate('Contact Detail Page',ScreenTransition.CoverRight);
@@ -194,12 +195,13 @@
             Width: =393
             Wrap: =false
             X: =10
-            Y: =105
+            Y: =96
             ZIndex: =16
 
         Body1_64 As label:
             BorderColor: =RGBA(0, 18, 107, 1)
-            Color: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//_VarGblAppColors.PrimaryRed
+            Color: |
+                =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Text Secondary Color").'Default Value')
             DisabledColor: =RGBA(166, 166, 166, 1)
             FocusedBorderThickness: =01
             Font: |-
@@ -219,7 +221,7 @@
             Tooltip: =ThisItem.'Mobile No'
             Width: =290
             X: =7
-            Y: =59
+            Y: =50
             ZIndex: =17
 
         Body1_73 As label:
@@ -231,7 +233,6 @@
                 =LookUp(c_EnvironmentVariable, 'Display Name'="Text Heading Font").'Default Value'
                 
                 //_VarGblAppFonts.Heading
-            Height: =52
             OnSelect: |-
                 =Set(varContactData,ThisItem);
                 Navigate('Contact Detail Page',ScreenTransition.CoverRight);
@@ -245,19 +246,19 @@
                 ="Department: " & ThisItem.Department
             Width: =218
             X: =392
-            Y: =105
+            Y: =96
             ZIndex: =18
 
         Body1_74 As label:
             BorderColor: =RGBA(0, 18, 107, 1)
-            Color: =RGBA(0, 0, 0, 1)
+            Color: |
+                =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Text Primary Color").'Default Value')
             DisabledColor: =RGBA(166, 166, 166, 1)
             FocusedBorderThickness: =01
             Font: |-
                 =LookUp(c_EnvironmentVariable, 'Display Name'="Text Heading Font").'Default Value'
                 
                 //_VarGblAppFonts.Heading
-            Height: =56
             OnSelect: |-
                 =Set(varContactData,ThisItem);
                 Navigate('Contact Detail Page',ScreenTransition.CoverRight);
@@ -271,7 +272,7 @@
                 ="Designation: " & ThisItem.Designation
             Width: =430
             X: =10
-            Y: =157
+            Y: =130
             ZIndex: =19
 
     "'Visit Gallery' As gallery.galleryVertical":
