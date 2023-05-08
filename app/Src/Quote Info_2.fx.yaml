@@ -1362,61 +1362,10 @@
                 OnChange: |
                     =If(
                         !IsBlank(HDisc.Text),
-                        
-                    /*
-                    Patch(
-                        varOrderData,
-                        LookUp('Order Headers','Order ID'=varOrderData.'Order ID'
-                        ),
-                        {
-                            'Discount %':Value(HDisc.Text)
-                        }
-                    );*/
-                    
-                    /*Set(
-                        varOrderData,
-                        LookUp(
-                            'Order Headers',
-                            'Order ID' = varOrderData.new_orderid
-                        )
-                    );*/
-                    
-                        /*ForAll(
-                            Filter(
-                                OfflineOrderLineCollection,
-                                'Order Header'.'Order ID' = varOrderData.'Order ID'
-                            ) As LID,
-                            Patch(
-                                OfflineOrderLineCollection,
-                                LookUp(
-                                    OfflineOrderLineCollection,
-                                    'Order Line ID' = LID.'Order Line ID'
-                                ),
-                                {'Discount %': Value(HDisc.Text)
-                                }
-                            )
-                        );
-                    
-                        ForAll(
-                            Filter(
-                                OfflineOrderLineCollection,
-                                'Order Header'.'Order ID' = varOrderData.'Order ID'
-                            ) As LID ,
-                            Patch(
-                                'Order Lines',
-                                LookUp(
-                                    'Order Lines',
-                                    'Order Line ID' = LID.'Order Line ID'
-                                ),
-                                {'Discount %': Value(HDisc.Text)
-                                }
-                            )
-                        );*/
-                        ////////////////////////Quote header///////
                          Patch(
-                        'Quote Headers',
+                        'Quote Header.S',
                         LookUp(
-                            'Quote Headers',
+                            'Quote Header.S',
                             'Quote ID' = _VarnewQuoteHeaderResponse.'Quote ID'
                         ),
                         {'DiscountP %' : Value(HDisc.Text),
@@ -1437,9 +1386,9 @@
                                  'Quote Header'.'Quote ID'= _VarnewQuoteHeaderResponse.'Quote ID'
                             ) As LQID ,
                             Patch(
-                                'Quote Lines',
+                                'Quote Line.S',
                                 LookUp(
-                                    'Quote Lines',
+                                    'Quote Line.S',
                                     'Quote Line ID' = LQID.'Quote Line ID'
                                 ),
                                 {
