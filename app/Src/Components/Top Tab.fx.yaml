@@ -81,7 +81,7 @@
 
         Rectangle28 As rectangle:
             BorderColor: =RGBA(0, 18, 107, 1)
-            Fill: =_VarGblAppColors.PrimaryRed
+            Fill: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//_VarGblAppColors.PrimaryRed
             Height: =1
             OnSelect: =Select(Parent)
             Visible: =If(_VarActivetopTabID = ThisItem.TabId,true,false)

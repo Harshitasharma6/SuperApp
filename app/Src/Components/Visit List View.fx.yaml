@@ -377,7 +377,7 @@
 
         Label30_2 As label:
             BorderColor: =RGBA(0, 18, 107, 1)
-            Color: =_VarGblAppColors.PrimaryRed
+            Color: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//_VarGblAppColors.PrimaryRed
             DisabledColor: =RGBA(166, 166, 166, 1)
             FontWeight: =FontWeight.Bold
             Height: =25
@@ -390,7 +390,7 @@
 
         Label30_7 As label:
             BorderColor: =RGBA(0, 18, 107, 1)
-            Color: =_VarGblAppColors.PrimaryRed
+            Color: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//_VarGblAppColors.PrimaryRed
             DisabledColor: =RGBA(166, 166, 166, 1)
             FontWeight: =FontWeight.Bold
             Height: =25
@@ -403,7 +403,7 @@
 
         Label30_8 As label:
             BorderColor: =RGBA(0, 18, 107, 1)
-            Color: =_VarGblAppColors.PrimaryRed
+            Color: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//_VarGblAppColors.PrimaryRed
             DisabledColor: =RGBA(166, 166, 166, 1)
             FontWeight: =FontWeight.Bold
             Height: =25
@@ -430,7 +430,7 @@
             HoverFill: =Self.Fill
             OnSelect: =Select(Parent)
             PressedFill: =Self.Fill
-            RatingFill: =_VarGblAppColors.PrimaryRed
+            RatingFill: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//_VarGblAppColors.PrimaryRed
             Width: =130
             X: =44
             Y: =219
@@ -458,7 +458,7 @@
             Icon3 As icon.Phone:
                 AccessibleLabel: ="Icon3"
                 BorderColor: =RGBA(0, 18, 107, 1)
-                Color: =_VarGblAppColors.PrimaryRed
+                Color: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//_VarGblAppColors.PrimaryRed
                 DisabledBorderColor: =RGBA(166, 166, 166, 1)
                 DisabledColor: =RGBA(244, 244, 244, 1)
                 Height: =37
@@ -483,7 +483,7 @@
             Icon3_1 As icon.Phone:
                 AccessibleLabel: ="Icon3_1"
                 BorderColor: =RGBA(0, 18, 107, 1)
-                Color: =_VarGblAppColors.PrimaryRed
+                Color: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//_VarGblAppColors.PrimaryRed
                 DisabledBorderColor: =RGBA(166, 166, 166, 1)
                 DisabledColor: =RGBA(244, 244, 244, 1)
                 Height: =35
@@ -883,8 +883,8 @@
                 BorderStyle: =BorderStyle.None
                 BorderThickness: =1
                 Fill: |-
-                    =
-                    LookUp(c_EnvironmentVariable, 'Display Name'="Button Fill").'Default Value'
+                    =ColorValue(
+                    LookUp(c_EnvironmentVariable, 'Display Name'="Button Fill").'Default Value')
                 Height: =45
                 OnSelect: =Select(Parent)
                 Width: =45
@@ -965,14 +965,14 @@
             DisabledBorderColor: =RGBA(166, 166, 166, 1)
             DisabledColor: =RGBA(166, 166, 166, 1)
             DisabledFill: =RGBA(244, 244, 244, 1)
-            Fill: =_VarGblAppColors.PrimaryRed
+            Fill: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//_VarGblAppColors.PrimaryRed
             FocusedBorderThickness: =
             FontWeight: =FontWeight.Semibold
             Height: =55
             HoverColor: =RGBA(255, 255, 255, 1)
             HoverFill: |-
                 =ColorFade(
-                    _VarGblAppColors.PrimaryRed
+                    ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//_VarGblAppColors.PrimaryRed
                     , 10%)
             OnSelect: |
                 =ClearCollect(
@@ -1033,13 +1033,13 @@
             DisabledBorderColor: =RGBA(166, 166, 166, 1)
             DisabledColor: =RGBA(166, 166, 166, 1)
             DisabledFill: =RGBA(244, 244, 244, 1)
-            Fill: =_VarGblAppColors.PrimaryRed
+            Fill: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//_VarGblAppColors.PrimaryRed
             FontWeight: =FontWeight.Semibold
             Height: =55
             HoverColor: =RGBA(255, 255, 255, 1)
             HoverFill: |-
                 =ColorFade(
-                    _VarGblAppColors.PrimaryRed
+                    ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//_VarGblAppColors.PrimaryRed
                     , 10%)
             OnSelect: |-
                 =Reset(DateFrom_2);
@@ -1091,7 +1091,7 @@
             Height: =63
             HoverDateFill: =RGBA(186, 202, 226, 1)
             IconBackground: =Color.Transparent
-            IconFill: =_VarGblAppColors.PrimaryRed
+            IconFill: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//_VarGblAppColors.PrimaryRed
             InputTextPlaceholder: =If(IsBlank(Self.SelectedDate), Text(Today(), "dd/mm/yyyy"))
             OnSelect: |-
                 =If(
@@ -1160,7 +1160,7 @@
             Height: =63
             HoverDateFill: =RGBA(186, 202, 226, 1)
             IconBackground: =Color.Transparent
-            IconFill: =_VarGblAppColors.PrimaryRed
+            IconFill: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//_VarGblAppColors.PrimaryRed
             InputTextPlaceholder: =If(IsBlank(Self.SelectedDate), Text(Today(), "dd/mm/yyyy"))
             OnSelect: |-
                 =If(

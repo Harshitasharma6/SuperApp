@@ -109,7 +109,7 @@
             Color: |+
                 =//_VarGblAppColors.PrimaryRed
                 If(ThisItem.IsSelected,ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )
-                ,_VarGblAppColors.textbgbutton)
+                ,ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Text Background Color").'Default Value' ))
                 
             DisabledColor: =RGBA(166, 166, 166, 1)
             FocusedBorderThickness: =0.3
@@ -136,7 +136,7 @@
                     )
                 )
                 //Set(_varsideNav, false))
-            Size: =_VarGblAppFonts.Size.Regular
+            Size: =LookUp(c_EnvironmentVariable,'Display Name'="Text Regular Font Size").'Default Value' 
             TabIndex: =0
             Text: =ThisItem.Title
             Width: =Parent.TemplateWidth

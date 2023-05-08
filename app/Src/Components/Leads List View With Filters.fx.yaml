@@ -141,7 +141,7 @@
             DisabledFill: =RGBA(244, 244, 244, 1)
             Fill: |-
                 =If(ThisItem.IsSelected && CountRows(colLeadFilter)=0, 
-                ColorValue(LookUp(c_EnvironmentVariable, 'Display Name'="Button Fill").'Default Value'),_VarGblAppColors.PrimaryBg)
+                ColorValue(LookUp(c_EnvironmentVariable, 'Display Name'="Button Fill").'Default Value'),ColorValue( LookUp('Environment Variable Definitions', 'Display Name'="Common Primary Background").'Default Value')//_VarGblAppColors.PrimaryBg)
             Font: =Font.'Segoe UI'
             FontWeight: =FontWeight.Bold
             Height: =43
@@ -620,7 +620,7 @@
             Rectangle1_32 As rectangle:
                 AccessibleLabel: ="Rectangle1_7"
                 BorderColor: =RGBA(0, 18, 107, 1)
-                Fill: =_VarGblAppColors.PrimaryBg
+                Fill: =ColorValue( LookUp('Environment Variable Definitions', 'Display Name'="Common Primary Background").'Default Value')//_VarGblAppColors.PrimaryBg
                 Height: =1.5
                 OnSelect: |-
                     =Navigate('Leads Detail Page',ScreenTransition.CoverRight);
@@ -637,7 +637,10 @@
                 DisabledColor: =RGBA(166, 166, 166, 1)
                 FocusedBorderColor: =Color.Transparent
                 FocusedBorderThickness: =0.1
-                Font: =_VarGblAppFonts.Heading
+                Font: |-
+                    =LookUp(c_EnvironmentVariable, 'Display Name'="Text Heading Font").'Default Value'
+                    
+                    //_VarGblAppFonts.Heading
                 FontWeight: =FontWeight.Bold
                 Height: =75
                 OnSelect: |
@@ -678,7 +681,10 @@
                 Color: =_VarGblAppColors.textbgbutton
                 DisabledColor: =RGBA(166, 166, 166, 1)
                 FocusedBorderThickness: =01
-                Font: =_VarGblAppFonts.Heading
+                Font: |-
+                    =LookUp(c_EnvironmentVariable, 'Display Name'="Text Heading Font").'Default Value'
+                    
+                    //_VarGblAppFonts.Heading
                 FontWeight: =FontWeight.Semibold
                 Height: =75
                 OnSelect: |-
@@ -702,7 +708,10 @@
                 Color: =RGBA(0, 0, 0, 1)
                 DisabledColor: =RGBA(166, 166, 166, 1)
                 FocusedBorderThickness: =01
-                Font: =_VarGblAppFonts.Heading
+                Font: |-
+                    =LookUp(c_EnvironmentVariable, 'Display Name'="Text Heading Font").'Default Value'
+                    
+                    //_VarGblAppFonts.Heading
                 Height: =35
                 OnSelect: |-
                     =Navigate('Leads Detail Page',ScreenTransition.CoverRight);
@@ -722,7 +731,10 @@
                 Color: =RGBA(0, 0, 0, 1)
                 DisabledColor: =RGBA(166, 166, 166, 1)
                 FocusedBorderThickness: =1
-                Font: =_VarGblAppFonts.Heading
+                Font: |-
+                    =LookUp(c_EnvironmentVariable, 'Display Name'="Text Heading Font").'Default Value'
+                    
+                    //_VarGblAppFonts.Heading
                 Height: =35
                 OnSelect: |-
                     =Navigate('Leads Detail Page',ScreenTransition.CoverRight);
@@ -743,7 +755,7 @@
                 DisabledColor: =RGBA(166, 166, 166, 1)
                 DisabledFill: =RGBA(244, 244, 244, 1)
                 DisplayMode: =DisplayMode.View
-                Fill: =_VarGblAppColors.PrimaryBg
+                Fill: =ColorValue( LookUp('Environment Variable Definitions', 'Display Name'="Common Primary Background").'Default Value')//_VarGblAppColors.PrimaryBg
                 FontWeight: =FontWeight.Semibold
                 Height: =37
                 HoverColor: =RGBA(255, 255, 255, 1)
@@ -762,7 +774,10 @@
                 Color: =_VarGblAppColors.PrimaryText
                 DisabledColor: =RGBA(166, 166, 166, 1)
                 FocusedBorderThickness: =01
-                Font: =_VarGblAppFonts.Heading
+                Font: |-
+                    =LookUp(c_EnvironmentVariable, 'Display Name'="Text Heading Font").'Default Value'
+                    
+                    //_VarGblAppFonts.Heading
                 Height: =75
                 OnSelect: |-
                     =Navigate('Leads Detail Page',ScreenTransition.CoverRight);
@@ -784,7 +799,10 @@
                 Color: =RGBA(0, 0, 0, 1)
                 DisabledColor: =RGBA(166, 166, 166, 1)
                 FocusedBorderThickness: =1
-                Font: =_VarGblAppFonts.Heading
+                Font: |-
+                    =LookUp(c_EnvironmentVariable, 'Display Name'="Text Heading Font").'Default Value'
+                    
+                    //_VarGblAppFonts.Heading
                 Height: =35
                 OnSelect: |-
                     =Navigate('Leads Detail Page',ScreenTransition.CoverRight);
