@@ -3102,7 +3102,7 @@
                  Navigate('Contact Detail Page',ScreenTransition.CoverRight);
             Size: =24
             Text: =""
-            Width: =610
+            Width: =600
             ZIndex: =1
 
         Rectangle1_17 As rectangle:
@@ -3253,8 +3253,8 @@
             Fill: =RGBA(56, 96, 178, 1)
             Height: =50
             Width: =50
-            X: =361
-            Y: =25
+            X: =363
+            Y: =16
             ZIndex: =8
 
         Icon10_7 As icon.Waypoint:
@@ -3263,7 +3263,7 @@
             Color: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//_VarGblAppColors.PrimaryRed
             DisabledBorderColor: =RGBA(166, 166, 166, 1)
             DisabledColor: =RGBA(244, 244, 244, 1)
-            Height: =41
+            Height: =50
             Icon: =Icon.Phone
             OnSelect: |
                 =Launch("tel://"&ThisItem.Contact.'Mobile No');
@@ -3274,7 +3274,7 @@
             TabIndex: =0
             Width: =50
             X: =363
-            Y: =29
+            Y: =16
             ZIndex: =9
 
         Border_3 As button:
@@ -3286,14 +3286,13 @@
             DisabledFill: =RGBA(244, 244, 244, 1)
             Fill: =ColorFade(ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' ), 80%)
             FocusedBorderThickness: =2.5
-            Height: =45
             HoverColor: =RGBA(255, 255, 255, 1)
             HoverFill: =
             OnSelect: =
-            Size: =20
+            Size: =16
             Text: ="Fresh"
-            Width: =150
-            X: =451
+            Width: =120
+            X: =469
             Y: =25
             ZIndex: =10
 
@@ -3307,14 +3306,13 @@
             Fill: =RGBA(255, 255, 255, 1)
             FocusedBorderThickness: =2.5
             Font: =Font.Arial
-            Height: =45
             HoverColor: =RGBA(255, 255, 255, 1)
             HoverFill: =
             OnSelect: =
-            Size: =20
+            Size: =16
             Text: ="Visit"
-            Width: =150
-            X: =451
-            Y: =145
+            Width: =120
+            X: =469
+            Y: =154
             ZIndex: =11
 
