@@ -266,10 +266,10 @@
             OnSelect: =Select(Parent)
             Size: =LookUp(c_EnvironmentVariable,'Display Name'="Text Medium Font Size").'Default Value'
             Text: |-
-                ="Discount: "
-            Width: =130
+                ="Discount Price: "
+            Width: =172
             Wrap: =false
-            X: =362
+            X: =332
             Y: =119
             ZIndex: =14
 
@@ -316,8 +316,9 @@
             Size: |
                 =16
             Text: |-
-                =  "₹" & Text(((ThisItem.baseUnitPrice - (ThisItem.baseUnitPrice * (ThisItem.discount/100))) * ThisItem.quantity)+ ThisItem.igstAmount + ThisItem.cgstAmount+ ThisItem.sgstAmount+ ThisItem.cessAmount,"[$-hi-IN]##,##,##,###",
-                                        "hi-IN")
+                =  "₹" & Text(((ThisItem.baseUnitPrice - (ThisItem.baseUnitPrice * (ThisItem.discount/100))) * ThisItem.quantity)+ ThisItem.igstAmount + ThisItem.cgstAmount+ ThisItem.sgstAmount+ ThisItem.cessAmount,
+                  /*"[$-hi-IN]##,##,##,###",
+                                        "hi-IN"*/  "[$-en-US]#.00")
                   
             Width: =95
             X: =504
@@ -331,8 +332,15 @@
             FontWeight: =FontWeight.Bold
             Size: =16
             Text: |-
-                ="₹" & (ThisItem.baseUnitPrice-(ThisItem.baseUnitPrice * (ThisItem.discount/100))) * ThisItem.quantity
-                 
+                =//"₹" & ThisItem.baseUnitPrice * (ThisItem.discount/100) * ThisItem.quantity
+                Concatenate(
+                    "₹",
+                    Text(
+                        ThisItem.baseUnitPrice * (ThisItem.discount / 100) * ThisItem.quantity,
+                       /* "[$-hi-IN]##,##,##,###",
+                        "hi-IN"*/  "[$-en-US]#.00"
+                    )
+                )
             Width: =96
             X: =504
             Y: =119
@@ -431,14 +439,14 @@
                             colSecondaryCart,
                             quantity
                         ),
-                        'Discount %': Sum(
-                            colSecondaryCart,
-                            (baseUnitPrice * (discount / 100)) * quantity// after discount
-                        ) / CountRows(colSecondaryCart),
-                        Discount: Sum(
+                        'Discount%': Sum(
                             colSecondaryCart,
                             discount
                         ),
+                        'Discount ': Sum(
+                            colSecondaryCart,
+                            (baseUnitPrice * (discount / 100)) * quantity// after discount
+                        ) ,
                         'Order Date': Today(),
                         'Total Price': Sum(
                             colSecondaryCart,
@@ -549,7 +557,7 @@
             );
             //Invoice Header Logic--------------------------------------------------------------------------
             Set(
-                _varInvoiceResponse,
+                _varInvoiceResponsee,
                 Patch(
                     'Invoice.S',
                     Defaults('Invoice.S'),
@@ -562,7 +570,7 @@
                             OfflinePartiesCollection,
                             'Customer Name' = varParty
                         ),
-                        'Total Discount': _VarOrderResponse.Discount,
+                        'Total Discount': _VarOrderResponse. 'Discount%',
                         'Total Amount': _VarOrderResponse.'Total Bill Amount',
                         CGST: _VarOrderResponse.CGST,
                         SGST: _VarOrderResponse.SGST,
@@ -572,7 +580,7 @@
             );
             //Invoice Line Logic:-----------------------------------------------------------------------------------
             If(
-                !IsBlank(_varInvoiceResponse),
+                !IsBlank(_varInvoiceResponsee),
                 ForAll(
                     colSecondaryCart As InvoiceLine,
                     Patch(
@@ -587,7 +595,7 @@
                             ),
                             Invoice: LookUp(
                                 'Invoice.S',
-                                'Invoice Id' = _varInvoiceResponse.'Invoice Id'
+                                'Invoice Id' = _varInvoiceResponsee.'Invoice Id'
                             ),
                             Quantity: Value(InvoiceLine.quantity),
                             'Discounted Base Price': Sum(

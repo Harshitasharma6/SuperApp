@@ -74,6 +74,13 @@ App As appinfo:
                 Parties = GUID("2aaf612d-36d4-ed11-a7c7-6045bdad294c")
             )
         );
+        Set(
+            varOrderTo,
+            LookUp(
+                'Environment Variable Definitions',
+                'Display Name' = "State"
+            ).'Default Value'
+        );
         Set(varUserr,First(UserAssignedAreas).Area.Area);
          
                 

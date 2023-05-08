@@ -125,7 +125,7 @@ orderlinecart As CanvasComponent:
             Size: |
                 =16
             Text: |-
-                ="Total Price: "
+                ="Net Price: "
             Width: =140
             Wrap: =false
             X: =362
@@ -142,7 +142,7 @@ orderlinecart As CanvasComponent:
             OnSelect: =Select(Parent)
             Size: =16
             Text: |-
-                ="Variant: " 
+                ="Total Price: " 
             Width: =140
             Wrap: =false
             X: =362
@@ -221,7 +221,14 @@ orderlinecart As CanvasComponent:
             FontWeight: =FontWeight.Bold
             Size: =16
             Text: |-
-                ="₹" & ThisItem.'Discount Amount'
+                =If(ThisItem.'Discount Amount' = 0,"₹0.00",Concatenate(
+                                "₹",
+                                Text(
+                                    ThisItem.'Discount Amount',
+                                    /*"[$-hi-IN]##,##,##,###",
+                                    "hi-IN"*/  "[$-en-US]#.00"
+                                )
+                            ))
                  
             Width: =96
             X: =504
@@ -234,7 +241,12 @@ orderlinecart As CanvasComponent:
             DisabledColor: =RGBA(166, 166, 166, 1)
             OnSelect: =Select(Parent)
             Size: =16
-            Text: =LookUp(OfflineProductSKUCollection,'Product SKU'= ThisItem.'Product SKU'.'Product SKU').Variant.'Variant Name'
+            Text: |-
+                =/*LookUp(
+                    OfflineProductSKUCollection,
+                    'Product SKU' = ThisItem.'Product SKU'.'Product SKU'
+                ).Variant.'Variant Name'*/
+                "₹"&ThisItem.'Unit Price' * ThisItem.Quantity
             Width: =96
             X: =504
             Y: =76
