@@ -1,5 +1,6 @@
 "'Customer 360 Screen' As screen":
     LoadingSpinnerColor: =RGBA(0, 120, 212, 1)
+    OnHidden: =Set(g_LocationNeeded,false)
 
     "'Bottom Bar_3' As 'Bottom Bar'":
         Y: =1026
@@ -740,4 +741,116 @@
         X: =232
         Y: =910
         ZIndex: =12
+
+    Group3_2 As group:
+        Height: =5
+        Width: =5
+        X: =40
+        Y: =40
+        ZIndex: =18
+
+        backdrop_9 As rectangle:
+            BorderColor: =RGBA(0, 18, 107, 1)
+            DisplayMode: =DisplayMode.View
+            Fill: =RGBA(153, 153, 153, 0.59)
+            Height: =App.Height
+            Visible: =g_LocationNeeded
+            Width: =App.Width
+            Y: =40
+            ZIndex: =13
+
+        "'filter button_7' As button":
+            DisabledBorderColor: =RGBA(166, 166, 166, 1)
+            DisabledColor: =RGBA(166, 166, 166, 1)
+            DisabledFill: =RGBA(244, 244, 244, 1)
+            DisplayMode: =DisplayMode.Disabled
+            Fill: =RGBA(255, 255, 255, 1)
+            FontWeight: =FontWeight.Semibold
+            Height: =333
+            HoverColor: =RGBA(255, 255, 255, 1)
+            HoverFill: =ColorFade(RGBA(56, 96, 178, 1), -20%)
+            RadiusBottomLeft: =0
+            RadiusBottomRight: =0
+            RadiusTopLeft: =25
+            RadiusTopRight: =25
+            Size: =24
+            Text: =""
+            Visible: =g_LocationNeeded
+            Width: =640
+            Y: =336
+            ZIndex: =14
+
+        Label4_6 As label:
+            Align: =Align.Center
+            BorderColor: =RGBA(0, 18, 107, 1)
+            Color: =RGBA(0, 0, 0, 1)
+            DisabledColor: =RGBA(166, 166, 166, 1)
+            FontWeight: =FontWeight.Semibold
+            Height: =130
+            Size: =LookUp(c_EnvironmentVariable,'Display Name'="Text Medium Font Size").'Default Value'
+            Text: ="Customer Location is missing. Do you want to add your location? "
+            Visible: =g_LocationNeeded
+            Width: =640
+            Y: =379
+            ZIndex: =15
+
+        Button20_15 As button:
+            DisabledBorderColor: =RGBA(166, 166, 166, 1)
+            DisabledColor: =RGBA(166, 166, 166, 1)
+            DisabledFill: =RGBA(244, 244, 244, 1)
+            Fill: |-
+                =//RGBA(204, 204, 204, 1)
+                ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//_VarGblAppColors.PrimaryRed
+            FontWeight: =FontWeight.Semibold
+            Height: =59
+            HoverColor: =RGBA(255, 255, 255, 1)
+            HoverFill: |
+                =ColorFade(Self.Fill, -20%)
+            OnSelect: |-
+                =
+                Set(g_LocationNeeded,false);
+                Navigate(Parties);
+            RadiusBottomLeft: =15
+            RadiusBottomRight: =15
+            RadiusTopLeft: =15
+            RadiusTopRight: =15
+            Size: =24
+            Text: ="No"
+            Visible: =g_LocationNeeded
+            Width: =231
+            X: =371
+            Y: =550
+            ZIndex: =16
+
+        Button20_14 As button:
+            DisabledBorderColor: =RGBA(166, 166, 166, 1)
+            DisabledColor: =RGBA(166, 166, 166, 1)
+            DisabledFill: =RGBA(244, 244, 244, 1)
+            Fill: |-
+                =//RGBA(204, 204, 204, 1)
+                ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//_VarGblAppColors.PrimaryRed
+            FontWeight: =FontWeight.Semibold
+            Height: =60
+            HoverColor: =RGBA(255, 255, 255, 1)
+            HoverFill: =ColorFade(Self.Fill, -20%)
+            OnSelect: |
+                =
+                
+                
+                Patch('Parties.S', 
+                
+                varCustomerRecord, {Latitude:Location.Latitude, Longitude:Location.Longitude});
+                 Set(g_LocationNeeded,false);
+                Refresh('Parties.S');
+            RadiusBottomLeft: =15
+            RadiusBottomRight: =15
+            RadiusTopLeft: =15
+            RadiusTopRight: =15
+            Size: =24
+            Text: ="Yes"
+            Visible: =g_LocationNeeded
+            Width: =231
+            X: =53
+            Y: =550
+            ZIndex: =17
 
