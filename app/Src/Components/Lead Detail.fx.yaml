@@ -782,7 +782,7 @@
             Height: =47
             HoverColor: =RGBA(255, 255, 255, 1)
             HoverFill: =ColorFade(Self.Fill, -20%)
-            OnSelect: |+
+            OnSelect: |
                 =If(
                     CountRows(
                         Filter(
@@ -796,7 +796,6 @@
                         2000
                     );
                     ,
-                    
                     Set(
                         _VarnewQuoteHeaderResponse,
                         With(
@@ -804,28 +803,31 @@
                                 QuoteLines: Filter(
                                     'Product Interested.S',
                                     Lead.Leads = varLeadData.zx_leadsid
-                                )},
-                                Patch(
-                                'Quote Header.S',              
-                                 Defaults('Quote Header.S'),
+                                )
+                            },
+                            Patch(
+                                'Quote Header.S',
+                                Defaults('Quote Header.S'),
                                 {
                                     'Bill To':LookUp(
                                         OfflinePartiesCollection,
-                                        'Customer Name' = varLeadData.zx_Party.'Customer Name'
+                                        Parties = varLeadData.zx_Party.Parties
                                     ),
-                                    'Approval Status':ApprovalChoiceQuoteHeader.Pending,
-                                    Approver:LookUp(Users,'Primary Email'=User().Email),
-                                    Version: 
-                                        1.0,
-                                        Lead: LookUp(
+                                    'Approval Status': ApprovalChoiceQuoteHeader.Pending,
+                                    Approver: LookUp(
+                                        Users,
+                                        'Primary Email' = User().Email
+                                    ),
+                                    Version: 1.0,
+                                    Lead: LookUp(
                                         offlineLeadCollection,
-                                        Leads = varLeadData.zx_leadsid
+                                        zx_leadsid = varLeadData.zx_leadsid
                                     ),
-                                    'Total Price':Sum(
+                                    'Total Price': Sum(
                                         QuoteLines,
                                         'Total Amount'
                                     ),
-                                     Quantity: Sum(
+                                    Quantity: Sum(
                                         QuoteLines,
                                         Quantity
                                     ),
@@ -836,91 +838,131 @@
                                     'Status (zx_status)': QuoteStatus.Activated
                                 }
                             )
-                    )));
-                
-                
-                    If(
-                        !IsBlank(_VarnewQuoteHeaderResponse),
-                        ForAll(
-                            Filter(
-                                'Product Interested.S',
-                                Lead.Leads = varLeadData.zx_leadsid
-                            ) As ItemQuoteLine,
-                
-                            Patch(
-                                'Quote Line.S',
-                                Defaults('Quote Line.S'),
-                                {
-                                    'Quote Header': LookUp(
-                                        'Quote Header.S',
-                                        'Quote ID' = _VarnewQuoteHeaderResponse.'Quote ID'),
-                                       Product: LookUp(
-                                        OfflineProductCollection,
-                                        Product = LookUp(
-                                            OfflineProductSKUCollection,
-                                            'Product SKU' = ItemQuoteLine.'Product SKU'.'Product SKU'
-                                        ).Product.Product
-                                    ),
-                                    'Product SKU': LookUp(
+                        )
+                    )
+                );
+                If(
+                    !IsBlank(_VarnewQuoteHeaderResponse),
+                    ForAll(
+                        Filter(
+                            'Product Interested.S',
+                            Lead.Leads = varLeadData.zx_leadsid
+                        ) As ItemQuoteLine,
+                        Patch(
+                            'Quote Line.S',
+                            Defaults('Quote Line.S'),
+                            {
+                                'Quote Header': LookUp(
+                                    'Quote Header.S',
+                                    'Quote ID' = _VarnewQuoteHeaderResponse.'Quote ID'
+                                ),
+                                Product: LookUp(
+                                    OfflineProductCollection,
+                                    Product = LookUp(
                                         OfflineProductSKUCollection,
                                         'Product SKU' = ItemQuoteLine.'Product SKU'.'Product SKU'
-                                    ),
-                                    Variant: LookUp(
-                                        OfflineProductVariantCollection,
-                                        'Product Variants' = LookUp(
-                                            OfflineProductSKUCollection,
-                                            'Product SKU' = ItemQuoteLine.'Product SKU'.'Product SKU'
-                                        ).'Product Variant'.'Product Variants'
-                                    ),
-                                   'Discount %':_VarnewQuoteHeaderResponse.Discount, //ItemQuoteLine.Discount,
-                                    'Total Unit Price': ItemQuoteLine.'Total Amount',
-                                    IGST: LookUp('HSN Masters',Name=LookUp(TaxN,TName=Name).TName).'IGST %' * ItemQuoteLine.'Total Amount'/100,
-                                    CGST: LookUp('HSN Masters',Name=LookUp(TaxN,TName=Name).TName).'CGST %' * ItemQuoteLine.'Total Amount'/100,
-                                    SGST: LookUp('HSN Masters',Name=LookUp(TaxN,TName=Name).TName).'SGST %' * ItemQuoteLine.'Total Amount'/100,
-                                    'PIGST %': LookUp('HSN Masters',Name=LookUp(TaxN,TName=Name).TName).'IGST %',
-                                    'PSGST %': LookUp('HSN Masters',Name=LookUp(TaxN,TName=Name).TName).'SGST %',
-                                    'PCGST %': LookUp('HSN Masters',Name=LookUp(TaxN,TName=Name).TName).'CGST %',
-                                    Quantity: ItemQuoteLine.Quantity,
-                                    'Unit Price': LookUp(
-                                        OfflineProductPriceCollection,
-                                        'Product SKU'.'Product SKU' = LookUp(
-                                            OfflineProductSKUCollection,
-                                            'Product SKU' = ItemQuoteLine.'Product SKU'.'Product SKU'
-                                        ).'Product SKU'
-                                    ).'Ex-Factory'                     
-                                }
-                            );
-                        )
-                    );
-                
-                
-                    ClearCollect(
-                        OfflineQuoteHeadCollection,
-                        Filter(
-                            'Quote Header.S',
-                            'Created By'.'Primary Email' = User().Email
-                        )
-                    );
-                    ClearCollect(
-                        OfflineQuoteLinCollection,
-                        'Quote Line.S'
-                    );
-                 With({
-                           QuoteH: Filter(
-                                'Quote Line.S',
-                             'Quote Header'.'Quote ID'=_VarnewQuoteHeaderResponse.'Quote ID'
-                            )
-                            },
-                
-                            Patch(
-                                'Quote Header.S',
-                                LookUp('Quote Header.S','Quote ID'=_VarnewQuoteHeaderResponse.'Quote ID'),
-                                {  
-                                    GST: Sum(QuoteH,GST)               
-                                }
-                            )
+                                    ).Product.Product
+                                ),
+                                'Product SKU': LookUp(
+                                    OfflineProductSKUCollection,
+                                    'Product SKU' = ItemQuoteLine.'Product SKU'.'Product SKU'
+                                ),
+                                Variant: LookUp(
+                                    OfflineProductVariantCollection,
+                                    'Product Variants' = LookUp(
+                                        OfflineProductSKUCollection,
+                                        'Product SKU' = ItemQuoteLine.'Product SKU'.'Product SKU'
+                                    ).'Product Variant'.'Product Variants'
+                                ),
+                                'Discount %': _VarnewQuoteHeaderResponse.Discount,
+                                //ItemQuoteLine.Discount,
+                                'Total Unit Price': ItemQuoteLine.'Total Amount',
+                                IGST: LookUp(
+                                    'HSN Masters',
+                                    Name = LookUp(
+                                        TaxN,
+                                        TName = Name
+                                    ).TName
+                                ).'IGST %' * ItemQuoteLine.'Total Amount' / 100,
+                                CGST: LookUp(
+                                    'HSN Masters',
+                                    Name = LookUp(
+                                        TaxN,
+                                        TName = Name
+                                    ).TName
+                                ).'CGST %' * ItemQuoteLine.'Total Amount' / 100,
+                                SGST: LookUp(
+                                    'HSN Masters',
+                                    Name = LookUp(
+                                        TaxN,
+                                        TName = Name
+                                    ).TName
+                                ).'SGST %' * ItemQuoteLine.'Total Amount' / 100,
+                                'PIGST %': LookUp(
+                                    'HSN Masters',
+                                    Name = LookUp(
+                                        TaxN,
+                                        TName = Name
+                                    ).TName
+                                ).'IGST %',
+                                'PSGST %': LookUp(
+                                    'HSN Masters',
+                                    Name = LookUp(
+                                        TaxN,
+                                        TName = Name
+                                    ).TName
+                                ).'SGST %',
+                                'PCGST %': LookUp(
+                                    'HSN Masters',
+                                    Name = LookUp(
+                                        TaxN,
+                                        TName = Name
+                                    ).TName
+                                ).'CGST %',
+                                Quantity: ItemQuoteLine.Quantity,
+                                'Unit Price': LookUp(
+                                    OfflineProductPriceCollection,
+                                    'Product SKU'.'Product SKU' = LookUp(
+                                        OfflineProductSKUCollection,
+                                        'Product SKU' = ItemQuoteLine.'Product SKU'.'Product SKU'
+                                    ).'Product SKU'
+                                ).'Ex-Factory'
+                            }
                         );
-                
+                    )
+                );
+                ClearCollect(
+                    OfflineQuoteHeadCollection,
+                    Filter(
+                        'Quote Header.S',
+                        'Created By'.'Primary Email' = User().Email
+                    )
+                );
+                ClearCollect(
+                    OfflineQuoteLinCollection,
+                    'Quote Line.S'
+                );
+                With(
+                    {
+                        QuoteH: Filter(
+                            'Quote Line.S',
+                            'Quote Header'.'Quote ID' = _VarnewQuoteHeaderResponse.'Quote ID'
+                        )
+                    },
+                    Patch(
+                        'Quote Header.S',
+                        LookUp(
+                            'Quote Header.S',
+                            'Quote ID' = _VarnewQuoteHeaderResponse.'Quote ID'
+                        ),
+                        {
+                            GST: Sum(
+                                QuoteH,
+                                GST
+                            )
+                        }
+                    )
+                );
             Size: =16
             Text: ="Create Quote"
             Visible: |-
