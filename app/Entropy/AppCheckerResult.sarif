@@ -20130,54 +20130,6 @@
               "message": {
                 "text": "Error occurred running rule app-InefficientDelayLoading."
               }
-            },
-            {
-              "associatedRule": {
-                "id": "app-InefficientDelayLoading",
-                "index": 24
-              },
-              "descriptor": {
-                "id": "app-InefficientDelayLoading"
-              },
-              "message": {
-                "text": "Error occurred running rule app-InefficientDelayLoading."
-              }
-            },
-            {
-              "associatedRule": {
-                "id": "app-InefficientDelayLoading",
-                "index": 24
-              },
-              "descriptor": {
-                "id": "app-InefficientDelayLoading"
-              },
-              "message": {
-                "text": "Error occurred running rule app-InefficientDelayLoading."
-              }
-            },
-            {
-              "associatedRule": {
-                "id": "app-InefficientDelayLoading",
-                "index": 24
-              },
-              "descriptor": {
-                "id": "app-InefficientDelayLoading"
-              },
-              "message": {
-                "text": "Error occurred running rule app-InefficientDelayLoading."
-              }
-            },
-            {
-              "associatedRule": {
-                "id": "app-InefficientDelayLoading",
-                "index": 24
-              },
-              "descriptor": {
-                "id": "app-InefficientDelayLoading"
-              },
-              "message": {
-                "text": "Error occurred running rule app-InefficientDelayLoading."
-              }
             }
           ]
         }
@@ -27215,6 +27167,43 @@
             {
               "logicalLocations": [
                 {
+                  "fullyQualifiedName": "'Lead Detail'.'Product Interested'.Button37.OnSelect"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Lead Detail'.'Product Interested'.Button37.OnSelect",
+                  "relativeAddress": 0
+                },
+                "region": {
+                  "charLength": 762,
+                  "charOffset": 0,
+                  "snippet": {
+                    "text": "Set(\r\n        _VarQuoteHeaderResponse,\r\n        With(\r\n            {\r\n                QuoteLines: Filter(\r\n                    'Product Interested.S',\r\n                    Lead.Leads = varLeadData.zx_leadsid\r\n                )\r\n            },\r\n            Patch(\r\n                'Order Header.S',\r\n                LookUp(\r\n                'Order Header.S',\r\n                'Order ID' = varOrderData.'Order ID'),\r\n                {\r\n                    'Total Bill Amount': Sum(\r\n                        QuoteLines,\r\n                        'Total Amount'\r\n                    ),\r\n                    Quantity: Sum(\r\n                        QuoteLines,\r\n                        Quantity\r\n                    )\r\n                }\r\n                )\r\n        )\r\n)"
+                  }
+                }
+              },
+              "properties": {
+                "member": "OnSelect",
+                "module": "Lead Detail",
+                "type": "'Lead Detail'.'Product Interested'.Button37"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "High"
+          },
+          "ruleId": "app-ErrIncompatibleCtxtVariableTypes",
+          "ruleIndex": 9
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
                   "fullyQualifiedName": "'Lead Detail'.'New Product Container'.'Filter Icn_1'.Image"
                 }
               ],
@@ -30368,7 +30357,7 @@
             "level": "High"
           },
           "ruleId": "app-ErrColDNE-Name",
-          "ruleIndex": 9
+          "ruleIndex": 10
         },
         {
           "locations": [
@@ -30962,7 +30951,7 @@
             "level": "High"
           },
           "ruleId": "app-ErrColDNE-Name",
-          "ruleIndex": 9
+          "ruleIndex": 10
         },
         {
           "locations": [
@@ -32423,7 +32412,7 @@
             "level": "High"
           },
           "ruleId": "app-ErrColDNE-Name",
-          "ruleIndex": 9
+          "ruleIndex": 10
         },
         {
           "locations": [
@@ -32460,7 +32449,7 @@
             "level": "High"
           },
           "ruleId": "app-ErrSearchWrongType",
-          "ruleIndex": 10
+          "ruleIndex": 11
         },
         {
           "locations": [
@@ -35042,6 +35031,86 @@
           "message": {
             "arguments": [
               "Reason for Rejection"
+            ],
+            "id": "issue"
+          },
+          "properties": {
+            "level": "High"
+          },
+          "ruleId": "app-ErrInvalidName",
+          "ruleIndex": 0
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Leads List View With Filters'.Customer"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Leads List View With Filters'.Customer",
+                  "relativeAddress": 0
+                },
+                "region": {
+                  "charLength": 23,
+                  "charOffset": 0,
+                  "snippet": {
+                    "text": "_VarClickedVisitAccount"
+                  }
+                }
+              },
+              "properties": {
+                "member": "Customer",
+                "module": "Leads List View With Filters",
+                "type": "'Leads List View With Filters'"
+              }
+            }
+          ],
+          "message": {
+            "arguments": [
+              "_VarClickedVisitAccount"
+            ],
+            "id": "issue"
+          },
+          "properties": {
+            "level": "High"
+          },
+          "ruleId": "app-ErrInvalidName",
+          "ruleIndex": 0
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Leads List View'.Customer"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Leads List View'.Customer",
+                  "relativeAddress": 0
+                },
+                "region": {
+                  "charLength": 23,
+                  "charOffset": 0,
+                  "snippet": {
+                    "text": "_VarClickedVisitAccount"
+                  }
+                }
+              },
+              "properties": {
+                "member": "Customer",
+                "module": "Leads List View",
+                "type": "'Leads List View'"
+              }
+            }
+          ],
+          "message": {
+            "arguments": [
+              "_VarClickedVisitAccount"
             ],
             "id": "issue"
           },
@@ -38818,7 +38887,7 @@
             "level": "High"
           },
           "ruleId": "app-ErrIncompatibleRulePropTypes-PropKind-RuleKind",
-          "ruleIndex": 11
+          "ruleIndex": 12
         },
         {
           "locations": [
@@ -44523,7 +44592,7 @@
             "level": "High"
           },
           "ruleId": "app-ErrColDNE-Name",
-          "ruleIndex": 9
+          "ruleIndex": 10
         },
         {
           "locations": [
@@ -45396,7 +45465,7 @@
             "level": "High"
           },
           "ruleId": "app-ErrColDNE-Name",
-          "ruleIndex": 9
+          "ruleIndex": 10
         },
         {
           "locations": [
@@ -45996,7 +46065,7 @@
             "level": "High"
           },
           "ruleId": "app-ErrColDNE-Name",
-          "ruleIndex": 9
+          "ruleIndex": 10
         },
         {
           "locations": [
@@ -46277,7 +46346,7 @@
             "level": "High"
           },
           "ruleId": "app-ErrColDNE-Name",
-          "ruleIndex": 9
+          "ruleIndex": 10
         },
         {
           "locations": [
@@ -49912,7 +49981,7 @@
             "level": "High"
           },
           "ruleId": "app-ErrColDNE-Name",
-          "ruleIndex": 9
+          "ruleIndex": 10
         },
         {
           "locations": [
@@ -51372,7 +51441,7 @@
             "level": "High"
           },
           "ruleId": "app-ErrColDNE-Name",
-          "ruleIndex": 9
+          "ruleIndex": 10
         },
         {
           "locations": [
@@ -51449,7 +51518,7 @@
             "level": "High"
           },
           "ruleId": "app-ErrTypeError",
-          "ruleIndex": 12
+          "ruleIndex": 13
         },
         {
           "locations": [
@@ -52468,7 +52537,7 @@
             "level": "High"
           },
           "ruleId": "app-ErrColDNE-Name",
-          "ruleIndex": 9
+          "ruleIndex": 10
         },
         {
           "locations": [
@@ -53726,7 +53795,7 @@
             "level": "High"
           },
           "ruleId": "app-ErrColDNE-Name",
-          "ruleIndex": 9
+          "ruleIndex": 10
         },
         {
           "locations": [
@@ -53800,7 +53869,7 @@
             "level": "High"
           },
           "ruleId": "app-ErrIncompatibleCtxtVariableTypes",
-          "ruleIndex": 13
+          "ruleIndex": 9
         },
         {
           "locations": [
@@ -53837,7 +53906,7 @@
             "level": "High"
           },
           "ruleId": "app-ErrIncompatibleCtxtVariableTypes",
-          "ruleIndex": 13
+          "ruleIndex": 9
         },
         {
           "locations": [
@@ -54433,7 +54502,7 @@
             "level": "High"
           },
           "ruleId": "app-ErrColDNE-Name",
-          "ruleIndex": 9
+          "ruleIndex": 10
         },
         {
           "locations": [
@@ -54714,7 +54783,7 @@
             "level": "High"
           },
           "ruleId": "app-ErrColDNE-Name",
-          "ruleIndex": 9
+          "ruleIndex": 10
         },
         {
           "locations": [
@@ -55743,7 +55812,7 @@
             "level": "High"
           },
           "ruleId": "app-ErrColDNE-Name",
-          "ruleIndex": 9
+          "ruleIndex": 10
         },
         {
           "locations": [
@@ -56104,7 +56173,7 @@
             "level": "High"
           },
           "ruleId": "app-ErrColDNE-Name",
-          "ruleIndex": 9
+          "ruleIndex": 10
         },
         {
           "locations": [
@@ -56425,7 +56494,7 @@
             "level": "High"
           },
           "ruleId": "app-ErrColDNE-Name",
-          "ruleIndex": 9
+          "ruleIndex": 10
         },
         {
           "locations": [
@@ -56706,7 +56775,7 @@
             "level": "High"
           },
           "ruleId": "app-ErrColDNE-Name",
-          "ruleIndex": 9
+          "ruleIndex": 10
         },
         {
           "locations": [
@@ -56987,7 +57056,7 @@
             "level": "High"
           },
           "ruleId": "app-ErrColDNE-Name",
-          "ruleIndex": 9
+          "ruleIndex": 10
         },
         {
           "locations": [
@@ -57268,7 +57337,7 @@
             "level": "High"
           },
           "ruleId": "app-ErrColDNE-Name",
-          "ruleIndex": 9
+          "ruleIndex": 10
         },
         {
           "locations": [
@@ -58338,7 +58407,7 @@
             "level": "High"
           },
           "ruleId": "app-ErrColDNE-Name",
-          "ruleIndex": 9
+          "ruleIndex": 10
         },
         {
           "locations": [
@@ -58619,7 +58688,7 @@
             "level": "High"
           },
           "ruleId": "app-ErrColDNE-Name",
-          "ruleIndex": 9
+          "ruleIndex": 10
         },
         {
           "locations": [
@@ -58900,7 +58969,7 @@
             "level": "High"
           },
           "ruleId": "app-ErrColDNE-Name",
-          "ruleIndex": 9
+          "ruleIndex": 10
         },
         {
           "locations": [
@@ -58937,7 +59006,7 @@
             "level": "High"
           },
           "ruleId": "app-ErrIncompatibleCtxtVariableTypes",
-          "ruleIndex": 13
+          "ruleIndex": 9
         },
         {
           "locations": [
@@ -58974,7 +59043,7 @@
             "level": "High"
           },
           "ruleId": "app-ErrIncompatibleCtxtVariableTypes",
-          "ruleIndex": 13
+          "ruleIndex": 9
         },
         {
           "locations": [
@@ -59061,326 +59130,6 @@
             {
               "logicalLocations": [
                 {
-                  "fullyQualifiedName": "'Start Visit'.Gallery1_9.Circle7_1.OnSelect"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "'Start Visit'.Gallery1_9.Circle7_1.OnSelect",
-                  "relativeAddress": 0
-                },
-                "region": {
-                  "charLength": 31,
-                  "charOffset": 84,
-                  "snippet": {
-                    "text": "Text('Visit date',\"dd-mm-yyyy\")"
-                  }
-                }
-              },
-              "properties": {
-                "member": "OnSelect",
-                "module": "Start Visit",
-                "type": "'Start Visit'.Gallery1_9.Circle7_1"
-              }
-            }
-          ],
-          "message": {
-            "arguments": [
-              "Text"
-            ],
-            "id": "issue"
-          },
-          "properties": {
-            "level": "Medium"
-          },
-          "ruleId": "app-SuggestRemoteExecutionHint",
-          "ruleIndex": 7
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "'Start Visit'.Gallery1_9.Circle7_1.OnSelect"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "'Start Visit'.Gallery1_9.Circle7_1.OnSelect",
-                  "relativeAddress": 0
-                },
-                "region": {
-                  "charLength": 1,
-                  "charOffset": 115,
-                  "snippet": {
-                    "text": "="
-                  }
-                }
-              },
-              "properties": {
-                "member": "OnSelect",
-                "module": "Start Visit",
-                "type": "'Start Visit'.Gallery1_9.Circle7_1"
-              }
-            }
-          ],
-          "message": {
-            "arguments": [
-              "LookUp"
-            ],
-            "id": "issue"
-          },
-          "properties": {
-            "level": "Medium"
-          },
-          "ruleId": "app-SuggestRemoteExecutionHint",
-          "ruleIndex": 7
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "'Start Visit'.Gallery1_9.Circle7_1.OnSelect"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "'Start Visit'.Gallery1_9.Circle7_1.OnSelect",
-                  "relativeAddress": 0
-                },
-                "region": {
-                  "charLength": 2,
-                  "charOffset": 82,
-                  "snippet": {
-                    "text": "&&"
-                  }
-                }
-              },
-              "properties": {
-                "member": "OnSelect",
-                "module": "Start Visit",
-                "type": "'Start Visit'.Gallery1_9.Circle7_1"
-              }
-            }
-          ],
-          "message": {
-            "arguments": [
-              "LookUp"
-            ],
-            "id": "issue"
-          },
-          "properties": {
-            "level": "Medium"
-          },
-          "ruleId": "app-SuggestRemoteExecutionHint",
-          "ruleIndex": 7
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "'Start Visit'.Gallery1_9.Circle7_1.OnSelect"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "'Start Visit'.Gallery1_9.Circle7_1.OnSelect",
-                  "relativeAddress": 0
-                },
-                "region": {
-                  "charLength": 2,
-                  "charOffset": 143,
-                  "snippet": {
-                    "text": "&&"
-                  }
-                }
-              },
-              "properties": {
-                "member": "OnSelect",
-                "module": "Start Visit",
-                "type": "'Start Visit'.Gallery1_9.Circle7_1"
-              }
-            }
-          ],
-          "message": {
-            "arguments": [
-              "LookUp"
-            ],
-            "id": "issue"
-          },
-          "properties": {
-            "level": "Medium"
-          },
-          "ruleId": "app-SuggestRemoteExecutionHint",
-          "ruleIndex": 7
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "'Start Visit'.Gallery1_9.Circle7_1.OnSelect"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "'Start Visit'.Gallery1_9.Circle7_1.OnSelect",
-                  "relativeAddress": 0
-                },
-                "region": {
-                  "charLength": 23,
-                  "charOffset": 681,
-                  "snippet": {
-                    "text": "DateValue('Visit date')"
-                  }
-                }
-              },
-              "properties": {
-                "member": "OnSelect",
-                "module": "Start Visit",
-                "type": "'Start Visit'.Gallery1_9.Circle7_1"
-              }
-            }
-          ],
-          "message": {
-            "arguments": [
-              "DateValue"
-            ],
-            "id": "issue"
-          },
-          "properties": {
-            "level": "Medium"
-          },
-          "ruleId": "app-SuggestRemoteExecutionHint",
-          "ruleIndex": 7
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "'Start Visit'.Gallery1_9.Circle7_1.OnSelect"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "'Start Visit'.Gallery1_9.Circle7_1.OnSelect",
-                  "relativeAddress": 0
-                },
-                "region": {
-                  "charLength": 2,
-                  "charOffset": 705,
-                  "snippet": {
-                    "text": ">="
-                  }
-                }
-              },
-              "properties": {
-                "member": "OnSelect",
-                "module": "Start Visit",
-                "type": "'Start Visit'.Gallery1_9.Circle7_1"
-              }
-            }
-          ],
-          "message": {
-            "arguments": [
-              "LookUp"
-            ],
-            "id": "issue"
-          },
-          "properties": {
-            "level": "Medium"
-          },
-          "ruleId": "app-SuggestRemoteExecutionHint",
-          "ruleIndex": 7
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "'Start Visit'.Gallery1_9.Circle7_1.OnSelect"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "'Start Visit'.Gallery1_9.Circle7_1.OnSelect",
-                  "relativeAddress": 0
-                },
-                "region": {
-                  "charLength": 2,
-                  "charOffset": 678,
-                  "snippet": {
-                    "text": "&&"
-                  }
-                }
-              },
-              "properties": {
-                "member": "OnSelect",
-                "module": "Start Visit",
-                "type": "'Start Visit'.Gallery1_9.Circle7_1"
-              }
-            }
-          ],
-          "message": {
-            "arguments": [
-              "LookUp"
-            ],
-            "id": "issue"
-          },
-          "properties": {
-            "level": "Medium"
-          },
-          "ruleId": "app-SuggestRemoteExecutionHint",
-          "ruleIndex": 7
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "'Start Visit'.Gallery1_9.Circle7_1.OnSelect"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "'Start Visit'.Gallery1_9.Circle7_1.OnSelect",
-                  "relativeAddress": 0
-                },
-                "region": {
-                  "charLength": 2,
-                  "charOffset": 716,
-                  "snippet": {
-                    "text": "&&"
-                  }
-                }
-              },
-              "properties": {
-                "member": "OnSelect",
-                "module": "Start Visit",
-                "type": "'Start Visit'.Gallery1_9.Circle7_1"
-              }
-            }
-          ],
-          "message": {
-            "arguments": [
-              "LookUp"
-            ],
-            "id": "issue"
-          },
-          "properties": {
-            "level": "Medium"
-          },
-          "ruleId": "app-SuggestRemoteExecutionHint",
-          "ruleIndex": 7
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
                   "fullyQualifiedName": "'Start Visit'.Gallery1_9.Image15_1.Image"
                 }
               ],
@@ -59391,7 +59140,7 @@
                 },
                 "region": {
                   "charLength": 31,
-                  "charOffset": 162,
+                  "charOffset": 163,
                   "snippet": {
                     "text": "Text('Visit date',\"dd-mm-yyyy\")"
                   }
@@ -59431,7 +59180,7 @@
                 },
                 "region": {
                   "charLength": 1,
-                  "charOffset": 193,
+                  "charOffset": 194,
                   "snippet": {
                     "text": "="
                   }
@@ -59511,7 +59260,7 @@
                 },
                 "region": {
                   "charLength": 2,
-                  "charOffset": 221,
+                  "charOffset": 222,
                   "snippet": {
                     "text": "&&"
                   }
@@ -59541,320 +59290,155 @@
             {
               "logicalLocations": [
                 {
-                  "fullyQualifiedName": "'Start Visit'.Gallery1_9.Image15_1.OnSelect"
+                  "fullyQualifiedName": "'Visit Info'.Button4.Text"
                 }
               ],
               "physicalLocation": {
                 "address": {
-                  "fullyQualifiedName": "'Start Visit'.Gallery1_9.Image15_1.OnSelect",
+                  "fullyQualifiedName": "'Visit Info'.Button4.Text",
                   "relativeAddress": 0
                 },
                 "region": {
-                  "charLength": 31,
-                  "charOffset": 86,
+                  "charLength": 23,
+                  "charOffset": 9,
                   "snippet": {
-                    "text": "Text('Visit date',\"dd-mm-yyyy\")"
+                    "text": "_VarClickedVisitAccount"
                   }
                 }
               },
               "properties": {
-                "member": "OnSelect",
-                "module": "Start Visit",
-                "type": "'Start Visit'.Gallery1_9.Image15_1"
+                "member": "Text",
+                "module": "Visit Info",
+                "type": "'Visit Info'.Button4"
               }
             }
           ],
           "message": {
             "arguments": [
-              "Text"
+              "_VarClickedVisitAccount"
             ],
             "id": "issue"
           },
           "properties": {
-            "level": "Medium"
+            "level": "High"
           },
-          "ruleId": "app-SuggestRemoteExecutionHint",
-          "ruleIndex": 7
+          "ruleId": "app-ErrInvalidName",
+          "ruleIndex": 0
         },
         {
           "locations": [
             {
               "logicalLocations": [
                 {
-                  "fullyQualifiedName": "'Start Visit'.Gallery1_9.Image15_1.OnSelect"
+                  "fullyQualifiedName": "'Visit Info'.Button4.Text"
                 }
               ],
               "physicalLocation": {
                 "address": {
-                  "fullyQualifiedName": "'Start Visit'.Gallery1_9.Image15_1.OnSelect",
+                  "fullyQualifiedName": "'Visit Info'.Button4.Text",
+                  "relativeAddress": 0
+                },
+                "region": {
+                  "charLength": 6,
+                  "charOffset": 32,
+                  "snippet": {
+                    "text": ".Party"
+                  }
+                }
+              },
+              "properties": {
+                "member": "Text",
+                "module": "Visit Info",
+                "type": "'Visit Info'.Button4"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "High"
+          },
+          "ruleId": "app-ErrInvalidDot",
+          "ruleIndex": 1
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Visit Info'.Button4.Text"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Visit Info'.Button4.Text",
+                  "relativeAddress": 0
+                },
+                "region": {
+                  "charLength": 16,
+                  "charOffset": 38,
+                  "snippet": {
+                    "text": ".'Customer Type'"
+                  }
+                }
+              },
+              "properties": {
+                "member": "Text",
+                "module": "Visit Info",
+                "type": "'Visit Info'.Button4"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "High"
+          },
+          "ruleId": "app-ErrInvalidDot",
+          "ruleIndex": 1
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Visit Info'.Button4.Text"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Visit Info'.Button4.Text",
                   "relativeAddress": 0
                 },
                 "region": {
                   "charLength": 1,
-                  "charOffset": 117,
+                  "charOffset": 55,
                   "snippet": {
                     "text": "="
                   }
                 }
               },
               "properties": {
-                "member": "OnSelect",
-                "module": "Start Visit",
-                "type": "'Start Visit'.Gallery1_9.Image15_1"
+                "member": "Text",
+                "module": "Visit Info",
+                "type": "'Visit Info'.Button4"
               }
             }
           ],
           "message": {
             "arguments": [
-              "LookUp"
+              "Error",
+              "OptionSetValue (Party Type Choices)"
             ],
             "id": "issue"
           },
           "properties": {
-            "level": "Medium"
+            "level": "High"
           },
-          "ruleId": "app-SuggestRemoteExecutionHint",
-          "ruleIndex": 7
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "'Start Visit'.Gallery1_9.Image15_1.OnSelect"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "'Start Visit'.Gallery1_9.Image15_1.OnSelect",
-                  "relativeAddress": 0
-                },
-                "region": {
-                  "charLength": 2,
-                  "charOffset": 84,
-                  "snippet": {
-                    "text": "&&"
-                  }
-                }
-              },
-              "properties": {
-                "member": "OnSelect",
-                "module": "Start Visit",
-                "type": "'Start Visit'.Gallery1_9.Image15_1"
-              }
-            }
-          ],
-          "message": {
-            "arguments": [
-              "LookUp"
-            ],
-            "id": "issue"
-          },
-          "properties": {
-            "level": "Medium"
-          },
-          "ruleId": "app-SuggestRemoteExecutionHint",
-          "ruleIndex": 7
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "'Start Visit'.Gallery1_9.Image15_1.OnSelect"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "'Start Visit'.Gallery1_9.Image15_1.OnSelect",
-                  "relativeAddress": 0
-                },
-                "region": {
-                  "charLength": 2,
-                  "charOffset": 145,
-                  "snippet": {
-                    "text": "&&"
-                  }
-                }
-              },
-              "properties": {
-                "member": "OnSelect",
-                "module": "Start Visit",
-                "type": "'Start Visit'.Gallery1_9.Image15_1"
-              }
-            }
-          ],
-          "message": {
-            "arguments": [
-              "LookUp"
-            ],
-            "id": "issue"
-          },
-          "properties": {
-            "level": "Medium"
-          },
-          "ruleId": "app-SuggestRemoteExecutionHint",
-          "ruleIndex": 7
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "'Start Visit'.Gallery1_9.Image15_1.OnSelect"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "'Start Visit'.Gallery1_9.Image15_1.OnSelect",
-                  "relativeAddress": 0
-                },
-                "region": {
-                  "charLength": 23,
-                  "charOffset": 731,
-                  "snippet": {
-                    "text": "DateValue('Visit date')"
-                  }
-                }
-              },
-              "properties": {
-                "member": "OnSelect",
-                "module": "Start Visit",
-                "type": "'Start Visit'.Gallery1_9.Image15_1"
-              }
-            }
-          ],
-          "message": {
-            "arguments": [
-              "DateValue"
-            ],
-            "id": "issue"
-          },
-          "properties": {
-            "level": "Medium"
-          },
-          "ruleId": "app-SuggestRemoteExecutionHint",
-          "ruleIndex": 7
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "'Start Visit'.Gallery1_9.Image15_1.OnSelect"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "'Start Visit'.Gallery1_9.Image15_1.OnSelect",
-                  "relativeAddress": 0
-                },
-                "region": {
-                  "charLength": 2,
-                  "charOffset": 755,
-                  "snippet": {
-                    "text": ">="
-                  }
-                }
-              },
-              "properties": {
-                "member": "OnSelect",
-                "module": "Start Visit",
-                "type": "'Start Visit'.Gallery1_9.Image15_1"
-              }
-            }
-          ],
-          "message": {
-            "arguments": [
-              "LookUp"
-            ],
-            "id": "issue"
-          },
-          "properties": {
-            "level": "Medium"
-          },
-          "ruleId": "app-SuggestRemoteExecutionHint",
-          "ruleIndex": 7
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "'Start Visit'.Gallery1_9.Image15_1.OnSelect"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "'Start Visit'.Gallery1_9.Image15_1.OnSelect",
-                  "relativeAddress": 0
-                },
-                "region": {
-                  "charLength": 2,
-                  "charOffset": 728,
-                  "snippet": {
-                    "text": "&&"
-                  }
-                }
-              },
-              "properties": {
-                "member": "OnSelect",
-                "module": "Start Visit",
-                "type": "'Start Visit'.Gallery1_9.Image15_1"
-              }
-            }
-          ],
-          "message": {
-            "arguments": [
-              "LookUp"
-            ],
-            "id": "issue"
-          },
-          "properties": {
-            "level": "Medium"
-          },
-          "ruleId": "app-SuggestRemoteExecutionHint",
-          "ruleIndex": 7
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "'Start Visit'.Gallery1_9.Image15_1.OnSelect"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "'Start Visit'.Gallery1_9.Image15_1.OnSelect",
-                  "relativeAddress": 0
-                },
-                "region": {
-                  "charLength": 2,
-                  "charOffset": 766,
-                  "snippet": {
-                    "text": "&&"
-                  }
-                }
-              },
-              "properties": {
-                "member": "OnSelect",
-                "module": "Start Visit",
-                "type": "'Start Visit'.Gallery1_9.Image15_1"
-              }
-            }
-          ],
-          "message": {
-            "arguments": [
-              "LookUp"
-            ],
-            "id": "issue"
-          },
-          "properties": {
-            "level": "Medium"
-          },
-          "ruleId": "app-SuggestRemoteExecutionHint",
-          "ruleIndex": 7
+          "ruleId": "app-ErrIncompatibleTypesForEquality-Left-Right",
+          "ruleIndex": 3
         },
         {
           "locations": [
@@ -60148,88 +59732,8 @@
                   "relativeAddress": 0
                 },
                 "region": {
-                  "charLength": 11,
-                  "charOffset": 101,
-                  "snippet": {
-                    "text": "PrimaryCart"
-                  }
-                }
-              },
-              "properties": {
-                "member": "OnSelect",
-                "module": "Visit Info",
-                "type": "'Visit Info'.Icon7"
-              }
-            }
-          ],
-          "message": {
-            "arguments": [
-              "PrimaryCart"
-            ],
-            "id": "issue"
-          },
-          "properties": {
-            "level": "High"
-          },
-          "ruleId": "app-ErrInvalidName",
-          "ruleIndex": 0
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "'Visit Info'.Icon7.OnSelect"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "'Visit Info'.Icon7.OnSelect",
-                  "relativeAddress": 0
-                },
-                "region": {
-                  "charLength": 22,
-                  "charOffset": 91,
-                  "snippet": {
-                    "text": "CountRows(PrimaryCart)"
-                  }
-                }
-              },
-              "properties": {
-                "member": "OnSelect",
-                "module": "Visit Info",
-                "type": "'Visit Info'.Icon7"
-              }
-            }
-          ],
-          "message": {
-            "arguments": [
-              "CountRows"
-            ],
-            "id": "issue"
-          },
-          "properties": {
-            "level": "High"
-          },
-          "ruleId": "app-ErrInvalidArgs-Func",
-          "ruleIndex": 2
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "'Visit Info'.Icon7.OnSelect"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "'Visit Info'.Icon7.OnSelect",
-                  "relativeAddress": 0
-                },
-                "region": {
                   "charLength": 17,
-                  "charOffset": 130,
+                  "charOffset": 133,
                   "snippet": {
                     "text": "DataCardValue30_2"
                   }
@@ -60269,7 +59773,7 @@
                 },
                 "region": {
                   "charLength": 16,
-                  "charOffset": 155,
+                  "charOffset": 158,
                   "snippet": {
                     "text": "newProductList_2"
                   }
@@ -60309,7 +59813,7 @@
                 },
                 "region": {
                   "charLength": 10,
-                  "charOffset": 171,
+                  "charOffset": 174,
                   "snippet": {
                     "text": ".OrderType"
                   }
@@ -60346,7 +59850,7 @@
                 },
                 "region": {
                   "charLength": 1,
-                  "charOffset": 182,
+                  "charOffset": 185,
                   "snippet": {
                     "text": "="
                   }
@@ -60386,88 +59890,8 @@
                   "relativeAddress": 0
                 },
                 "region": {
-                  "charLength": 13,
-                  "charOffset": 209,
-                  "snippet": {
-                    "text": "SecondaryCart"
-                  }
-                }
-              },
-              "properties": {
-                "member": "OnSelect",
-                "module": "Visit Info",
-                "type": "'Visit Info'.Icon7"
-              }
-            }
-          ],
-          "message": {
-            "arguments": [
-              "SecondaryCart"
-            ],
-            "id": "issue"
-          },
-          "properties": {
-            "level": "High"
-          },
-          "ruleId": "app-ErrInvalidName",
-          "ruleIndex": 0
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "'Visit Info'.Icon7.OnSelect"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "'Visit Info'.Icon7.OnSelect",
-                  "relativeAddress": 0
-                },
-                "region": {
-                  "charLength": 24,
-                  "charOffset": 199,
-                  "snippet": {
-                    "text": "CountRows(SecondaryCart)"
-                  }
-                }
-              },
-              "properties": {
-                "member": "OnSelect",
-                "module": "Visit Info",
-                "type": "'Visit Info'.Icon7"
-              }
-            }
-          ],
-          "message": {
-            "arguments": [
-              "CountRows"
-            ],
-            "id": "issue"
-          },
-          "properties": {
-            "level": "High"
-          },
-          "ruleId": "app-ErrInvalidArgs-Func",
-          "ruleIndex": 2
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "'Visit Info'.Icon7.OnSelect"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "'Visit Info'.Icon7.OnSelect",
-                  "relativeAddress": 0
-                },
-                "region": {
                   "charLength": 17,
-                  "charOffset": 240,
+                  "charOffset": 246,
                   "snippet": {
                     "text": "DataCardValue30_2"
                   }
@@ -60813,6 +60237,46 @@
             {
               "logicalLocations": [
                 {
+                  "fullyQualifiedName": "'Lead List View With Filters'.'Leads List View With Filters_1'.Customer"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Lead List View With Filters'.'Leads List View With Filters_1'.Customer",
+                  "relativeAddress": 0
+                },
+                "region": {
+                  "charLength": 23,
+                  "charOffset": 0,
+                  "snippet": {
+                    "text": "_VarClickedVisitAccount"
+                  }
+                }
+              },
+              "properties": {
+                "member": "Customer",
+                "module": "Lead List View With Filters",
+                "type": "'Lead List View With Filters'.'Leads List View With Filters_1'"
+              }
+            }
+          ],
+          "message": {
+            "arguments": [
+              "_VarClickedVisitAccount"
+            ],
+            "id": "issue"
+          },
+          "properties": {
+            "level": "High"
+          },
+          "ruleId": "app-ErrInvalidName",
+          "ruleIndex": 0
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
                   "fullyQualifiedName": "'New Lead List'.Button9_7.OnSelect"
                 }
               ],
@@ -60839,6 +60303,46 @@
           "message": {
             "arguments": [
               "Lead Form"
+            ],
+            "id": "issue"
+          },
+          "properties": {
+            "level": "High"
+          },
+          "ruleId": "app-ErrInvalidName",
+          "ruleIndex": 0
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'New Lead List'.'Leads List View_1'.Customer"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'New Lead List'.'Leads List View_1'.Customer",
+                  "relativeAddress": 0
+                },
+                "region": {
+                  "charLength": 23,
+                  "charOffset": 0,
+                  "snippet": {
+                    "text": "_VarClickedVisitAccount"
+                  }
+                }
+              },
+              "properties": {
+                "member": "Customer",
+                "module": "New Lead List",
+                "type": "'New Lead List'.'Leads List View_1'"
+              }
+            }
+          ],
+          "message": {
+            "arguments": [
+              "_VarClickedVisitAccount"
             ],
             "id": "issue"
           },
@@ -60883,7 +60387,7 @@
             "level": "High"
           },
           "ruleId": "app-ErrSearchWrongType",
-          "ruleIndex": 10
+          "ruleIndex": 11
         },
         {
           "locations": [
@@ -61650,6 +61154,126 @@
             {
               "logicalLocations": [
                 {
+                  "fullyQualifiedName": "'Start Visit'.Gallery1_9.Image15_1.TabIndex"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Start Visit'.Gallery1_9.Image15_1.TabIndex",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "TabIndex",
+                "module": "Start Visit",
+                "type": "'Start Visit'.Gallery1_9.Image15_1"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-TabIndexShouldBeDefinedForInteractiveControl",
+          "ruleIndex": 17
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Start Visit'.Gallery1_9.Image15_1.AccessibleLabel"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Start Visit'.Gallery1_9.Image15_1.AccessibleLabel",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "AccessibleLabel",
+                "module": "Start Visit",
+                "type": "'Start Visit'.Gallery1_9.Image15_1"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-AccessibleLabelNeeded",
+          "ruleIndex": 18
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Start Visit'.Gallery1_9.Circle7_1.TabIndex"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Start Visit'.Gallery1_9.Circle7_1.TabIndex",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "TabIndex",
+                "module": "Start Visit",
+                "type": "'Start Visit'.Gallery1_9.Circle7_1"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-TabIndexShouldBeDefinedForInteractiveControl",
+          "ruleIndex": 17
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Start Visit'.Gallery1_9.Circle7_1.AccessibleLabel"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Start Visit'.Gallery1_9.Circle7_1.AccessibleLabel",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "AccessibleLabel",
+                "module": "Start Visit",
+                "type": "'Start Visit'.Gallery1_9.Circle7_1"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-AccessibleLabelNeeded",
+          "ruleIndex": 18
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
                   "fullyQualifiedName": "App._VarSelectedTab"
                 }
               ],
@@ -62171,36 +61795,6 @@
               },
               "properties": {
                 "member": "VarStartVisitDate",
-                "module": "App",
-                "type": "App"
-              }
-            }
-          ],
-          "message": {
-            "id": "issue"
-          },
-          "properties": {
-            "level": "Medium"
-          },
-          "ruleId": "app-UnusedVariables",
-          "ruleIndex": 21
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "App.varClickedVisitAccount"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "App.varClickedVisitAccount",
-                  "relativeAddress": 0
-                }
-              },
-              "properties": {
-                "member": "varClickedVisitAccount",
                 "module": "App",
                 "type": "App"
               }
@@ -63775,6 +63369,23 @@
               }
             },
             {
+              "id": "app-ErrIncompatibleCtxtVariableTypes",
+              "messageStrings": {
+                "issue": {
+                  "text": "Incompatible type. We can't evaluate your formula because the context variable types are incompatible with the types of values in other places in your app."
+                }
+              },
+              "properties": {
+                "componentType": "app",
+                "howToFix": [
+                  "Look at places where you use a context variable and make sure that the type (e.g., text, number, date, record, table) is compatible."
+                ],
+                "level": "High",
+                "primaryCategory": "formula",
+                "whyFix": ""
+              }
+            },
+            {
               "id": "app-ErrColDNE-Name",
               "messageStrings": {
                 "issue": {
@@ -63830,23 +63441,6 @@
                 "componentType": "app",
                 "howToFix": [
                   "Check the types of the values involved in the formula and ensure the types match."
-                ],
-                "level": "High",
-                "primaryCategory": "formula",
-                "whyFix": ""
-              }
-            },
-            {
-              "id": "app-ErrIncompatibleCtxtVariableTypes",
-              "messageStrings": {
-                "issue": {
-                  "text": "Incompatible type. We can't evaluate your formula because the context variable types are incompatible with the types of values in other places in your app."
-                }
-              },
-              "properties": {
-                "componentType": "app",
-                "howToFix": [
-                  "Look at places where you use a context variable and make sure that the type (e.g., text, number, date, record, table) is compatible."
                 ],
                 "level": "High",
                 "primaryCategory": "formula",
