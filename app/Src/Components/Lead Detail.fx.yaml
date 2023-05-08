@@ -105,7 +105,7 @@
                 =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Screen Background Color").'Default Value')
                 //_VarGblAppColors.BackgroundColor
             Height: =853
-            Items: =Sort(Filter('Lead Activities',Lead.'Lead Id'= 'Lead Detail'.HeaderId.cra62_leadid),'Created On',SortOrder.Descending)
+            Items: =Sort(Filter('Lead Activities.S',Lead.Leads = varLeadData.zx_leadsid),'Created On',SortOrder.Descending)
             Layout: =Layout.Vertical
             ShowScrollbar: =false
             TabIndex: =0
@@ -132,7 +132,6 @@
                 Size: =24
                 Text: =""
                 Width: =630
-                Y: =10
                 ZIndex: =1
 
             Rectangle1_13 As rectangle:
@@ -463,12 +462,8 @@
                 Filter('Product Interesteds', Lead.Leads = varLeadData.Leads && 'Product SKU'.'Product SKU' = LookUp(AddPrINtrst,'Product SKU'.'Product SKU'='Product SKU'.'Product SKU' && Lead.Leads =Lead.Leads).'Product SKU'),Filter('Product Interesteds', Lead.Leads = varLeadData.Leads))*/
                 //Filter('Product Interesteds', Lead.Leads=varLeadData.Leads)
                 Filter(
-                    'Product Interesteds',
-                    Lead.Leads = varLeadData.Leads
-                    /* && varOrderData.'Order ID' = LookUp(
-                        'Order Lines',
-                        'Order Header'.'Order ID' = crtQut
-                    ).'Order Header'.'Order ID'*/
+                    'Product Interested.S',
+                    Lead.Leads = varLeadData.zx_leadsid
                 )
             Layout: =Layout.Vertical
             TabIndex: =
@@ -1856,8 +1851,8 @@
                     ColorValue(LookUp(c_EnvironmentVariable, 'Display Name'="Text Primary Color").'Default Value')
                 Default: |-
                     =LookUp(
-                        'Product Interesteds',
-                        Lead.Leads = varLeadData.Leads && 'Product SKU'.'Product SKU' = ThisItem.'Product SKU'
+                        'Product Interested.S',
+                        Lead.Leads = varLeadData.zx_leadsid && 'Product SKU'.'Product SKU' = ThisItem.'Product SKU'
                     ).Quantity
                 DisabledBorderColor: =RGBA(166, 166, 166, 1)
                 DisabledColor: =RGBA(166, 166, 166, 1)
@@ -1892,8 +1887,8 @@
                             If(
                                 IsBlank(
                                     LookUp(
-                                        'Product Interesteds',
-                                        Lead.Leads = varLeadData.Leads && 'Product SKU'.'Product SKU' = ThisItem.'Product SKU'
+                                        'Product Interested.S',
+                                        Lead.Leads = varLeadData.zx_leadsid && 'Product SKU'.'Product SKU' = ThisItem.'Product SKU'
                                     )
                                 ),
                                 With(
@@ -1904,8 +1899,8 @@
                                         ).'Ex-Factory'
                                     },
                                     Patch(
-                                        'Product Interesteds',
-                                        Defaults('Product Interesteds'),
+                                        'Product Interested.S',
+                                        Defaults('Product Interested.S'),
                                         {
                                             'Product SKU': LookUp(
                                                 OfflineProductSKUCollection,
@@ -1914,7 +1909,7 @@
                                             Quantity: Value(Self.Text),
                                             Lead: LookUp(
                                                 offlineLeadCollection,
-                                                Leads = varLeadData.Leads
+                                                zx_leadsid = varLeadData.zx_leadsid
                                             ),
                                             Discount: Value(DiscountInput.Text),
                                             'Total Amount': (itemPrice - (itemPrice * (Value(DiscountInput.Text) / 100) )) * Value(Self.Text)
@@ -1935,18 +1930,18 @@
                                         ).'Ex-Factory'
                                     },
                                     Patch(
-                                        'Product Interesteds',
+                                        'Product Interested.S',
                                         LookUp(
-                                            'Product Interesteds',
-                                            Lead.Leads = varLeadData.Leads && 'Product SKU'.'Product SKU' = ThisItem.'Product SKU'
+                                            'Product Interested.S',
+                                            Lead.Leads = varLeadData.zx_leadsid && 'Product SKU'.'Product SKU' = ThisItem.'Product SKU'
                                         ),
                                         {
                                             Quantity: Value(Self.Text),
                                             Discount: Value(DiscountInput.Text),
                                             'Total Amount': (itemPrice - (itemPrice * (Value(DiscountInput.Text) / 100) )) * Value(Self.Text)
                                         }
-                                    ); 
-                                );//
+                                    );
+                                );
                                 Notify(
                                     "Item updated to Products Interested",
                                     NotificationType.Success,
@@ -1960,10 +1955,16 @@
                             )
                         )
                     );
-                    Collect(TaxN,{TName:
-                    LookUp(Products,ID=ThisItem.Product.ID,Tax.Name),
-                    Pid:ThisItem.Product.ID
-                    })
+                    Collect(
+                        TaxN,
+                        {
+                            TName: LookUp(
+                                'Product.S',
+                                ID = ThisItem.Product.ID
+                            ),
+                            Pid: ThisItem.Product.ID
+                        }
+                    )
                 OnSelect: =Select(Parent)
                 RadiusBottomLeft: =0
                 RadiusBottomRight: =0
@@ -1981,7 +1982,7 @@
                 DisabledBorderColor: =RGBA(166, 166, 166, 1)
                 DisabledFill: =RGBA(244, 244, 244, 1)
                 Height: =81
-                Image: =If(IsBlank(LookUp('SKU Images', SKU.'Product SKU' = ThisItem.'Product SKU').'Image Link'), SampleImage, LookUp('SKU Images', SKU.'Product SKU' = ThisItem.'Product SKU').'Image Link')
+                Image: =If(IsBlank(LookUp('SKU Images.S', SKU.'Product SKU' = ThisItem.'Product SKU').'Image Link'), SampleImage, LookUp('SKU Images.S', SKU.'Product SKU' = ThisItem.'Product SKU').'Image Link')
                 Width: =99
                 X: =40
                 Y: =67
@@ -2234,18 +2235,18 @@
             DisabledBorderColor: =RGBA(166, 166, 166, 1)
             DisabledColor: =RGBA(166, 166, 166, 1)
             DisabledFill: =RGBA(244, 244, 244, 1)
-            DisplayFields: =["new_name"]
+            DisplayFields: =["zx_name"]
             FontWeight: =FontWeight.Semibold
             Height: =60
             HoverColor: =RGBA(0, 0, 0, 1)
             HoverFill: =RGBA(186, 202, 226, 1)
             InputTextPlaceholder: ="Select Product Group"
             IsSearchable: =false
-            Items: ='Product Group'
+            Items: ='Product Group.S'
             OnChange: =
             PressedColor: =RGBA(255, 255, 255, 1)
             PressedFill: =RGBA(0, 18, 107, 1)
-            SearchFields: =["new_name"]
+            SearchFields: =["zx_name"]
             SearchItems: =[]
             SelectionFill: =RGBA(56, 96, 178, 1)
             SelectMultiple: =false
@@ -2302,7 +2303,7 @@
             DisabledBorderColor: =RGBA(166, 166, 166, 1)
             DisabledFill: =RGBA(244, 244, 244, 1)
             Height: =27
-            Image: ='search (1)'
+            Image: =//'search (1)'
             Width: =32
             X: =43
             Y: =103
@@ -2314,7 +2315,7 @@
             DisabledBorderColor: =RGBA(166, 166, 166, 1)
             DisabledFill: =RGBA(244, 244, 244, 1)
             Height: =39
-            Image: =filter
+            Image: =//filter
             OnSelect: =Set(_VarFilterModal, !_VarFilterModal)
             TabIndex: =0
             Tooltip: ="Filter"
@@ -2376,8 +2377,7 @@
             HoverColor: =RGBA(0, 0, 0, 1)
             HoverFill: =RGBA(186, 202, 226, 1)
             InputTextPlaceholder: ="Select Category"
-            Items: |
-                =OfflineProductCategoryCollection
+            Items: =OfflineProductCategoryCollection
             OnChange: =
             OnSelect: =
             PressedColor: =RGBA(255, 255, 255, 1)
@@ -2626,9 +2626,9 @@
                     LookUp('Environment Variable Definitions', 'Display Name'="Text Sub Title Font Size").'Default Value'
                 TabIndex: =0
                 Text: |-
-                    ="Total Order Amount: " &"₹"&ThisItem.'Total Bill Amount (new_totalbillamount)'
+                    ="Total Order Amount: " &"₹"&ThisItem.'Total Bill Amount'
                 Tooltip: |-
-                    ="Total Bill Amount: " &"₹"&ThisItem.'Total Bill Amount (new_totalbillamount)'
+                    ="Total Bill Amount: " &"₹"&ThisItem.'Total Bill Amount'
                 Width: =314
                 X: =315
                 Y: =150
@@ -2653,7 +2653,7 @@
                     LookUp('Environment Variable Definitions', 'Display Name'="Text Sub Title Font Size").'Default Value'
                 TabIndex: =0
                 Text: |-
-                    ="Discount: " & ThisItem.'Discount %' & "%"
+                    ="Discount: " & ThisItem.'Discount ' & "%" & "%"
                 Tooltip: |-
                     =
                     "Total Tax: " &"₹"& Sum(ThisItem.CGST,ThisItem.SGST,ThisItem.IGST)
@@ -2703,7 +2703,7 @@
                 DisabledColor: =RGBA(166, 166, 166, 1)
                 FontWeight: =FontWeight.Semibold
                 Size: =16
-                Text: =varLeadData.'Lead Id'
+                Text: =varLeadData.zx_name
                 Width: =330
                 X: =280
                 Y: =10
@@ -2746,7 +2746,7 @@
                 DisabledColor: =RGBA(166, 166, 166, 1)
                 FontWeight: =FontWeight.Semibold
                 Size: =16
-                Text: =varLeadData.'Lead Name'
+                Text: =varLeadData.zx_leadname
                 Width: =330
                 X: =280
                 Y: =10
@@ -2788,7 +2788,7 @@
                 DisabledColor: =RGBA(166, 166, 166, 1)
                 FontWeight: =FontWeight.Semibold
                 Size: =16
-                Text: =varLeadData.Party.'Customer Name'
+                Text: =varLeadData.zx_Party.'Customer Name'
                 Width: =330
                 X: =280
                 Y: =10
@@ -2832,8 +2832,8 @@
                 Size: =16
                 Text: |-
                     =LookUp(
-                        Contacts_1,
-                        Party.'Customer Name' = varLeadData.Party.'Customer Name' && 'Primary Contact' = 'Primary Contact (Contacts_1)'.Yes
+                        'Contacts.S',
+                        Party.'Customer Name' = varLeadData.zx_Party.'Customer Name' && 'Primary Contact' = 'Primary Contact (Contacts.S)'.Yes
                     ).'First Name'
                 Width: =330
                 X: =280
@@ -2918,7 +2918,7 @@
                 DisabledColor: =RGBA(166, 166, 166, 1)
                 FontWeight: =FontWeight.Semibold
                 Size: =16
-                Text: =varLeadData.'Mobile No.'
+                Text: =varLeadData.zx_mobileno
                 Width: =330
                 X: =280
                 Y: =10
@@ -2960,7 +2960,7 @@
                 DisabledColor: =RGBA(166, 166, 166, 1)
                 FontWeight: =FontWeight.Semibold
                 Size: =16
-                Text: =varLeadData.Area.'Area Name'
+                Text: =varLeadData.zx_Area.'Area Name'
                 Width: =330
                 X: =280
                 Y: =10
@@ -3014,7 +3014,7 @@
                 ChevronFill: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//_VarGblAppColors.PrimaryRed
                 ChevronHoverBackground: =ColorFade(RGBA(56, 96, 178, 1), -20%)
                 ChevronHoverFill: =RGBA(255, 255, 255, 1)
-                Default: =varLeadData.'Lead Stage '
+                Default: =varLeadData.zx_leadstage
                 DisabledBorderColor: =RGBA(166, 166, 166, 1)
                 DisabledColor: =RGBA(166, 166, 166, 1)
                 DisabledFill: =RGBA(244, 244, 244, 1)
@@ -3025,14 +3025,14 @@
                 Items: =Choices('Stage Choice')
                 OnChange: |-
                     =Patch(
-                        Leads,
+                        'Leads.S',
                         LookUp(
-                            Leads,
-                            Leads = varLeadData.Leads
+                            'Leads.S',
+                            Leads = varLeadData.zx_leadsid
                         ),
                         {
-                            'Lead Stage ': Dropdown2.Selected.Value,
-                            'Stage date update': Now()
+                            'Lead Stage ': Dropdown2.Selected.Value
+                          //  'Stage date update': Now()
                         }
                     );
                     Notify(
@@ -3262,10 +3262,10 @@
                 FontWeight: =FontWeight.Semibold
                 OnSelect: |-
                     =Patch(
-                        Leads,
+                        'Leads.S',
                         LookUp(
-                            Leads,
-                            'Lead Id' = varLeadData.'Lead Id'
+                            'Leads.S',
+                            'Lead Id' = varLeadData.zx_name
                         ),
                         {
                             'Lead Stage ': Value_9
@@ -3277,7 +3277,7 @@
                         2000
                     )
                 Size: =16
-                Text: =varLeadData.'Product Category'.'Category Name' 
+                Text: =varLeadData.zx_ProductCategory.'Category Name'
                 Width: =330
                 X: =280
                 Y: =10
@@ -3312,7 +3312,7 @@
                 FontWeight: =FontWeight.Semibold
                 PaddingRight: =40
                 Size: =16
-                Text: =varLeadData.'Lead Value'
+                Text: =varLeadData.zx_leadvalue
                 Width: =330
                 X: =280
                 Y: =10
@@ -3352,7 +3352,7 @@
                     =ColorFade(ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//_VarGblAppColors.PrimaryRed
                     ,50%)
                 ChevronHoverFill: =RGBA(255, 255, 255, 1)
-                Default: =varLeadData.Commited
+                Default: =varLeadData.zx_commited
                 DisabledBorderColor: =RGBA(166, 166, 166, 1)
                 DisabledColor: =RGBA(166, 166, 166, 1)
                 DisabledFill: =RGBA(244, 244, 244, 1)
@@ -3360,22 +3360,23 @@
                 FontWeight: =FontWeight.Semibold
                 HoverColor: =RGBA(0, 0, 0, 1)
                 HoverFill: =RGBA(186, 202, 226, 1)
-                Items: =Choices('Commited (Leads)')
+                Items: =Choices('Commited (Leads.S)')
                 OnChange: |-
                     =Patch(
-                        Leads,
+                        'Leads.S',
                         LookUp(
-                            Leads,
-                              Leads = varLeadData.Leads
+                            'Leads.S',
+                              Leads = varLeadData.zx_leadsid
                         ),
-                        {Commited: dropCommited_1.Selected.Value}
+                        {zx_commited: dropCommited_1.Selected.Value
+                        }
                     );
                     Notify(
                         "Lead Update successfully",
                         NotificationType.Success,
                         2000
                     );
-                    ClearCollect(offlineLeadCollection,Leads)
+                    ClearCollect(offlineLeadCollection,'Leads.S')
                 PaddingLeft: =230
                 PaddingRight: =5
                 PressedColor: =RGBA(255, 255, 255, 1)
