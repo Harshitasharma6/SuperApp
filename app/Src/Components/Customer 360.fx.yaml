@@ -1307,7 +1307,7 @@
         "'Product BG_1' As button":
             BorderColor: |-
                 =//_VarGblAppColors.LightText
-                LookUp(c_EnvironmentVariable, 'Display Name'="Text Light Color").'Default Value'
+                ColorValue(LookUp(c_EnvironmentVariable, 'Display Name'="Text Light Color").'Default Value')
             BorderThickness: =0
             Color: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Hover Color").'Default Value')
             DisabledBorderColor: =RGBA(166, 166, 166, 1)
