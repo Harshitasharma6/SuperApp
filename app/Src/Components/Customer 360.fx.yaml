@@ -3139,7 +3139,7 @@
                 ="Order Date: "& DateValue(ThisItem.'Created On')
             Width: =127
             Wrap: =false
-            X: =7
+            X: =16
             ZIndex: =3
 
         Body1_103 As label:
@@ -3165,7 +3165,7 @@
             Tooltip: =
             Width: =393
             Wrap: =false
-            X: =10
+            X: =19
             Y: =87
             ZIndex: =4
 
@@ -3179,7 +3179,6 @@
                 =LookUp(c_EnvironmentVariable, 'Display Name'="Text Heading Font").'Default Value'
                 
                 //_VarGblAppFonts.Heading
-            FontWeight: =FontWeight.Semibold
             Height: =Body1_100.Height
             OnSelect: |-
                 =Set(varContactData,ThisItem);
@@ -3190,7 +3189,7 @@
             TabIndex: =0
             Text: =Text(ThisItem.'Created On',"mm/dd/yyyy")
             Tooltip: =
-            X: =116
+            X: =125
             Y: =Body1_100.Y
             ZIndex: =5
 
@@ -3215,7 +3214,7 @@
                 ="Source: " & ThisItem.Lead.Source
             Tooltip: =
             Width: =430
-            X: =10
+            X: =19
             Y: =157
             ZIndex: =6
 
@@ -3240,8 +3239,9 @@
                 ="Contact: " & ThisItem.Contact.'First Name'& " "&ThisItem.Contact.'Last Name'
             Tooltip: =
             Width: =430
-            X: =10
-            Y: =126
+            X: =19
+            Y: |
+                =120
             ZIndex: =7
 
         Circle19_2 As circle:
