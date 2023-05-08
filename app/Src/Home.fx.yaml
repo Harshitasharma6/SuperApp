@@ -1198,6 +1198,43 @@ Home As screen:
                 Y: =35
                 ZIndex: =3
 
+            Button5 As button:
+                BorderColor: =RGBA(0, 0, 0, 0)
+                Color: |-
+                    =If(
+                        ThisItem.Value = _VarSelectedPresentType.Value,
+                        Color.White,
+                        ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' ))
+                DisabledBorderColor: =RGBA(0, 0, 0, 0)
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                DisabledFill: =RGBA(244, 244, 244, 1)
+                Fill: |-
+                    =If(ThisItem.Value = _VarSelectedPresentType.Value, ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//_VarGblAppColors.PrimaryRed
+                    , RGBA(255, 255, 255, 1))
+                FocusedBorderColor: =ColorFade(Self.Fill, -75%)
+                Font: =Font.'Segoe UI'
+                FontWeight: =FontWeight.Semibold
+                Height: =70
+                HoverBorderColor: =RGBA(0, 0, 0, 0)
+                HoverColor: =RGBA(255, 255, 255, 1)
+                HoverFill: =ColorFade(Self.Fill, -10%)
+                OnSelect: |-
+                    =Set(_VarSelectedPresentType, ThisItem);
+                    Set(_VarAttendanceCamera, true)
+                PressedBorderColor: =ColorFade(RGBA(0, 120, 212, 1), -50%)
+                PressedColor: =RGBA(255, 255, 255, 1)
+                PressedFill: =ColorFade(Self.Fill, -30%)
+                RadiusBottomLeft: =0
+                RadiusBottomRight: =0
+                RadiusTopLeft: =0
+                RadiusTopRight: =0
+                Size: =24
+                Text: =ThisItem.Value
+                Width: =280
+                X: =115
+                Y: =3
+                ZIndex: =4
+
         Image6 As image:
             BorderColor: =RGBA(0, 0, 0, 0)
             BorderStyle: =BorderStyle.None
@@ -1213,8 +1250,8 @@ Home As screen:
             PressedFill: =RGBA(0, 0, 0, 0)
             Visible: =_VarStartdayModal
             Width: =30
-            X: =164
-            Y: =563
+            X: =109
+            Y: =564
             ZIndex: =22
 
         Image6_1 As image:
@@ -1232,7 +1269,7 @@ Home As screen:
             PressedFill: =RGBA(0, 0, 0, 0)
             Visible: =_VarStartdayModal
             Width: =30
-            X: =164
-            Y: =488
+            X: =109
+            Y: =484
             ZIndex: =23
 

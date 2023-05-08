@@ -44,7 +44,7 @@
         "Name": "Search BG_4",
         "Parent": "newProductList",
         "PersistMetaDataIDKey": false,
-        "PublishOrderIndex": 1329,
+        "PublishOrderIndex": 444,
         "Rules": [
           {
             "Category": "Design",
@@ -232,7 +232,7 @@
         "Name": "ShowPartiesBackdrop_5",
         "Parent": "newProductList",
         "PersistMetaDataIDKey": false,
-        "PublishOrderIndex": 1330,
+        "PublishOrderIndex": 445,
         "Rules": [
           {
             "Category": "Data",
@@ -558,7 +558,7 @@
         "Name": "Search Input_4",
         "Parent": "newProductList",
         "PersistMetaDataIDKey": false,
-        "PublishOrderIndex": 1331,
+        "PublishOrderIndex": 446,
         "Rules": [
           {
             "Category": "Data",
@@ -730,7 +730,7 @@
           },
           {
             "Category": "Design",
-            "InvariantScript": "_VarGblAppColors.SecondaryText",
+            "InvariantScript": "//_VarGblAppColors.SecondaryText\r\nColorValue(LookUp(c_EnvironmentVariable, 'Display Name'=\"Text Secondary Color\").'Default Value')",
             "Property": "Color",
             "RuleProviderType": "Unknown"
           },
@@ -914,7 +914,7 @@
         "Name": "Image16_1",
         "Parent": "newProductList",
         "PersistMetaDataIDKey": false,
-        "PublishOrderIndex": 1332,
+        "PublishOrderIndex": 447,
         "Rules": [
           {
             "Category": "Data",
@@ -1172,7 +1172,7 @@
         "Name": "Divider_4",
         "Parent": "newProductList",
         "PersistMetaDataIDKey": false,
-        "PublishOrderIndex": 1333,
+        "PublishOrderIndex": 448,
         "Rules": [
           {
             "Category": "Design",
@@ -1357,7 +1357,7 @@
         "Name": "Icon31_1",
         "Parent": "newProductList",
         "PersistMetaDataIDKey": false,
-        "PublishOrderIndex": 1334,
+        "PublishOrderIndex": 449,
         "Rules": [
           {
             "Category": "Design",
@@ -1536,7 +1536,7 @@
             "Name": "galleryTemplate26_1",
             "Parent": "Gallery11_1",
             "PersistMetaDataIDKey": false,
-            "PublishOrderIndex": 1336,
+            "PublishOrderIndex": 453,
             "Rules": [
               {
                 "Category": "Design",
@@ -1690,7 +1690,7 @@
             "Name": "Label47_1",
             "Parent": "Gallery11_1",
             "PersistMetaDataIDKey": false,
-            "PublishOrderIndex": 1337,
+            "PublishOrderIndex": 454,
             "Rules": [
               {
                 "Category": "Data",
@@ -1718,7 +1718,7 @@
               },
               {
                 "Category": "Design",
-                "InvariantScript": "//RGBA(0, 0, 0, 1)\r\nIf(ThisItem.IsSelected,ColorValue(LookUp(c_EnvironmentVariable,'Display Name'=\"Button Fill\").'Default Value' )//_VarGblAppColors.PrimaryRed,_VarGblAppColors.textbgbutton)",
+                "InvariantScript": "//RGBA(0, 0, 0, 1)\r\nIf(ThisItem.IsSelected,ColorValue(LookUp(c_EnvironmentVariable,'Display Name'=\"Button Fill\").'Default Value' )//_VarGblAppColors.PrimaryRed\r\n,ColorValue(LookUp(c_EnvironmentVariable,'Display Name'=\"Text Primary Color\").'Default Value'))",
                 "Property": "Color",
                 "RuleProviderType": "Unknown"
               },
@@ -2025,7 +2025,7 @@
             "Name": "Rectangle27_1",
             "Parent": "Gallery11_1",
             "PersistMetaDataIDKey": false,
-            "PublishOrderIndex": 1338,
+            "PublishOrderIndex": 455,
             "Rules": [
               {
                 "Category": "Design",
@@ -2232,7 +2232,7 @@
         "Name": "Gallery11_1",
         "Parent": "newProductList",
         "PersistMetaDataIDKey": false,
-        "PublishOrderIndex": 1335,
+        "PublishOrderIndex": 450,
         "Rules": [
           {
             "Category": "Data",
@@ -2441,7 +2441,7 @@
             "Name": "galleryTemplate3_10",
             "Parent": "Product Gallery_6",
             "PersistMetaDataIDKey": false,
-            "PublishOrderIndex": 1340,
+            "PublishOrderIndex": 456,
             "Rules": [
               {
                 "Category": "Design",
@@ -2590,7 +2590,7 @@
             "Name": "Button34_1",
             "Parent": "Product Gallery_6",
             "PersistMetaDataIDKey": false,
-            "PublishOrderIndex": 1341,
+            "PublishOrderIndex": 457,
             "Rules": [
               {
                 "Category": "Data",
@@ -2970,7 +2970,7 @@
             "Name": "Product BG_10",
             "Parent": "Product Gallery_6",
             "PersistMetaDataIDKey": false,
-            "PublishOrderIndex": 1342,
+            "PublishOrderIndex": 458,
             "Rules": [
               {
                 "Category": "Data",
@@ -3266,7 +3266,7 @@
             "Name": "Image3_5",
             "Parent": "Product Gallery_6",
             "PersistMetaDataIDKey": false,
-            "PublishOrderIndex": 1343,
+            "PublishOrderIndex": 459,
             "Rules": [
               {
                 "Category": "Data",
@@ -3748,7 +3748,7 @@
             "Name": "Variant ComboBox_6",
             "Parent": "Product Gallery_6",
             "PersistMetaDataIDKey": false,
-            "PublishOrderIndex": 1345,
+            "PublishOrderIndex": 460,
             "Rules": [
               {
                 "Category": "Data",
@@ -3926,13 +3926,13 @@
               },
               {
                 "Category": "Design",
-                "InvariantScript": "_VarGblAppColors.SecondaryText",
+                "InvariantScript": "//_VarGblAppColors.SecondaryText\r\nColorValue(LookUp(c_EnvironmentVariable, 'Display Name'=\"Text Secondary Color\").'Default Value')",
                 "Property": "BorderColor",
                 "RuleProviderType": "Unknown"
               },
               {
                 "Category": "Design",
-                "InvariantScript": "_VarGblAppColors.SecondaryText",
+                "InvariantScript": "//_VarGblAppColors.SecondaryText\r\nColorValue(LookUp(c_EnvironmentVariable, 'Display Name'=\"Text Secondary Color\").'Default Value')",
                 "Property": "DisabledColor",
                 "RuleProviderType": "Unknown"
               },
@@ -3962,13 +3962,13 @@
               },
               {
                 "Category": "Design",
-                "InvariantScript": "_VarGblAppColors.PrimaryText",
+                "InvariantScript": "//_VarGblAppColors.PrimaryText\r\nColorValue(LookUp(c_EnvironmentVariable, 'Display Name'=\"Text Primary Color\").'Default Value')",
                 "Property": "Color",
                 "RuleProviderType": "Unknown"
               },
               {
                 "Category": "Design",
-                "InvariantScript": "_VarGblAppColors.PrimaryText",
+                "InvariantScript": "//_VarGblAppColors.PrimaryText\r\nColorValue(LookUp(c_EnvironmentVariable, 'Display Name'=\"Text Primary Color\").'Default Value')",
                 "Property": "SelectionTagColor",
                 "RuleProviderType": "Unknown"
               },
@@ -4016,13 +4016,13 @@
               },
               {
                 "Category": "Design",
-                "InvariantScript": "_VarGblAppColors.SecondaryText",
+                "InvariantScript": "//_VarGblAppColors.SecondaryText\r\nColorValue(LookUp(c_EnvironmentVariable, 'Display Name'=\"Text Secondary Color\").'Default Value')",
                 "Property": "ChevronFill",
                 "RuleProviderType": "Unknown"
               },
               {
                 "Category": "Design",
-                "InvariantScript": "_VarGblAppColors.PrimaryText",
+                "InvariantScript": "//_VarGblAppColors.PrimaryText\r\nColorValue(LookUp(c_EnvironmentVariable, 'Display Name'=\"Text Primary Color\").'Default Value')",
                 "Property": "SelectionColor",
                 "RuleProviderType": "Unknown"
               },
@@ -4229,7 +4229,7 @@
             "Name": "Product Name Lbl_7",
             "Parent": "Product Gallery_6",
             "PersistMetaDataIDKey": false,
-            "PublishOrderIndex": 1346,
+            "PublishOrderIndex": 461,
             "Rules": [
               {
                 "Category": "Data",
@@ -4621,7 +4621,7 @@
             "Name": "Product Code Lbl_8",
             "Parent": "Product Gallery_6",
             "PersistMetaDataIDKey": false,
-            "PublishOrderIndex": 1347,
+            "PublishOrderIndex": 462,
             "Rules": [
               {
                 "Category": "Data",
@@ -5009,7 +5009,7 @@
             "Name": "Product Price Lbl_18",
             "Parent": "Product Gallery_6",
             "PersistMetaDataIDKey": false,
-            "PublishOrderIndex": 1348,
+            "PublishOrderIndex": 463,
             "Rules": [
               {
                 "Category": "Data",
@@ -5402,7 +5402,7 @@
             "Name": "Product Price Lbl_19",
             "Parent": "Product Gallery_6",
             "PersistMetaDataIDKey": false,
-            "PublishOrderIndex": 1349,
+            "PublishOrderIndex": 464,
             "Rules": [
               {
                 "Category": "Data",
@@ -5783,7 +5783,7 @@
             "Name": "Product Discount Lbl_11",
             "Parent": "Product Gallery_6",
             "PersistMetaDataIDKey": false,
-            "PublishOrderIndex": 1350,
+            "PublishOrderIndex": 465,
             "Rules": [
               {
                 "Category": "Data",
@@ -6183,7 +6183,7 @@
             "Name": "Quantityn Lbl_10",
             "Parent": "Product Gallery_6",
             "PersistMetaDataIDKey": false,
-            "PublishOrderIndex": 1351,
+            "PublishOrderIndex": 466,
             "Rules": [
               {
                 "Category": "Data",
@@ -6670,7 +6670,7 @@
             "Name": "Quantity Input_7",
             "Parent": "Product Gallery_6",
             "PersistMetaDataIDKey": false,
-            "PublishOrderIndex": 1352,
+            "PublishOrderIndex": 467,
             "Rules": [
               {
                 "Category": "Data",
@@ -6854,7 +6854,7 @@
               },
               {
                 "Category": "Design",
-                "InvariantScript": "_VarGblAppColors.PrimaryText",
+                "InvariantScript": "//_VarGblAppColors.PrimaryText\r\nColorValue(LookUp(c_EnvironmentVariable, 'Display Name'=\"Text Primary Color\").'Default Value')",
                 "Property": "Color",
                 "RuleProviderType": "Unknown"
               },
@@ -6878,7 +6878,7 @@
               },
               {
                 "Category": "Design",
-                "InvariantScript": "_VarGblAppColors.SecondaryText",
+                "InvariantScript": "//_VarGblAppColors.SecondaryText\r\nColorValue(LookUp(c_EnvironmentVariable, 'Display Name'=\"Text Secondary Color\").'Default Value')",
                 "Property": "BorderColor",
                 "RuleProviderType": "Unknown"
               },
@@ -6974,7 +6974,7 @@
             "Name": "Group9_1",
             "Parent": "Product Gallery_6",
             "PersistMetaDataIDKey": false,
-            "PublishOrderIndex": 1344,
+            "PublishOrderIndex": 468,
             "Rules": [
               {
                 "Category": "Design",
@@ -7131,7 +7131,7 @@
         "Name": "Product Gallery_6",
         "Parent": "newProductList",
         "PersistMetaDataIDKey": false,
-        "PublishOrderIndex": 1339,
+        "PublishOrderIndex": 451,
         "Rules": [
           {
             "Category": "Data",
@@ -7472,7 +7472,7 @@
             "Name": "Product BG_14",
             "Parent": "containerFilter_1",
             "PersistMetaDataIDKey": false,
-            "PublishOrderIndex": 1354,
+            "PublishOrderIndex": 469,
             "Rules": [
               {
                 "Category": "Data",
@@ -7674,7 +7674,7 @@
               },
               {
                 "Category": "Design",
-                "InvariantScript": "_VarGblAppColors.LightText",
+                "InvariantScript": "//_VarGblAppColors.LightText\r\nColorValue(LookUp(c_EnvironmentVariable,'Display Name'=\"Text Light Color\").'Default Value')",
                 "Property": "BorderColor",
                 "RuleProviderType": "Unknown"
               },
@@ -7793,7 +7793,7 @@
             "Name": "Label8_6",
             "Parent": "containerFilter_1",
             "PersistMetaDataIDKey": false,
-            "PublishOrderIndex": 1355,
+            "PublishOrderIndex": 470,
             "Rules": [
               {
                 "Category": "Data",
@@ -8110,7 +8110,7 @@
             "Name": "Icon18_6",
             "Parent": "containerFilter_1",
             "PersistMetaDataIDKey": false,
-            "PublishOrderIndex": 1356,
+            "PublishOrderIndex": 471,
             "Rules": [
               {
                 "Category": "Data",
@@ -8132,7 +8132,7 @@
               },
               {
                 "Category": "Design",
-                "InvariantScript": "//RGBA(0, 18, 107, 1)\r\n_VarGblAppColors.SecondaryText",
+                "InvariantScript": "//RGBA(0, 18, 107, 1)\r\n//_VarGblAppColors.SecondaryText\r\nColorValue(LookUp(c_EnvironmentVariable, 'Display Name'=\"Text Secondary Color\").'Default Value')",
                 "Property": "Color",
                 "RuleProviderType": "Unknown"
               },
@@ -8307,7 +8307,7 @@
                 "Name": "galleryTemplate21_3",
                 "Parent": "selectedValues_1",
                 "PersistMetaDataIDKey": false,
-                "PublishOrderIndex": 1358,
+                "PublishOrderIndex": 473,
                 "Rules": [
                   {
                     "Category": "Design",
@@ -8425,7 +8425,7 @@
                 "Name": "Label29_24",
                 "Parent": "selectedValues_1",
                 "PersistMetaDataIDKey": false,
-                "PublishOrderIndex": 1359,
+                "PublishOrderIndex": 474,
                 "Rules": [
                   {
                     "Category": "Data",
@@ -8756,7 +8756,7 @@
             "Name": "selectedValues_1",
             "Parent": "containerFilter_1",
             "PersistMetaDataIDKey": false,
-            "PublishOrderIndex": 1357,
+            "PublishOrderIndex": 472,
             "Rules": [
               {
                 "Category": "Data",
@@ -8996,7 +8996,7 @@
         "Name": "containerFilter_1",
         "Parent": "newProductList",
         "PersistMetaDataIDKey": false,
-        "PublishOrderIndex": 1353,
+        "PublishOrderIndex": 452,
         "Rules": [
           {
             "Category": "Design",
@@ -9192,7 +9192,7 @@
         "NameMapSourceSchema": "?"
       }
     ],
-    "LastModifiedTimestamp": "638191201967819269",
+    "LastModifiedTimestamp": "638191225964303354",
     "Name": "newProductList",
     "Rules": [
       {
@@ -9282,7 +9282,7 @@
   "IsPcfControl": false,
   "IsPremiumPcfControl": false,
   "IsWidgetTemplate": false,
-  "LastModifiedTimestamp": "638191201967819269",
+  "LastModifiedTimestamp": "638191225964303354",
   "Name": "162c1d3ff75049d5a85979f39b6a3090",
   "OverridableProperties": {},
   "TemplateOriginalName": "6c3191d24540484d8f9aaa4915017e1e",
