@@ -1364,7 +1364,7 @@
         Layout: =Layout.Vertical
         ShowScrollbar: =false
         TabIndex: =
-        TemplateSize: =76
+        TemplateSize: =88
         Visible: ='Top Gallery'.Selected.TabId=9
         Y: =234
         ZIndex: =14
@@ -1417,7 +1417,7 @@
             DisplayMode: =DisplayMode.Disabled
             Fill: =RGBA(56, 96, 178, 1)
             FontWeight: =FontWeight.Semibold
-            Height: =59
+            Height: =69
             HoverColor: =RGBA(255, 255, 255, 1)
             HoverFill: =ColorFade(RGBA(56, 96, 178, 1), -20%)
             OnSelect: =Select(Parent)
@@ -1449,7 +1449,7 @@
             Width: =300
             Wrap: =false
             X: =30
-            Y: =18
+            Y: =22
             ZIndex: =3
 
         "'Variant ComboBox_1' As combobox":
@@ -1540,19 +1540,22 @@
             BorderColor: =RGBA(0, 18, 107, 1)
             Color: |-
                 =//_VarGblAppColors.PrimaryText
-                ColorValue(LookUp(c_EnvironmentVariable, 'Display Name'="Text Primary Color").'Default Value')
+                ColorValue(LookUp(c_EnvironmentVariable, 'Display Name'="Text Secondary Color").'Default Value')
             DisabledColor: =RGBA(166, 166, 166, 1)
             FocusedBorderThickness: =01
             Font: |-
                 =LookUp(c_EnvironmentVariable, 'Display Name'="Text Heading Font").'Default Value'
                 
                 //_VarGblAppFonts.Heading
+            FontWeight: =FontWeight.Lighter
+            Height: =70
             OnSelect: |-
                 =Navigate('Leads Detail Page',ScreenTransition.CoverRight);
                 Set(varLeadData, ThisItem)
                  
-            PaddingTop: =3
-            Size: =22
+            PaddingBottom: =4
+            PaddingTop: =0
+            Size: =30
             TabIndex: =0
             Text: ="|"
             Tooltip: |-
@@ -1560,17 +1563,15 @@
             Width: =25
             Wrap: =false
             X: =396
-            Y: =18
+            Y: =9
             ZIndex: =5
 
         "'Quantity Input_7' As text":
             AccessibleLabel: ="Quan"
             Align: =Align.Center
-            BorderColor: |-
-                =//_VarGblAppColors.SecondaryText
-                ColorValue(LookUp(c_EnvironmentVariable, 'Display Name'="Text Secondary Color").'Default Value')
+            BorderColor: ='Product Name Lbl_1'.Color
             BorderThickness: =2
-            Color: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Text Primary Cll").'Default Value' )//_VarGblAppColors.PrimaryRed
+            Color: ='Product Name Lbl_1'.Color
             Default: =ThisItem.Quantity
             DisabledBorderColor: =RGBA(166, 166, 166, 1)
             DisabledColor: =RGBA(166, 166, 166, 1)
@@ -1591,7 +1592,7 @@
             RadiusTopRight: =15
             Width: =60
             X: =475
-            Y: =26
+            Y: =29
             ZIndex: =6
 
     "'Lead Gallery_1' As gallery.galleryVertical":
@@ -2135,7 +2136,7 @@
         Text: ='Customer 360'.CustomerRecord.zx_address
         Width: =604
         X: =35
-        Y: =66
+        Y: =57
         ZIndex: =20
 
     Group26 As group:
