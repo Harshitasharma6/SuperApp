@@ -1,5 +1,114 @@
 "'Leads Detail Page' As screen":
     LoadingSpinnerColor: =RGBA(0, 120, 212, 1)
+    OnVisible: |
+        =Set(
+            VarAddProducts,
+            false
+        );
+        If(
+            !IsBlank(
+                LookUp(
+                    offlinePriceListMapping,
+                    Customer.'Customer Code' = varLeadData.zx_Party.'Customer Code'
+                )
+            ),
+            Set(
+                varPriceMappinglist,
+                LookUp(
+                    offlinePriceListMapping,
+                    Customer.'Customer Code' = varLeadData.zx_Party.'Customer Code'
+                ).'Price List'.Name
+            ),
+            !IsBlank(
+                LookUp(
+                    offlinePriceListMapping,
+                    State.'State Name' = LookUp(
+                        OfflinePartiesCollection,
+                        Parties = varLeadData.zx_Party.Parties
+                    ).State.'State Name'
+                )
+            ),
+            Set(
+                varPriceMappinglist,
+                LookUp(
+                    offlinePriceListMapping,
+                    State.'State Name' = LookUp(
+                        OfflinePartiesCollection,
+                        Parties = varLeadData.zx_Party.Parties
+                    ).State.'State Name'
+                ).'Price List'.Name
+            ),
+            Set(
+                varPriceMappinglist,
+                LookUp(
+                    offlinePriceListMapping,
+                    Region.'Region Name' = LookUp(
+                        OfflinePartiesCollection,
+                        Parties = varLeadData.zx_Party.Parties
+                    ).Region.'Region Name'
+                ).'Price List'.Name
+            )
+        );
+        Set(
+            varPricelist,
+            LookUp(
+                offlinePriceList,
+                Name = varPriceMappinglist && Today() >= 'Active To' || 'Active From' <= Today()
+            )
+        );
+        //___________________________________________________________________________________________________________________
+        If(
+            !IsBlank(
+                LookUp(
+                    offlinePriceListMapping,
+                    Customer.'Customer Code' = _VarClickedVisitAccount.Party.'Customer Code'
+                )
+            ),
+            Set(
+                varPriceMappinglist,
+                LookUp(
+                    offlinePriceListMapping,
+                    Customer.'Customer Code' = _VarClickedVisitAccount.Party.'Customer Code'
+                ).'Price List'.Name
+            ),
+            !IsBlank(
+                LookUp(
+                    offlinePriceListMapping,
+                    State.'State Name' = LookUp(
+                        OfflinePartiesCollection,
+                        'Customer Code' = _VarClickedVisitAccount.Party.'Customer Code'
+                    ).State.'State Name'
+                )
+            ),
+            Set(
+                varPriceMappinglist,
+                LookUp(
+                    offlinePriceListMapping,
+                    State.'State Name' = LookUp(
+                        OfflinePartiesCollection,
+                        'Customer Code' = _VarClickedVisitAccount.Party.'Customer Code'
+                    ).State.'State Name'
+                ).'Price List'.Name
+            ),
+            Set(
+                varPriceMappinglist,
+                Blank()
+            )
+        );
+        If(
+            !IsBlank(varPriceMappinglist),
+            Set(
+                varPricelist,
+                LookUp(
+                    offlinePriceList,
+                    Name = varPriceMappinglist && Today() >= 'Active To' || 'Active From' <= Today()
+                )
+            ),
+            Set(
+                varPricelist,
+                Blank()
+            )
+        );
 
     Header_15 As Header:
         ScreenName: =varLeadData.zx_name
