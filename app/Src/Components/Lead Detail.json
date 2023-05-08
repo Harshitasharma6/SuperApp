@@ -63612,7 +63612,7 @@
               },
               {
                 "Category": "Behavior",
-                "InvariantScript": "Patch(\r\n    Leads,\r\n    LookUp(\r\n        Leads,\r\n        'Lead Id' = varLeadData.lead\r\n    ),\r\n    {'Reason for Rejection': Label29_36.Text}\r\n);\r\nNotify(\r\n    \"Reason updated successfully!\",\r\n    NotificationType.Success,\r\n    2000\r\n);\r\nSet(\r\n    varRemarkVisible,\r\n    false\r\n)",
+                "InvariantScript": "Patch(\r\n    'Leads.S',\r\n    LookUp(\r\n        'Leads.S',\r\n        'Lead Id' = varLeadData.zx_name\r\n    ),\r\n    {//'Reason for Rejection': Label29_36.Text\r\n    }\r\n);\r\nNotify(\r\n    \"Reason updated successfully!\",\r\n    NotificationType.Success,\r\n    2000\r\n);\r\nSet(\r\n    varRemarkVisible,\r\n    false\r\n)",
                 "Property": "OnSelect",
                 "RuleProviderType": "Unknown"
               }
@@ -63890,7 +63890,7 @@
       },
       "ProductCall"
     ],
-    "LastModifiedTimestamp": "638191205903163764",
+    "LastModifiedTimestamp": "638191209798627070",
     "Name": "Lead Detail",
     "Rules": [
       {
@@ -63995,7 +63995,7 @@
   "IsPcfControl": false,
   "IsPremiumPcfControl": false,
   "IsWidgetTemplate": false,
-  "LastModifiedTimestamp": "638191205903163764",
+  "LastModifiedTimestamp": "638191209798627070",
   "Name": "faa7ee8782af41fb94ebfc5a4619c922",
   "OverridableProperties": {},
   "TemplateOriginalName": "5ffbd2772db845fbb8178e9b015a9273",

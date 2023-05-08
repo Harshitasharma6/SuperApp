@@ -4337,12 +4337,13 @@
             HoverFill: =ColorFade(RGBA(56, 96, 178, 1), -20%)
             OnSelect: |-
                 =Patch(
-                    Leads,
+                    'Leads.S',
                     LookUp(
-                        Leads,
-                        'Lead Id' = varLeadData.lead
+                        'Leads.S',
+                        'Lead Id' = varLeadData.zx_name
                     ),
-                    {'Reason for Rejection': Label29_36.Text}
+                    {//'Reason for Rejection': Label29_36.Text
+                    }
                 );
                 Notify(
                     "Reason updated successfully!",
