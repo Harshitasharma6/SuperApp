@@ -217,7 +217,8 @@
             BorderColor: =RGBA(0, 18, 107, 1)
             Color: |-
                 =//RGBA(165, 162, 162, 1)
-                If('Product Discount Lbl_12'.Visible=true,RGBA(165, 162, 162, 1),_VarGblAppColors.PrimaryRed)
+                If('Product Price Lbl_21'.Visible=true,RGBA(165, 162, 162, 1),
+                ColorValue(LookUp(c_EnvironmentVariable,'Display Name'= "Button Fill").'Default Value'))
             DisabledColor: =RGBA(166, 166, 166, 1)
             FontWeight: =FontWeight.Semibold
             Height: =30
@@ -367,7 +368,7 @@
 
         "'Product Discount Lbl_12' As label":
             BorderColor: =RGBA(0, 18, 107, 1)
-            Color: =_VarGblAppColors.PrimaryRed
+            Color: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'= "Button Fill").'Default Value')
             DisabledColor: =RGBA(166, 166, 166, 1)
             FontWeight: =FontWeight.Semibold
             Height: =If('Product Price Lbl_21'.Visible, 30, 0)
@@ -514,12 +515,14 @@
 
         "'Product Price Lbl_21' As label":
             BorderColor: =RGBA(0, 18, 107, 1)
-            Color: =_VarGblAppColors.PrimaryRed
+            Color: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'= "Button Fill").'Default Value')
             DisabledColor: =RGBA(166, 166, 166, 1)
             FontWeight: =FontWeight.Semibold
             Height: =30
             OnSelect: =Select(Parent)
-            Size: =_VarGblAppFonts.Size.Medium
+            Size: |-
+                =//_VarGblAppFonts.Size.Medium
+                14
             Text: |-
                 =If(
                     IsBlank(
@@ -615,9 +618,9 @@
             "'Quantity Input_8' As text":
                 AccessibleLabel: ="Quantity"
                 Align: =Align.Center
-                BorderColor: =_VarGblAppColors.SecondaryText
+                BorderColor: =//_VarGblAppColors.SecondaryText
                 BorderThickness: =2
-                Color: =_VarGblAppColors.PrimaryText
+                Color: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'= "Button Fill").'Default Value')
                 Default: |-
                     =If(
                         'Product List'.OrderType = "Primary",
@@ -1069,7 +1072,7 @@
                 RadiusTopLeft: =10
                 RadiusTopRight: =10
                 Reset: =
-                Size: =_VarGblAppFonts.Size.Medium
+                Size: =//_VarGblAppFonts.Size.Medium
                 Width: =62
                 X: =115
                 Y: =390
