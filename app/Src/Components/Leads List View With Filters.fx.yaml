@@ -27,7 +27,9 @@
             DisabledColor: =RGBA(166, 166, 166, 1)
             DisabledFill: =RGBA(244, 244, 244, 1)
             DisplayMode: =DisplayMode.View
-            Fill: =_VarGblAppColors.PrimaryRed
+            Fill: |-
+                =
+                ColorValue(LookUp(c_EnvironmentVariable, 'Display Name'="Button Fill").'Default Value')
             FontWeight: =FontWeight.Semibold
             Height: =54
             HoverColor: =RGBA(255, 255, 255, 1)
@@ -131,11 +133,15 @@
 
         Button7_8 As button:
             BorderStyle: =BorderStyle.None
-            Color: =If(ThisItem.IsSelected && CountRows(colLeadFilter)=0, Color.White, _VarGblAppColors.PrimaryRed)
+            Color: |-
+                =If(ThisItem.IsSelected && CountRows(colLeadFilter)=0, Color.White, 
+                ColorValue(LookUp(c_EnvironmentVariable, 'Display Name'="Button Fill").'Default Value'))
             DisabledBorderColor: =RGBA(166, 166, 166, 1)
             DisabledColor: =RGBA(166, 166, 166, 1)
             DisabledFill: =RGBA(244, 244, 244, 1)
-            Fill: =If(ThisItem.IsSelected && CountRows(colLeadFilter)=0, _VarGblAppColors.PrimaryRed,_VarGblAppColors.PrimaryBg)
+            Fill: |-
+                =If(ThisItem.IsSelected && CountRows(colLeadFilter)=0, 
+                ColorValue(LookUp(c_EnvironmentVariable, 'Display Name'="Button Fill").'Default Value'),_VarGblAppColors.PrimaryBg)
             Font: =Font.'Segoe UI'
             FontWeight: =FontWeight.Bold
             Height: =43
@@ -875,7 +881,9 @@
         Sort_3 As icon.ArrowsUpDown:
             AccessibleLabel: ="Sorting"
             BorderColor: =RGBA(0, 18, 107, 1)
-            Color: =_VarGblAppColors.PrimaryRed
+            Color: |-
+                =
+                ColorValue(LookUp(c_EnvironmentVariable, 'Display Name'="Button Fill").'Default Value')
             DisabledBorderColor: =RGBA(166, 166, 166, 1)
             DisabledColor: =RGBA(244, 244, 244, 1)
             Height: =35
@@ -958,7 +966,9 @@
 
                 Label28_8 As label:
                     BorderColor: =RGBA(0, 18, 107, 1)
-                    Color: =If(ThisItem.IsSelected, _VarGblAppColors.PrimaryRed, RGBA(0, 0, 0, 1))
+                    Color: |-
+                        =If(ThisItem.IsSelected, 
+                        ColorValue(LookUp(c_EnvironmentVariable, 'Display Name'="Button Fill").'Default Value'), RGBA(0, 0, 0, 1))
                     DisabledColor: =RGBA(166, 166, 166, 1)
                     FocusedBorderThickness: =01
                     FontWeight: =FontWeight.Semibold
@@ -974,7 +984,9 @@
 
                 Icon19_8 As icon.ArrowUp:
                     BorderColor: =RGBA(0, 18, 107, 1)
-                    Color: =_VarGblAppColors.PrimaryRed
+                    Color: |-
+                        =
+                        ColorValue(LookUp(c_EnvironmentVariable, 'Display Name'="Button Fill").'Default Value')
                     DisabledBorderColor: =RGBA(166, 166, 166, 1)
                     DisabledColor: =RGBA(244, 244, 244, 1)
                     DisplayMode: =DisplayMode.View

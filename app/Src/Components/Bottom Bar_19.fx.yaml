@@ -100,7 +100,8 @@
             BorderColor: =RGBA(0, 18, 107, 1)
             Color: |+
                 =//_VarGblAppColors.PrimaryRed
-                If(ThisItem.IsSelected,_VarGblAppColors.PrimaryRed,_VarGblAppColors.textbgbutton)
+                If(ThisItem.IsSelected,
+                LookUp(c_EnvironmentVariable, 'Display Name'="Button Fill").'Default Value',_VarGblAppColors.textbgbutton)
                 
             DisabledColor: =RGBA(166, 166, 166, 1)
             FocusedBorderThickness: =0.3

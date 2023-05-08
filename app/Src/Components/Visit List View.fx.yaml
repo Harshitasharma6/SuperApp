@@ -882,7 +882,9 @@
                 BorderColor: =RGBA(0, 18, 107, 1)
                 BorderStyle: =BorderStyle.None
                 BorderThickness: =1
-                Fill: =_VarGblAppColors.PrimaryRed
+                Fill: |-
+                    =
+                    LookUp(c_EnvironmentVariable, 'Display Name'="Button Fill").'Default Value'
                 Height: =45
                 OnSelect: =Select(Parent)
                 Width: =45
