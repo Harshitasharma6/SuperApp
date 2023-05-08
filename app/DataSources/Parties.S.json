@@ -14,6 +14,7 @@
       "createdby": "Created By",
       "createdon": "Created On",
       "createdonbehalfby": "Created By (Delegate)",
+      "exchangerate": "Exchange Rate",
       "importsequencenumber": "Import Sequence Number",
       "modifiedby": "Modified By",
       "modifiedon": "Modified On",
@@ -25,6 +26,7 @@
       "statecode": "Status",
       "statuscode": "Status Reason",
       "timezoneruleversionnumber": "Time Zone Rule Version Number",
+      "transactioncurrencyid": "Currency",
       "utcconversiontimezonecode": "UTC Conversion Time Zone Code",
       "versionnumber": "Version Number",
       "zx_aadhaarno": "Aadhaar No",
@@ -34,6 +36,7 @@
       "zx_AttachedUser": "Attached User",
       "zx_Branch": "Branch",
       "zx_City": "City",
+      "zx_creditactivated": "Credit Activated",
       "zx_customercode": "Customer Code",
       "zx_customererpcode": "Customer ERP Code",
       "zx_customerstatus": "Customer Status",
@@ -68,9 +71,13 @@
       "zx_Pincode": "Pincode",
       "zx_PriceList": "Price List",
       "zx_Region": "Region",
+      "zx_remainingcreditlimit": "Remaining Credit Limit",
+      "zx_remainingcreditlimit_base": "Remaining Credit Limit (Base)",
       "zx_remarks": "Remarks",
       "zx_State": "State",
       "zx_Supplier": "Supplier",
+      "zx_totalcreditlimit": "Total Credit Limit",
+      "zx_totalcreditlimit_base": "Total Credit Limit (Base)",
       "zx_type": "Type",
       "zx_zx_contacts_Party_zx_parties": "Contacts.S",
       "zx_zx_invoice_Party_zx_parties": "Invoice.S",
@@ -190,6 +197,26 @@
     },
     "OptionSetTypeKey": "StatusType",
     "RelatedColumnInvariantName": "statuscode",
+    "RelatedEntityName": "Parties.S",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Credit Activated (Parties.S)",
+    "Name": "zx_parties_zx_creditactivated",
+    "OptionSetInfoNameMapping": {
+      "0": "No",
+      "1": "Yes"
+    },
+    "OptionSetIsBooleanValued": true,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "zx_creditactivated",
+        "OptionSetReferenceEntityName": "Parties.S"
+      }
+    },
+    "OptionSetTypeKey": "BooleanType",
+    "RelatedColumnInvariantName": "zx_creditactivated",
     "RelatedEntityName": "Parties.S",
     "Type": "OptionSetInfo"
   },
