@@ -341,26 +341,6 @@
                 Width: =1
                 ZIndex: =2
 
-            Rectangle1_19 As rectangle:
-                AccessibleLabel: ="Rectangle1_9"
-                BorderColor: =RGBA(0, 18, 107, 1)
-                Fill: |-
-                    =ColorValue(
-                        LookUp(
-                            c_EnvironmentVariable,
-                            'Display Name' = "Button Fill"
-                        ).'Default Value'
-                    )//ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//_VarGblAppColors.PrimaryRed
-                Height: =1
-                OnSelect: |-
-                    =Navigate('order detail screen',ScreenTransition.CoverRight);
-                    Set(varOrderData, ThisItem)
-                     
-                TabIndex: =0
-                Width: ='Order Info Gallery_2'.TemplateWidth
-                Y: =74
-                ZIndex: =3
-
             Body1_38 As label:
                 BorderColor: =RGBA(0, 18, 107, 1)
                 Color: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Primary Text Color").'Default Value' )//ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//_VarGblAppColors.PrimaryRed
@@ -383,27 +363,6 @@
                 Wrap: =false
                 X: =90
                 ZIndex: =5
-
-            Body1_97 As label:
-                BorderColor: =RGBA(0, 18, 107, 1)
-                Color: =RGBA(0, 0, 0, 1)
-                DisabledColor: =RGBA(166, 166, 166, 1)
-                FocusedBorderThickness: =01
-                FontWeight: =FontWeight.Semibold
-                Height: =64
-                OnSelect: |-
-                    =Navigate('order detail screen',ScreenTransition.CoverRight);
-                    Set(varOrderData, ThisItem)
-                     
-                TabIndex: =0
-                Text: |-
-                    ="Customer Name: " & ThisItem.'Order From'.'Customer Name'
-                Tooltip: |-
-                    ="Order To: " & ThisItem.'Order To'.'Customer Name'
-                Width: =522
-                X: =25
-                Y: =85
-                ZIndex: =7
 
             Body1_99 As label:
                 BorderColor: =RGBA(0, 18, 107, 1)
@@ -428,28 +387,6 @@
                 X: =320
                 Y: =149
                 ZIndex: =8
-
-            Body1_98 As label:
-                BorderColor: =RGBA(0, 18, 107, 1)
-                Color: =RGBA(0, 0, 0, 1)
-                DisabledColor: =RGBA(166, 166, 166, 1)
-                FocusedBorderThickness: =01
-                FontWeight: =FontWeight.Semibold
-                Height: =39
-                OnSelect: |-
-                    =Navigate('order detail screen',ScreenTransition.CoverRight);
-                    Set(varOrderData, ThisItem)
-                     
-                TabIndex: =0
-                Text: |-
-                    ="Order Date: " & DateValue(ThisItem.'Order Date')
-                Tooltip: |-
-                    =
-                    "Total Tax: " &"₹"& Sum(ThisItem.CGST,ThisItem.SGST,ThisItem.IGST)
-                Width: =290
-                X: =25
-                Y: =149
-                ZIndex: =9
 
             Circle18_3 As circle:
                 BorderColor: =RGBA(0, 18, 107, 1)

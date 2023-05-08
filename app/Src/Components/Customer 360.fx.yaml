@@ -176,7 +176,6 @@
                 =LookUp(c_EnvironmentVariable, 'Display Name'="Text Heading Font").'Default Value'
                 
                 //_VarGblAppFonts.Heading
-            FontWeight: =FontWeight.Semibold
             Height: =52
             OnSelect: |-
                 =Set(varContactData,ThisItem);
@@ -229,7 +228,6 @@
                 =LookUp(c_EnvironmentVariable, 'Display Name'="Text Heading Font").'Default Value'
                 
                 //_VarGblAppFonts.Heading
-            FontWeight: =FontWeight.Semibold
             Height: =52
             OnSelect: |-
                 =Set(varContactData,ThisItem);
@@ -256,7 +254,6 @@
                 =LookUp(c_EnvironmentVariable, 'Display Name'="Text Heading Font").'Default Value'
                 
                 //_VarGblAppFonts.Heading
-            FontWeight: =FontWeight.Semibold
             Height: =56
             OnSelect: |-
                 =Set(varContactData,ThisItem);
@@ -291,9 +288,9 @@
         ShowScrollbar: =false
         TabIndex: =0
         TemplateSize: =234
-        Visible: ='Top Gallery'.Selected.TabId=6
-        Width: =620
-        X: =10
+        Visible: =
+        Width: =190
+        X: =440
         Y: =192
         ZIndex: =5
 
@@ -839,7 +836,7 @@
                 =LookUp(c_EnvironmentVariable, 'Display Name'="Text Heading Font").'Default Value'
                 
                 //_VarGblAppFonts.Heading
-            FontWeight: =FontWeight.Semibold
+            FontWeight: =FontWeight.Bold
             Height: =75
             OnSelect: |-
                 =Navigate('Order Info',ScreenTransition.CoverRight);
@@ -879,6 +876,7 @@
             Text: = ThisItem.'Order From'.'Customer Type'
             Tooltip: |-
                 ="Order Status: " & ThisItem.Status
+            Visible: =false
             Width: =186
             Wrap: =false
             X: =391
@@ -903,10 +901,10 @@
                 LookUp('Environment Variable Definitions', 'Display Name'="Text Sub Title Font Size").'Default Value'
             TabIndex: =0
             Text: |-
-                ="Customer Name: " & ThisItem.'Order To'.'Customer Name'
+                ="Customer Name: " //& ThisItem.'Order To'.'Customer Name'
             Tooltip: |-
                 ="Order To: " & ThisItem.'Order To'.'Customer Name'
-            Width: =522
+            Width: =250
             X: =25
             Y: =85
             ZIndex: =7
@@ -958,7 +956,7 @@
                 LookUp('Environment Variable Definitions', 'Display Name'="Text Sub Title Font Size").'Default Value'
             TabIndex: =0
             Text: |-
-                ="Order Date: " & ThisItem.'Order Date'
+                ="Order Date: " 
             Tooltip: |-
                 =
                 "Total Tax: " &"₹"& Sum(ThisItem.CGST,ThisItem.SGST,ThisItem.IGST)
@@ -979,8 +977,9 @@
 
         Label79_1 As label:
             BorderColor: =RGBA(0, 18, 107, 1)
-            Color: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//_VarGblAppColors.PrimaryRed
+            Color: =ColorFade(ColorValue(LookUp(c_EnvironmentVariable, 'Display Name'="Text Primary Color").'Default Value'), 20%)
             DisabledColor: =RGBA(166, 166, 166, 1)
+            FontWeight: =FontWeight.Bold
             Height: =75
             OnSelect: =Select(Parent)
             Size: =16
@@ -1000,6 +999,58 @@
             X: =26
             Y: =16
             ZIndex: =12
+
+        Body1_97 As label:
+            BorderColor: =RGBA(0, 18, 107, 1)
+            Color: =ColorFade(ColorValue(LookUp(c_EnvironmentVariable, 'Display Name'="Text Primary Color").'Default Value'), 20%)
+            DisabledColor: =RGBA(166, 166, 166, 1)
+            FocusedBorderThickness: =01
+            Font: |-
+                =LookUp(c_EnvironmentVariable, 'Display Name'="Text Heading Font").'Default Value'
+                
+                //_VarGblAppFonts.Heading
+            Height: =39
+            OnSelect: |-
+                =Navigate('Order Info',ScreenTransition.CoverRight);
+                Set(varOrderData, ThisItem)
+                 
+            Size: |-
+                =
+                LookUp('Environment Variable Definitions', 'Display Name'="Text Sub Title Font Size").'Default Value'
+            TabIndex: =0
+            Text: =Text(ThisItem.'Order Date', "dd/mm/yyyy")
+            Tooltip: |-
+                =
+                "Total Tax: " &"₹"& Sum(ThisItem.CGST,ThisItem.SGST,ThisItem.IGST)
+            Width: =200
+            X: =132
+            Y: =132
+            ZIndex: =13
+
+        Body1_98 As label:
+            BorderColor: =RGBA(0, 18, 107, 1)
+            Color: =ColorFade(ColorValue(LookUp(c_EnvironmentVariable, 'Display Name'="Text Primary Color").'Default Value'), 20%)
+            DisabledColor: =RGBA(166, 166, 166, 1)
+            FocusedBorderThickness: =01
+            Font: |-
+                =LookUp(c_EnvironmentVariable, 'Display Name'="Text Heading Font").'Default Value'
+                
+                //_VarGblAppFonts.Heading
+            OnSelect: |-
+                =Navigate('Order Info',ScreenTransition.CoverRight);
+                Set(varOrderData, ThisItem)
+                 
+            Size: |-
+                =
+                LookUp('Environment Variable Definitions', 'Display Name'="Text Sub Title Font Size").'Default Value'
+            TabIndex: =0
+            Text: = ThisItem.'Order To'.'Customer Name'
+            Tooltip: |-
+                ="Order To: " & ThisItem.'Order To'.'Customer Name'
+            Width: =200
+            X: =182
+            Y: =85
+            ZIndex: =14
 
     "'Activity gallery_1' As gallery.galleryVertical":
         AccessibleLabel: ="Orderline Gallery"
@@ -1302,15 +1353,51 @@
         BorderColor: =RGBA(0, 18, 107, 1)
         FocusedBorderColor: =Color.Transparent
         FocusedBorderThickness: =0.1
-        Height: ='Customer 360'.Height - 200
+        Height: =732
         Items: =Filter(Stocks, Customer.'Customer Code' = 'Customer 360'.CustomerRecord.zx_customercode)
         Layout: =Layout.Vertical
         ShowScrollbar: =false
         TabIndex: =
         TemplateSize: =205
         Visible: ='Top Gallery'.Selected.TabId=9
-        Y: =200
+        Y: =234
         ZIndex: =14
+
+        Background_24 As button:
+            BorderThickness: =0
+            Color: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Hover Color").'Default Value')
+            DisabledBorderColor: =RGBA(166, 166, 166, 1)
+            DisabledColor: =RGBA(116, 116, 116, 1)
+            DisabledFill: |-
+                =//_VarGblAppColors.BottomListBg
+                
+                ColorValue(LookUp(c_EnvironmentVariable, 'Display Name'="Button Border Color").'Default Value')
+            DisplayMode: =DisplayMode.View
+            Fill: |-
+                =//_VarGblAppColors.BottomListBg
+                
+                ColorValue(LookUp(c_EnvironmentVariable, 'Display Name'="Button Hover Color").'Default Value')
+            FontWeight: =FontWeight.Semibold
+            Height: =93
+            HoverColor: =RGBA(255, 255, 255, 1)
+            HoverFill: =ColorFade(Self.Fill, -20%)
+            OnSelect: |-
+                =
+                Navigate('Activity Detail Screen',ScreenTransition.CoverRight);
+                Set(varActivityData,ThisItem);
+            RadiusBottomLeft: =15
+            RadiusBottomRight: =15
+            RadiusTopLeft: |-
+                =
+                0
+            RadiusTopRight: |-
+                =
+                0
+            Size: =24
+            Text: =""
+            Width: =610
+            X: =10
+            ZIndex: =1
 
         "'Product BG_1' As button":
             BorderColor: |-
@@ -1336,7 +1423,7 @@
             Text: =""
             Width: =610
             X: =10
-            ZIndex: =1
+            ZIndex: =2
 
         "'Product Name Lbl_1' As label":
             BorderColor: =RGBA(0, 18, 107, 1)
@@ -1347,14 +1434,8 @@
             FontWeight: =FontWeight.Bold
             Height: =43
             OnSelect: |-
-                =Navigate(
-                    'Product info',
-                    ScreenTransition.Cover
-                );
-                Set(
-                    productinfo,
-                    ThisItem
-                )
+                =//Set(varContactData,ThisItem);
+                Navigate('Contact Detail Page',ScreenTransition.CoverRight);
             Size: =LookUp(c_EnvironmentVariable,'Display Name'="Text Medium Font Size").'Default Value'
             TabIndex: =0
             Text: |-
@@ -1372,24 +1453,6 @@
             Wrap: =false
             X: =20
             Y: =12
-            ZIndex: =2
-
-        "'Product Code Lbl_1' As label":
-            BorderColor: =RGBA(0, 18, 107, 1)
-            Color: =RGBA(0, 0, 0, 1)
-            DisabledColor: =RGBA(166, 166, 166, 1)
-            FontWeight: =FontWeight.Semibold
-            Height: =43
-            OnSelect: =Select(Parent)
-            Size: |-
-                =
-                LookUp('Environment Variable Definitions', 'Display Name'="Text Sub Title Font Size").'Default Value'
-            Text: |-
-                ="Code: "& ThisItem.'Product SKU'.'Item Code'
-            Width: =206
-            Wrap: =false
-            X: =20
-            Y: =75
             ZIndex: =3
 
         "'Variant ComboBox_1' As combobox":
@@ -1474,95 +1537,6 @@
             X: =421
             Y: =93
             ZIndex: =4
-
-        "'Product Code Lbl_2' As label":
-            BorderColor: =RGBA(0, 18, 107, 1)
-            Color: =RGBA(0, 0, 0, 1)
-            DisabledColor: =RGBA(166, 166, 166, 1)
-            FontWeight: =FontWeight.Semibold
-            Height: =43
-            OnSelect: =Select(Parent)
-            Size: |-
-                =
-                LookUp('Environment Variable Definitions', 'Display Name'="Text Sub Title Font Size").'Default Value'
-            Text: |-
-                ="Quantity: "& ThisItem.Quantity
-            Width: =246
-            Wrap: =false
-            X: =335
-            Y: =75
-            ZIndex: =5
-
-        Background_24 As button:
-            BorderThickness: =0
-            Color: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Hover Color").'Default Value')
-            DisabledBorderColor: =RGBA(166, 166, 166, 1)
-            DisabledColor: =RGBA(116, 116, 116, 1)
-            DisabledFill: |-
-                =//_VarGblAppColors.BottomListBg
-                
-                ColorValue(LookUp(c_EnvironmentVariable, 'Display Name'="Button Border Color").'Default Value')
-            DisplayMode: =DisplayMode.Disabled
-            Fill: |-
-                =//_VarGblAppColors.BottomListBg
-                
-                ColorValue(LookUp(c_EnvironmentVariable, 'Display Name'="Button Border Color").'Default Value')
-            FontWeight: =FontWeight.Semibold
-            Height: =72
-            HoverColor: =RGBA(255, 255, 255, 1)
-            HoverFill: =ColorFade(Self.Fill, -20%)
-            OnSelect: |-
-                =
-                Navigate('Activity Detail Screen',ScreenTransition.CoverRight);
-                Set(varActivityData,ThisItem);
-            RadiusBottomLeft: =15
-            RadiusBottomRight: =15
-            RadiusTopLeft: |-
-                =
-                0
-            RadiusTopRight: |-
-                =
-                0
-            Size: =24
-            Text: =""
-            Width: =610
-            X: =10
-            Y: =126
-            ZIndex: =6
-
-        "'Product Code Lbl_3' As label":
-            BorderColor: =RGBA(0, 18, 107, 1)
-            Color: =RGBA(0, 0, 0, 1)
-            DisabledColor: =RGBA(166, 166, 166, 1)
-            FontWeight: =FontWeight.Semibold
-            Height: =43
-            OnSelect: =Select(Parent)
-            Size: |-
-                =
-                LookUp('Environment Variable Definitions', 'Display Name'="Text Sub Title Font Size").'Default Value'
-            Text: |-
-                ="Last Updated Date: "& ThisItem.'Last Updated Date'
-            Width: =551
-            Wrap: =false
-            X: =20
-            Y: =140
-            ZIndex: =8
-
-        Rectangle1_17 As rectangle:
-            AccessibleLabel: ="Rectangle1_9"
-            BorderColor: =RGBA(0, 18, 107, 1)
-            Fill: |-
-                =
-                ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Header Band Color").'Default Value' )
-            Height: =1
-            OnSelect: |-
-                =Set(varContactData,ThisItem);
-                Navigate('Contact Detail Page',ScreenTransition.CoverRight);
-            TabIndex: =0
-            Width: ='Order Info Gallery_1'.TemplateWidth
-            X: =10
-            Y: =66
-            ZIndex: =9
 
     "'Lead Gallery_1' As gallery.galleryVertical":
         AccessibleLabel: ="Order Gallery"
@@ -2246,7 +2220,12 @@
 
         Label10_6 As label:
             BorderColor: =RGBA(0, 18, 107, 1)
-            Color: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Text Primary Color").'Default Value')
+            Color: |-
+                =
+                
+                
+                If(ThisItem.Value.Title="Bank Name",
+                RGBA(0, 0, 0, 1),ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Text Primary Color").'Default Value'))
             DisabledColor: =RGBA(166, 166, 166, 1)
             FontWeight: |-
                 =
@@ -2373,4 +2352,916 @@
             X: =22
             Y: =339
             ZIndex: =33
+
+    Gallery1_2 As gallery.galleryVertical:
+        AccessibleLabel: ="List View"
+        BorderColor: =RGBA(0, 18, 107, 1)
+        BorderStyle: =BorderStyle.None
+        Height: =789
+        Items: |-
+            =
+            SortByColumns(
+                Sort(
+                   // Filter(
+                    Filter(
+                        OfflineVisitCollection,
+                         'Owning User'.'Primary Email' =User().Email
+            &&Party.'Customer Code' = 'Customer 360'.CustomerRecord.zx_customercode
+                        // ComboBox2_1.Selected.'Primary Email
+                    ),
+                       // IsToday('Created On')
+                   // ),
+                    'Created On',
+                    SortOrder.Descending
+                ),
+                "zx_visitstatus",
+                [
+                    [@'Visit Status'].Started,
+                    [@'Visit Status'].'Not Started',
+                    [@'Visit Status'].Completed
+                ]
+            )
+            /*Sort(Filter(
+                OfflineVisitCollection,
+                DateValue('Visit date') >= 'Visit List View'.VisitDate 
+            ),'Created On',SortOrder.Descending)*/
+        Layout: =Layout.Vertical
+        ShowScrollbar: =false
+        TabIndex: =
+        TemplatePadding: =10
+        TemplateSize: =280
+        Visible: ='Top Gallery'.Selected.TabId=6
+        Y: =175
+        ZIndex: =34
+
+        Background_3 As button:
+            BorderColor: =RGBA(0, 121, 187, 1)
+            BorderThickness: =1
+            Color: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Hover Color").'Default Value')
+            DisabledBorderColor: =RGBA(102, 182, 227, 1)
+            DisabledColor: =RGBA(166, 166, 166, 1)
+            DisabledFill: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Hover Color").'Default Value')
+            DisplayMode: =DisplayMode.Disabled
+            Fill: =RGBA(56, 96, 178, 1)
+            FontWeight: =FontWeight.Semibold
+            Height: =275
+            HoverColor: =RGBA(255, 255, 255, 1)
+            HoverFill: =ColorFade(RGBA(56, 96, 178, 1), -20%)
+            OnSelect: =Select(Parent)
+            RadiusBottomLeft: =15
+            RadiusBottomRight: =15
+            RadiusTopLeft: =15
+            RadiusTopRight: =15
+            Size: =24
+            Text: =""
+            Width: =600
+            X: =10
+            ZIndex: =1
+
+        TitleLbl_2 As label:
+            BorderColor: =RGBA(0, 18, 107, 1)
+            Color: =RGBA(0, 0, 0, 1)
+            DisabledColor: =RGBA(166, 166, 166, 1)
+            FontWeight: =FontWeight.Bold
+            Height: =30
+            LineHeight: =1
+            OnSelect: =Select(Parent)
+            Size: =16
+            Text: =ThisItem.Party.'Customer Name'
+            Width: =300
+            X: =77
+            Y: =20
+            ZIndex: =2
+
+        Title2Lbl_2 As label:
+            BorderColor: =RGBA(0, 18, 107, 1)
+            Color: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value')
+            DisabledColor: =RGBA(166, 166, 166, 1)
+            Font: =Font.'Segoe UI'
+            Height: =35
+            LineHeight: =1
+            OnSelect: =Select(Parent)
+            Size: =12
+            Text: =ThisItem.Party.Address
+            Width: =296
+            X: =77
+            Y: =45
+            ZIndex: =3
+
+        Icon2_3 As icon.Leave:
+            AccessibleLabel: ="Start visit"
+            BorderColor: =RGBA(0, 18, 107, 1)
+            Color: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Hover Color").'Default Value')
+            DisabledBorderColor: =RGBA(166, 166, 166, 1)
+            DisabledColor: =RGBA(244, 244, 244, 1)
+            DisplayMode: |-
+                =If(
+                    LookUp(
+                        OfflineVisitCollection,
+                        zx_visitid = ThisItem.zx_visitid
+                    ).zx_visitstatus = 'Visit Status'.Completed,
+                    DisplayMode.View,
+                    DisplayMode.Edit
+                )
+            Height: =25
+            Icon: =Icon.Leave
+            OnSelect: |
+                =If(
+                    ThisItem.createdby.'Primary Email' = User().Email,
+                    If(
+                        CountIf(
+                            Attendances,
+                            User.'Primary Email' = User().Email && Date = Today() && !IsBlank('Check-out Time')
+                        ) > 0,
+                        Notify(
+                            "Your day has Ended, you can not start Visit",
+                            NotificationType.Error,
+                            2000
+                        ),
+                        If(
+                            CountIf(
+                                Attendances,
+                                User.'Primary Email' = User().Email && Date = Today() && !IsBlank('Check-in Time')
+                            ) = 0,
+                            Notify(
+                                "Kindly Start your day first",
+                                NotificationType.Error,
+                                2000
+                            );
+                            Navigate(Home),
+                            If(
+                                Not(
+                                    Text(
+                                        ThisItem.zx_visitdate,
+                                        "dd/mm/yyyy"
+                                    ) = Text(
+                                        Today(),
+                                        "dd/mm/yyyy"
+                                    )
+                                ),
+                                Notify(
+                                    "Visit cannot be started",
+                                    NotificationType.Error,
+                                    2000
+                                ),
+                                IsBlank(
+                                    LookUp(
+                                        OfflineVisitCollection,
+                                        zx_visitdate = Today() && createdby.'Primary Email' = User().Email && zx_visitstatus = [@'Visit Status'].Started && Not(zx_visitid = ThisItem.zx_visitid)
+                                    )
+                                ),
+                                If(
+                                    Connection.Connected,
+                                    Patch(
+                                        'Visit.S',
+                                        LookUp(
+                                            'Visit.S',
+                                            zx_visitid = ThisItem.zx_visitid
+                                        ),
+                                        {
+                                            'Visit Status': 'Visit Status'.Started,
+                                            'Check-in Time': Now(),
+                                            'Check-in Geo Location Lat': Location.Latitude,
+                                            'Check-in Geo Location Long': Location.Longitude,
+                                            zx_checkinaddress: LookUp(
+                                                'Parties.S',
+                                                Address = ThisItem.zx_Party.Address
+                                            ).Address
+                                        }
+                                    );
+                                    Notify(
+                                        "Visit has been started",
+                                        NotificationType.Success,
+                                        700
+                                    );
+                                    ,
+                                    Collect(
+                                        OfflineVisitsToBeSynced,
+                                        {
+                                            visitItem: LookUp(
+                                                OfflineVisitCollection,
+                                                zx_visitid = ThisItem.zx_visitid
+                                            ),
+                                            zx_visitid: ThisItem.zx_visitid,
+                                            zx_visitstatus: 'Visit Status'.Started,
+                                            zx_checkintime: Now(),
+                                            zx_checkingeolocationlat: Location.Latitude,
+                                            zx_checkingeolocationlong: Location.Longitude,
+                                            zx_checkinaddress: LookUp(
+                                                'Parties.S',
+                                                Address = ThisItem.zx_Party.Address
+                                            ).Address
+                                        }
+                                    );
+                                    Patch(
+                                        OfflineVisitCollection,
+                                        LookUp(
+                                            OfflineVisitCollection,
+                                            zx_visitid = ThisItem.zx_visitid
+                                        ),
+                                        {
+                                            zx_visitstatus: 'Visit Status'.Started,
+                                            zx_checkintime: Now(),
+                                            zx_checkingeolocationlat: Location.Latitude,
+                                            zx_checkingeolocationlong: Location.Longitude,
+                                            zx_checkinaddress: LookUp(
+                                                'Parties.S',
+                                                Address = ThisItem.zx_Party.Address
+                                            ).Address
+                                        }
+                                    );
+                                    SaveData(
+                                        OfflineVisitsToBeSynced,
+                                        "OfflineVisitsToBeSynced"
+                                    );
+                                    Notify(
+                                        "Data has been saved on local",
+                                        NotificationType.Success,
+                                        1000
+                                    );
+                                );
+                                Navigate(
+                                    'Visit Info',
+                                    ScreenTransition.CoverRight
+                                );
+                                Set(
+                                    _varClickedVisitAccount,
+                                    ThisItem.zx_Party.Parties
+                                );
+                                /*Set(
+                                    varCustomerforDiscount,
+                                    ThisItem.zx_Party.Parties
+                                );*/
+                                //Set attached dist according_______________________________________________________________
+                If(
+                                    ThisItem.zx_Party.'Customer Type' = 'Party Type Choices'.Retailer,
+                                    Set(
+                                        _varSelectedRetailerAttachedDistributor,
+                                        LookUp(
+                                            OfflinePartiesCollection,
+                                            zx_customererpcode = ThisItem.zx_Party.'Customer Code'
+                                        ).zx_AttachedDistributor.Parties
+                                    );
+                                    ,
+                                    Set(
+                                        _varSelectedRetailerAttachedDistributor,
+                                        Blank()
+                                    )
+                                );
+                                Set(
+                                    _varVisitId,
+                                    ThisItem.zx_visitid
+                                );
+                                ,
+                                Notify(
+                                    "One Visit is Already Started.",
+                                    NotificationType.Warning,
+                                    1000
+                                )
+                            )
+                        )
+                    );
+                    ,
+                    Notify(
+                        "You cannot start the subordinate visit",
+                        NotificationType.Error,
+                        2000
+                    )
+                );
+                ClearCollect(
+                    OfflineVisitCollection,
+                    'Visit.S'
+                );
+            TabIndex: =0//-1
+            Width: =25
+            X: =108
+            Y: =244
+            ZIndex: =4
+
+        Icon2_2 As icon.Leave:
+            BorderColor: =RGBA(0, 18, 107, 1)
+            Color: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Hover Color").'Default Value')
+            DisabledBorderColor: =RGBA(166, 166, 166, 1)
+            DisabledColor: =RGBA(244, 244, 244, 1)
+            Height: =25
+            Icon: =Icon.DockCheckProperties
+            Visible: |-
+                =If(
+                    LookUp(
+                        OfflineVisitCollection,
+                        zx_visitid = ThisItem.zx_visitid
+                    ).'Visit Status'= 'Visit Status'.Completed,
+                    false,
+                    true
+                )
+            Width: =25
+            X: =403
+            Y: =243
+            ZIndex: =5
+
+        Rectangle30_3 As rectangle:
+            BorderColor: =RGBA(0, 18, 107, 1)
+            Fill: =RGBA(102, 182, 227, 1)
+            Height: =1
+            OnSelect: =Select(Parent)
+            Width: =600
+            X: =10
+            Y: =85
+            ZIndex: =14
+
+        Label30_11 As label:
+            BorderColor: =RGBA(0, 18, 107, 1)
+            Color: =RGBA(0, 0, 0, 1)
+            DisabledColor: =RGBA(166, 166, 166, 1)
+            Height: =35
+            OnSelect: =Select(Parent)
+            PaddingLeft: =0
+            Text: ="Last Visit Summary"
+            Width: =260
+            X: =44
+            Y: =104
+            ZIndex: =15
+
+        Label30_15 As label:
+            BorderColor: =RGBA(0, 18, 107, 1)
+            Color: =RGBA(0, 0, 0, 1)
+            DisabledColor: =RGBA(166, 166, 166, 1)
+            Height: =35
+            OnSelect: =Select(Parent)
+            Text: ="Booking History"
+            Width: =200
+            X: =378
+            Y: =104
+            ZIndex: =16
+
+        Icon26_2 As icon.CalendarBlank:
+            BorderColor: =RGBA(0, 18, 107, 1)
+            Color: =RGBA(102, 182, 227, 1)
+            DisabledBorderColor: =RGBA(166, 166, 166, 1)
+            DisabledColor: =RGBA(244, 244, 244, 1)
+            Height: =25
+            Icon: =Icon.CalendarBlank
+            OnSelect: =Select(Parent)
+            Width: =25
+            X: =46
+            Y: =143
+            ZIndex: =17
+
+        Icon27_1 As icon.Currency:
+            BorderColor: =RGBA(0, 18, 107, 1)
+            Color: =RGBA(102, 182, 227, 1)
+            DisabledBorderColor: =RGBA(166, 166, 166, 1)
+            DisabledColor: =RGBA(244, 244, 244, 1)
+            Height: =25
+            Icon: =Icon.Currency
+            OnSelect: =Select(Parent)
+            Width: =25
+            X: =46
+            Y: =179
+            ZIndex: =18
+
+        Label30_17 As label:
+            BorderColor: =RGBA(0, 18, 107, 1)
+            Color: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//_VarGblAppColors.PrimaryRed
+            DisabledColor: =RGBA(166, 166, 166, 1)
+            FontWeight: =FontWeight.Bold
+            Height: =25
+            OnSelect: =Select(Parent)
+            Text: ="FY"
+            Width: =35
+            X: =378
+            Y: =141
+            ZIndex: =19
+
+        Label30_18 As label:
+            BorderColor: =RGBA(0, 18, 107, 1)
+            Color: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//_VarGblAppColors.PrimaryRed
+            DisabledColor: =RGBA(166, 166, 166, 1)
+            FontWeight: =FontWeight.Bold
+            Height: =25
+            OnSelect: =Select(Parent)
+            Text: ="Q"
+            Width: =25
+            X: =378
+            Y: =179
+            ZIndex: =20
+
+        Label30_19 As label:
+            BorderColor: =RGBA(0, 18, 107, 1)
+            Color: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//_VarGblAppColors.PrimaryRed
+            DisabledColor: =RGBA(166, 166, 166, 1)
+            FontWeight: =FontWeight.Bold
+            Height: =25
+            OnSelect: =Select(Parent)
+            Text: ="M"
+            Width: =25
+            X: =378
+            Y: =219
+            ZIndex: =21
+
+        Rating1_1 As rating:
+            AccessibleLabel: ="Text"
+            BorderColor: =RGBA(0, 18, 107, 1)
+            BorderStyle: =BorderStyle.None
+            BorderThickness: =0
+            Default: =3
+            DisabledBorderColor: =RGBA(166, 166, 166, 1)
+            DisabledFill: =Self.Fill
+            DisplayMode: =DisplayMode.Edit
+            Fill: =RGBA(0, 0, 0, 0)
+            FocusedBorderColor: =Self.BorderColor
+            FocusedBorderThickness: =2
+            Height: =30
+            HoverFill: =Self.Fill
+            OnSelect: =Select(Parent)
+            PressedFill: =Self.Fill
+            RatingFill: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//_VarGblAppColors.PrimaryRed
+            Width: =130
+            X: =44
+            Y: =219
+            ZIndex: =22
+
+        Group11_1 As group:
+            Height: =5
+            Width: =5
+            X: =60
+            Y: =60
+            ZIndex: =22
+
+            Circle6_2 As circle:
+                BorderColor: =RGBA(102, 182, 227, 1)
+                BorderThickness: =1
+                Fill: =RGBA(0, 0, 0, 0)
+                Height: =50
+                OnSelect: |-
+                    =Launch("tel://" & ThisItem.zx_Party.'Mobile No.')
+                Width: =50
+                X: =431
+                Y: =18
+                ZIndex: =6
+
+            Icon3_2 As icon.Phone:
+                AccessibleLabel: ="Icon3"
+                BorderColor: =RGBA(0, 18, 107, 1)
+                Color: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//_VarGblAppColors.PrimaryRed
+                DisabledBorderColor: =RGBA(166, 166, 166, 1)
+                DisabledColor: =RGBA(244, 244, 244, 1)
+                Height: =37
+                Icon: =Icon.Phone
+                OnSelect: |-
+                    =Launch("tel://" & ThisItem.zx_Party.'Mobile No.')
+                PaddingLeft: =5
+                PaddingRight: =5
+                TabIndex: =0
+                Width: =37
+                X: =436
+                Y: =25
+                ZIndex: =8
+
+        Group12_1 As group:
+            Height: =5
+            Width: =5
+            X: =60
+            Y: =60
+            ZIndex: =22
+
+            Icon3_3 As icon.Phone:
+                AccessibleLabel: ="Icon3_1"
+                BorderColor: =RGBA(0, 18, 107, 1)
+                Color: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//_VarGblAppColors.PrimaryRed
+                DisabledBorderColor: =RGBA(166, 166, 166, 1)
+                DisabledColor: =RGBA(244, 244, 244, 1)
+                Height: =35
+                Icon: =Icon.Waypoint
+                OnSelect: |-
+                    =Launch("http://www.google.com/maps/place/" & ThisItem.zx_Party.Latitude &"," & ThisItem.zx_Party.Longitude)
+                PaddingLeft: =5
+                PaddingRight: =5
+                TabIndex: =0
+                Width: =37
+                X: =496
+                Y: =25
+                ZIndex: =7
+
+            Circle6_3 As circle:
+                BorderColor: =RGBA(102, 182, 227, 1)
+                BorderThickness: =1
+                Fill: =RGBA(0, 0, 0, 0)
+                Height: =50
+                OnSelect: |-
+                    =Launch("http://www.google.com/maps/place/" & ThisItem.zx_Party.Latitude &"," & ThisItem.zx_Party.Longitude)
+                Width: =50
+                X: =489
+                Y: =18
+                ZIndex: =9
+
+        Label65_2 As label:
+            BorderColor: =RGBA(0, 18, 107, 1)
+            Color: =RGBA(0, 0, 0, 1)
+            DisabledColor: =RGBA(166, 166, 166, 1)
+            Height: =27
+            OnSelect: =Select(Parent)
+            Text: |-
+                =Text(
+                    LookUp(
+                        Sort(
+                           OfflineVisitCollection,
+                            zx_visitdate,
+                            SortOrder.Descending
+                        ),
+                        zx_Party.Parties = ThisItem.zx_Party.Parties && 'Visit Status' = ThisItem.'Visit Status'
+                    ).zx_visitdate,
+                    "dd/mm/yyyy"
+                )
+            Width: =200
+            X: =88
+            Y: =141
+            ZIndex: =23
+
+        Group14_2 As group:
+            Height: =5
+            Width: =5
+            X: =60
+            Y: =60
+            ZIndex: =23
+
+            Circle7_4 As circle:
+                AccessibleLabel: ="Text"
+                BorderColor: =RGBA(102, 182, 227, 1)
+                BorderThickness: =1
+                DisplayMode: |-
+                    =If(
+                        LookUp(
+                            OfflineVisitCollection,
+                            zx_visitid = ThisItem.zx_visitid
+                        ).zx_visitstatus = 'Visit Status'.Completed,
+                        DisplayMode.Disabled,
+                        DisplayMode.Edit
+                    )
+                Fill: =RGBA(0, 0, 0, 0)
+                Height: =50
+                OnSelect: =
+                TabIndex: =0
+                Width: =50
+                X: =549
+                Y: =18
+                ZIndex: =10
+
+            Image15_2 As image:
+                AccessibleLabel: ="Text"
+                BorderColor: =RGBA(0, 18, 107, 1)
+                DisabledBorderColor: =RGBA(166, 166, 166, 1)
+                DisabledFill: =RGBA(244, 244, 244, 1)
+                DisplayMode: |-
+                    =/*If(
+                        LookUp(
+                            OfflineVisitCollection,
+                            zx_visitid = ThisItem.zx_visitid
+                        ).zx_visitstatus = 'Visit Status'.Completed,
+                        DisplayMode.Disabled,
+                        DisplayMode.Edit
+                    )*/
+                Height: =30
+                Image: |-
+                    =
+                    If(ThisItem.zx_visitstatus = 'Visit Status'.Started , square , 'play (1)')
+                OnSelect: |-
+                    =If(
+                        ThisItem.'Visit Status' = [@'Visit Status'].Completed,
+                        Notify(
+                            "Your Visit is Already Ended",
+                            NotificationType.Success,1000
+                        ),
+                        If(
+                            Self.Image = 'play (1)',
+                            (If(
+                                ThisItem.createdby.'Primary Email' = User().Email,
+                                If(
+                                    CountIf(
+                                        'Attendance.S',
+                                        User.'Primary Email' = User().Email && Date = Today() && !IsBlank('Check-out Time')
+                                    ) > 0,
+                                    Notify(
+                                        "Your day has Ended, you can not start Visit",
+                                        NotificationType.Error,
+                                        2000
+                                    ),
+                                    If(
+                                        CountIf(
+                                            'Attendance.S',
+                                            User.'Primary Email' = User().Email && Date = Today() && !IsBlank('Check-in Time')
+                                        ) = 0,
+                                        Notify(
+                                            "Kindly Start your day first",
+                                            NotificationType.Error,
+                                            2000
+                                        );
+                                        Navigate(Home),
+                                        If(
+                                            Not(
+                                                Text(
+                                                    ThisItem.zx_visitdate,
+                                                    "dd/mm/yyyy"
+                                                ) = Text(
+                                                    Today(),
+                                                    "dd/mm/yyyy"
+                                                )
+                                            ),
+                                            Notify(
+                                                "Visit cannot be started",
+                                                NotificationType.Error,
+                                                2000
+                                            ),
+                                            IsBlank(
+                                                LookUp(
+                                                    OfflineVisitCollection,
+                                                    zx_visitdate = Today() && createdby.'Primary Email' = User().Email && zx_visitstatus = [@'Visit Status'].Started && Not(zx_visitid = ThisItem.zx_visitid)
+                                                )
+                                            ),
+                                            If(
+                                                Connection.Connected,
+                                                Patch(
+                                                    'Visit.S',
+                                                    LookUp(
+                                                        'Visit.S',
+                                                        Visit = ThisItem.zx_visitid
+                                                    ),
+                                                    {
+                                                        'Visit Status': 'Visit Status'.Started,
+                                                        'Check-in Time': Now(),
+                                                        'Check-in Geo Location Lat': Location.Latitude,
+                                                        'Check-in Geo Location Long': Location.Longitude,
+                                                        'Check-in Address': LookUp(
+                                                            'Parties.S',
+                                                            Address = ThisItem.zx_Party.Address
+                                                        ).Address
+                                                    }
+                                                );
+                                                Notify(
+                                                    "Visit has been started",
+                                                    NotificationType.Success,
+                                                    700
+                                                );
+                                                ,
+                                                Collect(
+                                                    OfflineVisitsToBeSynced,
+                                                    {
+                                                        visitItem: LookUp(
+                                                            OfflineVisitCollection,
+                                                            zx_visitid = ThisItem.zx_visitid
+                                                        ),
+                                                        visitGUID: ThisItem.zx_visitid,
+                                                        status: 'Visit Status'.Started,
+                                                        'Check-in Time': Now(),
+                                                        'Check-in Geo Location Lat': Location.Latitude,
+                                                        'Check-in Geo Location Long': Location.Longitude,
+                                                        'Check-in Address': LookUp(
+                                                            'Parties.S',
+                                                            Address = ThisItem.zx_Party.Address
+                                                        ).Address
+                                                    }
+                                                );
+                                                Patch(
+                                                    OfflineVisitCollection,
+                                                    LookUp(
+                                                        OfflineVisitCollection,
+                                                        zx_visitid = ThisItem.zx_visitid
+                                                    ),
+                                                    {
+                                                        zx_visitstatus: 'Visit Status'.Started,
+                                                        zx_checkintime: Now(),
+                                                        zx_checkingeolocationlat: Location.Latitude,
+                                                        zx_checkingeolocationlong: Location.Longitude,
+                                                        zx_checkinaddress: LookUp(
+                                                            'Parties.S',
+                                                            Address = ThisItem.zx_Party.Address
+                                                        ).Address
+                                                    }
+                                                );
+                                                SaveData(
+                                                    OfflineVisitsToBeSynced,
+                                                    "OfflineVisitsToBeSynced"
+                                                );
+                                                Notify(
+                                                    "Data has been saved on local",
+                                                    NotificationType.Success,
+                                                    1000
+                                                );
+                                            );
+                                            Set(
+                                                _VarActivetopTabID,
+                                                1
+                                            );
+                                            Navigate(
+                                                'Visit Info',
+                                                ScreenTransition.CoverRight
+                                            );
+                                            Set(
+                                                dataVisit,
+                                                ThisItem
+                                            );
+                                            Set(
+                                                _varClickedVisitAccount,
+                                                ThisItem.zx_Party.Parties
+                                            );
+                                            Set(
+                                                _varCustomerforDiscount,
+                                                ThisItem.zx_Party.Parties
+                                            );
+                                    //Set attached dist according_______________________________________________________________
+                    If(
+                                                ThisItem.zx_Party.'Customer Type' = 'Party Type Choices'.Retailer,
+                                                Set(
+                                                    _varSelectedRetailerAttachedDistributor,
+                                                    LookUp(
+                                                        OfflinePartiesCollection,
+                                                        zx_customercode = ThisItem.zx_Party.'Customer Code'
+                                                    ).zx_AttachedDistributor.Parties
+                                                );
+                                                ,
+                                                Set(
+                                                    _varSelectedRetailerAttachedDistributor,
+                                                    Blank()
+                                                )
+                                            );
+                                            Set(
+                                                _varVisitId,
+                                                ThisItem.zx_visitid
+                                            );
+                                            ,
+                                            Notify(
+                                                "Visit is Already Started.",
+                                                NotificationType.Warning,
+                                                1000
+                                            )
+                                        )
+                                    )
+                                );
+                                ,
+                                Notify(
+                                    "You cannot start the subordinate visit",
+                                    NotificationType.Error,
+                                    2000
+                                )
+                            ));
+                            ,
+                        // changing offline visit collection to table i.e OfflineVisitCollection to visit.s
+                            Patch(
+                                'Visit.S',
+                                LookUp(
+                                    'Visit.S',
+                                    'Visit ID' = ThisItem.'Visit ID'
+                                //zx_visitid = ThisItem.zx_visitid
+                                ),
+                                {
+                                    zx_visitstatus: 'Visit Status'.Completed,
+                                    zx_checkoutaddress: Concatenate(
+                                        Location.Latitude,
+                                        ",",
+                                        Location.Longitude
+                                    ),
+                                    zx_checkouttime: Now()
+                                }
+                            );
+                            Notify(
+                                "Your visit has been successfully ended.",
+                                NotificationType.Success,
+                                2500
+                            );
+                        );
+                        ClearCollect(
+                            OfflineVisitCollection,
+                            'Visit.S'
+                        );
+                        
+                    );
+                    Refresh('Parties.S');
+                    Refresh('Visit.S')
+                TabIndex: =0
+                Width: =30
+                X: =560
+                Y: =27
+                ZIndex: =11
+
+        Label65_3 As label:
+            BorderColor: =RGBA(0, 18, 107, 1)
+            Color: =RGBA(0, 0, 0, 1)
+            DisabledColor: =RGBA(166, 166, 166, 1)
+            Height: =25
+            OnSelect: =Select(Parent)
+            Text: |-
+                ="₹" & LookUp(
+                    Sort(
+                        OfflineOrderHeaderCollection,
+                        createdon,
+                        SortOrder.Descending
+                    ),
+                    zx_OrderFrom.Parties = ThisItem.zx_Party.Parties
+                ).zx_totalbillamount
+            Width: =200
+            X: =88
+            Y: =179
+            ZIndex: =24
+
+        Group13_1 As group:
+            Height: =5
+            Width: =5
+            X: =40
+            Y: =40
+            ZIndex: =26
+
+            Circle8_1 As circle:
+                BorderColor: =RGBA(0, 18, 107, 1)
+                BorderStyle: =BorderStyle.None
+                BorderThickness: =1
+                Fill: |-
+                    =ColorValue(
+                    LookUp(c_EnvironmentVariable, 'Display Name'="Button Fill").'Default Value')
+                Height: =45
+                OnSelect: =Select(Parent)
+                Width: =45
+                X: =25
+                Y: =22
+                ZIndex: =12
+
+            Label48_1 As label:
+                Align: =Align.Center
+                BorderColor: =RGBA(0, 18, 107, 1)
+                Color: =RGBA(255, 255, 255, 1)
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                FontWeight: =FontWeight.Semibold
+                Height: =30
+                OnSelect: =Select(Parent)
+                Text: =Left(Upper(ThisItem.zx_Party.'Customer Name'),1)
+                Width: =30
+                X: =32
+                Y: =30
+                ZIndex: =13
+
+        Label2_2 As label:
+            Align: =Align.Right
+            BorderColor: =RGBA(0, 0, 0, 0)
+            BorderStyle: =BorderStyle.None
+            BorderThickness: =2
+            Color: =RGBA(51, 51, 51, 1)
+            DisabledBorderColor: =RGBA(0, 0, 0, 0)
+            DisabledColor: =RGBA(166, 166, 166, 1)
+            FocusedBorderThickness: =4
+            Font: =Font.'Segoe UI'
+            Height: =33
+            OnSelect: =Select(Parent)
+            Size: =10
+            Text: =ThisItem.'Visit Status'
+            Width: =106
+            X: =493
+            Y: =236
+            ZIndex: =27
+
+    "'Product Code Lbl_6' As label":
+        BorderColor: =RGBA(0, 18, 107, 1)
+        Color: =RGBA(0, 0, 0, 1)
+        DisabledColor: =RGBA(166, 166, 166, 1)
+        FontWeight: =FontWeight.Semibold
+        Height: =43
+        OnSelect: =
+        Size: |-
+            =
+            LookUp('Environment Variable Definitions', 'Display Name'="Text Sub Title Font Size").'Default Value'
+        Text: ="Code "
+        Width: =206
+        Wrap: =false
+        X: =40
+        Y: =191
+        ZIndex: =35
+
+    "'Product Code Lbl_7' As label":
+        BorderColor: =RGBA(0, 18, 107, 1)
+        Color: =RGBA(0, 0, 0, 1)
+        DisabledColor: =RGBA(166, 166, 166, 1)
+        FontWeight: =FontWeight.Semibold
+        Height: =43
+        OnSelect: =
+        Size: |-
+            =
+            LookUp('Environment Variable Definitions', 'Display Name'="Text Sub Title Font Size").'Default Value'
+        Text: ="Quantity "
+        Width: =246
+        Wrap: =false
+        X: =355
+        Y: =191
+        ZIndex: =36
+
+    Rectangle1_19 As rectangle:
+        AccessibleLabel: ="Rectangle1_9"
+        BorderColor: =RGBA(0, 18, 107, 1)
+        Fill: |-
+            =
+            ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Header Band Color").'Default Value' )
+        Height: =1
+        OnSelect: =
+        TabIndex: =0
+        Width: ='Order Info Gallery_1'.TemplateWidth
+        X: =30
+        Y: =182
+        ZIndex: =37
 
