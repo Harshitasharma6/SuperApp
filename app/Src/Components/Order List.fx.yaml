@@ -361,6 +361,44 @@
             Y: =16
             ZIndex: =12
 
+        Button1_3 As button:
+            BorderColor: =RGBA(0, 0, 0, 0)
+            DisabledBorderColor: =RGBA(0, 0, 0, 0)
+            DisabledColor: =RGBA(166, 166, 166, 1)
+            DisabledFill: =RGBA(244, 244, 244, 1)
+            Fill: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )
+            FocusedBorderColor: =ColorFade(Self.Fill, -75%)
+            Font: =Font.'Segoe UI'
+            FontWeight: =FontWeight.Semibold
+            Height: =50
+            HoverBorderColor: =RGBA(0, 0, 0, 0)
+            HoverColor: =RGBA(255, 255, 255, 1)
+            HoverFill: =ColorFade(Self.Fill, -10%)
+            OnSelect: |-
+                =If(
+                    ThisItem.'Order Type' = 'Order Type Choice'.Primary,
+                    Navigate(
+                        'Primary Cart Screen',
+                        ScreenTransition.CoverRight,
+                        {primarydata: ThisItem}
+                    ),
+                    ThisItem.'Order Type' = 'Order Type Choice'.Secondary,
+                    Navigate(
+                        'Secondary Cart Screen',
+                        ScreenTransition.CoverRight,
+                        {secondarydata: ThisItem}
+                    )
+                )
+            PressedBorderColor: =ColorFade(RGBA(0, 120, 212, 1), -50%)
+            PressedColor: =RGBA(255, 255, 255, 1)
+            PressedFill: =ColorFade(Self.Fill, -30%)
+            Size: =16
+            Text: ="Re-Order"
+            Width: =180
+            X: =407
+            Y: =10
+            ZIndex: =13
+
     Image1 As image:
         AccessibleLabel: ="Text"
         BorderColor: =RGBA(0, 0, 0, 0)
@@ -2065,28 +2103,4 @@
                 X: =40
                 Y: =40
                 ZIndex: =21
-
-    Button1_3 As button:
-        BorderColor: =RGBA(0, 0, 0, 0)
-        DisabledBorderColor: =RGBA(0, 0, 0, 0)
-        DisabledColor: =RGBA(166, 166, 166, 1)
-        DisabledFill: =RGBA(244, 244, 244, 1)
-        Fill: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )
-        FocusedBorderColor: =ColorFade(Self.Fill, -75%)
-        Font: =Font.'Segoe UI'
-        FontWeight: =FontWeight.Semibold
-        Height: =50
-        HoverBorderColor: =RGBA(0, 0, 0, 0)
-        HoverColor: =RGBA(255, 255, 255, 1)
-        HoverFill: =ColorFade(Self.Fill, -10%)
-        OnSelect: =//Select(Parent)
-        PressedBorderColor: =ColorFade(RGBA(0, 120, 212, 1), -50%)
-        PressedColor: =RGBA(255, 255, 255, 1)
-        PressedFill: =ColorFade(Self.Fill, -30%)
-        Size: =16
-        Text: ="Re-Order"
-        Width: =180
-        X: =428
-        Y: =119
-        ZIndex: =18
 
