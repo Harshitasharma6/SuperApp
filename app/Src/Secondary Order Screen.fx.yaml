@@ -285,8 +285,8 @@
                     ComboBox1_3.Selected.'Credit Activated'
                 );
                 Set(
-                    varRemainingCreditlimit,
-                    ComboBox1_3.Selected.'Remaining Credit Limit'
+                    varRemainingCreditLimit,
+                    Text(RoundUp(Value(ComboBox1_3.Selected.'Remaining Credit Limit'),2),"[$-en-US]#,###.00")
                 );
                 Set(
                     varCustomertype,
