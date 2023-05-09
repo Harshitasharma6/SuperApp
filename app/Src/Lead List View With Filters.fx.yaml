@@ -91,7 +91,7 @@
                 !IsBlank(
                     LookUp(
                         OfflineVisitCollection,
-                        Party.Parties = varLeadData.zx_Party.Parties && IsToday('Visit date') && 'Owning User'.'Primary Email' = User().Email
+                        Party.Parties = varLeadData zx_Party.  & Today('Visit date') && 'Owning User'.'Primary Email' = User().Email
                     )
                 ),
                 Notify(
