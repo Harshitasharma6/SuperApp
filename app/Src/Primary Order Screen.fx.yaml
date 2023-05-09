@@ -90,6 +90,10 @@
                     ComboBox1_1.Selected.Parties
                 );
                 Set(
+                    varActivated,
+                    ComboBox1_1.Selected.'Credit Activated'
+                );
+                Set(
                     varCustomertype,
                     ComboBox1_1.Selected.'Customer Type'
                 );
@@ -120,7 +124,6 @@
                     'Customer Code' = First(colZoximaParty).'Customer Code'
                 ).State.'State Name'
             );*/
-            
             Set(
                 varPartyPricelist,
                 ComboBox1_1.Selected.'Price List'.Name
