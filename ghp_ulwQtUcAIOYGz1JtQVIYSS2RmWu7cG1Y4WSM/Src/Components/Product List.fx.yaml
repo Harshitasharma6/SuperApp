@@ -1444,10 +1444,7 @@
                     ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//_VarGblAppColors.PrimaryRed
                     , 10%)
             OnSelect: |-
-                =Set(
-                    _VarFilterModal,
-                    !_VarFilterModal
-                );
+                =
                 /*Set(
                     varcategory,
                     radioCategory.Selected.'Category Code'
@@ -1474,8 +1471,64 @@
                         ).'Variant Name' in colSelectedVariant
                     )
                 )*/
-                
-                ClearCollect(colFilterProduct,{});
+                ClearCollect(
+                    colFilterProduct,
+                    If(
+                        //Category is selected only -----------------------------------------
+                        !IsBlank(radioCategory.SelectedText) && IsBlank(radioProductGrp.SelectedText) && IsBlank(radioVariant.SelectedText),
+                        Filter(
+                            OfflineProductPriceCollection,
+                           Productcategoryid = LookUp('Product Category.S','Product Category' = radioCategory.Selected.'Product Category').'Product Category'
+                        ),
+                          //Product Group is selected only -----------------------------------------
+                        IsBlank(radioCategory.SelectedText)  && !IsBlank(radioProductGrp.SelectedText) && IsBlank(radioVariant.SelectedText),
+                        Filter(
+                            OfflineProductPriceCollection,
+                           ProductGroupid = LookUp('Product Group.S','Product Group'=radioProductGrp.Selected.'Product Group').'Product Group'
+                        ),
+                          //Variant is selected only -----------------------------------------
+                        IsBlank(radioCategory.SelectedText) && IsBlank(radioProductGrp.SelectedText) && !IsBlank(radioVariant.SelectedText),
+                        Filter(
+                            OfflineProductPriceCollection,
+                           ProductVariantid=LookUp('Variants.S',Variants= radioVariant.Selected.Variants).Variants
+                        ),
+                        //Category and Productgroup is selected  -----------------------------------------
+                        !IsBlank(radioCategory.SelectedText)  && !IsBlank(radioProductGrp.SelectedText) && IsBlank(radioVariant.SelectedText),
+                        Filter(
+                            OfflineProductPriceCollection,
+                            Productcategoryid = LookUp('Product Category.S','Product Category' = radioCategory.Selected.'Product Category').'Product Category'
+                         && ProductGroupid = LookUp('Product Group.S','Product Group'=radioProductGrp.Selected.'Product Group').'Product Group'
+                        ),
+                        //Category and Variant is selected  -----------------------------------------
+                        !IsBlank(radioCategory.SelectedText)  && IsBlank(radioProductGrp.SelectedText) && !IsBlank(radioVariant.SelectedText),
+                        Filter(
+                            OfflineProductPriceCollection,
+                          Productcategoryid = LookUp('Product Category.S','Product Category' = radioCategory.Selected.'Product Category').'Product Category'
+                         &&   ProductVariantid=LookUp('Variants.S',Variants= radioVariant.Selected.Variants).Variants
+                        ),
+                         //Productgroup and Variant is selected  -----------------------------------------
+                        IsBlank(radioCategory.SelectedText)  && !IsBlank(radioProductGrp.SelectedText) && !IsBlank(radioVariant.SelectedText),
+                        Filter(
+                            OfflineProductPriceCollection,
+                            ProductGroupid = LookUp('Product Group.S','Product Group'=radioProductGrp.Selected.'Product Group').'Product Group' &&   ProductVariantid=LookUp('Variants.S',Variants= radioVariant.Selected.Variants).Variants
+                        ),
+                        //Category,Product and Variant is selected  -----------------------------------------
+                        !IsBlank(radioCategory.SelectedText)  && !IsBlank(radioProductGrp.SelectedText) && !IsBlank(radioVariant.SelectedText),
+                        Filter(
+                            OfflineProductPriceCollection,
+                           Productcategoryid = LookUp('Product Category.S','Product Category' = radioCategory.Selected.'Product Category').'Product Category'
+                         &&  ProductGroupid = LookUp('Product Group.S','Product Group'=radioProductGrp.Selected.'Product Group').'Product Group' &&   ProductVariantid=LookUp('Variants.S',Variants= radioVariant.Selected.Variants).Variants
+                        )
+                    )
+                );
+                Set(
+                    _VarFilterModal,
+                    !_VarFilterModal
+                );
+                Set(
+                    varCollectionEmpty,
+                    false
+                )
             PaddingTop: =3
             Size: =18
             Text: ="APPLY"
