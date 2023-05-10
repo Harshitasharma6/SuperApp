@@ -211,11 +211,7 @@ takePhotoScreen As screen:
                     HoverColor: =RGBA(0, 0, 0, 1)
                     HoverFill: =RGBA(186, 202, 226, 1)
                     IsSearchable: =false
-                    Items: |-
-                        =Filter(
-                            'Contacts.S',
-                            'Owning User'.'Primary Email' = User().Email
-                        )
+                    Items: =Filter('Contacts.S','Owning User'.'Primary Email'=User().Email)
                     PressedColor: =RGBA(255, 255, 255, 1)
                     PressedFill: =RGBA(0, 18, 107, 1)
                     SearchFields: =["zx_name"]
