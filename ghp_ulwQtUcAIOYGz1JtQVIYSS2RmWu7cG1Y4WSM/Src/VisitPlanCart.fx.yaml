@@ -43,23 +43,6 @@ VisitPlanCart As screen:
         Y: =94
         ZIndex: =3
 
-    Lead_Gallery_8 As gallery.galleryVertical:
-        AccessibleLabel: ="Order Gallery"
-        BorderColor: =RGBA(0, 18, 107, 1)
-        BorderStyle: =BorderStyle.None
-        FocusedBorderThickness: =01
-        Height: =897
-        Items: =colAddLeadParty
-        Layout: =Layout.Vertical
-        ShowScrollbar: =false
-        TabIndex: =0
-        TemplateSize: =236
-        Visible: =If('Type Filter_1'.Selected.Id=1, true, false)
-        Width: =618
-        X: =12
-        Y: =139
-        ZIndex: =4
-
     Button43_2 As button:
         DisabledBorderColor: =RGBA(166, 166, 166, 1)
         DisabledColor: =RGBA(166, 166, 166, 1)
@@ -67,7 +50,7 @@ VisitPlanCart As screen:
         DisplayMode: |-
             =
             
-            If(CountRows(Lead_Gallery_8.AllItems)=0,DisplayMode.Disabled,DisplayMode.Edit)
+            If(CountRows(Visit_planing.AllItems)=0,DisplayMode.Disabled,DisplayMode.Edit)
         Fill: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )
         FontWeight: =FontWeight.Semibold
         HoverColor: =RGBA(255, 255, 255, 1)
@@ -100,8 +83,6 @@ VisitPlanCart As screen:
                 }
             );
             
-            
-            
             Notify(
                 "Your record has been created",
                 NotificationType.Success,
@@ -129,4 +110,426 @@ VisitPlanCart As screen:
     "'Bottom Bar_10' As 'Bottom Bar'":
         Y: =1026
         ZIndex: =6
+
+    Visit_planing As gallery.galleryVertical:
+        AccessibleLabel: ="Order Gallery"
+        BorderColor: =RGBA(0, 18, 107, 1)
+        BorderStyle: =BorderStyle.None
+        FocusedBorderThickness: =01
+        Height: =797
+        Items: =colAddLeadParty
+        Layout: =Layout.Vertical
+        ShowScrollbar: =false
+        TabIndex: =0
+        TemplateSize: =236
+        Visible: =If('Type Filter_1'.Selected.Id=1, true, false)
+        Width: =618
+        X: =22
+        Y: =140
+        ZIndex: =7
+
+        Button5_37 As button:
+            BorderColor: =RGBA(219, 219, 219, 1)
+            BorderThickness: =1
+            DisabledBorderColor: =RGBA(166, 166, 166, 1)
+            DisabledColor: =RGBA(166, 166, 166, 1)
+            DisabledFill: =RGBA(244, 244, 244, 1)
+            Fill: =RGBA(255, 255, 255, 1)
+            FontWeight: =FontWeight.Semibold
+            Height: =236
+            HoverColor: =RGBA(255, 255, 255, 1)
+            HoverFill: =Color.White
+            OnSelect: |-
+                =/*Navigate('Leads Detail Page',ScreenTransition.CoverRight);
+                Set(varLeadData, ThisItem)*/
+                 
+            Size: =24
+            Text: =""
+            Width: =600
+            ZIndex: =2
+
+        Rectangle1_46 As rectangle:
+            AccessibleLabel: ="Rectangle1_7"
+            BorderColor: =RGBA(0, 18, 107, 1)
+            Fill: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )
+            Height: =2
+            OnSelect: |-
+                =/*Navigate('Leads Detail Page',ScreenTransition.CoverRight);
+                Set(varLeadData, ThisItem)*/
+                 
+            TabIndex: =0
+            Width: =Visit_planing.TemplateWidth
+            Y: =74
+            ZIndex: =3
+
+        Body1_144 As label:
+            BorderColor: =RGBA(0, 18, 107, 1)
+            Color: =_VarGblAppColors.PrimaryRed
+            DisabledColor: =RGBA(166, 166, 166, 1)
+            FocusedBorderColor: =Color.Transparent
+            FocusedBorderThickness: =0.1
+            Font: =_VarGblAppFonts.Heading
+            FontWeight: =FontWeight.Bold
+            OnSelect: |-
+                =/*Navigate(
+                    'Leads Detail Page',
+                    ScreenTransition.CoverRight
+                );
+                Set(
+                    varLeadData,
+                    ThisItem
+                );
+                If(
+                    ThisItem.Party.'Customer Type' = 'Party Type Choices'.Retailer,
+                    Set(
+                        varSelectedRetailerAttachedDistributor,
+                        LookUp(
+                            OfflinePartiesCollection,
+                            'Customer Code' = ThisItem.Party.'Customer Code'
+                        ).'Attached Distributor'.'Parties (new_partiesid)'
+                    );
+                    ,
+                    Set(
+                        varSelectedRetailerAttachedDistributor,
+                        Blank()
+                    )
+                );
+                */
+            Size: =16
+            TabIndex: =0
+            Text: =ThisItem.zx_leadname
+            Tooltip: =
+            Width: =222
+            Wrap: =false
+            X: =70
+            Y: =5
+            ZIndex: =5
+
+        Button6_4 As button:
+            Color: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )
+            DisabledBorderColor: =RGBA(166, 166, 166, 1)
+            DisabledColor: =RGBA(166, 166, 166, 1)
+            DisabledFill: =RGBA(244, 244, 244, 1)
+            DisplayMode: =DisplayMode.View
+            Fill: |-
+                =
+                
+                
+                ColorValue( LookUp('Environment Variable Definitions', 'Display Name'="Common Primary Background").'Default Value')//_VarGblAppColors.PrimaryBg
+            FontWeight: =FontWeight.Semibold
+            Height: =43
+            HoverColor: =RGBA(255, 255, 255, 1)
+            HoverFill: =ColorFade(RGBA(56, 96, 178, 1), -20%)
+            OnSelect: =Select(Parent)
+            Size: =16
+            Text: =ThisItem.zx_leadstage
+            Width: =115
+            X: =357
+            Y: =10
+            ZIndex: =19
+
+        Circle12_7 As circle:
+            BorderColor: =RGBA(102, 182, 227, 1)
+            BorderThickness: =1
+            DisplayMode: |-
+                =DisplayMode.Edit
+                /*If(
+                    CountRows(
+                        Filter(
+                            OfflineVisitCollection,
+                            Lead.'Lead Id' = ThisItem.'Lead Id' && 'Visit date' = DateValue(ClickedPlanVisitDate)
+                        )
+                    ) = 0,
+                    DisplayMode.Disabled,
+                    DisplayMode.Edit
+                )*/
+            Fill: =RGBA(255, 255, 255, 1)
+            Height: =43
+            OnSelect: |-
+                =/*If(
+                    LookUp(
+                        Attendances,
+                        User.'Primary Email' = User().Email && Date = DateValue(Today())
+                    ).'Attendance Type' = 'Attendance Type Choices'.Absent,
+                    Notify(
+                        "Cannot create visit on leave",
+                        NotificationType.Error,
+                        1000
+                    ),
+                    Set(
+                        varShowPlanText,
+                        ThisItem.'Lead Name'
+                    );
+                    Set(
+                        varSelectTimeForVisit,
+                        true
+                    );
+                    Set(
+                        varSelectedLeadForPlanning,
+                        ThisItem
+                    )
+                )*/
+            Visible: =If('Type Filter_1'.Selected.Id=1, true, false)
+            Width: =43
+            X: =493
+            Y: =10
+            ZIndex: =23
+
+        Icon30_2 As icon.Phone:
+            BorderColor: =RGBA(0, 18, 107, 1)
+            Color: =RGBA(102, 182, 227, 1)
+            DisabledBorderColor: =RGBA(166, 166, 166, 1)
+            DisabledColor: =RGBA(244, 244, 244, 1)
+            Height: =30
+            Icon: =Icon.Phone
+            OnSelect: =Select(Parent)
+            PaddingLeft: =3
+            PaddingRight: =3
+            Width: =30
+            X: =500
+            Y: =17
+            ZIndex: =24
+
+        Circle12_9 As circle:
+            BorderColor: =RGBA(102, 182, 227, 1)
+            BorderThickness: =1
+            DisplayMode: |-
+                =DisplayMode.Edit
+                /*If(
+                    CountRows(
+                        Filter(
+                            OfflineVisitCollection,
+                            Lead.'Lead Id' = ThisItem.'Lead Id' && 'Visit date' = DateValue(ClickedPlanVisitDate)
+                        )
+                    ) = 0,
+                    DisplayMode.Disabled,
+                    DisplayMode.Edit
+                )*/
+            Fill: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )
+            Height: =45
+            OnSelect: |-
+                =
+                true
+            Visible: =If('Type Filter_1'.Selected.Id=1, true, false)
+            Width: =45
+            X: =11
+            Y: =15
+            ZIndex: =25
+
+        Body1_178 As label:
+            BorderColor: =RGBA(0, 18, 107, 1)
+            Color: =_VarGblAppColors.PrimaryRed
+            DisabledColor: =RGBA(166, 166, 166, 1)
+            FocusedBorderColor: =Color.Transparent
+            FocusedBorderThickness: =0.1
+            Font: =_VarGblAppFonts.Heading
+            Height: =35
+            OnSelect: |-
+                =/*Navigate(
+                    'Leads Detail Page',
+                    ScreenTransition.CoverRight
+                );
+                Set(
+                    varLeadData,
+                    ThisItem
+                );
+                If(
+                    ThisItem.Party.'Customer Type' = 'Party Type Choices'.Retailer,
+                    Set(
+                        varSelectedRetailerAttachedDistributor,
+                        LookUp(
+                            OfflinePartiesCollection,
+                            'Customer Code' = ThisItem.Party.'Customer Code'
+                        ).'Attached Distributor'.'Parties (new_partiesid)'
+                    );
+                    ,
+                    Set(
+                        varSelectedRetailerAttachedDistributor,
+                        Blank()
+                    )
+                );
+                */
+            Size: =16
+            TabIndex: =0
+            Text: =ThisItem.zx_name
+            Tooltip: =
+            Wrap: =false
+            X: =70
+            Y: =40
+            ZIndex: =26
+
+        Label56_2 As label:
+            BorderColor: =RGBA(0, 18, 107, 1)
+            Color: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )
+            DisabledColor: =RGBA(166, 166, 166, 1)
+            OnSelect: =Select(Parent)
+            Text: =Text(ThisItem.createdon,"dd-mm-yyyy")
+            X: =219
+            Y: =36
+            ZIndex: =27
+
+        Label61_2 As label:
+            BorderColor: =RGBA(0, 18, 107, 1)
+            Color: =RGBA(255, 255, 255, 1)
+            DisabledColor: =RGBA(166, 166, 166, 1)
+            FontWeight: =FontWeight.Bold
+            OnSelect: =Select(Parent)
+            Text: =Left(Upper(ThisItem.zx_Party.'Customer Name'),2)
+            Width: =40
+            X: =17
+            Y: =18
+            ZIndex: =28
+
+        Label62_12 As label:
+            BorderColor: =RGBA(0, 18, 107, 1)
+            Color: =RGBA(0, 0, 0, 1)
+            DisabledColor: =RGBA(166, 166, 166, 1)
+            OnSelect: =Select(Parent)
+            Text: |-
+                ="Contact :"
+            Width: =130
+            X: =18
+            Y: =76
+            ZIndex: =29
+
+        Label63_12 As label:
+            BorderColor: =RGBA(0, 18, 107, 1)
+            Color: =RGBA(0, 0, 0, 1)
+            DisabledColor: =RGBA(166, 166, 166, 1)
+            OnSelect: =Select(Parent)
+            Text: = ThisItem.Contact.'First Name'
+            Width: =130
+            X: =160
+            Y: =76
+            ZIndex: =30
+
+        Label62_14 As label:
+            BorderColor: =RGBA(0, 18, 107, 1)
+            Color: =RGBA(0, 0, 0, 1)
+            DisabledColor: =RGBA(166, 166, 166, 1)
+            OnSelect: =Select(Parent)
+            Text: |-
+                ="Assigned Date :"
+            X: =18
+            Y: =116
+            ZIndex: =31
+
+        Label63_14 As label:
+            BorderColor: =RGBA(0, 18, 107, 1)
+            Color: =RGBA(0, 0, 0, 1)
+            DisabledColor: =RGBA(166, 166, 166, 1)
+            OnSelect: =Select(Parent)
+            Text: =ThisItem.zx_assigndate
+            Width: =130
+            X: =160
+            Y: =116
+            ZIndex: =32
+
+        Label62_16 As label:
+            BorderColor: =RGBA(0, 18, 107, 1)
+            Color: =RGBA(0, 0, 0, 1)
+            DisabledColor: =RGBA(166, 166, 166, 1)
+            OnSelect: =Select(Parent)
+            Text: |-
+                ="Source :"
+            X: =18
+            Y: =156
+            ZIndex: =33
+
+        Label63_16 As label:
+            BorderColor: =RGBA(0, 18, 107, 1)
+            Color: =RGBA(0, 0, 0, 1)
+            DisabledColor: =RGBA(166, 166, 166, 1)
+            OnSelect: =Select(Parent)
+            Text: =ThisItem.zx_source
+            Width: =130
+            X: =160
+            Y: =156
+            ZIndex: =34
+
+        Label62_13 As label:
+            BorderColor: =RGBA(0, 18, 107, 1)
+            Color: =RGBA(0, 0, 0, 1)
+            DisabledColor: =RGBA(166, 166, 166, 1)
+            OnSelect: =Select(Parent)
+            Text: |-
+                ="Est.Value :"
+            Width: =130
+            X: =308
+            Y: =76
+            ZIndex: =35
+
+        Label62_15 As label:
+            BorderColor: =RGBA(0, 18, 107, 1)
+            Color: =RGBA(0, 0, 0, 1)
+            DisabledColor: =RGBA(166, 166, 166, 1)
+            OnSelect: =Select(Parent)
+            Text: |-
+                ="Est. Closure :"
+            Width: =130
+            X: =308
+            Y: =116
+            ZIndex: =36
+
+        Label62_17 As label:
+            BorderColor: =RGBA(0, 18, 107, 1)
+            Color: =RGBA(0, 0, 0, 1)
+            DisabledColor: =RGBA(166, 166, 166, 1)
+            OnSelect: =Select(Parent)
+            Text: |-
+                ="Meeting Date :"
+            Width: =140
+            X: =308
+            Y: =156
+            ZIndex: =37
+
+        Label63_13 As label:
+            BorderColor: =RGBA(0, 18, 107, 1)
+            Color: =RGBA(0, 0, 0, 1)
+            DisabledColor: =RGBA(166, 166, 166, 1)
+            OnSelect: =Select(Parent)
+            Text: = ThisItem.zx_estimatedvalue
+            Width: =130
+            X: =438
+            Y: =76
+            ZIndex: =38
+
+        Label63_15 As label:
+            BorderColor: =RGBA(0, 18, 107, 1)
+            Color: =RGBA(0, 0, 0, 1)
+            DisabledColor: =RGBA(166, 166, 166, 1)
+            OnSelect: =Select(Parent)
+            Text: = Text(ThisItem.zx_expectedclosuredate,"dd-mm-yyyy")
+            Width: =130
+            X: =438
+            Y: =116
+            ZIndex: =39
+
+        Label63_17 As label:
+            BorderColor: =RGBA(0, 18, 107, 1)
+            Color: =RGBA(0, 0, 0, 1)
+            DisabledColor: =RGBA(166, 166, 166, 1)
+            OnSelect: =Select(Parent)
+            Text: = ""
+            Width: =130
+            X: =438
+            Y: =156
+            ZIndex: =40
+
+        Icon32 As icon.Cancel:
+            BorderColor: =RGBA(0, 18, 107, 1)
+            Color: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )
+            DisabledBorderColor: =RGBA(166, 166, 166, 1)
+            DisabledColor: =RGBA(244, 244, 244, 1)
+            Height: =43
+            Icon: =Icon.Cancel
+            OnSelect: =Remove(colAddLeadParty, ThisItem)
+            PaddingBottom: =2
+            PaddingLeft: =2
+            PaddingRight: =2
+            PaddingTop: =2
+            Width: =44
+            X: =546
+            Y: =10
+            ZIndex: =41
 
