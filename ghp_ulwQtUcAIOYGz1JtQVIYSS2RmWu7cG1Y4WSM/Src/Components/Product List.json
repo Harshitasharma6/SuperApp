@@ -2537,7 +2537,14 @@
                     "NameMapSourceSchema": "?"
                   },
                   "Role",
-                  "Color",
+                  {
+                    "AFDDataSourceName": "",
+                    "AutoRuleBindingEnabled": false,
+                    "AutoRuleBindingString": "RGBA(0, 0, 0, 1)",
+                    "InvariantPropertyName": "Color",
+                    "IsLockable": false,
+                    "NameMapSourceSchema": "?"
+                  },
                   "DisabledColor",
                   "PressedColor",
                   "HoverColor",
@@ -2649,7 +2656,7 @@
                   },
                   {
                     "Category": "Design",
-                    "InvariantScript": "RGBA(0, 0, 0, 1)",
+                    "InvariantScript": "RGBA(255, 255, 255, 1)",
                     "Property": "Color",
                     "RuleProviderType": "Unknown"
                   },
@@ -3061,7 +3068,7 @@
                   },
                   {
                     "Category": "Design",
-                    "InvariantScript": "ColorValue(LookUp(c_EnvironmentVariable,'Display Name'=\"Button Hover Color\").'Default Value')",
+                    "InvariantScript": "ColorValue(LookUp(c_EnvironmentVariable,'Display Name'=\"Button Fill\").'Default Value' )//_VarGblAppColors.PrimaryRed",
                     "Property": "DisabledFill",
                     "RuleProviderType": "Unknown"
                   },
@@ -13322,7 +13329,7 @@
       "OrderType",
       "Party"
     ],
-    "LastModifiedTimestamp": "638193165316210768",
+    "LastModifiedTimestamp": "638193166367305898",
     "Name": "Product List",
     "Rules": [
       {
@@ -13412,7 +13419,7 @@
   "IsPcfControl": false,
   "IsPremiumPcfControl": false,
   "IsWidgetTemplate": false,
-  "LastModifiedTimestamp": "638193165316210768",
+  "LastModifiedTimestamp": "638193166367305898",
   "Name": "f22957dfb10248beba734f1dc6985182",
   "OverridableProperties": {},
   "Version": "638174994516580466"
