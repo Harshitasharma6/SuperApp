@@ -6,7 +6,8 @@ VisitPlanningNew As screen:
             PlanVarDate1,
             Today()
         );
-        ClearCollect(offlineLeadCollection,'Leads.S')
+        ClearCollect(offlineLeadCollection,'Leads.S');
+        Set(varCollectionEmpty,true)
 
     "'Bottom Bar_15' As 'Bottom Bar'":
         Fill: =RGBA(255, 255, 255, 1)
@@ -118,7 +119,7 @@ VisitPlanningNew As screen:
                     Id:1
                 },
                 {
-                    Title: "Area",
+                    Title: "Accounts",
                     Id:2
                 }
             )
@@ -1229,4 +1230,1393 @@ VisitPlanningNew As screen:
         X: =590
         Y: =214
         ZIndex: =19
+
+    Container5_3 As groupContainer.manualLayoutContainer:
+        Height: =920
+        Visible: =varPartyFilter
+        Width: =640
+        Y: =214
+        ZIndex: =20
+
+        "'filter button_13' As button":
+            DisabledBorderColor: =RGBA(166, 166, 166, 1)
+            DisabledColor: =RGBA(166, 166, 166, 1)
+            DisabledFill: =RGBA(244, 244, 244, 1)
+            DisplayMode: =DisplayMode.View
+            Fill: =RGBA(255, 255, 255, 1)
+            FontWeight: =FontWeight.Semibold
+            Height: =840
+            HoverColor: =RGBA(255, 255, 255, 1)
+            HoverFill: =ColorFade(RGBA(56, 96, 178, 1), -20%)
+            RadiusBottomLeft: =0
+            RadiusBottomRight: =0
+            RadiusTopLeft: =25
+            RadiusTopRight: =25
+            Size: =24
+            Text: =""
+            Visible: =varPartyFilter
+            Width: =640
+            Y: =80
+            ZIndex: =1
+
+        Container4_37 As groupContainer:
+            ContentLanguage: =
+            Height: =839
+            Visible: =varPartyFilter
+            Width: =640
+            Y: =67
+            ZIndex: =2
+
+            Rectangle16_12 As rectangle:
+                BorderColor: =RGBA(0, 18, 107, 1)
+                DisplayMode: =DisplayMode.View
+                Fill: =RGBA(0, 0, 0, 1)
+                Height: =450
+                Visible: =varPartyFilter
+                Width: =2
+                X: =290
+                Y: =198
+                ZIndex: =1
+
+            Label8_17 As label:
+                BorderColor: =RGBA(0, 18, 107, 1)
+                Color: =RGBA(0, 0, 0, 1)
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                FontWeight: =FontWeight.Bold
+                Height: =58
+                PaddingLeft: =30
+                Size: =21
+                Text: ="All Filters"
+                Visible: =varPartyFilter
+                Width: =273
+                X: =20
+                Y: =20
+                ZIndex: =2
+
+            btnLeadFilter_4 As button:
+                BorderColor: =RGBA(0, 0, 0, 1)
+                BorderThickness: =0
+                DisabledBorderColor: =RGBA(166, 166, 166, 1)
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                DisabledFill: =RGBA(244, 244, 244, 1)
+                Fill: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )
+                FocusedBorderThickness: =
+                FontWeight: =FontWeight.Bold
+                Height: =61
+                HoverColor: =RGBA(255, 255, 255, 1)
+                HoverFill: |-
+                    =ColorFade(
+                        ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )
+                        , 10%)
+                OnSelect: |
+                    =ClearCollect(
+                        colFilterLeadData,
+                        If(
+                            // Filter according to lead value---------------------------------------------------------
+                            !IsBlank(Value(Leadvalue_2.Text)) && IsBlank(radioCustomers_2.Selected) && IsBlank(radioStage_2.Selected) && IsBlank(radioCommit_2.Selected) && IsBlank(radioArea_3.Selected) && IsBlank(radioCompetitor_2.Selected) || (varCreateddate = true || varEstimated = true),
+                            Filter(
+                                offlineLeadCollection,
+                                zx_leadvalue = Value(Value(Leadvalue_2.Text)) && owninguser.'Primary Email' = User().Email
+                            ),
+                            // Filter according to Customer--------------------------------------------------------
+                            !IsBlank(radioCustomers_2.Selected) && IsBlank(Value(Leadvalue_2.Text)) && IsBlank(radioStage_2.Selected) && IsBlank(radioCommit_2.Selected) && IsBlank(radioArea_3.Selected) && IsBlank(radioCompetitor_2.Selected) || (varCreateddate = true || varEstimated = true),
+                            Filter(
+                                offlineLeadCollection,
+                                zx_Party.'Customer Name' = radioCustomers_2.Selected.'Customer Name' && owninguser.'Primary Email' = User().Email
+                            ),
+                            // Filter according to Stage--------------------------------------------------------
+                            !IsBlank(radioStage_2.Selected) && IsBlank(Value(Leadvalue_2.Text)) && IsBlank(radioCustomers_2.Selected) && IsBlank(radioCommit_2.Selected) && IsBlank(radioArea_3.Selected) && IsBlank(radioCompetitor_2.Selected) || (varCreateddate = true || varEstimated = true),
+                            Filter(
+                                offlineLeadCollection,
+                                zx_leadstage = radioStage_2.Selected.Value && owninguser.'Primary Email' = User().Email
+                            ),
+                            // Filter according to commit--------------------------------------------------------
+                            !IsBlank(radioCommit_2.Selected) && IsBlank(Value(Leadvalue_2.Text)) && IsBlank(radioCustomers_2.Selected) && IsBlank(radioStage_2.Selected) && IsBlank(radioArea_3.Selected) && IsBlank(radioCompetitor_2.Selected) || (varCreateddate = true || varEstimated = true),
+                            Filter(
+                                offlineLeadCollection,
+                                zx_commited = radioCommit_2.Selected.Value && owninguser.'Primary Email' = User().Email
+                            ),
+                            // Filter according to Area--------------------------------------------------------
+                            !IsBlank(radioArea_3.Selected) && IsBlank(Value(Leadvalue_2.Text)) && IsBlank(radioCustomers_2.Selected) && IsBlank(radioStage_2.Selected) && IsBlank(radioCommit_2.Selected) && IsBlank(radioCompetitor_2.Selected) || (varCreateddate = true || varEstimated = true),
+                            Filter(
+                                offlineLeadCollection,
+                                zx_Area.'Area Name' = radioArea_3.Selected.Areaname && owninguser.'Primary Email' = User().Email
+                            ),
+                            // Filter according to Competitor--------------------------------------------------------
+                            !IsBlank(radioCompetitor_2.Selected) && IsBlank(Value(Leadvalue_2.Text)) && IsBlank(radioCustomers_2.Selected) && IsBlank(radioStage_2.Selected) && IsBlank(radioCommit_2.Selected) && IsBlank(radioArea_3.Selected) || (varCreateddate = true || varEstimated = true),
+                            Filter(
+                                offlineLeadCollection,
+                                zx_Competitor.'Competitor Name' = radioCompetitor_2.Selected.'Competitor Name' && owninguser.'Primary Email' = User().Email
+                            ),
+                            // Filter according to created date--------------------------------------------------------
+                            !IsBlank(DateFrom_11.SelectedDate) && IsBlank(Value(Leadvalue_2.Text)) && IsBlank(radioCustomers_2.Selected) && IsBlank(radioStage_2.Selected) && IsBlank(radioCommit_2.Selected) && IsBlank(radioArea_3.Selected) && IsBlank(radioCompetitor_2.Selected) || varEstimated = true,
+                            Filter(
+                                offlineLeadCollection,
+                                DateValue(createdon) >= DateValue(DateFrom_11.SelectedDate) && DateValue(createdon) <= DateValue(DateTo_9.SelectedDate) && owninguser.'Primary Email' = User().Email
+                            ),
+                            // Filter according to expected closure date --------------------------------------------------------
+                            !IsBlank(DateFrom_12.SelectedDate) && IsBlank(Value(Leadvalue_2.Text)) && IsBlank(radioCustomers_2.Selected) && IsBlank(radioStage_2.Selected) && IsBlank(radioCommit_2.Selected) && IsBlank(radioArea_3.Selected) && IsBlank(radioCompetitor_2.Selected) && IsBlank(DateFrom_11.SelectedDate),
+                            Filter(
+                                offlineLeadCollection,
+                                DateValue(zx_expectedclosuredate) <= DateValue(DateFrom_12.SelectedDate) && owninguser.'Primary Email' = User().Email
+                            ),
+                            // Filter according to Stage and commit--------------------------------------------------------
+                            !IsBlank(radioStage_2.Selected) && IsBlank(Value(Leadvalue_2.Text)) && IsBlank(radioCustomers_2.Selected) && !IsBlank(radioCommit_2.Selected) && IsBlank(radioArea_3.Selected) && IsBlank(radioCompetitor_2.Selected) || (varCreateddate = true || varEstimated = true),
+                            Filter(
+                                offlineLeadCollection,
+                                zx_leadstage = radioStage_2.Selected.Value && zx_commited = radioCommit_2.Selected.Value && owninguser.'Primary Email' = User().Email
+                            ),
+                             // Filter according to Stage and Created date------------------------------------------------
+                            !IsBlank(radioStage_2.Selected) && IsBlank(Value(Leadvalue_2.Text)) && IsBlank(radioCustomers_2.Selected) && IsBlank(radioCommit_2.Selected) && IsBlank(radioArea_3.Selected) && IsBlank(radioCompetitor_2.Selected) && !IsBlank(DateFrom_11.SelectedDate) && IsBlank(DateFrom_12.SelectedDate),
+                            Filter(
+                                offlineLeadCollection,
+                                zx_leadstage = radioStage_2.Selected.Value && DateValue(createdon) >= DateValue(DateFrom_11.SelectedDate) && DateValue(createdon) <= DateValue(DateTo_9.SelectedDate) && owninguser.'Primary Email' = User().Email
+                            ),
+                            // Filter according to Stage and Lead value------------------------------------------------
+                            !IsBlank(radioStage_2.Selected) && !IsBlank(Value(Leadvalue_2.Text)) && IsBlank(radioCustomers_2.Selected) && IsBlank(radioCommit_2.Selected) && IsBlank(radioArea_3.Selected) && IsBlank(radioCompetitor_2.Selected) || (varCreateddate = true || varEstimated = true),
+                            Filter(
+                                offlineLeadCollection,
+                                zx_leadstage = radioStage_2.Selected.Value && zx_leadvalue = Value(Leadvalue_2.Text) && owninguser.'Primary Email' = User().Email
+                            ),
+                            // Filter according to Stage and Estimated closure date-------------------------------------------
+                            !IsBlank(radioStage_2.Selected) && IsBlank(Value(Leadvalue_2.Text)) && IsBlank(radioCustomers_2.Selected) && IsBlank(radioCommit_2.Selected) && IsBlank(radioArea_3.Selected) && IsBlank(radioCompetitor_2.Selected) && IsBlank(DateFrom_11.SelectedDate) && !IsBlank(DateFrom_12.SelectedDate),
+                            Filter(
+                                offlineLeadCollection,
+                                zx_leadstage = radioStage_2.Selected.Value && DateValue(zx_expectedclosuredate) <= DateValue(DateFrom_12.SelectedDate) && owninguser.'Primary Email' = User().Email
+                            ),
+                             // Filter according to Stage and Customer-------------------------------------------
+                            !IsBlank(radioStage_2.Selected) && IsBlank(Value(Leadvalue_2.Text)) && !IsBlank(radioCustomers_2.Selected) && IsBlank(radioCommit_2.Selected) && IsBlank(radioArea_3.Selected) && IsBlank(radioCompetitor_2.Selected) || (varCreateddate = true || varEstimated = true),
+                            Filter(
+                                offlineLeadCollection,
+                                zx_leadstage = radioStage_2.Selected.Value && zx_Party.'Customer Name' = radioCustomers_2.Selected.'Customer Name' && owninguser.'Primary Email' = User().Email
+                            ),
+                            // Filter according to Stage and Area-------------------------------------------
+                            !IsBlank(radioStage_2.Selected) && IsBlank(Value(Leadvalue_2.Text)) && IsBlank(radioCustomers_2.Selected) && IsBlank(radioCommit_2.Selected) && !IsBlank(radioArea_3.Selected) && IsBlank(radioCompetitor_2.Selected) || (varCreateddate = true || varEstimated = true),
+                            Filter(
+                                offlineLeadCollection,
+                                zx_leadstage = radioStage_2.Selected.Value && zx_Area.'Area Name' = radioArea_3.Selected.Areaname && owninguser.'Primary Email' = User().Email
+                            ),
+                            // Filter according to Stage and Competitor-------------------------------------------
+                            !IsBlank(radioStage_2.Selected) && IsBlank(Value(Leadvalue_2.Text)) && IsBlank(radioCustomers_2.Selected) && IsBlank(radioCommit_2.Selected) && IsBlank(radioArea_3.Selected) && !IsBlank(radioCompetitor_2.Selected) || (varCreateddate = true || varEstimated = true),
+                            Filter(
+                                offlineLeadCollection,
+                                zx_leadstage = radioStage_2.Selected.Value && zx_Competitor.'Competitor Name' = radioCompetitor_2.Selected.'Competitor Name' && owninguser.'Primary Email' = User().Email
+                            ),
+                            // Filter according to Stage,commit and created date--------------------------------------------------
+                            !IsBlank(radioStage_2.Selected) && IsBlank(Value(Leadvalue_2.Text)) && IsBlank(radioCustomers_2.Selected) && !IsBlank(radioCommit_2.Selected) && IsBlank(radioArea_3.Selected) && IsBlank(radioCompetitor_2.Selected) && !IsBlank(DateFrom_11.SelectedDate) && IsBlank(DateFrom_12.SelectedDate),
+                            Filter(
+                                offlineLeadCollection,
+                                zx_leadstage = radioStage_2.Selected.Value && zx_commited = radioCommit_2.Selected.Value && DateValue(createdon) >= DateValue(DateFrom_11.SelectedDate) && DateValue(createdon) <= DateValue(DateTo_9.SelectedDate) && owninguser.'Primary Email' = User().Email
+                            ),
+                             // Filter according to Stage,commit and Lead Value--------------------------------------------------
+                            !IsBlank(radioStage_2.Selected) && !IsBlank(Value(Leadvalue_2.Text)) && IsBlank(radioCustomers_2.Selected) && !IsBlank(radioCommit_2.Selected) && IsBlank(radioArea_3.Selected) && IsBlank(radioCompetitor_2.Selected) || (varCreateddate = true || varEstimated = true),
+                            Filter(
+                                offlineLeadCollection,
+                                zx_leadstage = radioStage_2.Selected.Value && zx_commited = radioCommit_2.Selected.Value && zx_leadvalue = Value(Leadvalue_2.Text) && owninguser.'Primary Email' = User().Email
+                            ),
+                                // Filter according to Stage,commit and Estimated closure date --------------------
+                            !IsBlank(radioStage_2.Selected) && IsBlank(Value(Leadvalue_2.Text)) && IsBlank(radioCustomers_2.Selected) && !IsBlank(radioCommit_2.Selected) && IsBlank(radioArea_3.Selected) && IsBlank(radioCompetitor_2.Selected) && IsBlank(DateFrom_11.SelectedDate) && !IsBlank(DateFrom_12.SelectedDate),
+                            Filter(
+                                offlineLeadCollection,
+                                zx_leadstage = radioStage_2.Selected.Value && zx_commited = radioCommit_2.Selected.Value && DateValue(zx_expectedclosuredate) <= DateValue(DateFrom_12.SelectedDate) && owninguser.'Primary Email' = User().Email
+                            ),
+                    // Filter according to Stage,commit and Customer --------------------
+                            !IsBlank(radioStage_2.Selected) && IsBlank(Value(Leadvalue_2.Text)) && !IsBlank(radioCustomers_2.Selected) && !IsBlank(radioCommit_2.Selected) && IsBlank(radioArea_3.Selected) && IsBlank(radioCompetitor_2.Selected) || (varCreateddate = true || varEstimated = true),
+                            Filter(
+                                offlineLeadCollection,
+                                zx_leadstage = radioStage_2.Selected.Value && zx_commited = radioCommit_2.Selected.Value && zx_Party.'Customer Name' = radioCustomers_2.Selected.'Customer Name' && owninguser.'Primary Email' = User().Email
+                            ),
+                            // Filter according to Stage,commit and Area --------------------
+                            !IsBlank(radioStage_2.Selected) && IsBlank(Value(Leadvalue_2.Text)) && IsBlank(radioCustomers_2.Selected) && !IsBlank(radioCommit_2.Selected) && !IsBlank(radioArea_3.Selected) && IsBlank(radioCompetitor_2.Selected) || (varCreateddate = true || varEstimated = true),
+                            Filter(
+                                offlineLeadCollection,
+                                zx_leadstage = radioStage_2.Selected.Value && zx_commited = radioCommit_2.Selected.Value && zx_Area.'Area Name' = radioArea_3.Selected.Areaname && owninguser.'Primary Email' = User().Email
+                            ),
+                            // Filter according to Stage,commit and Competitor --------------------
+                            !IsBlank(radioStage_2.Selected) && IsBlank(Value(Leadvalue_2.Text)) && IsBlank(radioCustomers_2.Selected) && !IsBlank(radioCommit_2.Selected) && IsBlank(radioArea_3.Selected) && !IsBlank(radioCompetitor_2.Selected) || (varCreateddate = true || varEstimated = true),
+                            Filter(
+                                offlineLeadCollection,
+                                zx_leadstage = radioStage_2.Selected.Value && zx_commited = radioCommit_2.Selected.Value && zx_Competitor.'Competitor Name' = radioCompetitor_2.Selected.'Competitor Name' && owninguser.'Primary Email' = User().Email
+                            ),
+                    // Filter according to Stage,commit,created date and lead value--------------------------------------------
+                            !IsBlank(radioStage_2.Selected) && !IsBlank(Value(Leadvalue_2.Text)) && IsBlank(radioCustomers_2.Selected) && !IsBlank(radioCommit_2.Selected) && IsBlank(radioArea_3.Selected) && IsBlank(radioCompetitor_2.Selected) && !IsBlank(DateFrom_11.SelectedDate) && IsBlank(DateFrom_12.SelectedDate),
+                            Filter(
+                                offlineLeadCollection,
+                                zx_leadstage = radioStage_2.Selected.Value && zx_commited = radioCommit_2.Selected.Value && DateValue(createdon) >= DateValue(DateFrom_11.SelectedDate) && DateValue(createdon) <= DateValue(DateTo_9.SelectedDate) && zx_leadvalue = Value(Leadvalue_2.Text) && owninguser.'Primary Email' = User().Email
+                            ),
+                    // Filter according to Stage,commit,created date and estimated date------------------------------------
+                            !IsBlank(radioStage_2.Selected) && IsBlank(Value(Leadvalue_2.Text)) && IsBlank(radioCustomers_2.Selected) && !IsBlank(radioCommit_2.Selected) && IsBlank(radioArea_3.Selected) && IsBlank(radioCompetitor_2.Selected) && !IsBlank(DateFrom_11.SelectedDate) && !IsBlank(DateFrom_12.SelectedDate),
+                            Filter(
+                                offlineLeadCollection,
+                                zx_leadstage = radioStage_2.Selected.Value && zx_commited = radioCommit_2.Selected.Value && DateValue(createdon) >= DateValue(DateFrom_11.SelectedDate) && DateValue(createdon) <= DateValue(DateTo_9.SelectedDate) && zx_expectedclosuredate <= DateValue(DateFrom_12.SelectedDate) && owninguser.'Primary Email' = User().Email
+                            ),
+                            // Filter according to Stage,commit,created date and Customer------------------------------------
+                            !IsBlank(radioStage_2.Selected) && IsBlank(Value(Leadvalue_2.Text)) && !IsBlank(radioCustomers_2.Selected) && !IsBlank(radioCommit_2.Selected) && IsBlank(radioArea_3.Selected) && IsBlank(radioCompetitor_2.Selected) && !IsBlank(DateFrom_11.SelectedDate) && IsBlank(DateFrom_12.SelectedDate),
+                            Filter(
+                                offlineLeadCollection,
+                                zx_leadstage = radioStage_2.Selected.Value && zx_commited = radioCommit_2.Selected.Value && DateValue(createdon) >= DateValue(DateFrom_11.SelectedDate) && DateValue(createdon) <= DateValue(DateTo_9.SelectedDate) && zx_Party.'Customer Name' = radioCustomers_2.Selected.'Customer Name' && owninguser.'Primary Email' = User().Email
+                            ),
+                             // Filter according to Stage,commit,created date and Area------------------------------------
+                            !IsBlank(radioStage_2.Selected) && IsBlank(Value(Leadvalue_2.Text)) && IsBlank(radioCustomers_2.Selected) && !IsBlank(radioCommit_2.Selected) && !IsBlank(radioArea_3.Selected) && IsBlank(radioCompetitor_2.Selected) && IsBlank(DateFrom_11.SelectedDate) && !IsBlank(DateFrom_12.SelectedDate),
+                            Filter(
+                                offlineLeadCollection,
+                                zx_leadstage = radioStage_2.Selected.Value && zx_commited = radioCommit_2.Selected.Value && DateValue(createdon) >= DateValue(DateFrom_11.SelectedDate) && DateValue(createdon) <= DateValue(DateTo_9.SelectedDate) && zx_Area.'Area Name' = radioArea_3.Selected.Areaname && owninguser.'Primary Email' = User().Email
+                            ),
+                            // Filter according to Stage,commit,created date and Competitor------------------------------------
+                            !IsBlank(radioStage_2.Selected) && IsBlank(Value(Leadvalue_2.Text)) && IsBlank(radioCustomers_2.Selected) && !IsBlank(radioCommit_2.Selected) && IsBlank(radioArea_3.Selected) && !IsBlank(radioCompetitor_2.Selected) && IsBlank(DateFrom_11.SelectedDate) && !IsBlank(DateFrom_12.SelectedDate),
+                            Filter(
+                                offlineLeadCollection,
+                                zx_leadstage = radioStage_2.Selected.Value && zx_commited = radioCommit_2.Selected.Value && DateValue(createdon) >= DateValue(DateFrom_11.SelectedDate) && DateValue(createdon) <= DateValue(DateTo_9.SelectedDate) && zx_Competitor.'Competitor Name' = radioCompetitor_2.Selected.'Competitor Name' && owninguser.'Primary Email' = User().Email
+                            ),
+                    // Filter according to Stage,commit,created date,lead value and estimated----------------------------------
+                            !IsBlank(radioStage_2.Selected) && !IsBlank(Value(Leadvalue_2.Text)) && IsBlank(radioCustomers_2.Selected) && !IsBlank(radioCommit_2.Selected) && IsBlank(radioArea_3.Selected) && IsBlank(radioCompetitor_2.Selected) && !IsBlank(DateFrom_11.SelectedDate) && !IsBlank(DateFrom_12.SelectedDate),
+                            Filter(
+                                offlineLeadCollection,
+                                zx_leadstage = radioStage_2.Selected.Value && zx_commited = radioCommit_2.Selected.Value && DateValue(createdon) >= DateValue(DateFrom_11.SelectedDate) && DateValue(createdon) <= DateValue(DateTo_9.SelectedDate) && zx_leadvalue = Value(Leadvalue_2.Text) && zx_expectedclosuredate <= DateValue(DateFrom_12.SelectedDate) && owninguser.'Primary Email' = User().Email
+                            ),
+                    // Filter according to Stage,commit,created date,lead value and Customer--------------------------------
+                            !IsBlank(radioStage_2.Selected) && !IsBlank(Value(Leadvalue_2.Text)) && !IsBlank(radioCustomers_2.Selected) && !IsBlank(radioCommit_2.Selected) && IsBlank(radioArea_3.Selected) && IsBlank(radioCompetitor_2.Selected) && !IsBlank(DateFrom_11.SelectedDate) && IsBlank(DateFrom_12.SelectedDate),
+                            Filter(
+                                offlineLeadCollection,
+                                zx_leadstage = radioStage_2.Selected.Value && zx_commited = radioCommit_2.Selected.Value && DateValue(createdon) >= DateValue(DateFrom_11.SelectedDate) && DateValue(createdon) <= DateValue(DateTo_9.SelectedDate) && zx_leadvalue = Value(Leadvalue_2.Text) && zx_Party.'Customer Name' = radioCustomers_2.Selected.'Customer Name' && owninguser.'Primary Email' = User().Email
+                            ),
+                            // Filter according to Stage,commit,created date,lead value and Area--------------------------------
+                            !IsBlank(radioStage_2.Selected) && !IsBlank(Value(Leadvalue_2.Text)) && IsBlank(radioCustomers_2.Selected) && !IsBlank(radioCommit_2.Selected) && !IsBlank(radioArea_3.Selected) && IsBlank(radioCompetitor_2.Selected) && !IsBlank(DateFrom_11.SelectedDate) && IsBlank(DateFrom_12.SelectedDate),
+                            Filter(
+                                offlineLeadCollection,
+                                zx_leadstage = radioStage_2.Selected.Value && zx_commited = radioCommit_2.Selected.Value && DateValue(createdon) >= DateValue(DateFrom_11.SelectedDate) && DateValue(createdon) <= DateValue(DateTo_9.SelectedDate) && zx_leadvalue = Value(Leadvalue_2.Text) && zx_Area.'Area Name' = radioArea_3.Selected.Areaname && owninguser.'Primary Email' = User().Email
+                            ),
+                    // Filter according to Stage,commit,created date,lead value and Competitor--------------------------------
+                            !IsBlank(radioStage_2.Selected) && !IsBlank(Value(Leadvalue_2.Text)) && IsBlank(radioCustomers_2.Selected) && !IsBlank(radioCommit_2.Selected) && IsBlank(radioArea_3.Selected) && !IsBlank(radioCompetitor_2.Selected) && !IsBlank(DateFrom_11.SelectedDate) && IsBlank(DateFrom_12.SelectedDate),
+                            Filter(
+                                offlineLeadCollection,
+                                zx_leadstage = radioStage_2.Selected.Value && zx_commited = radioCommit_2.Selected.Value && DateValue(createdon) >= DateValue(DateFrom_11.SelectedDate) && DateValue(createdon) <= DateValue(DateTo_9.SelectedDate) && zx_leadvalue = Value(Leadvalue_2.Text) && zx_Competitor.'Competitor Name' = radioCompetitor_2.Selected.'Competitor Name' && owninguser.'Primary Email' = User().Email
+                            ),
+                    // Filter according to Stage,commit,created date,lead value, estimated and customer
+                            !IsBlank(radioStage_2.Selected) && !IsBlank(Value(Leadvalue_2.Text)) && !IsBlank(radioCustomers_2.Selected) && !IsBlank(radioCommit_2.Selected) && IsBlank(radioArea_3.Selected) && IsBlank(radioCompetitor_2.Selected) && !IsBlank(DateFrom_11.SelectedDate) && !IsBlank(DateFrom_12.SelectedDate),
+                            Filter(
+                                offlineLeadCollection,
+                                zx_leadstage = radioStage_2.Selected.Value && zx_commited = radioCommit_2.Selected.Value && DateValue(createdon) >= DateValue(DateFrom_11.SelectedDate) && DateValue(createdon) <= DateValue(DateTo_9.SelectedDate) && zx_leadvalue = Value(Leadvalue_2.Text) && zx_expectedclosuredate <= DateValue(DateFrom_12.SelectedDate) && zx_Party.'Customer Name' = radioCustomers_2.Selected.'Customer Name' && owninguser.'Primary Email' = User().Email
+                            ),
+                    // Filter according to Stage,commit,created date,lead value,estimated and Competitor-------------------------
+                            !IsBlank(radioStage_2.Selected) && !IsBlank(Value(Leadvalue_2.Text)) && IsBlank(radioCustomers_2.Selected) && !IsBlank(radioCommit_2.Selected) && IsBlank(radioArea_3.Selected) && !IsBlank(radioCompetitor_2.Selected) && !IsBlank(DateFrom_11.SelectedDate) && !IsBlank(DateFrom_12.SelectedDate),
+                            Filter(
+                                offlineLeadCollection,
+                                zx_leadstage = radioStage_2.Selected.Value && zx_commited = radioCommit_2.Selected.Value && DateValue(createdon) >= DateValue(DateFrom_11.SelectedDate) && DateValue(createdon) <= DateValue(DateTo_9.SelectedDate) && zx_leadvalue = Value(Leadvalue_2.Text) && zx_Competitor.'Competitor Name' = radioCompetitor_2.Selected.'Competitor Name' && zx_expectedclosuredate <= DateValue(DateFrom_12.SelectedDate) && owninguser.'Primary Email' = User().Email
+                            ),
+                    // Filter according to Stage,commit,created date,lead value,estimated and Area-------------------------
+                            !IsBlank(radioStage_2.Selected) && !IsBlank(Value(Leadvalue_2.Text)) && IsBlank(radioCustomers_2.Selected) && !IsBlank(radioCommit_2.Selected) && !IsBlank(radioArea_3.Selected) && IsBlank(radioCompetitor_2.Selected) && !IsBlank(DateFrom_11.SelectedDate) && !IsBlank(DateFrom_12.SelectedDate),
+                            Filter(
+                                offlineLeadCollection,
+                                zx_leadstage = radioStage_2.Selected.Value && zx_commited = radioCommit_2.Selected.Value && DateValue(createdon) >= DateValue(DateFrom_11.SelectedDate) && DateValue(createdon) <= DateValue(DateTo_9.SelectedDate) && zx_leadvalue = Value(Leadvalue_2.Text) && zx_Area.'Area Name' = radioArea_3.Selected.Areaname && zx_expectedclosuredate <= DateValue(DateFrom_12.SelectedDate) && owninguser.'Primary Email' = User().Email
+                            ),
+                    // Filter according to Stage,commit,created date,lead value, estimated,customer and area
+                            !IsBlank(radioStage_2.Selected) && !IsBlank(Value(Leadvalue_2.Text)) && !IsBlank(radioCustomers_2.Selected) && !IsBlank(radioCommit_2.Selected) && !IsBlank(radioArea_3.Selected) && IsBlank(radioCompetitor_2.Selected) && !IsBlank(DateFrom_11.SelectedDate) && !IsBlank(DateFrom_12.SelectedDate),
+                            Filter(
+                                offlineLeadCollection,
+                                zx_leadstage = radioStage_2.Selected.Value && zx_commited = radioCommit_2.Selected.Value && DateValue(createdon) >= DateValue(DateFrom_11.SelectedDate) && DateValue(createdon) <= DateValue(DateTo_9.SelectedDate) && zx_leadvalue = Value(Leadvalue_2.Text) && zx_expectedclosuredate <= DateValue(DateFrom_12.SelectedDate) && zx_Party.'Customer Name' = radioCustomers_2.Selected.'Customer Name' && zx_Area.'Area Name' = radioArea_3.Selected.Areaname && owninguser.'Primary Email' = User().Email
+                            ),
+                            // Filter according to Stage,commit,created date,lead value, estimated,customer and Competitor
+                            !IsBlank(radioStage_2.Selected) && !IsBlank(Value(Leadvalue_2.Text)) && !IsBlank(radioCustomers_2.Selected) && !IsBlank(radioCommit_2.Selected) && IsBlank(radioArea_3.Selected) && !IsBlank(radioCompetitor_2.Selected) && !IsBlank(DateFrom_11.SelectedDate) && !IsBlank(DateFrom_12.SelectedDate),
+                            Filter(
+                                offlineLeadCollection,
+                                zx_leadstage = radioStage_2.Selected.Value && zx_commited = radioCommit_2.Selected.Value && DateValue(createdon) >= DateValue(DateFrom_11.SelectedDate) && DateValue(createdon) <= DateValue(DateTo_9.SelectedDate) && zx_leadvalue = Value(Leadvalue_2.Text) && zx_expectedclosuredate <= DateValue(DateFrom_12.SelectedDate) && zx_Party.'Customer Name' = radioCustomers_2.Selected.'Customer Name' && zx_Competitor.'Competitor Name' = radioCompetitor_2.Selected.'Competitor Name' && owninguser.'Primary Email' = User().Email
+                            ),
+                    // Filter according to Stage,commit,created date,lead value, estimated,customer,area and Competitor
+                            !IsBlank(radioStage_2.Selected) && !IsBlank(Value(Leadvalue_2.Text)) && !IsBlank(radioCustomers_2.Selected) && !IsBlank(radioCommit_2.Selected) && !IsBlank(radioArea_3.Selected) && !IsBlank(radioCompetitor_2.Selected) && !IsBlank(DateFrom_11.SelectedDate) && !IsBlank(DateFrom_12.SelectedDate),
+                            Filter(
+                                offlineLeadCollection,
+                                zx_leadstage = radioStage_2.Selected.Value && zx_commited = radioCommit_2.Selected.Value && DateValue(createdon) >= DateValue(DateFrom_11.SelectedDate) && DateValue(createdon) <= DateValue(DateTo_9.SelectedDate) && zx_leadvalue = Value(Leadvalue_2.Text) && zx_expectedclosuredate <= DateValue(DateFrom_12.SelectedDate) && zx_Party.'Customer Name' = radioCustomers_2.Selected.'Customer Name' && zx_Area.'Area Name' = radioArea_3.Selected.Areaname && zx_Competitor.'Competitor Name' = radioCompetitor_2.Selected.'Competitor Name' && owninguser.'Primary Email' = User().Email
+                            ),
+                    // Filter according to commit and created date--------------------------------------------------
+                            IsBlank(radioStage_2.Selected) && IsBlank(Value(Leadvalue_2.Text)) && IsBlank(radioCustomers_2.Selected) && !IsBlank(radioCommit_2.Selected) && IsBlank(radioArea_3.Selected) && IsBlank(radioCompetitor_2.Selected) && !IsBlank(DateFrom_11.SelectedDate) && IsBlank(DateFrom_12.SelectedDate),
+                            Filter(
+                                offlineLeadCollection,
+                                zx_commited = radioCommit_2.Selected.Value && DateValue(createdon) >= DateValue(DateFrom_11.SelectedDate) && DateValue(createdon) <= DateValue(DateTo_9.SelectedDate) && owninguser.'Primary Email' = User().Email
+                            ),
+                    // Filter according to commit and lead value--------------------------------------------------
+                            IsBlank(radioStage_2.Selected) && !IsBlank(Value(Leadvalue_2.Text)) && IsBlank(radioCustomers_2.Selected) && !IsBlank(radioCommit_2.Selected) && IsBlank(radioArea_3.Selected) && IsBlank(radioCompetitor_2.Selected) || (varCreateddate = true || varEstimated = true),
+                            Filter(
+                                offlineLeadCollection,
+                                zx_commited = radioCommit_2.Selected.Value && zx_leadvalue = Value(Leadvalue_2.Text) && owninguser.'Primary Email' = User().Email
+                            ),
+                        // Filter according to commit and estimated--------------------------------------------------
+                            IsBlank(radioStage_2.Selected) && IsBlank(Value(Leadvalue_2.Text)) && IsBlank(radioCustomers_2.Selected) && !IsBlank(radioCommit_2.Selected) && IsBlank(radioArea_3.Selected) && IsBlank(radioCompetitor_2.Selected) && IsBlank(DateFrom_11.SelectedDate) && !IsBlank(DateFrom_12.SelectedDate),
+                            Filter(
+                                offlineLeadCollection,
+                                zx_commited = radioCommit_2.Selected.Value && zx_expectedclosuredate <= DateValue(DateFrom_12.SelectedDate) && owninguser.'Primary Email' = User().Email
+                            ),
+                    // Filter according to commit and Customer--------------------------------------------------
+                            IsBlank(radioStage_2.Selected) && IsBlank(Value(Leadvalue_2.Text)) && !IsBlank(radioCustomers_2.Selected) && !IsBlank(radioCommit_2.Selected) && IsBlank(radioArea_3.Selected) && IsBlank(radioCompetitor_2.Selected) || (varCreateddate = true || varEstimated = true),
+                            Filter(
+                                offlineLeadCollection,
+                                zx_commited = radioCommit_2.Selected.Value && zx_Party.'Customer Name' = radioCustomers_2.Selected.'Customer Name' && owninguser.'Primary Email' = User().Email
+                            ),
+                    // Filter according to commit and area--------------------------------------------------
+                            IsBlank(radioStage_2.Selected) && IsBlank(Value(Leadvalue_2.Text)) && IsBlank(radioCustomers_2.Selected) && !IsBlank(radioCommit_2.Selected) && !IsBlank(radioArea_3.Selected) && IsBlank(radioCompetitor_2.Selected) || (varCreateddate = true || varEstimated = true),
+                            Filter(
+                                offlineLeadCollection,
+                                zx_commited = radioCommit_2.Selected.Value && zx_Area.'Area Name' = radioArea_3.Selected.Areaname && owninguser.'Primary Email' = User().Email
+                            ),
+                    // Filter according to commit and Competitor--------------------------------------------------
+                            IsBlank(radioStage_2.Selected) && IsBlank(Value(Leadvalue_2.Text)) && IsBlank(radioCustomers_2.Selected) && !IsBlank(radioCommit_2.Selected) && IsBlank(radioArea_3.Selected) && !IsBlank(radioCompetitor_2.Selected) || (varCreateddate = true || varEstimated = true),
+                            Filter(
+                                offlineLeadCollection,
+                                zx_commited = radioCommit_2.Selected.Value && zx_Competitor.'Competitor Name' = radioCompetitor_2.Selected.'Competitor Name' && owninguser.'Primary Email' = User().Email
+                            ),
+                    // Filter according to commit,created date,lead value-----------------------
+                            IsBlank(radioStage_2.Selected) && !IsBlank(Value(Leadvalue_2.Text)) && IsBlank(radioCustomers_2.Selected) && !IsBlank(radioCommit_2.Selected) && IsBlank(radioArea_3.Selected) && IsBlank(radioCompetitor_2.Selected) && !IsBlank(DateFrom_11.SelectedDate) && IsBlank(DateFrom_12.SelectedDate),
+                            Filter(
+                                offlineLeadCollection,
+                                zx_commited = radioCommit_2.Selected.Value && DateValue(createdon) >= DateValue(DateFrom_11.SelectedDate) && DateValue(createdon) <= DateValue(DateTo_9.SelectedDate) && zx_leadvalue = Value(Leadvalue_2.Text) && owninguser.'Primary Email' = User().Email
+                            ),
+                    // Filter according to commit,created date, estimated----------------
+                            IsBlank(radioStage_2.Selected) && IsBlank(Value(Leadvalue_2.Text)) && IsBlank(radioCustomers_2.Selected) && !IsBlank(radioCommit_2.Selected) && IsBlank(radioArea_3.Selected) && IsBlank(radioCompetitor_2.Selected) && !IsBlank(DateFrom_11.SelectedDate) && !IsBlank(DateFrom_12.SelectedDate),
+                            Filter(
+                                offlineLeadCollection,
+                                zx_commited = radioCommit_2.Selected.Value && DateValue(createdon) >= DateValue(DateFrom_11.SelectedDate) && DateValue(createdon) <= DateValue(DateTo_9.SelectedDate) && zx_expectedclosuredate <= DateValue(DateFrom_12.SelectedDate) && owninguser.'Primary Email' = User().Email
+                            ),
+                    // Filter according to commit,created date,customer----------
+                            IsBlank(radioStage_2.Selected) && IsBlank(Value(Leadvalue_2.Text)) && !IsBlank(radioCustomers_2.Selected) && !IsBlank(radioCommit_2.Selected) && IsBlank(radioArea_3.Selected) && IsBlank(radioCompetitor_2.Selected) && !IsBlank(DateFrom_11.SelectedDate) && IsBlank(DateFrom_12.SelectedDate),
+                            Filter(
+                                offlineLeadCollection,
+                                zx_commited = radioCommit_2.Selected.Value && DateValue(createdon) >= DateValue(DateFrom_11.SelectedDate) && DateValue(createdon) <= DateValue(DateTo_9.SelectedDate) && zx_Party.'Customer Name' = radioCustomers_2.Selected.'Customer Name' && owninguser.'Primary Email' = User().Email
+                            ),
+                    // Filter according to commit,created date,area -----------------
+                            IsBlank(radioStage_2.Selected) && IsBlank(Value(Leadvalue_2.Text)) && IsBlank(radioCustomers_2.Selected) && !IsBlank(radioCommit_2.Selected) && !IsBlank(radioArea_3.Selected) && IsBlank(radioCompetitor_2.Selected) && !IsBlank(DateFrom_11.SelectedDate) && IsBlank(DateFrom_12.SelectedDate),
+                            Filter(
+                                offlineLeadCollection,
+                                zx_commited = radioCommit_2.Selected.Value && DateValue(createdon) >= DateValue(DateFrom_11.SelectedDate) && DateValue(createdon) <= DateValue(DateTo_9.SelectedDate) && zx_Area.'Area Name' = radioArea_3.Selected.Areaname && owninguser.'Primary Email' = User().Email
+                            ),
+                    // Filter according to commit,created date, Competitor-------------------
+                            IsBlank(radioStage_2.Selected) && IsBlank(Value(Leadvalue_2.Text)) && IsBlank(radioCustomers_2.Selected) && !IsBlank(radioCommit_2.Selected) && IsBlank(radioArea_3.Selected) && !IsBlank(radioCompetitor_2.Selected) && !IsBlank(DateFrom_11.SelectedDate) && IsBlank(DateFrom_12.SelectedDate),
+                            Filter(
+                                offlineLeadCollection,
+                                zx_commited = radioCommit_2.Selected.Value && DateValue(createdon) >= DateValue(DateFrom_11.SelectedDate) && DateValue(createdon) <= DateValue(DateTo_9.SelectedDate) && zx_expectedclosuredate <= DateValue(DateFrom_12.SelectedDate) && zx_Competitor.'Competitor Name' = radioCompetitor_2.Selected.'Competitor Name' && owninguser.'Primary Email' = User().Email
+                            ),
+                    // Filter according to commit,created date,lead value, estimated-----------------
+                            IsBlank(radioStage_2.Selected) && !IsBlank(Value(Leadvalue_2.Text)) && IsBlank(radioCustomers_2.Selected) && !IsBlank(radioCommit_2.Selected) && IsBlank(radioArea_3.Selected) && IsBlank(radioCompetitor_2.Selected) && !IsBlank(DateFrom_11.SelectedDate) && !IsBlank(DateFrom_12.SelectedDate),
+                            Filter(
+                                offlineLeadCollection,
+                                zx_commited = radioCommit_2.Selected.Value && DateValue(createdon) >= DateValue(DateFrom_11.SelectedDate) && DateValue(createdon) <= DateValue(DateTo_9.SelectedDate) && zx_leadvalue = Value(Leadvalue_2.Text) && zx_expectedclosuredate <= DateValue(DateFrom_12.SelectedDate) && owninguser.'Primary Email' = User().Email
+                            ),
+                            // Filter according to commit,created date,lead value, customer------------------
+                            IsBlank(radioStage_2.Selected) && !IsBlank(Value(Leadvalue_2.Text)) && !IsBlank(radioCustomers_2.Selected) && !IsBlank(radioCommit_2.Selected) && !IsBlank(radioArea_3.Selected) && IsBlank(radioCompetitor_2.Selected) && !IsBlank(DateFrom_11.SelectedDate) && IsBlank(DateFrom_12.SelectedDate),
+                            Filter(
+                                offlineLeadCollection,
+                                zx_commited = radioCommit_2.Selected.Value && DateValue(createdon) >= DateValue(DateFrom_11.SelectedDate) && DateValue(createdon) <= DateValue(DateTo_9.SelectedDate) && zx_leadvalue = Value(Leadvalue_2.Text) && zx_Party.'Customer Name' = radioCustomers_2.Selected.'Customer Name' && owninguser.'Primary Email' = User().Email
+                            ),
+                            // Filter according to commit,created date,lead value, area --------------------------------------
+                            IsBlank(radioStage_2.Selected) && !IsBlank(Value(Leadvalue_2.Text)) && IsBlank(radioCustomers_2.Selected) && !IsBlank(radioCommit_2.Selected) && !IsBlank(radioArea_3.Selected) && IsBlank(radioCompetitor_2.Selected) && !IsBlank(DateFrom_11.SelectedDate) && IsBlank(DateFrom_12.SelectedDate),
+                            Filter(
+                                offlineLeadCollection,
+                                zx_commited = radioCommit_2.Selected.Value && DateValue(createdon) >= DateValue(DateFrom_11.SelectedDate) && DateValue(createdon) <= DateValue(DateTo_9.SelectedDate) && zx_leadvalue = Value(Leadvalue_2.Text) && zx_Area.'Area Name' = radioArea_3.Selected.Areaname && owninguser.'Primary Email' = User().Email
+                            ),
+                            // Filter according to commit,created date,lead value,  Competitor
+                            IsBlank(radioStage_2.Selected) && !IsBlank(Value(Leadvalue_2.Text)) && IsBlank(radioCustomers_2.Selected) && !IsBlank(radioCommit_2.Selected) && IsBlank(radioArea_3.Selected) && !IsBlank(radioCompetitor_2.Selected) && !IsBlank(DateFrom_11.SelectedDate) && IsBlank(DateFrom_12.SelectedDate),
+                            Filter(
+                                offlineLeadCollection,
+                                zx_commited = radioCommit_2.Selected.Value && DateValue(createdon) >= DateValue(DateFrom_11.SelectedDate) && DateValue(createdon) <= DateValue(DateTo_9.SelectedDate) && zx_leadvalue = Value(Leadvalue_2.Text) && zx_Competitor.'Competitor Name' = radioCompetitor_2.Selected.'Competitor Name' && owninguser.'Primary Email' = User().Email
+                            ),
+                            // Filter according to commit,created date,lead value, estimated and customer-----------------
+                            IsBlank(radioStage_2.Selected) && !IsBlank(Value(Leadvalue_2.Text)) && !IsBlank(radioCustomers_2.Selected) && !IsBlank(radioCommit_2.Selected) && IsBlank(radioArea_3.Selected) && IsBlank(radioCompetitor_2.Selected) && !IsBlank(DateFrom_11.SelectedDate) && !IsBlank(DateFrom_12.SelectedDate),
+                            Filter(
+                                offlineLeadCollection,
+                                zx_commited = radioCommit_2.Selected.Value && DateValue(createdon) >= DateValue(DateFrom_11.SelectedDate) && DateValue(createdon) <= DateValue(DateTo_9.SelectedDate) && zx_leadvalue = Value(Leadvalue_2.Text) && zx_expectedclosuredate <= DateValue(DateFrom_12.SelectedDate) && zx_Party.'Customer Name' = radioCustomers_2.Selected.'Customer Name' && owninguser.'Primary Email' = User().Email
+                            ),
+                            // Filter according to commit,created date,lead value, estimated and Area-----------------
+                            IsBlank(radioStage_2.Selected) && !IsBlank(Value(Leadvalue_2.Text)) && IsBlank(radioCustomers_2.Selected) && !IsBlank(radioCommit_2.Selected) && !IsBlank(radioArea_3.Selected) && IsBlank(radioCompetitor_2.Selected) && !IsBlank(DateFrom_11.SelectedDate) && !IsBlank(DateFrom_12.SelectedDate),
+                            Filter(
+                                offlineLeadCollection,
+                                zx_commited = radioCommit_2.Selected.Value && DateValue(createdon) >= DateValue(DateFrom_11.SelectedDate) && DateValue(createdon) <= DateValue(DateTo_9.SelectedDate) && zx_leadvalue = Value(Leadvalue_2.Text) && zx_expectedclosuredate <= DateValue(DateFrom_12.SelectedDate) && zx_Area.'Area Name' = radioArea_3.Selected.Areaname && owninguser.'Primary Email' = User().Email
+                            ),
+                            // Filter according to commit,created date,lead value, estimated and Competitor-----------------
+                            IsBlank(radioStage_2.Selected) && !IsBlank(Value(Leadvalue_2.Text)) && IsBlank(radioCustomers_2.Selected) && !IsBlank(radioCommit_2.Selected) && !IsBlank(radioArea_3.Selected) && IsBlank(radioCompetitor_2.Selected) && !IsBlank(DateFrom_11.SelectedDate) && !IsBlank(DateFrom_12.SelectedDate),
+                            Filter(
+                                offlineLeadCollection,
+                                zx_commited = radioCommit_2.Selected.Value && DateValue(createdon) >= DateValue(DateFrom_11.SelectedDate) && DateValue(createdon) <= DateValue(DateTo_9.SelectedDate) && zx_leadvalue = Value(Leadvalue_2.Text) && zx_expectedclosuredate <= DateValue(DateFrom_12.SelectedDate) && zx_Competitor.'Competitor Name' = radioCompetitor_2.Selected.'Competitor Name' && owninguser.'Primary Email' = User().Email
+                            ),
+                            // Filter according to commit,created date,lead value, estimated,customer,area----
+                            IsBlank(radioStage_2.Selected) && !IsBlank(Value(Leadvalue_2.Text)) && !IsBlank(radioCustomers_2.Selected) && !IsBlank(radioCommit_2.Selected) && !IsBlank(radioArea_3.Selected) && IsBlank(radioCompetitor_2.Selected) && !IsBlank(DateFrom_11.SelectedDate) && !IsBlank(DateFrom_12.SelectedDate),
+                            Filter(
+                                offlineLeadCollection,
+                                zx_commited = radioCommit_2.Selected.Value && DateValue(createdon) >= DateValue(DateFrom_11.SelectedDate) && DateValue(createdon) <= DateValue(DateTo_9.SelectedDate) && zx_leadvalue = Value(Leadvalue_2.Text) && zx_expectedclosuredate <= DateValue(DateFrom_12.SelectedDate) && zx_Party.'Customer Name' = radioCustomers_2.Selected.'Customer Name' && zx_Area.'Area Name' = radioArea_3.Selected.Areaname && owninguser.'Primary Email' = User().Email
+                            ),
+                        // Filter according to commit,created date,lead value, estimated,customer,Competitor----
+                            IsBlank(radioStage_2.Selected) && !IsBlank(Value(Leadvalue_2.Text)) && !IsBlank(radioCustomers_2.Selected) && !IsBlank(radioCommit_2.Selected) && IsBlank(radioArea_3.Selected) && !IsBlank(radioCompetitor_2.Selected) && !IsBlank(DateFrom_11.SelectedDate) && !IsBlank(DateFrom_12.SelectedDate),
+                            Filter(
+                                offlineLeadCollection,
+                                zx_commited = radioCommit_2.Selected.Value && DateValue(createdon) >= DateValue(DateFrom_11.SelectedDate) && DateValue(createdon) <= DateValue(DateTo_9.SelectedDate) && zx_leadvalue = Value(Leadvalue_2.Text) && zx_expectedclosuredate <= DateValue(DateFrom_12.SelectedDate) && zx_Party.'Customer Name' = radioCustomers_2.Selected.'Customer Name' && zx_Competitor.'Competitor Name' = radioCompetitor_2.Selected.'Competitor Name' && owninguser.'Primary Email' = User().Email
+                            ),
+                    // Filter according to commit,created date,lead value, estimated,customer,area and Competitor
+                            IsBlank(radioStage_2.Selected) && !IsBlank(Value(Leadvalue_2.Text)) && !IsBlank(radioCustomers_2.Selected) && !IsBlank(radioCommit_2.Selected) && !IsBlank(radioArea_3.Selected) && !IsBlank(radioCompetitor_2.Selected) && !IsBlank(DateFrom_11.SelectedDate) && !IsBlank(DateFrom_12.SelectedDate),
+                            Filter(
+                                offlineLeadCollection,
+                                zx_commited = radioCommit_2.Selected.Value && DateValue(createdon) >= DateValue(DateFrom_11.SelectedDate) && DateValue(createdon) <= DateValue(DateTo_9.SelectedDate) && zx_leadvalue = Value(Leadvalue_2.Text) && zx_expectedclosuredate <= DateValue(DateFrom_12.SelectedDate) && zx_Party.'Customer Name' = radioCustomers_2.Selected.'Customer Name' && zx_Area.'Area Name' = radioArea_3.Selected.Areaname && zx_Competitor.'Competitor Name' = radioCompetitor_2.Selected.'Competitor Name' && owninguser.'Primary Email' = User().Email
+                            ),
+                            // Filter according to Created date and lead value------------------------------------------------
+                            IsBlank(radioStage_2.Selected) && !IsBlank(Value(Leadvalue_2.Text)) && IsBlank(radioCustomers_2.Selected) && IsBlank(radioCommit_2.Selected) && IsBlank(radioArea_3.Selected) && IsBlank(radioCompetitor_2.Selected) && !IsBlank(DateFrom_11.SelectedDate) && IsBlank(DateFrom_12.SelectedDate),
+                            Filter(
+                                offlineLeadCollection,
+                                DateValue(createdon) >= DateValue(DateFrom_11.SelectedDate) && DateValue(createdon) <= DateValue(DateTo_9.SelectedDate) && zx_leadvalue = Value(Leadvalue_2.Text) && owninguser.'Primary Email' = User().Email
+                            ),
+                            // Filter according to Created date and estimated------------------------------------------------
+                            IsBlank(radioStage_2.Selected) && IsBlank(Value(Leadvalue_2.Text)) && IsBlank(radioCustomers_2.Selected) && IsBlank(radioCommit_2.Selected) && IsBlank(radioArea_3.Selected) && IsBlank(radioCompetitor_2.Selected) && !IsBlank(DateFrom_11.SelectedDate) && !IsBlank(DateFrom_12.SelectedDate),
+                            Filter(
+                                offlineLeadCollection,
+                                DateValue(createdon) >= DateValue(DateFrom_11.SelectedDate) && DateValue(createdon) <= DateValue(DateTo_9.SelectedDate) && zx_expectedclosuredate <= DateValue(DateFrom_12.SelectedDate) && owninguser.'Primary Email' = User().Email
+                            ),
+                            // Filter according to Created date and customer------------------------------------------------
+                            IsBlank(radioStage_2.Selected) && IsBlank(Value(Leadvalue_2.Text)) && !IsBlank(radioCustomers_2.Selected) && IsBlank(radioCommit_2.Selected) && IsBlank(radioArea_3.Selected) && IsBlank(radioCompetitor_2.Selected) && !IsBlank(DateFrom_11.SelectedDate) && IsBlank(DateFrom_12.SelectedDate),
+                            Filter(
+                                offlineLeadCollection,
+                                DateValue(createdon) >= DateValue(DateFrom_11.SelectedDate) && DateValue(createdon) <= DateValue(DateTo_9.SelectedDate) && zx_Party.'Customer Name' = radioCustomers_2.Selected.'Customer Name' && owninguser.'Primary Email' = User().Email
+                            ),
+                            // Filter according to Created date and area------------------------------------------------
+                            IsBlank(radioStage_2.Selected) && IsBlank(Value(Leadvalue_2.Text)) && IsBlank(radioCustomers_2.Selected) && IsBlank(radioCommit_2.Selected) && !IsBlank(radioArea_3.Selected) && IsBlank(radioCompetitor_2.Selected) && !IsBlank(DateFrom_11.SelectedDate) && IsBlank(DateFrom_12.SelectedDate),
+                            Filter(
+                                offlineLeadCollection,
+                                DateValue(createdon) >= DateValue(DateFrom_11.SelectedDate) && DateValue(createdon) <= DateValue(DateTo_9.SelectedDate) && zx_Area.'Area Name' = radioArea_3.Selected.Areaname && owninguser.'Primary Email' = User().Email
+                            ),
+                             // Filter according to Created date and Competitor------------------------------------------------
+                            IsBlank(radioStage_2.Selected) && IsBlank(Value(Leadvalue_2.Text)) && IsBlank(radioCustomers_2.Selected) && IsBlank(radioCommit_2.Selected) && IsBlank(radioArea_3.Selected) && !IsBlank(radioCompetitor_2.Selected) && !IsBlank(DateFrom_11.SelectedDate) && IsBlank(DateFrom_12.SelectedDate),
+                            Filter(
+                                offlineLeadCollection,
+                                DateValue(createdon) >= DateValue(DateFrom_11.SelectedDate) && DateValue(createdon) <= DateValue(DateTo_9.SelectedDate) && zx_Competitor.'Competitor Name' = radioCompetitor_2.Selected.'Competitor Name' && owninguser.'Primary Email' = User().Email
+                            ),
+                    // Filter according to Created date,lead value and estimated date--------------------------------------------
+                            IsBlank(radioStage_2.Selected) && !IsBlank(Value(Leadvalue_2.Text)) && IsBlank(radioCustomers_2.Selected) && IsBlank(radioCommit_2.Selected) && IsBlank(radioArea_3.Selected) && IsBlank(radioCompetitor_2.Selected) && !IsBlank(DateFrom_11.SelectedDate) && !IsBlank(DateFrom_12.SelectedDate),
+                            Filter(
+                                offlineLeadCollection,
+                                DateValue(createdon) >= DateValue(DateFrom_11.SelectedDate) && DateValue(createdon) <= DateValue(DateTo_9.SelectedDate) && zx_leadvalue = Value(Leadvalue_2.Text) && zx_expectedclosuredate <= DateValue(DateFrom_12.SelectedDate) && owninguser.'Primary Email' = User().Email
+                            ),
+                    // Filter according to Created date,lead value and Customer-----------------------------------------
+                            IsBlank(radioStage_2.Selected) && !IsBlank(Value(Leadvalue_2.Text)) && !IsBlank(radioCustomers_2.Selected) && IsBlank(radioCommit_2.Selected) && IsBlank(radioArea_3.Selected) && IsBlank(radioCompetitor_2.Selected) && !IsBlank(DateFrom_11.SelectedDate) && IsBlank(DateFrom_12.SelectedDate),
+                            Filter(
+                                offlineLeadCollection,
+                                DateValue(createdon) >= DateValue(DateFrom_11.SelectedDate) && DateValue(createdon) <= DateValue(DateTo_9.SelectedDate) && zx_leadvalue = Value(Leadvalue_2.Text) && zx_Party.'Customer Name' = radioCustomers_2.Selected.'Customer Name' && owninguser.'Primary Email' = User().Email
+                            ),
+                        // Filter according to Created date,lead value and Area-----------------------------------------
+                            IsBlank(radioStage_2.Selected) && !IsBlank(Value(Leadvalue_2.Text)) && IsBlank(radioCustomers_2.Selected) && IsBlank(radioCommit_2.Selected) && !IsBlank(radioArea_3.Selected) && IsBlank(radioCompetitor_2.Selected) && !IsBlank(DateFrom_11.SelectedDate) && IsBlank(DateFrom_12.SelectedDate),
+                            Filter(
+                                offlineLeadCollection,
+                                DateValue(createdon) >= DateValue(DateFrom_11.SelectedDate) && DateValue(createdon) <= DateValue(DateTo_9.SelectedDate) && zx_leadvalue = Value(Leadvalue_2.Text) && zx_Area.'Area Name' = radioArea_3.Selected.Areaname && owninguser.'Primary Email' = User().Email
+                            ),
+                        // Filter according to Created date,lead value and Competitor-----------------------------------------
+                            IsBlank(radioStage_2.Selected) && !IsBlank(Value(Leadvalue_2.Text)) && IsBlank(radioCustomers_2.Selected) && IsBlank(radioCommit_2.Selected) && IsBlank(radioArea_3.Selected) && !IsBlank(radioCompetitor_2.Selected) && !IsBlank(DateFrom_11.SelectedDate) && IsBlank(DateFrom_12.SelectedDate),
+                            Filter(
+                                offlineLeadCollection,
+                                DateValue(createdon) >= DateValue(DateFrom_11.SelectedDate) && DateValue(createdon) <= DateValue(DateTo_9.SelectedDate) && zx_leadvalue = Value(Leadvalue_2.Text) && zx_Competitor.'Competitor Name' = radioCompetitor_2.Selected.'Competitor Name' && owninguser.'Primary Email' = User().Email
+                            ),
+                    // Filter according to Created date,lead value,estimated date and customer----------------------------------
+                            IsBlank(radioStage_2.Selected) && !IsBlank(Value(Leadvalue_2.Text)) && !IsBlank(radioCustomers_2.Selected) && IsBlank(radioCommit_2.Selected) && IsBlank(radioArea_3.Selected) && IsBlank(radioCompetitor_2.Selected) && !IsBlank(DateFrom_11.SelectedDate) && !IsBlank(DateFrom_12.SelectedDate),
+                            Filter(
+                                offlineLeadCollection,
+                                DateValue(createdon) >= DateValue(DateFrom_11.SelectedDate) && DateValue(createdon) <= DateValue(DateTo_9.SelectedDate) && zx_leadvalue = Value(Leadvalue_2.Text) && zx_expectedclosuredate <= DateValue(DateFrom_12.SelectedDate) && zx_Party.'Customer Name' = radioCustomers_2.Selected.'Customer Name' && owninguser.'Primary Email' = User().Email
+                            ),
+                            // Filter according to Created date,lead value,estimated date and area------------------------------
+                            IsBlank(radioStage_2.Selected) && !IsBlank(Value(Leadvalue_2.Text)) && IsBlank(radioCustomers_2.Selected) && IsBlank(radioCommit_2.Selected) && !IsBlank(radioArea_3.Selected) && IsBlank(radioCompetitor_2.Selected) && !IsBlank(DateFrom_11.SelectedDate) && !IsBlank(DateFrom_12.SelectedDate),
+                            Filter(
+                                offlineLeadCollection,
+                                DateValue(createdon) >= DateValue(DateFrom_11.SelectedDate) && DateValue(createdon) <= DateValue(DateTo_9.SelectedDate) && zx_leadvalue = Value(Leadvalue_2.Text) && zx_expectedclosuredate <= DateValue(DateFrom_12.SelectedDate) && zx_Area.'Area Name' = radioArea_3.Selected.Areaname && owninguser.'Primary Email' = User().Email
+                            ),
+                     // Filter according to Created date,lead value,estimated date and Competitior----------------------------
+                            IsBlank(radioStage_2.Selected) && !IsBlank(Value(Leadvalue_2.Text)) && IsBlank(radioCustomers_2.Selected) && IsBlank(radioCommit_2.Selected) && IsBlank(radioArea_3.Selected) && !IsBlank(radioCompetitor_2.Selected) && !IsBlank(DateFrom_11.SelectedDate) && !IsBlank(DateFrom_12.SelectedDate),
+                            Filter(
+                                offlineLeadCollection,
+                                DateValue(createdon) >= DateValue(DateFrom_11.SelectedDate) && DateValue(createdon) <= DateValue(DateTo_9.SelectedDate) && zx_leadvalue = Value(Leadvalue_2.Text) && zx_expectedclosuredate <= DateValue(DateFrom_12.SelectedDate) && zx_Competitor.'Competitor Name' = radioCompetitor_2.Selected.'Competitor Name' && owninguser.'Primary Email' = User().Email
+                            ),
+                    // Filter according to Created date,lead value,estimated date,customer and area----------------------------------
+                            IsBlank(radioStage_2.Selected) && !IsBlank(Value(Leadvalue_2.Text)) && !IsBlank(radioCustomers_2.Selected) && IsBlank(radioCommit_2.Selected) && !IsBlank(radioArea_3.Selected) && IsBlank(radioCompetitor_2.Selected) && !IsBlank(DateFrom_11.SelectedDate) && !IsBlank(DateFrom_12.SelectedDate),
+                            Filter(
+                                offlineLeadCollection,
+                                DateValue(createdon) >= DateValue(DateFrom_11.SelectedDate) && DateValue(createdon) <= DateValue(DateTo_9.SelectedDate) && zx_leadvalue = Value(Leadvalue_2.Text) && zx_expectedclosuredate <= DateValue(DateFrom_12.SelectedDate) && zx_Party.'Customer Name' = radioCustomers_2.Selected.'Customer Name' && zx_Area.'Area Name' = radioArea_3.Selected.Areaname && owninguser.'Primary Email' = User().Email
+                            ),
+                    //Filter according to Created date,lead value,estimated date,customer and Competitior----------------------------
+                            IsBlank(radioStage_2.Selected) && !IsBlank(Value(Leadvalue_2.Text)) && !IsBlank(radioCustomers_2.Selected) && IsBlank(radioCommit_2.Selected) && IsBlank(radioArea_3.Selected) && !IsBlank(radioCompetitor_2.Selected) && !IsBlank(DateFrom_11.SelectedDate) && !IsBlank(DateFrom_12.SelectedDate),
+                            Filter(
+                                offlineLeadCollection,
+                                DateValue(createdon) >= DateValue(DateFrom_11.SelectedDate) && DateValue(createdon) <= DateValue(DateTo_9.SelectedDate) && zx_leadvalue = Value(Leadvalue_2.Text) && zx_expectedclosuredate <= DateValue(DateFrom_12.SelectedDate) && zx_Party.'Customer Name' = radioCustomers_2.Selected.'Customer Name' && zx_Competitor.'Competitor Name' = radioCompetitor_2.Selected.'Competitor Name' && owninguser.'Primary Email' = User().Email
+                            ),
+                    // Filter according to Created date,lead value,estimated date,customer,area and competitior-------------------
+                            IsBlank(radioStage_2.Selected) && !IsBlank(Value(Leadvalue_2.Text)) && !IsBlank(radioCustomers_2.Selected) && IsBlank(radioCommit_2.Selected) && !IsBlank(radioArea_3.Selected) && !IsBlank(radioCompetitor_2.Selected) && !IsBlank(DateFrom_11.SelectedDate) && !IsBlank(DateFrom_12.SelectedDate),
+                            Filter(
+                                offlineLeadCollection,
+                                DateValue(createdon) >= DateValue(DateFrom_11.SelectedDate) && DateValue(createdon) <= DateValue(DateTo_9.SelectedDate) && zx_leadvalue = Value(Leadvalue_2.Text) && zx_expectedclosuredate <= DateValue(DateFrom_12.SelectedDate) && zx_Party.'Customer Name' = radioCustomers_2.Selected.'Customer Name' && zx_Area.'Area Name' = radioArea_3.Selected.Areaname && zx_Competitor.'Competitor Name' = radioCompetitor_2.Selected.'Competitor Name' && owninguser.'Primary Email' = User().Email
+                            ),
+                    // Filter according to lead value,estimated date-------------------------
+                            IsBlank(radioStage_2.Selected) && !IsBlank(Value(Leadvalue_2.Text)) && IsBlank(radioCustomers_2.Selected) && IsBlank(radioCommit_2.Selected) && IsBlank(radioArea_3.Selected) && IsBlank(radioCompetitor_2.Selected) && IsBlank(DateFrom_11.SelectedDate) && !IsBlank(DateFrom_12.SelectedDate),
+                            Filter(
+                                offlineLeadCollection,
+                                zx_leadvalue = Value(Leadvalue_2.Text) && zx_expectedclosuredate <= DateValue(DateFrom_12.SelectedDate) && owninguser.'Primary Email' = User().Email
+                            ),
+                            // Filter according to lead value,customer-------------------
+                            IsBlank(radioStage_2.Selected) && !IsBlank(Value(Leadvalue_2.Text)) && !IsBlank(radioCustomers_2.Selected) && IsBlank(radioCommit_2.Selected) && IsBlank(radioArea_3.Selected) && IsBlank(radioCompetitor_2.Selected) && IsBlank(DateFrom_12.SelectedDate),
+                            Filter(
+                                offlineLeadCollection,
+                                zx_leadvalue = Value(Leadvalue_2.Text) && zx_Party.'Customer Name' = radioCustomers_2.Selected.'Customer Name' && owninguser.'Primary Email' = User().Email
+                            ),
+                            // Filter according to lead value,Area-------------------
+                            IsBlank(radioStage_2.Selected) && !IsBlank(Value(Leadvalue_2.Text)) && IsBlank(radioCustomers_2.Selected) && IsBlank(radioCommit_2.Selected) && !IsBlank(radioArea_3.Selected) && IsBlank(radioCompetitor_2.Selected) && IsBlank(DateFrom_12.SelectedDate),
+                            Filter(
+                                offlineLeadCollection,
+                                zx_leadvalue = Value(Leadvalue_2.Text) && zx_Area.'Area Name' = radioArea_3.Selected.Areaname && owninguser.'Primary Email' = User().Email
+                            ),
+                            // Filter according to lead value,Competitior-------------------
+                            IsBlank(radioStage_2.Selected) && !IsBlank(Value(Leadvalue_2.Text)) && IsBlank(radioCustomers_2.Selected) && IsBlank(radioCommit_2.Selected) && IsBlank(radioArea_3.Selected) && !IsBlank(radioCompetitor_2.Selected) && IsBlank(DateFrom_12.SelectedDate),
+                            Filter(
+                                offlineLeadCollection,
+                                zx_leadvalue = Value(Leadvalue_2.Text) && zx_Competitor.'Competitor Name' = radioCompetitor_2.Selected.'Competitor Name' && owninguser.'Primary Email' = User().Email
+                            ),
+                        // Filter according to lead value,estimated date and customer-------------------------
+                            IsBlank(radioStage_2.Selected) && !IsBlank(Value(Leadvalue_2.Text)) && !IsBlank(radioCustomers_2.Selected) && IsBlank(radioCommit_2.Selected) && IsBlank(radioArea_3.Selected) && IsBlank(radioCompetitor_2.Selected) && IsBlank(DateFrom_11.SelectedDate) && !IsBlank(DateFrom_12.SelectedDate),
+                            Filter(
+                                offlineLeadCollection,
+                                zx_leadvalue = Value(Leadvalue_2.Text) && zx_expectedclosuredate <= DateValue(DateFrom_12.SelectedDate) && zx_Party.'Customer Name' = radioCustomers_2.Selected.'Customer Name' && owninguser.'Primary Email' = User().Email
+                            ),
+                            // Filter according to lead value,estimated date and Area-------------------------
+                            IsBlank(radioStage_2.Selected) && !IsBlank(Value(Leadvalue_2.Text)) && IsBlank(radioCustomers_2.Selected) && IsBlank(radioCommit_2.Selected) && !IsBlank(radioArea_3.Selected) && IsBlank(radioCompetitor_2.Selected) && IsBlank(DateFrom_11.SelectedDate) && !IsBlank(DateFrom_12.SelectedDate),
+                            Filter(
+                                offlineLeadCollection,
+                                zx_leadvalue = Value(Leadvalue_2.Text) && zx_expectedclosuredate <= DateValue(DateFrom_12.SelectedDate) && zx_Area.'Area Name' = radioArea_3.Selected.Areaname && owninguser.'Primary Email' = User().Email
+                            ),
+                            // Filter according to lead value,estimated date and Competitior-------------------------
+                            IsBlank(radioStage_2.Selected) && !IsBlank(Value(Leadvalue_2.Text)) && IsBlank(radioCustomers_2.Selected) && IsBlank(radioCommit_2.Selected) && IsBlank(radioArea_3.Selected) && !IsBlank(radioCompetitor_2.Selected) && IsBlank(DateFrom_11.SelectedDate) && !IsBlank(DateFrom_12.SelectedDate),
+                            Filter(
+                                offlineLeadCollection,
+                                zx_leadvalue = Value(Leadvalue_2.Text) && zx_expectedclosuredate <= DateValue(DateFrom_12.SelectedDate) && zx_Competitor.'Competitor Name' = radioCompetitor_2.Selected.'Competitor Name' && owninguser.'Primary Email' = User().Email
+                            ),
+                    // Filter according to lead value,estimated date,customer and area-------------------------
+                            IsBlank(radioStage_2.Selected) && !IsBlank(Value(Leadvalue_2.Text)) && !IsBlank(radioCustomers_2.Selected) && IsBlank(radioCommit_2.Selected) && !IsBlank(radioArea_3.Selected) && IsBlank(radioCompetitor_2.Selected) && IsBlank(DateFrom_11.SelectedDate) && !IsBlank(DateFrom_12.SelectedDate),
+                            Filter(
+                                offlineLeadCollection,
+                                zx_leadvalue = Value(Leadvalue_2.Text) && zx_expectedclosuredate <= DateValue(DateFrom_12.SelectedDate) && zx_Party.'Customer Name' = radioCustomers_2.Selected.'Customer Name' && zx_Area.'Area Name' = radioArea_3.Selected.Areaname && owninguser.'Primary Email' = User().Email
+                            ),
+                     // Filter according to lead value,estimated date,customer and Competitior-------------------------
+                            IsBlank(radioStage_2.Selected) && !IsBlank(Value(Leadvalue_2.Text)) && !IsBlank(radioCustomers_2.Selected) && IsBlank(radioCommit_2.Selected) && IsBlank(radioArea_3.Selected) && !IsBlank(radioCompetitor_2.Selected) && IsBlank(DateFrom_11.SelectedDate) && !IsBlank(DateFrom_12.SelectedDate),
+                            Filter(
+                                offlineLeadCollection,
+                                zx_leadvalue = Value(Leadvalue_2.Text) && zx_expectedclosuredate <= DateValue(DateFrom_12.SelectedDate) && zx_Party.'Customer Name' = radioCustomers_2.Selected.'Customer Name' && zx_Competitor.'Competitor Name' = radioCompetitor_2.Selected.'Competitor Name' && owninguser.'Primary Email' = User().Email
+                            ),
+                            // Filter according to lead value,estimated date,customer,area and Competitior-------------------------
+                            IsBlank(radioStage_2.Selected) && !IsBlank(Value(Leadvalue_2.Text)) && !IsBlank(radioCustomers_2.Selected) && IsBlank(radioCommit_2.Selected) && !IsBlank(radioArea_3.Selected) && !IsBlank(radioCompetitor_2.Selected) && IsBlank(DateFrom_11.SelectedDate) && !IsBlank(DateFrom_12.SelectedDate),
+                            Filter(
+                                offlineLeadCollection,
+                                zx_leadvalue = Value(Leadvalue_2.Text) && zx_expectedclosuredate <= DateValue(DateFrom_12.SelectedDate) && zx_Party.'Customer Name' = radioCustomers_2.Selected.'Customer Name' && zx_Area.'Area Name' = radioArea_3.Selected.Areaname && zx_Competitor.'Competitor Name' = radioCompetitor_2.Selected.'Competitor Name' && owninguser.'Primary Email' = User().Email
+                            ),
+                            // Filter according to estimated date,customer-------------------------
+                            IsBlank(radioStage_2.Selected) && IsBlank(Value(Leadvalue_2.Text)) && !IsBlank(radioCustomers_2.Selected) && IsBlank(radioCommit_2.Selected) && IsBlank(radioArea_3.Selected) && IsBlank(radioCompetitor_2.Selected) && IsBlank(DateFrom_11.SelectedDate) && !IsBlank(DateFrom_12.SelectedDate),
+                            Filter(
+                                offlineLeadCollection,
+                                zx_expectedclosuredate <= DateValue(DateFrom_12.SelectedDate) && zx_Party.'Customer Name' = radioCustomers_2.Selected.'Customer Name' && owninguser.'Primary Email' = User().Email
+                            ),
+                            // Filter according to estimated date,area-------------------------
+                            IsBlank(radioStage_2.Selected) && IsBlank(Value(Leadvalue_2.Text)) && IsBlank(radioCustomers_2.Selected) && IsBlank(radioCommit_2.Selected) && !IsBlank(radioArea_3.Selected) && IsBlank(radioCompetitor_2.Selected) && IsBlank(DateFrom_11.SelectedDate) && !IsBlank(DateFrom_12.SelectedDate),
+                            Filter(
+                                offlineLeadCollection,
+                                zx_expectedclosuredate <= DateValue(DateFrom_12.SelectedDate) && zx_Area.'Area Name' = radioArea_3.Selected.Areaname && owninguser.'Primary Email' = User().Email
+                            ),
+                             // Filter according to estimated date,Competitior-------------------------
+                            IsBlank(radioStage_2.Selected) && IsBlank(Value(Leadvalue_2.Text)) && IsBlank(radioCustomers_2.Selected) && IsBlank(radioCommit_2.Selected) && IsBlank(radioArea_3.Selected) && !IsBlank(radioCompetitor_2.Selected) && IsBlank(DateFrom_11.SelectedDate) && !IsBlank(DateFrom_12.SelectedDate),
+                            Filter(
+                                offlineLeadCollection,
+                                zx_expectedclosuredate <= DateValue(DateFrom_12.SelectedDate) && zx_Competitor.'Competitor Name' = radioCompetitor_2.Selected.'Competitor Name' && owninguser.'Primary Email' = User().Email
+                            ),
+                            // Filter according to estimated date,customer and area-------------------------
+                            IsBlank(radioStage_2.Selected) && IsBlank(Value(Leadvalue_2.Text)) && !IsBlank(radioCustomers_2.Selected) && IsBlank(radioCommit_2.Selected) && !IsBlank(radioArea_3.Selected) && IsBlank(radioCompetitor_2.Selected) && IsBlank(DateFrom_11.SelectedDate) && !IsBlank(DateFrom_12.SelectedDate),
+                            Filter(
+                                offlineLeadCollection,
+                                zx_expectedclosuredate <= DateValue(DateFrom_12.SelectedDate) && zx_Party.'Customer Name' = radioCustomers_2.Selected.'Customer Name' && zx_Area.'Area Name' = radioArea_3.Selected.Areaname && owninguser.'Primary Email' = User().Email
+                            ),
+                            // Filter according to estimated date,customer and competitior-------------------------
+                            IsBlank(radioStage_2.Selected) && IsBlank(Value(Leadvalue_2.Text)) && !IsBlank(radioCustomers_2.Selected) && IsBlank(radioCommit_2.Selected) && IsBlank(radioArea_3.Selected) && !IsBlank(radioCompetitor_2.Selected) && IsBlank(DateFrom_11.SelectedDate) && !IsBlank(DateFrom_12.SelectedDate),
+                            Filter(
+                                offlineLeadCollection,
+                                zx_expectedclosuredate <= DateValue(DateFrom_12.SelectedDate) && zx_Party.'Customer Name' = radioCustomers_2.Selected.'Customer Name' && zx_Competitor.'Competitor Name' = radioCompetitor_2.Selected.'Competitor Name' && owninguser.'Primary Email' = User().Email
+                            ),
+                            // Filter according to estimated date,customer,area and competitior-------------------------
+                            IsBlank(radioStage_2.Selected) && IsBlank(Value(Leadvalue_2.Text)) && !IsBlank(radioCustomers_2.Selected) && IsBlank(radioCommit_2.Selected) && !IsBlank(radioArea_3.Selected) && !IsBlank(radioCompetitor_2.Selected) && IsBlank(DateFrom_11.SelectedDate) && !IsBlank(DateFrom_12.SelectedDate),
+                            Filter(
+                                offlineLeadCollection,
+                                zx_expectedclosuredate <= DateValue(DateFrom_12.SelectedDate) && zx_Party.'Customer Name' = radioCustomers_2.Selected.'Customer Name' && zx_Area.'Area Name' = radioArea_3.Selected.Areaname && zx_Competitor.'Competitor Name' = radioCompetitor_2.Selected.'Competitor Name' && owninguser.'Primary Email' = User().Email
+                            ),
+                            // Filter according to customer,area ------------------------
+                            IsBlank(radioStage_2.Selected) && IsBlank(Value(Leadvalue_2.Text)) && !IsBlank(radioCustomers_2.Selected) && IsBlank(radioCommit_2.Selected) && !IsBlank(radioArea_3.Selected) && IsBlank(radioCompetitor_2.Selected) || (varCreateddate = true || varEstimated = true),
+                            Filter(
+                                offlineLeadCollection,
+                                zx_Party.'Customer Name' = radioCustomers_2.Selected.'Customer Name' && zx_Area.'Area Name' = radioArea_3.Selected.Areaname && owninguser.'Primary Email' = User().Email
+                            ),
+                             // Filter according to customer,Competitior ------------------------
+                            IsBlank(radioStage_2.Selected) && IsBlank(Value(Leadvalue_2.Text)) && !IsBlank(radioCustomers_2.Selected) && IsBlank(radioCommit_2.Selected) && IsBlank(radioArea_3.Selected) && !IsBlank(radioCompetitor_2.Selected) || (varCreateddate = true || varEstimated = true),
+                            Filter(
+                                offlineLeadCollection,
+                                zx_Party.'Customer Name' = radioCustomers_2.Selected.'Customer Name' && zx_Competitor.'Competitor Name' = radioCompetitor_2.Selected.'Competitor Name' && owninguser.'Primary Email' = User().Email
+                            ),
+                             // Filter according to customer,area and competitior ------------------------
+                            IsBlank(radioStage_2.Selected) && IsBlank(Value(Leadvalue_2.Text)) && !IsBlank(radioCustomers_2.Selected) && IsBlank(radioCommit_2.Selected) && !IsBlank(radioArea_3.Selected) && !IsBlank(radioCompetitor_2.Selected) || (varCreateddate = true || varEstimated = true),
+                            Filter(
+                                offlineLeadCollection,
+                                zx_Party.'Customer Name' = radioCustomers_2.Selected.'Customer Name' && zx_Area.'Area Name' = radioArea_3.Selected.Areaname && zx_Competitor.'Competitor Name' = radioCompetitor_2.Selected.'Competitor Name' && owninguser.'Primary Email' = User().Email
+                            ),
+                             // Filter according to area and competitior ------------------------
+                            IsBlank(radioStage_2.Selected) && IsBlank(Value(Leadvalue_2.Text)) && IsBlank(radioCustomers_2.Selected) && IsBlank(radioCommit_2.Selected) && !IsBlank(radioArea_3.Selected) && !IsBlank(radioCompetitor_2.Selected) || (varCreateddate = true || varEstimated = true),
+                            Filter(
+                                offlineLeadCollection,
+                                zx_Area.'Area Name' = radioArea_3.Selected.Areaname && zx_Competitor.'Competitor Name' = radioCompetitor_2.Selected.'Competitor Name' && owninguser.'Primary Email' = User().Email
+                            )
+                        )
+                    );
+                    Set(
+                        varPartyFilter,
+                        !varPartyFilter
+                    );
+                    Set(
+                        varLeadFilter,
+                        false
+                    );
+                    Set(
+                        varCollectionEmpty,
+                        false
+                    );
+                Size: |+
+                    =LookUp('Environment Variable Definitions', 'Display Name'="Text Title Font Size").'Default Value'
+                    //_VarGblAppFonts.Size.Title
+                    
+                Text: ="Apply Filters"
+                Visible: =varPartyFilter
+                Width: =274
+                X: =330
+                Y: =698
+                ZIndex: =3
+
+            ClearBtn_10 As button:
+                DisabledBorderColor: =RGBA(166, 166, 166, 1)
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                DisabledFill: =RGBA(244, 244, 244, 1)
+                Fill: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )
+                FontWeight: =FontWeight.Semibold
+                Height: =61
+                HoverColor: =RGBA(255, 255, 255, 1)
+                HoverFill: |-
+                    =ColorFade(
+                        ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )
+                    , 10%)
+                OnSelect: |-
+                    =Reset(DateFrom_11);
+                    Reset(DateTo_9);
+                    Reset(DateFrom_12);
+                    Reset(radioStage_2);
+                    Reset(radioCustomers_2);
+                    Reset(radioCommit_2);
+                    Reset(radioCompetitor_2);
+                    Reset(radioArea_3);
+                    Clear(colLeadFilter);
+                    Clear(colFilterLeadData);
+                    Set(varCreateddate,false);
+                    Set(varEstimated,false);
+                    Set(varCollectionEmpty,true);
+                Size: =20
+                Text: ="Clear Filters"
+                Visible: =varPartyFilter
+                Width: =274
+                X: =20
+                Y: =698
+                ZIndex: =4
+
+            Rectangle17_10 As rectangle:
+                BorderColor: =RGBA(0, 18, 107, 1)
+                Fill: =RGBA(0, 0, 0, 1)
+                Height: =2
+                Visible: =varPartyFilter
+                Width: =640
+                Y: =195
+                ZIndex: =5
+
+            Label30_28 As label:
+                BorderColor: =RGBA(0, 18, 107, 1)
+                Color: =RGBA(0, 0, 0, 1)
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                FontWeight: =FontWeight.Semibold
+                Height: =57
+                Size: =18
+                Text: ="Date From"
+                Visible: =If(Gallery8_10.Selected.tabid=3,true,false)
+                Width: =173
+                X: =331
+                Y: =227
+                ZIndex: =6
+
+            DateTo_9 As datepicker:
+                AccessibleLabel: ="Created To Date"
+                BorderThickness: =1
+                CalendarHeaderFill: =RGBA(56, 96, 178, 1)
+                Color: =RGBA(0, 0, 0, 1)
+                DisabledBorderColor: =RGBA(166, 166, 166, 1)
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                DisabledFill: =RGBA(244, 244, 244, 1)
+                Fill: =RGBA(255,255,255,0)
+                Height: =63
+                HoverDateFill: =RGBA(186, 202, 226, 1)
+                IconBackground: =Color.Transparent
+                IconFill: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )
+                InputTextPlaceholder: =If(IsBlank(Self.SelectedDate), Text(Today(), "dd/mm/yyyy"))
+                OnChange: |
+                    =If(
+                        Gallery8_10.Selected.tabid = 3 && IsBlank(
+                            LookUp(
+                                colLeadFilter,
+                                Title = "Date To"
+                            ).Title
+                        ),
+                        Collect(
+                            colLeadFilter,
+                            {
+                                Title: "Date To",
+                                value: {
+                                    Value: Text(
+                                        DateTo_9.SelectedDate,
+                                        "dd/mm/yyyy "
+                                    )
+                                }
+                            }
+                        ),
+                        Patch(
+                            colLeadFilter,
+                            LookUp(
+                                colLeadFilter,
+                                Title = "Date To"
+                            ),
+                            {
+                                value: {
+                                    Value: Text(
+                                        DateTo_9.SelectedDate,
+                                        "dd/mm/yyyy "
+                                    )
+                                }
+                            }
+                        )
+                    );
+                OnSelect: =
+                SelectedDateFill: =RGBA(56, 96, 178, 1)
+                Size: =16
+                Visible: =If(Gallery8_10.Selected.tabid=3,true,false)
+                Width: =238
+                X: =323
+                Y: =426
+                ZIndex: =7
+
+            Label30_30 As label:
+                BorderColor: =RGBA(0, 18, 107, 1)
+                Color: =RGBA(0, 0, 0, 1)
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                FontWeight: =FontWeight.Semibold
+                Height: =49
+                Size: =18
+                Text: ="Date To"
+                Visible: =If(Gallery8_10.Selected.tabid=3,true,false)
+                Width: =173
+                X: =331
+                Y: =377
+                ZIndex: =8
+
+            DateFrom_11 As datepicker:
+                AccessibleLabel: ="Created Date From"
+                BorderThickness: =1
+                CalendarHeaderFill: =RGBA(56, 96, 178, 1)
+                Color: =RGBA(0, 0, 0, 1)
+                DefaultDate: =
+                DisabledBorderColor: =RGBA(166, 166, 166, 1)
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                DisabledFill: =RGBA(244, 244, 244, 1)
+                Fill: =RGBA(255,255,255,0)
+                Height: =63
+                HoverDateFill: =RGBA(186, 202, 226, 1)
+                IconBackground: =Color.Transparent
+                IconFill: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )
+                InputTextPlaceholder: =If(IsBlank(Self.SelectedDate), Text(Today(), "dd/mm/yyyy"))
+                OnChange: |-
+                    =If(
+                        Gallery8_10.Selected.tabid = 3 && IsBlank(
+                            LookUp(
+                                colLeadFilter,
+                                Title = "Date From"
+                            ).Title
+                        ),
+                        Collect(
+                            colLeadFilter,
+                            {
+                                Title: "Date From",
+                                value: {
+                                    Value: Text(
+                                        DateFrom_11.SelectedDate,
+                                        "dd/mm/yyyy "
+                                    )
+                                }
+                            }
+                        ),
+                        Patch(
+                            colLeadFilter,
+                            LookUp(
+                                colLeadFilter,
+                                Title = "Date From"
+                            ),
+                            {
+                                value: {
+                                    Value: Text(
+                                        DateFrom_11.SelectedDate,
+                                        "dd/mm/yyyy "
+                                    )
+                                }
+                            }
+                        )
+                    );
+                    Set(
+                            varCreateddate,
+                            true
+                        )
+                    
+                        
+                OnSelect: =
+                SelectedDateFill: =RGBA(56, 96, 178, 1)
+                Size: =16
+                Visible: =If(Gallery8_10.Selected.tabid=3,true,false)
+                Width: =238
+                X: =322
+                Y: =284
+                ZIndex: =9
+
+            Icon18_18 As icon.Cancel:
+                AccessibleLabel: ="Close the Filter"
+                BorderColor: =RGBA(0, 18, 107, 1)
+                DisabledBorderColor: =RGBA(166, 166, 166, 1)
+                DisabledColor: =RGBA(244, 244, 244, 1)
+                Height: =30
+                Icon: =Icon.Cancel
+                OnSelect: |
+                    =Set(varPartyFilter,false);
+                TabIndex: =0//-1
+                Visible: =varPartyFilter
+                Width: =30
+                X: =583
+                Y: =40
+                ZIndex: =10
+
+            radioStage_2 As radio:
+                AccessibleLabel: ="Stages Filter"
+                BorderColor: =RGBA(0, 18, 107, 1)
+                Color: =RGBA(0, 0, 0, 1)
+                Height: =400
+                HoverColor: =RGBA(0, 18, 107, 1)
+                Items: =Choices('Stage Choice')
+                LineHeight: =2
+                OnSelect: |-
+                    =If(
+                        Gallery8_10.Selected.tabid = 1 && IsBlank(
+                            LookUp(
+                                colLeadFilter,
+                                Title = Gallery8_10.Selected.Title
+                            ).Title
+                        ),
+                        Collect(
+                            colLeadFilter,
+                            {
+                                Title: Gallery8_10.Selected.Title,
+                                value: radioStage_2.SelectedText
+                            }
+                        ),
+                        Patch(
+                            colLeadFilter,
+                            LookUp(
+                                colLeadFilter,
+                                Title = Gallery8_10.Selected.Title
+                            ),
+                            {value: radioStage_2.SelectedText}
+                        )
+                    )
+                RadioSize: =40
+                Size: =16
+                Visible: =If(Gallery8_10.Selected.tabid=1,true,false)
+                Width: =340
+                X: =300
+                Y: =227
+                ZIndex: =11
+
+            radioCustomers_2 As radio:
+                AccessibleLabel: ="Customer choices"
+                BorderColor: =RGBA(0, 18, 107, 1)
+                Color: =RGBA(0, 0, 0, 1)
+                Height: =466
+                HoverColor: =RGBA(0, 18, 107, 1)
+                Items: =OfflinePartiesCollection
+                LineHeight: =2
+                OnSelect: |-
+                    =If(
+                        Gallery8_10.Selected.tabid = 6 && IsBlank(
+                            LookUp(
+                                colLeadFilter,
+                                Title = Gallery8_10.Selected.Title
+                            ).Title
+                        ),
+                        Collect(
+                            colLeadFilter,
+                            {
+                                Title: Gallery8_10.Selected.Title,
+                                value: {Value: radioCustomers_2.Selected.'Customer Name'}
+                            }
+                        ),
+                        Patch(
+                            colLeadFilter,
+                            LookUp(
+                                colLeadFilter,
+                                Title = Gallery8_10.Selected.Title
+                            ),
+                            {value: {Value: radioCustomers_2.Selected.'Customer Name'}}
+                        )
+                    )
+                RadioSize: =40
+                Size: =18
+                Visible: =If(Gallery8_10.Selected.tabid=6,true,false)
+                Width: =340
+                X: =300
+                Y: =210
+                ZIndex: =12
+
+            Gallery8_10 As gallery.galleryVertical:
+                AccessibleLabel: ="Options onto which the Filter will be applied"
+                BorderColor: =RGBA(0, 18, 107, 1)
+                Height: =438
+                Items: |-
+                    =Table(
+                        {
+                            Title: "Stage",
+                            tabid: 1
+                        },{
+                            Title: "Commit",
+                            tabid: 2
+                        },
+                        {
+                            Title: "Created Date",
+                            tabid:3
+                        },
+                        {
+                            Title: "Lead Value",
+                            tabid: 4
+                        },
+                        {
+                            Title: "Estimated Closure Date",
+                            tabid: 5
+                        },
+                        {
+                            Title: "Customer",
+                            tabid: 6
+                        },
+                        {
+                            Title: "Area",
+                            tabid: 7
+                        },
+                        {
+                            Title: "Competition",
+                            tabid: 8
+                        }
+                    )
+                Layout: =Layout.Vertical
+                ShowScrollbar: =false
+                TabIndex: =0//-1
+                TemplateSize: =66
+                Visible: =varPartyFilter
+                Width: =234
+                X: =36
+                Y: =227
+                ZIndex: =13
+
+                Button18_11 As button:
+                    Align: =Align.Left
+                    Color: =RGBA(0, 0, 0, 1)
+                    DisabledBorderColor: =RGBA(166, 166, 166, 1)
+                    DisabledColor: =RGBA(166, 166, 166, 1)
+                    DisabledFill: =RGBA(244, 244, 244, 1)
+                    Fill: |-
+                        =//Color.Transparent
+                        If(ThisItem.IsSelected,ColorFade(Color.DimGrey,80%),Color.Transparent)
+                    FontWeight: =FontWeight.Semibold
+                    Height: =61
+                    HoverColor: =RGBA(255, 255, 255, 1)
+                    HoverFill: =ColorFade(Color.DimGrey,80%)
+                    OnSelect: =
+                    PaddingLeft: =25
+                    PressedColor: =Color.DimGrey
+                    PressedFill: =ColorFade(Color.DimGrey,80%)
+                    Size: =16
+                    Text: =ThisItem.Title
+                    Width: =224
+                    ZIndex: =1
+
+            Label30_29 As label:
+                BorderColor: =RGBA(0, 18, 107, 1)
+                Color: =RGBA(0, 0, 0, 1)
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                FontWeight: =FontWeight.Semibold
+                Height: =57
+                Size: =18
+                Text: |-
+                    ="Estimated Closure Date:"
+                Visible: =If(Gallery8_10.Selected.tabid=5,true,false)
+                Width: =289
+                X: =324
+                Y: =290
+                ZIndex: =15
+
+            DateFrom_12 As datepicker:
+                AccessibleLabel: ="Create From Date"
+                BorderThickness: =1
+                CalendarHeaderFill: =RGBA(56, 96, 178, 1)
+                Color: =RGBA(0, 0, 0, 1)
+                DefaultDate: =
+                DisabledBorderColor: =RGBA(166, 166, 166, 1)
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                DisabledFill: =RGBA(244, 244, 244, 1)
+                Fill: =RGBA(255,255,255,0)
+                Height: =63
+                HoverDateFill: =RGBA(186, 202, 226, 1)
+                IconBackground: =Color.Transparent
+                IconFill: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )
+                InputTextPlaceholder: =If(IsBlank(Self.SelectedDate), Text(Today(), "dd/mm/yyyy"))
+                OnChange: |-
+                    =If(
+                        Gallery8_10.Selected.tabid =5 && IsBlank(
+                            LookUp(
+                                colLeadFilter,
+                                Title = "Estimated Closure Date:"
+                            ).Title
+                        ),
+                        Collect(
+                            colLeadFilter,
+                            {
+                                Title: "Estimated Closure Date:",
+                                value: {
+                                    Value: Text(
+                                        DateFrom_12.SelectedDate,
+                                        "dd/mm/yyyy "
+                                    )
+                                }
+                            }
+                        ),
+                        Patch(
+                            colLeadFilter,
+                            LookUp(
+                                colLeadFilter,
+                                Title ="Estimated Closure Date:"
+                            ),
+                            {
+                                value: {
+                                    Value: Text(
+                                        DateFrom_12.SelectedDate,
+                                        "dd/mm/yyyy "
+                                    )
+                                }
+                            }
+                        )
+                    );
+                    Set(varEstimated,true)
+                OnSelect: =
+                SelectedDateFill: =RGBA(56, 96, 178, 1)
+                Size: =16
+                Visible: =If(Gallery8_10.Selected.tabid=5,true,false)
+                Width: =238
+                X: =322
+                Y: =363
+                ZIndex: =18
+
+            radioCompetitor_2 As radio:
+                AccessibleLabel: ="Competitors"
+                BorderColor: =RGBA(0, 18, 107, 1)
+                Color: =RGBA(0, 0, 0, 1)
+                Height: =466
+                HoverColor: =RGBA(0, 18, 107, 1)
+                Items: ='Competitor.S'
+                LineHeight: =2
+                OnSelect: |-
+                    =If(
+                        Gallery8_10.Selected.tabid = 8 && IsBlank(
+                            LookUp(
+                                colLeadFilter,
+                                Title = Gallery8_10.Selected.Title
+                            ).Title
+                        ),
+                        Collect(
+                            colLeadFilter,
+                            {
+                                Title: Gallery8_10.Selected.Title,
+                                value: {Value: Text(radioCompetitor_2.Selected.'Competitor Name')}}
+                        ),
+                        Patch(
+                            colLeadFilter,
+                            LookUp(
+                                colLeadFilter,
+                                Title = Gallery8_10.Selected.Title
+                            ),
+                            {value:{Value: radioCompetitor_2.Selected.'Competitor Name'}}
+                        )
+                    )
+                RadioSize: =40
+                Size: =18
+                Visible: =If(Gallery8_10.Selected.tabid=8,true,false)
+                Width: =340
+                X: =300
+                Y: =222
+                ZIndex: =19
+
+            radioCommit_2 As radio:
+                AccessibleLabel: ="Commit options"
+                BorderColor: =RGBA(0, 18, 107, 1)
+                Color: =RGBA(0, 0, 0, 1)
+                Height: =466
+                HoverColor: =RGBA(0, 18, 107, 1)
+                Items: |-
+                    =Choices('Commited (Leads.S)')
+                    
+                    //["Yes", "No"]
+                LineHeight: =2
+                OnSelect: |-
+                    =If(
+                        Gallery8_10.Selected.tabid = 2 && IsBlank(
+                            LookUp(
+                                colLeadFilter,
+                                Title = Gallery8_10.Selected.Title
+                            ).Title
+                        ),
+                        Collect(
+                            colLeadFilter,
+                            {
+                                Title: Gallery8_10.Selected.Title,
+                                value: radioCommit_2.SelectedText
+                            }
+                        ),
+                        Patch(
+                            colLeadFilter,
+                            LookUp(
+                                colLeadFilter,
+                                Title = Gallery8_10.Selected.Title
+                            ),
+                            {value: radioCommit_2.SelectedText}
+                        )
+                    )
+                RadioSize: =40
+                Size: =18
+                Visible: =If(Gallery8_10.Selected.tabid=2,true,false)
+                Width: =340
+                X: =297
+                Y: =214
+                ZIndex: =20
+
+            radioArea_3 As radio:
+                AccessibleLabel: ="Area choices"
+                BorderColor: =RGBA(0, 18, 107, 1)
+                Color: =RGBA(0, 0, 0, 1)
+                Height: =466
+                HoverColor: =RGBA(0, 18, 107, 1)
+                Items: |-
+                    =AddColumns(
+                        UserAssignedAreas,
+                        "Areaname",
+                        Area.'Area Name'
+                    )
+                LineHeight: =2
+                OnSelect: |-
+                    =If(
+                        Gallery8_10.Selected.tabid = 7 && IsBlank(
+                            LookUp(
+                                colLeadFilter,
+                                Title = Gallery8_10.Selected.Title
+                            ).Title
+                        ),
+                        Collect(
+                            colLeadFilter,
+                            {
+                                Title: Gallery8_10.Selected.Title,
+                                value: {Value: radioArea_3.Selected.Areaname}}
+                        ),
+                        Patch(
+                            colLeadFilter,
+                            LookUp(
+                                colLeadFilter,
+                                Title = Gallery8_10.Selected.Title
+                            ),
+                            {value:{Value: radioArea_3.Selected.Areaname}}
+                        )
+                    )
+                RadioSize: =40
+                Size: =18
+                Visible: =If(Gallery8_10.Selected.tabid=7,true,false)
+                Width: =340
+                X: =300
+                Y: =222
+                ZIndex: =21
+
+            Leadvalue_2 As text:
+                AccessibleLabel: ="Lead Value"
+                Color: =RGBA(0, 0, 0, 1)
+                Default: =""
+                DisabledBorderColor: =RGBA(166, 166, 166, 1)
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                DisabledFill: =RGBA(244, 244, 244, 1)
+                FocusedBorderThickness: =4
+                Format: =TextFormat.Number
+                Height: =83
+                HintText: ="Enter Lead Value"
+                HoverBorderColor: =RGBA(0, 18, 107, 1)
+                HoverColor: =RGBA(0, 0, 0, 1)
+                HoverFill: =RGBA(186, 202, 226, 1)
+                OnChange: |-
+                    =If(
+                        Gallery8_10.Selected.tabid = 4 && IsBlank(
+                            LookUp(
+                                colLeadFilter,
+                                Title = Gallery8_10.Selected.Title
+                            ).Title
+                        ),
+                        Collect(
+                            colLeadFilter,
+                            {
+                                Title: Gallery8_10.Selected.Title,
+                                value: {
+                                    Value: Leadvalue_2.Text
+                                }
+                            }
+                        ),
+                        Patch(
+                            colLeadFilter,
+                            LookUp(
+                                colLeadFilter,
+                                Title =Gallery8_10.Selected.Title
+                            ),
+                            {
+                                value: {
+                                    Value:Leadvalue_2.Text
+                                }
+                            }
+                        )
+                    )
+                Size: =18
+                Visible: =If(Gallery8_10.Selected.tabid=4,true,false)
+                Width: =218
+                X: =324
+                Y: =360
+                ZIndex: =22
+
+            Label27_6 As label:
+                BorderColor: =RGBA(0, 18, 107, 1)
+                Color: =RGBA(0, 0, 0, 1)
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                FontWeight: =FontWeight.Bold
+                Height: =66
+                Size: =18
+                Text: ="Lead Value"
+                Visible: =If(Gallery8_10.Selected.tabid=4,true,false)
+                Width: =286
+                X: =323
+                Y: =278
+                ZIndex: =23
+
+            Display_7 As gallery.galleryHorizontal:
+                AccessibleLabel: ="Filter Applied"
+                BorderColor: =RGBA(0, 18, 107, 1)
+                DelayItemLoading: =true
+                Height: =67
+                Items: =colLeadFilter
+                LoadingSpinner: =LoadingSpinner.Data
+                ShowScrollbar: =false
+                TabIndex: =0//-1
+                TemplateSize: =250
+                Visible: =If(IsBlank(varPartyFilter),false,true)
+                Y: =80
+                ZIndex: =24
+
+                Button20_10 As button:
+                    DisabledBorderColor: =RGBA(166, 166, 166, 1)
+                    DisabledColor: =RGBA(166, 166, 166, 1)
+                    DisabledFill: =RGBA(244, 244, 244, 1)
+                    DisplayMode: =DisplayMode.View
+                    Fill: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )
+                    FontWeight: =FontWeight.Semibold
+                    Height: =54
+                    HoverColor: =RGBA(255, 255, 255, 1)
+                    HoverFill: =ColorFade(RGBA(56, 96, 178, 1), -20%)
+                    RadiusBottomLeft: =15
+                    RadiusBottomRight: =15
+                    RadiusTopLeft: =15
+                    RadiusTopRight: =15
+                    Size: =24
+                    Text: =""
+                    Width: =246
+                    X: =2
+                    ZIndex: =1
+
+                Label31_12 As label:
+                    BorderColor: =RGBA(0, 18, 107, 1)
+                    Color: =RGBA(255, 255, 255, 1)
+                    DisabledColor: =RGBA(166, 166, 166, 1)
+                    Height: =37
+                    OnSelect: =Select(Parent)
+                    Size: =16
+                    Text: |-
+                        =ThisItem.Title & ":" & " " & ThisItem.value.Value
+                    Tooltip: |-
+                        =//ThisItem.Title & ":"
+                    Width: =192
+                    Wrap: =false
+                    X: =19
+                    Y: =6
+                    ZIndex: =2
+
+                Icon21_10 As icon.Cancel:
+                    AccessibleLabel: ="Filter Removed"
+                    BorderColor: =RGBA(0, 18, 107, 1)
+                    Color: =RGBA(255, 255, 255, 1)
+                    DisabledBorderColor: =RGBA(166, 166, 166, 1)
+                    DisabledColor: =RGBA(244, 244, 244, 1)
+                    Height: =25
+                    Icon: =Icon.Cancel
+                    OnSelect: |-
+                        =Remove(
+                            colLeadFilter,
+                            ThisItem
+                        );
+                        Reset(radioStage_2);
+                        Set(varCollectionEmpty,true);
+                        Switch(
+                            ThisItem.Title,
+                            "Stage",
+                            Reset(radioStage_2);
+                            ,
+                            "Commit",
+                            Reset(radioCommit_2),
+                            "Date From",
+                            Reset(DateFrom_11);
+                            Set(
+                                varCreateddate,
+                                false
+                            ),
+                            "Lead Value",
+                            Reset(Leadvalue_2),
+                            "Estimated Closure Date",
+                            Reset(DateFrom_12);
+                            Set(
+                                varEstimated,
+                                false
+                            ),
+                            "Customer",
+                            Reset(radioCustomers_2),
+                            "Customer",
+                            Reset(radioCustomers_2),
+                            "Area",
+                            Reset(radioArea_3),
+                            "Competitor",
+                            Reset(radioCompetitor_2)
+                        )
+                    TabIndex: =0//-1
+                    Width: =52
+                    X: =196
+                    Y: =14
+                    ZIndex: =4
 

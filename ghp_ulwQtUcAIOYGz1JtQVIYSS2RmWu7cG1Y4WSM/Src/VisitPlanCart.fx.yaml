@@ -43,7 +43,7 @@ VisitPlanCart As screen:
         Y: =94
         ZIndex: =3
 
-    "'Lead Gallery_8' As gallery.galleryVertical":
+    Lead_Gallery_8 As gallery.galleryVertical:
         AccessibleLabel: ="Order Gallery"
         BorderColor: =RGBA(0, 18, 107, 1)
         BorderStyle: =BorderStyle.None
@@ -90,7 +90,7 @@ VisitPlanCart As screen:
                 Set(varLeadData, ThisItem)*/
                  
             TabIndex: =0
-            Width: ='Lead Gallery_8'.TemplateWidth
+            Width: =Lead_Gallery_8.TemplateWidth
             Y: =74
             ZIndex: =3
 
@@ -474,14 +474,13 @@ VisitPlanCart As screen:
         DisplayMode: |-
             =
             
-            If(CountRows('Lead Gallery_8'.AllItems)=0,DisplayMode.Disabled,DisplayMode.Edit)
+            If(CountRows(Lead_Gallery_8.AllItems)=0,DisplayMode.Disabled,DisplayMode.Edit)
         Fill: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )
         FontWeight: =FontWeight.Semibold
         HoverColor: =RGBA(255, 255, 255, 1)
         HoverFill: =ColorFade(RGBA(56, 96, 178, 1), -20%)
         OnSelect: |-
-            =
-            Patch(
+            =Patch(
                 'Visit.S',
                 Defaults('Visit.S'),
                 {
@@ -507,6 +506,9 @@ VisitPlanCart As screen:
                     )
                 }
             );
+            
+            
+            
             Notify(
                 "Your record has been created",
                 NotificationType.Success,
