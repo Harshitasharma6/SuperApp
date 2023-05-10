@@ -1,0 +1,108 @@
+[
+  {
+    "CdsFCBContext": "{\"FileType\":true,\"ImageExternalStorage\":true}",
+    "EntitySetName": "new_regions",
+    "IsHidden": false,
+    "IsSampleData": false,
+    "IsWritable": true,
+    "LogicalName": "new_region",
+    "MaxGetRowsCount": 500,
+    "Name": "Regions",
+    "NativeCDSDataSourceInfoNameMapping": {
+      "_ownerid_value": "Owner",
+      "createdby": "Created By",
+      "createdon": "Created On",
+      "createdonbehalfby": "Created By (Delegate)",
+      "importsequencenumber": "Import Sequence Number",
+      "modifiedby": "Modified By",
+      "modifiedon": "Modified On",
+      "modifiedonbehalfby": "Modified By (Delegate)",
+      "new_cra3a_district_Region_new_region": "Districts",
+      "new_cra3a_pincode_Region_new_region": "Pincodes",
+      "new_name": "Name",
+      "new_new_area_Region_new_region": "Areas",
+      "new_new_city_Region_new_region": "Cities",
+      "new_new_parties_Region_new_region": "Parties",
+      "new_new_pricelistmapping_Region_new_region": "Price List Mappings",
+      "new_new_productofferheader_Region_new_region": "Product Offer Headers",
+      "new_new_state_Region_new_region": "States",
+      "new_new_territory_Region_new_region": "Territories",
+      "new_region_AsyncOperations": "System Jobs",
+      "new_region_BulkDeleteFailures": "Bulk Delete Failures",
+      "new_region_DuplicateBaseRecord": "Duplicate Records (new_region_DuplicateBaseRecord)",
+      "new_region_DuplicateMatchingRecord": "Duplicate Records (new_region_DuplicateMatchingRecord)",
+      "new_region_MailboxTrackingFolders": "Mailbox Auto Tracking Folders",
+      "new_region_PrincipalObjectAttributeAccesses": "Field Sharing",
+      "new_region_ProcessSession": "Process Sessions",
+      "new_region_SyncErrors": "Sync Errors",
+      "new_regionid": "Region",
+      "new_regionname": "Region Name",
+      "overriddencreatedon": "Record Created On",
+      "owningbusinessunit": "Owning Business Unit",
+      "owningteam": "Owning Team",
+      "owninguser": "Owning User",
+      "statecode": "Status",
+      "statuscode": "Status Reason",
+      "timezoneruleversionnumber": "Time Zone Rule Version Number",
+      "utcconversiontimezonecode": "UTC Conversion Time Zone Code",
+      "versionnumber": "Version Number",
+      "zx_new_productoffersmapping_Region_new_regio": "Product Offers Mappings"
+    },
+    "PreferredName": "Regions",
+    "Type": "NativeCDSDataSourceInfo"
+  },
+  {
+    "DisplayName": "Regions (Views)",
+    "Name": "_new_region_views",
+    "RelatedEntityName": "Regions",
+    "TrimmedViewName": true,
+    "Type": "ViewInfo",
+    "ViewInfoNameMapping": {
+      "5ef9bd22-e9cd-4625-97d6-72930b912514": "Region Advanced Find View",
+      "7eaea517-29af-41fe-8903-4b769d4ea799": "Active Regions",
+      "8283192a-dd8e-4deb-9da9-fffe8ebe9e95": "Region Lookup View",
+      "881d4ad7-aab4-458f-a34d-e3ad4099885c": "Region Associated View",
+      "ed353460-2b61-4c0d-8011-5971b595f442": "Inactive Regions"
+    }
+  },
+  {
+    "DisplayName": "Status (Regions)",
+    "Name": "new_region_statecode",
+    "OptionSetInfoNameMapping": {
+      "0": "Active",
+      "1": "Inactive"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "statecode",
+        "OptionSetReferenceEntityName": "Regions"
+      }
+    },
+    "OptionSetTypeKey": "StateType",
+    "RelatedColumnInvariantName": "statecode",
+    "RelatedEntityName": "Regions",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Status Reason (Regions)",
+    "Name": "new_region_statuscode",
+    "OptionSetInfoNameMapping": {
+      "1": "Active",
+      "2": "Inactive"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "statuscode",
+        "OptionSetReferenceEntityName": "Regions"
+      }
+    },
+    "OptionSetTypeKey": "StatusType",
+    "RelatedColumnInvariantName": "statuscode",
+    "RelatedEntityName": "Regions",
+    "Type": "OptionSetInfo"
+  }
+]

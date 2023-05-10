@@ -1,0 +1,473 @@
+SideBar As CanvasComponent:
+    Fill: =RGBA(255, 255, 255, 1)
+    Height: =App.Height
+    Width: =App.Width
+    X: =0
+    Y: =0
+    ZIndex: =1
+
+    Rectangle9 As rectangle:
+        AccessibleLabel: ="Menu"
+        BorderColor: =RGBA(0, 18, 107, 1)
+        Fill: =RGBA(0, 0, 0, 0.24)
+        Height: =1136
+        OnSelect: =Set(varSideNav, false)
+        TabIndex: =0//-1
+        Visible: =false
+        Width: =640
+        ZIndex: =1
+
+    Rectangle20 As rectangle:
+        BorderColor: =RGBA(0, 18, 107, 1)
+        DisplayMode: =DisplayMode.View
+        Fill: =RGBA(255, 255, 255, 1)
+        Height: =1136
+        Width: =487
+        ZIndex: =2
+
+    Rectangle21 As rectangle:
+        BorderColor: =RGBA(0, 18, 107, 1)
+        DisplayMode: =DisplayMode.View
+        Fill: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//_VarGblAppColors.PrimaryRed
+        Height: =163
+        Width: =Parent.Width
+        ZIndex: =3
+
+    Label32 As label:
+        BorderColor: =RGBA(0, 18, 107, 1)
+        Color: =RGBA(255, 255, 255, 1)
+        DisabledColor: =RGBA(166, 166, 166, 1)
+        Height: =70
+        Size: =18
+        Text: =User().FullName
+        Width: =423
+        X: =20
+        Y: =89
+        ZIndex: =4
+
+    Image8 As image:
+        BorderColor: =RGBA(0, 18, 107, 1)
+        DisabledBorderColor: =RGBA(166, 166, 166, 1)
+        DisabledFill: =RGBA(244, 244, 244, 1)
+        Height: =85
+        Image: =User().Image
+        RadiusBottomLeft: =100
+        RadiusBottomRight: =100
+        RadiusTopLeft: =100
+        RadiusTopRight: =100
+        Width: =85
+        X: =33
+        Y: =18
+        ZIndex: =5
+
+    Gallery6 As gallery.galleryVertical:
+        AccessibleLabel: ="Other Modules"
+        BorderColor: =RGBA(0, 18, 107, 1)
+        DelayItemLoading: =true
+        Height: =796
+        Items: |-
+            =/*Table(
+                
+                 {
+                    Title: "Secondary Order",
+                    Icon: 'shopping-cart',
+                    Screen:'Secondary Order Screen'
+                },
+                {
+                    Title: "PJP",
+                    Icon: truck,
+                    Screen: 'Area PJP Plan'
+                },
+                
+                {
+                    Title: "Visit Planning",
+                    Icon: 'truck (1)',
+                    Screen: VisitPlanningNew
+                },
+                
+                
+            {
+                    Title: "Invoices",
+                    Icon: 'new-document'
+                    //Screen:'Invoice List View'
+                },
+               
+               {
+                    Title: "Retailer Onboarding",
+                    Icon: 'press-pass',
+                    Screen: Parties
+                },
+                {
+                    Title: "KRA",
+                    Icon: 'new-document'
+                   // Screen:krascreen
+                },
+                {
+                    Title: "Complaints",
+                    Icon: people,
+                    Screen:'Complaint list View'
+                },
+                {
+                    Title: "Upload Document",
+                    Icon: camera,
+                   Screen:takePhotoScreen
+                },
+                {
+                    Title: "Setting",
+                    Icon:settings
+                    //Screen:Setting
+                }
+                
+            
+            )*/
+            Table(
+                
+                 {
+                    Title: "Secondary Order",
+                    Icon: 'shopping-cart',
+                    Screen:'Secondary Order Screen'
+                },
+                {
+                    Title: "PJP",
+                    Icon: truck,
+                    Screen: 'Area PJP Plan'
+                },
+                
+                {
+                    Title: "Visit Planning",
+                    Icon:  'truck (1)',
+                    Screen:  VisitPlanningNew
+                },
+                
+                
+            {
+                    Title: "Invoices",
+                    Icon: 'new-document', Screen:'Invoice List View'
+                },
+               
+               {
+                    Title: "Retailer Onboarding",
+                    Icon:  'press-pass',
+                    Screen:Parties
+                },
+                {
+                    Title: "KRA",
+                    Icon:  'new-document', Screen:krascreen
+                },
+                {
+                    Title: "Complaints",
+                    Icon: people,
+                    Screen:'Complaint list View'
+                },
+                {
+                    Title: "Upload Document",
+                    Icon: camera,
+                    Screen:takePhotoScreen
+                },
+                {
+                    Title: "Setting",
+                    Icon:Icon.Settings,
+                    Screen:Setting
+                }
+                
+            
+            )
+        Layout: =Layout.Vertical
+        LoadingSpinner: =LoadingSpinner.Data
+        OnSelect: =
+        ShowScrollbar: =false
+        TabIndex: =0//-1
+        TemplateSize: =91
+        Y: =340
+        ZIndex: =6
+
+        Rectangle22 As rectangle:
+            AccessibleLabel: ="Text"
+            BorderColor: =RGBA(0, 18, 107, 1)
+            Fill: =RGBA(166, 166, 166, 1)
+            Height: =0.5
+            OnSelect: |
+                =
+                Set(
+                    _varsideNav,
+                    false
+                );
+                If(
+                    ThisItem.Title= "Secondary Order",
+                    Set(
+                        varfiltergallery,
+                        true
+                    );
+                    Navigate(
+                        ThisItem.Screen,
+                        ScreenTransition.CoverRight
+                    ),
+                    Navigate(
+                        ThisItem.Screen,
+                        ScreenTransition.CoverRight
+                    )
+                )
+            Width: =630
+            Y: =89
+            ZIndex: =1
+
+        Label35 As label:
+            BorderColor: =RGBA(0, 18, 107, 1)
+            Color: |-
+                =//If(ThisItem.IsSelected, _VarGblAppColors.PrimaryRed, _VarGblAppColors.textbgbutton)
+                ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Text Primary Color").'Default Value')
+            DisabledColor: =RGBA(166, 166, 166, 1)
+            FocusedBorderThickness: =01
+            FontWeight: =FontWeight.Bold
+            Height: =70
+            HoverColor: |-
+                =//If(ThisItem.IsSelected, _VarGblAppColors.PrimaryRed, _VarGblAppColors.textbgbutton)
+                ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//_VarGblAppColors.PrimaryRed
+            OnSelect: |
+                =
+                Set(
+                    _varsideNav,
+                    false
+                );
+                If(
+                    ThisItem.Title= "Secondary Order",
+                    Set(
+                        varfiltergallery,
+                        true
+                    );
+                    Navigate(
+                        ThisItem.Screen,
+                        ScreenTransition.CoverRight
+                    ),
+                    Navigate(
+                        ThisItem.Screen,
+                        ScreenTransition.CoverRight
+                    )
+                )
+            Size: =18
+            TabIndex: =0//-1
+            Text: =ThisItem.Title
+            Width: =407
+            X: =70
+            Y: =10
+            ZIndex: =3
+
+        Icon22 As icon.ChevronRight:
+            AccessibleLabel: ="Information regarding the particular module"
+            BorderColor: =RGBA(0, 18, 107, 1)
+            Color: |-
+                =//If(ThisItem.IsSelected, _VarGblAppColors.PrimaryRed, _VarGblAppColors.textbgbutton)
+                ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Text Primary Color").'Default Value')
+            DisabledBorderColor: =RGBA(166, 166, 166, 1)
+            DisabledColor: =RGBA(244, 244, 244, 1)
+            Height: =30
+            HoverColor: |-
+                =//If(ThisItem.IsSelected, _VarGblAppColors.PrimaryRed, _VarGblAppColors.textbgbutton)
+                ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//_VarGblAppColors.PrimaryRed
+            Icon: =Icon.ChevronRight
+            OnSelect: |
+                =
+                Set(
+                    _varsideNav,
+                    false
+                );
+                If(
+                    ThisItem.Title= "Secondary Order",
+                    Set(
+                        varfiltergallery,
+                        true
+                    );
+                    Navigate(
+                        ThisItem.Screen,
+                        ScreenTransition.CoverRight
+                    ),
+                    Navigate(
+                        ThisItem.Screen,
+                        ScreenTransition.CoverRight
+                    )
+                )
+            TabIndex: =0//-1
+            Width: =26
+            X: =Parent.Width -Self.Width - 20
+            Y: =29
+            ZIndex: =4
+
+        Image11 As image:
+            AccessibleLabel: ="Text"
+            BorderColor: =RGBA(0, 18, 107, 1)
+            DisabledBorderColor: =RGBA(166, 166, 166, 1)
+            DisabledFill: =RGBA(244, 244, 244, 1)
+            Height: =45
+            Image: =ThisItem.Icon
+            OnSelect: |
+                =
+                Set(
+                    _varsideNav,
+                    false
+                );
+                If(
+                    ThisItem.Title= "Secondary Order",
+                    Set(
+                        varfiltergallery,
+                        true
+                    );
+                    Navigate(
+                        ThisItem.Screen,
+                        ScreenTransition.CoverRight
+                    ),
+                    Navigate(
+                        ThisItem.Screen,
+                        ScreenTransition.CoverRight
+                    )
+                )
+            PaddingBottom: =5
+            PaddingLeft: =5
+            PaddingRight: =5
+            PaddingTop: =5
+            TabIndex: =0
+            Width: =45
+            X: =12
+            Y: =22
+            ZIndex: =5
+
+    Gallery9 As gallery.galleryVertical:
+        AccessibleLabel: ="Main Modules"
+        BorderColor: =RGBA(0, 18, 107, 1)
+        DelayItemLoading: =true
+        Height: =177
+        Items: |-
+            =Table(
+                {
+                    Title: "Orders",
+                    Icon: 'shopping-cart',
+                    Screen:'Primary Order Screen'
+                },
+                {
+                    Title: "Visits",
+                    Icon: location,
+                    Screen: 'Start Visit'
+                },
+                {
+                    Title: "Leads",
+                    Icon: supermarket,
+                   Screen: 'Lead List View With Filters'
+                },
+                {
+                    Title: "Parties",
+                    Icon: people,
+                    Screen: Parties
+                }
+            )
+        Layout: =Layout.Vertical
+        LoadingSpinner: =LoadingSpinner.Data
+        TabIndex: =0//-1
+        TemplateSize: =75
+        Width: =Parent.Width
+        WrapCount: =2
+        Y: =163
+        ZIndex: =7
+
+        Button19 As button:
+            BorderColor: |-
+                =If(ThisItem.IsSelected, ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//_VarGblAppColors.PrimaryRed
+                , ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Text Primary Color").'Default Value'))
+            BorderThickness: =1
+            Color: |-
+                =//If(ThisItem.IsSelected, _VarGblAppColors.PrimaryRed, _VarGblAppColors.textbgbutton)
+                ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Text Primary Color").'Default Value')
+            DisabledBorderColor: =RGBA(166, 166, 166, 1)
+            DisabledColor: =RGBA(166, 166, 166, 1)
+            DisabledFill: =RGBA(244, 244, 244, 1)
+            Fill: =RGBA(255, 255, 255, 1)
+            FontWeight: =FontWeight.Bold
+            Height: =63
+            HoverBorderColor: |-
+                =//If(ThisItem.IsSelected, _VarGblAppColors.PrimaryRed, _VarGblAppColors.textbgbutton)
+                ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//_VarGblAppColors.PrimaryRed
+            HoverColor: |-
+                =//If(ThisItem.IsSelected, _VarGblAppColors.PrimaryRed, _VarGblAppColors.textbgbutton)
+                ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//_VarGblAppColors.PrimaryRed
+            HoverFill: =//ColorFade(RGBA(56, 96, 178, 1), -20%)
+            OnSelect: |-
+                =Navigate(
+                    ThisItem.Screen,
+                    ScreenTransition.CoverRight
+                );
+                Set(
+                    _varsideNav,
+                    false
+                )
+            PressedColor: =//Self.Fill
+            PressedFill: =//Self.Color
+            Size: =18
+            Text: =ThisItem.Title
+            Width: =291
+            X: =10
+            Y: =10
+            ZIndex: =1
+
+        Icon23 As icon.ChevronRight:
+            AccessibleLabel: ="icon23"
+            BorderColor: =RGBA(0, 18, 107, 1)
+            Color: |-
+                =//If(ThisItem.IsSelected, ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//_VarGblAppColors.PrimaryRed, _VarGblAppColors.textbgbutton)
+                ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//_VarGblAppColors.PrimaryRed
+            DisabledBorderColor: =RGBA(166, 166, 166, 1)
+            DisabledColor: =RGBA(244, 244, 244, 1)
+            Height: =20
+            HoverColor: |-
+                =//If(ThisItem.IsSelected, _VarGblAppColors.PrimaryRed, _VarGblAppColors.textbgbutton)
+                ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//_VarGblAppColors.PrimaryRed
+            Icon: =Icon.ChevronRight
+            OnSelect: |-
+                =Navigate(
+                    ThisItem.Screen,
+                    ScreenTransition.CoverRight
+                );
+                Set(
+                    _varsideNav,
+                    false
+                )
+            TabIndex: =0
+            Width: =20
+            X: |
+                =Parent.TemplateWidth-Self.Width-40
+            Y: =31
+            ZIndex: =2
+
+        Image2 As image:
+            AccessibleLabel: ="Image2"
+            BorderColor: =RGBA(0, 18, 107, 1)
+            DisabledBorderColor: =RGBA(166, 166, 166, 1)
+            DisabledFill: =RGBA(244, 244, 244, 1)
+            Height: =45
+            Image: =ThisItem.Icon
+            OnSelect: |-
+                =Navigate(
+                    ThisItem.Screen,
+                    ScreenTransition.CoverRight
+                );
+                Set(
+                    _varsideNav,
+                    false
+                )
+            PaddingBottom: =5
+            PaddingLeft: =5
+            PaddingRight: =5
+            PaddingTop: =5
+            TabIndex: =0
+            Width: =45
+            X: =30
+            Y: =16
+            ZIndex: =3
+
+    Rectangle22_1 As rectangle:
+        AccessibleLabel: ="Modules"
+        BorderColor: =RGBA(0, 18, 107, 1)
+        Fill: =RGBA(166, 166, 166, 1)
+        Height: =0.5
+        TabIndex: =0//-1
+        Width: =Parent.Width
+        Y: =337
+        ZIndex: =8
+

@@ -1,0 +1,92 @@
+"'Order Screen' As screen":
+    LoadingSpinnerColor: =RGBA(0, 120, 212, 1)
+    OnVisible: |-
+        =Set(primarydata,Blank());
+        Set(secondarydata,Blank())
+
+    Header_1 As Header:
+        ScreenName: |-
+            =//"New Primary Order"
+            If(
+                varCustomertype = 'Party Type Choices'.Distributor || varCustomertype = 'Party Type Choices'.Dealer,
+                "New Primary Order",
+                "New Secondary Order"
+            )
+
+    "'Product List_1' As 'Product List'":
+        Height: =988
+        OrderType: |-
+            =//"Primary"
+            If(
+                varCustomertype = 'Party Type Choices'.Distributor || varCustomertype = 'Party Type Choices'.Dealer,
+                "Primary",
+                "Secondary"
+            )
+        Party: |-
+            =LookUp(
+                OfflinePartiesCollection,
+                Parties = varCustomerforDiscount
+            )
+        Y: =67
+        ZIndex: =2
+
+    "'Bottom Bar_4' As 'Bottom Bar'":
+        Y: =1026
+        ZIndex: =3
+
+    Circle13 As circle:
+        BorderColor: =RGBA(0, 18, 107, 1)
+        Fill: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )
+        Height: =30
+        Width: =30
+        X: =597
+        Y: =14
+        ZIndex: =5
+
+    Label14 As label:
+        BorderColor: =RGBA(0, 18, 107, 1)
+        Color: =RGBA(0, 0, 0, 1)
+        DisabledColor: =RGBA(166, 166, 166, 1)
+        FocusedBorderThickness: =01
+        Height: =30
+        OnSelect: |-
+            =If('Product List_1'.OrderType="Primary",Navigate('Primary Cart Screen', ScreenTransition.CoverRight),
+            Navigate('Secondary Cart Screen',ScreenTransition.CoverRight));
+        TabIndex: =0
+        Text: |
+            =
+            If(
+                varCustomertype = 'Party Type Choices'.Distributor || varCustomertype = 'Party Type Choices'.Dealer,
+                CountRows(colPrimaryCart),
+                CountRows(colSecondaryCart)
+            )
+        Width: =30
+        X: =601
+        Y: =14
+        ZIndex: =6
+
+    Icon1 As icon.Shop:
+        AccessibleLabel: ="Icon1"
+        BorderColor: =RGBA(166, 166, 166, 1)
+        Color: =RGBA(0, 120, 212, 1)
+        DisabledBorderColor: =RGBA(0, 0, 0, 0)
+        DisabledColor: =RGBA(220, 220, 220, 1)
+        DisabledFill: =RGBA(0, 0, 0, 0)
+        FocusedBorderThickness: =4
+        Height: =45
+        HoverBorderColor: =RGBA(0, 0, 0, 0)
+        HoverColor: =ColorFade(RGBA(0, 120, 212, 1), -30%)
+        HoverFill: =RGBA(0, 0, 0, 0)
+        Icon: =Icon.Shop
+        OnSelect: |-
+            =If('Product List_1'.OrderType="Primary",Navigate('Primary Cart Screen', ScreenTransition.CoverRight),
+            Navigate('Secondary Cart Screen',ScreenTransition.CoverRight));
+        PressedBorderColor: =RGBA(0, 0, 0, 0)
+        PressedColor: =ColorFade(RGBA(0, 120, 212, 1), -30%)
+        PressedFill: =RGBA(0, 0, 0, 0)
+        TabIndex: =0
+        Width: =50
+        X: =563
+        Y: =22
+        ZIndex: =7
+

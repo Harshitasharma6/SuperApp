@@ -1,0 +1,102 @@
+[
+  {
+    "CdsFCBContext": "{\"FileType\":true,\"ImageExternalStorage\":true}",
+    "EntitySetName": "zx_branchs",
+    "IsHidden": false,
+    "IsSampleData": false,
+    "IsWritable": true,
+    "LogicalName": "zx_branch",
+    "MaxGetRowsCount": 500,
+    "Name": "Branch.S",
+    "NativeCDSDataSourceInfoNameMapping": {
+      "_ownerid_value": "Owner",
+      "createdby": "Created By",
+      "createdon": "Created On",
+      "createdonbehalfby": "Created By (Delegate)",
+      "importsequencenumber": "Import Sequence Number",
+      "modifiedby": "Modified By",
+      "modifiedon": "Modified On",
+      "modifiedonbehalfby": "Modified By (Delegate)",
+      "overriddencreatedon": "Record Created On",
+      "owningbusinessunit": "Owning Business Unit",
+      "owningteam": "Owning Team",
+      "owninguser": "Owning User",
+      "statecode": "Status",
+      "statuscode": "Status Reason",
+      "timezoneruleversionnumber": "Time Zone Rule Version Number",
+      "utcconversiontimezonecode": "UTC Conversion Time Zone Code",
+      "versionnumber": "Version Number",
+      "zx_branch_AsyncOperations": "System Jobs",
+      "zx_branch_BulkDeleteFailures": "Bulk Delete Failures",
+      "zx_branch_DuplicateBaseRecord": "Duplicate Records (zx_branch_DuplicateBaseRecord)",
+      "zx_branch_DuplicateMatchingRecord": "Duplicate Records (zx_branch_DuplicateMatchingRecord)",
+      "zx_branch_MailboxTrackingFolders": "Mailbox Auto Tracking Folders",
+      "zx_branch_PrincipalObjectAttributeAccesses": "Field Sharing",
+      "zx_branch_ProcessSession": "Process Sessions",
+      "zx_branch_SyncErrors": "Sync Errors",
+      "zx_branchid": "Branch",
+      "zx_branchname": "Branch Name",
+      "zx_City": "City",
+      "zx_name": "Name",
+      "zx_State": "State",
+      "zx_systemuser_Branch_zx_branch": "Users",
+      "zx_zx_parties_Branch_zx_branch": "Parties.S"
+    },
+    "PreferredName": "Branch.S",
+    "Type": "NativeCDSDataSourceInfo"
+  },
+  {
+    "DisplayName": "Branch.S (Views)",
+    "Name": "_zx_branch_views",
+    "RelatedEntityName": "Branch.S",
+    "TrimmedViewName": true,
+    "Type": "ViewInfo",
+    "ViewInfoNameMapping": {
+      "1ed85aa5-650e-4198-ac90-a59680617bee": "Branch Associated View",
+      "7fb77e87-f703-4c4d-8f22-237d13538561": "Branch Advanced Find View",
+      "9b6f8eb7-b981-4a89-8d0c-8c43edea60ef": "Active Branches",
+      "d215aa45-70a1-4fc2-82a4-87e7b6f482bc": "Inactive Branches",
+      "ff789ae3-d78a-40c6-a6d9-d5076cfd06ea": "Branch Lookup View"
+    }
+  },
+  {
+    "DisplayName": "Status (Branch.S)",
+    "Name": "zx_branch_statecode",
+    "OptionSetInfoNameMapping": {
+      "0": "Active",
+      "1": "Inactive"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "statecode",
+        "OptionSetReferenceEntityName": "Branch.S"
+      }
+    },
+    "OptionSetTypeKey": "StateType",
+    "RelatedColumnInvariantName": "statecode",
+    "RelatedEntityName": "Branch.S",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Status Reason (Branch.S)",
+    "Name": "zx_branch_statuscode",
+    "OptionSetInfoNameMapping": {
+      "1": "Active",
+      "2": "Inactive"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "statuscode",
+        "OptionSetReferenceEntityName": "Branch.S"
+      }
+    },
+    "OptionSetTypeKey": "StatusType",
+    "RelatedColumnInvariantName": "statuscode",
+    "RelatedEntityName": "Branch.S",
+    "Type": "OptionSetInfo"
+  }
+]

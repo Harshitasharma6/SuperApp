@@ -1,0 +1,399 @@
+"'Invoice list view with filters_1' As CanvasComponent":
+    Customer: =
+    DataSource: =OfflineInvoiceCollection
+    Fill: =_VarGblAppColors.BackgroundColor
+    Height: =App.Height
+    Width: =App.Width
+    X: =0
+    Y: =0
+    ZIndex: =1
+
+    ComboBox2_7 As combobox:
+        AccessibleLabel: ="Select Salesperson"
+        BorderColor: =RGBA(179, 179, 179, 1)
+        BorderThickness: =1
+        ChevronBackground: =RGBA(0, 0, 0, 0)
+        ChevronDisabledBackground: =RGBA(166, 166, 166, 1)
+        ChevronDisabledFill: =RGBA(244, 244, 244, 1)
+        ChevronFill: =_VarGblAppColors.PrimaryRed
+        ChevronHoverBackground: =ColorFade(RGBA(56, 96, 178, 1), -20%)
+        ChevronHoverFill: =RGBA(255, 255, 255, 1)
+        Default: =LookUp(Users,'Primary Email'=User().Email)
+        DefaultSelectedItems: =LookUp(Users,'Primary Email'=User().Email)
+        DisabledBorderColor: =RGBA(166, 166, 166, 1)
+        DisabledColor: =RGBA(0, 0, 0, 1)
+        DisabledFill: =RGBA(244, 244, 244, 1)
+        DisplayFields: =["fullname"]
+        DisplayMode: |-
+            =//DisplayMode.Edit
+            If(IsBlank(LookUp(Users,Manager.'Primary Email'= User().Email)),DisplayMode.Disabled,DisplayMode.Edit)
+        Height: =55
+        HoverColor: =RGBA(0, 0, 0, 1)
+        HoverFill: =RGBA(186, 202, 226, 1)
+        InputTextPlaceholder: ="Search Users"
+        Items: =Filter(Users,Manager.'Primary Email'= User().Email || 'Primary Email'= User().Email)
+        PressedColor: =RGBA(255, 255, 255, 1)
+        PressedFill: =RGBA(0, 18, 107, 1)
+        SearchFields: =["fullname"]
+        SearchItems: =Search(Filter(Users,Manager.'Primary Email'= User().Email || 'Primary Email'= User().Email),ComboBox2_7.SearchText,"fullname")
+        SelectionFill: =RGBA(56, 96, 178, 1)
+        SelectMultiple: =false
+        Size: =21
+        Width: ='Invoice list view with filters_1'.Width-20
+        X: =10
+        Y: =210
+        ZIndex: =2
+
+    Sort_6 As icon.ArrowsUpDown:
+        AccessibleLabel: ="Sort"
+        BorderColor: =RGBA(0, 18, 107, 1)
+        Color: =Color.Black
+        DisabledBorderColor: =RGBA(166, 166, 166, 1)
+        DisabledColor: =RGBA(244, 244, 244, 1)
+        Height: =40
+        Icon: =Icon.Sort
+        OnSelect: =Set(varSort,!varSort)
+        TabIndex: =0//-1
+        Width: =40
+        X: =587
+        Y: =166
+        ZIndex: =3
+
+    Filter_7 As icon.FilterFlat:
+        AccessibleLabel: ="Filter"
+        BorderColor: =RGBA(0, 18, 107, 1)
+        Color: =Color.Black
+        DisabledBorderColor: =RGBA(166, 166, 166, 1)
+        DisabledColor: =RGBA(244, 244, 244, 1)
+        Height: =40
+        Icon: =Icon.FilterFlat
+        OnSelect: |+
+            =Set(
+                varFilter,
+                !varFilter
+            );
+            
+        TabIndex: =0//-1
+        Width: =40
+        X: =550
+        Y: =166
+        ZIndex: =4
+
+    Rectangle14_32 As rectangle:
+        BorderColor: =RGBA(0, 0, 0, 1)
+        BorderThickness: =2
+        Fill: =Color.White
+        Height: =294
+        Visible: =If(varSort=true,true,false)
+        Width: =391
+        X: =249
+        Y: =212
+        ZIndex: =5
+
+    Icon20_6 As icon.ArrowsUpDown:
+        BorderColor: =RGBA(0, 18, 107, 1)
+        DisabledBorderColor: =RGBA(166, 166, 166, 1)
+        DisabledColor: =RGBA(244, 244, 244, 1)
+        DisplayMode: =DisplayMode.View
+        Height: =30
+        Icon: =Icon.Sort
+        Visible: =If(varSort=true,true,false)
+        Width: =30
+        X: =474
+        Y: =213
+        ZIndex: =6
+
+    Label29_30 As label:
+        BorderColor: =RGBA(0, 18, 107, 1)
+        Color: =RGBA(0, 0, 0, 1)
+        DisabledColor: =RGBA(166, 166, 166, 1)
+        FontWeight: =FontWeight.Bold
+        Size: =20
+        Text: ="Sort By"
+        Visible: =If(varSort=true,true,false)
+        Width: =272
+        X: =368
+        Y: =210
+        ZIndex: =8
+
+    backdrop_8 As rectangle:
+        BorderColor: =RGBA(0, 18, 107, 1)
+        DisplayMode: =DisplayMode.View
+        Fill: =RGBA(153, 153, 153, 0.59)
+        Height: =App.Height
+        Visible: =varFilter
+        Width: =App.Width
+        ZIndex: =9
+
+    "'filter button_9' As button":
+        DisabledBorderColor: =RGBA(166, 166, 166, 1)
+        DisabledColor: =RGBA(166, 166, 166, 1)
+        DisabledFill: =RGBA(244, 244, 244, 1)
+        DisplayMode: =DisplayMode.View
+        Fill: =RGBA(255, 255, 255, 1)
+        FontWeight: =FontWeight.Semibold
+        Height: =926
+        HoverColor: =RGBA(255, 255, 255, 1)
+        HoverFill: =ColorFade(RGBA(56, 96, 178, 1), -20%)
+        RadiusBottomLeft: =0
+        RadiusBottomRight: =0
+        RadiusTopLeft: =25
+        RadiusTopRight: =25
+        Size: =24
+        Text: =""
+        Visible: =varFilter
+        Width: =640
+        Y: =210
+        ZIndex: =10
+
+    Container4_33 As groupContainer:
+        Height: =746
+        Visible: =varFilter
+        Width: =640
+        Y: =217
+        ZIndex: =11
+
+        Label8_13 As label:
+            BorderColor: =RGBA(0, 18, 107, 1)
+            Color: =RGBA(0, 0, 0, 1)
+            DisabledColor: =RGBA(166, 166, 166, 1)
+            FontWeight: =FontWeight.Bold
+            Height: =58
+            PaddingLeft: =30
+            Size: =21
+            Text: ="All Filters"
+            Visible: =varFilter
+            Width: =273
+            X: =27
+            ZIndex: =2
+
+        Icon18_14 As icon.Cancel:
+            AccessibleLabel: ="Close filters"
+            BorderColor: =RGBA(0, 18, 107, 1)
+            DisabledBorderColor: =RGBA(166, 166, 166, 1)
+            DisabledColor: =RGBA(244, 244, 244, 1)
+            Height: =30
+            Icon: =Icon.Cancel
+            OnSelect: |
+                =Set(varFilter,false);
+            TabIndex: =0//-1
+            Visible: =varFilter
+            Width: =30
+            X: =583
+            Y: =27
+            ZIndex: =10
+
+        Display_15 As gallery.galleryHorizontal:
+            AccessibleLabel: ="Selected filter values"
+            BorderColor: =RGBA(0, 18, 107, 1)
+            DelayItemLoading: =true
+            Height: =109
+            Items: =colInvoiceFilter
+            LoadingSpinner: =LoadingSpinner.Data
+            ShowScrollbar: =false
+            TabIndex: =0//-1
+            TemplateSize: =306
+            Visible: |-
+                =
+                true
+            Y: =50
+            ZIndex: =14
+
+            Button20_20 As button:
+                DisabledBorderColor: =RGBA(166, 166, 166, 1)
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                DisabledFill: =RGBA(244, 244, 244, 1)
+                DisplayMode: =DisplayMode.View
+                Fill: |-
+                    =//RGBA(204, 204, 204, 1)
+                    ColorFade(_VarGblAppColors.PrimaryRed,60%)
+                FontWeight: =FontWeight.Semibold
+                Height: =82
+                HoverColor: =RGBA(255, 255, 255, 1)
+                HoverFill: =ColorFade(RGBA(56, 96, 178, 1), -20%)
+                RadiusBottomLeft: =15
+                RadiusBottomRight: =15
+                RadiusTopLeft: =15
+                RadiusTopRight: =15
+                Size: =24
+                Text: =""
+                Width: =281
+                X: =14
+                Y: =12
+                ZIndex: =1
+
+        Icon20_13 As icon.ArrowsUpDown:
+            BorderColor: =RGBA(0, 18, 107, 1)
+            DisabledBorderColor: =RGBA(166, 166, 166, 1)
+            DisabledColor: =RGBA(244, 244, 244, 1)
+            DisplayMode: =DisplayMode.View
+            Height: =30
+            Icon: =Icon.Sort
+            Visible: =If(varSort=true,true,false)
+            Width: =30
+            X: =138
+            Y: =43
+            ZIndex: =20
+
+        Label29_39 As label:
+            BorderColor: =RGBA(0, 18, 107, 1)
+            Color: =RGBA(0, 0, 0, 1)
+            DisabledColor: =RGBA(166, 166, 166, 1)
+            FontWeight: =FontWeight.Bold
+            Size: =20
+            Text: ="Sort By"
+            Visible: =If(varSort=true,true,false)
+            Width: =272
+            X: =40
+            Y: =40
+            ZIndex: =21
+
+    "'Filter Gallery_4' As gallery.galleryHorizontal":
+        AccessibleLabel: ="Filter Gallery"
+        BorderColor: =RGBA(0, 18, 107, 1)
+        FocusedBorderThickness: =01
+        Height: =86
+        Items: |-
+            =[
+                "Today's Invoices",
+                "This Week",
+                "This Month"
+            ]
+        ShowScrollbar: =false
+        TabIndex: =0
+        TemplateSize: =201
+        Width: =623
+        X: =12
+        Y: =6
+        ZIndex: =12
+
+        Button7_6 As button:
+            DisabledBorderColor: =RGBA(166, 166, 166, 1)
+            DisabledColor: =RGBA(166, 166, 166, 1)
+            DisabledFill: =RGBA(244, 244, 244, 1)
+            Fill: |-
+                =If(ThisItem.IsSelected && CountRows(colInvoiceFilterData)=0,
+                _VarGblAppColors.PrimaryRed,ColorFade( _VarGblAppColors.textbgbutton,20%))
+            Font: =Font.'Segoe UI'
+            FontWeight: =FontWeight.Semibold
+            Height: =43
+            HoverColor: =RGBA(255, 255, 255, 1)
+            HoverFill: =Self.Fill
+            OnSelect: |-
+                =Set(varfiltergallery,true);
+                Set(varCollectionEmpty,!varCollectionEmpty)
+            PaddingTop: =7
+            Size: =14
+            Text: =ThisItem.Value
+            VerticalAlign: =VerticalAlign.Top
+            Width: =195
+            ZIndex: =2
+
+    Display_13 As gallery.galleryHorizontal:
+        AccessibleLabel: ="Selected Filter values"
+        BorderColor: =RGBA(0, 18, 107, 1)
+        DelayItemLoading: =true
+        Height: =109
+        Items: =colInvoiceFilter
+        LoadingSpinner: =LoadingSpinner.Data
+        ShowScrollbar: =false
+        TabIndex: =0//-1
+        TemplateSize: =306
+        Visible: |-
+            =
+            true
+        Y: =63
+        ZIndex: =13
+
+        Button20_19 As button:
+            DisabledBorderColor: =RGBA(166, 166, 166, 1)
+            DisabledColor: =RGBA(166, 166, 166, 1)
+            DisabledFill: =RGBA(244, 244, 244, 1)
+            DisplayMode: =DisplayMode.View
+            Fill: |-
+                =//RGBA(204, 204, 204, 1)
+                ColorFade(_VarGblAppColors.PrimaryRed,50%)
+            FontWeight: =FontWeight.Semibold
+            Height: =82
+            HoverColor: =RGBA(255, 255, 255, 1)
+            HoverFill: =ColorFade(RGBA(56, 96, 178, 1), -20%)
+            RadiusBottomLeft: =15
+            RadiusBottomRight: =15
+            RadiusTopLeft: =15
+            RadiusTopRight: =15
+            Size: =24
+            Text: =""
+            Width: =281
+            X: =14
+            Y: =12
+            ZIndex: =1
+
+        Label31_26 As label:
+            Align: =Align.Center
+            BorderColor: =RGBA(0, 18, 107, 1)
+            Color: =RGBA(255, 255, 255, 1)
+            DisabledColor: =RGBA(166, 166, 166, 1)
+            FontWeight: =FontWeight.Bold
+            Height: =37
+            OnSelect: =Select(Parent)
+            Size: =18
+            Text: |-
+                =ThisItem.Title & ":"
+            Tooltip: |-
+                =ThisItem.Title & ":"
+            Width: =269
+            Wrap: =false
+            X: =14
+            Y: =12
+            ZIndex: =2
+
+        Label31_27 As label:
+            Align: =Align.Center
+            BorderColor: =RGBA(0, 18, 107, 1)
+            Color: =RGBA(255, 255, 255, 1)
+            DisabledColor: =RGBA(166, 166, 166, 1)
+            Height: =45
+            OnSelect: =Select(Parent)
+            Size: =18
+            Text: =ThisItem.value
+            Tooltip: =ThisItem.value
+            Width: =289
+            X: =6
+            Y: =49
+            ZIndex: =3
+
+        Icon21_16 As icon.Cancel:
+            AccessibleLabel: ="Remove filter"
+            BorderColor: =RGBA(0, 18, 107, 1)
+            DisabledBorderColor: =RGBA(166, 166, 166, 1)
+            DisabledColor: =RGBA(244, 244, 244, 1)
+            Height: =25
+            Icon: =Icon.Cancel
+            OnSelect: |
+                =Remove(
+                    colInvoiceFilter,
+                    ThisItem
+                );//change
+                Switch(
+                    ThisItem.Title,
+                    "Date",
+                    Reset(radioDate_8);
+                    "Party",
+                    Reset(radioParty_5);
+                    "Status",
+                    Reset(radioStatus_4);
+                    "Salesperson",
+                    Reset(radioSalesperson_8);
+                    "Order Value",
+                    Reset(OrderValue_4)
+                );
+                Set(
+                    varCollectionEmpty,
+                    true
+                );
+            TabIndex: =0//-1
+            Width: =52
+            X: =243
+            Y: =18
+            ZIndex: =4
+

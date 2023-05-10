@@ -1,0 +1,1182 @@
+Parties As screen:
+    Fill: =RGBA(230, 230, 230, 0.54)
+    LoadingSpinnerColor: =RGBA(0, 120, 212, 1)
+    OnVisible: |-
+        =Set(_VarActivePartyTypeID, 1);
+        Set(varFilterParties, false);
+
+    "'Bottom Bar_6' As 'Bottom Bar'":
+        Fill: =RGBA(255, 255, 255, 1)
+        Y: =1026
+
+    Header_4 As Header:
+        Fill: =RGBA(255, 255, 255, 1)
+        Height: =65
+        ScreenName: ="Parties"
+        ZIndex: =4
+
+    "'Party Type Filter' As gallery.galleryHorizontal":
+        AccessibleLabel: ="Party Toptab"
+        BorderColor: =RGBA(0, 18, 107, 1)
+        BorderStyle: =BorderStyle.None
+        Height: =60
+        Items: |-
+            =Table(
+                {
+                    Title: 'Party Type Choices'.Distributor,
+                    TabId: 1
+                },
+                {
+                    Title: 'Party Type Choices'.Dealer,
+                    TabId: 2
+                },
+                {
+                    Title: 'Party Type Choices'.Retailer,
+                    TabId: 3
+                }
+            )
+        OnSelect: =//Set(_VarActivetopTab, ThisItem.TabId)
+        TabIndex: =0
+        TemplatePadding: =0
+        TemplateSize: =206
+        Width: =638
+        X: =2
+        Y: =72
+        ZIndex: =5
+
+        Border_1 As button:
+            BorderColor: |-
+                =/*If(
+                    _VarActivePartyTypeID = ThisItem.TabId,
+                    ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' ),
+                    ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Hover Color").'Default Value')
+                )*/
+            BorderStyle: =BorderStyle.None
+            Color: |-
+                =/*If(
+                    _VarActivePartyTypeID = ThisItem.TabId,
+                    Color.White,
+                    ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )
+                )*/
+            DisabledBorderColor: =RGBA(166, 166, 166, 1)
+            DisabledColor: =RGBA(166, 166, 166, 1)
+            DisabledFill: =RGBA(244, 244, 244, 1)
+            Fill: =RGBA(0, 0, 0, 0)
+            FocusedBorderThickness: =2.5
+            FontWeight: =FontWeight.Semibold
+            Height: =54
+            HoverColor: =RGBA(255, 255, 255, 1)
+            HoverFill: =
+            OnSelect: |-
+                =Set(
+                    _VarActivePartyTypeID,
+                    ThisItem.TabId
+                );
+                /*
+                Set(
+                    _VarActivePartyTypeTitle,
+                    ThisItem.Title
+                )
+                */
+            RadiusBottomLeft: =15
+            RadiusBottomRight: =15
+            RadiusTopLeft: =15
+            RadiusTopRight: =15
+            Size: =24
+            Text: =""
+            Width: =197
+            X: =1
+            Y: =3
+            ZIndex: =1
+
+        title_1 As label:
+            Align: =Align.Center
+            BorderColor: =RGBA(0, 18, 107, 1)
+            BorderStyle: =BorderStyle.None
+            Color: |-
+                =If(
+                    _VarActivePartyTypeID = ThisItem.TabId,
+                       ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' ), ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Text Primary Color").'Default Value') //ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Text Primary Color").'Default Value') //_VarGblAppColors.textbgbutton
+                )
+            DisabledColor: =RGBA(166, 166, 166, 1)
+            FocusedBorderThickness: =0.3
+            FontWeight: =FontWeight.Semibold
+            Height: =60
+            OnSelect: =Set(_VarActivePartyTypeID, ThisItem.TabId)
+            Size: =LookUp(c_EnvironmentVariable,'Display Name'="Text Medium Font Size").'Default Value'
+            TabIndex: =0
+            Text: =ThisItem.Title
+            Width: =198
+            ZIndex: =2
+
+        Rectangle31 As rectangle:
+            BorderColor: =RGBA(0, 18, 107, 1)
+            Fill: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )
+            Height: =2
+            OnSelect: =Select(Parent)
+            Visible: |-
+                =If(
+                    _VarActivePartyTypeID = ThisItem.TabId,
+                    true,false
+                )
+            Width: =170
+            X: =20
+            Y: =56
+            ZIndex: =3
+
+    Gallery1_4 As gallery.galleryVertical:
+        AccessibleLabel: ="List View"
+        BorderColor: =RGBA(0, 18, 107, 1)
+        FocusedBorderThickness: =
+        Height: =850//909
+        Items: |-
+            =If(
+                !v_FilterApply,
+                Search(
+                    Filter(
+                        OfflinePartiesCollection,
+                        'Customer Type' = 'Party Type Filter'.Selected.Title
+                    ),
+                    SearchBox_3.Text,
+                    "zx_name",
+                    "zx_mobileno",
+                    "zx_customercode"
+                ),
+                Search(
+                    Filter(
+                        OfflinePartiesCollection,
+                        'Customer Type' = 'Party Type Filter'.Selected.Title
+            &&
+            !("Area" in colFilterParties.Title)|| LookUp(colFilterParties, Title="Area").ID=Area.Area
+            
+            &&
+            !("Type" in colFilterParties.Title)|| If(LookUp(colFilterParties, Title="Type").value="Primary", Type='Type (Parties.S)'.Primary, Type='Type (Parties.S)'.Secondary)
+            
+            
+                    ),
+                    SearchBox_3.Text,
+                    "zx_name",
+                    "zx_mobileno",
+                    "zx_customercode"
+                )
+            )
+        Layout: =Layout.Vertical
+        ShowScrollbar: =false
+        TabIndex: =
+        TemplatePadding: =10
+        TemplateSize: =226
+        Width: =630
+        X: =10
+        Y: =200//132
+        ZIndex: =6
+
+        Background_12 As button:
+            BorderThickness: =0//1
+            Color: |
+                =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Hover Color").'Default Value')
+            DisabledBorderColor: =RGBA(166, 166, 166, 1)
+            DisabledColor: =RGBA(166, 166, 166, 1)
+            DisabledFill: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Hover Color").'Default Value')
+            DisplayMode: =DisplayMode.Disabled
+            Fill: =RGBA(56, 96, 178, 1)
+            FontWeight: =FontWeight.Semibold
+            Height: =215
+            HoverColor: =RGBA(255, 255, 255, 1)
+            HoverFill: =ColorFade(RGBA(56, 96, 178, 1), -20%)
+            OnSelect: |-
+                =Navigate(
+                    'Customer 360 Screen',
+                    ScreenTransition.CoverRight
+                );
+                Set(
+                    varCustomerRecord,
+                    ThisItem
+                )
+            RadiusBottomLeft: =15
+            RadiusBottomRight: =15
+            RadiusTopLeft: =15
+            RadiusTopRight: =15
+            Size: =24
+            Text: =""
+            Width: =600
+            ZIndex: =1
+
+        TitleLbl_8 As label:
+            BorderColor: =RGBA(0, 18, 107, 1)
+            Color: =RGBA(0, 0, 0, 1)
+            DisabledColor: =RGBA(166, 166, 166, 1)
+            FocusedBorderColor: =Color.Transparent
+            FocusedBorderThickness: =01
+            Font: =LookUp(c_EnvironmentVariable,'Display Name'="Common Heading Font").'Default Value'
+            FontWeight: =FontWeight.Bold
+            Height: =30
+            OnSelect: |-
+                =Navigate('Customer 360 Screen',ScreenTransition.CoverRight);
+                
+                Set(varCustomerRecord,ThisItem)
+            Size: =LookUp(c_EnvironmentVariable,'Display Name'="Text Sub Title Font Size").'Default Value' // LookUp('Environment Variable Definitions', 'Display Name'="Text Sub Title Font Size").'Default Value'
+            TabIndex: =0
+            Text: =ThisItem.zx_name 
+            Width: =300
+            X: =70
+            Y: =15
+            ZIndex: =2
+
+        Title2Lbl_6 As label:
+            BorderColor: =RGBA(0, 18, 107, 1)
+            Color: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Text Primary Color").'Default Value') //ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Text Primary Color").'Default Value') //_VarGblAppColors.textbgbutton
+            DisabledColor: =RGBA(166, 166, 166, 1)
+            FocusedBorderThickness: =01
+            Height: =30
+            OnSelect: |-
+                =Navigate('Customer 360 Screen',ScreenTransition.CoverRight);
+                
+                Set(varCustomerRecord,ThisItem)
+            Size: =LookUp(c_EnvironmentVariable,'Display Name'="Text Regular Font Size").'Default Value'
+            TabIndex: =0
+            Text: =ThisItem.Area.'Area Name'
+            Width: =545
+            Wrap: =false
+            X: =70
+            Y: =38
+            ZIndex: =3
+
+        Rectangle1_6 As rectangle:
+            AccessibleLabel: ="Rectangle1_6"
+            BorderColor: =RGBA(0, 18, 107, 1)
+            Fill: =RGBA(202, 202, 202, 1)
+            Height: =1
+            OnSelect: |-
+                =Navigate('Customer 360 Screen',ScreenTransition.CoverRight);
+                
+                Set(varCustomerRecord,ThisItem)
+            TabIndex: =0
+            Width: =Gallery1_4.TemplateWidth
+            Y: =78
+            ZIndex: =4
+
+        Body1_19 As label:
+            BorderColor: =RGBA(0, 18, 107, 1)
+            Color: =RGBA(0, 0, 0, 1)
+            DisabledColor: =RGBA(166, 166, 166, 1)
+            FocusedBorderThickness: =01
+            Height: =33
+            OnSelect: |-
+                =Navigate('Customer 360 Screen',ScreenTransition.CoverRight);
+                
+                Set(varCustomerRecord,ThisItem)
+            TabIndex: =0
+            Text: |-
+                ="Account No : "
+            Width: =140
+            Wrap: =false
+            X: =18
+            Y: =91
+            ZIndex: =5
+
+        Body1Value_12 As label:
+            BorderColor: =RGBA(0, 18, 107, 1)
+            Color: =RGBA(0, 0, 0, 1)
+            DisabledColor: =RGBA(166, 166, 166, 1)
+            FocusedBorderThickness: =01
+            Height: =33
+            OnSelect: |-
+                =Navigate('Customer 360 Screen',ScreenTransition.CoverRight);
+                
+                Set(varCustomerRecord,ThisItem)
+            TabIndex: =0
+            Text: |-
+                ="Phone: " 
+            Width: =180
+            Wrap: =false
+            X: =320
+            Y: =91
+            ZIndex: =8
+
+        Body1_22 As label:
+            BorderColor: =RGBA(0, 18, 107, 1)
+            Color: =RGBA(0, 0, 0, 1)
+            DisabledColor: =RGBA(166, 166, 166, 1)
+            FocusedBorderThickness: =01
+            Height: =33
+            OnSelect: |-
+                =Navigate('Customer 360 Screen',ScreenTransition.CoverRight);
+                
+                Set(varCustomerRecord,ThisItem)
+            TabIndex: =0
+            Text: |-
+                ="Last Visit Date :"
+            X: =18
+            Y: =125
+            ZIndex: =14
+
+        Body1_26 As label:
+            BorderColor: =RGBA(0, 18, 107, 1)
+            Color: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Text Primary Color").'Default Value') //ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Text Primary Color").'Default Value') //_VarGblAppColors.textbgbutton
+            DisabledColor: =RGBA(166, 166, 166, 1)
+            FocusedBorderThickness: =01
+            Font: =Font.'Segoe UI'
+            FontWeight: =FontWeight.Semibold
+            Height: =33
+            OnSelect: |-
+                =Navigate('Customer 360 Screen',ScreenTransition.CoverRight);
+                
+                Set(varCustomerRecord,ThisItem)
+            TabIndex: =0
+            Text: |-
+                =/*Text(
+                    LookUp(
+                        Visits,
+                        Party.'Customer Code' = ThisItem.'Customer Code'
+                    ).'Visit date',
+                    "dd/mm/yyyy"
+                );*/
+                Text(
+                    LookUp(
+                        Sort(
+                           OfflineVisitCollection,
+                            zx_visitdate,
+                            SortOrder.Descending
+                        ),
+                        zx_Party.Parties = ThisItem.zx_partiesid && 'Visit Status' = [@'Visit Status'].Completed
+                        
+                    ).zx_visitdate,
+                    "dd/mm/yyyy"
+                )
+            Width: =137
+            X: =155
+            Y: =125
+            ZIndex: =15
+
+        Body1_25 As label:
+            BorderColor: =RGBA(0, 18, 107, 1)
+            Color: =RGBA(0, 0, 0, 1)
+            DisabledColor: =RGBA(166, 166, 166, 1)
+            FocusedBorderThickness: =01
+            Height: =33
+            OnSelect: |-
+                =Navigate('Customer 360 Screen',ScreenTransition.CoverRight);
+                
+                Set(varCustomerRecord,ThisItem)
+            TabIndex: =0
+            Text: |-
+                ="Last Order Date :"
+            Width: =170
+            X: =18
+            Y: =164
+            ZIndex: =16
+
+        Body1_28 As label:
+            BorderColor: =RGBA(0, 18, 107, 1)
+            Color: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Text Primary Color").'Default Value') //ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Text Primary Color").'Default Value') //_VarGblAppColors.textbgbutton
+            DisabledColor: =RGBA(166, 166, 166, 1)
+            FocusedBorderThickness: =01
+            Font: =LookUp(c_EnvironmentVariable,'Display Name'="Common Heading Font").'Default Value'
+            FontWeight: =FontWeight.Semibold
+            Height: =33
+            OnSelect: |-
+                =Navigate('Customer 360 Screen',ScreenTransition.CoverRight);
+                
+                Set(varCustomerRecord,ThisItem)
+            Size: |-
+                =//LookUp(c_EnvironmentVariable,'Display Name'="Text Regular Font Size").'Default Value'
+                14
+            TabIndex: =0
+            Text: |-
+                =If(
+                    IsBlank(
+                        LookUp(
+                            OfflineOrderHeaderCollection,
+                            'Order From'.'Customer Code' = ThisItem.zx_customercode
+                        ).'Created On'
+                    ),
+                    "NA",
+                    Text(
+                        LookUp(Sort(OfflineOrderHeaderCollection,'Created On',SortOrder.Descending)
+                            ,
+                            'Order From'.'Customer Code' = ThisItem.zx_customercode
+                        ).'Created On',
+                        "dd/mm/yyyy"
+                    )
+                )
+            Width: =140
+            X: =170
+            Y: =164
+            ZIndex: =17
+
+        Body1_23 As label:
+            BorderColor: =RGBA(0, 18, 107, 1)
+            Color: =RGBA(0, 0, 0, 1)
+            DisabledColor: =RGBA(166, 166, 166, 1)
+            FocusedBorderThickness: =01
+            Height: =33
+            OnSelect: |-
+                =Navigate('Customer 360 Screen',ScreenTransition.CoverRight);
+                
+                Set(varCustomerRecord,ThisItem)
+            TabIndex: =0
+            Text: |-
+                ="Last Order Value :"
+            Width: =180
+            X: =320
+            Y: =164
+            ZIndex: =18
+
+        Body1_27 As label:
+            BorderColor: =RGBA(0, 18, 107, 1)
+            Color: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Text Primary Color").'Default Value') //ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Text Primary Color").'Default Value') //_VarGblAppColors.textbgbutton
+            DisabledColor: =RGBA(166, 166, 166, 1)
+            FocusedBorderThickness: =01
+            Font: =LookUp(c_EnvironmentVariable,'Display Name'="Common Heading Font").'Default Value'
+            FontWeight: =FontWeight.Semibold
+            Height: =33
+            OnSelect: |-
+                =Navigate('Customer 360 Screen',ScreenTransition.CoverRight);
+                
+                Set(varCustomerRecord,ThisItem)
+            Size: |
+                =//LookUp(c_EnvironmentVariable,'Display Name'="Text Regular Font Size").'Default Value'
+                14
+            TabIndex: =0
+            Text: |-
+                =If(
+                    IsBlank(
+                        Text(
+                          //  Round(
+                                LookUp(
+                                    OfflineOrderHeaderCollection,
+                                    'Order From'.'Customer Code' = ThisItem.zx_customercode
+                                ).'Total Bill Amount',
+                              //  2
+                         //   ),
+                            "[$-en-US]0.00"
+                        )
+                    ),
+                    "NA",
+                    "₹" & LookUp(
+                        Sort(
+                            OfflineOrderHeaderCollection,
+                            'Created On',
+                            SortOrder.Descending
+                        ),
+                        'Order From'.Parties = ThisItem.zx_partiesid
+                    ).'Total Bill Amount'
+                )
+            Width: =130
+            X: =480
+            Y: =164
+            ZIndex: =19
+
+        Body1_51 As label:
+            BorderColor: =RGBA(0, 18, 107, 1)
+            Color: =RGBA(0, 0, 0, 1)
+            DisabledColor: =RGBA(166, 166, 166, 1)
+            FocusedBorderThickness: =01
+            Height: =33
+            OnSelect: |-
+                =Navigate('Customer 360 Screen',ScreenTransition.CoverRight);
+                
+                Set(varCustomerRecord,ThisItem)
+            TabIndex: =0
+            Text: |-
+                ="Meeting Date :"
+            Width: =180
+            X: =320
+            Y: =125
+            ZIndex: =22
+
+        Label50 As label:
+            BorderColor: =RGBA(0, 18, 107, 1)
+            Color: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Text Primary Color").'Default Value') //ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Text Primary Color").'Default Value') //_VarGblAppColors.textbgbutton
+            DisabledColor: =RGBA(166, 166, 166, 1)
+            Height: =33
+            OnSelect: =Select(Parent)
+            Size: =21
+            Text: |-
+                =//ThisItem.'Meeting Date'
+                ThisItem.zx_meetingdate
+            Width: =151
+            X: =450
+            Y: =125
+            ZIndex: =23
+
+        Label51 As label:
+            BorderColor: =RGBA(0, 18, 107, 1)
+            Color: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Text Primary Color").'Default Value') //ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Text Primary Color").'Default Value') //_VarGblAppColors.textbgbutton
+            DisabledColor: =RGBA(166, 166, 166, 1)
+            Height: =33
+            OnSelect: =Select(Parent)
+            Text: = ThisItem.zx_customercode
+            Width: =140
+            X: =140
+            Y: =91
+            ZIndex: =24
+
+        Label51_1 As label:
+            BorderColor: =RGBA(0, 18, 107, 1)
+            Color: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Text Primary Color").'Default Value') //ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Text Primary Color").'Default Value') //_VarGblAppColors.textbgbutton
+            DisabledColor: =RGBA(166, 166, 166, 1)
+            Height: =33
+            OnSelect: =Select(Parent)
+            Text: = ThisItem.zx_mobileno
+            Width: =140
+            X: =386
+            Y: =91
+            ZIndex: =25
+
+        Group16 As group:
+            Height: =5
+            Width: =5
+            X: =40
+            Y: =40
+            ZIndex: =26
+
+            Circle9 As circle:
+                BorderColor: =RGBA(0, 18, 107, 1)
+                Fill: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )
+                Height: =40
+                OnSelect: =Select(Parent)
+                Width: =40
+                X: =24
+                Y: =20
+                ZIndex: =20
+
+            Label49 As label:
+                BorderColor: =RGBA(0, 18, 107, 1)
+                Color: =RGBA(255, 255, 255, 1)
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                FontWeight: =FontWeight.Semibold
+                Height: =35
+                OnSelect: =Select(Parent)
+                Text: =Left(Upper(ThisItem.zx_customertype),2)
+                Width: =35
+                X: =29
+                Y: =23
+                ZIndex: =21
+
+    SearchBox_3 As text:
+        AccessibleLabel: ="search"
+        BorderColor: =RGBA(153, 207, 236, 1)
+        Color: =RGBA(0, 0, 0, 1)
+        Default: =""
+        DisabledBorderColor: =RGBA(166, 166, 166, 1)
+        DisabledColor: =RGBA(166, 166, 166, 1)
+        DisabledFill: =RGBA(244, 244, 244, 1)
+        FocusedBorderThickness: =1
+        Height: =50
+        HintText: ="Search by Name, Customer Code or Contact"
+        HoverBorderColor: =RGBA(0, 0, 0, 1)
+        HoverColor: =RGBA(0, 0, 0, 1)
+        HoverFill: =RGBA(184, 0, 0, 0.1)
+        PaddingLeft: =50
+        PressedBorderColor: =
+        RadiusBottomLeft: =15
+        RadiusBottomRight: =15
+        RadiusTopLeft: =15
+        RadiusTopRight: =15
+        Width: |
+            =500
+        X: =30
+        Y: =140
+        ZIndex: =7
+
+    Container4_30 As groupContainer:
+        Fill: =RGBA(255, 255, 255, 1)
+        Height: =729
+        Visible: =varFilterParties
+        Width: =640
+        Y: =280
+        ZIndex: =8
+
+        Rectangle16_9 As rectangle:
+            BorderColor: =RGBA(0, 18, 107, 1)
+            DisplayMode: =DisplayMode.View
+            Fill: =RGBA(0, 0, 0, 1)
+            Height: =470
+            Visible: =varFilterParties
+            Width: =2
+            X: =290
+            Y: =157
+            ZIndex: =1
+
+        Label8_10 As label:
+            BorderColor: =RGBA(0, 18, 107, 1)
+            Color: =RGBA(0, 0, 0, 1)
+            DisabledColor: =RGBA(166, 166, 166, 1)
+            Font: =Font.'Segoe UI'
+            FontWeight: =FontWeight.Bold
+            Height: =58
+            PaddingLeft: =30
+            Size: =21
+            Text: ="All Filters"
+            Visible: =varFilterParties
+            Width: =273
+            X: =27
+            ZIndex: =2
+
+        ApplyBtn_11 As button:
+            BorderColor: =RGBA(0, 0, 0, 1)
+            BorderThickness: =0
+            DisabledBorderColor: =RGBA(166, 166, 166, 1)
+            DisabledColor: =RGBA(166, 166, 166, 1)
+            DisabledFill: =RGBA(244, 244, 244, 1)
+            Fill: |-
+                =//RGBA(184, 0, 0, 1)
+                ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )
+            FocusedBorderThickness: =
+            Font: =Font.'Segoe UI'
+            FontWeight: =FontWeight.Semibold
+            Height: =60
+            HoverColor: =RGBA(255, 255, 255, 1)
+            HoverFill: |-
+                =ColorFade(
+                    
+                    ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )
+                    , 10%)
+            OnSelect: |
+                =UpdateContext({v_FilterApply:true});
+                Set(varFilterParties,false);
+            Size: |+
+                =LookUp('Environment Variable Definitions', 'Display Name'="Text Title Font Size").'Default Value'
+                //_VarGblAppFonts.Size.Title
+                
+            Text: ="Apply Filters"
+            Visible: =varFilterParties
+            Width: =274
+            X: =337
+            Y: =647
+            ZIndex: =3
+
+        ClearBtn_7 As button:
+            Color: |
+                =RGBA(255, 255, 255, 1)
+                //RGBA(153, 160, 196, 1)
+            DisabledBorderColor: =RGBA(166, 166, 166, 1)
+            DisabledColor: =RGBA(166, 166, 166, 1)
+            DisabledFill: =RGBA(244, 244, 244, 1)
+            Fill: |-
+                =//RGBA(184, 0, 0, 1)
+                ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )
+            Font: =Font.'Segoe UI'
+            FontWeight: =FontWeight.Semibold
+            Height: =60
+            HoverColor: =RGBA(255, 255, 255, 1)
+            HoverFill: |-
+                =ColorFade(
+                    
+                    ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )
+                , 10%)
+            OnSelect: |
+                =
+                
+                Reset(radioStatus_2);
+                
+                Reset(radioStatus_2);
+                
+                
+                
+                Clear(colFilterParties);
+                
+                Set(v_FilterApply,false)
+            Size: =20
+            Text: ="Clear Filters"
+            Visible: =varFilterParties
+            Width: =274
+            X: =27
+            Y: =647
+            ZIndex: =4
+
+        Rectangle17_7 As rectangle:
+            BorderColor: =RGBA(0, 18, 107, 1)
+            Fill: =RGBA(0, 0, 0, 1)
+            Height: =2
+            Visible: =varFilterParties
+            Width: =640
+            Y: =154
+            ZIndex: =5
+
+        Icon18_11 As icon.Cancel:
+            AccessibleLabel: ="Close the Filter"
+            BorderColor: =RGBA(0, 18, 107, 1)
+            DisabledBorderColor: =RGBA(166, 166, 166, 1)
+            DisabledColor: =RGBA(244, 244, 244, 1)
+            Height: =30
+            Icon: =Icon.CancelBadge
+            OnSelect: |
+                =Set(varFilterParties,false);
+            TabIndex: =0//-1
+            Visible: =varFilterParties
+            Width: =30
+            X: =583
+            Y: =14
+            ZIndex: =10
+
+        Gallery8_7 As gallery.galleryVertical:
+            AccessibleLabel: ="Available Filters"
+            BorderColor: =RGBA(0, 18, 107, 1)
+            Height: =471
+            Items: |-
+                =Table(
+                    {
+                        Title: "Area",
+                        tabid: 1
+                    },
+                    {
+                        Title: "Type",
+                        tabid: 2
+                    }
+                )
+            Layout: =Layout.Vertical
+            ShowScrollbar: =false
+            TabIndex: =0//-1
+            TemplateSize: =84
+            Visible: =varFilterParties
+            Width: =234
+            X: =46
+            Y: =158
+            ZIndex: =13
+
+            Button18_8 As button:
+                Align: =Align.Left
+                Color: |-
+                    =//RGBA(0, 0, 0, 1)
+                    If(
+                        //ThisItem.IsSelected,
+                        radioParty_3.Selected.'Customer Name',
+                        ColorValue( LookUp('Environment Variable Definitions', 'Display Name'="Common Primary Background").'Default Value')//_VarGblAppColors.PrimaryBg
+                        ,ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Text Primary Color").'Default Value')
+                    )
+                DisabledBorderColor: =RGBA(166, 166, 166, 1)
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                DisabledFill: =RGBA(244, 244, 244, 1)
+                Fill: |-
+                    =//Color.Transparent
+                    If(ThisItem.IsSelected,ColorFade(
+                        ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )
+                        
+                        ,80%),Color.Transparent)
+                Font: =Font.'Segoe UI'
+                FontWeight: =FontWeight.Semibold
+                Height: =77
+                HoverColor: =RGBA(255, 255, 255, 1)
+                HoverFill: |-
+                    =//ColorFade(Color.DimGrey,80%)
+                    If(ThisItem.IsSelected,ColorFade(
+                        ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )
+                        ,80%),Color.Transparent)
+                OnSelect: =
+                PaddingLeft: =25
+                PressedColor: =Color.DimGrey
+                PressedFill: |-
+                    =//ColorFade(Color.DimGrey,80%)
+                    If(ThisItem.IsSelected,ColorFade(
+                        ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )
+                        
+                        ,80%),Color.Transparent)
+                Size: =20
+                Text: =ThisItem.Title 
+                Width: =224
+                Y: =7
+                ZIndex: =1
+
+        Display_9 As gallery.galleryHorizontal:
+            AccessibleLabel: ="Filter Applied"
+            BorderColor: =RGBA(0, 18, 107, 1)
+            DelayItemLoading: =true
+            Height: =109
+            Items: =colFilterParties
+            LoadingSpinner: =LoadingSpinner.Data
+            ShowScrollbar: =false
+            TabIndex: =0//-1
+            TemplateSize: =306
+            Visible: |-
+                =
+                true
+            Y: =50
+            ZIndex: =14
+
+            Button20_12 As button:
+                DisabledBorderColor: =RGBA(166, 166, 166, 1)
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                DisabledFill: =RGBA(244, 244, 244, 1)
+                DisplayMode: =DisplayMode.View
+                Fill: |-
+                    =//RGBA(204, 204, 204, 1)
+                    ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )
+                FontWeight: =FontWeight.Semibold
+                Height: =82
+                HoverColor: =RGBA(255, 255, 255, 1)
+                HoverFill: =ColorFade(RGBA(56, 96, 178, 1), -20%)
+                RadiusBottomLeft: =15
+                RadiusBottomRight: =15
+                RadiusTopLeft: =15
+                RadiusTopRight: =15
+                Size: =24
+                Text: =""
+                Width: =281
+                X: =14
+                Y: =12
+                ZIndex: =1
+
+            Label31_18 As label:
+                Align: =Align.Center
+                BorderColor: =RGBA(0, 18, 107, 1)
+                Color: |-
+                    =//RGBA(0, 0, 0, 1)
+                    //RGBA(153, 160, 196, 1)
+                    If(
+                        ThisItem.IsSelected,
+                        ColorValue( LookUp('Environment Variable Definitions', 'Display Name'="Common Primary Background").'Default Value')//_VarGblAppColors.PrimaryBg
+                        ,ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Text Primary Color").'Default Value')   
+                    )
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                FontWeight: =FontWeight.Bold
+                Height: =37
+                OnSelect: =Select(Parent)
+                Size: =18
+                Text: |-
+                    =ThisItem.Title & ":"
+                Tooltip: |-
+                    =ThisItem.Title & ":"
+                Width: =269
+                Wrap: =false
+                X: =14
+                Y: =12
+                ZIndex: =2
+
+            Label31_19 As label:
+                Align: =Align.Center
+                BorderColor: =RGBA(0, 18, 107, 1)
+                Color: |-
+                    =//RGBA(153, 160, 196, 1)
+                    If(
+                        ThisItem.IsSelected,
+                        ColorValue( LookUp('Environment Variable Definitions', 'Display Name'="Common Primary Background").'Default Value')//_VarGblAppColors.PrimaryBg
+                        ,ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Text Primary Color").'Default Value')   
+                    )
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                Height: =45
+                OnSelect: =Select(Parent)
+                Size: =18
+                Text: =ThisItem.value
+                Tooltip: =ThisItem.value
+                Width: =289
+                X: =6
+                Y: =50
+                ZIndex: =3
+
+            Icon21_12 As icon.Cancel:
+                AccessibleLabel: ="Close the filter applied"
+                BorderColor: =RGBA(0, 18, 107, 1)
+                Color: |-
+                    =//RGBA(0, 0, 0, 1)
+                    //RGBA(153, 160, 196, 1)
+                    If(
+                        ThisItem.IsSelected,
+                        ColorValue( LookUp('Environment Variable Definitions', 'Display Name'="Common Primary Background").'Default Value')//_VarGblAppColors.PrimaryBg
+                        ,ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Text Primary Color").'Default Value')   
+                    )
+                DisabledBorderColor: =RGBA(166, 166, 166, 1)
+                DisabledColor: =RGBA(244, 244, 244, 1)
+                Height: =25
+                Icon: =Icon.Cancel
+                OnSelect: |
+                    =Remove(colFilterParties,ThisItem);
+                    
+                    Reset(radioStatus_2);
+                    Reset(radioStatus_2);
+                TabIndex: =0//-1
+                Width: =52
+                X: =243
+                Y: =18
+                ZIndex: =4
+
+        radioParty_3 As radio:
+            AccessibleLabel: ="Parties Selection"
+            BorderColor: =RGBA(0, 18, 107, 1)
+            Color: |-
+                =//RGBA(0, 0, 0, 1)
+                If(
+                    //ThisItem.IsSelected,
+                    radioParty_3.Selected.'Customer Name',
+                    ColorValue( LookUp('Environment Variable Definitions', 'Display Name'="Common Primary Background").'Default Value')//_VarGblAppColors.PrimaryBg
+                    ,ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Text Primary Color").'Default Value')   
+                )
+            Height: =466
+            HoverColor: =RGBA(0, 18, 107, 1)
+            Items: =OfflinePartiesCollection
+            LineHeight: =2
+            OnSelect: |-
+                =If(
+                    Gallery8_7.Selected.tabid = 3 && IsBlank(
+                        LookUp(
+                            colFilterParties,
+                            Title = Gallery8_7.Selected.Title
+                        ).Title
+                    ),
+                    Collect(
+                        colFilterParties,
+                        {
+                            Title: Gallery8_7.Selected.Title,
+                            value: radioParty_3.Selected.'Customer Name'
+                        }
+                    ),
+                    Patch(
+                        colFilterParties,
+                        LookUp(
+                            colFilterParties,
+                            Title = Gallery8_7.Selected.Title
+                        ),
+                        {value: radioParty_3.Selected.'Customer Name'}
+                    )
+                )
+            RadioSelectionFill: |-
+                =//RGBA(0, 0, 0, 1)
+                If(
+                    //ThisItem.IsSelected,
+                    radioParty_3.Selected.'Customer Name',
+                    ColorValue( LookUp('Environment Variable Definitions', 'Display Name'="Common Primary Background").'Default Value')//_VarGblAppColors.PrimaryBg
+                    ,ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Text Primary Color").'Default Value')   
+                )
+            RadioSize: =40
+            Size: =18
+            Visible: =If(Gallery8_7.Selected.tabid=3,true,false)
+            Width: =340
+            X: =300
+            Y: =181
+            ZIndex: =15
+
+        radioStatus_2 As radio:
+            AccessibleLabel: ="Status options"
+            BorderColor: =RGBA(0, 18, 107, 1)
+            Color: =RGBA(0, 0, 0, 1)
+            Height: =312
+            HoverColor: =RGBA(0, 18, 107, 1)
+            Items: =Choices('Type (Parties.S)')
+            LineHeight: =2
+            OnSelect: |-
+                =If(
+                    Gallery8_7.Selected.tabid = 2 && IsBlank(
+                        LookUp(
+                            colFilterParties,
+                            Title = Gallery8_7.Selected.Title
+                        ).Title
+                    ),
+                    Collect(
+                        colFilterParties,
+                        {
+                            Title: Gallery8_7.Selected.Title,
+                            value: Text(radioStatus_2.Selected.Value)
+                            
+                        }
+                    ),
+                     Patch(
+                        colFilterParties,
+                        LookUp(
+                            colFilterParties,
+                            Title = Gallery8_7.Selected.Title
+                        ),
+                        {value: Text(Self.Selected.Value)
+                           
+                           }
+                    )
+                   
+                )
+            RadioSelectionFill: |-
+                =RGBA(0, 0, 0, 1)
+                /*If(
+                    //ThisItem.IsSelected,
+                    radioStatus.Selected.Value,
+                    ColorValue( LookUp('Environment Variable Definitions', 'Display Name'="Common Primary Background").'Default Value')//_VarGblAppColors.PrimaryBg
+                    ,ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Text Primary Color").'Default Value')   
+                )*/
+            RadioSize: =40
+            Size: =18
+            Visible: =If(Gallery8_7.Selected.tabid=2,true,false)
+            Width: =340
+            X: =300
+            Y: =162
+            ZIndex: =16
+
+        Label15_3 As label:
+            BorderColor: =RGBA(0, 18, 107, 1)
+            Color: |-
+                =//RGBA(0, 0, 0, 1)
+                ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Text Primary Color").'Default Value')
+            DisabledColor: =RGBA(166, 166, 166, 1)
+            FontWeight: =FontWeight.Bold
+            Height: =64
+            Size: =18
+            Text: ="Order Value"
+            Visible: =If(Gallery8_7.Selected.tabid=5,true,false)
+            Width: =272
+            X: =319
+            Y: =244
+            ZIndex: =17
+
+        OrderValue_2 As text:
+            AccessibleLabel: ="Order Value"
+            BorderColor: =RGBA(136, 160, 209, 1)
+            Color: |-
+                =//RGBA(0, 0, 0, 1)
+                ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Text Primary Color").'Default Value')
+            Default: |-
+                =LookUp(
+                    colFilterParties,
+                    Title = "Order value"
+                ).value
+            DisabledBorderColor: =RGBA(166, 166, 166, 1)
+            DisabledColor: =RGBA(166, 166, 166, 1)
+            DisabledFill: =RGBA(244, 244, 244, 1)
+            FocusedBorderThickness: =4
+            Format: =TextFormat.Number
+            Height: =76
+            HintText: ="Enter Value"
+            HoverBorderColor: =RGBA(0, 18, 107, 1)
+            HoverColor: =RGBA(0, 0, 0, 1)
+            HoverFill: =RGBA(186, 202, 226, 1)
+            OnChange: |-
+                =If(
+                    Gallery8_7.Selected.tabid = 5 && IsBlank(
+                        LookUp(
+                            colFilterParties,
+                            Title = Gallery8_7.Selected.Title
+                        ).Title
+                    ),
+                    Collect(
+                        colFilterParties,
+                        {
+                            Title: Gallery8_7.Selected.Title,
+                            value: OrderValue_2.Text
+                        }
+                    ),
+                    Patch(
+                        colFilterParties,
+                        LookUp(
+                            colFilterParties,
+                            Title =Gallery8_7.Selected.Title
+                        ),
+                        {
+                            value: OrderValue_2.Text
+                        }
+                    )
+                )
+            Size: =18
+            Visible: =If(Gallery8_7.Selected.tabid=5,true,false)
+            Width: =309
+            X: =319
+            Y: =315
+            ZIndex: =18
+
+        Group10_5 As group:
+            Height: =5
+            Width: =5
+            X: =-296
+            Y: =-250
+            ZIndex: =22
+
+            Icon20_9 As icon.ArrowsUpDown:
+                BorderColor: =RGBA(0, 18, 107, 1)
+                DisabledBorderColor: =RGBA(166, 166, 166, 1)
+                DisabledColor: =RGBA(244, 244, 244, 1)
+                DisplayMode: =DisplayMode.View
+                Height: =30
+                Icon: =Icon.Sort
+                Visible: =If(varSort=true,true,false)
+                Width: =30
+                X: =138
+                Y: =43
+                ZIndex: =20
+
+            Label29_33 As label:
+                BorderColor: =RGBA(0, 18, 107, 1)
+                Color: =RGBA(0, 0, 0, 1)
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                FontWeight: =FontWeight.Bold
+                Size: =20
+                Text: ="Sort By"
+                Visible: =If(varSort=true,true,false)
+                Width: =272
+                X: =40
+                Y: =40
+                ZIndex: =21
+
+        radioStatus_4 As radio:
+            AccessibleLabel: ="Status options"
+            BorderColor: =RGBA(0, 18, 107, 1)
+            Color: =RGBA(0, 0, 0, 1)
+            Fill: =Color.Transparent
+            Font: =Font.Verdana
+            Height: =352
+            HoverColor: =RGBA(0, 18, 107, 1)
+            Items: ='Area.S'
+            LineHeight: =2
+            OnSelect: |-
+                =If(
+                    Gallery8_7.Selected.tabid = 1 && IsBlank(
+                        LookUp(
+                            colFilterParties,
+                            Title = Gallery8_7.Selected.Title
+                        ).Title
+                    ),
+                    Collect(
+                        colFilterParties,
+                        {
+                            Title: Gallery8_7.Selected.Title,
+                            value: Text(radioStatus_4.Selected.'Area Name'),
+                            ID:radioStatus_4.Selected.Area
+                        }
+                    ),
+                     Patch(
+                        colFilterParties,
+                        LookUp(
+                            colFilterParties,
+                            Title = Gallery8_7.Selected.Title
+                        ),
+                        {value: Text(Self.Selected.'Area Name'),
+                         ID:radioStatus_4.Selected.Area}
+                    )
+                   
+                )
+            RadioSelectionFill: |-
+                =RGBA(0, 0, 0, 1)
+                /*If(
+                    //ThisItem.IsSelected,
+                    radioStatus.Selected.Value,
+                    ColorValue( LookUp('Environment Variable Definitions', 'Display Name'="Common Primary Background").'Default Value')//_VarGblAppColors.PrimaryBg
+                    ,ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Text Primary Color").'Default Value')   
+                )*/
+            RadioSize: =40
+            Size: =18
+            Visible: =If(Gallery8_7.Selected.tabid=1,true,false)
+            Width: =340
+            X: =300
+            Y: =162
+            ZIndex: =30
+
+    Image1_1 As image:
+        AccessibleLabel: ="Text"
+        BorderColor: =RGBA(0, 0, 0, 0)
+        BorderStyle: =BorderStyle.None
+        BorderThickness: =2
+        DisabledBorderColor: =RGBA(0, 0, 0, 0)
+        DisabledFill: =RGBA(0, 0, 0, 0)
+        FocusedBorderThickness: =4
+        Height: =50
+        HoverBorderColor: =RGBA(0, 0, 0, 0)
+        HoverFill: =RGBA(0, 0, 0, 0)
+        Image: =sort
+        OnSelect: |+
+            =Set(
+                varFilterParties,
+                !varFilterParties
+            );
+            
+        PressedBorderColor: =RGBA(0, 0, 0, 0)
+        PressedFill: =RGBA(0, 0, 0, 0)
+        TabIndex: =0
+        Width: =50
+        X: =556
+        Y: =140
+        ZIndex: =9
+

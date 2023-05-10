@@ -1,0 +1,505 @@
+NewComplaint As screen:
+    LoadingSpinnerColor: =RGBA(0, 120, 212, 1)
+    OnVisible: |
+        =Clear(c_DepartmentComplaints);
+        
+        ForAll( Choices('Deparment (Complaint.S)'),
+        
+        Collect(c_DepartmentComplaints, {Value:ThisRecord}));
+        ClearCollect(c_NatureComplaints, Choices('Nature of Complaint (Complaint.S)'));
+
+    Canvas4_1 As fluidGrid.fluidGridWithBlankCard:
+        BorderThickness: =0
+        Height: =960
+        Width: =Parent.Width
+        Y: =120
+        ZIndex: =1
+
+        DataCard5_1 As dataCard:
+            BorderColor: =RGBA(0, 0, 0, 1)
+            BorderStyle: =BorderStyle.Solid
+            BorderThickness: =0
+            DisplayMode: =DisplayMode.Edit
+            Fill: =RGBA(0, 0, 0, 0)
+            Height: =1120
+            Width: =Parent.Width
+            X: =0
+            Y: =0
+            ZIndex: =1
+
+            Button33_6 As button:
+                DisabledBorderColor: =RGBA(166, 166, 166, 1)
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                DisabledFill: =RGBA(255, 255, 255, 1)
+                DisplayMode: =DisplayMode.Disabled
+                Fill: =RGBA(0, 0, 0, 0)
+                FontWeight: =FontWeight.Semibold
+                Height: =55
+                HoverColor: =RGBA(255, 255, 255, 1)
+                HoverFill: =ColorFade(RGBA(56, 96, 178, 1), -20%)
+                RadiusBottomLeft: =15
+                RadiusBottomRight: =15
+                RadiusTopLeft: =15
+                RadiusTopRight: =15
+                Size: =24
+                Text: =""
+                Width: =530
+                X: =53
+                Y: =907
+                ZIndex: =1
+
+            Button33_5 As button:
+                DisabledBorderColor: =RGBA(166, 166, 166, 1)
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                DisabledFill: =RGBA(255, 255, 255, 1)
+                DisplayMode: =DisplayMode.Disabled
+                Fill: =RGBA(0, 0, 0, 0)
+                FontWeight: =FontWeight.Semibold
+                Height: =146
+                HoverColor: =RGBA(255, 255, 255, 1)
+                HoverFill: =ColorFade(RGBA(56, 96, 178, 1), -20%)
+                RadiusBottomLeft: =15
+                RadiusBottomRight: =15
+                RadiusTopLeft: =15
+                RadiusTopRight: =15
+                Size: =24
+                Text: =""
+                Width: =530
+                X: =53
+                Y: =697
+                ZIndex: =2
+
+            Button33_3 As button:
+                DisabledBorderColor: =RGBA(166, 166, 166, 1)
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                DisabledFill: =RGBA(255, 255, 255, 1)
+                DisplayMode: =DisplayMode.Disabled
+                Fill: =RGBA(0, 0, 0, 0)
+                FontWeight: =FontWeight.Semibold
+                Height: =121
+                HoverColor: =RGBA(255, 255, 255, 1)
+                HoverFill: =ColorFade(RGBA(56, 96, 178, 1), -20%)
+                RadiusBottomLeft: =15
+                RadiusBottomRight: =15
+                RadiusTopLeft: =15
+                RadiusTopRight: =15
+                Size: =24
+                Text: =""
+                Width: =530
+                X: =53
+                Y: =515
+                ZIndex: =3
+
+            Button33_4 As button:
+                DisabledBorderColor: =RGBA(166, 166, 166, 1)
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                DisabledFill: =RGBA(255, 255, 255, 1)
+                DisplayMode: =DisplayMode.Disabled
+                Fill: =RGBA(0, 0, 0, 0)
+                FontWeight: =FontWeight.Semibold
+                Height: =55
+                HoverColor: =RGBA(255, 255, 255, 1)
+                HoverFill: =ColorFade(RGBA(56, 96, 178, 1), -20%)
+                RadiusBottomLeft: =15
+                RadiusBottomRight: =15
+                RadiusTopLeft: =15
+                RadiusTopRight: =15
+                Size: =24
+                Text: =""
+                Width: =510
+                X: =53
+                Y: =393
+                ZIndex: =4
+
+            Button33_2 As button:
+                DisabledBorderColor: =RGBA(166, 166, 166, 1)
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                DisabledFill: =RGBA(255, 255, 255, 1)
+                DisplayMode: =DisplayMode.Disabled
+                Fill: =RGBA(0, 0, 0, 0)
+                FontWeight: =FontWeight.Semibold
+                Height: =55
+                HoverColor: =RGBA(255, 255, 255, 1)
+                HoverFill: =ColorFade(RGBA(56, 96, 178, 1), -20%)
+                RadiusBottomLeft: =15
+                RadiusBottomRight: =15
+                RadiusTopLeft: =15
+                RadiusTopRight: =15
+                Size: =24
+                Text: =""
+                Width: =510
+                X: =53
+                Y: =283
+                ZIndex: =5
+
+            Button33_1 As button:
+                DisabledBorderColor: =RGBA(166, 166, 166, 1)
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                DisabledFill: =RGBA(255, 255, 255, 1)
+                DisplayMode: =DisplayMode.Disabled
+                Fill: =RGBA(0, 0, 0, 0)
+                FontWeight: =FontWeight.Semibold
+                Height: =55
+                HoverColor: =RGBA(255, 255, 255, 1)
+                HoverFill: =ColorFade(RGBA(56, 96, 178, 1), -20%)
+                RadiusBottomLeft: =15
+                RadiusBottomRight: =15
+                RadiusTopLeft: =15
+                RadiusTopRight: =15
+                Size: =24
+                Text: =""
+                Width: =510
+                X: =53
+                Y: =177
+                ZIndex: =6
+
+            Button33 As button:
+                DisabledBorderColor: =RGBA(166, 166, 166, 1)
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                DisabledFill: =RGBA(255, 255, 255, 1)
+                DisplayMode: =DisplayMode.Disabled
+                Fill: =RGBA(0, 0, 0, 0)
+                FontWeight: =FontWeight.Semibold
+                Height: =55
+                HoverColor: =RGBA(255, 255, 255, 1)
+                HoverFill: =ColorFade(RGBA(56, 96, 178, 1), -20%)
+                RadiusBottomLeft: =15
+                RadiusBottomRight: =15
+                RadiusTopLeft: =15
+                RadiusTopRight: =15
+                Size: =24
+                Text: =""
+                Width: =510
+                X: =53
+                Y: =55
+                ZIndex: =7
+
+            DatePicker1_4 As datepicker:
+                AccessibleLabel: ="Date Picker"
+                BorderStyle: =BorderStyle.None
+                BorderThickness: =0
+                CalendarHeaderFill: =RGBA(56, 96, 178, 1)
+                Color: |-
+                    =//RGBA(0, 0, 0, 1)
+                    ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Text Primary Color").'Default Value') //_VarGblAppColors.textbgbutton
+                DisabledBorderColor: =RGBA(166, 166, 166, 1)
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                DisabledFill: =RGBA(244, 244, 244, 1)
+                HoverDateFill: =RGBA(186, 202, 226, 1)
+                IconBackground: =//RGBA(00, 00, 000, 1)
+                IconFill: |-
+                    =//RGBA(255, 255, 255, 1)
+                    ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Text Primary Color").'Default Value') //_VarGblAppColors.textbgbutton
+                PaddingLeft: =5
+                SelectedDateFill: =RGBA(56, 96, 178, 1)
+                Size: =18
+                Width: =480
+                X: =67
+                Y: =64
+                ZIndex: =8
+
+            Label23_5 As label:
+                BorderColor: =RGBA(0, 18, 107, 1)
+                Color: =RGBA(0, 0, 0, 1)
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                Fill: =RGBA(255, 255, 255, 1)
+                FontWeight: =FontWeight.Semibold
+                Size: =15
+                Text: ="Nature of Complaint"
+                Width: =220
+                X: =Label23_4.X
+                Y: =373
+                ZIndex: =9
+
+            Dropdown1_2 As dropdown:
+                AccessibleLabel: ="Nature of Complaint"
+                BorderColor: =RGBA(0, 0, 0, 1)
+                BorderThickness: =0
+                ChevronBackground: =//RGBA(00, 00, 000, 1)
+                ChevronDisabledBackground: =RGBA(166, 166, 166, 1)
+                ChevronDisabledFill: =RGBA(244, 244, 244, 1)
+                ChevronFill: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Text Primary Color").'Default Value') //_VarGblAppColors.textbgbutton
+                ChevronHoverBackground: =ColorFade(RGBA(56, 96, 178, 1), -20%)
+                ChevronHoverFill: =RGBA(255, 255, 255, 1)
+                Color: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Text Primary Color").'Default Value') //_VarGblAppColors.textbgbutton
+                DisabledBorderColor: =RGBA(166, 166, 166, 1)
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                DisabledFill: =RGBA(244, 244, 244, 1)
+                HoverColor: =RGBA(0, 0, 0, 1)
+                HoverFill: =RGBA(186, 202, 226, 1)
+                Items: |-
+                    =//["Account statement and Reconciliation Matters","Credit notes related","GST and TDS/TCS Related Queries","Payments Related Queries","Schemes and Discount","Product","Price","Limit Related ","Credit Note","Customer Onboarding"]
+                    c_NatureComplaints
+                PressedColor: =RGBA(255, 255, 255, 1)
+                PressedFill: =RGBA(0, 18, 107, 1)
+                SelectionFill: =RGBA(56, 96, 178, 1)
+                Size: =14
+                Width: =483
+                X: =58
+                Y: =407
+                ZIndex: =10
+
+            Dropdown1_3 As dropdown:
+                AccessibleLabel: ="Department"
+                AllowEmptySelection: =true
+                BorderColor: =RGBA(0, 0, 0, 1)
+                BorderStyle: =BorderStyle.None
+                BorderThickness: =0
+                ChevronBackground: =//RGBA(0, 0, 0, 1)
+                ChevronDisabledBackground: =RGBA(166, 166, 166, 1)
+                ChevronDisabledFill: =RGBA(244, 244, 244, 1)
+                ChevronFill: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Text Primary Color").'Default Value') //_VarGblAppColors.textbgbutton
+                ChevronHoverBackground: =//ColorFade(RGBA(56, 96, 178, 1), -20%)
+                ChevronHoverFill: =RGBA(50, 86, 160, 1)
+                Color: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Text Primary Color").'Default Value') //_VarGblAppColors.textbgbutton
+                Default: =""
+                DisabledBorderColor: =RGBA(166, 166, 166, 1)
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                DisabledFill: =RGBA(244, 244, 244, 1)
+                HoverColor: =RGBA(0, 0, 0, 1)
+                HoverFill: =//RGBA(186, 202, 226, 1)
+                Items: =Choices('Deparment (Complaint.S)')
+                PressedColor: =RGBA(255, 255, 255, 1)
+                PressedFill: =//RGBA(0, 18, 107, 1)
+                Reset: =true
+                SelectionFill: =RGBA(56, 96, 178, 1)
+                Size: =18
+                Width: =500
+                X: =60
+                Y: =288
+                ZIndex: =11
+
+            TextInput5 As text:
+                AccessibleLabel: ="Text Input"
+                BorderStyle: =BorderStyle.None
+                BorderThickness: =0
+                Color: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Text Primary Color").'Default Value') //_VarGblAppColors.textbgbutton
+                Default: =""
+                DisabledBorderColor: =RGBA(166, 166, 166, 1)
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                DisabledFill: =RGBA(244, 244, 244, 1)
+                FocusedBorderThickness: =4
+                Height: =109
+                HintText: =""
+                HoverBorderColor: =//RGBA(0, 18, 107, 1)
+                HoverColor: =RGBA(0, 0, 0, 1)
+                HoverFill: =//RGBA(186, 202, 226, 1)
+                Size: =21
+                Width: =500
+                X: =70
+                Y: =522
+                ZIndex: =12
+
+            DataCardValue38_1 As attachments:
+                AccessibleLabel: ="Attachment"
+                BorderColor: =
+                BorderStyle: =BorderStyle.None
+                Color: |-
+                    =//RGBA(0, 0, 0, 1)
+                    ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Text Primary Color").'Default Value') //_VarGblAppColors.textbgbutton
+                DisabledBorderColor: =RGBA(166, 166, 166, 1)
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                DisabledFill: =RGBA(244, 244, 244, 1)
+                DisplayMode: =Parent.DisplayMode
+                FocusedBorderThickness: =4
+                Height: =120
+                HoverColor: =RGBA(0, 0, 0, 1)
+                HoverFill: =RGBA(186, 202, 226, 1)
+                IsInDataCard: =true
+                ItemColor: =RGBA(255, 255, 255, 1)
+                ItemFill: =RGBA(56, 96, 178, 1)
+                ItemHoverColor: =RGBA(0, 0, 0, 1)
+                ItemHoverFill: =//RGBA(186, 202, 226, 1)
+                Items: =
+                PaddingBottom: =5
+                PaddingLeft: =If(Self.DisplayMode = DisplayMode.Edit, 5, 0)
+                PaddingRight: =5
+                PaddingTop: =5
+                PressedBorderColor: =//Self.HoverBorderColor
+                PressedColor: =//RGBA(255, 255, 255, 1)
+                PressedFill: =//RGBA(0, 18, 107, 1)
+                Size: =14
+                Tooltip: =
+                Width: =500
+                X: =60
+                Y: =710
+                ZIndex: =13
+
+            DatePicker4 As datepicker:
+                AccessibleLabel: ="Data Picker"
+                BorderStyle: =BorderStyle.None
+                BorderThickness: =0
+                CalendarHeaderFill: =RGBA(56, 96, 178, 1)
+                Color: |-
+                    =//RGBA(0, 0, 0, 1)
+                    ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Text Primary Color").'Default Value') //_VarGblAppColors.textbgbutton
+                DisabledBorderColor: =RGBA(166, 166, 166, 1)
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                DisabledFill: =RGBA(244, 244, 244, 1)
+                Height: =42
+                HoverDateFill: =RGBA(186, 202, 226, 1)
+                IconBackground: =//RGBA(00, 00, 000, 1)
+                SelectedDateFill: =RGBA(56, 96, 178, 1)
+                Size: =18
+                Width: =461
+                X: =79
+                Y: =920
+                ZIndex: =14
+
+            Button19_2 As button:
+                DisabledBorderColor: =RGBA(166, 166, 166, 1)
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                DisabledFill: =RGBA(244, 244, 244, 1)
+                Fill: |-
+                    =//RGBA(184, 0, 0, 1)
+                    ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )
+                FontWeight: =FontWeight.Semibold
+                Height: =55
+                HoverColor: =RGBA(255, 255, 255, 1)
+                HoverFill: |-
+                    =//ColorFade(RGBA(56, 96, 178, 1), -20%)
+                    Color.Red
+                OnSelect: |-
+                    =Patch('Complaint.S',Defaults('Complaint.S'),{
+                        
+                        'Assigned Date':Today(),
+                        'Nature of Complaint':Dropdown1_2.Selected.Value,
+                        Deparment: Dropdown1_3.Selected.Value,
+                        'Expected Closure Date':DatePicker4.SelectedDate,
+                        'Issue Description':TextInput5.Text,
+                       // 'Party':ComboBox6.Selected.'Custo
+                      // Party: LookUp('Parties.S', 'Customer Name' = ComboBox6.Selected.'Customer Name'),
+                       Attachment: {    FileName: First(DataCardValue38_1.Attachments).Name,   Value: First(DataCardValue38_1.Attachments).Value }
+                       
+                        
+                        
+                    });
+                    Back();
+                    Refresh('Complaint.S');
+                RadiusBottomLeft: =15
+                RadiusBottomRight: =15
+                RadiusTopLeft: =15
+                RadiusTopRight: =15
+                Size: =20
+                Text: ="Save"
+                Width: =242
+                X: =190
+                Y: =1020
+                ZIndex: =15
+
+            ComboBox6 As combobox:
+                AccessibleLabel: ="Customer"
+                BorderColor: =RGBA(0, 0, 0, 1)
+                BorderStyle: =BorderStyle.None
+                BorderThickness: =0
+                ChevronBackground: =RGBA(0, 0, 0, 0)
+                ChevronDisabledBackground: =RGBA(0, 0, 0, 0)
+                ChevronDisabledFill: =RGBA(244, 244, 244, 1)
+                ChevronFill: |-
+                    =//RGBA(255, 255, 255, 1)
+                    ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Text Primary Color").'Default Value') //_VarGblAppColors.textbgbutton
+                ChevronHoverBackground: =
+                ChevronHoverFill: =RGBA(26, 26, 26, 1)
+                Color: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Text Primary Color").'Default Value') //_VarGblAppColors.textbgbutton
+                DisabledBorderColor: =RGBA(166, 166, 166, 1)
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                DisabledFill: =RGBA(244, 244, 244, 1)
+                DisplayFields: =["new_customername"]
+                HoverColor: =RGBA(0, 0, 0, 1)
+                HoverFill: =RGBA(0, 0, 0, 0)
+                IsSearchable: =false
+                Items: =Parties_1
+                PressedColor: =RGBA(255, 255, 0, 1)
+                PressedFill: =//RGBA(0, 18, 107, 1)
+                SearchFields: =["new_customercode"]
+                SearchItems: =[]
+                SelectionColor: =//RGBA(255, 255, 255, 1)
+                SelectionFill: =//RGBA(56, 96, 178, 1)
+                Size: =18
+                Width: =480
+                X: =67
+                Y: =188
+                ZIndex: =16
+
+            Label23_4 As label:
+                BorderColor: =RGBA(0, 18, 107, 1)
+                Color: =RGBA(0, 0, 0, 1)
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                Fill: =RGBA(255, 255, 255, 1)
+                FontWeight: =FontWeight.Semibold
+                Size: =15
+                Text: ="Assigned Date"
+                Width: =151
+                X: =103
+                Y: =34
+                ZIndex: =17
+
+            Label23_7 As label:
+                BorderColor: =RGBA(0, 18, 107, 1)
+                Color: =RGBA(0, 0, 0, 1)
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                Fill: =RGBA(255, 255, 255, 1)
+                FontWeight: =FontWeight.Semibold
+                Size: =15
+                Text: ="Customer"
+                Width: =170
+                X: =Label23_4.X
+                Y: =157
+                ZIndex: =18
+
+            Label23_6 As label:
+                BorderColor: =RGBA(0, 18, 107, 1)
+                Color: =RGBA(0, 0, 0, 1)
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                Fill: =RGBA(255, 255, 255, 1)
+                FontWeight: =FontWeight.Semibold
+                Size: =15
+                Text: ="Department"
+                Width: =137
+                X: =Label23_4.X
+                Y: =262
+                ZIndex: =19
+
+            Label23_8 As label:
+                BorderColor: =RGBA(0, 18, 107, 1)
+                Color: =RGBA(0, 0, 0, 1)
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                Fill: =RGBA(255, 255, 255, 1)
+                FontWeight: =FontWeight.Semibold
+                Size: =15
+                Text: ="Issue Description"
+                Width: =182
+                X: =Label23_4.X
+                Y: =495
+                ZIndex: =20
+
+            Label23_9 As label:
+                BorderColor: =RGBA(0, 18, 107, 1)
+                Color: =RGBA(0, 0, 0, 1)
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                Fill: =RGBA(255, 255, 255, 1)
+                FontWeight: =FontWeight.Semibold
+                Size: =15
+                Text: =" Attachment"
+                Width: =157
+                X: =Label23_4.X
+                Y: =672
+                ZIndex: =21
+
+            Label23_10 As label:
+                BorderColor: =RGBA(0, 18, 107, 1)
+                Color: =RGBA(0, 0, 0, 1)
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                Fill: =RGBA(255, 255, 255, 1)
+                FontWeight: =FontWeight.Semibold
+                Size: =15
+                Text: ="Closure Date"
+                Width: =137
+                X: =Label23_4.X
+                Y: =884
+                ZIndex: =22
+
+    Header_42 As Header_19:
+        ScreenName: ="Complaints"
+        ZIndex: =3
+

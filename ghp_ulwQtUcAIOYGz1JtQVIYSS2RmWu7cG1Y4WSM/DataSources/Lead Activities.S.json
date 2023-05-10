@@ -1,0 +1,152 @@
+[
+  {
+    "CdsFCBContext": "{\"FileType\":true,\"ImageExternalStorage\":true}",
+    "EntitySetName": "zx_leadactivitieses",
+    "IsHidden": false,
+    "IsSampleData": false,
+    "IsWritable": true,
+    "LogicalName": "zx_leadactivities",
+    "MaxGetRowsCount": 500,
+    "Name": "Lead Activities.S",
+    "NativeCDSDataSourceInfoNameMapping": {
+      "_ownerid_value": "Owner",
+      "createdby": "Created By",
+      "createdon": "Created On",
+      "createdonbehalfby": "Created By (Delegate)",
+      "importsequencenumber": "Import Sequence Number",
+      "modifiedby": "Modified By",
+      "modifiedon": "Modified On",
+      "modifiedonbehalfby": "Modified By (Delegate)",
+      "overriddencreatedon": "Record Created On",
+      "owningbusinessunit": "Owning Business Unit",
+      "owningteam": "Owning Team",
+      "owninguser": "Owning User",
+      "statecode": "Status",
+      "statuscode": "Status Reason",
+      "timezoneruleversionnumber": "Time Zone Rule Version Number",
+      "utcconversiontimezonecode": "UTC Conversion Time Zone Code",
+      "versionnumber": "Version Number",
+      "zx_activityoutcome": "Activity Outcome",
+      "zx_activityremarks": "Activity Remarks",
+      "zx_activitytype": "Activity Type",
+      "zx_Contact": "Contact",
+      "zx_date": "Date",
+      "zx_duration": "Duration",
+      "zx_followupactivitytype": "Follow-Up Activity Type",
+      "zx_Lead": "Lead",
+      "zx_leadactivities_AsyncOperations": "System Jobs",
+      "zx_leadactivities_BulkDeleteFailures": "Bulk Delete Failures",
+      "zx_leadactivities_DuplicateBaseRecord": "Duplicate Records (zx_leadactivities_DuplicateBaseRecord)",
+      "zx_leadactivities_DuplicateMatchingRecord": "Duplicate Records (zx_leadactivities_DuplicateMatchingRecord)",
+      "zx_leadactivities_MailboxTrackingFolders": "Mailbox Auto Tracking Folders",
+      "zx_leadactivities_PrincipalObjectAttributeAccesses": "Field Sharing",
+      "zx_leadactivities_ProcessSession": "Process Sessions",
+      "zx_leadactivities_SyncErrors": "Sync Errors",
+      "zx_leadactivitiesid": "Lead Activities",
+      "zx_name": "Lead Activity Id",
+      "zx_nextfollowupdate": "Next Followup Date",
+      "zx_Party": "Party",
+      "zx_Visit": "Visit"
+    },
+    "PreferredName": "Lead Activities.S",
+    "Type": "NativeCDSDataSourceInfo"
+  },
+  {
+    "DisplayName": "Lead Activities.S (Views)",
+    "Name": "_zx_leadactivities_views",
+    "RelatedEntityName": "Lead Activities.S",
+    "TrimmedViewName": true,
+    "Type": "ViewInfo",
+    "ViewInfoNameMapping": {
+      "1c8a2375-27ff-4df1-89e9-d9391e2f8934": "Lead Activities Associated View",
+      "1e6049b8-e0b4-4244-8cd6-d8a5a899c01d": "Active Lead Activities",
+      "46beb5ff-5f38-48f9-828e-2b162efcb1a0": "Inactive Lead Activities",
+      "806d6e1f-5132-465f-a351-5b42275ddb41": "Lead Activities Lookup View",
+      "dcc89b20-7be1-4873-b023-79c1bad4c170": "Lead Activities Advanced Find View"
+    }
+  },
+  {
+    "DisplayName": "Activity Outcome",
+    "Name": "cra62_activityoutcome",
+    "OptionSetInfoNameMapping": {
+      "571990000": "Interested",
+      "571990001": "Not Interested"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": true,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "zx_activityoutcome",
+        "OptionSetReferenceEntityName": "Lead Activities.S"
+      }
+    },
+    "OptionSetTypeKey": "PicklistType",
+    "RelatedColumnInvariantName": "zx_activityoutcome",
+    "RelatedEntityName": "Lead Activities.S",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Activity Type",
+    "Name": "cra62_activitytype",
+    "OptionSetInfoNameMapping": {
+      "571990000": "Visit",
+      "571990001": "Call"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": true,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "zx_activitytype",
+        "OptionSetReferenceEntityName": "Lead Activities.S"
+      },
+      "OptionSetReferenceItem1": {
+        "OptionSetReferenceColumnName": "zx_followupactivitytype",
+        "OptionSetReferenceEntityName": "Lead Activities.S"
+      }
+    },
+    "OptionSetTypeKey": "PicklistType",
+    "RelatedColumnInvariantName": "zx_activitytype",
+    "RelatedEntityName": "Lead Activities.S",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Status (Lead Activities.S)",
+    "Name": "zx_leadactivities_statecode",
+    "OptionSetInfoNameMapping": {
+      "0": "Active",
+      "1": "Inactive"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "statecode",
+        "OptionSetReferenceEntityName": "Lead Activities.S"
+      }
+    },
+    "OptionSetTypeKey": "StateType",
+    "RelatedColumnInvariantName": "statecode",
+    "RelatedEntityName": "Lead Activities.S",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Status Reason (Lead Activities.S)",
+    "Name": "zx_leadactivities_statuscode",
+    "OptionSetInfoNameMapping": {
+      "1": "Active",
+      "2": "Inactive"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "statuscode",
+        "OptionSetReferenceEntityName": "Lead Activities.S"
+      }
+    },
+    "OptionSetTypeKey": "StatusType",
+    "RelatedColumnInvariantName": "statuscode",
+    "RelatedEntityName": "Lead Activities.S",
+    "Type": "OptionSetInfo"
+  }
+]

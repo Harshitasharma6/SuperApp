@@ -1,0 +1,138 @@
+[
+  {
+    "CdsFCBContext": "{\"FileType\":true,\"ImageExternalStorage\":true}",
+    "EntitySetName": "new_orderheaders",
+    "IsHidden": false,
+    "IsSampleData": false,
+    "IsWritable": true,
+    "LogicalName": "new_orderheader",
+    "MaxGetRowsCount": 500,
+    "Name": "Order Headers",
+    "NativeCDSDataSourceInfoNameMapping": {
+      "_ownerid_value": "Owner",
+      "cra3a_orderstatus": "Order Status",
+      "cra3a_quantity": "Quantity",
+      "cra62_approvalstatus": "Approval Status",
+      "cra62_Approver": "Approver",
+      "cra62_Lead": "Lead",
+      "cra62_ordertype": "Order Type",
+      "cra62_quoteorder": "Quote / Order",
+      "cra62_quoteversion": "Quote Version",
+      "createdby": "Created By",
+      "createdon": "Created On",
+      "createdonbehalfby": "Created By (Delegate)",
+      "exchangerate": "Exchange Rate",
+      "importsequencenumber": "Import Sequence Number",
+      "modifiedby": "Modified By",
+      "modifiedon": "Modified On",
+      "modifiedonbehalfby": "Modified By (Delegate)",
+      "new_cgst": "CGST",
+      "new_cgst_base": "CGST (Base)",
+      "new_discount": "Discount",
+      "new_discount_base": "Discount (Base)",
+      "new_igst": "IGST",
+      "new_igst_base": "IGST (Base)",
+      "new_new_invoice_OrderNo_new_orderheader": "Invoices",
+      "new_new_orderlines_OrderHeader_new_orderheade": "Order Lines",
+      "new_OrderFrom": "Order From",
+      "new_orderheader_AsyncOperations": "System Jobs",
+      "new_orderheader_BulkDeleteFailures": "Bulk Delete Failures",
+      "new_orderheader_DuplicateBaseRecord": "Duplicate Records (new_orderheader_DuplicateBaseRecord)",
+      "new_orderheader_DuplicateMatchingRecord": "Duplicate Records (new_orderheader_DuplicateMatchingRecord)",
+      "new_orderheader_FileAttachments": "FileAttachments",
+      "new_orderheader_MailboxTrackingFolders": "Mailbox Auto Tracking Folders",
+      "new_orderheader_PrincipalObjectAttributeAccesses": "Field Sharing",
+      "new_orderheader_ProcessSession": "Process Sessions",
+      "new_orderheader_SyncErrors": "Sync Errors",
+      "new_orderheaderid": "Order Header",
+      "new_orderid": "Order ID",
+      "new_OrderTo": "Order To",
+      "new_sgst": "SGST",
+      "new_sgst_base": "SGST (Base)",
+      "new_totalbillamount": "Total Bill Amount (new_totalbillamount)",
+      "new_totalbillamount_t_": "Total Bill Amount (new_totalbillamount_t_)",
+      "new_totalbillamount_t__base": "Total Bill Amount (Base)",
+      "new_Visit": "Visit",
+      "overriddencreatedon": "Record Created On",
+      "owningbusinessunit": "Owning Business Unit",
+      "owningteam": "Owning Team",
+      "owninguser": "Owning User",
+      "statecode": "Status",
+      "statuscode": "Status Reason",
+      "timezoneruleversionnumber": "Time Zone Rule Version Number",
+      "transactioncurrencyid": "Currency",
+      "utcconversiontimezonecode": "UTC Conversion Time Zone Code",
+      "versionnumber": "Version Number",
+      "zx_attachment": "Attachment",
+      "zx_BillTo": "Bill -To",
+      "zx_cess": "CESS",
+      "zx_cess_base": "CESS (Base)",
+      "zx_discount": "Discount %",
+      "zx_discountnew": "Discount New",
+      "zx_gstamount": "GSTAmount",
+      "zx_gstamount_base": "GSTAmount (Base)",
+      "zx_KRA": "KRA",
+      "zx_netprice": "Net Price",
+      "zx_orderdate": "Order Date",
+      "zx_QuoteHeader": "Quote Header",
+      "zx_totalgst": "Total Gst",
+      "zx_totalprice": "Total Price"
+    },
+    "PreferredName": "Order Headers",
+    "Type": "NativeCDSDataSourceInfo"
+  },
+  {
+    "DisplayName": "Order Headers (Views)",
+    "Name": "_new_orderheader_views",
+    "RelatedEntityName": "Order Headers",
+    "TrimmedViewName": true,
+    "Type": "ViewInfo",
+    "ViewInfoNameMapping": {
+      "0f929b17-72c6-47a0-9dbf-5557c9e356d0": "Order Header Advanced Find View",
+      "1c702302-cdaa-4821-864e-d09c8fa0ec03": "Order Header Associated View",
+      "6caf304f-42cc-4665-8677-121e06ed5c47": "Active Order Headers",
+      "8a60583d-5032-4fab-9158-630306d06dff": "Inactive Order Headers",
+      "9f9cbc04-da82-42f0-839f-2e1f2fc3e344": "Order Header Lookup View"
+    }
+  },
+  {
+    "DisplayName": "Status (Order Headers)",
+    "Name": "new_orderheader_statecode",
+    "OptionSetInfoNameMapping": {
+      "0": "Active",
+      "1": "Inactive"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "statecode",
+        "OptionSetReferenceEntityName": "Order Headers"
+      }
+    },
+    "OptionSetTypeKey": "StateType",
+    "RelatedColumnInvariantName": "statecode",
+    "RelatedEntityName": "Order Headers",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Status Reason (Order Headers)",
+    "Name": "new_orderheader_statuscode",
+    "OptionSetInfoNameMapping": {
+      "1": "Active",
+      "2": "Inactive"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "statuscode",
+        "OptionSetReferenceEntityName": "Order Headers"
+      }
+    },
+    "OptionSetTypeKey": "StatusType",
+    "RelatedColumnInvariantName": "statuscode",
+    "RelatedEntityName": "Order Headers",
+    "Type": "OptionSetInfo"
+  }
+]

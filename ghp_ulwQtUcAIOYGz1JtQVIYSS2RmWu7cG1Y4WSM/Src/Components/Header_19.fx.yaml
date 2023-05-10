@@ -1,0 +1,65 @@
+Header_19 As CanvasComponent:
+    Fill: =//_VarGblAppColors.BackgroundColor
+    Height: =80
+    ScreenName: ="Dashboard"
+    Width: =App.Width
+    X: =0
+    Y: =0
+    ZIndex: =1
+
+    Label2_3 As label:
+        BorderColor: =RGBA(0, 18, 107, 1)
+        Color: =RGBA(0, 0, 0, 1)
+        DisabledColor: =RGBA(166, 166, 166, 1)
+        Font: =_VarGblAppFonts.Heading
+        FontWeight: =FontWeight.Semibold
+        Height: =70
+        PaddingTop: =2
+        Size: =_VarGblAppFonts.Size.Title
+        Text: =Header_19.ScreenName
+        Width: =441
+        X: =90
+        Y: =5
+        ZIndex: =1
+
+    Icon1_2 As icon.ChevronLeft:
+        AccessibleLabel: ="Back Icon"
+        BorderColor: =RGBA(0, 18, 107, 1)
+        DisabledBorderColor: =RGBA(166, 166, 166, 1)
+        DisabledColor: =RGBA(244, 244, 244, 1)
+        FocusedBorderColor: =_VarGblAppColors.HeaderBg
+        FocusedBorderThickness: =01
+        Height: =60
+        Icon: =Icon.ChevronLeft
+        OnSelect: |-
+            =//Back(ScreenTransition.CoverRight)
+            If(
+                App.ActiveScreen.Name = "Product info",
+                Set(
+                    _VarActivetopTabID,
+                    2
+                );
+                Back(ScreenTransition.CoverRight),
+                Back(ScreenTransition.CoverRight)
+            )
+        PaddingBottom: =10
+        PaddingLeft: =10
+        PaddingRight: =15
+        PaddingTop: =10
+        PressedBorderColor: =_VarGblAppColors.HeaderBg
+        TabIndex: =0
+        Width: =60
+        X: =9
+        Y: =10
+        ZIndex: =2
+
+    Circle3 As circle:
+        BorderColor: =RGBA(0, 18, 107, 1)
+        Fill: =If(Connection.Connected, Color.GreenYellow, Color.Red)
+        Height: =20
+        Visible: =false
+        Width: =20
+        X: =380
+        Y: =29
+        ZIndex: =3
+

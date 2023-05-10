@@ -1,0 +1,233 @@
+[
+  {
+    "CdsFCBContext": "{\"FileType\":true,\"ImageExternalStorage\":true}",
+    "EntitySetName": "zx_orderheaders",
+    "IsHidden": false,
+    "IsSampleData": false,
+    "IsWritable": true,
+    "LogicalName": "zx_orderheader",
+    "MaxGetRowsCount": 500,
+    "Name": "Order Header.S",
+    "NativeCDSDataSourceInfoNameMapping": {
+      "_ownerid_value": "Owner",
+      "createdby": "Created By",
+      "createdon": "Created On",
+      "createdonbehalfby": "Created By (Delegate)",
+      "exchangerate": "Exchange Rate",
+      "importsequencenumber": "Import Sequence Number",
+      "modifiedby": "Modified By",
+      "modifiedon": "Modified On",
+      "modifiedonbehalfby": "Modified By (Delegate)",
+      "overriddencreatedon": "Record Created On",
+      "owningbusinessunit": "Owning Business Unit",
+      "owningteam": "Owning Team",
+      "owninguser": "Owning User",
+      "statecode": "Status",
+      "statuscode": "Status Reason",
+      "timezoneruleversionnumber": "Time Zone Rule Version Number",
+      "transactioncurrencyid": "Currency",
+      "utcconversiontimezonecode": "UTC Conversion Time Zone Code",
+      "versionnumber": "Version Number",
+      "zx_approvalstatus": "Approval Status",
+      "zx_Approver": "Approver",
+      "zx_attachment": "Attachment",
+      "zx_BillTo": "Bill To",
+      "zx_cess": "Cess %",
+      "zx_cess_base": "Cess % (Base)",
+      "zx_cgst": "CGST",
+      "zx_cgst_base": "CGST (Base)",
+      "zx_discount": "Discount%",
+      "zx_discount_base": "Discount (Base)",
+      "zx_discountp": "Discount ",
+      "zx_igst": "IGST",
+      "zx_igst_base": "IGST (Base)",
+      "zx_KRA": "KRA ",
+      "zx_Lead": "Lead",
+      "zx_name": "Order ID",
+      "zx_orderdate": "Order Date",
+      "zx_OrderFrom": "Order From",
+      "zx_orderheader_AsyncOperations": "System Jobs",
+      "zx_orderheader_BulkDeleteFailures": "Bulk Delete Failures",
+      "zx_orderheader_DuplicateBaseRecord": "Duplicate Records (zx_orderheader_DuplicateBaseRecord)",
+      "zx_orderheader_DuplicateMatchingRecord": "Duplicate Records (zx_orderheader_DuplicateMatchingRecord)",
+      "zx_orderheader_FileAttachments": "FileAttachments",
+      "zx_orderheader_MailboxTrackingFolders": "Mailbox Auto Tracking Folders",
+      "zx_orderheader_PrincipalObjectAttributeAccesses": "Field Sharing",
+      "zx_orderheader_ProcessSession": "Process Sessions",
+      "zx_orderheader_SyncErrors": "Sync Errors",
+      "zx_orderheaderid": "Order Header",
+      "zx_orderstatus": "Order Status",
+      "zx_OrderTo": "Order To",
+      "zx_ordertype": "Order Type",
+      "zx_PaymentTerms": "Payment Terms",
+      "zx_quantity": "Quantity",
+      "zx_quoteorder": "Quote / Order",
+      "zx_quoteversion": "Quote Version",
+      "zx_sgst": "SGST",
+      "zx_sgst_base": "SGST (Base)",
+      "zx_ShipTo": "Ship To",
+      "zx_shiptoaddress": "Ship to Address",
+      "zx_totalbillamount": "Total Bill Amount",
+      "zx_totalprice": "Total Price",
+      "zx_Visit": "Visit",
+      "zx_zx_invoice_OrderNo_zx_orderheader": "Invoice.S",
+      "zx_zx_orderlines_OrderHeader_zx_orderheader": "Order Lines.S"
+    },
+    "PreferredName": "Order Header.S",
+    "Type": "NativeCDSDataSourceInfo"
+  },
+  {
+    "DisplayName": "Order Header.S (Views)",
+    "Name": "_zx_orderheader_views",
+    "RelatedEntityName": "Order Header.S",
+    "TrimmedViewName": true,
+    "Type": "ViewInfo",
+    "ViewInfoNameMapping": {
+      "132d91ad-d02c-42b0-aa74-02687466582f": "Order Header Advanced Find View",
+      "39eca996-919e-4ce7-abf1-7659a9cecfab": "Order Header Associated View",
+      "81dfa35d-daad-41ca-9084-feb679674c1f": "Active Order Headers",
+      "f2d42490-aab3-4de3-a344-b31c842fc205": "Order Header Lookup View",
+      "fb37e693-859e-4614-a768-c27e1f6510aa": "Inactive Order Headers"
+    }
+  },
+  {
+    "DisplayName": "Order Status Choice",
+    "Name": "cra3a_orderstatuschoice",
+    "OptionSetInfoNameMapping": {
+      "135360000": "Open",
+      "135360001": "Dispatched",
+      "135360003": "Shipped",
+      "571990001": "Delivered"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": true,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "zx_orderstatus",
+        "OptionSetReferenceEntityName": "Order Header.S"
+      },
+      "OptionSetReferenceItem1": {
+        "OptionSetReferenceColumnName": "cra3a_orderstatus",
+        "OptionSetReferenceEntityName": "Order Headers"
+      }
+    },
+    "OptionSetTypeKey": "PicklistType",
+    "RelatedColumnInvariantName": "zx_orderstatus",
+    "RelatedEntityName": "Order Header.S",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Approval Status Choice",
+    "Name": "cra62_approvalstatuschoice",
+    "OptionSetInfoNameMapping": {
+      "571990000": "Pending",
+      "571990001": "Approved",
+      "571990002": "Rejected",
+      "571990003": "Pending For Approval"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": true,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "zx_approvalstatus",
+        "OptionSetReferenceEntityName": "Order Header.S"
+      },
+      "OptionSetReferenceItem1": {
+        "OptionSetReferenceColumnName": "cra62_approvalstatus",
+        "OptionSetReferenceEntityName": "Order Headers"
+      }
+    },
+    "OptionSetTypeKey": "PicklistType",
+    "RelatedColumnInvariantName": "zx_approvalstatus",
+    "RelatedEntityName": "Order Header.S",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Order Type Choice",
+    "Name": "cra62_ordertypechoice",
+    "OptionSetInfoNameMapping": {
+      "571990000": "Primary",
+      "571990001": "Secondary"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": true,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "zx_ordertype",
+        "OptionSetReferenceEntityName": "Order Header.S"
+      },
+      "OptionSetReferenceItem1": {
+        "OptionSetReferenceColumnName": "cra62_ordertype",
+        "OptionSetReferenceEntityName": "Order Headers"
+      }
+    },
+    "OptionSetTypeKey": "PicklistType",
+    "RelatedColumnInvariantName": "zx_ordertype",
+    "RelatedEntityName": "Order Header.S",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Quote Order Choice",
+    "Name": "cra62_quoteorderchoice",
+    "OptionSetInfoNameMapping": {
+      "571990000": "Quote",
+      "571990001": "Order"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": true,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "zx_quoteorder",
+        "OptionSetReferenceEntityName": "Order Header.S"
+      },
+      "OptionSetReferenceItem1": {
+        "OptionSetReferenceColumnName": "cra62_quoteorder",
+        "OptionSetReferenceEntityName": "Order Headers"
+      }
+    },
+    "OptionSetTypeKey": "PicklistType",
+    "RelatedColumnInvariantName": "zx_quoteorder",
+    "RelatedEntityName": "Order Header.S",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Status (Order Header.S)",
+    "Name": "zx_orderheader_statecode",
+    "OptionSetInfoNameMapping": {
+      "0": "Active",
+      "1": "Inactive"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "statecode",
+        "OptionSetReferenceEntityName": "Order Header.S"
+      }
+    },
+    "OptionSetTypeKey": "StateType",
+    "RelatedColumnInvariantName": "statecode",
+    "RelatedEntityName": "Order Header.S",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Status Reason (Order Header.S)",
+    "Name": "zx_orderheader_statuscode",
+    "OptionSetInfoNameMapping": {
+      "1": "Active",
+      "2": "Inactive"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "statuscode",
+        "OptionSetReferenceEntityName": "Order Header.S"
+      }
+    },
+    "OptionSetTypeKey": "StatusType",
+    "RelatedColumnInvariantName": "statuscode",
+    "RelatedEntityName": "Order Header.S",
+    "Type": "OptionSetInfo"
+  }
+]
