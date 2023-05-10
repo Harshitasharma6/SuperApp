@@ -31,7 +31,7 @@
 
             Rectangle26 As rectangle:
                 BorderColor: =RGBA(0, 18, 107, 1)
-                Fill: =//LookUp(c_EnvironmentVariable, 'Display Name'="").'Default Value'
+                Fill: =//LookUp(c_EnvironmentVariable, 'Display Name'="").'Default Value' 
                 Height: =60
                 Width: =520
                 X: =53
@@ -1058,14 +1058,14 @@
                                 {
                                     itemPrice: LookUp(
                                         OfflineProductPriceCollection,
-                                        'Product SKU'.'Product SKU' = ThisItem.'Product SKU'.'Product SKU' && 'Price list'.Name = varPricelist.Name
+                                          'Product SKU Price'.'Product SKU' = ThisItem.'Product SKU'.'Product SKU' && 'Price list'.Name = varPricelist.Name
                                     ).'Ex-Factory'
                                 },
                                 Patch(
                                     'Quote Line.S',
                                     LookUp(
                                        'Quote Line.S',
-                                        'Product SKU'.'Product SKU' = ThisItem.'Product SKU'.'Product SKU' && 'Quote Header'.'Quote ID' = ThisItem.'Quote Header'.'Quote ID'
+                                        'Product SKU '.'Product SKU' = ThisItem.'Product SKU'.'Product SKU' && 'Quote Header'.'Quote ID' = ThisItem.'Quote Header'.'Quote ID'
                                     ),
                                     {
                                         Quantity: Value(Self.Text)
