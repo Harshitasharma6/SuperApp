@@ -6,7 +6,6 @@
     "IsSampleData": false,
     "IsWritable": true,
     "LogicalName": "fileattachment",
-    "MaxGetRowsCount": 500,
     "Name": "FileAttachments",
     "NativeCDSDataSourceInfoNameMapping": {
       "_objectid_value": "Regarding",
@@ -101,14 +100,6 @@
     "Type": "NativeCDSDataSourceInfo"
   },
   {
-    "DisplayName": "FileAttachments (Views)",
-    "Name": "_fileattachment_views",
-    "RelatedEntityName": "FileAttachments",
-    "TrimmedViewName": true,
-    "Type": "ViewInfo",
-    "ViewInfoNameMapping": {}
-  },
-  {
     "DisplayName": "IsCommitted (FileAttachments)",
     "Name": "fileattachment_iscommitted",
     "OptionSetInfoNameMapping": {
@@ -144,30 +135,6 @@
     },
     "OptionSetTypeKey": "EntityNameType",
     "RelatedColumnInvariantName": "objecttypecode",
-    "RelatedEntityName": "FileAttachments",
-    "Type": "OptionSetInfo"
-  },
-  {
-    "DisplayName": "DataState",
-    "Name": "msft_datastate",
-    "OptionSetInfoNameMapping": {
-      "0": "Default",
-      "1": "Retain"
-    },
-    "OptionSetIsBooleanValued": false,
-    "OptionSetIsGlobal": true,
-    "OptionSetReference": {
-      "OptionSetReferenceItem0": {
-        "OptionSetReferenceColumnName": "msft_datastate",
-        "OptionSetReferenceEntityName": "FileAttachments"
-      },
-      "OptionSetReferenceItem1": {
-        "OptionSetReferenceColumnName": "msft_datastate",
-        "OptionSetReferenceEntityName": "Notes"
-      }
-    },
-    "OptionSetTypeKey": "PicklistType",
-    "RelatedColumnInvariantName": "msft_datastate",
     "RelatedEntityName": "FileAttachments",
     "Type": "OptionSetInfo"
   }
