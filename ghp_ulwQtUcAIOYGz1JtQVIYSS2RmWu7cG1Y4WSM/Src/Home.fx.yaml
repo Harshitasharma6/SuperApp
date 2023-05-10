@@ -811,18 +811,6 @@ Home As screen:
         Y: =9
         ZIndex: =6
 
-    visitCartBackdrop_1 As rectangle:
-        AccessibleLabel: ="Backdrop"
-        BorderColor: =RGBA(0, 18, 107, 1)
-        DisplayMode: =DisplayMode.View
-        Fill: =RGBA(255, 255, 255, 0.31)
-        Height: =App.Height
-        OnSelect: =Set(_VarConfirmPjpModal, false)
-        TabIndex: =0
-        Visible: =_VarOfflineDataLoading
-        Width: =App.Width
-        ZIndex: =7
-
     Circle3_2 As circle:
         BorderColor: =RGBA(0, 18, 107, 1)
         Fill: =If(Connection.Connected, Color.GreenYellow, Color.Red)
@@ -831,7 +819,7 @@ Home As screen:
         Width: =20
         X: =420
         Y: =69
-        ZIndex: =8
+        ZIndex: =7
 
     Label12 As label:
         Align: =Align.Center
@@ -846,7 +834,7 @@ Home As screen:
         Width: =560
         X: =80
         Y: =599
-        ZIndex: =9
+        ZIndex: =8
 
     Image4 As image:
         BorderColor: =RGBA(0, 18, 107, 1)
@@ -858,7 +846,7 @@ Home As screen:
         Width: =60
         X: =327
         Y: =536
-        ZIndex: =10
+        ZIndex: =9
 
     Audio1 As audioPlayback:
         AccessibleLabel: ="Audio"
@@ -875,7 +863,7 @@ Home As screen:
         Visible: =false
         X: =155
         Y: =1025
-        ZIndex: =11
+        ZIndex: =10
 
     "'Bottom Bar_1' As 'Bottom Bar'":
         NavItems: |-
@@ -912,7 +900,7 @@ Home As screen:
                 }
             )
         Y: =1026
-        ZIndex: =12
+        ZIndex: =11
 
     Rectangle18 As rectangle:
         AccessibleLabel: ="Home Screen"
@@ -945,7 +933,7 @@ Home As screen:
             )
         Width: =640
         Y: =69
-        ZIndex: =13
+        ZIndex: =12
 
     NextIcn As icon.NextArrow:
         AccessibleLabel: ="Right Icon"
@@ -961,7 +949,7 @@ Home As screen:
         Visible: =//_VarStartdayModal
         X: =550
         Y: =559
-        ZIndex: =16
+        ZIndex: =15
 
     AttendanceRct As rectangle:
         BorderColor: =RGBA(0, 18, 107, 1)
@@ -972,7 +960,7 @@ Home As screen:
         Visible: =_VarAttendanceCamera
         Width: =640
         Y: =74
-        ZIndex: =17
+        ZIndex: =16
 
     Rectangle1 As rectangle:
         BorderColor: =RGBA(0, 0, 0, 0)
@@ -987,7 +975,7 @@ Home As screen:
         PressedFill: =RGBA(0, 120, 212, 1)
         Visible: =_VarAttendanceCamera
         Width: =640
-        ZIndex: =18
+        ZIndex: =17
 
     "'Take Selfie Lbl' As label":
         Align: =Align.Center
@@ -1002,7 +990,7 @@ Home As screen:
         Width: =560
         X: =40
         Y: =166
-        ZIndex: =19
+        ZIndex: =18
 
     PreviousIcn As icon.NextArrow:
         AccessibleLabel: ="Back Icon"
@@ -1022,7 +1010,7 @@ Home As screen:
         Width: =42
         X: =18
         Y: =21
-        ZIndex: =20
+        ZIndex: =19
 
     SubmitBtn As button:
         BorderColor: =RGBA(0, 0, 0, 1)
@@ -1092,7 +1080,7 @@ Home As screen:
         Width: =500
         X: =70
         Y: =719
-        ZIndex: =21
+        ZIndex: =20
 
     "'Attendance Image Take' As group":
         Height: =5
@@ -1115,7 +1103,7 @@ Home As screen:
             Width: =313
             X: =164
             Y: =330
-            ZIndex: =25
+            ZIndex: =24
 
         UploadedImage1 As image:
             AccessibleLabel: ="Add Photo"
@@ -1132,7 +1120,7 @@ Home As screen:
             Width: =313
             X: =164
             Y: =330
-            ZIndex: =26
+            ZIndex: =25
 
     Button13 As button:
         BorderColor: =RGBA(0, 0, 0, 1)
@@ -1158,7 +1146,19 @@ Home As screen:
         Width: =500
         X: =70
         Y: =277
-        ZIndex: =24
+        ZIndex: =23
+
+    visitCartBackdrop_1 As rectangle:
+        AccessibleLabel: ="Backdrop"
+        BorderColor: =RGBA(0, 18, 107, 1)
+        DisplayMode: =DisplayMode.View
+        Fill: =RGBA(255, 255, 255, 0.31)
+        Height: =App.Height
+        OnSelect: =Set(_VarConfirmPjpModal, false)
+        TabIndex: =0
+        Visible: =_VarOfflineDataLoading
+        Width: =App.Width
+        ZIndex: =26
 
     Group2 As group:
         Height: =5
@@ -1190,7 +1190,7 @@ Home As screen:
             Width: =586
             X: =27
             Y: =449
-            ZIndex: =14
+            ZIndex: =13
 
         "'Present type Gallery' As gallery.galleryVertical":
             AccessibleLabel: ="Present"
@@ -1207,7 +1207,7 @@ Home As screen:
             Width: =585
             X: =28
             Y: =456
-            ZIndex: =15
+            ZIndex: =14
 
             HtmlText1_3 As htmlViewer:
                 Height: =79
@@ -1297,7 +1297,7 @@ Home As screen:
             Width: =30
             X: =194
             Y: =565
-            ZIndex: =22
+            ZIndex: =21
 
         Image6_1 As image:
             BorderColor: =RGBA(0, 0, 0, 0)
@@ -1316,5 +1316,5 @@ Home As screen:
             Width: =30
             X: =194
             Y: =485
-            ZIndex: =23
+            ZIndex: =22
 
