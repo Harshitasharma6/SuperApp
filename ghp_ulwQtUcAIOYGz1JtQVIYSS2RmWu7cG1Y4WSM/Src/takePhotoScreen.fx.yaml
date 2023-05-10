@@ -62,24 +62,21 @@ takePhotoScreen As screen:
                         DisabledBorderColor: =RGBA(166, 166, 166, 1)
                         DisabledColor: =RGBA(166, 166, 166, 1)
                         DisabledFill: =RGBA(244, 244, 244, 1)
-                        DisplayFields: =["new_customername"]
+                        DisplayFields: =["zx_name"]
                         FontWeight: =FontWeight.Semibold
                         Height: =60
                         HoverColor: =RGBA(0, 0, 0, 1)
                         HoverFill: =RGBA(186, 202, 226, 1)
+                        IsSearchable: =false
                         Items: |-
                             =Filter(
-                                Parties_1,
+                                'Parties.S',
                                 'Owning User'.'Primary Email' = User().Email
                             )
                         PressedColor: =RGBA(255, 255, 255, 1)
                         PressedFill: =RGBA(0, 18, 107, 1)
-                        SearchFields: =["cra3a_email"]
-                        SearchItems: |-
-                            =Search(Filter(
-                                Parties_1,
-                                'Owning User'.'Primary Email' = User().Email
-                            ),AccountComboBox.SearchText,"cra3a_email")
+                        SearchFields: =["zx_name"]
+                        SearchItems: =[]
                         SelectionFill: =RGBA(56, 96, 178, 1)
                         SelectMultiple: =false
                         Size: =18
@@ -251,7 +248,7 @@ takePhotoScreen As screen:
                     DisabledBorderColor: =RGBA(166, 166, 166, 1)
                     DisabledColor: =RGBA(166, 166, 166, 1)
                     DisabledFill: =RGBA(244, 244, 244, 1)
-                    DisplayFields: =["zx_name","cra62_natureofcomplaint"]
+                    DisplayFields: =["zx_complaintno","cra62_natureofcomplaint"]
                     FontWeight: =FontWeight.Semibold
                     Height: =60
                     HoverColor: =RGBA(0, 0, 0, 1)
@@ -264,12 +261,11 @@ takePhotoScreen As screen:
                         )
                     PressedColor: =RGBA(255, 255, 255, 1)
                     PressedFill: =RGBA(0, 18, 107, 1)
-                    SearchFields: =["zx_name"]
+                    SearchFields: =["zx_complaintno"]
                     SearchItems: =[]
                     SelectionFill: =RGBA(56, 96, 178, 1)
                     SelectMultiple: =false
                     Size: =18
-                    Template: =ListItemTemplate.Double
                     Visible: |-
                         =If(
                             Dropdown1.Selected.Value = "Complaint",
@@ -525,8 +521,8 @@ takePhotoScreen As screen:
                                                 Regarding: If(
                                                     Dropdown1.Selected.Value = "Account" && !IsBlank(Dropdown1.Selected),
                                                     LookUp(
-                                                        Parties_1,
-                                                        'Parties (new_partiesid)' = AccountComboBox.Selected.'Parties (new_partiesid)'
+                                                        'Parties.S',
+                                                       Parties = AccountComboBox.Selected.Parties
                                                     ),
                                                     Dropdown1.Selected.Value = "Leads" && !IsBlank(Dropdown1.Selected),
                                                     LookUp(
