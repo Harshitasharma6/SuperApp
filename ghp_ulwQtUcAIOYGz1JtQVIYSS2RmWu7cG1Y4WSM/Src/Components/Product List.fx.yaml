@@ -1215,11 +1215,12 @@
                             {
                                 displayText: "Variant",
                                 tabID: 3
-                            },
+                            }
+                            /*,
                             {
                                 displayText: "Discount",
                                 tabID: 4
-                            }
+                            }*/
                         )
                     Layout: =Layout.Vertical
                     LoadingSpinner: =LoadingSpinner.Data
@@ -1380,71 +1381,37 @@
                     Width: =315
                     ZIndex: =2
 
-                radioDiscount As radio:
+                radioVariant As radio:
                     AccessibleLabel: ="Discount Filter"
                     BorderColor: =RGBA(0, 18, 107, 1)
                     Color: =RGBA(0, 0, 0, 1)
                     Height: =Container7.Height
                     HoverColor: =RGBA(0, 18, 107, 1)
-                    Items: |-
-                        =Table(
-                            {
-                                displayText: "10% and above",
-                                vall: 10
-                            },
-                            {
-                                displayText: "20% and above",
-                                vall: 20
-                            },
-                            {
-                                displayText: "30% and above",
-                                vall: 30
-                            },
-                            {
-                                displayText: "40% and above",
-                                vall: 40
-                            },
-                            {
-                                displayText: "50% and above",
-                                vall: 50
-                            },
-                            {
-                                displayText: "60% and above",
-                                vall: 60
-                            },
-                            {
-                                displayText: "70% and above",
-                                vall: 70
-                            },
-                            {
-                                displayText: "80% and above",
-                                vall: 80
-                            }
-                        )
+                    Items: =OfflineVariantsCollection
                     OnSelect: |-
                         =If(
                             IsBlank(
                                 LookUp(
                                     selectedFilterValues,
-                                    title = "Discount"
+                                    title = "Variant"
                                 )
                             ),
                             Collect(
                                 selectedFilterValues,
                                 {
-                                    title: "Discount",
-                                    value: Self.Selected.displayText
+                                    title: "Variant",
+                                    value: Self.Selected.'Variant Name'
                                 }
                             ),
                             Patch(
                                 selectedFilterValues,
                                 LookUp(
                                     selectedFilterValues,
-                                    title = "Discount"
+                                    title = "Variant"
                                 ),
                                 {
-                                    title: "Discount",
-                                    value: Self.Selected.displayText
+                                    title: "Variant",
+                                    value: Self.Selected.'Variant Name'
                                 }
                             )
                         )
@@ -1454,126 +1421,12 @@
                     Size: =18
                     Visible: |-
                         =If(
-                            varFilterType = 4,
-                            true,
-                            false
-                        )
-                    Width: =315
-                    ZIndex: =4
-
-                gallVariantName As gallery.galleryVertical:
-                    AccessibleLabel: ="Product"
-                    BorderColor: =RGBA(0, 18, 107, 1)
-                    Height: =261
-                    Items: |-
-                        =/*AddColumns(
-                            OfflineVariantsCollection,
-                            "varitantName",
-                            'Variant Name'
-                        )*/
-                        OfflineVariantsCollection
-                    Layout: =Layout.Vertical
-                    TabIndex: =0//-1
-                    TemplateSize: =59
-                    Visible: |-
-                        =If(
                             varFilterType = 3,
                             true,
                             false
                         )
                     Width: =315
-                    ZIndex: =7
-
-                    Checkbox3 As checkbox:
-                        BorderColor: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//RGBA(0, 18, 107, 1)
-                        CheckboxBorderColor: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//RGBA(0, 18, 107, 1)
-                        CheckboxSize: =30
-                        Color: =RGBA(0, 0, 0, 1)
-                        Default: |-
-                            =If(
-                                IsBlank(
-                                    LookUp(
-                                        colSelectedVariant,
-                                        variantName = ThisItem.'Variant Name'
-                                    )
-                                ),
-                                false,
-                                true
-                            )
-                        Height: =59
-                        HoverColor: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//_VarGblAppColors.PrimaryRed
-                        OnCheck: |-
-                            =If(
-                                IsBlank(
-                                    LookUp(
-                                        selectedFilterValues,
-                                        title = "Variant" && value = ThisItem.'Variant Name'
-                                    )
-                                ),
-                                Collect(
-                                    selectedFilterValues,
-                                    {
-                                        title: "Variant",
-                                        value: ThisItem.'Variant Name'
-                                    }
-                                )/*,
-                                Patch(
-                                    selectedFilterValues,
-                                    Defaults(
-                                            title: "Variant",
-                                        value: ThisItem.'Variant Name'
-                                    )    
-                                )*/
-                            );
-                            If(
-                                IsBlank(
-                                    LookUp(
-                                        colSelectedVariant,
-                                        variantName = ThisItem.'Variant Name'
-                                    )
-                                ),
-                                Collect(
-                                    colSelectedVariant,
-                                    {variantName: ThisItem.'Variant Name'}
-                                )
-                            )
-                        OnSelect: =
-                        OnUncheck: |-
-                            =If(
-                                !IsBlank(
-                                    LookUp(
-                                        selectedFilterValues,
-                                        title = "Variant" && value = ThisItem.'Variant Name'
-                                    )
-                                ),
-                                Remove(
-                                    selectedFilterValues,
-                                    LookUp(
-                                        selectedFilterValues,
-                                        title = "Variant" && value = ThisItem.'Variant Name'
-                                    )
-                                )
-                            );
-                            If(
-                                !IsBlank(
-                                    LookUp(
-                                        colSelectedVariant,
-                                        variantName = ThisItem.'Variant Name'
-                                    )
-                                ),
-                                Remove(
-                                    colSelectedVariant,
-                                    LookUp(
-                                        colSelectedVariant,
-                                        variantName = ThisItem.'Variant Name'
-                                    )
-                                )
-                            )
-                        PressedColor: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//RGBA(70, 68, 64, 1)
-                        Size: =18
-                        Text: =ThisItem.'Variant Name'
-                        Width: =280
-                        ZIndex: =1
+                    ZIndex: =4
 
         ApplyBtn_5 As button:
             BorderColor: =RGBA(0, 0, 0, 1)
@@ -1595,22 +1448,19 @@
                     _VarFilterModal,
                     !_VarFilterModal
                 );
-                Set(
+                /*Set(
                     varcategory,
                     radioCategory.Selected.'Category Code'
                 );
-                Set(
-                    varHigherVal,
-                    radioDiscount.Selected.vall
-                );
+                
                 Set(
                     varProductGrp,
                     radioProductGrp.Selected.'Group Code'
                 );
-                /*Set(
+                Set(
                     varVariant,
                     radioVariant.Selected.varitantName
-                );*/
+                );
                 ClearCollect(
                     colProductsByVariants,
                     Filter(
@@ -1623,7 +1473,9 @@
                             ).Variant.Variants
                         ).'Variant Name' in colSelectedVariant
                     )
-                )
+                )*/
+                
+                ClearCollect(colFilterProduct,{});
             PaddingTop: =3
             Size: =18
             Text: ="APPLY"
@@ -1708,12 +1560,9 @@
                             radioProductGrp.Selected.'Group Code'
                         ),
                         ThisItem.title = "Variant",
-                       // Reset(radioVariant) && 
-                        Clear(colSelectedVariant),
-                        ThisItem.title = "Discount",
-                        Reset(radioDiscount) && Set(
-                            varHigherVal,
-                            radioDiscount.Selected.vall
+                        Reset(radioVariant) && Set(
+                            varVariant,
+                            radioVariant.Selected.'Variant Code'
                         )
                     );
                     Remove(
@@ -1749,8 +1598,8 @@
             OnSelect: |-
                 =Reset(radioCategory);
                 Reset(radioProductGrp);
-                //Reset(radioVariant);
-                Reset(radioDiscount);
+                Reset(radioVariant);
+                
                 Set(
                     varcategory,
                     radioCategory.Selected.'Category Code'
@@ -1760,11 +1609,12 @@
                     radioProductGrp.Selected.'Group Code'
                 );
                 Set(
-                    varHigherVal,
-                    radioDiscount.Selected.vall
+                    varVariant,
+                    radioVariant.Selected.'Variant Code'
                 );
+                
                 Clear(selectedFilterValues);
-                Clear(colSelectedVariant)
+                Clear(colFilterProduct)
             PaddingTop: =3
             Size: =18
             Text: ="CLEAR FILTER"
