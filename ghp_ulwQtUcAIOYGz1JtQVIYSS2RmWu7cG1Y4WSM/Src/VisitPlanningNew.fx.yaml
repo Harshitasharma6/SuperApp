@@ -1,6 +1,12 @@
 VisitPlanningNew As screen:
     Fill: =RGBA(227, 228, 230, 0.57)
     LoadingSpinnerColor: =RGBA(0, 120, 212, 1)
+    OnVisible: |-
+        =Set(
+            PlanVarDate1,
+            Today()
+        );
+        ClearCollect(offlineLeadCollection,'Leads.S')
 
     "'Bottom Bar_15' As 'Bottom Bar'":
         Fill: =RGBA(255, 255, 255, 1)
@@ -21,7 +27,7 @@ VisitPlanningNew As screen:
         Text: =""
         Width: =130
         X: =416
-        Y: =140
+        Y: =139
         ZIndex: =2
 
     areaCmb_1 As combobox:
@@ -56,7 +62,7 @@ VisitPlanningNew As screen:
         Size: =14
         Width: =112
         X: =430
-        Y: =143
+        Y: =142
         ZIndex: =3
 
     SearchBox_1 As text:
@@ -81,7 +87,7 @@ VisitPlanningNew As screen:
         RadiusTopRight: =15
         Width: =392
         X: =10
-        Y: =140
+        Y: =139
         ZIndex: =4
 
     Icon15_1 As icon.Search:
@@ -121,7 +127,7 @@ VisitPlanningNew As screen:
         TabIndex: =0
         TemplatePadding: =2
         TemplateSize: =302
-        Y: =82
+        Y: =81
         ZIndex: =6
 
         Rectangle3_23 As rectangle:
@@ -186,7 +192,7 @@ VisitPlanningNew As screen:
         BorderColor: =RGBA(0, 18, 107, 1)
         BorderStyle: =BorderStyle.None
         FocusedBorderThickness: =01
-        Height: =853
+        Height: =785
         Items: |-
             =If(
                 varCollectionEmpty = true,
@@ -215,7 +221,7 @@ VisitPlanningNew As screen:
             
                                     )
                            ),
-                                SearchBox_1.Text in cra62_leadname //|| SearchBox_1.Text in zx_Party. //|| SearchBox_1.Text in Contact.'First Name' || //SearchBox_1.Text in Contact.'Last Name'
+                                SearchBox_1.Text in 'Lead Name' //|| SearchBox_1.Text in zx_Party. //|| SearchBox_1.Text in Contact.'First Name' || //SearchBox_1.Text in Contact.'Last Name'
                             ),
                             createdon,
                             SortOrder.Descending
@@ -234,7 +240,7 @@ VisitPlanningNew As screen:
                                         owninguser.'Primary Email' = User().Email && zx_Area.Area = areaCmb_1.Selected.Area.Area
                                     )
                                 ),
-                                SearchBox_1.Text in cra62_leadname //|| SearchBox_1.Text in Party.'Customer Name' || SearchBox_1.Text in //Contact.'First Name' || SearchBox_1.Text in Contact.'Last Name'
+                                SearchBox_1.Text in 'Lead Name' //|| SearchBox_1.Text in Party.'Customer Name' || SearchBox_1.Text in //Contact.'First Name' || SearchBox_1.Text in Contact.'Last Name'
                             ),
                             createdon,
                             SortOrder.Ascending
@@ -253,7 +259,7 @@ VisitPlanningNew As screen:
                                         owninguser.'Primary Email' = User().Email && zx_Area.Area = areaCmb_1.Selected.Area.Area
                                     )
                                 ),
-                                SearchBox_1.Text in cra62_leadname //|| SearchBox_1.Text in Party.'Customer Name' || SearchBox_1.Text in //Contact.'First Name' || SearchBox_1.Text in Contact.'Last Name'
+                                SearchBox_1.Text in 'Lead Name' //|| SearchBox_1.Text in Party.'Customer Name' || SearchBox_1.Text in //Contact.'First Name' || SearchBox_1.Text in Contact.'Last Name'
                             ),
                             createdon,
                             SortOrder.Ascending
@@ -272,7 +278,7 @@ VisitPlanningNew As screen:
                                         owninguser.'Primary Email' = User().Email && zx_Area.Area = areaCmb_1.Selected.Area.Area
                                     )
                                 ),
-                                SearchBox_1.Text in cra62_leadname //SearchBox_1.Text in Party.'Customer Name' || SearchBox_1.Text in Contact.'First Name' || SearchBox_1.Text in Contact.'Last Name'
+                                SearchBox_1.Text in 'Lead Name' //SearchBox_1.Text in Party.'Customer Name' || SearchBox_1.Text in Contact.'First Name' || SearchBox_1.Text in Contact.'Last Name'
                             ),
                             createdon,
                             SortOrder.Descending
@@ -297,7 +303,7 @@ VisitPlanningNew As screen:
                                         owninguser.'Primary Email' = User().Email && zx_Area.Area = areaCmb_1.Selected.Area.Area
                                     )
                                 ),
-                                SearchBox_1.Text in cra62_leadname  //|| SearchBox_1.Text in Party.'Customer Name' || SearchBox_1.Text in Contact.'First Name' || SearchBox_1.Text in Contact.'Last Name'
+                                SearchBox_1.Text in 'Lead Name'  //|| SearchBox_1.Text in Party.'Customer Name' || SearchBox_1.Text in Contact.'First Name' || SearchBox_1.Text in Contact.'Last Name'
                             ),
                             createdon,
                             SortOrder.Descending
@@ -316,7 +322,7 @@ VisitPlanningNew As screen:
                                         owninguser.'Primary Email' = User().Email && zx_Area.Area = areaCmb_1.Selected.Area.Area
                                     )
                                 ),
-                                SearchBox_1.Text in cra62_leadname //|| SearchBox_1.Text in Party.'Customer Name' || SearchBox_1.Text in Contact.'First Name' || SearchBox_1.Text in Contact.'Last Name'
+                                SearchBox_1.Text in 'Lead Name' //|| SearchBox_1.Text in Party.'Customer Name' || SearchBox_1.Text in Contact.'First Name' || SearchBox_1.Text in Contact.'Last Name'
                             ),
                             createdon,
                             SortOrder.Ascending
@@ -335,7 +341,7 @@ VisitPlanningNew As screen:
                                         owninguser.'Primary Email' = User().Email && zx_Area.Area = areaCmb_1.Selected.Area.Area
                                     )
                                 ),
-                                SearchBox_1.Text in cra62_leadname //|| SearchBox_1.Text in Party.'Customer Name' || SearchBox_1.Text in Contact.'First Name' || SearchBox_1.Text in Contact.'Last Name'
+                                SearchBox_1.Text in 'Lead Name' //|| SearchBox_1.Text in Party.'Customer Name' || SearchBox_1.Text in Contact.'First Name' || SearchBox_1.Text in Contact.'Last Name'
                             ),
                             createdon,
                             SortOrder.Descending
@@ -354,7 +360,7 @@ VisitPlanningNew As screen:
                                         owninguser.'Primary Email' = User().Email && zx_Area.Area = areaCmb_1.Selected.Area.Area
                                     )
                                 ),
-                                SearchBox_1.Text in cra62_leadname //|| SearchBox_1.Text in Party.'Customer Name' || SearchBox_1.Text in Contact.'First Name' || SearchBox_1.Text in Contact.'Last Name'
+                                SearchBox_1.Text in 'Lead Name' //|| SearchBox_1.Text in Party.'Customer Name' || SearchBox_1.Text in Contact.'First Name' || SearchBox_1.Text in Contact.'Last Name'
                             ),
                            createdon,
                             SortOrder.Ascending
@@ -369,7 +375,7 @@ VisitPlanningNew As screen:
         Visible: =If('Type Filter_1'.Selected.Id=1, true, false)
         Width: =610
         X: =10
-        Y: =202
+        Y: =268
         ZIndex: =7
 
         Button5_26 As button:
@@ -935,7 +941,7 @@ VisitPlanningNew As screen:
         Visible: =If('Type Filter_1'.Selected.Id=1, true, false)
         Width: =40
         X: =600
-        Y: =144
+        Y: =143
         ZIndex: =9
 
     Filter_9 As icon.FilterFlat:
@@ -960,7 +966,7 @@ VisitPlanningNew As screen:
         Visible: =If('Type Filter_1'.Selected.Id=1, true, false)
         Width: =40
         X: =560
-        Y: =143
+        Y: =142
         ZIndex: =10
 
     Header_8 As Header:
@@ -1126,4 +1132,101 @@ VisitPlanningNew As screen:
             X: =274
             Y: =343
             ZIndex: =13
+
+    DateFilter_1 As gallery.galleryHorizontal:
+        AccessibleLabel: ="Date Gallery"
+        BorderColor: =RGBA(230, 230, 230, 1)
+        Height: =60
+        Items: |-
+            =ForAll(
+                [
+                    {
+                        Title: "Yesterday",
+                        Date: DateValue(PlanVarDate1) - 1
+                    },
+                    {
+                        Title: "Today",
+                        Date: DateValue(PlanVarDate1)
+                    },
+                    {
+                        Title: "Tomorrow",
+                        Date: DateValue(PlanVarDate1) + 1
+                    }
+                ],
+                {Value: ThisRecord}
+            )
+        ShowScrollbar: =false
+        TabIndex: =0
+        TemplatePadding: =0
+        TemplateSize: =DateFilter_1.Width / 3
+        Width: =App.Width - 100
+        X: =50
+        Y: =199
+        ZIndex: =17
+
+        Button5_11 As button:
+            BorderStyle: =BorderStyle.None
+            Color: |-
+                =If(ThisItem.Value.Date = clickedvisit_planning_date, Color.White,ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' ) 
+                )
+            DisabledBorderColor: =RGBA(166, 166, 166, 1)
+            DisabledColor: =RGBA(166, 166, 166, 1)
+            DisabledFill: =RGBA(244, 244, 244, 1)
+            Fill: |-
+                =If(ThisItem.Value.Date = clickedvisit_planning_date, ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )
+                ,ColorValue( LookUp('Environment Variable Definitions', 'Display Name'="Common Primary Background").'Default Value')//_VarGblAppColors.PrimaryBg 
+                )
+            FontWeight: =FontWeight.Semibold
+            Height: =50
+            HoverColor: =RGBA(255, 255, 255, 1)
+            HoverFill: |-
+                =ColorFade(ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )
+                , -20%)
+            OnSelect: =Set(clickedvisit_planning_date, ThisItem.Value.Date)
+            Size: =12
+            Text: |-
+                =If(
+                    (ThisItem.Value.Date = Today() - 1) || (ThisItem.Value.Date = Today()) || (ThisItem.Value.Date = Today() + 1),
+                    ThisItem.Value.Title & " (" & Text(
+                        DateValue(ThisItem.Value.Date),
+                        "mmm dd"
+                    ) & ")",
+                    Text(
+                        DateValue(ThisItem.Value.Date),
+                        "mmm dd"
+                    )
+                )
+            Width: =170
+            X: =5
+            Y: =5
+            ZIndex: =1
+
+    PrevDateIcn_1 As icon.ChevronLeft:
+        AccessibleLabel: ="Left Date Icon"
+        BorderColor: =RGBA(0, 18, 107, 1)
+        Color: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )
+        DisabledBorderColor: =RGBA(166, 166, 166, 1)
+        DisabledColor: =RGBA(244, 244, 244, 1)
+        Height: =30
+        Icon: =Icon.ChevronLeft
+        OnSelect: =Set(PlanVarDate1, DateValue(PlanVarDate1) - 3)
+        TabIndex: =0
+        Width: =50
+        Y: =214
+        ZIndex: =18
+
+    NextDateIcn_1 As icon.ChevronLeft:
+        AccessibleLabel: ="Right Date Icon"
+        BorderColor: =RGBA(0, 18, 107, 1)
+        Color: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )
+        DisabledBorderColor: =RGBA(166, 166, 166, 1)
+        DisabledColor: =RGBA(244, 244, 244, 1)
+        Height: =30
+        Icon: =Icon.ChevronRight
+        OnSelect: =Set(PlanVarDate1, DateValue(PlanVarDate1) + 3)
+        TabIndex: =0
+        Width: =50
+        X: =590
+        Y: =214
+        ZIndex: =19
 

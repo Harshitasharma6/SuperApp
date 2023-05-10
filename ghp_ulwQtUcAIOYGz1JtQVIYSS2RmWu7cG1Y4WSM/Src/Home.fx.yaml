@@ -1101,22 +1101,6 @@ Home As screen:
         Y: =40
         ZIndex: =22
 
-        AddMediaButton1 As addMedia:
-            AccessibleLabel: ="Add Photo"
-            BorderColor: =RGBA(0, 18, 107, 1)
-            ChangePictureText: =""
-            Color: =RGBA(153, 153, 153, 1)
-            Fill: =RGBA(255, 255, 255, 1)
-            Height: =323
-            Size: =14
-            Text: ="Tap to add photo"
-            UseMobileCamera: =true
-            Visible: =_VarAttendanceCamera
-            Width: =313
-            X: =164
-            Y: =330
-            ZIndex: =25
-
         UploadedImage1 As image:
             AccessibleLabel: ="Add Photo"
             BorderColor: =RGBA(0, 18, 107, 1)
@@ -1128,6 +1112,22 @@ Home As screen:
                 
                 AddMediaButton1.Media
             ImagePosition: =ImagePosition.Fill
+            Visible: =_VarAttendanceCamera
+            Width: =313
+            X: =164
+            Y: =330
+            ZIndex: =25
+
+        AddMediaButton1 As addMedia:
+            AccessibleLabel: ="Add Photo"
+            BorderColor: =RGBA(0, 18, 107, 1)
+            ChangePictureText: =""
+            Color: =RGBA(153, 153, 153, 1)
+            Fill: =RGBA(255, 255, 255, 1)
+            Height: =323
+            Size: =14
+            Text: ="Tap to add photo"
+            UseMobileCamera: =true
             Visible: =_VarAttendanceCamera
             Width: =313
             X: =164
