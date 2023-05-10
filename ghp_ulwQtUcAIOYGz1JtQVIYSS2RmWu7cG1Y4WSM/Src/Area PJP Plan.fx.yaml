@@ -12,7 +12,7 @@
         If(
             IsBlank(
                 LookUp(
-                    'PJP Headers',
+                    'PJP Header.S',
                     User.'Primary Email' = User().Email && Month = Text(
                         ClickedPjpdate,
                         "mmmm"
@@ -20,8 +20,8 @@
                 )
             ),
             Patch(
-                'PJP Headers',
-                Defaults('PJP Headers'),
+                'PJP Header.S',
+                Defaults('PJP Header.S'),
                 {
                     User: LookUp(
                         Users,
@@ -37,7 +37,7 @@
         Set(
             _VarPjpHeader,
             LookUp(
-                'PJP Headers',
+                'PJP Header.S',
                 User.'Primary Email' = User().Email && Month = Text(
                     ClickedPjpdate,
                     "mmmm"
