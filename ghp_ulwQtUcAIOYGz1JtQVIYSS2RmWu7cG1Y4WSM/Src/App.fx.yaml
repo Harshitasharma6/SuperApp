@@ -1,11 +1,14 @@
 App As appinfo:
     BackEnabled: =false
-    OnStart: |+
+    OnStart: |
         =Set(
             _VarOfflineDataLoading,
             true
         );
-        Set(varLeadFilter, true);
+        Set(
+            varLeadFilter,
+            true
+        );
         /*
         Set(
             _VarGblAppColors,
@@ -42,9 +45,10 @@ App As appinfo:
             }
         );
         */
-        ClearCollect(c_EnvironmentVariable, 'Environment Variable Definitions');
-        
-        
+        ClearCollect(
+            c_EnvironmentVariable,
+            'Environment Variable Definitions'
+        );
         Set(
             _VarActivetopTabID,
             1
@@ -81,9 +85,10 @@ App As appinfo:
                 'Display Name' = "State"
             ).'Default Value'
         );
-        Set(varUserr,First(UserAssignedAreas).Area.Area);
-         
-                
+        Set(
+            varUserr,
+            First(UserAssignedAreas).Area.Area
+        );
         // SAVE DATA ###########################################################################################################
         Concurrent(
             SaveData(
@@ -191,7 +196,6 @@ App As appinfo:
                 "offlineLeadCollection"
             )
         );
-        
         // LOAD DATA ############################################################################################################
         If(
             Connection.Connected,
@@ -222,7 +226,24 @@ App As appinfo:
                 ,
                 ClearCollect(
                     OfflineProductPriceCollection,
-                    'Product Price.S'
+                    AddColumns(
+                        'Product Price.S' As item,
+                        "Productcategoryid",
+                        LookUp(
+                            'Product SKU.S',
+                            'Product SKU' = item.'Product SKU Price'.'Product SKU'
+                        ).'Product Category'.'Product Category',
+                        "ProductGroupid",
+                        LookUp(
+                            'Product SKU.S',
+                            'Product SKU' = item.'Product SKU Price'.'Product SKU'
+                        ).'Product Group'.'Product Group',
+                        "ProductVariantid",
+                        LookUp(
+                            'Product SKU.S',
+                            'Product SKU' = item.'Product SKU Price'.'Product SKU'
+                        ).Variant.Variants
+                    )
                 );
                 ,
                 ClearCollect(
@@ -272,21 +293,34 @@ App As appinfo:
                 ,
                 ClearCollect(
                     OfflineOrderHeaderCollection,
-                    Filter('Order Header.S','Owning User'.'Primary Email'= User().Email)  );
+                    Filter(
+                        'Order Header.S',
+                        'Owning User'.'Primary Email' = User().Email
+                    )
+                );
                 ,
                 ClearCollect(
                     OfflineOrderLineCollection,
-                    Filter('Order Lines.S','Owning User'.'Primary Email'= User().Email)
+                    Filter(
+                        'Order Lines.S',
+                        'Owning User'.'Primary Email' = User().Email
+                    )
                 );
                 ,
                 ClearCollect(
                     OfflineInvoiceCollection,
-                    Filter('Invoice.S','Owning User'.'Primary Email'= User().Email)
+                    Filter(
+                        'Invoice.S',
+                        'Owning User'.'Primary Email' = User().Email
+                    )
                 );
                 ,
                 ClearCollect(
                     OfflineInvoiceLineCollection,
-                    Filter('Invoice Line.S','Owning User'.'Primary Email'= User().Email)
+                    Filter(
+                        'Invoice Line.S',
+                        'Owning User'.'Primary Email' = User().Email
+                    )
                 );
                 ,
                 ClearCollect(
@@ -326,7 +360,6 @@ App As appinfo:
                     OfflineVisitCollection,
                     "OfflineVisits"
                 );
-                
                 ,
                 LoadData(
                     OfflinePartiesCollection,
@@ -422,8 +455,6 @@ App As appinfo:
             NotificationType.Success,
             1000
         );
-        
-        
 
     Host As hostControl.DefaultHostControlVariant:
         OnCancel: =false
