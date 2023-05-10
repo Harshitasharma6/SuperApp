@@ -2,7 +2,11 @@
     LoadingSpinnerColor: =RGBA(0, 120, 212, 1)
     OnVisible: |-
         =Set(primarydata,Blank());
-        Set(secondarydata,Blank())
+        Set(secondarydata,Blank());
+        Set(
+            varCollectionEmpty,
+            true
+        )
 
     Header_1 As Header:
         ScreenName: |-
