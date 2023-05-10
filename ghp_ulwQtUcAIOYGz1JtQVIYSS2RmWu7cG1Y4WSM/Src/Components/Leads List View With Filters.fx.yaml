@@ -199,8 +199,7 @@
             SelectMultiple: =false
             Size: =18
             Width: =493
-            X: =64
-            Y: =13
+            X: =80
             ZIndex: =1
 
         "'Lead Gallery_4' As gallery.galleryVertical":
@@ -1150,7 +1149,7 @@
                                 zx_Party.'Customer Name' = radioCustomers_1.Selected.'Customer Name' && owninguser.'Primary Email' = User().Email
                             ),
                             // Filter according to Stage--------------------------------------------------------
-                            !IsBlank(radioStage_1.Selected) && IsBlank(Value(Leadvalue_1.Text)) && IsBlank(radioCustomers_1.Selected) && IsBlank(radioCommit_1.Selected) && IsBlank(radioArea_2.Selected) && IsBlank(radioCompetitor_1.Selected) || (varCreateddate = true || varEstimated = true),
+                            !IsBlank(radioStage_1.Selected)& IsBlank(Value(Leadvalue_1.Text)) && IsBlank(radioCustomers_1.Selected) && IsBlank(radioCommit_1.Selected) && IsBlank(radioArea_2.Selected) && IsBlank(radioCompetitor_1.Selected) || (varCreateddate = true || varEstimated = true),
                             Filter(
                                 offlineLeadCollection,
                                 zx_leadstage = radioStage_1.Selected.Value && owninguser.'Primary Email' = User().Email
