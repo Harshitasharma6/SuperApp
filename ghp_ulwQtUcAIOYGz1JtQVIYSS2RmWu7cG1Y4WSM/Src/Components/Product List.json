@@ -13072,7 +13072,7 @@
           },
           {
             "Category": "Data",
-            "InvariantScript": "If(\r\n    varSelectedTabId = 1,\r\n    If(\r\n        IsBlank(Search_Input_3.Text),\r\n        Filter(\r\n            OfflineProductPriceCollection,\r\n            'Price list'.Name = varPartyPricelist\r\n        ),\r\n        Filter(\r\n            Filter(\r\n                OfflineProductPriceCollection,\r\n                'Price list'.Name = varPartyPricelist\r\n            ),\r\n            Search_Input_3.Text in 'Product SKU Price'.'Item Name'\r\n        )\r\n    ),\r\n    varSelectedTabId = 2,\r\n    If(\r\n        IsBlank(Search_Input_3.Text),\r\n        Filter(\r\n            OfflineProductPriceCollection,\r\n            'Price list'.Name = varPartyPricelist && 'Product SKU Price'.'Product SKU' in FirstN(\r\n                colDistinctProduct,\r\n                3\r\n            )\r\n        ),\r\n        Filter(\r\n            Filter(\r\n                OfflineProductPriceCollection,\r\n                'Price list'.Name = varPartyPricelist && 'Product SKU Price'.'Product SKU' in FirstN(\r\n                    colDistinctProduct,\r\n                    3\r\n                )\r\n            ),\r\n            Search_Input_3.Text in 'Product SKU Price'.'Item Name'\r\n        )\r\n    ),\r\n    varSelectedTabId = 3,\r\n    If(\r\n        IsBlank(Search_Input_3.Text),\r\n        Filter(\r\n            OfflineProductPriceCollection,\r\n            'Price list'.Name = varPartyPricelist && 'Product SKU Price'.Promoted = 'Promoted (Product SKU.S)'.Yes\r\n        ),\r\n        Filter(\r\n            Filter(\r\n                OfflineProductPriceCollection,\r\n                'Price list'.Name = varPartyPricelist && 'Product SKU Price'.Promoted = 'Promoted (Product SKU.S)'.Yes\r\n            ),\r\n            Search_Input_3.Text in 'Product SKU Price'.'Item Name'\r\n        )\r\n    )\r\n)",
+            "InvariantScript": "If(\r\n    varCollectionEmpty=\r\n    true\r\n,If(\r\n    varSelectedTabId = 1,\r\n    If(\r\n        IsBlank(Search_Input_3.Text),\r\n        Filter(\r\n            OfflineProductPriceCollection,\r\n            'Price list'.Name = varPartyPricelist\r\n        ),\r\n        Filter(\r\n            Filter(\r\n                OfflineProductPriceCollection,\r\n                'Price list'.Name = varPartyPricelist\r\n            ),\r\n            Search_Input_3.Text in 'Product SKU Price'.'Item Name'\r\n        )\r\n    ),\r\n    varSelectedTabId = 2,\r\n    If(\r\n        IsBlank(Search_Input_3.Text),\r\n        Filter(\r\n            OfflineProductPriceCollection,\r\n            'Price list'.Name = varPartyPricelist && 'Product SKU Price'.'Product SKU' in FirstN(\r\n                colDistinctProduct,\r\n                3\r\n            )\r\n        ),\r\n        Filter(\r\n            Filter(\r\n                OfflineProductPriceCollection,\r\n                'Price list'.Name = varPartyPricelist && 'Product SKU Price'.'Product SKU' in FirstN(\r\n                    colDistinctProduct,\r\n                    3\r\n                )\r\n            ),\r\n            Search_Input_3.Text in 'Product SKU Price'.'Item Name'\r\n        )\r\n    ),\r\n    varSelectedTabId = 3,\r\n    If(\r\n        IsBlank(Search_Input_3.Text),\r\n        Filter(\r\n            OfflineProductPriceCollection,\r\n            'Price list'.Name = varPartyPricelist && 'Product SKU Price'.Promoted = 'Promoted (Product SKU.S)'.Yes\r\n        ),\r\n        Filter(\r\n            Filter(\r\n                OfflineProductPriceCollection,\r\n                'Price list'.Name = varPartyPricelist && 'Product SKU Price'.Promoted = 'Promoted (Product SKU.S)'.Yes\r\n            ),\r\n            Search_Input_3.Text in 'Product SKU Price'.'Item Name'\r\n        )\r\n    )\r\n),colFilterProduct)",
             "Property": "Items",
             "RuleProviderType": "Unknown"
           },
@@ -13280,7 +13280,7 @@
       "OrderType",
       "Party"
     ],
-    "LastModifiedTimestamp": "638193149565977219",
+    "LastModifiedTimestamp": "638193157234818375",
     "Name": "Product List",
     "Rules": [
       {
@@ -13370,7 +13370,7 @@
   "IsPcfControl": false,
   "IsPremiumPcfControl": false,
   "IsWidgetTemplate": false,
-  "LastModifiedTimestamp": "638193149565977219",
+  "LastModifiedTimestamp": "638193157234818375",
   "Name": "f22957dfb10248beba734f1dc6985182",
   "OverridableProperties": {},
   "Version": "638174994516580466"

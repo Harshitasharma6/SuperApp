@@ -136,6 +136,9 @@
         Height: =936
         Items: |-
             =If(
+                varCollectionEmpty=
+                true
+            ,If(
                 varSelectedTabId = 1,
                 If(
                     IsBlank(Search_Input_3.Text),
@@ -187,7 +190,7 @@
                         Search_Input_3.Text in 'Product SKU Price'.'Item Name'
                     )
                 )
-            )
+            ),colFilterProduct)
         Layout: =Layout.Vertical
         ShowScrollbar: =false
         TabIndex: =
