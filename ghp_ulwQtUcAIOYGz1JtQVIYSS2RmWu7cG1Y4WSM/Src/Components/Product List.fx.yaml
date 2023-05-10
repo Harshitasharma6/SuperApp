@@ -243,7 +243,7 @@
                 =//_VarGblAppFonts.Size.Medium
                 15
             Text: |-
-                ="SKU: "& ThisItem.'Product SKU'.'Item Code'
+                ="SKU: "& ThisItem.'Product SKU Price'.'Item Code'
             Width: =206
             Wrap: =false
             X: =10
@@ -276,7 +276,7 @@
                             ),
                             LookUp(
                                 OfflineProductOfferLinesCollection,
-                                'Product Offer Header'.'Offer ID' = First(colOfferHeaderId).Value && 'Product SKU'.'Product SKU' = ThisItem.'Product SKU'.'Product SKU'
+                                'Product Offer Header'.'Offer ID' = First(colOfferHeaderId).Value && 'Product SKU'.'Product SKU' = ThisItem.'Product SKU Price'.'Product SKU'
                             ).'Discount %',
                             "0"
                         ),
@@ -290,7 +290,7 @@
                             ),
                             LookUp(
                                 OfflineProductOfferLinesCollection,
-                                'Product Offer Header'.'Offer ID' = First(colOfferHeaderId).Value && 'Product SKU'.'Product SKU' = ThisItem.'Product SKU'.'Product SKU'
+                                'Product Offer Header'.'Offer ID' = First(colOfferHeaderId).Value && 'Product SKU'.'Product SKU' = ThisItem.'Product SKU Price'.'Product SKU'
                             ).'Discount %',
                             "0"
                         ),
@@ -304,7 +304,7 @@
                             ),
                             LookUp(
                                 OfflineProductOfferLinesCollection,
-                                'Product Offer Header'.'Offer ID' = First(colOfferHeaderId).Value && 'Product SKU'.'Product SKU' = ThisItem.'Product SKU'.'Product SKU'
+                                'Product Offer Header'.'Offer ID' = First(colOfferHeaderId).Value && 'Product SKU'.'Product SKU' = ThisItem.'Product SKU Price'.'Product SKU'
                             ).'Discount %',
                             "0"
                         )
@@ -425,7 +425,7 @@
                         ),
                         LookUp(
                             OfflineProductOfferLinesCollection,
-                            'Product Offer Header'.'Offer ID' = First(colOfferHeaderId).Value && 'Product SKU'.'Product SKU' = ThisItem.'Product SKU'.'Product SKU'
+                            'Product Offer Header'.'Offer ID' = First(colOfferHeaderId).Value && 'Product SKU'.'Product SKU' = ThisItem.'Product SKU Price'.'Product SKU'
                         ).'Discount %',
                         "0"
                     ),
@@ -439,7 +439,7 @@
                         ),
                         LookUp(
                             OfflineProductOfferLinesCollection,
-                            'Product Offer Header'.'Offer ID' = First(colOfferHeaderId).Value && 'Product SKU'.'Product SKU' = ThisItem.'Product SKU'.'Product SKU'
+                            'Product Offer Header'.'Offer ID' = First(colOfferHeaderId).Value && 'Product SKU'.'Product SKU' = ThisItem.'Product SKU Price'.'Product SKU'
                         ).'Discount %',
                         "0"
                     ),
@@ -453,7 +453,7 @@
                         ),
                         LookUp(
                             OfflineProductOfferLinesCollection,
-                            'Product Offer Header'.'Offer ID' = First(colOfferHeaderId).Value && 'Product SKU'.'Product SKU' = ThisItem.'Product SKU'.'Product SKU'
+                            'Product Offer Header'.'Offer ID' = First(colOfferHeaderId).Value && 'Product SKU'.'Product SKU' = ThisItem.'Product SKU Price'.'Product SKU'
                         ).'Discount %',
                         "0"
                     )
@@ -471,7 +471,7 @@
                         ),
                         LookUp(
                             OfflineProductOfferLinesCollection,
-                            'Product Offer Header'.'Offer ID' = First(colOfferHeaderId).Value && 'Product SKU'.'Product SKU' = ThisItem.'Product SKU'.'Product SKU'
+                            'Product Offer Header'.'Offer ID' = First(colOfferHeaderId).Value && 'Product SKU'.'Product SKU' = ThisItem.'Product SKU Price'.'Product SKU'
                         ).'Discount %',
                         "0"
                     ),
@@ -485,7 +485,7 @@
                         ),
                         LookUp(
                             OfflineProductOfferLinesCollection,
-                            'Product Offer Header'.'Offer ID' = First(colOfferHeaderId).Value && 'Product SKU'.'Product SKU' = ThisItem.'Product SKU'.'Product SKU'
+                            'Product Offer Header'.'Offer ID' = First(colOfferHeaderId).Value && 'Product SKU'.'Product SKU' = ThisItem.'Product SKU Price'.'Product SKU'
                         ).'Discount %',
                         "0"
                     ),
@@ -499,7 +499,7 @@
                         ),
                         LookUp(
                             OfflineProductOfferLinesCollection,
-                            'Product Offer Header'.'Offer ID' = First(colOfferHeaderId).Value && 'Product SKU'.'Product SKU' = ThisItem.'Product SKU'.'Product SKU'
+                            'Product Offer Header'.'Offer ID' = First(colOfferHeaderId).Value && 'Product SKU'.'Product SKU' = ThisItem.'Product SKU Price'.'Product SKU'
                         ).'Discount %',
                         0
                     ) )> 0,
@@ -563,16 +563,16 @@
                     IsBlank(
                         LookUp(
                             OfflineProductPriceCollection,
-                            'Product SKU'.'Product SKU' = ThisItem.'Product SKU'.'Product SKU' && 'Price list'.Name = varPartyPricelist
+                            'Product SKU Price'.'Product SKU' = ThisItem.'Product SKU Price'.'Product SKU' && 'Price list'.Name = varPartyPricelist
                         ).'Ex-Factory'
                     ),
                     "NA",
                     "₹" & LookUp(
                         OfflineProductPriceCollection,
-                        'Product SKU'.'Product SKU' = ThisItem.'Product SKU'.'Product SKU' && 'Price list'.Name = varPartyPricelist
+                       'Product SKU Price'.'Product SKU' = ThisItem.'Product SKU Price'.'Product SKU' && 'Price list'.Name = varPartyPricelist
                     ).'Ex-Factory' - ( LookUp(
                         OfflineProductPriceCollection,
-                        'Product SKU'.'Product SKU' = ThisItem.'Product SKU'.'Product SKU' && 'Price list'.Name = varPartyPricelist
+                      'Product SKU Price'.'Product SKU' = ThisItem.'Product SKU Price'.'Product SKU' && 'Price list'.Name = varPartyPricelist
                     ).'Ex-Factory' * (If (
                         !IsBlank(colCustomerMapping),
                         If(
@@ -584,7 +584,7 @@
                             ),
                             LookUp(
                                 OfflineProductOfferLinesCollection,
-                                'Product Offer Header'.'Offer ID' = First(colOfferHeaderId).Value && 'Product SKU'.'Product SKU' = ThisItem.'Product SKU'.'Product SKU'
+                                'Product Offer Header'.'Offer ID' = First(colOfferHeaderId).Value && 'Product SKU'.'Product SKU' = ThisItem.'Product SKU Price'.'Product SKU'
                             ).'Discount %',
                             "0"
                         ),
@@ -598,7 +598,7 @@
                             ),
                             LookUp(
                                 OfflineProductOfferLinesCollection,
-                                'Product Offer Header'.'Offer ID' = First(colOfferHeaderId).Value && 'Product SKU'.'Product SKU' = ThisItem.'Product SKU'.'Product SKU'
+                                'Product Offer Header'.'Offer ID' = First(colOfferHeaderId).Value && 'Product SKU'.'Product SKU' = ThisItem.'Product SKU Price'.'Product SKU'
                             ).'Discount %',
                             "0"
                         ),
@@ -612,7 +612,7 @@
                             ),
                             LookUp(
                                 OfflineProductOfferLinesCollection,
-                                'Product Offer Header'.'Offer ID' = First(colOfferHeaderId).Value && 'Product SKU'.'Product SKU' = ThisItem.'Product SKU'.'Product SKU'
+                                'Product Offer Header'.'Offer ID' = First(colOfferHeaderId).Value && 'Product SKU'.'Product SKU' = ThisItem.'Product SKU Price'.'Product SKU'
                             ).'Discount %',
                             "0"
                         )
@@ -661,12 +661,12 @@
                         'Product List'.OrderType = "Primary",
                         LookUp(
                             colPrimaryCart,
-                            productSKU = ThisItem.'Product SKU'.'Product SKU'
+                            productSKU = ThisItem.'Product SKU Price'.'Product SKU'
                         ).quantity,
                         'Product List'.OrderType = "Secondary",
                         LookUp(
                            colSecondaryCart,
-                            productSKU = ThisItem.'Product SKU'.'Product SKU'
+                            productSKU = ThisItem.'Product SKU Price'.'Product SKU'
                         ).quantity
                     )
                 DisabledBorderColor: =RGBA(166, 166, 166, 1)
@@ -690,42 +690,42 @@
                         varCategoryCode,
                         LookUp(
                             OfflineProductSKUCollection,
-                            'Product SKU' = ThisItem.'Product SKU'.'Product SKU'
+                            'Product SKU' = ThisItem.'Product SKU Price'.'Product SKU'
                         ).'Product Category'.'Category Code'
                     );
                     Set(
                         varSubCategoryCode,
                         LookUp(
                             OfflineProductSKUCollection,
-                            'Product SKU' = ThisItem.'Product SKU'.'Product SKU'
+                            'Product SKU' = ThisItem.'Product SKU Price'.'Product SKU'
                         ).'Product Sub-Category'.'Sub-Category Code'
                     );
                     Set(
                         varGroupCode,
                         LookUp(
                             OfflineProductSKUCollection,
-                            'Product SKU' = ThisItem.'Product SKU'.'Product SKU'
+                            'Product SKU' = ThisItem.'Product SKU Price'.'Product SKU'
                         ).'Product Group'.'Group Code'
                     );
                     Set(
                         varHSN,
                         LookUp(
                             OfflineProductSKUCollection,
-                            'Product SKU' = ThisItem.'Product SKU'.'Product SKU'
+                            'Product SKU' = ThisItem.'Product SKU Price'.'Product SKU'
                         ).'HSN '.'HSN Master'
                     );
                     Set(
                         varProduct,
                         LookUp(
                             OfflineProductSKUCollection,
-                            'Product SKU' = ThisItem.'Product SKU'.'Product SKU'
+                            'Product SKU' = ThisItem.'Product SKU Price'.'Product SKU'
                         ).Product.Product
                     );
                     Set(
                         varVariant,
                         LookUp(
                             OfflineProductSKUCollection,
-                            'Product SKU' = ThisItem.'Product SKU'.'Product SKU'
+                            'Product SKU' = ThisItem.'Product SKU Price'.'Product SKU'
                         ).Variant.'Variant Code'
                     );
                     If(
@@ -747,22 +747,22 @@
                                     (CountRows(colPrimaryCart) = 0) || IsBlank(
                                         LookUp(
                                             colPrimaryCart,
-                                            productSKU = ThisItem.'Product SKU'.'Product SKU'
+                                            productSKU = ThisItem.'Product SKU Price'.'Product SKU'
                                         )
                                     ),
                                     Collect(
                                         colPrimaryCart,
                                         {
                                             productGUID: ThisItem.'Product Price',
-                                            productName: ThisItem.'Product SKU'.'Item Name',
+                                            productName: ThisItem.'Product SKU Price'.'Item Name',
                                             product: varProduct,
                                             //BASE UNIT PRICE BASED ON THE PRODUCT PRICE TABLE ##########################################################
                                             baseUnitPrice: LookUp(
                                                 OfflineProductPriceCollection,
-                                                'Product SKU'.'Product SKU' = ThisItem.'Product SKU'.'Product SKU' && 'Price list'.Name = varPartyPricelist
+                                                'Product SKU Price'.'Product SKU' = ThisItem.'Product SKU Price'.'Product SKU' && 'Price list'.Name = varPartyPricelist
                                             ).'Ex-Factory',
                                             //PRODUCT SKU BASED ON PRODUCT AND VARIANT SELECTED #############################################################
-                                            productSKU: ThisItem.'Product SKU'.'Product SKU',
+                                            productSKU: ThisItem.'Product SKU Price'.'Product SKU',
                                             quantity: 'Quantity Input_8'.Text,
                                             //VARIANT BASED ON VARIANT SELECTED COMBOBOX ####################################################################
                                             Variant: varVariant,
@@ -778,7 +778,7 @@
                                                     ),
                                                     LookUp(
                                                         OfflineProductOfferLinesCollection,
-                                                        'Product Offer Header'.'Offer ID' = First(colOfferHeaderId).Value && 'Product SKU'.'Product SKU' = ThisItem.'Product SKU'.'Product SKU'
+                                                        'Product Offer Header'.'Offer ID' = First(colOfferHeaderId).Value && 'Product SKU'.'Product SKU' = ThisItem.'Product SKU Price'.'Product SKU'
                                                     ).'Discount %',
                                                     "0"
                                                 ),
@@ -792,7 +792,7 @@
                                                     ),
                                                     LookUp(
                                                         OfflineProductOfferLinesCollection,
-                                                        'Product Offer Header'.'Offer ID' = First(colOfferHeaderId).Value && 'Product SKU'.'Product SKU' = ThisItem.'Product SKU'.'Product SKU'
+                                                        'Product Offer Header'.'Offer ID' = First(colOfferHeaderId).Value && 'Product SKU'.'Product SKU' = ThisItem.'Product SKU Price'.'Product SKU'
                                                     ).'Discount %',
                                                     "0"
                                                 ),
@@ -806,7 +806,7 @@
                                                     ),
                                                     LookUp(
                                                         OfflineProductOfferLinesCollection,
-                                                        'Product Offer Header'.'Offer ID' = First(colOfferHeaderId).Value && 'Product SKU'.'Product SKU' = ThisItem.'Product SKU'.'Product SKU'
+                                                        'Product Offer Header'.'Offer ID' = First(colOfferHeaderId).Value && 'Product SKU'.'Product SKU' = ThisItem.'Product SKU Price'.'Product SKU'
                                                     ).'Discount %',
                                                     "0"
                                                 )
@@ -833,7 +833,7 @@
                                                 )
                                             ) / 100) * ((LookUp(
                                                 OfflineProductPriceCollection,
-                                                'Product SKU'.'Product SKU' = ThisItem.'Product SKU'.'Product SKU' && 'Price list'.Name = varPartyPricelist
+                                               'Product SKU Price'.'Product SKU' = ThisItem.'Product SKU Price'.'Product SKU' && 'Price list'.Name = varPartyPricelist
                                             ).'Ex-Factory') * ('Quantity Input_8'.Text)),
                                             // calculate SGST--------------------------------------------
                                             sgstAmount: (If(
@@ -856,7 +856,7 @@
                                                 )
                                             ) / 100) * ((LookUp(
                                                 OfflineProductPriceCollection,
-                                                'Product SKU'.'Product SKU' = ThisItem.'Product SKU'.'Product SKU' && 'Price list'.Name = varPartyPricelist
+                                                'Product SKU Price'.'Product SKU' = ThisItem.'Product SKU Price'.'Product SKU' && 'Price list'.Name = varPartyPricelist
                                             ).'Ex-Factory') * ('Quantity Input_8'.Text)),
                                             //if state is not same then calculate IGST----------------------
                                             igstAmount: (If(
@@ -879,7 +879,7 @@
                                                 )
                                             ) / 100) * ((LookUp(
                                                 OfflineProductPriceCollection,
-                                                'Product SKU'.'Product SKU' = ThisItem.'Product SKU'.'Product SKU' && 'Price list'.Name = varPartyPricelist
+                                               'Product SKU Price'.'Product SKU' = ThisItem.'Product SKU Price'.'Product SKU' && 'Price list'.Name = varPartyPricelist
                                             ).'Ex-Factory') * ('Quantity Input_8'.Text)),
                                             //Calculate cess-----------------
                                             cessAmount: If(
@@ -895,7 +895,7 @@
                                                     'HSN Master' = varHSN
                                                 ).'Cess %') / 100) * ((LookUp(
                                                     OfflineProductPriceCollection,
-                                                    'Product SKU'.'Product SKU' = ThisItem.'Product SKU'.'Product SKU' && 'Price list'.Name = varPartyPricelist
+                                                   'Product SKU Price'.'Product SKU' = ThisItem.'Product SKU Price'.'Product SKU' && 'Price list'.Name = varPartyPricelist
                                                 ).'Ex-Factory') * ('Quantity Input_8'.Text))
                                             )
                                         }
@@ -911,7 +911,7 @@
                                         colPrimaryCart,
                                         LookUp(
                                             colPrimaryCart,
-                                            productSKU = ThisItem.'Product SKU'.'Product SKU'
+                                            productSKU = ThisItem.'Product SKU Price'.'Product SKU'
                                         ),
                                         {quantity: 'Quantity Input_8'.Text}
                                     );
@@ -922,22 +922,22 @@
                                     (CountRows(colSecondaryCart) = 0) || IsBlank(
                                         LookUp(
                                             colSecondaryCart,
-                                            productSKU = ThisItem.'Product SKU'.'Product SKU'
+                                            productSKU = ThisItem.'Product SKU Price'.'Product SKU'
                                         )
                                     ),
                                     Collect(
                                         colSecondaryCart,
                                         {
                                             productGUID: ThisItem.'Product Price',
-                                            productName: ThisItem.'Product SKU'.'Item Name',
+                                            productName: ThisItem.'Product SKU Price'.'Item Name',
                                             product: varProduct,
                                             //BASE UNIT PRICE BASED ON THE PRODUCT PRICE TABLE ##########################################################
                                             baseUnitPrice: LookUp(
                                                 OfflineProductPriceCollection,
-                                                'Product SKU'.'Product SKU' = ThisItem.'Product SKU'.'Product SKU' && 'Price list'.Name = varPartyPricelist
+                                                'Product SKU Price'.'Product SKU' = ThisItem.'Product SKU Price'.'Product SKU' && 'Price list'.Name = varPartyPricelist
                                             ).'Ex-Factory',
                                             //PRODUCT SKU BASED ON PRODUCT AND VARIANT SELECTED #############################################################
-                                            productSKU: ThisItem.'Product SKU'.'Product SKU',
+                                            productSKU: ThisItem.'Product SKU Price'.'Product SKU',
                                             quantity: 'Quantity Input_8'.Text,
                                             //VARIANT BASED ON VARIANT SELECTED COMBOBOX ####################################################################
                                             Variant: varVariant,
@@ -953,7 +953,7 @@
                                                     ),
                                                     LookUp(
                                                         OfflineProductOfferLinesCollection,
-                                                        'Product Offer Header'.'Offer ID' = First(colOfferHeaderId).Value && 'Product SKU'.'Product SKU' = ThisItem.'Product SKU'.'Product SKU'
+                                                        'Product Offer Header'.'Offer ID' = First(colOfferHeaderId).Value && 'Product SKU'.'Product SKU' = ThisItem.'Product SKU Price'.'Product SKU'
                                                     ).'Discount %',
                                                     "0"
                                                 ),
@@ -967,7 +967,7 @@
                                                     ),
                                                     LookUp(
                                                         OfflineProductOfferLinesCollection,
-                                                        'Product Offer Header'.'Offer ID' = First(colOfferHeaderId).Value && 'Product SKU'.'Product SKU' = ThisItem.'Product SKU'.'Product SKU'
+                                                        'Product Offer Header'.'Offer ID' = First(colOfferHeaderId).Value && 'Product SKU'.'Product SKU' = ThisItem.'Product SKU Price'.'Product SKU'
                                                     ).'Discount %',
                                                     "0"
                                                 ),
@@ -981,7 +981,7 @@
                                                     ),
                                                     LookUp(
                                                         OfflineProductOfferLinesCollection,
-                                                        'Product Offer Header'.'Offer ID' = First(colOfferHeaderId).Value && 'Product SKU'.'Product SKU' = ThisItem.'Product SKU'.'Product SKU'
+                                                        'Product Offer Header'.'Offer ID' = First(colOfferHeaderId).Value && 'Product SKU'.'Product SKU' = ThisItem.'Product SKU Price'.'Product SKU'
                                                     ).'Discount %',
                                                     "0"
                                                 )
@@ -1008,7 +1008,7 @@
                                                 )
                                             ) / 100) * ((LookUp(
                                                 OfflineProductPriceCollection,
-                                                'Product SKU'.'Product SKU' = ThisItem.'Product SKU'.'Product SKU' && 'Price list'.Name = varPartyPricelist
+                                                'Product SKU Price'.'Product SKU' = ThisItem.'Product SKU Price'.'Product SKU' && 'Price list'.Name = varPartyPricelist
                                             ).'Ex-Factory') * ('Quantity Input_8'.Text)),
                                             // calculate SGST--------------------------------------------
                                             sgstAmount: (If(
@@ -1031,7 +1031,7 @@
                                                 )
                                             ) / 100) * ((LookUp(
                                                 OfflineProductPriceCollection,
-                                                'Product SKU'.'Product SKU' = ThisItem.'Product SKU'.'Product SKU' && 'Price list'.Name = varPartyPricelist
+                                                'Product SKU Price'.'Product SKU' = ThisItem.'Product SKU Price'.'Product SKU' && 'Price list'.Name = varPartyPricelist
                                             ).'Ex-Factory') * ('Quantity Input_8'.Text)),
                                             //if state is not same then calculate IGST----------------------
                                             igstAmount: (If(
@@ -1054,7 +1054,7 @@
                                                 )
                                             ) / 100) * ((LookUp(
                                                 OfflineProductPriceCollection,
-                                                'Product SKU'.'Product SKU' = ThisItem.'Product SKU'.'Product SKU' && 'Price list'.Name = varPartyPricelist
+                                               'Product SKU Price'.'Product SKU' = ThisItem.'Product SKU Price'.'Product SKU' && 'Price list'.Name = varPartyPricelist
                                             ).'Ex-Factory') * ('Quantity Input_8'.Text)),
                                             //Calculate cess-----------------
                                             cessAmount: If(
@@ -1070,7 +1070,7 @@
                                                     'HSN Master' = varHSN
                                                 ).'Cess %') / 100) * ((LookUp(
                                                     OfflineProductPriceCollection,
-                                                    'Product SKU'.'Product SKU' = ThisItem.'Product SKU'.'Product SKU' && 'Price list'.Name = varPartyPricelist
+                                                   'Product SKU Price'.'Product SKU' = ThisItem.'Product SKU Price'.'Product SKU' && 'Price list'.Name = varPartyPricelist
                                                 ).'Ex-Factory') * ('Quantity Input_8'.Text))
                                             )
                                         }
@@ -1086,7 +1086,7 @@
                                         colSecondaryCart,
                                         LookUp(
                                             colSecondaryCart,
-                                            productSKU = ThisItem.'Product SKU'.'Product SKU'
+                                            productSKU = ThisItem.'Product SKU Price'.'Product SKU'
                                         ),
                                         {quantity: 'Quantity Input_8'.Text}
                                     );
