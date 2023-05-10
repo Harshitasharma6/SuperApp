@@ -148,7 +148,7 @@
                             OfflineProductPriceCollection,
                             'Price list'.Name = varPartyPricelist
                         ),
-                        Search_Input_3.Text in 'Product SKU'.'Item Name'
+                        Search_Input_3.Text in 'Product SKU Price'.'Item Name'
                     )
                 ),
                 varSelectedTabId = 2,
@@ -156,7 +156,7 @@
                     IsBlank(Search_Input_3.Text),
                     Filter(
                         OfflineProductPriceCollection,
-                        'Price list'.Name = varPartyPricelist && 'Product SKU'.'Product SKU' in FirstN(
+                        'Price list'.Name = varPartyPricelist && 'Product SKU Price'.'Product SKU' in FirstN(
                             colDistinctProduct,
                             3
                         )
@@ -164,12 +164,12 @@
                     Filter(
                         Filter(
                             OfflineProductPriceCollection,
-                            'Price list'.Name = varPartyPricelist && 'Product SKU'.'Product SKU' in FirstN(
+                            'Price list'.Name = varPartyPricelist && 'Product SKU Price'.'Product SKU' in FirstN(
                                 colDistinctProduct,
                                 3
                             )
                         ),
-                        Search_Input_3.Text in 'Product SKU'.'Item Name'
+                        Search_Input_3.Text in 'Product SKU Price'.'Item Name'
                     )
                 ),
                 varSelectedTabId = 3,
@@ -177,14 +177,14 @@
                     IsBlank(Search_Input_3.Text),
                     Filter(
                         OfflineProductPriceCollection,
-                        'Price list'.Name = varPartyPricelist && 'Product SKU'.Promoted = 'Promoted (Product SKU.S)'.Yes
+                        'Price list'.Name = varPartyPricelist && 'Product SKU Price'.Promoted = 'Promoted (Product SKU.S)'.Yes
                     ),
                     Filter(
                         Filter(
                             OfflineProductPriceCollection,
-                            'Price list'.Name = varPartyPricelist && 'Product SKU'.Promoted = 'Promoted (Product SKU.S)'.Yes
+                            'Price list'.Name = varPartyPricelist && 'Product SKU Price'.Promoted = 'Promoted (Product SKU.S)'.Yes
                         ),
-                        Search_Input_3.Text in 'Product SKU'.'Item Name'
+                        Search_Input_3.Text in 'Product SKU Price'.'Item Name'
                     )
                 )
             )
@@ -226,7 +226,7 @@
                     ).Variant.Variants
                 ).'Variant Name' & ")"*/
                 
-                ThisItem.'Product SKU'.'Item Name'
+                ThisItem.'Product SKU Price'.'Item Name'
             Width: =297
             X: =5
             Y: =270
