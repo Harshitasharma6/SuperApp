@@ -5321,7 +5321,15 @@
                         "IsLockable": false,
                         "NameMapSourceSchema": "?"
                       },
-                      "AccessibleLabel"
+                      "AccessibleLabel",
+                      {
+                        "AFDDataSourceName": "",
+                        "AutoRuleBindingEnabled": false,
+                        "AutoRuleBindingString": "",
+                        "InvariantPropertyName": "LineHeight",
+                        "IsLockable": false,
+                        "NameMapSourceSchema": "?"
+                      }
                     ],
                     "ControlUniqueId": "753",
                     "HasDynamicProperties": false,
@@ -5347,7 +5355,7 @@
                       {
                         "Category": "Data",
                         "InvariantScript": "OfflineProductCategoryCollection\r\n",
-                        "NameMap": "{\"Value\":\"new_name\"}",
+                        "NameMap": "{\"Value\":\"zx_name\"}",
                         "Property": "Items",
                         "RuleProviderType": "Unknown"
                       },
@@ -5574,6 +5582,12 @@
                         "RuleProviderType": "Unknown"
                       },
                       {
+                        "Category": "Design",
+                        "InvariantScript": "2",
+                        "Property": "LineHeight",
+                        "RuleProviderType": "Unknown"
+                      },
+                      {
                         "Category": "Behavior",
                         "InvariantScript": "If(\r\n    IsBlank(\r\n        LookUp(\r\n            selectedFilterValues,\r\n            title = \"Product Category\"\r\n        )\r\n    ),\r\n    Collect(\r\n        selectedFilterValues,\r\n        {\r\n            title: \"Product Category\",\r\n            value: Self.Selected.'Category Name'\r\n        }\r\n    ),\r\n    Patch(\r\n        selectedFilterValues,\r\n        LookUp(\r\n            selectedFilterValues,\r\n            title = \"Product Category\"\r\n        ),\r\n        {\r\n            title: \"Product Category\",\r\n            value: Self.Selected.'Category Name'\r\n        }\r\n    )\r\n)",
                         "Property": "OnSelect",
@@ -5696,7 +5710,15 @@
                         "IsLockable": false,
                         "NameMapSourceSchema": "?"
                       },
-                      "AccessibleLabel"
+                      "AccessibleLabel",
+                      {
+                        "AFDDataSourceName": "",
+                        "AutoRuleBindingEnabled": false,
+                        "AutoRuleBindingString": "",
+                        "InvariantPropertyName": "LineHeight",
+                        "IsLockable": false,
+                        "NameMapSourceSchema": "?"
+                      }
                     ],
                     "ControlUniqueId": "754",
                     "HasDynamicProperties": false,
@@ -5722,7 +5744,7 @@
                       {
                         "Category": "Data",
                         "InvariantScript": "'Product Group.S'",
-                        "NameMap": "{\"Value\":\"zx_groupcode\"}",
+                        "NameMap": "{\"Value\":\"zx_name\"}",
                         "Property": "Items",
                         "RuleProviderType": "Unknown"
                       },
@@ -5806,7 +5828,7 @@
                       },
                       {
                         "Category": "Design",
-                        "InvariantScript": "0",
+                        "InvariantScript": "3",
                         "Property": "X",
                         "RuleProviderType": "Unknown"
                       },
@@ -5949,6 +5971,12 @@
                         "RuleProviderType": "Unknown"
                       },
                       {
+                        "Category": "Design",
+                        "InvariantScript": "2",
+                        "Property": "LineHeight",
+                        "RuleProviderType": "Unknown"
+                      },
+                      {
                         "Category": "Behavior",
                         "InvariantScript": "false",
                         "Property": "OnChange",
@@ -6076,7 +6104,15 @@
                         "IsLockable": false,
                         "NameMapSourceSchema": "?"
                       },
-                      "AccessibleLabel"
+                      "AccessibleLabel",
+                      {
+                        "AFDDataSourceName": "",
+                        "AutoRuleBindingEnabled": false,
+                        "AutoRuleBindingString": "",
+                        "InvariantPropertyName": "LineHeight",
+                        "IsLockable": false,
+                        "NameMapSourceSchema": "?"
+                      }
                     ],
                     "ControlUniqueId": "755",
                     "HasDynamicProperties": false,
@@ -6326,6 +6362,12 @@
                         "Category": "Design",
                         "InvariantScript": "ColorValue(LookUp(c_EnvironmentVariable,'Display Name'=\"Button Fill\").'Default Value' )//_VarGblAppColors.PrimaryRed",
                         "Property": "RadioSelectionFill",
+                        "RuleProviderType": "Unknown"
+                      },
+                      {
+                        "Category": "Design",
+                        "InvariantScript": "2",
+                        "Property": "LineHeight",
                         "RuleProviderType": "Unknown"
                       },
                       {
@@ -13280,7 +13322,7 @@
       "OrderType",
       "Party"
     ],
-    "LastModifiedTimestamp": "638193157234818375",
+    "LastModifiedTimestamp": "638193161722593631",
     "Name": "Product List",
     "Rules": [
       {
@@ -13370,7 +13412,7 @@
   "IsPcfControl": false,
   "IsPremiumPcfControl": false,
   "IsWidgetTemplate": false,
-  "LastModifiedTimestamp": "638193157234818375",
+  "LastModifiedTimestamp": "638193161722593631",
   "Name": "f22957dfb10248beba734f1dc6985182",
   "OverridableProperties": {},
   "Version": "638174994516580466"
