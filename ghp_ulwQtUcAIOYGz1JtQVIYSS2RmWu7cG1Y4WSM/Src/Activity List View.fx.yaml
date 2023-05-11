@@ -1,0 +1,319 @@
+"'Activity List View' As screen":
+    LoadingSpinnerColor: =RGBA(0, 120, 212, 1)
+
+    Header_20 As Header:
+        ScreenName: ="Activities"
+
+    "'Bottom Bar_22' As 'Bottom Bar'":
+        Y: =1026
+        ZIndex: =2
+
+    "'Activity gallery_1' As gallery.galleryVertical":
+        AccessibleLabel: ="Orderline Gallery"
+        BorderColor: =RGBA(0, 18, 107, 1)
+        Fill: |-
+            =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Screen Background Color").'Default Value')
+            //_VarGblAppColors.BackgroundColor
+        Height: =953
+        Items: |-
+            =Sort(
+                OfflineActivitiesCollection,
+                'Created On',
+                SortOrder.Descending
+            )
+        Layout: =Layout.Vertical
+        ShowScrollbar: =false
+        TabIndex: =0
+        TemplateSize: =If(Self.Layout = Layout.Horizontal, Min(280, Self.Width - 60), Min(280, Self.Height - 60))
+        Y: =86
+        ZIndex: =3
+
+        Button5_17 As button:
+            BorderColor: =Color.Black
+            BorderStyle: =BorderStyle.None
+            BorderThickness: =0
+            DisabledBorderColor: =RGBA(166, 166, 166, 1)
+            DisabledColor: =RGBA(166, 166, 166, 1)
+            DisabledFill: =RGBA(244, 244, 244, 1)
+            Fill: =RGBA(255, 255, 255, 1)
+            FontWeight: =FontWeight.Semibold
+            Height: =270
+            HoverColor: =RGBA(255, 255, 255, 1)
+            HoverFill: =Color.White
+            OnSelect: |-
+                =
+                Navigate('Activity Detail Screen',ScreenTransition.CoverRight);
+                Set(varActivityData,ThisItem);
+            Size: =24
+            Text: =""
+            Width: =630
+            ZIndex: =1
+
+        Rectangle1_16 As rectangle:
+            AccessibleLabel: ="Rectangle1_8"
+            BorderColor: =RGBA(0, 18, 107, 1)
+            Fill: |-
+                =
+                ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Header Band Color").'Default Value' )
+            Height: =1
+            OnSelect: |-
+                =
+                Navigate('Activity Detail Screen',ScreenTransition.CoverRight);
+                Set(varActivityData,ThisItem);
+            TabIndex: =0
+            Width: ='Activity gallery_1'.TemplateWidth
+            Y: =84
+            ZIndex: =2
+
+        Background_21 As button:
+            BorderThickness: =0
+            Color: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Hover Color").'Default Value')
+            DisabledBorderColor: =RGBA(166, 166, 166, 1)
+            DisabledColor: =RGBA(116, 116, 116, 1)
+            DisabledFill: |-
+                =
+                ColorValue(LookUp(c_EnvironmentVariable, 'Display Name'="Button Fill").'Default Value')
+            DisplayMode: =DisplayMode.Disabled
+            Fill: |-
+                =
+                ColorValue(LookUp(c_EnvironmentVariable, 'Display Name'="Button Fill").'Default Value')
+            FontWeight: =FontWeight.Semibold
+            Height: =72
+            HoverColor: =RGBA(255, 255, 255, 1)
+            HoverFill: =ColorFade(Self.Fill, -20%)
+            OnSelect: |-
+                =
+                Navigate('Activity Detail Screen',ScreenTransition.CoverRight);
+                Set(varActivityData,ThisItem);
+            RadiusBottomLeft: =15
+            RadiusBottomRight: =15
+            RadiusTopLeft: |-
+                =
+                0
+            RadiusTopRight: |-
+                =
+                0
+            Size: =24
+            Text: =""
+            Width: ='Activity gallery_1'.TemplateWidth 
+            Y: =208
+            ZIndex: =3
+
+        Body1_80 As label:
+            BorderColor: =RGBA(0, 18, 107, 1)
+            Color: |-
+                =
+                ColorValue(LookUp(c_EnvironmentVariable, 'Display Name'="Button Fill").'Default Value')
+            DisabledColor: =RGBA(166, 166, 166, 1)
+            FocusedBorderThickness: =1
+            Font: |-
+                =LookUp(c_EnvironmentVariable, 'Display Name'="Text Heading Font").'Default Value'
+                
+                //_VarGblAppFonts.Heading
+            FontWeight: =FontWeight.Bold
+            Height: =74
+            OnSelect: |-
+                =
+                Navigate('Activity Detail Screen',ScreenTransition.CoverRight);
+                Set(varActivityData,ThisItem);
+            Size: =LookUp(c_EnvironmentVariable,'Display Name'="Text Medium Font Size").'Default Value'
+            TabIndex: =0
+            Text: |-
+                ="Type: " & ThisItem.'Activity Type'
+            Tooltip: |-
+                ="Order Line Id: "
+            Width: =290
+            Wrap: =false
+            X: =4
+            Y: =10
+            ZIndex: =4
+
+        Body1_81 As label:
+            BorderColor: =RGBA(0, 18, 107, 1)
+            Color: |-
+                =
+                ColorValue(LookUp(c_EnvironmentVariable, 'Display Name'="Button Fill").'Default Value')
+            DisabledColor: =RGBA(166, 166, 166, 1)
+            FocusedBorderThickness: =1
+            Font: |-
+                =LookUp(c_EnvironmentVariable, 'Display Name'="Text Heading Font").'Default Value'
+                
+                //_VarGblAppFonts.Heading
+            FontWeight: =FontWeight.Bold
+            Height: =75
+            OnSelect: |-
+                =
+                Navigate('Activity Detail Screen',ScreenTransition.CoverRight);
+                Set(varActivityData,ThisItem);
+            Size: =LookUp(c_EnvironmentVariable,'Display Name'="Text Medium Font Size").'Default Value'
+            TabIndex: =0
+            Text: =ThisItem.'Created On'
+            Tooltip: =
+            Width: =215
+            Wrap: =false
+            X: =320
+            Y: =10
+            ZIndex: =6
+
+        Body1_82 As label:
+            BorderColor: =RGBA(0, 18, 107, 1)
+            Color: =RGBA(0, 0, 0, 1)
+            DisabledColor: =RGBA(166, 166, 166, 1)
+            FocusedBorderThickness: =1
+            Font: |-
+                =LookUp(c_EnvironmentVariable, 'Display Name'="Text Heading Font").'Default Value'
+                
+                //_VarGblAppFonts.Heading
+            FontWeight: =FontWeight.Semibold
+            Height: =62
+            OnSelect: |-
+                =
+                Navigate('Activity Detail Screen',ScreenTransition.CoverRight);
+                Set(varActivityData,ThisItem);
+            Size: |-
+                =
+                LookUp('Environment Variable Definitions', 'Display Name'="Text Sub Title Font Size").'Default Value'
+            TabIndex: =0
+            Text: |-
+                ="Activity ID: " & ThisItem.'Lead Activity Id'
+            Tooltip: =
+            Width: =316
+            X: =4
+            Y: =84
+            ZIndex: =7
+
+        Body1_85 As label:
+            BorderColor: =RGBA(0, 18, 107, 1)
+            Color: =RGBA(0, 0, 0, 1)
+            DisabledColor: =RGBA(166, 166, 166, 1)
+            FocusedBorderThickness: =01
+            Font: |-
+                =LookUp(c_EnvironmentVariable, 'Display Name'="Text Heading Font").'Default Value'
+                
+                //_VarGblAppFonts.Heading
+            FontWeight: =FontWeight.Semibold
+            Height: =62
+            OnSelect: |-
+                =
+                Navigate('Activity Detail Screen',ScreenTransition.CoverRight);
+                Set(varActivityData,ThisItem);
+            Size: |-
+                =
+                LookUp('Environment Variable Definitions', 'Display Name'="Text Sub Title Font Size").'Default Value'
+            TabIndex: =0
+            Text: |-
+                ="Remarks: " & ThisItem.'Activity Remarks'
+            Tooltip: =
+            Width: =310
+            X: =320
+            Y: =146
+            ZIndex: =8
+
+        Body1_86 As label:
+            BorderColor: =RGBA(0, 18, 107, 1)
+            Color: =RGBA(255, 255, 255, 1)
+            DisabledColor: =RGBA(166, 166, 166, 1)
+            FocusedBorderThickness: =01
+            Font: |-
+                =LookUp(c_EnvironmentVariable, 'Display Name'="Text Heading Font").'Default Value'
+                
+                //_VarGblAppFonts.Heading
+            FontWeight: =FontWeight.Semibold
+            Height: =72
+            OnSelect: |-
+                =
+                Navigate('Activity Detail Screen',ScreenTransition.CoverRight);
+                Set(varActivityData,ThisItem);
+            Size: |-
+                =
+                LookUp('Environment Variable Definitions', 'Display Name'="Text Sub Title Font Size").'Default Value'
+            TabIndex: =0
+            Text: |-
+                ="Next FollowUp Date: "& Text(DateValue(ThisItem.'Next Followup Date'),"dd-mm-yyyy")
+            Tooltip: =
+            Width: =320
+            X: =4
+            Y: =208
+            ZIndex: =10
+
+        Body1_87 As label:
+            BorderColor: =RGBA(0, 18, 107, 1)
+            Color: =RGBA(255, 255, 255, 1)
+            DisabledColor: =RGBA(166, 166, 166, 1)
+            FocusedBorderThickness: =01
+            Font: |-
+                =LookUp(c_EnvironmentVariable, 'Display Name'="Text Heading Font").'Default Value'
+                
+                //_VarGblAppFonts.Heading
+            FontWeight: =FontWeight.Semibold
+            Height: =72
+            OnSelect: |-
+                =
+                Navigate('Activity Detail Screen',ScreenTransition.CoverRight);
+                Set(varActivityData,ThisItem);
+            Size: |-
+                =
+                LookUp('Environment Variable Definitions', 'Display Name'="Text Sub Title Font Size").'Default Value'
+            TabIndex: =0
+            Text: |-
+                ="Next Followup Activity: "& ThisItem.'Follow-Up Activity Type'
+            Tooltip: =
+            Width: =310
+            X: =320
+            Y: =208
+            ZIndex: =11
+
+        Body1_83 As label:
+            BorderColor: =RGBA(0, 18, 107, 1)
+            Color: =RGBA(0, 0, 0, 1)
+            DisabledColor: =RGBA(166, 166, 166, 1)
+            FocusedBorderThickness: =01
+            Font: |-
+                =LookUp(c_EnvironmentVariable, 'Display Name'="Text Heading Font").'Default Value'
+                
+                //_VarGblAppFonts.Heading
+            FontWeight: =FontWeight.Semibold
+            Height: =62
+            OnSelect: |-
+                =
+                Navigate('Activity Detail Screen',ScreenTransition.CoverRight);
+                Set(varActivityData,ThisItem);
+            Size: |-
+                =
+                LookUp('Environment Variable Definitions', 'Display Name'="Text Sub Title Font Size").'Default Value'
+            TabIndex: =0
+            Text: |-
+                ="Contact: "& ThisItem.Contact.'First Name' 
+            Tooltip: =
+            Width: =308
+            X: =320
+            Y: =84
+            ZIndex: =12
+
+        Body1_84 As label:
+            BorderColor: =RGBA(0, 18, 107, 1)
+            Color: =RGBA(0, 0, 0, 1)
+            DisabledColor: =RGBA(166, 166, 166, 1)
+            FocusedBorderThickness: =01
+            Font: |-
+                =LookUp(c_EnvironmentVariable, 'Display Name'="Text Heading Font").'Default Value'
+                
+                //_VarGblAppFonts.Heading
+            FontWeight: =FontWeight.Semibold
+            Height: =62
+            OnSelect: |-
+                =
+                Navigate('Activity Detail Screen',ScreenTransition.CoverRight);
+                Set(varActivityData,ThisItem);
+            Size: |-
+                =
+                LookUp('Environment Variable Definitions', 'Display Name'="Text Sub Title Font Size").'Default Value'
+            TabIndex: =0
+            Text: |-
+                ="Outcome: "& ThisItem.'Activity Outcome'
+            Tooltip: =
+            Width: =316
+            X: =4
+            Y: =146
+            ZIndex: =13
+

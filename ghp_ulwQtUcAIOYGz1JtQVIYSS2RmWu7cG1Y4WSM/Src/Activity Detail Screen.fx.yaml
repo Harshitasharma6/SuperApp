@@ -5,7 +5,7 @@
         DataSource: |-
             =Table({
                     Title: "Activity Id:",
-                    Data:varActivityData.zx_leadactivitiesid
+                    Data:varActivityData.zx_name
                 },
                 {
                     Title: "Type:",
@@ -39,5 +39,12 @@
         Fill: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Screen Background Color").'Default Value') //ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Screen Background Color").'Default Value') //_VarGblAppColors.BackgroundColor
         Height: =962
         Y: =80
+
+    Header_23 As Header:
+        ScreenName: =varActivityData.zx_name
         ZIndex: =2
+
+    "'Bottom Bar_25' As 'Bottom Bar'":
+        Y: =1026
+        ZIndex: =3
 
