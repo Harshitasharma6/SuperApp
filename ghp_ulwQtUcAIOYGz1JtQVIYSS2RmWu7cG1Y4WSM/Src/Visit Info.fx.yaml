@@ -28,108 +28,7 @@
     Header_18 As Header:
         ScreenName: |-
             =//"Visit Info"
-            Gallery3_1.Selected.Title
-
-    Gallery3_1 As gallery.galleryHorizontal:
-        AccessibleLabel: ="Top Bar"
-        BorderColor: =RGBA(0, 18, 107, 1)
-        Height: =57
-        Items: |-
-            =Table(
-                
-                {
-                    Title: "Book Order",
-                    TabId: 2
-                },
-                {
-                    Title: "Sales Order",
-                    TabId: 3
-                },
-                {
-                    Title: "Customer 360",
-                    TabId: 4
-                },
-                {
-                    Title: "Activities",
-                    TabId: 5
-                },
-                {
-                    Title: "Leads",
-                    TabId: 6
-                },
-                {
-                    Title: "Inventory",
-                    TabId: 7
-                },
-                {
-                    Title: "Complaints",
-                    TabId: 8
-                },
-                {
-                    Title: "Quotes",
-                    TabId: 9
-                },
-                {
-                    Title: "Invoice",
-                    TabId: 10
-                },
-                {
-                    Title: "Payments",
-                    TabId: 11
-                }
-            )
-        OnSelect: =
-        ShowScrollbar: =false
-        TabIndex: =0
-        TemplatePadding: =0
-        TemplateSize: =200
-        Width: =638
-        Y: =120
-        ZIndex: =2
-
-        title_4 As label:
-            Align: =Align.Center
-            BorderColor: =RGBA(0, 18, 107, 1)
-            Color: |-
-                =If(_VarActivetopTabID= ThisItem.TabId, ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' ) 
-                , ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Primary Text Color").'Default Value' )//_VarGblAppColors.PrimaryText
-                )
-            DisabledColor: =RGBA(166, 166, 166, 1)
-            FocusedBorderThickness: =0.3
-            FontWeight: =FontWeight.Semibold
-            Height: =41
-            OnSelect: =Set(_VarActivetopTabID, ThisItem.TabId)
-            Size: =LookUp(c_EnvironmentVariable,'Display Name'="Text Medium Font Size").'Default Value'
-            TabIndex: =0
-            Text: =ThisItem.Title
-            Width: =Gallery3_1.TemplateWidth
-            Y: =8
-            ZIndex: =2
-
-        Border_4 As button:
-            BorderColor: |-
-                =If(_VarActivetopTabID= ThisItem.TabId, ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' ) 
-                , ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Hover Color").'Default Value'))
-            DisabledBorderColor: =RGBA(166, 166, 166, 1)
-            DisabledColor: =RGBA(166, 166, 166, 1)
-            DisabledFill: =RGBA(244, 244, 244, 1)
-            Fill: =RGBA(0, 0, 0, 0)
-            FocusedBorderThickness: =2.5
-            FontWeight: =FontWeight.Semibold
-            Height: =46
-            HoverColor: =RGBA(255, 255, 255, 1)
-            HoverFill: =
-            OnSelect: =Set(_VarActivetopTabID, ThisItem.TabId);
-            RadiusBottomLeft: =30
-            RadiusBottomRight: =30
-            RadiusTopLeft: =30
-            RadiusTopRight: =30
-            Size: =24
-            Text: =""
-            Width: =Gallery3_1.TemplateWidth-6
-            X: =6
-            Y: =8
-            ZIndex: =3
+            'Top Gallery_1'.Selected.Title
 
     "'Salesorder container' As groupContainer.manualLayoutContainer":
         Height: =896
@@ -689,6 +588,121 @@
     "'Bottom Bar_11' As 'Bottom Bar'":
         Y: =1026
         ZIndex: =14
+
+    "'Top Gallery_1' As gallery.galleryHorizontal":
+        AccessibleLabel: ="Top Bar"
+        BorderColor: =RGBA(0, 18, 107, 1)
+        BorderStyle: =BorderStyle.None
+        FocusedBorderThickness: =
+        Height: =60
+        Items: |-
+            =Table(
+                
+                {
+                    Title: "Book Order",
+                    TabId: 2
+                },
+                {
+                    Title: "Sales Order",
+                    TabId: 3
+                },
+                {
+                    Title: "Customer 360",
+                    TabId: 4
+                },
+                {
+                    Title: "Activities",
+                    TabId: 5
+                },
+                {
+                    Title: "Leads",
+                    TabId: 6
+                },
+                {
+                    Title: "Inventory",
+                    TabId: 7
+                },
+                {
+                    Title: "Complaints",
+                    TabId: 8
+                },
+                {
+                    Title: "Quotes",
+                    TabId: 9
+                },
+                {
+                    Title: "Invoice",
+                    TabId: 10
+                },
+                {
+                    Title: "Payments",
+                    TabId: 11
+                }
+            )
+        OnSelect: =Set(_VarActivetopTabID, ThisItem.TabId)
+        ShowScrollbar: =false
+        TabIndex: =0
+        TemplatePadding: =0
+        TemplateSize: =181
+        Width: =630
+        X: =10
+        Y: =131
+        ZIndex: =15
+
+        title_5 As label:
+            Align: =Align.Center
+            BorderColor: =RGBA(0, 18, 107, 1)
+            Color: |-
+                =If(ThisItem.IsSelected, ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//_VarGblAppColors.PrimaryRed
+                 ,ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Text Primary Color").'Default Value' ))
+            DisabledColor: =RGBA(166, 166, 166, 1)
+            FocusedBorderThickness: =0.3
+            FontWeight: =FontWeight.Semibold
+            Height: =48
+            OnSelect: =
+            Size: =LookUp(c_EnvironmentVariable,'Display Name'="Text Medium Font Size").'Default Value'
+            TabIndex: =0
+            Text: =ThisItem.Title
+            Width: =176
+            ZIndex: =2
+
+        Border_7 As button:
+            BorderColor: |-
+                =If(ThisItem.IsSelected, ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//_VarGblAppColors.PrimaryRed
+                 , Color.White)
+            BorderStyle: =BorderStyle.None
+            Color: =
+            DisabledBorderColor: =RGBA(166, 166, 166, 1)
+            DisabledColor: =RGBA(166, 166, 166, 1)
+            DisabledFill: =RGBA(244, 244, 244, 1)
+            Fill: =RGBA(0, 0, 0, 0)
+            FocusedBorderThickness: =2.5
+            FontWeight: =FontWeight.Semibold
+            Height: =45
+            HoverColor: =RGBA(255, 255, 255, 1)
+            HoverFill: =
+            OnSelect: =
+            RadiusBottomLeft: =30
+            RadiusBottomRight: =30
+            RadiusTopLeft: =30
+            RadiusTopRight: =30
+            Size: =24
+            Text: =""
+            Width: =175
+            X: =1
+            Y: =3
+            ZIndex: =3
+
+        Rectangle40_1 As rectangle:
+            BorderColor: =RGBA(0, 18, 107, 1)
+            Fill: |-
+                =If(ThisItem.IsSelected,ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//_VarGblAppColors.PrimaryRed
+                ,Color.Transparent)
+            Height: =3
+            OnSelect: =Select(Parent)
+            X: =15
+            Y: =48
+            ZIndex: =4
 
     Group3 As group:
         Height: =5
