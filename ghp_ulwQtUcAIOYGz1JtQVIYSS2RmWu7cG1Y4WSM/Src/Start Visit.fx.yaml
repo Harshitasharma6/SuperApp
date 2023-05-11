@@ -2714,7 +2714,7 @@
                     HoverFill: |-
                         =ColorFade(ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )
                         , 10%)
-                    OnSelect: |
+                    OnSelect: |-
                         =/*ClearCollect(
                             colFilterData,
                             If(
@@ -2757,7 +2757,8 @@
                         Set(
                             varFilter,
                             !varFilter
-                        );*/
+                        );
+                        */
                     Size: =16
                     Text: ="Apply Filters"
                     Visible: =varFilter
@@ -3213,13 +3214,22 @@
                         Y: =251
                         ZIndex: =16
 
-                    Checkbox5_1 As checkbox:
+                    C_ALL As checkbox:
                         BorderColor: =RGBA(0, 18, 107, 1)
                         CheckboxBorderColor: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )
                         CheckboxSize: =40
                         Color: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )
                         Height: =65
                         HoverColor: =RGBA(0, 18, 107, 1)
+                        OnCheck: |-
+                            =Collect(
+                                colFilter,
+                                {
+                                    Title: "Type",
+                                    value: C_ALL.Value
+                                }
+                            )
+                        OnUncheck: =
                         Size: =21
                         Text: ="All"
                         Width: =280
@@ -3255,13 +3265,16 @@
                         Y: =332
                         ZIndex: =20
 
-                    Checkbox5_4 As checkbox:
+                    C_Planned As checkbox:
                         BorderColor: =RGBA(0, 18, 107, 1)
                         CheckboxBorderColor: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )
                         CheckboxSize: =40
                         Color: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )
                         Height: =65
                         HoverColor: =RGBA(0, 18, 107, 1)
+                        OnCheck: |-
+                            =Collect(colFilter,{type:C_ALL.Value})
+                        OnUncheck: =true
                         Size: =21
                         Text: ="Planned"
                         Width: =250
@@ -3297,13 +3310,14 @@
                         Y: =416
                         ZIndex: =18
 
-                    Checkbox5_5 As checkbox:
+                    C_Unplanned As checkbox:
                         BorderColor: =RGBA(0, 18, 107, 1)
                         CheckboxBorderColor: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )
                         CheckboxSize: =40
                         Color: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )
                         Height: =65
                         HoverColor: =RGBA(0, 18, 107, 1)
+                        OnCheck: =
                         Size: =21
                         Text: ="UnPlanned"
                         Width: =250
