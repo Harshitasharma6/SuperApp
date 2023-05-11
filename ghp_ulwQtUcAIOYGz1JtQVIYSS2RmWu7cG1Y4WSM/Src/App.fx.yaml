@@ -1,6 +1,6 @@
 App As appinfo:
     BackEnabled: =false
-    OnStart: |
+    OnStart: |-
         =Set(
             _VarOfflineDataLoading,
             true
@@ -9,6 +9,7 @@ App As appinfo:
             varLeadFilter,
             true
         );
+        
         /*
         Set(
             _VarGblAppColors,
@@ -458,6 +459,7 @@ App As appinfo:
             NotificationType.Success,
             1000
         );
+        Set(g_BottomMenuSelected, "Home")
 
     Host As hostControl.DefaultHostControlVariant:
         OnCancel: =false

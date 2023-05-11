@@ -108,7 +108,7 @@
             BorderColor: =RGBA(0, 18, 107, 1)
             Color: |+
                 =//_VarGblAppColors.PrimaryRed
-                If(ThisItem.IsSelected,ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )
+                If(g_BottomMenuSelected=ThisItem.Title,ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )
                 ,ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Text Background Color").'Default Value' ))
                 
             DisabledColor: =RGBA(166, 166, 166, 1)
@@ -134,7 +134,8 @@
                         ThisItem.Screen,
                         ScreenTransition.CoverRight
                     )
-                )
+                );
+                Set(g_BottomMenuSelected, ThisItem.Title);
                 //Set(_varsideNav, false))
             Size: =LookUp(c_EnvironmentVariable,'Display Name'="Text Regular Font Size").'Default Value' 
             TabIndex: =0
@@ -153,7 +154,7 @@
                 35
             Image: =ThisItem.Icon
             ImagePosition: =ImagePosition.Fill
-            OnSelect: |-
+            OnSelect: |
                 =Set(
                     _VarSelectedTab,
                     ThisItem.Title
@@ -168,11 +169,21 @@
                         ThisItem.Screen,
                         ScreenTransition.CoverRight
                     ),
+                If(ThisItem.Id = 5,
+                
+                    Navigate(
+                       Sidebar,//can not file profile detail page 
+                        ScreenTransition.CoverRight
+                    ),
                     Navigate(
                         ThisItem.Screen,
                         ScreenTransition.CoverRight
                     )
                 )
+                );
+                
+                
+                Set(g_BottomMenuSelected, ThisItem.Title);
                 //Set(_varsideNav, false))
             RadiusBottomLeft: =If(ThisItem.Title = varUser.'First Name',25,0)
             RadiusBottomRight: =If(ThisItem.Title = varUser.'First Name',25,0)

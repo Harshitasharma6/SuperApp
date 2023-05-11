@@ -2,9 +2,9 @@ takePhotoScreen As screen:
     LoadingSpinnerColor: =RGBA(0, 120, 212, 1)
 
     Container2 As groupContainer.manualLayoutContainer:
-        Height: =App.Height - 'Bottom Bar_20'.Height - Header_27.Height
+        Height: =App.Height - 'Bottom Bar_20'.Height - Header_26.Height
         Width: =App.Width
-        Y: =Header_27.Y + Header_27.Height
+        Y: =Header_26.Y + Header_26.Height
         ZIndex: =2
 
         Canvas4_2 As fluidGrid.fluidGridWithBlankCard:
@@ -714,4 +714,8 @@ takePhotoScreen As screen:
         Height: =105
         Y: =1029
         ZIndex: =3
+
+    Header_26 As Header:
+        ScreenName: ="Upload Documents"
+        ZIndex: =4
 
