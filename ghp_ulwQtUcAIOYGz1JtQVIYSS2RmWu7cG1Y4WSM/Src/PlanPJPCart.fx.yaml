@@ -127,7 +127,7 @@ PlanPJPCart As screen:
             OnSelect: =Select(Parent)
             Size: =12
             Text: |-
-                ="Pincode: "& LookUp(Areas, Area = ThisItem.Area.Area).Pincode.Name
+                ="Pincode: "& LookUp('Area.S', Area = ThisItem.Area.Area).Pincode.Name
             Width: =290
             Wrap: =false
             X: =21
@@ -144,7 +144,7 @@ PlanPJPCart As screen:
             OnSelect: =Select(Parent)
             Size: =12
             Text: |-
-                ="City: " & LookUp(Areas, Area = ThisItem.Area.Area).City.'City Name'
+                ="City: " & LookUp('Area.S', Area = ThisItem.Area.Area).City.'City Name'
             Width: =296
             Wrap: =false
             X: =21
@@ -161,7 +161,7 @@ PlanPJPCart As screen:
             OnSelect: =Select(Parent)
             Size: =12
             Text: |-
-                ="District: "& LookUp(Areas, Area = ThisItem.Area.Area).District.'District Name'
+                ="District: "& LookUp('Area.S', Area = ThisItem.Area.Area).District.'District Name'
             Width: =290
             Wrap: =false
             X: =21
@@ -219,7 +219,7 @@ PlanPJPCart As screen:
                 =If(
                     IsBlank(
                         LookUp(
-                            Beats,
+                            'Beat.S',
                             'PJP Line'.Date = ClickedPjpdate &&  'PJP Line'.'Owning User'.'Primary Email' =  ComboBox3.Selected.'Primary Email'&& Area.Area = ThisItem.Area.Area
                         )
                     ),
@@ -367,7 +367,7 @@ PlanPJPCart As screen:
                                 'PJP Header' = _VarPjpHeader.'PJP Header'
                             ),
                     Area: LookUp(
-                        Areas_1,Area= _varSelectedArea1.Area
+                       'Area.S',Area= _varSelectedArea1.Area
                     ),*/
                    Owner: LookUp(
                             Users,

@@ -14,8 +14,8 @@
         AccessibleLabel: ="Order Info Gallery"
         BorderColor: =RGBA(153, 207, 236, 1)
         BorderStyle: =BorderStyle.None
-        Fill: =RGBA(255, 255, 255, 1)
-        Height: =874
+        Fill: =ColorValue(LookUp(c_EnvironmentVariable, 'Display Name'="Light Red").'Default Value')
+        Height: =920
         Items: |-
             =If(
                 varfiltergallery = true,
@@ -130,7 +130,7 @@
         Layout: =Layout.Vertical
         ShowScrollbar: =false
         TabIndex: =0
-        TemplateSize: =210
+        TemplateSize: =230
         Visible: |-
             =true
             //'Top Gallery'.Selected.TabId=5
@@ -586,9 +586,9 @@
         PressedBorderColor: =RGBA(0, 0, 0, 0)
         PressedFill: =RGBA(0, 0, 0, 0)
         TabIndex: =0
-        Width: =50
-        X: =410
-        Y: =15
+        Width: =30
+        X: =448
+        Y: =30
         ZIndex: =2
 
     Circle18_1 As circle:
@@ -596,9 +596,9 @@
         Fill: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//_VarGblAppColors.PrimaryRed
         Height: =50
         OnSelect: =
-        Width: =50
-        X: =568
-        Y: =15
+        Width: =40
+        X: =590
+        Y: =30
         ZIndex: =3
 
     Label80_1 As label:
@@ -612,8 +612,8 @@
         Text: |
             =Left(Upper(LookUp(Users,'Primary Email'= User().Email).'First Name'),1) & Left(Upper(LookUp(Users,'Primary Email'= User().Email).'Last Name'),1)
         Width: =40
-        X: =574
-        Y: =15
+        X: =590
+        Y: =30
         ZIndex: =4
 
     DatePicker1 As datepicker:
@@ -636,8 +636,8 @@
         SelectedDateFill: =RGBA(0, 120, 212, 1)
         Size: =21
         Width: =60
-        X: =504
-        Y: =24
+        X: =517
+        Y: =30
         ZIndex: =6
 
     Display_14 As gallery.galleryHorizontal:
@@ -647,14 +647,17 @@
         Fill: |-
             =RGBA(0, 0, 0, 0)
             //_VarGblAppColors.PrimaryRed
-        Height: =80
+        Height: =155
         Items: =colFilter
         LoadingSpinner: =LoadingSpinner.Data
         ShowScrollbar: =false
         TabIndex: =0//-1
-        TemplateSize: =306
-        Visible: =varFilter
-        Width: =336
+        TemplateSize: =286
+        Visible: |-
+            =true
+            //varFilter
+        Width: =424
+        WrapCount: =2
         X: =10
         Y: =15
         ZIndex: =7
@@ -668,7 +671,7 @@
                 =//RGBA(204, 204, 204, 1)
                 ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//_VarGblAppColors.PrimaryRed
             FontWeight: =FontWeight.Semibold
-            Height: =70
+            Height: =34
             HoverColor: =RGBA(255, 255, 255, 1)
             HoverFill: =ColorFade(RGBA(56, 96, 178, 1), -20%)
             RadiusBottomLeft: =15
@@ -677,21 +680,27 @@
             RadiusTopRight: =15
             Size: =24
             Text: =""
-            Width: =289
+            Width: =237
             X: =6
             ZIndex: =1
 
         Label31_28 As label:
-            Align: =Align.Center
             BorderColor: =RGBA(0, 18, 107, 1)
-            Color: =RGBA(0, 0, 0, 1)
+            Color: |-
+                =//RGBA(0, 0, 0, 1)
+                //RGBA(153, 160, 196, 1)
+                If(
+                    ThisItem.IsSelected,
+                    ColorValue( LookUp('Environment Variable Definitions', 'Display Name'="Common Primary Background").'Default Value')//_VarGblAppColors.PrimaryBg
+                    ,ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Text Primary Color").'Default Value')   
+                )
             DisabledColor: =RGBA(166, 166, 166, 1)
             FontWeight: =FontWeight.Bold
             Height: =30
             OnSelect: =Select(Parent)
             Size: =18
             Text: |-
-                =ThisItem.Title & ":"
+                =ThisItem.Title & ": " & ThisItem.value
             Tooltip: |-
                 =ThisItem.Title & ":"
             Width: =269
@@ -699,23 +708,17 @@
             X: =14
             ZIndex: =2
 
-        Label31_29 As label:
-            Align: =Align.Center
-            BorderColor: =RGBA(0, 18, 107, 1)
-            Color: =RGBA(153, 160, 196, 1)
-            DisabledColor: =RGBA(166, 166, 166, 1)
-            OnSelect: =Select(Parent)
-            Size: =18
-            Text: =ThisItem.value
-            Tooltip: =ThisItem.value
-            Width: =289
-            X: =6
-            Y: =30
-            ZIndex: =3
-
         Icon21_17 As icon.Cancel:
             AccessibleLabel: ="Close the filter applied"
             BorderColor: =RGBA(0, 18, 107, 1)
+            Color: |-
+                =//RGBA(0, 0, 0, 1)
+                //RGBA(153, 160, 196, 1)
+                If(
+                    ThisItem.IsSelected,
+                    ColorValue( LookUp('Environment Variable Definitions', 'Display Name'="Common Primary Background").'Default Value')//_VarGblAppColors.PrimaryBg
+                    ,ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Text Primary Color").'Default Value')   
+                )
             DisabledBorderColor: =RGBA(166, 166, 166, 1)
             DisabledColor: =RGBA(244, 244, 244, 1)
             Height: =25
@@ -738,13 +741,13 @@
         Color: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//_VarGblAppColors.PrimaryRed
         DisabledBorderColor: =RGBA(166, 166, 166, 1)
         DisabledColor: =RGBA(244, 244, 244, 1)
-        Height: =30
+        Height: =50
         Icon: =Icon.Sort
         OnSelect: =Set(varSort,!varSort)
         TabIndex: =0//-1
-        Width: =50
-        X: =448
-        Y: =28
+        Width: =30
+        X: =475
+        Y: =30
         ZIndex: =8
 
     Rectangle14_30 As rectangle:
@@ -2005,7 +2008,8 @@
                 Align: =Align.Center
                 BorderColor: =RGBA(0, 18, 107, 1)
                 Color: |-
-                    =//RGBA(153, 160, 196, 1)
+                    =//RGBA(0, 0, 0, 1)
+                    //RGBA(153, 160, 196, 1)
                     If(
                         ThisItem.IsSelected,
                         ColorValue( LookUp('Environment Variable Definitions', 'Display Name'="Common Primary Background").'Default Value')//_VarGblAppColors.PrimaryBg

@@ -17,8 +17,8 @@
             Blank()
         );
         Set(
-            varCollectionEmpty,
-            true
+            _VarActivetopTabID,
+            1
         );
         Set(
             varSelectedTabId,
@@ -26,6 +26,7 @@
         )
 
     Header_18 As Header:
+        Fill: =RGBA(255, 255, 255, 1)
         ScreenName: |-
             =//"Visit Info"
             'Top Gallery_1'.Selected.Title
@@ -41,7 +42,7 @@
             AccessibleLabel: ="Order Info Gallery"
             BorderColor: =RGBA(153, 207, 236, 1)
             BorderStyle: =BorderStyle.None
-            Fill: =RGBA(255, 255, 255, 1)
+            Fill: =ColorValue(LookUp(c_EnvironmentVariable, 'Display Name'="Light Red").'Default Value')
             Height: =827
             Items: |-
                 =FirstN(
@@ -54,7 +55,7 @@
             Layout: =Layout.Vertical
             ShowScrollbar: =false
             TabIndex: =0
-            TemplateSize: =210
+            TemplateSize: =230
             Visible: |-
                 =true
                 //'Top Gallery'.Selected.TabId=5
@@ -505,88 +506,12 @@
                     "Secondary"
                 )
 
-    Icon7 As icon.ShoppingCart:
-        AccessibleLabel: ="Cart"
-        BorderColor: =RGBA(0, 18, 107, 1)
-        Color: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )
-        DisabledBorderColor: =RGBA(166, 166, 166, 1)
-        DisabledColor: =RGBA(244, 244, 244, 1)
-        Height: =43
-        Icon: =Icon.ShoppingCart
-        OnSelect: |+
-            =Set(
-                _VarVisitCart,
-                true
-            );
-            
-            If(
-                'Product List_1'.OrderType = "Primary",
-                Navigate(
-                    'Primary Cart Screen',
-                    ScreenTransition.CoverRight
-                ),
-                Navigate(
-                    'Secondary Cart Screen',
-                    ScreenTransition.CoverRight
-                )
-            );
-            
-        TabIndex: =0
-        Width: =44
-        X: =547
-        Y: =65
-        ZIndex: =6
-
-    Button4 As button:
-        BorderThickness: =0
-        DisabledBorderColor: =RGBA(166, 166, 166, 1)
-        DisabledColor: =RGBA(166, 166, 166, 1)
-        DisabledFill: =RGBA(244, 244, 244, 1)
-        DisplayMode: =DisplayMode.View
-        Fill: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )
-        FontWeight: =FontWeight.Semibold
-        Height: =30
-        HoverColor: =RGBA(255, 255, 255, 1)
-        HoverFill: =ColorFade(RGBA(56, 96, 178, 1), -20%)
-        OnSelect: |
-            =Set(_VarVisitCart, true);
-            If(
-                'Product List_1'.OrderType = "Primary",
-                Navigate(
-                    'Primary Cart Screen',
-                    ScreenTransition.CoverRight
-                ),
-                Navigate(
-                    'Secondary Cart Screen',
-                    ScreenTransition.CoverRight
-                )
-            );
-        RadiusBottomLeft: =50
-        RadiusBottomRight: =50
-        RadiusTopLeft: =50
-        RadiusTopRight: =50
-        Size: =LookUp(c_EnvironmentVariable,'Display Name'="Text Regular Font Size").'Default Value'
-        Text: |
-            =If(
-                varCustomertype = 'Party Type Choices'.Distributor || varCustomertype = 'Party Type Choices'.Dealer,
-                CountRows(colPrimaryCart),
-                CountRows(colSecondaryCart)
-            )
-        Width: =30
-        X: =591
-        Y: =47
-        ZIndex: =7
-
     "'Customer Container' As groupContainer.manualLayoutContainer":
         Height: =896
         Visible: =_VarActivetopTabID=4
         Width: =640
         Y: =191
         ZIndex: =8
-
-    "'Bottom Bar_11' As 'Bottom Bar'":
-        Y: =1026
-        ZIndex: =14
 
     "'Top Gallery_1' As gallery.galleryHorizontal":
         AccessibleLabel: ="Top Bar"
@@ -702,6 +627,11 @@
             X: =15
             Y: =48
             ZIndex: =4
+
+    "'Bottom Bar_11' As 'Bottom Bar'":
+        Fill: =RGBA(255, 255, 255, 1)
+        Y: =1026
+        ZIndex: =16
 
     Group3 As group:
         Height: =5

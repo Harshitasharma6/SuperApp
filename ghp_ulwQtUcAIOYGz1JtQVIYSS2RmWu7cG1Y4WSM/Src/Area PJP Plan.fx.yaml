@@ -1130,7 +1130,7 @@
                 Set(
                     varFuturedate,
                     Filter(
-                        Beats,
+                        'Beat.S',
                         DateValue('Future Visit') = DateValue(DateFrom_6.SelectedDate) && 'Created By'.'Primary Email' = LookUp(
                             Users,
                             'Primary Email' = User().Email

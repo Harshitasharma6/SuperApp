@@ -213,8 +213,8 @@
                     
                     /*CountRows(
                             Filter(
-                                'Order Headers',
-                                'Created By'.'Primary Email' = User().Email && 'KRA '.'Achivement Type'=LookUp('KRA Headers','Achivement Type'='Achivement Type (KRA Headers)'.Daily).'Achivement Type' && 'KRA '.ID = LookUp('KRA Headers',ID=varkra.ID).ID
+                                'Order Header.S',
+                                'Created By'.'Primary Email' = User().Email && 'KRA '.'Achivement Type'=LookUp( 'KRA Header.S','Achivement Type'='Achivement Type (KRA Header.S)'.Daily).'Achivement Type' && 'KRA '.ID = LookUp( 'KRA Header.S',ID=varkra.ID).ID
                             )
                         )
                         */
