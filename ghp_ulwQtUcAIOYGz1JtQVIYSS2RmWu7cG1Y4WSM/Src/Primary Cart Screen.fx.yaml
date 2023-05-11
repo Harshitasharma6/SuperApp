@@ -820,6 +820,7 @@
                     Notify(
                         "You have insufficient credit balance",
                         NotificationType.Error,
+                
                         2000
                     ),
                     Set(
@@ -1063,19 +1064,31 @@
                     );
                     ClearCollect(
                         OfflineOrderHeaderCollection,
-                        'Order Header.S'
+                        Filter(
+                            'Order Header.S',
+                            'Owning User'.'Primary Email' = User().Email
+                        )
                     );
                     ClearCollect(
                         OfflineOrderLineCollection,
-                        'Order Lines.S'
+                        Filter(
+                            'Order Lines.S',
+                            'Owning User'.'Primary Email' = User().Email
+                        )
                     );
                     ClearCollect(
                         OfflineInvoiceCollection,
-                        'Invoice.S'
+                     Filter(
+                              'Invoice.S',
+                            'Owning User'.'Primary Email' = User().Email
+                        )
                     );
                     ClearCollect(
                         OfflineInvoiceLineCollection,
-                        'Invoice Line.S'
+                    Filter(
+                                   'Invoice Line.S',
+                            'Owning User'.'Primary Email' = User().Email
+                        )
                     );
                     Clear(colPrimaryCart);
                     Clear(colPrimaryCart);
