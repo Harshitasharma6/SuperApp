@@ -67,9 +67,9 @@
         PaddingLeft: =45
         PressedFill: =
         Size: =15
-        Width: =482
+        Width: =484
         X: =22
-        Y: =206
+        Y: =150
         ZIndex: =1
 
     Icon16_3 As icon.Search:
@@ -85,7 +85,7 @@
         PaddingTop: =8
         Width: =35
         X: =28
-        Y: =207
+        Y: =151
         ZIndex: =2
 
     Gallery1_3 As gallery.galleryVertical:
@@ -96,18 +96,31 @@
         Items: |-
             =If(
                 varAreaFilter && !IsBlank(Display_10.Selected.value),
-                colPJPFilterData,
+                If(
+                    IsBlank(TextInput2_3.Text),
+                    colPJPFilterData,
+                    Filter(
+                        colPJPFilterData,
+                        TextInput2_3.Text in Area.'Area Name'
+                    )
+                ),
                 //Search(
-                    UserAssignedAreas
-                   // TextInput2_3.Text,
-                  //  "new_id"
+                If(
+                    IsBlank(TextInput2_3.Text),
+                    UserAssignedAreas,
+                    Filter(
+                        UserAssignedAreas,
+                        TextInput2_3.Text in Area.'Area Name'
+                    )
+                )
+                
             )
         Layout: =Layout.Vertical
         ShowScrollbar: =false
         TabIndex: =
         TemplatePadding: =10
         TemplateSize: =201
-        Y: =252
+        Y: =196
         ZIndex: =3
 
         Background_6 As button:
@@ -181,6 +194,12 @@
             OnSelect: =Navigate(PlanPJPCart)
             Size: =LookUp(c_EnvironmentVariable,'Display Name'="Text Regular Font Size").'Default Value'
             Text: =
+            Visible: |-
+                =If(
+                    ClickedPjpdate > Today() || ClickedPjpdate = Today(),
+                    true,
+                    false
+                )
             Width: =43
             X: =557
             Y: =27
@@ -445,7 +464,7 @@
         Icon11 As icon.View:
             AccessibleLabel: ="View icon"
             BorderColor: =RGBA(0, 18, 107, 1)
-            Color: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Primary Text Color").'Default Value' )//_VarGblAppColors.PrimaryText
+            Color: =RGBA(103, 136, 174, 1)
             DisabledBorderColor: =RGBA(166, 166, 166, 1)
             DisabledColor: =RGBA(244, 244, 244, 1)
             FocusedBorderThickness: =0.1
@@ -549,91 +568,45 @@
         Y: =145
         ZIndex: =4
 
-    DateFilter As gallery.galleryHorizontal:
-        AccessibleLabel: ="Date Gallery"
-        BorderColor: =RGBA(230, 230, 230, 1)
-        Height: =60
-        Items: |-
-            =ForAll(
-                [
-                    {
-                        Title: "Yesterday",
-                        Date: DateValue(VarPjpDate) - 1
-                    },
-                    {
-                        Title: "Today",
-                        Date: DateValue(VarPjpDate)
-                    },
-                    {
-                        Title: "Tomorrow",
-                        Date: DateValue(VarPjpDate) + 1
-                    }
-                ],
-                {Value: ThisRecord}
-            )
-        ShowScrollbar: =false
-        TabIndex: =0
-        TemplatePadding: =0
-        TemplateSize: =DateFilter.Width / 3
-        Width: =App.Width - 100
-        X: =50
-        Y: =75
-        ZIndex: =5
-
-        Button5_3 As button:
-            BorderStyle: =BorderStyle.None
-            Color: |-
-                =If(ThisItem.Value.Date = ClickedPjpdate, Color.White,ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' ) 
-                )
-            DisabledBorderColor: =RGBA(166, 166, 166, 1)
-            DisabledColor: =RGBA(166, 166, 166, 1)
-            DisabledFill: =RGBA(244, 244, 244, 1)
-            Fill: |-
-                =If(ThisItem.Value.Date = ClickedPjpdate, ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )
-                ,ColorValue( LookUp('Environment Variable Definitions', 'Display Name'="Common Primary Background").'Default Value')//_VarGblAppColors.PrimaryBg 
-                )
-            FontWeight: =FontWeight.Semibold
-            Height: =50
-            HoverColor: =RGBA(255, 255, 255, 1)
-            HoverFill: |-
-                =ColorFade(ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )
-                , -20%)
-            OnSelect: =Set(ClickedPjpdate, ThisItem.Value.Date)
-            Size: =12
-            Text: |-
-                =If(
-                    (ThisItem.Value.Date = Today() - 1) || (ThisItem.Value.Date = Today()) || (ThisItem.Value.Date = Today() + 1),
-                    ThisItem.Value.Title & " (" & Text(
-                        DateValue(ThisItem.Value.Date),
-                        "mmm dd"
-                    ) & ")",
-                    Text(
-                        DateValue(ThisItem.Value.Date),
-                        "mmm dd"
-                    )
-                )
-            Width: =170
-            X: =5
-            Y: =5
-            ZIndex: =1
-
-    "'Bottom Bar_13' As 'Bottom Bar'":
-        Fill: =RGBA(255, 255, 255, 1)
-        Height: =105
-        Y: =1029
-        ZIndex: =6
-
     ShowPartiesBackdrop As rectangle:
         AccessibleLabel: ="Party Dropback"
         BorderColor: =RGBA(0, 18, 107, 1)
         DisplayMode: =DisplayMode.View
-        Fill: =RGBA(0, 0, 0, 0.46)
+        Fill: =RGBA(0, 0, 0, 0.09)
         Height: =1136
         OnSelect: =Set(_VarShowPartiesModal, false)
         TabIndex: =0
         Visible: =_VarShowPartiesModal
         Width: =640
-        ZIndex: =7
+        ZIndex: =10
+
+    "'Bottom Bar_13' As 'Bottom Bar'":
+        Fill: =RGBA(255, 255, 255, 1)
+        Height: =105
+        Y: =1029
+        ZIndex: =11
+
+    "'Plan Visits Btn' As button":
+        BorderColor: =ColorFade(Self.Fill, 20%)
+        BorderThickness: =1
+        Color: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Hover Color").'Default Value')
+        DisabledBorderColor: =RGBA(166, 166, 166, 1)
+        DisabledColor: =RGBA(166, 166, 166, 1)
+        DisabledFill: =RGBA(244, 244, 244, 1)
+        Fill: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )
+        FontWeight: =FontWeight.Semibold
+        HoverColor: =RGBA(255, 255, 255, 1)
+        HoverFill: |-
+            =ColorFade(ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )
+            , -20%)
+        OnSelect: =Navigate('Start Visit', ScreenTransition.CoverRight)
+        Size: =LookUp(c_EnvironmentVariable,'Display Name'="Text Medium Font Size").'Default Value'
+        Text: ="VISITS"
+        Visible: =false
+        Width: =193
+        X: =431
+        Y: =18
+        ZIndex: =12
 
     ShowPartiesModal As rectangle:
         BorderColor: =RGBA(0, 18, 107, 1)
@@ -643,8 +616,8 @@
         Visible: =_VarShowPartiesModal
         Width: =500
         X: =App.Width/2 - 250
-        Y: =337
-        ZIndex: =8
+        Y: =281
+        ZIndex: =13
 
     PartiesGallery As gallery.galleryVertical:
         AccessibleLabel: ="List View"
@@ -664,8 +637,8 @@
         Visible: =_VarShowPartiesModal
         Width: =464
         X: =88
-        Y: =409
-        ZIndex: =9
+        Y: =353
+        ZIndex: =14
 
         Background_10 As button:
             BorderThickness: =0
@@ -768,7 +741,7 @@
             Text: ="Last Order Date"
             Width: =161
             X: =283
-            Y: =134
+            Y: =119
             ZIndex: =6
 
         Body1_24 As label:
@@ -784,7 +757,7 @@
             Text: =Text(Today()-5, "dd mmm yyyy")
             Width: =161
             X: =283
-            Y: =127
+            Y: =77
             ZIndex: =7
 
         Body1_17 As label:
@@ -833,8 +806,8 @@
         Visible: =CountRows(PartiesGallery.AllItems)=0 && _VarShowPartiesModal
         Width: =500
         X: =110
-        Y: =538
-        ZIndex: =10
+        Y: =482
+        ZIndex: =15
 
     PartiesLbl As label:
         Align: =Align.Center
@@ -848,8 +821,8 @@
         Visible: =_VarShowPartiesModal
         Width: =500
         X: =70
-        Y: =337
-        ZIndex: =11
+        Y: =281
+        ZIndex: =16
 
     ShowPartiesCancelIcon As icon.Cancel:
         AccessibleLabel: ="Cancel Icon"
@@ -865,61 +838,41 @@
         Visible: =_VarShowPartiesModal
         Width: =35
         X: =519
-        Y: =349
-        ZIndex: =12
+        Y: =293
+        ZIndex: =19
 
-    PrevDateIcn As icon.ChevronLeft:
-        AccessibleLabel: ="Left Date Icon"
-        BorderColor: =RGBA(0, 18, 107, 1)
-        Color: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )
-        DisabledBorderColor: =RGBA(166, 166, 166, 1)
-        DisabledColor: =RGBA(244, 244, 244, 1)
-        Height: =30
-        Icon: =Icon.ChevronLeft
-        OnSelect: =Set(VarPjpDate, DateValue(VarPjpDate) - 3)
-        TabIndex: =0
-        Width: =50
-        Y: =90
-        ZIndex: =13
+    Header_11 As Header:
+        ScreenName: ="PJP Planning"
+        ZIndex: =20
 
-    NextDateIcn As icon.ChevronLeft:
-        AccessibleLabel: ="Right Date Icon"
-        BorderColor: =RGBA(0, 18, 107, 1)
-        Color: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )
-        DisabledBorderColor: =RGBA(166, 166, 166, 1)
-        DisabledColor: =RGBA(244, 244, 244, 1)
-        Height: =30
-        Icon: =Icon.ChevronRight
-        OnSelect: =Set(VarPjpDate, DateValue(VarPjpDate) + 3)
-        TabIndex: =0
-        Width: =50
-        X: =590
-        Y: =90
-        ZIndex: =14
-
-    Filter_5 As icon.FilterFlat:
-        AccessibleLabel: ="Filter"
-        BorderColor: =RGBA(0, 18, 107, 1)
-        Color: =Color.Black
-        DisabledBorderColor: =RGBA(166, 166, 166, 1)
-        DisabledColor: =RGBA(244, 244, 244, 1)
-        Height: =42
-        Icon: =Icon.FilterFlat
-        OnSelect: |+
-            =Set(
-                varFilter,
-                !varFilter
-            );
-            
-        PaddingBottom: =5
-        PaddingLeft: =5
-        PaddingRight: =5
-        PaddingTop: =8
-        TabIndex: =0//-1
-        Width: =40
-        X: =431
-        Y: =150
-        ZIndex: =15
+    Button4 As button:
+        BorderColor: =RGBA(0, 0, 0, 0)
+        BorderStyle: =BorderStyle.None
+        DisabledBorderColor: =RGBA(0, 0, 0, 0)
+        DisabledColor: =RGBA(166, 166, 166, 1)
+        DisabledFill: =RGBA(244, 244, 244, 1)
+        Fill: =RGBA(230, 230, 230, 0.15)
+        FocusedBorderColor: =ColorFade(Self.Fill, -75%)
+        Font: =Font.'Segoe UI'
+        FontWeight: =FontWeight.Semibold
+        Height: =602
+        HoverBorderColor: =RGBA(0, 0, 0, 0)
+        HoverColor: =RGBA(255, 255, 255, 1)
+        HoverFill: =RGBA(230, 230, 230, 0.15)
+        OnSelect: |
+            =Set(varFilter,false);
+        PressedBorderColor: =ColorFade(RGBA(0, 120, 212, 1), -50%)
+        PressedColor: =RGBA(255, 255, 255, 1)
+        PressedFill: =RGBA(230, 230, 230, 0.15)
+        RadiusBottomLeft: =0
+        RadiusBottomRight: =0
+        RadiusTopLeft: =0
+        RadiusTopRight: =0
+        Size: =24
+        Text: =""
+        Visible: =varFilter
+        Width: =640
+        ZIndex: =21
 
     "'filter button_5' As button":
         DisabledBorderColor: =RGBA(166, 166, 166, 1)
@@ -928,7 +881,7 @@
         DisplayMode: =DisplayMode.View
         Fill: =RGBA(255, 255, 255, 1)
         FontWeight: =FontWeight.Semibold
-        Height: =782
+        Height: =802
         HoverColor: =RGBA(255, 255, 255, 1)
         HoverFill: =ColorFade(RGBA(56, 96, 178, 1), -20%)
         RadiusBottomLeft: =0
@@ -939,15 +892,15 @@
         Text: =""
         Visible: =varFilter
         Width: =640
-        Y: =354
-        ZIndex: =16
+        Y: =334
+        ZIndex: =22
 
     Container4_29 As groupContainer:
-        Height: =718
+        Height: =720
         Visible: =varFilter
         Width: =640
-        Y: =379
-        ZIndex: =17
+        Y: =349
+        ZIndex: =23
 
         Rectangle16_8 As rectangle:
             BorderColor: =RGBA(0, 18, 107, 1)
@@ -1512,75 +1465,6 @@
             Y: =261
             ZIndex: =23
 
-    Icon7_3 As icon.ShoppingCart:
-        AccessibleLabel: ="Cart"
-        BorderColor: =RGBA(0, 18, 107, 1)
-        Color: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )
-        DisabledBorderColor: =RGBA(166, 166, 166, 1)
-        DisabledColor: =RGBA(244, 244, 244, 1)
-        Height: =43
-        Icon: =Icon.ShoppingCart
-        OnSelect: =Navigate(PlanPJPCart)
-        PaddingBottom: =5
-        PaddingLeft: =5
-        PaddingRight: =5
-        PaddingTop: =5
-        TabIndex: =0
-        Width: =44
-        X: =556
-        Y: =205
-        ZIndex: =18
-
-    Button4_3 As button:
-        BorderThickness: =0
-        Color: =RGBA(0, 0, 0, 1)
-        DisabledBorderColor: =RGBA(166, 166, 166, 1)
-        DisabledColor: =RGBA(166, 166, 166, 1)
-        DisabledFill: =RGBA(244, 244, 244, 1)
-        DisplayMode: =DisplayMode.View
-        Fill: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )
-        FontWeight: =FontWeight.Semibold
-        Height: =30
-        HoverColor: =RGBA(255, 255, 255, 1)
-        HoverFill: =ColorFade(RGBA(56, 96, 178, 1), -20%)
-        OnSelect: =Navigate(PlanPJPCart)
-        RadiusBottomLeft: =50
-        RadiusBottomRight: =50
-        RadiusTopLeft: =50
-        RadiusTopRight: =50
-        Size: =LookUp(c_EnvironmentVariable,'Display Name'="Text Regular Font Size").'Default Value'
-        Text: =CountRows(colAddAreaParty)
-        Width: =30
-        X: =590
-        Y: =197
-        ZIndex: =19
-
-    Header_11 As Header:
-        ScreenName: ="PJP Planning"
-        ZIndex: =20
-
-    "'Plan Visits Btn' As button":
-        BorderColor: =ColorFade(Self.Fill, 20%)
-        BorderThickness: =1
-        Color: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Hover Color").'Default Value')
-        DisabledBorderColor: =RGBA(166, 166, 166, 1)
-        DisabledColor: =RGBA(166, 166, 166, 1)
-        DisabledFill: =RGBA(244, 244, 244, 1)
-        Fill: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )
-        FontWeight: =FontWeight.Semibold
-        HoverColor: =RGBA(255, 255, 255, 1)
-        HoverFill: |-
-            =ColorFade(ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )
-            , -20%)
-        OnSelect: =Navigate('Start Visit', ScreenTransition.CoverRight)
-        Size: =LookUp(c_EnvironmentVariable,'Display Name'="Text Medium Font Size").'Default Value'
-        Text: ="VISITS"
-        Visible: =false
-        Width: =193
-        X: =431
-        Y: =18
-        ZIndex: =21
-
     Group5 As group:
         Height: =5
         Width: =5
@@ -1595,7 +1479,7 @@
             DisabledBorderColor: =RGBA(0, 0, 0, 0)
             DisabledFill: =RGBA(0, 0, 0, 0)
             FocusedBorderThickness: =4
-            Height: =45
+            Height: =51
             HoverBorderColor: =RGBA(0, 0, 0, 0)
             HoverFill: =RGBA(0, 0, 0, 0)
             Image: ='Vector (1)'
@@ -1607,10 +1491,10 @@
                 
             PressedBorderColor: =RGBA(0, 0, 0, 0)
             PressedFill: =RGBA(0, 0, 0, 0)
-            Width: =35
-            X: =517
-            Y: =204
-            ZIndex: =22
+            Width: =32
+            X: =528
+            Y: =145
+            ZIndex: =8
 
         Button3 As button:
             BorderColor: =RGBA(0, 0, 0, 0)
@@ -1622,7 +1506,7 @@
             FocusedBorderColor: =ColorFade(Self.Fill, -75%)
             Font: =Font.'Segoe UI'
             FontWeight: =FontWeight.Semibold
-            Height: =41
+            Height: =47
             HoverBorderColor: =RGBA(0, 0, 0, 0)
             HoverColor: =RGBA(255, 255, 255, 1)
             HoverFill: =
@@ -1641,8 +1525,161 @@
             RadiusTopRight: =0
             Size: =24
             Text: =""
-            Width: =43
-            X: =513
-            Y: =206
-            ZIndex: =23
+            Width: =35
+            X: =525
+            Y: =147
+            ZIndex: =9
+
+    Group6 As group:
+        Height: =5
+        Width: =5
+        X: =40
+        Y: =40
+        ZIndex: =24
+
+        DateFilter As gallery.galleryHorizontal:
+            AccessibleLabel: ="Date Gallery"
+            BorderColor: =RGBA(230, 230, 230, 1)
+            Height: =60
+            Items: |-
+                =ForAll(
+                    [
+                        {
+                            Title: "Yesterday",
+                            Date: DateValue(VarPjpDate) - 1
+                        },
+                        {
+                            Title: "Today",
+                            Date: DateValue(VarPjpDate)
+                        },
+                        {
+                            Title: "Tomorrow",
+                            Date: DateValue(VarPjpDate) + 1
+                        }
+                    ],
+                    {Value: ThisRecord}
+                )
+            ShowScrollbar: =false
+            TabIndex: =0
+            TemplatePadding: =0
+            TemplateSize: =DateFilter.Width / 3
+            Width: =App.Width - 100
+            X: =50
+            Y: =75
+            ZIndex: =5
+
+            Button5_3 As button:
+                BorderStyle: =BorderStyle.None
+                Color: |-
+                    =If(ThisItem.Value.Date = ClickedPjpdate, Color.White,ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' ) 
+                    )
+                DisabledBorderColor: =RGBA(166, 166, 166, 1)
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                DisabledFill: =RGBA(244, 244, 244, 1)
+                Fill: |-
+                    =If(ThisItem.Value.Date = ClickedPjpdate, ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )
+                    ,ColorValue( LookUp('Environment Variable Definitions', 'Display Name'="Common Primary Background").'Default Value')//_VarGblAppColors.PrimaryBg 
+                    )
+                FontWeight: =FontWeight.Semibold
+                Height: =50
+                HoverColor: =RGBA(255, 255, 255, 1)
+                HoverFill: |-
+                    =ColorFade(ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )
+                    , -20%)
+                OnSelect: =Set(ClickedPjpdate, ThisItem.Value.Date)
+                Size: =12
+                Text: |-
+                    =If(
+                        (ThisItem.Value.Date = Today() - 1) || (ThisItem.Value.Date = Today()) || (ThisItem.Value.Date = Today() + 1),
+                        ThisItem.Value.Title & " (" & Text(
+                            DateValue(ThisItem.Value.Date),
+                            "mmm dd"
+                        ) & ")",
+                        Text(
+                            DateValue(ThisItem.Value.Date),
+                            "mmm dd"
+                        )
+                    )
+                Width: =170
+                X: =5
+                Y: =5
+                ZIndex: =1
+
+        PrevDateIcn As icon.ChevronLeft:
+            AccessibleLabel: ="Left Date Icon"
+            BorderColor: =RGBA(0, 18, 107, 1)
+            Color: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )
+            DisabledBorderColor: =RGBA(166, 166, 166, 1)
+            DisabledColor: =RGBA(244, 244, 244, 1)
+            Height: =30
+            Icon: =Icon.ChevronLeft
+            OnSelect: =Set(VarPjpDate, DateValue(VarPjpDate) - 3)
+            TabIndex: =0
+            Width: =50
+            Y: =90
+            ZIndex: =17
+
+        NextDateIcn As icon.ChevronLeft:
+            AccessibleLabel: ="Right Date Icon"
+            BorderColor: =RGBA(0, 18, 107, 1)
+            Color: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )
+            DisabledBorderColor: =RGBA(166, 166, 166, 1)
+            DisabledColor: =RGBA(244, 244, 244, 1)
+            Height: =30
+            Icon: =Icon.ChevronRight
+            OnSelect: =Set(VarPjpDate, DateValue(VarPjpDate) + 3)
+            TabIndex: =0
+            Width: =50
+            X: =590
+            Y: =90
+            ZIndex: =18
+
+    Group7 As group:
+        Height: =5
+        Width: =5
+        X: =40
+        Y: =40
+        ZIndex: =24
+
+        Icon7_3 As icon.ShoppingCart:
+            AccessibleLabel: ="Cart"
+            BorderColor: =RGBA(0, 18, 107, 1)
+            Color: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )
+            DisabledBorderColor: =RGBA(166, 166, 166, 1)
+            DisabledColor: =RGBA(244, 244, 244, 1)
+            Height: =43
+            Icon: =Icon.ShoppingCart
+            OnSelect: =Navigate(PlanPJPCart)
+            PaddingBottom: =5
+            PaddingLeft: =5
+            PaddingRight: =5
+            PaddingTop: =5
+            TabIndex: =0
+            Width: =44
+            X: =566
+            Y: =150
+            ZIndex: =6
+
+        Button4_3 As button:
+            BorderThickness: =0
+            DisabledBorderColor: =RGBA(166, 166, 166, 1)
+            DisabledColor: =RGBA(166, 166, 166, 1)
+            DisabledFill: =RGBA(244, 244, 244, 1)
+            DisplayMode: =DisplayMode.View
+            Fill: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )
+            FontWeight: =FontWeight.Semibold
+            Height: =30
+            HoverColor: =RGBA(255, 255, 255, 1)
+            HoverFill: =ColorFade(RGBA(56, 96, 178, 1), -20%)
+            OnSelect: =Navigate(PlanPJPCart)
+            RadiusBottomLeft: =50
+            RadiusBottomRight: =50
+            RadiusTopLeft: =50
+            RadiusTopRight: =50
+            Size: =LookUp(c_EnvironmentVariable,'Display Name'="Text Regular Font Size").'Default Value'
+            Text: =CountRows(colAddAreaParty)
+            Width: =30
+            X: =600
+            Y: =142
+            ZIndex: =7
 
