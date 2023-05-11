@@ -1,0 +1,143 @@
+[
+  {
+    "CdsFCBContext": "{\"FileType\":true,\"ImageExternalStorage\":true}",
+    "EntitySetName": "new_productskus",
+    "IsHidden": false,
+    "IsSampleData": false,
+    "IsWritable": true,
+    "LogicalName": "new_productsku",
+    "Name": "Product SKUS",
+    "NativeCDSDataSourceInfoNameMapping": {
+      "_ownerid_value": "Owner",
+      "cra62_cra62_leads_ProductSKU_new_productsku": "Leads",
+      "cra62_cra62_productinterested_ProductSKU_new_pr": "Product Interesteds",
+      "cra62_cra62_skudescription_SKU_new_productsku": "SKU Descriptions",
+      "cra62_cra62_skuimages_SKU_new_productsku": "SKU Images",
+      "cra62_HSN": "HSN ",
+      "cra62_new_orderlines_ProductSKU_new_productsku": "Order Lines",
+      "cra62_ProductSubCategory": "Product Sub-Category",
+      "createdby": "Created By",
+      "createdon": "Created On",
+      "createdonbehalfby": "Created By (Delegate)",
+      "importsequencenumber": "Import Sequence Number",
+      "modifiedby": "Modified By",
+      "modifiedon": "Modified On",
+      "modifiedonbehalfby": "Modified By (Delegate)",
+      "new_description": "Description",
+      "new_itemname": "Item Name",
+      "new_name": "Item Code",
+      "new_new_invoiceline_ProductSKU_new_productsku": "Invoice Lines",
+      "new_new_productofferlines_ProductSKU_new_prod": "Product Offer Lines",
+      "new_new_productprice_ProductSKU_new_productsk": "Product Prices",
+      "new_new_stock_ProductSKU_new_productsku": "Stocks",
+      "new_Product": "Product",
+      "new_productsku_AsyncOperations": "System Jobs",
+      "new_productsku_BulkDeleteFailures": "Bulk Delete Failures",
+      "new_productsku_DuplicateBaseRecord": "Duplicate Records (new_productsku_DuplicateBaseRecord)",
+      "new_productsku_DuplicateMatchingRecord": "Duplicate Records (new_productsku_DuplicateMatchingRecord)",
+      "new_productsku_MailboxTrackingFolders": "Mailbox Auto Tracking Folders",
+      "new_productsku_PrincipalObjectAttributeAccesses": "Field Sharing",
+      "new_productsku_ProcessSession": "Process Sessions",
+      "new_productsku_SyncErrors": "Sync Errors",
+      "new_productskuid": "Product SKU",
+      "new_ProductVariant": "Product Variant",
+      "overriddencreatedon": "Record Created On",
+      "owningbusinessunit": "Owning Business Unit",
+      "owningteam": "Owning Team",
+      "owninguser": "Owning User",
+      "statecode": "Status",
+      "statuscode": "Status Reason",
+      "timezoneruleversionnumber": "Time Zone Rule Version Number",
+      "utcconversiontimezonecode": "UTC Conversion Time Zone Code",
+      "versionnumber": "Version Number",
+      "zx_cess": "Cess",
+      "zx_cgst": "CGST",
+      "zx_gst": "GST",
+      "zx_HSNCode": "HSN Code",
+      "zx_igst": "IGST",
+      "zx_primaryimage": "Primary Image",
+      "zx_ProductCategory": "Product Category",
+      "zx_ProductGroup": "Product Group",
+      "zx_promoted": "Promoted",
+      "zx_sgst": "SGST",
+      "zx_Variant": "Variant",
+      "zx_zx_quoteline_ProductSKU_new_productsku": "Quote Line.S"
+    },
+    "PreferredName": "Product SKUS",
+    "Type": "NativeCDSDataSourceInfo"
+  },
+  {
+    "DisplayName": "Product SKUS (Views)",
+    "Name": "_new_productsku_views",
+    "RelatedEntityName": "Product SKUS",
+    "TrimmedViewName": true,
+    "Type": "ViewInfo",
+    "ViewInfoNameMapping": {
+      "0a71eeed-9a2e-49a6-b196-cab00222f392": "Product SKU Lookup View",
+      "139b2043-9d81-4da5-a019-88882beefd31": "Product SKU Associated View",
+      "4f72ba7c-4855-40e7-aa3d-4721fa2422f6": "Product SKU Advanced Find View",
+      "5d2f0fdf-8bb3-4f8f-bab9-4b17b07bf2cc": "Active Product SKUS",
+      "febceb48-c8e0-4fc7-b2ae-2adefa268b3f": "Inactive Product SKUS"
+    }
+  },
+  {
+    "DisplayName": "Status (Product SKUS)",
+    "Name": "new_productsku_statecode",
+    "OptionSetInfoNameMapping": {
+      "0": "Active",
+      "1": "Inactive"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "statecode",
+        "OptionSetReferenceEntityName": "Product SKUS"
+      }
+    },
+    "OptionSetTypeKey": "StateType",
+    "RelatedColumnInvariantName": "statecode",
+    "RelatedEntityName": "Product SKUS",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Status Reason (Product SKUS)",
+    "Name": "new_productsku_statuscode",
+    "OptionSetInfoNameMapping": {
+      "1": "Active",
+      "2": "Inactive"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "statuscode",
+        "OptionSetReferenceEntityName": "Product SKUS"
+      }
+    },
+    "OptionSetTypeKey": "StatusType",
+    "RelatedColumnInvariantName": "statuscode",
+    "RelatedEntityName": "Product SKUS",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Promoted (Product SKUS)",
+    "Name": "zx_new_productsku_zx_promoted",
+    "OptionSetInfoNameMapping": {
+      "0": "No",
+      "1": "Yes"
+    },
+    "OptionSetIsBooleanValued": true,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "zx_promoted",
+        "OptionSetReferenceEntityName": "Product SKUS"
+      }
+    },
+    "OptionSetTypeKey": "BooleanType",
+    "RelatedColumnInvariantName": "zx_promoted",
+    "RelatedEntityName": "Product SKUS",
+    "Type": "OptionSetInfo"
+  }
+]
