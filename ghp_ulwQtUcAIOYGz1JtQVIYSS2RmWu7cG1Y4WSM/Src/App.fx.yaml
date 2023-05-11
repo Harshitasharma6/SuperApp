@@ -330,7 +330,10 @@ App As appinfo:
                 ,
                 ClearCollect(
                     OfflineActivitiesCollection,
-                    'Lead Activities.S'
+                    Filter(
+                        'Lead Activities.S',
+                        'Owning User'.'Primary Email' = User().Email
+                    )
                 );
                 ,
                 ClearCollect(
