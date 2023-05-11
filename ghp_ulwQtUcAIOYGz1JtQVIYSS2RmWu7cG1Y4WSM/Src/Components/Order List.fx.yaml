@@ -587,7 +587,7 @@
         PressedFill: =RGBA(0, 0, 0, 0)
         TabIndex: =0
         Width: =30
-        X: =448
+        X: =484
         Y: =30
         ZIndex: =2
 
@@ -616,30 +616,6 @@
         Y: =30
         ZIndex: =4
 
-    DatePicker1 As datepicker:
-        AccessibleLabel: ="Text"
-        BorderColor: =RGBA(166, 166, 166, 1)
-        CalendarHeaderFill: =ColorFade(RGBA(0, 120, 212, 1), -30%)
-        Color: =RGBA(51, 51, 51, 1)
-        DisabledBorderColor: =RGBA(0, 0, 0, 0)
-        DisabledColor: =RGBA(166, 166, 166, 1)
-        DisabledFill: =RGBA(244, 244, 244, 1)
-        Font: =Font.'Segoe UI'
-        Height: =38
-        HoverDateFill: =RGBA(200, 200, 200, 1)
-        IconBackground: =RGBA(255, 255, 255, 1)
-        IconFill: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//_VarGblAppColors.PrimaryRed
-        InputTextPlaceholder: |-
-            =//If(IsBlank(Self.SelectedDate), Text(Date(2001,12,31), Self.Format, Self.Language))
-            Text(Today(),"dd/mm/yyyy")
-        PaddingTop: =5
-        SelectedDateFill: =RGBA(0, 120, 212, 1)
-        Size: =21
-        Width: =60
-        X: =517
-        Y: =30
-        ZIndex: =6
-
     Display_14 As gallery.galleryHorizontal:
         AccessibleLabel: ="Filter Displayed"
         BorderColor: =RGBA(0, 18, 107, 1)
@@ -647,20 +623,20 @@
         Fill: |-
             =RGBA(0, 0, 0, 0)
             //_VarGblAppColors.PrimaryRed
-        Height: =155
+        Height: =99
         Items: =colFilter
         LoadingSpinner: =LoadingSpinner.Data
         ShowScrollbar: =false
         TabIndex: =0//-1
-        TemplateSize: =286
+        TemplateSize: =216
         Visible: |-
             =true
             //varFilter
         Width: =424
         WrapCount: =2
         X: =10
-        Y: =15
-        ZIndex: =7
+        Y: =30
+        ZIndex: =5
 
         Button20_17 As button:
             DisabledBorderColor: =RGBA(166, 166, 166, 1)
@@ -671,7 +647,7 @@
                 =//RGBA(204, 204, 204, 1)
                 ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//_VarGblAppColors.PrimaryRed
             FontWeight: =FontWeight.Semibold
-            Height: =34
+            Height: =41
             HoverColor: =RGBA(255, 255, 255, 1)
             HoverFill: =ColorFade(RGBA(56, 96, 178, 1), -20%)
             RadiusBottomLeft: =15
@@ -680,45 +656,30 @@
             RadiusTopRight: =15
             Size: =24
             Text: =""
-            Width: =237
+            Width: =210
             X: =6
             ZIndex: =1
 
         Label31_28 As label:
             BorderColor: =RGBA(0, 18, 107, 1)
-            Color: |-
-                =//RGBA(0, 0, 0, 1)
-                //RGBA(153, 160, 196, 1)
-                If(
-                    ThisItem.IsSelected,
-                    ColorValue( LookUp('Environment Variable Definitions', 'Display Name'="Common Primary Background").'Default Value')//_VarGblAppColors.PrimaryBg
-                    ,ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Text Primary Color").'Default Value')   
-                )
+            Color: =RGBA(255, 255, 255, 1)
             DisabledColor: =RGBA(166, 166, 166, 1)
             FontWeight: =FontWeight.Bold
-            Height: =30
+            Height: =41
             OnSelect: =Select(Parent)
-            Size: =18
             Text: |-
                 =ThisItem.Title & ": " & ThisItem.value
             Tooltip: |-
                 =ThisItem.Title & ":"
-            Width: =269
+            Width: =161
             Wrap: =false
-            X: =14
+            X: =16
             ZIndex: =2
 
         Icon21_17 As icon.Cancel:
             AccessibleLabel: ="Close the filter applied"
             BorderColor: =RGBA(0, 18, 107, 1)
-            Color: |-
-                =//RGBA(0, 0, 0, 1)
-                //RGBA(153, 160, 196, 1)
-                If(
-                    ThisItem.IsSelected,
-                    ColorValue( LookUp('Environment Variable Definitions', 'Display Name'="Common Primary Background").'Default Value')//_VarGblAppColors.PrimaryBg
-                    ,ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Text Primary Color").'Default Value')   
-                )
+            Color: =RGBA(255,255,255,1)
             DisabledBorderColor: =RGBA(166, 166, 166, 1)
             DisabledColor: =RGBA(244, 244, 244, 1)
             Height: =25
@@ -730,9 +691,9 @@
                 Reset(radioStatus_1);
                 Set(varCollectionEmpty,true)
             TabIndex: =0//-1
-            Width: =52
-            X: =243
-            Y: =5
+            Width: =30
+            X: =175
+            Y: =8
             ZIndex: =4
 
     Sort_7 As icon.ArrowsUpDown:
@@ -746,9 +707,9 @@
         OnSelect: =Set(varSort,!varSort)
         TabIndex: =0//-1
         Width: =30
-        X: =475
+        X: =512
         Y: =30
-        ZIndex: =8
+        ZIndex: =6
 
     Rectangle14_30 As rectangle:
         BorderColor: =RGBA(0, 0, 0, 1)
@@ -759,7 +720,7 @@
         Width: =391
         X: =249
         Y: =249
-        ZIndex: =10
+        ZIndex: =7
 
     "'Sort gallery_4' As gallery.galleryVertical":
         AccessibleLabel: ="Sorting"
@@ -790,7 +751,7 @@
         Width: =391
         X: =249
         Y: =284
-        ZIndex: =11
+        ZIndex: =8
 
         Label28_4 As label:
             BorderColor: =RGBA(0, 18, 107, 1)
@@ -833,7 +794,7 @@
         Width: =30
         X: =434
         Y: =250
-        ZIndex: =12
+        ZIndex: =9
 
     Label29_28 As label:
         BorderColor: =RGBA(0, 18, 107, 1)
@@ -846,7 +807,7 @@
         Width: =272
         X: =336
         Y: =247
-        ZIndex: =13
+        ZIndex: =10
 
     backdrop_4 As rectangle:
         BorderColor: =RGBA(0, 18, 107, 1)
@@ -855,7 +816,7 @@
         Height: =1125
         Visible: =varFilter
         Width: =App.Width
-        ZIndex: =14
+        ZIndex: =11
 
     Button25_2 As button:
         DisabledBorderColor: =RGBA(166, 166, 166, 1)
@@ -882,7 +843,7 @@
         Width: =60
         X: =564
         Y: =930
-        ZIndex: =15
+        ZIndex: =12
 
     "'filter button_4' As button":
         DisabledBorderColor: =RGBA(166, 166, 166, 1)
@@ -903,14 +864,14 @@
         Visible: =varFilter
         Width: =640
         Y: =230
-        ZIndex: =16
+        ZIndex: =13
 
     Container4_28 As groupContainer:
         Height: =899
         Visible: =varFilter
         Width: =640
         Y: =230
-        ZIndex: =17
+        ZIndex: =14
 
         Rectangle16_7 As rectangle:
             BorderColor: =RGBA(0, 18, 107, 1)
@@ -2276,4 +2237,50 @@
                 X: =40
                 Y: =40
                 ZIndex: =21
+
+    DatePicker1 As datepicker:
+        AccessibleLabel: ="Text"
+        BorderColor: =RGBA(166, 166, 166, 1)
+        CalendarHeaderFill: =ColorFade(RGBA(0, 120, 212, 1), -30%)
+        Color: =RGBA(51, 51, 51, 1)
+        DisabledBorderColor: =RGBA(0, 0, 0, 0)
+        DisabledColor: =RGBA(166, 166, 166, 1)
+        DisabledFill: =RGBA(244, 244, 244, 1)
+        Font: =Font.'Segoe UI'
+        Height: =38
+        HoverDateFill: =RGBA(200, 200, 200, 1)
+        IconBackground: =RGBA(255, 255, 255, 1)
+        IconFill: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//_VarGblAppColors.PrimaryRed
+        InputTextPlaceholder: |-
+            =//If(IsBlank(Self.SelectedDate), Text(Date(2001,12,31), Self.Format, Self.Language))
+            Text(Today(),"dd/mm/yyyy")
+        PaddingTop: =5
+        SelectedDateFill: =RGBA(0, 120, 212, 1)
+        Size: =21
+        Visible: =cal
+        Width: =63
+        X: =514
+        Y: =30
+        ZIndex: =16
+
+    Icon7 As icon.CalendarBlank:
+        BorderColor: =RGBA(166, 166, 166, 1)
+        Color: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )
+        DisabledBorderColor: =RGBA(0, 0, 0, 0)
+        DisabledColor: =RGBA(220, 220, 220, 1)
+        DisabledFill: =RGBA(0, 0, 0, 0)
+        FocusedBorderThickness: =4
+        Height: =50
+        HoverBorderColor: =RGBA(0, 0, 0, 0)
+        HoverColor: =ColorFade(RGBA(0, 120, 212, 1), -30%)
+        HoverFill: =RGBA(0, 0, 0, 0)
+        Icon: =Icon.CalendarBlank
+        OnSelect: =Set(cal,!cal)
+        PressedBorderColor: =RGBA(0, 0, 0, 0)
+        PressedColor: =ColorFade(RGBA(0, 120, 212, 1), -30%)
+        PressedFill: =RGBA(0, 0, 0, 0)
+        Width: =30
+        X: =542
+        Y: =30
+        ZIndex: =17
 
