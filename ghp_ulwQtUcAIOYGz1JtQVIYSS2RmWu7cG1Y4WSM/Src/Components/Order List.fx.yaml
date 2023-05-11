@@ -2227,31 +2227,6 @@
                 Y: =40
                 ZIndex: =21
 
-    DatePicker1 As datepicker:
-        AccessibleLabel: ="Text"
-        BorderColor: =RGBA(166, 166, 166, 1)
-        CalendarHeaderFill: =ColorFade(RGBA(0, 120, 212, 1), -30%)
-        Color: =RGBA(51, 51, 51, 1)
-        DisabledBorderColor: =RGBA(0, 0, 0, 0)
-        DisabledColor: =RGBA(166, 166, 166, 1)
-        DisabledFill: =RGBA(244, 244, 244, 1)
-        Font: =Font.'Segoe UI'
-        Height: =38
-        HoverDateFill: =RGBA(200, 200, 200, 1)
-        IconBackground: =RGBA(255, 255, 255, 1)
-        IconFill: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//_VarGblAppColors.PrimaryRed
-        InputTextPlaceholder: |-
-            =//If(IsBlank(Self.SelectedDate), Text(Date(2001,12,31), Self.Format, Self.Language))
-            Text(Today(),"dd/mm/yyyy")
-        PaddingTop: =5
-        SelectedDateFill: =RGBA(0, 120, 212, 1)
-        Size: =21
-        Visible: =cal
-        Width: =63
-        X: =514
-        Y: =30
-        ZIndex: =16
-
     Icon7 As icon.CalendarBlank:
         BorderColor: =RGBA(166, 166, 166, 1)
         Color: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )
@@ -2271,5 +2246,48 @@
         Width: =30
         X: =542
         Y: =30
+        ZIndex: =15
+
+    Label4 As label:
+        BorderColor: =RGBA(0, 0, 0, 0)
+        BorderStyle: =BorderStyle.None
+        BorderThickness: =2
+        Color: =RGBA(51, 51, 51, 1)
+        DisabledBorderColor: =RGBA(0, 0, 0, 0)
+        DisabledColor: =RGBA(166, 166, 166, 1)
+        FocusedBorderThickness: =4
+        Font: =Font.'Segoe UI'
+        FontWeight: =FontWeight.Bold
+        Height: =DatePicker1.Height+20
+        Size: =16
+        Text: ="19"
+        Width: =DatePicker1.Width+20
+        X: =538
+        Y: =DatePicker1.Y-10
+        ZIndex: =16
+
+    DatePicker1 As datepicker:
+        AccessibleLabel: ="Text"
+        BorderColor: =RGBA(166, 166, 166, 1)
+        CalendarHeaderFill: =ColorFade(RGBA(0, 120, 212, 1), -30%)
+        Color: =Color.Transparent
+        DisabledBorderColor: =RGBA(0, 0, 0, 0)
+        DisabledColor: =Color.Transparent
+        DisabledFill: =RGBA(244, 244, 244, 1)
+        Fill: =Color.Transparent
+        Font: =Font.'Segoe UI'
+        Height: =Icon7.Height
+        HoverDateFill: =RGBA(200, 200, 200, 1)
+        IconBackground: =Color.Transparent
+        IconFill: =Color.Transparent
+        InputTextPlaceholder: |-
+            =//If(IsBlank(Self.SelectedDate), Text(Date(2001,12,31), Self.Format, Self.Language))
+            Text(Today(),"dd/mm/yyyy")
+        PaddingTop: =5
+        SelectedDateFill: =RGBA(0, 120, 212, 1)
+        Size: =21
+        Width: =Icon7.Width
+        X: =Icon7.X
+        Y: =Icon7.Y
         ZIndex: =17
 
