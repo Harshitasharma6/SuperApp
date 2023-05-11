@@ -61,10 +61,11 @@
         DisabledFill: =RGBA(244, 244, 244, 1)
         FocusedBorderThickness: =4
         HintText: ="Search"
-        HoverBorderColor: =RGBA(0, 0, 0, 1)
+        HoverBorderColor: =RGBA(208, 231, 233, 1)
         HoverColor: =RGBA(0, 0, 0, 1)
-        HoverFill: =RGBA(186, 202, 226, 1)
+        HoverFill: =RGBA(0, 0, 0, 0)
         PaddingLeft: =45
+        PressedFill: =
         Size: =15
         Width: =482
         X: =22
@@ -73,7 +74,7 @@
 
     Icon16_3 As icon.Search:
         BorderColor: =RGBA(0, 18, 107, 1)
-        Color: =RGBA(0, 18, 107, 1)
+        Color: =RGBA(42, 184, 197, 1)
         DisabledBorderColor: =RGBA(166, 166, 166, 1)
         DisabledColor: =RGBA(244, 244, 244, 1)
         Height: =35
@@ -166,6 +167,25 @@
             Y: =40
             ZIndex: =3
 
+        Button4_5 As button:
+            BorderThickness: =0
+            Color: =RGBA(0, 0, 0, 1)
+            DisabledBorderColor: =RGBA(166, 166, 166, 1)
+            DisabledColor: =RGBA(166, 166, 166, 1)
+            DisabledFill: =RGBA(244, 244, 244, 1)
+            DisplayMode: =DisplayMode.View
+            Fill: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )
+            FontWeight: =FontWeight.Semibold
+            HoverColor: =RGBA(255, 255, 255, 1)
+            HoverFill: =ColorFade(RGBA(56, 96, 178, 1), -20%)
+            OnSelect: =Navigate(PlanPJPCart)
+            Size: =LookUp(c_EnvironmentVariable,'Display Name'="Text Regular Font Size").'Default Value'
+            Text: =
+            Width: =43
+            X: =557
+            Y: =27
+            ZIndex: =4
+
         Rectangle1_3 As rectangle:
             BorderColor: =RGBA(0, 18, 107, 1)
             Fill: =RGBA(219, 219, 219, 1)
@@ -173,7 +193,7 @@
             OnSelect: =Select(Parent)
             Width: =Gallery1_3.TemplateWidth
             Y: =78
-            ZIndex: =4
+            ZIndex: =5
 
         Background_7 As button:
             BorderThickness: =0
@@ -200,7 +220,7 @@
             Text: =""
             Width: =Gallery1_3.TemplateWidth 
             Y: =79
-            ZIndex: =5
+            ZIndex: =6
 
         Body1_12 As label:
             BorderColor: =RGBA(0, 18, 107, 1)
@@ -295,13 +315,13 @@
             Width: =138
             X: =358
             Y: =135
-            ZIndex: =12
+            ZIndex: =11
 
         Icon9 As icon.Add:
             AccessibleLabel: ="Add Area Icon"
             BorderColor: =RGBA(0, 18, 107, 1)
             Color: |-
-                =If(
+                =/*If(
                     IsBlank(
                         LookUp(
                             Beats,
@@ -310,19 +330,22 @@
                     ),
                     ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )
                     ,
-                    Color.Green
-                )
+                    Color.White
+                )*/
+                
+                Color.White
             DisabledBorderColor: =RGBA(166, 166, 166, 1)
             DisabledColor: |-
-                =If(
+                =/*If(
                     CountRows(
                         Filter(
                             colAddAreaParty,
                             Area.Area = ThisItem.Area.Area
                         )
                     ) > 0,
-                    Color.Green
-                )
+                    Color.White
+                )*/
+                Color.White
             DisabledFill: =RGBA(0, 0, 0, 0)
             DisplayMode: |-
                 =/*If(
@@ -356,7 +379,7 @@
                     DisplayMode.Disabled
                 )
             FocusedBorderThickness: =0.1
-            Height: =40
+            Height: =35
             Icon: |-
                 =If(
                     CountRows(
@@ -414,10 +437,10 @@
                     true,
                     false
                 )
-            Width: =40
-            X: =553
-            Y: =17
-            ZIndex: =13
+            Width: =30
+            X: =564
+            Y: =29
+            ZIndex: =12
 
         Icon11 As icon.View:
             AccessibleLabel: ="View icon"
@@ -435,10 +458,10 @@
             Width: =20
             X: =496
             Y: =145
-            ZIndex: =14
+            ZIndex: =13
 
         Button26 As button:
-            BorderColor: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Text Primary Color").'Default Value') //ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Text Primary Color").'Default Value') //_VarGblAppColors.textbgbutton
+            BorderColor: =RGBA(103, 136, 174, 1)
             DisabledBorderColor: =RGBA(166, 166, 166, 1)
             DisabledColor: =RGBA(166, 166, 166, 1)
             DisabledFill: =RGBA(244, 244, 244, 1)
@@ -458,7 +481,7 @@
             Width: =201
             X: =343
             Y: =135
-            ZIndex: =16
+            ZIndex: =14
 
         Button3_1 As button:
             BorderColor: =RGBA(0, 0, 0, 0)
@@ -486,9 +509,9 @@
             Text: =""
             Visible: =If(Icon9.DisplayMode=DisplayMode.Disabled,true,false)
             Width: =43
-            X: =553
-            Y: =17
-            ZIndex: =17
+            X: =557
+            Y: =25
+            ZIndex: =15
 
     ComboBox3 As combobox:
         AccessibleLabel: ="Salesperson ComboBox"
@@ -894,8 +917,8 @@
         PaddingTop: =8
         TabIndex: =0//-1
         Width: =40
-        X: =520
-        Y: =203
+        X: =431
+        Y: =150
         ZIndex: =15
 
     "'filter button_5' As button":
@@ -905,7 +928,7 @@
         DisplayMode: =DisplayMode.View
         Fill: =RGBA(255, 255, 255, 1)
         FontWeight: =FontWeight.Semibold
-        Height: =711
+        Height: =782
         HoverColor: =RGBA(255, 255, 255, 1)
         HoverFill: =ColorFade(RGBA(56, 96, 178, 1), -20%)
         RadiusBottomLeft: =0
@@ -920,10 +943,10 @@
         ZIndex: =16
 
     Container4_29 As groupContainer:
-        Height: =726
+        Height: =718
         Visible: =varFilter
         Width: =640
-        Y: =304
+        Y: =379
         ZIndex: =17
 
         Rectangle16_8 As rectangle:
@@ -1393,7 +1416,7 @@
                     radioArea.Selected.Areaname,
                     ColorValue( LookUp('Environment Variable Definitions', 'Display Name'="Common Primary Background").'Default Value')//_VarGblAppColors.PrimaryBg,ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Text Primary Color").'Default Value') //ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Text Primary Color").'Default Value') //_VarGblAppColors.textbgbutton   
                 )
-            Height: =312
+            Height: =290
             HoverColor: =RGBA(0, 18, 107, 1)
             Items: |-
                 =AddColumns(
@@ -1439,7 +1462,7 @@
             Visible: =If(Gallery8_6.Selected.tabid=1,true,false)
             Width: =340
             X: =300
-            Y: =162
+            Y: =184
             ZIndex: =16
 
         Group10_4 As group:
@@ -1557,4 +1580,69 @@
         X: =431
         Y: =18
         ZIndex: =21
+
+    Group5 As group:
+        Height: =5
+        Width: =5
+        X: =40
+        Y: =40
+        ZIndex: =24
+
+        Image7 As image:
+            BorderColor: =RGBA(0, 0, 0, 0)
+            BorderStyle: =BorderStyle.None
+            BorderThickness: =2
+            DisabledBorderColor: =RGBA(0, 0, 0, 0)
+            DisabledFill: =RGBA(0, 0, 0, 0)
+            FocusedBorderThickness: =4
+            Height: =45
+            HoverBorderColor: =RGBA(0, 0, 0, 0)
+            HoverFill: =RGBA(0, 0, 0, 0)
+            Image: ='Vector (1)'
+            OnSelect: |+
+                =Set(
+                    varFilter,
+                    !varFilter
+                );
+                
+            PressedBorderColor: =RGBA(0, 0, 0, 0)
+            PressedFill: =RGBA(0, 0, 0, 0)
+            Width: =35
+            X: =517
+            Y: =204
+            ZIndex: =22
+
+        Button3 As button:
+            BorderColor: =RGBA(0, 0, 0, 0)
+            BorderStyle: =BorderStyle.None
+            DisabledBorderColor: =RGBA(0, 0, 0, 0)
+            DisabledColor: =RGBA(166, 166, 166, 1)
+            DisabledFill: =RGBA(244, 244, 244, 1)
+            Fill: =RGBA(0, 0, 0, 0)
+            FocusedBorderColor: =ColorFade(Self.Fill, -75%)
+            Font: =Font.'Segoe UI'
+            FontWeight: =FontWeight.Semibold
+            Height: =41
+            HoverBorderColor: =RGBA(0, 0, 0, 0)
+            HoverColor: =RGBA(255, 255, 255, 1)
+            HoverFill: =
+            OnSelect: |+
+                =Set(
+                    varFilter,
+                    !varFilter
+                );
+                
+            PressedBorderColor: =ColorFade(RGBA(0, 120, 212, 1), -50%)
+            PressedColor: =RGBA(255, 255, 255, 1)
+            PressedFill: =
+            RadiusBottomLeft: =0
+            RadiusBottomRight: =0
+            RadiusTopLeft: =0
+            RadiusTopRight: =0
+            Size: =24
+            Text: =""
+            Width: =43
+            X: =513
+            Y: =206
+            ZIndex: =23
 
