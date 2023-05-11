@@ -467,28 +467,34 @@
                     ThisItem.'Order From'.'Customer Name'
                 );
                 Set(
-                        varActivated,
-                        ThisItem.'Order From'.'Credit Activated'
-                    );
+                    varActivated,
+                    ThisItem.'Order From'.'Credit Activated'
+                );
                 Set(
-                        varRemainingCreditLimit,
-                        Text(RoundUp(Value( ThisItem.'Order From'.'Remaining Credit Limit'),2),"[$-en-US]#,###.00")
-                    );
+                    varRemainingCreditLimit,
+                    Text(
+                        RoundUp(
+                            Value(ThisItem.'Order From'.'Remaining Credit Limit'),
+                            2
+                        ),
+                        "[$-en-US]#,###.00"
+                    )
+                );
                 If(
                     ThisItem.'Order Type' = 'Order Type Choice'.Primary,
                     Set(
                         primarydata,
                         ThisItem
                     );
-                    If(
-                        (CountRows(colPrimaryCart) = 0) || IsBlank(
-                            LookUp(
-                                colPrimaryCart,
-                                productSKU = First(colOrderLine).'Product SKU'.'Product SKU'
-                            )
-                        ),
-                        ForAll(
-                            colOrderLine As oneline,
+                    ForAll(
+                        colOrderLine As oneline,
+                        If(
+                            (CountRows(colPrimaryCart) = 0) || IsBlank(
+                                LookUp(
+                                    colPrimaryCart,
+                                    productSKU = oneline.'Product SKU'.'Product SKU'
+                                )
+                            ),
                             Collect(
                                 colPrimaryCart,
                                 {
@@ -506,26 +512,25 @@
                                 }
                             )
                         );
-                        
                     );
                     Navigate(
-                            'Primary Cart Screen',
-                            ScreenTransition.CoverRight
-                        ),
+                        'Primary Cart Screen',
+                        ScreenTransition.CoverRight
+                    ),
                     ThisItem.'Order Type' = 'Order Type Choice'.Secondary,
                     Set(
                         secondarydata,
                         ThisItem
                     );
-                    If(
-                        (CountRows(colSecondaryCart) = 0) || IsBlank(
-                            LookUp(
-                                colSecondaryCart,
-                                productSKU = First(colOrderLine).'Product SKU'.'Product SKU'
-                            )
-                        ),
-                        ForAll(
-                            colOrderLine As oneline,
+                    ForAll(
+                        colOrderLine As oneline,
+                        If(
+                            (CountRows(colSecondaryCart) = 0) || IsBlank(
+                                LookUp(
+                                    colSecondaryCart,
+                                    productSKU = oneline.'Product SKU'.'Product SKU'
+                                )
+                            ),
                             Collect(
                                 colSecondaryCart,
                                 {
@@ -543,12 +548,11 @@
                                 }
                             )
                         );
-                        
                     );
                     Navigate(
-                            'Secondary Cart Screen',
-                            ScreenTransition.CoverRight
-                        )
+                        'Secondary Cart Screen',
+                        ScreenTransition.CoverRight
+                    )
                 )
             PressedBorderColor: =ColorFade(RGBA(0, 120, 212, 1), -50%)
             PressedColor: =RGBA(255, 255, 255, 1)
