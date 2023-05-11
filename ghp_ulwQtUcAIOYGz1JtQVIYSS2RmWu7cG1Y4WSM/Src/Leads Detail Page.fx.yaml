@@ -1,6 +1,6 @@
 "'Leads Detail Page' As screen":
     LoadingSpinnerColor: =RGBA(0, 120, 212, 1)
-    OnVisible: |
+    OnVisible: |-
         =Set(
             VarAddProducts,
             false
@@ -109,6 +109,7 @@
                 Blank()
             )
         );
+        Set(ProdAddd,1)
 
     Header_15 As Header:
         ScreenName: =varLeadData.zx_name

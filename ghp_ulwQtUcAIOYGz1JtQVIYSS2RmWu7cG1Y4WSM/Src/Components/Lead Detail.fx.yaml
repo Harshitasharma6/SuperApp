@@ -573,7 +573,7 @@
                         IsBlank(
                             LookUp(
                                 OfflineProductPriceCollection,
-                                'Product SKU'.'Product SKU' = LookUp(
+                                'Product SKU Price'.'Product SKU' = LookUp(
                                     OfflineProductSKUCollection,
                                     'Product SKU' = ThisItem.'Product SKU'.'Product SKU'
                                 ).'Product SKU' && 'Price list'.Name = varPricelist.Name
@@ -582,7 +582,7 @@
                         "NA",
                         "₹" & LookUp(
                             OfflineProductPriceCollection,
-                            'Product SKU'.'Product SKU' = LookUp(
+                            'Product SKU Price'.'Product SKU' = LookUp(
                                 OfflineProductSKUCollection,
                                 'Product SKU' = ThisItem.'Product SKU'.'Product SKU'
                             ).'Product SKU' && 'Price list'.Name = varPricelist.Name
@@ -925,7 +925,7 @@
                                 Quantity: ItemQuoteLine.Quantity,
                                 'Unit Price': LookUp(
                                     OfflineProductPriceCollection,
-                                    'Product SKU'.'Product SKU' = LookUp(
+                                    'Product SKU Price'.'Product SKU' = LookUp(
                                         OfflineProductSKUCollection,
                                         'Product SKU' = ItemQuoteLine.'Product SKU'.'Product SKU'
                                     ).'Product SKU'
@@ -1683,13 +1683,13 @@
                         IsBlank(
                             LookUp(
                                 OfflineProductPriceCollection,
-                                'Product SKU'.'Product SKU' = ThisItem.'Product SKU' && 'Price list'.Name = varPricelist.Name
+                                'Product SKU Price'.'Product SKU' = ThisItem.'Product SKU' && 'Price list'.Name = varPricelist.Name
                             ).'Ex-Factory'
                         ),
                         "NA",
                         "₹" & LookUp(
                             OfflineProductPriceCollection,
-                            'Product SKU'.'Product SKU' = ThisItem.'Product SKU' && 'Price list'.Name = varPricelist.Name
+                            'Product SKU Price'.'Product SKU' = ThisItem.'Product SKU' && 'Price list'.Name = varPricelist.Name
                         ).'Ex-Factory'
                     )
                 Width: =206
@@ -1841,7 +1841,7 @@
                     
                     If(IsBlank(LookUp(
                         OfflineProductPriceCollection,
-                        'Product SKU'.'Product SKU' = ThisItem.'Product SKU' && 'Price list'.Name = varPricelist.Name
+                        'Product SKU Price'.'Product SKU' = ThisItem.'Product SKU' && 'Price list'.Name = varPricelist.Name
                     ).'Ex-Factory'), DisplayMode.Disabled, DisplayMode.Edit)
                 FontWeight: =FontWeight.Semibold
                 Format: =TextFormat.Number
@@ -1874,7 +1874,7 @@
                                     {
                                         itemPrice: LookUp(
                                             OfflineProductPriceCollection,
-                                            'Product SKU'.'Product SKU' = ThisItem.'Product SKU' && 'Price list'.Name = varPricelist.Name
+                                            'Product SKU Price'.'Product SKU' = ThisItem.'Product SKU' && 'Price list'.Name = varPricelist.Name
                                         ).'Ex-Factory'
                                     },
                                     Patch(
@@ -1905,7 +1905,7 @@
                                     {
                                         itemPrice: LookUp(
                                             OfflineProductPriceCollection,
-                                            'Product SKU'.'Product SKU' = ThisItem.'Product SKU' && 'Price list'.Name = varPricelist.Name
+                                            'Product SKU Price'.'Product SKU' = ThisItem.'Product SKU' && 'Price list'.Name = varPricelist.Name
                                         ).'Ex-Factory'
                                     },
                                     Patch(
@@ -1989,7 +1989,7 @@
                     
                     If(IsBlank(LookUp(
                         OfflineProductPriceCollection,
-                        'Product SKU'.'Product SKU' = ThisItem.'Product SKU' && 'Price list'.Name = varPricelist.Name
+                        'Product SKU Price'.'Product SKU' = ThisItem.'Product SKU' && 'Price list'.Name = varPricelist.Name
                     ).'Ex-Factory'), DisplayMode.Disabled, DisplayMode.Edit)
                 FontWeight: =FontWeight.Bold
                 Format: =TextFormat.Number
@@ -2011,7 +2011,7 @@
                                 {
                                     itemPrice: LookUp(
                                         OfflineProductPriceCollection,
-                                        'Product SKU'.'Product SKU' = ThisItem.'Product SKU' && 'Price list'.Name = varPricelist.Name
+                                        'Product SKU Price'.'Product SKU' = ThisItem.'Product SKU' && 'Price list'.Name = varPricelist.Name
                                     ).'Ex-Factory'
                                 },
                                 Patch(
@@ -2465,7 +2465,7 @@
                 Fill: |-
                     =//_VarGblAppColors.BottomListBg
                     
-                    ColorValue(LookUp(c_EnvironmentVariable, 'Display Name'="Button Border Color").'Default Value')
+                    ColorFade(ColorValue(LookUp(c_EnvironmentVariable, 'Display Name'="Button Border Color").'Default Value'), 80%)
                 FontWeight: =FontWeight.Semibold
                 Height: =55
                 HoverColor: =RGBA(255, 255, 255, 1)
@@ -3074,7 +3074,7 @@
                 ChevronFill: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//_VarGblAppColors.PrimaryRed
                 ChevronHoverBackground: =ColorFade(RGBA(56, 96, 178, 1), -20%)
                 ChevronHoverFill: =RGBA(255, 255, 255, 1)
-                Default: =varLeadData.zx_engagement
+                Default: =//varLeadData.zx_engagement
                 DisabledBorderColor: =RGBA(166, 166, 166, 1)
                 DisabledColor: =RGBA(166, 166, 166, 1)
                 DisabledFill: =RGBA(244, 244, 244, 1)

@@ -60,7 +60,7 @@
                 FontWeight: =FontWeight.Semibold
                 Height: =225
                 HoverColor: =RGBA(255, 255, 255, 1)
-                HoverFill: =ColorFade(RGBA(56, 96, 178, 1), -20%)
+                HoverFill: =ColorFade(Self.Fill, -20%)
                 RadiusBottomLeft: =15
                 RadiusBottomRight: =15
                 RadiusTopLeft: =15
@@ -1065,7 +1065,7 @@
                                     'Quote Line.S',
                                     LookUp(
                                        'Quote Line.S',
-                                        'Product SKU '.'Product SKU' = ThisItem.'Product SKU'.'Product SKU' && 'Quote Header'.'Quote ID' = ThisItem.'Quote Header'.'Quote ID'
+                                        'Product SKU'.'Product SKU' = ThisItem.'Product SKU'.'Product SKU' && 'Quote Header'.'Quote ID' = ThisItem.'Quote Header'.'Quote ID'
                                     ),
                                     {
                                         Quantity: Value(Self.Text)
@@ -1175,7 +1175,7 @@
                 DisabledColor: =RGBA(166, 166, 166, 1)
                 DisabledFill: =//ColorFade(ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' ),70%)
                 DisplayMode: =DisplayMode.Disabled
-                Fill: =RGBA(56, 96, 178, 1)
+                Fill: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )
                 FontWeight: =FontWeight.Semibold
                 Height: =199
                 HoverColor: =RGBA(255, 255, 255, 1)
@@ -1477,7 +1477,7 @@
                 DisabledBorderColor: =RGBA(166, 166, 166, 1)
                 DisabledColor: =RGBA(166, 166, 166, 1)
                 DisabledFill: =RGBA(244, 244, 244, 1)
-                Fill: =//ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )
+                Fill: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )
                 FontWeight: =FontWeight.Semibold
                 Height: =60
                 HoverColor: =RGBA(255, 255, 255, 1)
@@ -1602,7 +1602,7 @@
                                         Quantity: ItemOrderLine.Quantity,
                                         'Unit Price': LookUp(
                                             OfflineProductPriceCollection,
-                                            'Product SKU'.'Product SKU' = LookUp(
+                                            'Product SKU Price'.'Product SKU' = LookUp(
                                                 OfflineProductSKUCollection,
                                                 'Product SKU' = ItemOrderLine.'Product SKU'.'Product SKU'
                                             ).'Product SKU'
@@ -1720,7 +1720,7 @@
                     DisabledBorderColor: =RGBA(166, 166, 166, 1)
                     DisabledColor: =RGBA(166, 166, 166, 1)
                     DisabledFill: =RGBA(244, 244, 244, 1)
-                    Fill: =//ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )
+                    Fill: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )
                     FontWeight: =FontWeight.Semibold
                     Height: =70
                     HoverColor: =RGBA(255, 255, 255, 1)
@@ -1743,7 +1743,7 @@
                     DisabledBorderColor: =RGBA(166, 166, 166, 1)
                     DisabledColor: =RGBA(166, 166, 166, 1)
                     DisabledFill: =RGBA(244, 244, 244, 1)
-                    Fill: =//ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )
+                    Fill: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )
                     FontWeight: =FontWeight.Semibold
                     Height: =70
                     HoverColor: =RGBA(255, 255, 255, 1)
@@ -1791,7 +1791,7 @@
                 DisabledBorderColor: =RGBA(166, 166, 166, 1)
                 DisabledColor: =RGBA(166, 166, 166, 1)
                 DisabledFill: =RGBA(244, 244, 244, 1)
-                Fill: =//ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )
+                Fill: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )
                 FontWeight: =FontWeight.Semibold
                 Height: =60
                 HoverColor: =RGBA(255, 255, 255, 1)
