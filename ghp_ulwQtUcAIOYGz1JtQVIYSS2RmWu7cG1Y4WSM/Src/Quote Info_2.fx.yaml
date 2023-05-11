@@ -578,9 +578,9 @@
                                 )
                             },
                             Patch(
-                                'Order Headers',
+                                'Order Header.S',
                                 LookUp(
-                                    'Order Headers',
+                                    'Order Header.S',
                                     'Order Header' = ThisItem.'Order Header'.'Order Header'
                                 ),
                                 {
@@ -601,7 +601,7 @@
                         );
                         ClearCollect(
                             OfflineOrderHeaderCollection,
-                            'Order Headers'
+                            'Order Header.S'
                         );
                         ClearCollect(
                             OfflineOrderLineCollection,
@@ -770,9 +770,9 @@
                                 )
                             },
                             Patch(
-                                'Order Headers',
+                                'Order Header.S',
                                 LookUp(
-                                    'Order Headers',
+                                    'Order Header.S',
                                     'Order Header' = ThisItem.'Order Header'.'Order Header'
                                 ),
                                 {
@@ -945,9 +945,9 @@
                                         )
                                     },
                                     Patch(
-                                        'Order Headers',
+                                        'Order Header.S',
                                         LookUp(
-                                        'Order Headers',
+                                        'Order Header.S',
                                         'Order ID' = ThisItem.'Order Header'.'Order ID'),
                                         {
                                             'Total Bill Amount (new_totalbillamount)': Sum(
@@ -1024,9 +1024,9 @@
                                     )
                                 },
                                 Patch(
-                                    'Order Headers',
+                                    'Order Header.S',
                                     LookUp(
-                                        'Order Headers',
+                                        'Order Header.S',
                                         'Order ID' = ThisItem.'Order Header'.'Order ID'
                                     ),
                                     {
@@ -1322,7 +1322,7 @@
                         //IsBlank(
                             First(
                                 Filter(
-                                    'Order Headers',
+                                    'Order Header.S',
                                     'Order ID' = varOrderData.'Order ID'
                                 )
                             ).'Order ID'='Orderline Gallery_3'.Selected.'Order Header'.'Order ID',
@@ -1398,9 +1398,9 @@
                         );
                     
                       /*  Patch(
-                        'Order Headers',
+                        'Order Header.S',
                         LookUp(
-                            'Order Headers',
+                            'Order Header.S',
                             'Order ID' = varOrderData.new_orderid
                         ),
                         {'Discount %' : Value(HDisc.Text),
@@ -1450,7 +1450,7 @@
                         //IsBlank(
                             First(
                                 Filter(
-                                    'Order Headers',
+                                    'Order Header.S',
                                     'Order ID' = varOrderData.'Order ID'
                                 )
                             ).'Order ID'='Orderline Gallery_3'.Selected.'Order Header'.'Order ID',

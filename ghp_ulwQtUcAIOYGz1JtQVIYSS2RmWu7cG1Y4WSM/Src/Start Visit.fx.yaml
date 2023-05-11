@@ -2046,8 +2046,8 @@
                 ForAll(
                     OfflineOrderHeaderToBeSynced As ItemOrder,
                     Patch(
-                        'Order Headers',
-                        Defaults('Order Headers'),
+                        'Order Header.S',
+                        Defaults('Order Header.S'),
                         {
                             'Order From': LookUp(
                                 OfflinePartiesCollection,

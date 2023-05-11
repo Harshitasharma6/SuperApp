@@ -1527,14 +1527,14 @@
                 {
                     Title: "State",
                     Value: LookUp(
-                        States,
+                        'State.S',
                         State = 'Customer 360'.CustomerRecord.zx_State.State
                     ).'State Name'
                 },
                 {
                     Title: "District",
                     Value: LookUp(
-                        Districts,
+                        'District.S',
                         District = 'Customer 360'.CustomerRecord.zx_District.District
                     ).'District Name'
                 },
@@ -1555,7 +1555,7 @@
                 {
                     Title: "Area",
                     Value: LookUp(
-                        Areas,
+                        'Area.S',
                         Area = 'Customer 360'.CustomerRecord.zx_Area.Area
                     ).'Area Name'
                 },
