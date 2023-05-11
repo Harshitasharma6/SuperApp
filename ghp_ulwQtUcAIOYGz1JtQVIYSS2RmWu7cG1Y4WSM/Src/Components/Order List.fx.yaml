@@ -14,8 +14,8 @@
         AccessibleLabel: ="Order Info Gallery"
         BorderColor: =RGBA(153, 207, 236, 1)
         BorderStyle: =BorderStyle.None
-        Fill: =RGBA(255, 255, 255, 1)
-        Height: =874
+        Fill: =ColorValue(LookUp(c_EnvironmentVariable, 'Display Name'="Light Red").'Default Value')
+        Height: =920
         Items: |-
             =If(
                 varfiltergallery = true,
@@ -130,7 +130,7 @@
         Layout: =Layout.Vertical
         ShowScrollbar: =false
         TabIndex: =0
-        TemplateSize: =210
+        TemplateSize: =230
         Visible: |-
             =true
             //'Top Gallery'.Selected.TabId=5

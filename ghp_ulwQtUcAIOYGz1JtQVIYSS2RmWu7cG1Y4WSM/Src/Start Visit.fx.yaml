@@ -1534,6 +1534,13 @@
                             'Customer Code' = First(colZoximaParty).'Customer Code'
                         ).State.'State Name'
                     );*/
+                    Set(
+                            varSelectedRetailerAttachedDistributor,
+                            LookUp(
+                                OfflinePartiesCollection,
+                                'Customer Code' = ComboBox1_3.Selected.'Customer Code'
+                            ).'Attached Distributor'.'Customer Name'
+                        );
                     
                     Set(
                         varPartyPricelist,
@@ -1638,10 +1645,13 @@
                                     ).Party.'Customer Code').'Attached Distributor'.Parties
                             );*/
                     ,
-                                        Set(
-                                            _varSelectedRetailerAttachedDistributor,
-                                            Blank()
-                                        )
+                                       Set(
+                            varSelectedRetailerAttachedDistributor,
+                            LookUp(
+                                OfflinePartiesCollection,
+                                'Customer Code' = ComboBox1_3.Selected.'Customer Code'
+                            ).'Attached Distributor'.'Customer Name'
+                        );
                                     )
                                 );
                                 ClearCollect(
@@ -1688,34 +1698,8 @@
                         square,
                         'play (1)'
                     )
-                OnSelect: |-
-                    =If(Self.Image=square,
-                      Patch(
-                                'Visit.S',
-                                LookUp(
-                                            'Visit.S',
-                                            Party.Parties = ThisItem.zx_partiesid && DateValue('Visit date') >= Today() && createdby.'Primary Email' = User().Email
-                                        ),
-                                {
-                                    zx_visitstatus: 'Visit Status'.Completed,
-                                    zx_checkoutaddress: Concatenate(
-                                        Location.Latitude,
-                                        ",",
-                                        Location.Longitude
-                                    ),
-                                    zx_checkouttime: Now()
-                                }
-                            );
-                            ClearCollect(OfflineVisitCollection,'Visit.S');
-                            Notify("Visit End Successfully ")
-                            ,
-                    
-                    
-                    
-                    
-                    
-                    
-                    If(
+                OnSelect: |+
+                    =If(
                         LookUp(
                             'Visit.S',
                             Party.Parties = ThisItem.zx_partiesid && Text(
@@ -1821,37 +1805,38 @@
                                             Party.Parties = ThisItem.zx_partiesid
                                         ).Party.Parties
                                     );
-                                    Set(
-                                        varParty,
-                                        ThisItem.'Customer Name'
-                                    );
-                                    Set(
-                                        varParties,
-                                        false
-                                    );
-                                    Set(
-                                        varCustomertype,
-                                        ThisItem.'Customer Type'
-                                    );
-                                    Set(
-                                        varpaymentterm,
-                                        ThisItem.'Payment Terms'.Name
-                                    );
-                                    Set(
-                                        varOrderfrom,
-                                        LookUp(
-                                            OfflinePartiesCollection,
-                                            'Customer Code' = ThisItem.'Customer Code'
-                                        ).State.Name
-                                    );
-                                    Set(
-                                        varOrderfromRegion,
-                                        LookUp(
-                                            OfflinePartiesCollection,
-                                            'Customer Code' = ThisItem.'Customer Code'
-                                        ).Region.Name
-                                    );
                                     
+                                    Set(
+                            varParty,
+                            ThisItem.'Customer Name'
+                        );
+                        Set(
+                            varParties,
+                            false
+                        );
+                       
+                       Set(
+                            varCustomertype,
+                            ThisItem.'Customer Type'
+                        );
+                        Set(
+                            varpaymentterm,
+                           ThisItem.'Payment Terms'.Name
+                        );
+                    Set(
+                        varOrderfrom,
+                        LookUp(
+                            OfflinePartiesCollection,
+                            'Customer Code' = ThisItem.'Customer Code'
+                        ).State.Name
+                    );
+                    Set(
+                        varOrderfromRegion,
+                        LookUp(
+                            OfflinePartiesCollection,
+                            'Customer Code' = ThisItem.'Customer Code'
+                        ).Region.Name
+                    );
                     /*Set(
                         varOrderTo,
                         LookUp(
@@ -1860,91 +1845,99 @@
                         ).State.'State Name'
                     );*/
                     Set(
-                                        varPartyPricelist,
-                                        ThisItem.'Price List'.Name
-                                    );
-                                    ClearCollect(
-                                        colPartyOrder,
-                                        Sort(
-                                            Filter(
-                                                OfflineOrderHeaderCollection,
-                                                'Order From'.Parties = ThisItem.Parties
-                                            ),
-                                            'Created On',
-                                            SortOrder.Descending
-                                        )
-                                    );
-                                    ForAll(
-                                        colPartyOrder As oneline,
-                                        Collect(
-                                            colOrderlineproduct,
-                                            Filter(
-                                                'Order Lines.S',
-                                                'Order Header'.'Order Header' = oneline.'Order Header'
-                                            )
-                                        )
-                                    );
-                                    ClearCollect(
-                                        colDistinctProduct,
-                                        Distinct(
-                                            colOrderlineproduct,
-                                            'Product SKU'.'Product SKU'
-                                        )
-                                    );
-                                    ClearCollect(
-                                        colCustomerMapping,
-                                        LookUp(
-                                            OfflineProductOfferMappingCollection,
-                                            Customer.Parties = GUID(varCustomerforDiscount)
-                                        )
-                                    );
-                                    ClearCollect(
-                                        colStateMapping,
-                                        LookUp(
-                                            OfflineProductOfferMappingCollection,
-                                            Customer.State.Name = varOrderfrom
-                                        )
-                                    );
-                                    ClearCollect(
-                                        colRegionMapping,
-                                        LookUp(
-                                            OfflineProductOfferMappingCollection,
-                                            Customer.Region.Name = varOrderfromRegion
-                                        )
-                                    );
-                                    If(
-                                        !IsBlank(colCustomerMapping),
-                                        ClearCollect(
-                                            colOfferHeaderId,
-                                            LookUp(
-                                                OfflineProductOfferHeaderCollection,
-                                                'Product Offer Header' = First(colCustomerMapping).'Product Offers'.'Product Offer Header'
-                                            ).'Offer ID'
-                                        ),
-                                        !IsBlank(colStateMapping),
-                                        ClearCollect(
-                                            colOfferHeaderId,
-                                            LookUp(
-                                                OfflineProductOfferHeaderCollection,
-                                                'Product Offer Header' = First(colStateMapping).'Product Offers'.'Product Offer Header'
-                                            ).'Offer ID'
-                                        ),
-                                        !IsBlank(colRegionMapping),
-                                        ClearCollect(
-                                            colOfferHeaderId,
-                                            LookUp(
-                                                OfflineProductOfferHeaderCollection,
-                                                'Product Offer Header' = First(colStateMapping).'Product Offers'.'Product Offer Header'
-                                            ).'Offer ID'
-                                        )
-                                    );
-                                    ClearCollect(
-                                        colOfferHeader,
-                                        Filter(
-                                            OfflineProductOfferHeaderCollection,
-                                            'Offer ID' = First(colOfferHeaderId).Value && ('Active From' <= Today()) && ('Active To' >= Today())
-                                        )
-                                    );
+                            varSelectedRetailerAttachedDistributor,
+                            LookUp(
+                                OfflinePartiesCollection,
+                                'Customer Code' = ComboBox1_3.Selected.'Customer Code'
+                            ).'Attached Distributor'.'Customer Name'
+                        );
+                    
+                    Set(
+                        varPartyPricelist,
+                        ThisItem.'Price List'.Name
+                    );
+                    ClearCollect(
+                        colPartyOrder,
+                        Sort(
+                            Filter(
+                                OfflineOrderHeaderCollection,
+                                'Order From'.Parties = ThisItem.Parties
+                            ),
+                            'Created On',
+                            SortOrder.Descending
+                        )
+                    );
+                    ForAll(
+                        colPartyOrder As oneline,
+                        Collect(
+                            colOrderlineproduct,
+                            Filter(
+                                'Order Lines.S',
+                                'Order Header'.'Order Header' = oneline.'Order Header'
+                            )
+                        )
+                    );
+                    ClearCollect(
+                        colDistinctProduct,
+                        Distinct(
+                            colOrderlineproduct,
+                            'Product SKU'.'Product SKU'
+                        )
+                    );
+                    ClearCollect(
+                        colCustomerMapping,
+                        LookUp(
+                            OfflineProductOfferMappingCollection,
+                            Customer.Parties = GUID(varCustomerforDiscount)
+                        )
+                    );
+                    ClearCollect(
+                        colStateMapping,
+                        LookUp(
+                            OfflineProductOfferMappingCollection,
+                            Customer.State.Name = varOrderfrom
+                        )
+                    );
+                    ClearCollect(
+                        colRegionMapping,
+                        LookUp(
+                            OfflineProductOfferMappingCollection,
+                            Customer.Region.Name = varOrderfromRegion
+                        )
+                    );
+                    If(
+                        !IsBlank(colCustomerMapping),
+                        ClearCollect(
+                            colOfferHeaderId,
+                            LookUp(
+                                OfflineProductOfferHeaderCollection,
+                                'Product Offer Header' = First(colCustomerMapping).'Product Offers'.'Product Offer Header'
+                            ).'Offer ID'
+                        ),
+                        !IsBlank(colStateMapping),
+                        ClearCollect(
+                            colOfferHeaderId,
+                            LookUp(
+                                OfflineProductOfferHeaderCollection,
+                                'Product Offer Header' = First(colStateMapping).'Product Offers'.'Product Offer Header'
+                            ).'Offer ID'
+                        ),
+                        !IsBlank(colRegionMapping),
+                        ClearCollect(
+                            colOfferHeaderId,
+                            LookUp(
+                                OfflineProductOfferHeaderCollection,
+                                'Product Offer Header' = First(colStateMapping).'Product Offers'.'Product Offer Header'
+                            ).'Offer ID'
+                        )
+                    );
+                    ClearCollect(
+                        colOfferHeader,
+                        Filter(
+                            OfflineProductOfferHeaderCollection,
+                            'Offer ID' = First(colOfferHeaderId).Value && ('Active From' <= Today()) && ('Active To' >= Today())
+                        )
+                    );
                                     If(
                                         LookUp(
                                             'Visit.S',
@@ -1958,13 +1951,17 @@
                                     'Customer Code' = LookUp(
                                         'Visit.S' ,              
                                          Party.Parties = ThisItem.zx_partiesid
+                                         
                                     ).Party.'Customer Code').'Attached Distributor'.Parties
                             );*/
                     ,
-                                        Set(
-                                            _varSelectedRetailerAttachedDistributor,
-                                            Blank()
-                                        )
+                                       Set(
+                            varSelectedRetailerAttachedDistributor,
+                            LookUp(
+                                OfflinePartiesCollection,
+                                'Customer Code' = ComboBox1_3.Selected.'Customer Code'
+                            ).'Attached Distributor'.'Customer Name'
+                        );
                                     )
                                 );
                                 ClearCollect(
@@ -1977,7 +1974,8 @@
                             )
                         )
                     );
-                    )
+                    
+                    
                 Width: =21
                 X: =542
                 Y: =32
