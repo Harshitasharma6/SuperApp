@@ -347,7 +347,7 @@
               },
               {
                 "Category": "Behavior",
-                "InvariantScript": "Set(\r\n    _VarSelectedTab,\r\n    ThisItem.Title\r\n);\r\nIf(\r\n    ThisItem.Id = 1,\r\n    Set(\r\n        varfiltergallery,\r\n        true\r\n    );\r\n    Navigate(\r\n        ThisItem.Screen,\r\n        ScreenTransition.CoverRight\r\n    ),\r\nIf(ThisItem.Id = 5,\r\n\r\n    Navigate(\r\n       Sidebar,//can not file profile detail page \r\n        ScreenTransition.CoverRight\r\n    ),\r\n    Navigate(\r\n        ThisItem.Screen,\r\n        ScreenTransition.CoverRight\r\n    )\r\n)\r\n);\r\n\r\n\r\nSet(g_BottomMenuSelected, ThisItem.Title);\r\n//Set(_varsideNav, false))\r\n",
+                "InvariantScript": "Set(\r\n    _VarSelectedTab,\r\n    ThisItem.Title\r\n);\r\nIf(\r\n    ThisItem.Id = 1,\r\n    Set(\r\n        varfiltergallery,\r\n        true\r\n    );\r\n    Navigate(\r\n        ThisItem.Screen,\r\n        ScreenTransition.CoverRight\r\n    ),\r\n    Navigate(\r\n        ThisItem.Screen,\r\n        ScreenTransition.CoverRight\r\n    )\r\n)\r\n//Set(_varsideNav, false))",
                 "Property": "OnSelect",
                 "RuleProviderType": "Unknown"
               }
@@ -898,7 +898,7 @@
               },
               {
                 "Category": "Design",
-                "InvariantScript": "//_VarGblAppColors.PrimaryRed\r\nIf(g_BottomMenuSelected=ThisItem.Title,ColorValue(LookUp(c_EnvironmentVariable,'Display Name'=\"Button Fill\").'Default Value' )\r\n,ColorValue(LookUp(c_EnvironmentVariable,'Display Name'=\"Text Background Color\").'Default Value' ))\r\n\r\n",
+                "InvariantScript": "//_VarGblAppColors.PrimaryRed\r\nIf(ThisItem.IsSelected,ColorValue(LookUp(c_EnvironmentVariable,'Display Name'=\"Button Fill\").'Default Value' )\r\n,ColorValue(LookUp(c_EnvironmentVariable,'Display Name'=\"Text Background Color\").'Default Value' ))\r\n\r\n",
                 "Property": "Color",
                 "RuleProviderType": "Unknown"
               },
@@ -1114,7 +1114,7 @@
               },
               {
                 "Category": "Behavior",
-                "InvariantScript": "Set(\r\n    _VarSelectedTab,\r\n    ThisItem.Title\r\n);\r\nIf(\r\n    ThisItem.Id = 1,\r\n    Set(\r\n        varfiltergallery,\r\n        true\r\n    );\r\n    Navigate(\r\n        ThisItem.Screen,\r\n        ScreenTransition.CoverRight\r\n    ),\r\n    Navigate(\r\n        ThisItem.Screen,\r\n        ScreenTransition.CoverRight\r\n    )\r\n);\r\nSet(g_BottomMenuSelected, ThisItem.Title);\r\n//Set(_varsideNav, false))",
+                "InvariantScript": "Set(\r\n    _VarSelectedTab,\r\n    ThisItem.Title\r\n);\r\nIf(\r\n    ThisItem.Id = 1,\r\n    Set(\r\n        varfiltergallery,\r\n        true\r\n    );\r\n    Navigate(\r\n        ThisItem.Screen,\r\n        ScreenTransition.CoverRight\r\n    ),\r\n    Navigate(\r\n        ThisItem.Screen,\r\n        ScreenTransition.CoverRight\r\n    )\r\n)\r\n//Set(_varsideNav, false))",
                 "Property": "OnSelect",
                 "RuleProviderType": "Unknown"
               }
@@ -1460,7 +1460,7 @@
         "NameMapSourceSchema": "?"
       }
     ],
-    "LastModifiedTimestamp": "638193910876840616",
+    "LastModifiedTimestamp": "638193788062191676",
     "Name": "Bottom Bar",
     "Rules": [
       {
@@ -1535,7 +1535,7 @@
   "IsPcfControl": false,
   "IsPremiumPcfControl": false,
   "IsWidgetTemplate": false,
-  "LastModifiedTimestamp": "638193910876840616",
+  "LastModifiedTimestamp": "638193788062191676",
   "Name": "bb2b97e209da445bb3aed11de06ad9d1",
   "OverridableProperties": {},
   "Version": "638174987229356020"
