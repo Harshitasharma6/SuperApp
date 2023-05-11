@@ -623,7 +623,7 @@
         Fill: |-
             =RGBA(0, 0, 0, 0)
             //_VarGblAppColors.PrimaryRed
-        Height: =99
+        Height: =75
         Items: =colFilter
         LoadingSpinner: =LoadingSpinner.Data
         ShowScrollbar: =false
@@ -632,8 +632,7 @@
         Visible: |-
             =true
             //varFilter
-        Width: =424
-        WrapCount: =2
+        Width: =454
         X: =10
         Y: =30
         ZIndex: =5
@@ -662,11 +661,14 @@
 
         Label31_28 As label:
             BorderColor: =RGBA(0, 18, 107, 1)
-            Color: =RGBA(255, 255, 255, 1)
+            Color: |-
+                =ColorValue( LookUp('Environment Variable Definitions', 'Display Name'="Common Primary Background").'Default Value'   
+                )
             DisabledColor: =RGBA(166, 166, 166, 1)
             FontWeight: =FontWeight.Bold
             Height: =41
             OnSelect: =Select(Parent)
+            Size: =10
             Text: |-
                 =ThisItem.Title & ": " & ThisItem.value
             Tooltip: |-
@@ -679,7 +681,9 @@
         Icon21_17 As icon.Cancel:
             AccessibleLabel: ="Close the filter applied"
             BorderColor: =RGBA(0, 18, 107, 1)
-            Color: =RGBA(255,255,255,1)
+            Color: |-
+                =ColorValue( LookUp('Environment Variable Definitions', 'Display Name'="Common Primary Background").'Default Value'   
+                )
             DisabledBorderColor: =RGBA(166, 166, 166, 1)
             DisabledColor: =RGBA(244, 244, 244, 1)
             Height: =25
@@ -1943,12 +1947,7 @@
                 Align: =Align.Center
                 BorderColor: =RGBA(0, 18, 107, 1)
                 Color: |-
-                    =//RGBA(0, 0, 0, 1)
-                    //RGBA(153, 160, 196, 1)
-                    If(
-                        ThisItem.IsSelected,
-                        ColorValue( LookUp('Environment Variable Definitions', 'Display Name'="Common Primary Background").'Default Value')//_VarGblAppColors.PrimaryBg
-                        ,ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Text Primary Color").'Default Value')   
+                    =ColorValue( LookUp('Environment Variable Definitions', 'Display Name'="Common Primary Background").'Default Value'   
                     )
                 DisabledColor: =RGBA(166, 166, 166, 1)
                 FontWeight: =FontWeight.Bold
@@ -1969,12 +1968,7 @@
                 Align: =Align.Center
                 BorderColor: =RGBA(0, 18, 107, 1)
                 Color: |-
-                    =//RGBA(0, 0, 0, 1)
-                    //RGBA(153, 160, 196, 1)
-                    If(
-                        ThisItem.IsSelected,
-                        ColorValue( LookUp('Environment Variable Definitions', 'Display Name'="Common Primary Background").'Default Value')//_VarGblAppColors.PrimaryBg
-                        ,ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Text Primary Color").'Default Value')   
+                    =ColorValue( LookUp('Environment Variable Definitions', 'Display Name'="Common Primary Background").'Default Value'   
                     )
                 DisabledColor: =RGBA(166, 166, 166, 1)
                 Height: =45
@@ -1991,12 +1985,7 @@
                 AccessibleLabel: ="Close the filter applied"
                 BorderColor: =RGBA(0, 18, 107, 1)
                 Color: |-
-                    =//RGBA(0, 0, 0, 1)
-                    //RGBA(153, 160, 196, 1)
-                    If(
-                        ThisItem.IsSelected,
-                        ColorValue( LookUp('Environment Variable Definitions', 'Display Name'="Common Primary Background").'Default Value')//_VarGblAppColors.PrimaryBg
-                        ,ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Text Primary Color").'Default Value')   
+                    =ColorValue( LookUp('Environment Variable Definitions', 'Display Name'="Common Primary Background").'Default Value'   
                     )
                 DisabledBorderColor: =RGBA(166, 166, 166, 1)
                 DisabledColor: =RGBA(244, 244, 244, 1)
