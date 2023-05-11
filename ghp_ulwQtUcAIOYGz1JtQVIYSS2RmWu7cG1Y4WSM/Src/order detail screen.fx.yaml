@@ -369,7 +369,11 @@
                     =//LookUp(OfflineOrderHeaderCollection,'Order Header'= varOrderData.'Order Header').'Bill To'.'Customer Name'
                      
                 DefaultSelectedItems: |
-                    =LookUp(OfflinePartiesCollection,Parties= varOrderData.'Bill To'.Parties)
+                    =LookUp(OfflinePartiesCollection,Parties= If(
+                                        primarydata.'Order Type' = 'Order Type Choice'.Primary,
+                                        primarydata.'Bill To'.Parties,
+                                        secondarydata.'Bill To'.Parties
+                                    ))
                 DisabledBorderColor: =RGBA(166, 166, 166, 1)
                 DisabledColor: =RGBA(166, 166, 166, 1)
                 DisabledFill: =RGBA(244, 244, 244, 1)
@@ -444,7 +448,12 @@
                 ChevronFill: =RGBA(0, 0, 0, 1)
                 ChevronHoverBackground: =ColorFade(RGBA(56, 96, 178, 1), -20%)
                 ChevronHoverFill: =RGBA(255, 255, 255, 1)
-                DefaultSelectedItems: =LookUp(OfflinePartiesCollection,Parties= varOrderData.'Ship To'.Parties)
+                DefaultSelectedItems: |
+                    =LookUp(OfflinePartiesCollection,Parties= If(
+                                        primarydata.'Order Type' = 'Order Type Choice'.Primary,
+                                        primarydata.'Ship To'.Parties,
+                                        secondarydata.'Ship To'.Parties
+                                    ))
                 DisabledBorderColor: =RGBA(166, 166, 166, 1)
                 DisabledColor: =RGBA(166, 166, 166, 1)
                 DisabledFill: =RGBA(244, 244, 244, 1)
@@ -519,7 +528,12 @@
                 ChevronFill: =RGBA(0, 0, 0, 1)
                 ChevronHoverBackground: =ColorFade(RGBA(56, 96, 178, 1), -20%)
                 ChevronHoverFill: =RGBA(255, 255, 255, 1)
-                DefaultSelectedItems: =LookUp('Payment Terms.S',Name= varOrderData.'Payment Terms'.Name)
+                DefaultSelectedItems: |-
+                    =LookUp('Payment Terms.S',Name= If(
+                                        primarydata.'Order Type' = 'Order Type Choice'.Primary,
+                                        primarydata.'Payment Terms'.Name,
+                                        secondarydata.'Payment Terms'.Name
+                                    ))
                 DisabledBorderColor: =RGBA(166, 166, 166, 1)
                 DisabledColor: =RGBA(166, 166, 166, 1)
                 DisabledFill: =RGBA(244, 244, 244, 1)
@@ -561,7 +575,12 @@
             BorderStyle: =BorderStyle.None
             BorderThickness: =0
             Color: =RGBA(51, 51, 51, 1)
-            Default: =varOrderData.'Ship to Address'
+            Default: |-
+                =If(
+                                    primarydata.'Order Type' = 'Order Type Choice'.Primary,
+                                    primarydata.'Ship To'.Address,
+                                    secondarydata.'Ship To'.Address
+                                )
             DisabledBorderColor: =RGBA(0, 0, 0, 0)
             DisabledColor: =RGBA(166, 166, 166, 1)
             DisabledFill: =RGBA(244, 244, 244, 1)
