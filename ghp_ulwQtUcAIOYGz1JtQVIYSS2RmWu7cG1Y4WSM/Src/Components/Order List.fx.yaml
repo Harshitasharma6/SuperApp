@@ -14,7 +14,7 @@
         AccessibleLabel: ="Order Info Gallery"
         BorderColor: =RGBA(153, 207, 236, 1)
         BorderStyle: =BorderStyle.None
-        Fill: =RGBA(255, 255, 255, 1)
+        Fill: =ColorValue(LookUp(c_EnvironmentVariable, 'Display Name'="Light Red").'Default Value')
         Height: =874
         Items: |-
             =If(
