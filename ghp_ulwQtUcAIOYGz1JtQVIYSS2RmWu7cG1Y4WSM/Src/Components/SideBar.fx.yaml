@@ -51,6 +51,11 @@ SideBar As CanvasComponent:
         DisabledFill: =RGBA(244, 244, 244, 1)
         Height: =85
         Image: =User().Image
+        OnSelect: |-
+            = Navigate(
+                   'Profile Screen',
+                    ScreenTransition.CoverRight
+                )
         RadiusBottomLeft: =100
         RadiusBottomRight: =100
         RadiusTopLeft: =100

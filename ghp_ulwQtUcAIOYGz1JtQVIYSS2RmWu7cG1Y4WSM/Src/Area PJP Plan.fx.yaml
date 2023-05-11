@@ -1568,43 +1568,6 @@
             Y: =75
             ZIndex: =5
 
-            Button5_3 As button:
-                BorderStyle: =BorderStyle.None
-                Color: |-
-                    =If(ThisItem.Value.Date = ClickedPjpdate, Color.White,ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' ) 
-                    )
-                DisabledBorderColor: =RGBA(166, 166, 166, 1)
-                DisabledColor: =RGBA(166, 166, 166, 1)
-                DisabledFill: =RGBA(244, 244, 244, 1)
-                Fill: |-
-                    =If(ThisItem.Value.Date = ClickedPjpdate, ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )
-                    ,ColorValue( LookUp('Environment Variable Definitions', 'Display Name'="Common Primary Background").'Default Value')//_VarGblAppColors.PrimaryBg 
-                    )
-                FontWeight: =FontWeight.Semibold
-                Height: =50
-                HoverColor: =RGBA(255, 255, 255, 1)
-                HoverFill: |-
-                    =ColorFade(ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )
-                    , -20%)
-                OnSelect: =Set(ClickedPjpdate, ThisItem.Value.Date)
-                Size: =12
-                Text: |-
-                    =If(
-                        (ThisItem.Value.Date = Today() - 1) || (ThisItem.Value.Date = Today()) || (ThisItem.Value.Date = Today() + 1),
-                        ThisItem.Value.Title & " (" & Text(
-                            DateValue(ThisItem.Value.Date),
-                            "mmm dd"
-                        ) & ")",
-                        Text(
-                            DateValue(ThisItem.Value.Date),
-                            "mmm dd"
-                        )
-                    )
-                Width: =170
-                X: =5
-                Y: =5
-                ZIndex: =1
-
         PrevDateIcn As icon.ChevronLeft:
             AccessibleLabel: ="Left Date Icon"
             BorderColor: =RGBA(0, 18, 107, 1)
