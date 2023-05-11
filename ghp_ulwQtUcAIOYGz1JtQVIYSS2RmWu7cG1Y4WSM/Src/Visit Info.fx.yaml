@@ -3,7 +3,27 @@
     OnHidden: |
         =UpdateContext({v_LocationNeeded: false});
     OnVisible: |-
-        =If(IsBlank(varCustomerRecord.Longitude)|| IsBlank(varCustomerRecord.Latitude), UpdateContext({v_LocationNeeded:true}), UpdateContext({v_LocationNeeded:false}));
+        =If(
+            IsBlank(varCustomerRecord.Longitude) || IsBlank(varCustomerRecord.Latitude),
+            UpdateContext({v_LocationNeeded: true}),
+            UpdateContext({v_LocationNeeded: false})
+        );
+        Set(
+            primarydata,
+            Blank()
+        );
+        Set(
+            secondarydata,
+            Blank()
+        );
+        Set(
+            varCollectionEmpty,
+            true
+        );
+        Set(
+            varSelectedTabId,
+            1
+        )
 
     Header_18 As Header:
         ScreenName: |-
