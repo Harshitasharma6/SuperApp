@@ -5,7 +5,7 @@
                 OfflineOrderHeaderCollection,
                 Filter(
                     'Order Header.S',
-                    'Owning User'.'Primary Email' = User().Email
+                    'Owning User'.'Primary Email' = User().Email && 'Order Type'= 'Order Type Choice'.Secondary
                 )
             );
 
@@ -15,39 +15,6 @@
         Y: =55
 
     "'Bottom Bar_7' As 'Bottom Bar'":
-        NavItems: |-
-            =Table(
-                {
-                    Title: "Orders",
-                    Icon : 'shopping-cart',
-                    Screen: 'Secondary Order Screen',
-                    Id: 1
-                },
-                {
-                    Title: "Visit",
-                    Icon: location,
-                    Screen:'Start Visit',
-                    Id:2
-                },
-                 {
-                    Title: "Home",
-                    Icon:home,
-                    Screen: Home,
-                    Id:3
-                },
-                 {
-                    Title: "Parties",
-                    Icon: people,
-                    Screen: Parties,
-                    Id:4
-                },
-                {
-                    Title: varUser.'First Name',
-                    Icon: User().Image,
-                    Screen: Sidebar,
-                    Id:5
-                }
-            )
         Y: =1026
         ZIndex: =2
 

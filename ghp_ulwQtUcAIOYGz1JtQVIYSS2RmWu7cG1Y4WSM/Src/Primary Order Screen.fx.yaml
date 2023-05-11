@@ -5,7 +5,7 @@
                 OfflineOrderHeaderCollection,
                 Filter(
                     'Order Header.S',
-                    'Owning User'.'Primary Email' = User().Email
+                    'Owning User'.'Primary Email' = User().Email && 'Order Type'= 'Order Type Choice'.Primary
                 )
             );
 
