@@ -1,5 +1,5 @@
 "'Invoice Detail' As CanvasComponent":
-    Fill: =_VarGblAppColors.BackgroundColor
+    Fill: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Screen Background Color").'Default Value')
     HeaderId: =varInvoiceData
     Height: =App.Height
     Width: =App.Width
@@ -226,7 +226,7 @@
         "'Invoice line gallery' As gallery.galleryVertical":
             AccessibleLabel: ="Orderline Gallery"
             BorderColor: =RGBA(0, 18, 107, 1)
-            Fill: =_VarGblAppColors.BackgroundColor
+            Fill: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Screen Background Color").'Default Value')
             FocusedBorderColor: =Color.Transparent
             FocusedBorderThickness: =0.1
             Height: =Parent.Height 

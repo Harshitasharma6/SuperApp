@@ -215,10 +215,7 @@
                                 Concatenate(
                                     "₹",
                                     Text(
-                                        Sum(
-                                            colPrimaryCart,
-                                            (baseUnitPrice - (baseUnitPrice * (discount / 100))) * quantity
-                                        ) + (Sum(
+                                        (Sum(
                                             colPrimaryCart,
                                             igstAmount
                                         ) + Sum(
@@ -230,10 +227,7 @@
                                         ) + Sum(
                                             colPrimaryCart,
                                             cessAmount
-                                        )) - Sum(
-                                            colPrimaryCart,
-                                            (baseUnitPrice - (baseUnitPrice * (discount / 100))) * quantity
-                                        ),
+                                        )) ,
                                       /*  "[$-hi-IN]##,##,##,###",
                                         "hi-IN"*/
                                         "[$-en-US]#.00"
@@ -243,10 +237,7 @@
                                 Concatenate(
                                     "₹",
                                     Text(
-                                        Sum(
-                                            colSecondaryCart,
-                                            (baseUnitPrice - (baseUnitPrice * (discount / 100))) * quantity
-                                        ) + (Sum(
+                                        (Sum(
                                             colSecondaryCart,
                                             igstAmount
                                         ) + Sum(
@@ -258,10 +249,7 @@
                                         ) + Sum(
                                             colSecondaryCart,
                                             cessAmount
-                                        )) - Sum(
-                                            colSecondaryCart,
-                                            (baseUnitPrice - (baseUnitPrice * (discount / 100))) * quantity
-                                        ),
+                                        )),
                                        /* "[$-hi-IN]##,##,##,###",
                                         "hi-IN"*/
                                         "[$-en-US]#.00"
