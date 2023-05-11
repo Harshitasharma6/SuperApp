@@ -7,28 +7,28 @@ krascreen As screen:
         Height: =807
         Items: |-
             =/*If(
-                'Achivement type filter'.Selected.Value = 'Achivement Type (KRA Headers)'.Daily,
+                'Achivement type filter'.Selected.Value = 'Achivement Type (KRA Header.S)'.Daily,
                 Filter(
-                    'KRA Headers',
-                    'Created By'.'Primary Email' = User().Email && 'Achivement Type' = 'Achivement Type (KRA Headers)'.Daily
+                     'KRA Header.S',
+                    'Created By'.'Primary Email' = User().Email && 'Achivement Type' = 'Achivement Type (KRA Header.S)'.Daily
                 ),
                 If(
-                    'Achivement type filter'.Selected.Value = 'Achivement Type (KRA Headers)'.Weekly,
+                    'Achivement type filter'.Selected.Value = 'Achivement Type (KRA Header.S)'.Weekly,
                     Filter(
-                        'KRA Headers',
-                        'Created By'.'Primary Email' = User().Email && 'Achivement Type' = 'Achivement Type (KRA Headers)'.Weekly
+                         'KRA Header.S',
+                        'Created By'.'Primary Email' = User().Email && 'Achivement Type' = 'Achivement Type (KRA Header.S)'.Weekly
                     ),
                     If(
-                        'Achivement type filter'.Selected.Value = 'Achivement Type (KRA Headers)'.Monthly,
+                        'Achivement type filter'.Selected.Value = 'Achivement Type (KRA Header.S)'.Monthly,
                         Filter(
-                            'KRA Headers',
-                            'Created By'.'Primary Email' = User().Email && 'Achivement Type' = 'Achivement Type (KRA Headers)'.Monthly
+                             'KRA Header.S',
+                            'Created By'.'Primary Email' = User().Email && 'Achivement Type' = 'Achivement Type (KRA Header.S)'.Monthly
                         )
                     )
                 )
             )*/
             Filter(
-                'KRA Headers',
+                 'KRA Header.S',
                 'Achivement Type' = 'Achivement type filter'.Selected.Value /*&& Date = DateValue(DateGallery_3.Selected.Date)*/
             )
         Layout: =Layout.Vertical
@@ -121,13 +121,13 @@ krascreen As screen:
             FontWeight: =FontWeight.Bold
             OnSelect: |-
                 =Navigate('KRAdetail Page',ScreenTransition.Fade,{varkra:ThisItem});
-                Patch('KRA Headers',LookUp('KRA Headers',ID=ThisItem.ID),{
+                Patch( 'KRA Header.S',LookUp( 'KRA Header.S',ID=ThisItem.ID),{
                     'Order Achivement':
                 
                 CountRows(
                         Filter(
-                            'Order Headers',
-                            'Created By'.'Primary Email' = User().Email && 'KRA '.'Achivement Type'=LookUp('KRA Headers','Achivement Type'='Achivement Type (KRA Headers)'.Daily).'Achivement Type' && 'KRA '.ID = LookUp('KRA Headers',ID=ThisItem.ID).ID
+                            'Order Header.S',
+                            'Created By'.'Primary Email' = User().Email && 'KRA '.'Achivement Type'=LookUp( 'KRA Header.S','Achivement Type'='Achivement Type (KRA Header.S)'.Daily).'Achivement Type' && 'KRA '.ID = LookUp( 'KRA Header.S',ID=ThisItem.ID).ID
                         )
                     )
                 
@@ -231,33 +231,33 @@ krascreen As screen:
             Size: =16
             Text: |-
                 =If(
-                    'Achivement type filter'.Selected.Value = 'Achivement Type (KRA Headers)'.Daily,
+                    'Achivement type filter'.Selected.Value = 'Achivement Type (KRA Header.S)'.Daily,
                     CountRows(
                         Filter(
-                            'Order Headers',
-                            'Created By'.'Primary Email' = User().Email && KRA.'Achivement Type' = 'Achivement Type (KRA Headers)'.Daily 
+                            'Order Header.S',
+                            'Created By'.'Primary Email' = User().Email && KRA.'Achivement Type' = 'Achivement Type (KRA Header.S)'.Daily 
                             && KRA.'KRA Header' = ThisItem.'KRA Header'
                         )
                     ),
                     If(
-                        'Achivement type filter'.Selected.Value = 'Achivement Type (KRA Headers)'.Weekly,
+                        'Achivement type filter'.Selected.Value = 'Achivement Type (KRA Header.S)'.Weekly,
                         CountRows(
                             Filter(
-                                'Order Headers',
-                                'Created By'.'Primary Email' = User().Email && KRA.'Achivement Type' =  'Achivement Type (KRA Headers)'.Weekly && KRA.'KRA Header' = ThisItem.'KRA Header'
+                                'Order Header.S',
+                                'Created By'.'Primary Email' = User().Email && KRA.'Achivement Type' =  'Achivement Type (KRA Header.S)'.Weekly && KRA.'KRA Header' = ThisItem.'KRA Header'
                                
                             )
                         ),
                         If(
-                            'Achivement type filter'.Selected.Value = 'Achivement Type (KRA Headers)'.Monthly,
+                            'Achivement type filter'.Selected.Value = 'Achivement Type (KRA Header.S)'.Monthly,
                             CountRows(
                                 Filter(
-                                    'Order Headers',
+                                    'Order Header.S',
                                     'Created By'.'Primary Email' = User().Email && KRA.'Achivement Type' = LookUp(
-                                        'KRA Headers',
-                                        'Achivement Type' = 'Achivement Type (KRA Headers)'.Monthly
+                                         'KRA Header.S',
+                                        'Achivement Type' = 'Achivement Type (KRA Header.S)'.Monthly
                                     ).'Achivement Type' && KRA.'KRA Header' = LookUp(
-                                        'KRA Headers',
+                                         'KRA Header.S',
                                         'KRA Header' = ThisItem.'KRA Header'
                                     ).'KRA Header'
                                 )
@@ -368,7 +368,7 @@ krascreen As screen:
         AccessibleLabel: ="Party Toptab"
         BorderColor: =RGBA(0, 18, 107, 1)
         Height: =60
-        Items: =Choices('Achivement Type (KRA Headers)')
+        Items: =Choices('Achivement Type (KRA Header.S)')
         OnSelect: =//Set(_VarActivetopTab, ThisItem.TabId)
         TabIndex: =0
         TemplatePadding: =0
@@ -381,7 +381,7 @@ krascreen As screen:
         title_3 As label:
             Align: =Align.Center
             BorderColor: =RGBA(0, 18, 107, 1)
-            Color: =If(ThisItem.IsSelected, ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' ) , _VarGblAppColors.PrimaryText)
+            Color: =If(ThisItem.IsSelected, ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' ) , ColorValue(LookUp(c_EnvironmentVariable, 'Display Name'="Text Primary Color").'Default Value'))
             DisabledColor: =RGBA(166, 166, 166, 1)
             FocusedBorderThickness: =0.3
             FontWeight: =FontWeight.Semibold
@@ -394,7 +394,9 @@ krascreen As screen:
             ZIndex: =2
 
         Border_6 As button:
-            BorderColor: =If(ThisItem.IsSelected, ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' ) , ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Text Primary Color").'Default Value') //_VarGblAppColors.textbgbutton)
+            BorderColor: |-
+                =If(ThisItem.IsSelected, ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' ) , ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Text Primary Color").'Default Value') //_VarGblAppColors.textbgbutton
+                )
             DisabledBorderColor: =RGBA(166, 166, 166, 1)
             DisabledColor: =RGBA(166, 166, 166, 1)
             DisabledFill: =RGBA(244, 244, 244, 1)
@@ -460,7 +462,7 @@ krascreen As screen:
             Height: =48
             HoverColor: =RGBA(0, 0, 0, 1)
             HoverFill: =RGBA(186, 202, 226, 1)
-            Items: =Choices('Achivement Type (KRA Headers)')
+            Items: =Choices('Achivement Type (KRA Header.S)')
             OnSelect: =Krapopup
             PaddingRight: =5
             PressedColor: =RGBA(255, 255, 255, 1)

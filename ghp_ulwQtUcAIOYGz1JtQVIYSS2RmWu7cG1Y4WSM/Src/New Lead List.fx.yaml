@@ -93,7 +93,7 @@
             );
             ClearCollect(
                 offlineLeadCollection,
-                Leads
+                'Leads.S'
             );
         Size: =20
         Text: ="SUBMIT"
@@ -256,17 +256,17 @@
                 DisabledBorderColor: =RGBA(166, 166, 166, 1)
                 DisabledColor: =RGBA(166, 166, 166, 1)
                 DisabledFill: =RGBA(244, 244, 244, 1)
-                DisplayFields: =["new_name"]
+                DisplayFields: =["zx_name"]
                 DisplayMode: =Parent.DisplayMode
                 Height: =70
                 HoverColor: =RGBA(0, 0, 0, 1)
                 HoverFill: =RGBA(186, 202, 226, 1)
                 IsSearchable: =false
-                Items: =Choices([@Leads].'Product Category')
+                Items: =Choices([@'Leads.S'].'Product Category')
                 PaddingLeft: =If(Self.DisplayMode = DisplayMode.Edit, 5, 0)
                 PressedColor: =RGBA(255, 255, 255, 1)
                 PressedFill: =RGBA(0, 18, 107, 1)
-                SearchFields: =["new_name"]
+                SearchFields: =["zx_name"]
                 SearchItems: =[]
                 SelectionFill: =RGBA(56, 96, 178, 1)
                 SelectMultiple: =false
@@ -741,7 +741,7 @@
                 DisabledBorderColor: =RGBA(166, 166, 166, 1)
                 DisabledColor: =RGBA(166, 166, 166, 1)
                 DisabledFill: =RGBA(244, 244, 244, 1)
-                DisplayFields: =["new_areaname"]
+                DisplayFields: =["zx_name"]
                 DisplayMode: =Parent.DisplayMode
                 Height: =70
                 HoverColor: =RGBA(0, 0, 0, 1)
@@ -751,11 +751,11 @@
                 Items: |-
                     =//Choices([@Leads].Area)
                     
-                    Filter(Areas,Area= varUserr /*First(UserAssignedAreas).Area.Area*/)
+                    Filter('Area.S',Area= varUserr /*First(UserAssignedAreas).Area.Area*/)
                 PaddingLeft: =If(Self.DisplayMode = DisplayMode.Edit, 5, 0)
                 PressedColor: =RGBA(255, 255, 255, 1)
                 PressedFill: =RGBA(0, 18, 107, 1)
-                SearchFields: =["new_areaname"]
+                SearchFields: =["zx_name"]
                 SearchItems: =[]
                 SelectionFill: =RGBA(56, 96, 178, 1)
                 SelectMultiple: =false
@@ -1037,7 +1037,7 @@
                 IsSearchable: =false
                 Items: =Choices([@'Leads.S'].'Product SKU')
                 OnChange: |
-                    =Set(varCategoryName,LookUp('Product SKUS','Item Name'=DataCardValue23_3.Selected.'Item Name').'Product Category'.'Category Name')
+                    =Set(varCategoryName,LookUp('Product SKU.S','Item Name'=DataCardValue23_3.Selected.'Item Name').'Product Category'.'Category Name')
                 PaddingLeft: =If(Self.DisplayMode = DisplayMode.Edit, 5, 0)
                 PressedColor: =RGBA(255, 255, 255, 1)
                 PressedFill: =Color.Transparent

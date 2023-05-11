@@ -304,7 +304,7 @@
                 =If(
                     IsBlank(
                         LookUp(
-                            Beats,
+                            'Beat.S',
                             'PJP Line'.Date = ClickedPjpdate &&  'PJP Line'.'Owning User'.'Primary Email' =  ComboBox3.Selected.'Primary Email'&& Area.Area = ThisItem.Area.Area
                         )
                     ),
@@ -1107,7 +1107,7 @@
                 Set(
                     varFuturedate,
                     Filter(
-                        Beats,
+                        'Beat.S',
                         DateValue('Future Visit') = DateValue(DateFrom_6.SelectedDate) && 'Created By'.'Primary Email' = LookUp(
                             Users,
                             'Primary Email' = User().Email
