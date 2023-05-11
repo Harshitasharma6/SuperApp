@@ -1238,7 +1238,7 @@
                                 radioDate_5.Selected.Value = "This Week",
                                 Filter(
                                     OfflineOrderHeaderCollection,
-                                    (DateValue('Created On') >= DateValue(Today()) - Weekday(Today()) + 2 && DateValue('Created On') <= DateValue(Today()) + (9 - Weekday(Today()))) && 'Order Type' = 'Order Type Choice'.Primary && 'Owning User'.'Primary Email' = radioSalesperson_5.Selected.'Primary Email'
+                                    (DateValue('Created On') >= DateValue(Today()) - Weekday(Today()) + 2 && DateValue('Created On') <= DateValue(Today()) + (9 - Weekday(Today()))) && 'Order Type' = 'Order Type Choice'.Secondary && 'Owning User'.'Primary Email' = radioSalesperson_5.Selected.'Primary Email'
                                 ),
                                 radioDate_5.Selected.Value = "This Month",
                                 Filter(
@@ -1496,7 +1496,7 @@
                 );
                 Set(
                     varFilter,
-                    !varFilter
+                    false
                 );
                 Set(
                     varfiltergallery,
