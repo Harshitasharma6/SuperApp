@@ -23141,7 +23141,14 @@
           "IsLockable": false,
           "NameMapSourceSchema": "?"
         },
-        "DisplayMode",
+        {
+          "AFDDataSourceName": "",
+          "AutoRuleBindingEnabled": false,
+          "AutoRuleBindingString": "\r\n\r\nIf(IsBlank(LookUp(\r\n    OfflineProductPriceCollection,\r\n    'Product SKU'.'Product SKU' = ThisItem.'Product SKU' && 'Price list'.Name = varPricelist.Name\r\n).'Ex-Factory'), DisplayMode.Disabled, DisplayMode.Edit)",
+          "InvariantPropertyName": "DisplayMode",
+          "IsLockable": false,
+          "NameMapSourceSchema": "?"
+        },
         "OnSelect",
         "ZIndex",
         {
@@ -41795,7 +41802,14 @@
           "IsLockable": false,
           "NameMapSourceSchema": "?"
         },
-        "DisplayMode",
+        {
+          "AFDDataSourceName": "",
+          "AutoRuleBindingEnabled": false,
+          "AutoRuleBindingString": "\r\n\r\nIf(IsBlank(LookUp(\r\n    OfflineProductPriceCollection,\r\n    'Product SKU'.'Product SKU' = ThisItem.'Product SKU' && 'Price list'.Name = varPricelist.Name\r\n).'Ex-Factory'), DisplayMode.Disabled, DisplayMode.Edit)",
+          "InvariantPropertyName": "DisplayMode",
+          "IsLockable": false,
+          "NameMapSourceSchema": "?"
+        },
         "OnSelect",
         "ZIndex",
         {

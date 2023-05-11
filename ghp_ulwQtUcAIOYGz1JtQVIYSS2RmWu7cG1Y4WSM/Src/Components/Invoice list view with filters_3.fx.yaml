@@ -1,7 +1,7 @@
 "'Invoice list view with filters_3' As CanvasComponent":
     Customer: =
     DataSource: =OfflineInvoiceCollection
-    Fill: =_VarGblAppColors.BackgroundColor
+    Fill: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Screen Background Color").'Default Value')
     Height: =App.Height
     Width: =App.Width
     X: =0

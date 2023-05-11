@@ -372,7 +372,9 @@ krascreen As screen:
         OnSelect: =//Set(_VarActivetopTab, ThisItem.TabId)
         TabIndex: =0
         TemplatePadding: =0
-        TemplateSize: ='Achivement type filter'.Width/ CountRows('Achivement type filter'.AllItems)
+        TemplateSize: |-
+            =If(CountRows('Achivement type filter'.AllItems)>0,
+            'Achivement type filter'.Width/ CountRows('Achivement type filter'.AllItems), 0)
         Y: =130
         ZIndex: =3
 
