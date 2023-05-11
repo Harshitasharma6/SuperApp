@@ -1,17 +1,13 @@
 "'Lead List View With Filters' As screen":
     LoadingSpinnerColor: =RGBA(0, 120, 212, 1)
 
-    "'Bottom Bar_12' As 'Bottom Bar'":
-        Y: =1026
-
     Header_12 As Header:
         Height: =73
         ScreenName: ="Leads"
-        ZIndex: =2
 
     "'Leads List View With Filters_1' As 'Leads List View With Filters'":
         Y: =73
-        ZIndex: =3
+        ZIndex: =2
 
     Button9_19 As button:
         DisabledBorderColor: =RGBA(166, 166, 166, 1)
@@ -33,7 +29,7 @@
         Width: =65
         X: =555
         Y: =965
-        ZIndex: =4
+        ZIndex: =3
 
     Rectangle3_16 As rectangle:
         AccessibleLabel: ="Rectangle3_2"
@@ -48,7 +44,7 @@
         TabIndex: =0
         Visible: =varClickedCreateLeadVisit
         Width: =640
-        ZIndex: =5
+        ZIndex: =4
 
     Rectangle4_10 As rectangle:
         BorderColor: =RGBA(0, 18, 107, 1)
@@ -58,7 +54,7 @@
         Width: =App.Width - 50
         X: =30
         Y: =307
-        ZIndex: =6
+        ZIndex: =5
 
     Label11_12 As label:
         Align: =Align.Center
@@ -75,7 +71,7 @@
         Width: =590
         X: =30
         Y: =372
-        ZIndex: =7
+        ZIndex: =6
 
     Button9_21 As button:
         DisabledBorderColor: =RGBA(166, 166, 166, 1)
@@ -183,7 +179,7 @@
         Width: =354
         X: =163
         Y: =534
-        ZIndex: =8
+        ZIndex: =7
 
     CancelIcon_13 As icon.Cancel:
         AccessibleLabel: ="Cancel Icon"
@@ -203,7 +199,7 @@
         Width: =41
         X: =578
         Y: =323
-        ZIndex: =9
+        ZIndex: =8
 
     Rectangle3_15 As rectangle:
         AccessibleLabel: ="Rectangle3"
@@ -214,7 +210,7 @@
         TabIndex: =0
         Visible: =varNewLeadForm
         Width: =640
-        ZIndex: =10
+        ZIndex: =9
 
     Rectangle4_9 As rectangle:
         BorderColor: =RGBA(0, 18, 107, 1)
@@ -224,7 +220,7 @@
         Width: =App.Width - 50
         X: =30
         Y: =143
-        ZIndex: =11
+        ZIndex: =10
 
     Label11_11 As label:
         Align: =Align.Center
@@ -239,7 +235,7 @@
         Width: =590
         X: =30
         Y: =136
-        ZIndex: =12
+        ZIndex: =11
 
     CancelIcon_12 As icon.Cancel:
         AccessibleLabel: ="Cancel Icon"
@@ -269,7 +265,7 @@
         Width: =41
         X: =579
         Y: =150
-        ZIndex: =13
+        ZIndex: =12
 
     MainCanvas_1 As fluidGrid.fluidGridWithBlankCard:
         BorderThickness: =0
@@ -278,7 +274,7 @@
         Width: =Parent.Width-50
         X: =30
         Y: =206
-        ZIndex: =14
+        ZIndex: =13
 
         MainDataCard_4 As dataCard:
             BorderColor: =RGBA(0, 0, 0, 1)
@@ -1231,7 +1227,7 @@
         TabIndex: =0
         Visible: =newCustomerModal
         Width: =640
-        ZIndex: =15
+        ZIndex: =14
 
     Rectangle4_11 As rectangle:
         BorderColor: =RGBA(0, 18, 107, 1)
@@ -1241,7 +1237,7 @@
         Width: =App.Width - 50
         X: =30
         Y: =249
-        ZIndex: =16
+        ZIndex: =15
 
     Label11_13 As label:
         Align: =Align.Center
@@ -1256,7 +1252,7 @@
         Width: =590
         X: =30
         Y: =249
-        ZIndex: =17
+        ZIndex: =16
 
     CancelIcon_14 As icon.Cancel:
         AccessibleLabel: ="Cancel Icon"
@@ -1272,7 +1268,7 @@
         Width: =41
         X: =568
         Y: =263
-        ZIndex: =18
+        ZIndex: =17
 
     Form2 As form:
         AcceptsFocus: =false
@@ -1284,7 +1280,7 @@
         Width: =590
         X: =30
         Y: =319
-        ZIndex: =19
+        ZIndex: =18
 
         "'Customer Name_DataCard1' As typedDataCard.textualEditCard":
             BorderColor: =RGBA(166, 166, 166, 1)
@@ -1506,7 +1502,7 @@
         Width: =289
         X: =215
         Y: =868
-        ZIndex: =20
+        ZIndex: =19
 
     Rectangle3_18 As rectangle:
         AccessibleLabel: ="Rectangle3"
@@ -1517,7 +1513,7 @@
         TabIndex: =0
         Visible: =newContactModal
         Width: =640
-        ZIndex: =21
+        ZIndex: =20
 
     Rectangle4_30 As rectangle:
         BorderColor: =RGBA(0, 18, 107, 1)
@@ -1527,7 +1523,7 @@
         Width: =App.Width - 50
         X: =30
         Y: =249
-        ZIndex: =22
+        ZIndex: =21
 
     Label11_14 As label:
         Align: =Align.Center
@@ -1542,7 +1538,7 @@
         Width: =590
         X: =30
         Y: =249
-        ZIndex: =23
+        ZIndex: =22
 
     CancelIcon_15 As icon.Cancel:
         AccessibleLabel: ="Cancel Icon"
@@ -1558,7 +1554,7 @@
         Width: =41
         X: =579
         Y: =263
-        ZIndex: =24
+        ZIndex: =23
 
     Form2_1 As form:
         AcceptsFocus: =false
@@ -1570,7 +1566,7 @@
         Width: =590
         X: =30
         Y: =319
-        ZIndex: =25
+        ZIndex: =24
 
         "'First Name_DataCard3' As typedDataCard.textualEditCard":
             BorderColor: =RGBA(0, 18, 107, 1)
@@ -2078,5 +2074,9 @@
         Width: =289
         X: =215
         Y: =928
+        ZIndex: =25
+
+    "'Bottom Bar_12' As 'Bottom Bar'":
+        Y: =1026
         ZIndex: =26
 
