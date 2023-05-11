@@ -1202,15 +1202,15 @@ VisitPlanningNew As screen:
                 [
                     {
                         Title: "Yesterday",
-                        Date: DateValue(PlanVarDate1) - 1
+                        Date: DateValue(clickedvisit_planning_date) - 1
                     },
                     {
                         Title: "Today",
-                        Date: DateValue(PlanVarDate1)
+                        Date: DateValue(clickedvisit_planning_date)
                     },
                     {
                         Title: "Tomorrow",
-                        Date: DateValue(PlanVarDate1) + 1
+                        Date: DateValue(clickedvisit_planning_date) + 1
                     }
                 ],
                 {Value: ThisRecord}
@@ -1243,7 +1243,20 @@ VisitPlanningNew As screen:
             HoverFill: |-
                 =ColorFade(ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )
                 , -20%)
-            OnSelect: =Set(clickedvisit_planning_date, ThisItem.Value.Date)
+            OnSelect: |-
+                =If(
+                    ThisItem.Value.Date <= Today(),
+                    Set(
+                        clickedvisit_planning_date,
+                        Today()
+                    )
+                
+                    ,
+                    Set(
+                        clickedvisit_planning_date,
+                        ThisItem.Value.Date
+                    )
+                )
             Size: =12
             Text: |-
                 =If(
@@ -1270,7 +1283,7 @@ VisitPlanningNew As screen:
         DisabledColor: =RGBA(244, 244, 244, 1)
         Height: =30
         Icon: =Icon.ChevronLeft
-        OnSelect: =Set(PlanVarDate1, DateValue(PlanVarDate1) - 3)
+        OnSelect: =Set(clickedvisit_planning_date, DateValue(clickedvisit_planning_date) - 3)
         TabIndex: =0
         Visible: =If(mylead=1, true, false)
         Width: =50
@@ -1285,7 +1298,7 @@ VisitPlanningNew As screen:
         DisabledColor: =RGBA(244, 244, 244, 1)
         Height: =30
         Icon: =Icon.ChevronRight
-        OnSelect: =Set(PlanVarDate1, DateValue(PlanVarDate1) + 3)
+        OnSelect: =Set(clickedvisit_planning_date, DateValue(clickedvisit_planning_date) + 3)
         TabIndex: =0
         Visible: =If(mylead=1, true, false)
         Width: =50
