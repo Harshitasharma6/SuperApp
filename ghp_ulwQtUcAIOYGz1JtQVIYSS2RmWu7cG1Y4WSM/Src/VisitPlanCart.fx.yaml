@@ -263,7 +263,7 @@ VisitPlanCart As screen:
             OnSelect: |-
                 =/*If(
                     LookUp(
-                        Attendances,
+                        'Attendance.S',
                         User.'Primary Email' = User().Email && Date = DateValue(Today())
                     ).'Attendance Type' = 'Attendance Type Choices'.Absent,
                     Notify(

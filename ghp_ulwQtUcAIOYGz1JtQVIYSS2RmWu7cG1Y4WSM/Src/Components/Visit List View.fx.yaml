@@ -125,7 +125,7 @@
                     ThisItem.createdby.'Primary Email' = User().Email,
                     If(
                         CountIf(
-                            Attendances,
+                            'Attendance.S',
                             User.'Primary Email' = User().Email && Date = Today() && !IsBlank('Check-out Time')
                         ) > 0,
                         Notify(
@@ -135,7 +135,7 @@
                         ),
                         If(
                             CountIf(
-                                Attendances,
+                                'Attendance.S',
                                 User.'Primary Email' = User().Email && Date = Today() && !IsBlank('Check-in Time')
                             ) = 0,
                             Notify(
