@@ -302,7 +302,7 @@
                 =FirstN(
                     Filter(
                         OfflineOrderHeaderCollection,
-                        'Order Type' = 'Order Type Choice'.Primary && 'Order From'.Parties = varCustomerforDiscount
+                        'Order Type' = 'Order Type Choice'.Primary && 'Order From'.Parties = varCustomerforDiscount && 'Owning User'.'Primary Email'= User().Email
                     ),
                     5
                 )
@@ -457,6 +457,93 @@
                 X: =26
                 Y: =16
                 ZIndex: =12
+
+            Button1_4 As button:
+                BorderColor: =RGBA(0, 0, 0, 0)
+                DisabledBorderColor: =RGBA(0, 0, 0, 0)
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                DisabledFill: =RGBA(244, 244, 244, 1)
+                Fill: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )
+                FocusedBorderColor: =ColorFade(Self.Fill, -75%)
+                Font: =Font.'Segoe UI'
+                FontWeight: =FontWeight.Semibold
+                Height: =50
+                HoverBorderColor: =RGBA(0, 0, 0, 0)
+                HoverColor: =RGBA(255, 255, 255, 1)
+                HoverFill: =ColorFade(Self.Fill, -10%)
+                OnSelect: |-
+                    =ClearCollect(
+                        colOrderLine,
+                        Filter(
+                            OfflineOrderLineCollection,
+                            'Order Header'.'Order Header' = ThisItem.'Order Header'
+                        )
+                    );
+                    Set(
+                        varParty,
+                        ThisItem.'Order From'.'Customer Name'
+                    );
+                    Set(
+                        varActivated,
+                        ThisItem.'Order From'.'Credit Activated'
+                    );
+                    Set(
+                        varRemainingCreditLimit,
+                        Text(
+                            RoundUp(
+                                Value(ThisItem.'Order From'.'Remaining Credit Limit'),
+                                2
+                            ),
+                            "[$-en-US]#,###.00"
+                        )
+                    );
+                    If(
+                        ThisItem.'Order Type' = 'Order Type Choice'.Primary,
+                        Set(
+                            primarydata,
+                            ThisItem
+                        );
+                        ForAll(
+                            colOrderLine As oneline,
+                            If(
+                                (CountRows(colPrimaryCart) = 0) || IsBlank(
+                                    LookUp(
+                                        colPrimaryCart,
+                                        productSKU = oneline.'Product SKU'.'Product SKU'
+                                    )
+                                ),
+                                Collect(
+                                    colPrimaryCart,
+                                    {
+                                        productName: oneline.'Product SKU'.'Item Name',
+                                        product: oneline.Product.Product,
+                                        baseUnitPrice: oneline.'Unit Price',
+                                        productSKU: oneline.'Product SKU'.'Product SKU',
+                                        quantity: Text(oneline.Quantity),
+                                        Variant: oneline.Variant.Name,
+                                        discount: oneline.'Discount %',
+                                        cgstAmount: ThisItem.CGST,
+                                        sgstAmount: ThisItem.SGST,
+                                        igstAmount: ThisItem.IGST,
+                                        cessAmount: ThisItem.'Cess %'
+                                    }
+                                )
+                            );
+                        );
+                        Navigate(
+                            'Primary Cart Screen',
+                            ScreenTransition.CoverRight
+                        )
+                    )
+                PressedBorderColor: =ColorFade(RGBA(0, 120, 212, 1), -50%)
+                PressedColor: =RGBA(255, 255, 255, 1)
+                PressedFill: =ColorFade(Self.Fill, -30%)
+                Size: =16
+                Text: ="Re-Order"
+                Width: =180
+                X: =412
+                Y: =16
+                ZIndex: =13
 
     "'Book Order Cont' As groupContainer.manualLayoutContainer":
         Height: =896
