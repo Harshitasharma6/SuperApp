@@ -929,7 +929,7 @@
             Height: =58
             PaddingLeft: =30
             Size: =21
-            Text: ="All Filters"
+            Text: ="All Filters" & CountRows(colFilterData)& If('Order List'.Type = "Primary", 1,0)
             Visible: =varFilter
             Width: =273
             X: =27
@@ -971,8 +971,11 @@
                                 radioDate_5.Selected.Value = "This Week",
                                 Filter(
                                     OfflineOrderHeaderCollection,
-                                    (DateValue('Created On') >= DateValue(Today()) - Weekday(Today()) + 2 && DateValue('Created On') <= DateValue(Today()) + (9 - Weekday(Today()))) && 'Order Type' = 'Order Type Choice'.Primary && 'Owning User'.'Primary Email' = radioSalesperson_5.Selected.'Primary Email'
-                                ),
+                                    (DateValue('Created On') >= (DateValue(Today()) - Weekday(Today()) + 2 )
+                                    && DateValue('Created On') <= (DateValue(Today()) + (9 - Weekday(Today())))) && 'Order Type' = 'Order Type Choice'.Primary && 'Owning User'.'Primary Email' = radioSalesperson_5.Selected.'Primary Email'
+                                )
+                                
+                                ,
                                 radioDate_5.Selected.Value = "This Month",
                                 Filter(
                                     OfflineOrderHeaderCollection,
