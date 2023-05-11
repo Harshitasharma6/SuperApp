@@ -150,10 +150,10 @@ SideBar As CanvasComponent:
                     Icon:  'press-pass',
                     Screen:Parties
                 },
-                {
+               /* {
                     Title: "KRA",
                     Icon:  'new-document', Screen:krascreen
-                },
+                },*/
                  {
                     Title: "Activities",
                     Icon: 'new-document',
@@ -165,12 +165,12 @@ SideBar As CanvasComponent:
                     Screen:'Complaint list View'
                 },
                 {
-                    Title: "Upload Document",
+                    Title: "Upload Documents",
                     Icon: camera,
                     Screen:takePhotoScreen
                 },
                 {
-                    Title: "Setting",
+                    Title: "Settings",
                     Icon:Icon.Settings,
                     Screen:Setting
                 }
@@ -401,7 +401,8 @@ SideBar As CanvasComponent:
                 Set(
                     _varsideNav,
                     false
-                )
+                );Set(
+                g_BottomMenuSelected, ThisItem.Title);
             PressedColor: =//Self.Fill
             PressedFill: =//Self.Color
             Size: =18

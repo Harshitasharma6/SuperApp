@@ -10,9 +10,9 @@ NewComplaint As screen:
 
     Canvas4_1 As fluidGrid.fluidGridWithBlankCard:
         BorderThickness: =0
-        Height: =960
+        Height: =906
         Width: =Parent.Width
-        Y: =120
+        Y: =Header_25.Y+Header_25.Height
         ZIndex: =1
 
         DataCard5_1 As dataCard:
@@ -507,4 +507,45 @@ NewComplaint As screen:
                 X: =Label23_4.X
                 Y: =884
                 ZIndex: =22
+
+    "'Bottom Bar_27' As 'Bottom Bar'":
+        NavItems: |-
+            =Table(
+                {
+                    Title: "Orders",
+                    Icon : 'shopping-cart',
+                    Screen: 'Primary Order Screen',
+                    Id: 1
+                },
+                {
+                    Title: "Visit",
+                    Icon: location,
+                   Screen:'Start Visit',
+                    Id:2
+                },
+                 {
+                    Title: "Home",
+                    Icon:home,
+                    Screen: Home,
+                    Id:3
+                },
+                 {
+                    Title: "Parties",
+                    Icon: people,
+                    Screen: Parties,
+                    Id:4
+                },
+                {
+                    Title: varUser.'First Name',
+                    Icon: User().Image,
+                    Screen: Sidebar,
+                    Id:5
+                }
+            )
+        Y: =1026
+        ZIndex: =2
+
+    Header_25 As Header:
+        ScreenName: ="Complaint"
+        ZIndex: =3
 

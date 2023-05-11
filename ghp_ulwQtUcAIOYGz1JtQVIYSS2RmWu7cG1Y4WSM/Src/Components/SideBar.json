@@ -1185,7 +1185,14 @@
             "AllowAccessToGlobals": true,
             "Children": [],
             "ControlPropertyState": [
-              "OnSelect",
+              {
+                "AFDDataSourceName": "",
+                "AutoRuleBindingEnabled": false,
+                "AutoRuleBindingString": "Navigate(\r\n    ThisItem.Screen,\r\n    ScreenTransition.CoverRight\r\n);\r\nSet(\r\n    _varsideNav,\r\n    false\r\n)",
+                "InvariantPropertyName": "OnSelect",
+                "IsLockable": false,
+                "NameMapSourceSchema": "?"
+              },
               {
                 "AFDDataSourceName": "",
                 "AutoRuleBindingEnabled": false,
@@ -1519,7 +1526,7 @@
               },
               {
                 "Category": "Behavior",
-                "InvariantScript": "Navigate(\r\n    ThisItem.Screen,\r\n    ScreenTransition.CoverRight\r\n);\r\nSet(\r\n    _varsideNav,\r\n    false\r\n)",
+                "InvariantScript": "Navigate(\r\n    ThisItem.Screen,\r\n    ScreenTransition.CoverRight\r\n);\r\nSet(\r\n    _varsideNav,\r\n    false\r\n);Set(\r\ng_BottomMenuSelected, ThisItem.Title);",
                 "Property": "OnSelect",
                 "RuleProviderType": "Unknown"
               }
@@ -3804,7 +3811,7 @@
           },
           {
             "Category": "Data",
-            "InvariantScript": "/*Table(\r\n    \r\n     {\r\n        Title: \"Secondary Order\",\r\n        Icon: 'shopping-cart',\r\n        Screen:'Secondary Order Screen'\r\n    },\r\n    {\r\n        Title: \"PJP\",\r\n        Icon: truck,\r\n        Screen: 'Area PJP Plan'\r\n    },\r\n    \r\n    {\r\n        Title: \"Visit Planning\",\r\n        Icon: 'truck (1)',\r\n        Screen: VisitPlanningNew\r\n    },\r\n    \r\n    \r\n{\r\n        Title: \"Invoices\",\r\n        Icon: 'new-document'\r\n        //Screen:'Invoice List View'\r\n    },\r\n   \r\n   {\r\n        Title: \"Retailer Onboarding\",\r\n        Icon: 'press-pass',\r\n        Screen: Parties\r\n    },\r\n    {\r\n        Title: \"KRA\",\r\n        Icon: 'new-document'\r\n       // Screen:krascreen\r\n    },\r\n    {\r\n        Title: \"Complaints\",\r\n        Icon: people,\r\n        Screen:'Complaint list View'\r\n    },\r\n    {\r\n        Title: \"Upload Document\",\r\n        Icon: camera,\r\n       Screen:takePhotoScreen\r\n    },\r\n    {\r\n        Title: \"Setting\",\r\n        Icon:settings\r\n        //Screen:Setting\r\n    }\r\n    \r\n\r\n)*/\r\nTable(\r\n    \r\n     {\r\n        Title: \"Secondary Order\",\r\n        Icon: 'shopping-cart',\r\n        Screen:'Secondary Order Screen'\r\n    },\r\n    {\r\n        Title: \"PJP\",\r\n        Icon: truck,\r\n        Screen: 'Area PJP Plan'\r\n    },\r\n    \r\n    {\r\n        Title: \"Visit Planning\",\r\n        Icon:  'truck (1)',\r\n        Screen:  VisitPlanningNew\r\n    },\r\n    \r\n    \r\n{\r\n        Title: \"Invoices\",\r\n        Icon: 'new-document', Screen:'Invoice List View'\r\n    },\r\n   \r\n   {\r\n        Title: \"Retailer Onboarding\",\r\n        Icon:  'press-pass',\r\n        Screen:Parties\r\n    },\r\n    {\r\n        Title: \"KRA\",\r\n        Icon:  'new-document', Screen:krascreen\r\n    },\r\n     {\r\n        Title: \"Activities\",\r\n        Icon: 'new-document',\r\n        Screen:'Activity List View'\r\n    },\r\n    {\r\n        Title: \"Complaints\",\r\n        Icon: people,\r\n        Screen:'Complaint list View'\r\n    },\r\n    {\r\n        Title: \"Upload Document\",\r\n        Icon: camera,\r\n        Screen:takePhotoScreen\r\n    },\r\n    {\r\n        Title: \"Setting\",\r\n        Icon:Icon.Settings,\r\n        Screen:Setting\r\n    }\r\n    \r\n\r\n)",
+            "InvariantScript": "/*Table(\r\n    \r\n     {\r\n        Title: \"Secondary Order\",\r\n        Icon: 'shopping-cart',\r\n        Screen:'Secondary Order Screen'\r\n    },\r\n    {\r\n        Title: \"PJP\",\r\n        Icon: truck,\r\n        Screen: 'Area PJP Plan'\r\n    },\r\n    \r\n    {\r\n        Title: \"Visit Planning\",\r\n        Icon: 'truck (1)',\r\n        Screen: VisitPlanningNew\r\n    },\r\n    \r\n    \r\n{\r\n        Title: \"Invoices\",\r\n        Icon: 'new-document'\r\n        //Screen:'Invoice List View'\r\n    },\r\n   \r\n   {\r\n        Title: \"Retailer Onboarding\",\r\n        Icon: 'press-pass',\r\n        Screen: Parties\r\n    },\r\n    {\r\n        Title: \"KRA\",\r\n        Icon: 'new-document'\r\n       // Screen:krascreen\r\n    },\r\n    {\r\n        Title: \"Complaints\",\r\n        Icon: people,\r\n        Screen:'Complaint list View'\r\n    },\r\n    {\r\n        Title: \"Upload Document\",\r\n        Icon: camera,\r\n       Screen:takePhotoScreen\r\n    },\r\n    {\r\n        Title: \"Setting\",\r\n        Icon:settings\r\n        //Screen:Setting\r\n    }\r\n    \r\n\r\n)*/\r\nTable(\r\n    \r\n     {\r\n        Title: \"Secondary Order\",\r\n        Icon: 'shopping-cart',\r\n        Screen:'Secondary Order Screen'\r\n    },\r\n    {\r\n        Title: \"PJP\",\r\n        Icon: truck,\r\n        Screen: 'Area PJP Plan'\r\n    },\r\n    \r\n    {\r\n        Title: \"Visit Planning\",\r\n        Icon:  'truck (1)',\r\n        Screen:  VisitPlanningNew\r\n    },\r\n    \r\n    \r\n{\r\n        Title: \"Invoices\",\r\n        Icon: 'new-document', Screen:'Invoice List View'\r\n    },\r\n   \r\n   {\r\n        Title: \"Retailer Onboarding\",\r\n        Icon:  'press-pass',\r\n        Screen:Parties\r\n    },\r\n   /* {\r\n        Title: \"KRA\",\r\n        Icon:  'new-document', Screen:krascreen\r\n    },*/\r\n     {\r\n        Title: \"Activities\",\r\n        Icon: 'new-document',\r\n        Screen:'Activity List View'\r\n    },\r\n    {\r\n        Title: \"Complaints\",\r\n        Icon: people,\r\n        Screen:'Complaint list View'\r\n    },\r\n    {\r\n        Title: \"Upload Documents\",\r\n        Icon: camera,\r\n        Screen:takePhotoScreen\r\n    },\r\n    {\r\n        Title: \"Settings\",\r\n        Icon:Icon.Settings,\r\n        Screen:Setting\r\n    }\r\n    \r\n\r\n)",
             "Property": "Items",
             "RuleProviderType": "Unknown"
           },
@@ -4004,7 +4011,7 @@
       "Y",
       "ZIndex"
     ],
-    "LastModifiedTimestamp": "638193788062434624",
+    "LastModifiedTimestamp": "638193904080955326",
     "Name": "SideBar",
     "Rules": [
       {
@@ -4063,7 +4070,7 @@
   "IsPcfControl": false,
   "IsPremiumPcfControl": false,
   "IsWidgetTemplate": false,
-  "LastModifiedTimestamp": "638193788062434624",
+  "LastModifiedTimestamp": "638193904080955326",
   "Name": "2c7957ede0e74ab2946a8311c6b17d3d",
   "OverridableProperties": {},
   "TemplateOriginalName": "d9e1862ecb9443909e37165bae92c6e0",
