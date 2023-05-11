@@ -815,8 +815,32 @@
                     ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )
                     , -20%)
             OnSelect: |
-                =If(
-                    ( varActivated = 'Credit Activated (Parties.S)'.Yes &&  Value(varRemainingCreditLimit) < Value(varTotalBill)),
+                =Set(
+                        varTotalBill,
+                        RoundUp(
+                            Value(
+                                Sum(
+                                    colPrimaryCart,
+                                    (baseUnitPrice - (baseUnitPrice * (discount / 100))) * quantity
+                                ) + (Sum(
+                                    colPrimaryCart,
+                                    igstAmount
+                                ) + Sum(
+                                    colPrimaryCart,
+                                    cgstAmount
+                                ) + Sum(
+                                    colPrimaryCart,
+                                    sgstAmount
+                                ) + Sum(
+                                    colPrimaryCart,
+                                    cessAmount
+                                ))
+                            ),
+                            2
+                        )
+                    );
+                    If(
+                    (varActivated = 'Credit Activated (Parties.S)'.Yes && Value(varRemainingCreditLimit) < Value(varTotalBill)),
                     Notify(
                         "You have insufficient credit balance",
                         NotificationType.Error,
@@ -1063,11 +1087,17 @@
                     );
                     ClearCollect(
                         OfflineOrderHeaderCollection,
-                        'Order Header.S'
+                        Filter(
+                            'Order Header.S',
+                            'Owning User'.'Primary Email' = User().Email
+                        )
                     );
                     ClearCollect(
                         OfflineOrderLineCollection,
-                        'Order Lines.S'
+                        Filter(
+                            'Order Lines.S',
+                            'Owning User'.'Primary Email' = User().Email
+                        )
                     );
                     ClearCollect(
                         OfflineInvoiceCollection,
