@@ -1,5 +1,4 @@
 "'Visit Info' As screen":
-    Fill: =ColorValue(LookUp(c_EnvironmentVariable, 'Display Name'="Light Red").'Default Value')
     LoadingSpinnerColor: =RGBA(0, 120, 212, 1)
     OnHidden: |
         =UpdateContext({v_LocationNeeded: false});
@@ -18,8 +17,8 @@
             Blank()
         );
         Set(
-            varCollectionEmpty,
-            true
+            _VarActivetopTabID,
+            1
         );
         Set(
             varSelectedTabId,
