@@ -3,10 +3,11 @@ VisitPlanningNew As screen:
     LoadingSpinnerColor: =RGBA(0, 120, 212, 1)
     OnVisible: |-
         =Set(
-            PlanVarDate1,
+            clickedvisit_planning_date,
             Today()
         );
-        Set(varCollectionEmpty,true)
+        Set(varCollectionEmpty,true);
+        Set(mylead,1)
 
     "'Bottom Bar_15' As 'Bottom Bar'":
         Fill: =RGBA(255, 255, 255, 1)
@@ -152,12 +153,25 @@ VisitPlanningNew As screen:
             BorderThickness: =2
             Color: |-
                 =If(
-                    ThisItem.IsSelected,
-                    ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Text Primary Color").'Default Value') 
-                    //ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Text Primary Color").'Default Value') //_VarGblAppColors.textbgbutton
-                    ,
-                    ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )
+                    mylead = ThisItem.Id,
+                
+                
+                    ColorValue(
+                        LookUp(
+                            c_EnvironmentVariable,
+                            'Display Name' = "Button Fill"
+                        ).'Default Value'
+                    )
                     //ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )
+                    ,
+                
+                        ColorValue(
+                        LookUp(
+                            c_EnvironmentVariable,
+                            'Display Name' = "Text Primary Color"
+                        ).'Default Value'
+                    )
+                    //ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Text Primary Color").'Default Value') //_VarGblAppColors.textbgbutton
                 )
             DisabledBorderColor: =RGBA(0, 0, 0, 0)
             DisabledColor: =RGBA(166, 166, 166, 1)
@@ -165,7 +179,7 @@ VisitPlanningNew As screen:
             Font: =Font.Lato
             FontWeight: =FontWeight.Semibold
             Height: =43
-            OnSelect: =
+            OnSelect: =Set(mylead,ThisItem.Id)
             Size: =18
             Text: =ThisItem.Title
             Width: =280
@@ -180,7 +194,7 @@ VisitPlanningNew As screen:
             OnSelect: =Select(Parent)
             Visible: |-
                 =If(
-                    _VarActivePartyTypeID = ThisItem.Id,
+                    mylead = ThisItem.Id,
                    true,false)
             Width: =180
             X: =60
@@ -198,13 +212,33 @@ VisitPlanningNew As screen:
                 varCollectionEmpty = true,
                 If(
                     IsBlank(areaCmb_1.Selected),
-                    Filter(
-                        offlineLeadCollection,
-                        'Owning User'.'Primary Email' = User().Email
+                    If(
+                        IsBlank(SearchBox_1.Text),
+                        Filter(
+                            offlineLeadCollection,
+                            'Owning User'.'Primary Email' = User().Email
+                        ),
+                        Filter(
+                            Filter(
+                                offlineLeadCollection,
+                                'Owning User'.'Primary Email' = User().Email
+                            ),
+                            SearchBox_1.Text in 'Lead Id'
+                        )
                     ),
-                    Filter(
-                        offlineLeadCollection,
-                        'Owning User'.'Primary Email' = User().Email && Area.Area = areaCmb_1.Selected.Area.Area
+                    If(
+                        IsBlank(SearchBox_1.Text),
+                        Filter(
+                            offlineLeadCollection,
+                            'Owning User'.'Primary Email' = User().Email && Area.Area = areaCmb_1.Selected.Area.Area
+                        ),
+                        Filter(
+                            Filter(
+                                offlineLeadCollection,
+                                'Owning User'.'Primary Email' = User().Email && Area.Area = areaCmb_1.Selected.Area.Area
+                            ),
+                            SearchBox_1.Text in  'Lead Id'
+                        )
                     )
                 ),
                 If(
@@ -370,7 +404,7 @@ VisitPlanningNew As screen:
         ShowScrollbar: =false
         TabIndex: =0
         TemplateSize: =236
-        Visible: =If('Type Filter_1'.Selected.Id=1, true, false)
+        Visible: =If(mylead=1, true, false)
         Width: =610
         X: =10
         Y: =268
@@ -620,14 +654,27 @@ VisitPlanningNew As screen:
                     )
                 Height: =25
                 Icon: |-
-                    =If(
+                    =
+                    
+                    If(
                         CountRows(
                             Filter(
                                 colAddLeadParty,
                                 zx_leadsid = ThisItem.zx_leadsid  //_varSelectedArea1.Area
                             )
                         ) = 0,
-                       Icon.Add,
+                     If(
+                            CountRows(
+                                Filter(
+                                   'Visit.S',
+                                     'Created By'.'Primary Email' = User().Email && 'Visit date' = clickedvisit_planning_date && Lead.Leads=ThisItem.Leads //_varSelectedArea1.Area
+                                )
+                            ) > 0,
+                            Icon.Check,
+                            Icon.Add
+                     )
+                       
+                       ,
                        Icon.Check
                     )
                 OnSelect: |-
@@ -670,11 +717,20 @@ VisitPlanningNew As screen:
                             varSelectVisitForPlanning,
                             ThisItem
                         );
-                        Collect(
-                            colAddLeadParty,
-                            Filter(
-                                offlineLeadCollection,
-                                zx_leadsid = ThisItem.zx_leadsid
+                        If(
+                            CountRows(
+                                Filter(
+                                    'Visit.S',
+                                    'Created By'.'Primary Email' = User().Email && 'Visit date' = clickedvisit_planning_date && Lead.Leads = ThisItem.Leads//_varSelectedArea1.Area
+                                )
+                            ) > 0,
+                            Notify("Visit is Already Created",NotificationType.Error,1000),
+                            Collect(
+                                colAddLeadParty,
+                                Filter(
+                                    offlineLeadCollection,
+                                    zx_leadsid = ThisItem.zx_leadsid
+                                )
                             )
                         )
                     )
@@ -1163,6 +1219,7 @@ VisitPlanningNew As screen:
         TabIndex: =0
         TemplatePadding: =0
         TemplateSize: =DateFilter_1.Width / 3
+        Visible: =If(mylead=1, true, false)
         Width: =App.Width - 100
         X: =50
         Y: =199
@@ -1215,6 +1272,7 @@ VisitPlanningNew As screen:
         Icon: =Icon.ChevronLeft
         OnSelect: =Set(PlanVarDate1, DateValue(PlanVarDate1) - 3)
         TabIndex: =0
+        Visible: =If(mylead=1, true, false)
         Width: =50
         Y: =214
         ZIndex: =18
@@ -1229,6 +1287,7 @@ VisitPlanningNew As screen:
         Icon: =Icon.ChevronRight
         OnSelect: =Set(PlanVarDate1, DateValue(PlanVarDate1) + 3)
         TabIndex: =0
+        Visible: =If(mylead=1, true, false)
         Width: =50
         X: =590
         Y: =214

@@ -361,22 +361,20 @@
                     CountRows(
                         Filter(
                             colAddAreaParty,
-                            Area.Area = ThisItem.Area.Area //_varSelectedArea1.Area
+                            Area.Area = ThisItem.Area.Area//_varSelectedArea1.Area
                         )
-                    ) = 0  ,
-                
-                If(CountRows(
-                        Filter(
-                            'Beat.S',
-                            Area.Area = ThisItem.Area.Area && 'Created By'.'Primary Email'=User().Email && Date=ClickedPjpdate //_varSelectedArea1.Area
-                        )
-                    )>0,
-                    Icon.Check,
-                
-                   Icon.Add)
-                   
-                   ,
-                   Icon.Check
+                    ) = 0,
+                    If(
+                        CountRows(
+                            Filter(
+                                'Beat.S',
+                                Area.Area = ThisItem.Area.Area && 'Created By'.'Primary Email' = User().Email && Date = ClickedPjpdate//_varSelectedArea1.Area
+                            )
+                        ) > 0,
+                        Icon.Check,
+                        Icon.Add
+                    ),
+                    Icon.Check
                 )
             OnSelect: |-
                 =If(
