@@ -1,4 +1,11 @@
 VisitPlanCart As screen:
+    Fill: |-
+        =RGBA(
+            255,
+            255,
+            255,
+            1
+        )
     LoadingSpinnerColor: =RGBA(0, 120, 212, 1)
 
     Header_9 As Header:
@@ -55,34 +62,37 @@ VisitPlanCart As screen:
         FontWeight: =FontWeight.Semibold
         HoverColor: =RGBA(255, 255, 255, 1)
         HoverFill: =ColorFade(RGBA(56, 96, 178, 1), -20%)
-        OnSelect: |-
-            =Patch(
-                'Visit.S',
-                Defaults('Visit.S'),
-                {
-                    'Party Location': varSelectVisitForPlanning.zx_Party.Latitude & "," & varSelectVisitForPlanning.zx_Party.Longitude,
-                    'Visit Type': 'Visit Type'.Planned,
-                    'Visit Status': 'Visit Status'.'Not Started',
-                    Owner: LookUp(
-                        Users,
-                        'Primary Email' = User().Email
-                    ),
-                    Lead: LookUp(
-                        'Leads.S',
-                        Leads = varSelectVisitForPlanning.zx_leadsid
-                    ),
-                    'Visit date': clickedvisit_planning_date,
-                    Party: LookUp(
-                        'Parties.S',
-                        Parties = varSelectVisitForPlanning.zx_Party.Parties
-                    ),
-                    Contact: LookUp(
-                        'Contacts.S',
-                        Contacts = varSelectVisitForPlanning.zx_Contact.Contacts
-                    )
-                }
+        OnSelect: |
+            =ForAll(
+                Sequence(CountRows(colAddLeadParty)),
+                Patch(
+                    'Visit.S',
+                    Defaults('Visit.S'),
+                    {
+                        'Party Location': varSelectVisitForPlanning.zx_Party.Latitude & "," & varSelectVisitForPlanning.zx_Party.Longitude,
+                        'Visit Type': 'Visit Type'.Planned,
+                        'Visit Status': 'Visit Status'.'Not Started',
+                        Owner: LookUp(
+                            Users,
+                            'Primary Email' = User().Email
+                        ),
+                        Lead: LookUp(
+                            'Leads.S',
+                            Leads = varSelectVisitForPlanning.zx_leadsid
+                        ),
+                        'Visit date': clickedvisit_planning_date,
+                        Party: LookUp(
+                            'Parties.S',
+                            Parties = varSelectVisitForPlanning.zx_Party.Parties
+                        ),
+                        Contact: LookUp(
+                            'Contacts.S',
+                            Contacts = varSelectVisitForPlanning.zx_Contact.Contacts
+                        )
+                    }
+                );
+                
             );
-            
             Notify(
                 "Your record has been created",
                 NotificationType.Success,
