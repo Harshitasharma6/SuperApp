@@ -825,30 +825,30 @@
                     , -20%)
             OnSelect: |
                 =Set(
-                        varTotalBill,
-                        RoundUp(
-                            Value(
-                                Sum(
-                                    colSecondaryCart,
-                                    (baseUnitPrice - (baseUnitPrice * (discount / 100))) * quantity
-                                ) + (Sum(
-                                    colSecondaryCart,
-                                    igstAmount
-                                ) + Sum(
-                                    colSecondaryCart,
-                                    cgstAmount
-                                ) + Sum(
-                                    colSecondaryCart,
-                                    sgstAmount
-                                ) + Sum(
-                                    colSecondaryCart,
-                                    cessAmount
-                                ))
-                            ),
-                            2
-                        )
-                    );
-                    If(
+                    varTotalBill,
+                    RoundUp(
+                        Value(
+                            Sum(
+                                colSecondaryCart,
+                                (baseUnitPrice - (baseUnitPrice * (discount / 100))) * quantity
+                            ) + (Sum(
+                                colSecondaryCart,
+                                igstAmount
+                            ) + Sum(
+                                colSecondaryCart,
+                                cgstAmount
+                            ) + Sum(
+                                colSecondaryCart,
+                                sgstAmount
+                            ) + Sum(
+                                colSecondaryCart,
+                                cessAmount
+                            ))
+                        ),
+                        2
+                    )
+                );
+                If(
                     (varActivated = 'Credit Activated (Parties.S)'.Yes && Value(varRemainingCreditLimit) < Value(varTotalBill)),
                     Notify(
                         "You have insufficient credit balance",
