@@ -5,7 +5,8 @@
                 OfflineOrderHeaderCollection,
                 Filter(
                     'Order Header.S',
-                    'Owning User'.'Primary Email' = User().Email && 'Order Type'= 'Order Type Choice'.Primary
+                    'Owning User'.'Primary Email' =User().Email 
+                    && 'Order Type'= 'Order Type Choice'.Primary
                 )
             );
         
@@ -13,6 +14,7 @@
             varFilter,
             false
         );
+        Set(varfiltergallery, true);
 
     "'Order List_1' As 'Order List'":
         Height: =991
