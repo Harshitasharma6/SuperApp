@@ -19,84 +19,147 @@
         Items: |-
             =If(
                 varfiltergallery = true,
-               
-                    If(
-                        'Sort gallery_4'.Selected.Title = "Newest",
-                        Sort(
+                If(
+                    'Sort gallery_4'.Selected.Title = "Newest",
+                    Sort(
+                        If(
+                            'Order List'.Type = "Primary",
                             If(
-                    'Order List'.Type = "Primary",
-                    If(IsToday(DatePicker1.SelectedDate) ,Filter(  OfflineOrderHeaderCollection,
-                        'Order Type' = 'Order Type Choice'.Primary),
-                    Filter(
-                        OfflineOrderHeaderCollection,
-                        'Order Type' = 'Order Type Choice'.Primary && Text('Created On',"dd/mm/yyyy") = Text(DatePicker1.SelectedDate,"dd/mm/yyyy")
-                    ))
-                    ,
-                     'Order List'.Type = "Secondary",
-                    Filter(
-                        OfflineOrderHeaderCollection,
-                        'Order Type' = 'Order Type Choice'.Secondary && Text('Created On',"dd/mm/yyyy") = Text(DatePicker1.SelectedDate,"dd/mm/yyyy")
-                    )
+                                IsToday(DatePicker1.SelectedDate),
+                                Filter(
+                                    OfflineOrderHeaderCollection,
+                                    'Order Type' = 'Order Type Choice'.Primary && 'Created On' <= Today()+1 && 'Created On' > DateAdd(
+                                        Today(),
+                                        -7
+                                    )
+                                ),
+                                Filter(
+                                    OfflineOrderHeaderCollection,
+                                    'Order Type' = 'Order Type Choice'.Primary && Text(
+                                        'Created On',
+                                        "dd/mm/yyyy"
+                                    ) = Text(
+                                        DatePicker1.SelectedDate,
+                                        "dd/mm/yyyy"
+                                    )
+                                )
+                            ),
+                            'Order List'.Type = "Secondary",
+                            If(
+                                IsToday(DatePicker1.SelectedDate),
+                                Filter(
+                                    OfflineOrderHeaderCollection,
+                                    'Order Type' = 'Order Type Choice'.Secondary && 'Created On' <= Today()+1 && 'Created On' > DateAdd(
+                                        Today(),
+                                        -7
+                                    )
+                                ),
+                                Filter(
+                                    OfflineOrderHeaderCollection,
+                                    'Order Type' = 'Order Type Choice'.Secondary && Text(
+                                        'Created On',
+                                        "dd/mm/yyyy"
+                                    ) = Text(
+                                        DatePicker1.SelectedDate,
+                                        "dd/mm/yyyy"
+                                    )
+                                )
+                            )
+                        ),
+                        'Created On',
+                        SortOrder.Descending
                     ),
-                            'Created On',
-                            SortOrder.Descending
-                        )
-                        ,
                     // Sort with Oldest-------------------------------------------------
-                        'Sort gallery_4'.Selected.Title = "Oldest",
-                        Sort(
-                             If(
-                    'Order List'.Type = "Primary",
-                    Filter(
-                        OfflineOrderHeaderCollection,
-                        'Order Type' = 'Order Type Choice'.Primary && Text('Created On',"dd/mm/yyyy") = Text(DatePicker1.SelectedDate,"dd/mm/yyyy")
-                    ),
-                     'Order List'.Type = "Secondary",
-                    Filter(
-                        OfflineOrderHeaderCollection,
-                        'Order Type' = 'Order Type Choice'.Secondary && Text('Created On',"dd/mm/yyyy") = Text(DatePicker1.SelectedDate,"dd/mm/yyyy")
-                    )
-                    ),
-                            'Created On',
-                            SortOrder.Ascending
+                    'Sort gallery_4'.Selected.Title = "Oldest",
+                    Sort(
+                        If(
+                            'Order List'.Type = "Primary",
+                            Filter(
+                                OfflineOrderHeaderCollection,
+                                'Order Type' = 'Order Type Choice'.Primary && Text(
+                                    'Created On',
+                                    "dd/mm/yyyy"
+                                ) = Text(
+                                    DatePicker1.SelectedDate,
+                                    "dd/mm/yyyy"
+                                )
+                            ),
+                            'Order List'.Type = "Secondary",
+                            Filter(
+                                OfflineOrderHeaderCollection,
+                                'Order Type' = 'Order Type Choice'.Secondary && Text(
+                                    'Created On',
+                                    "dd/mm/yyyy"
+                                ) = Text(
+                                    DatePicker1.SelectedDate,
+                                    "dd/mm/yyyy"
+                                )
+                            )
                         ),
+                        'Created On',
+                        SortOrder.Ascending
+                    ),
                     // Sort with Higest to Lowest-------------------------------------------------
-                        'Sort gallery_4'.Selected.Title = "Highest to Lowest",
-                        Sort(
-                             If(
-                    'Order List'.Type = "Primary",
-                    Filter(
-                        OfflineOrderHeaderCollection,
-                        'Order Type' = 'Order Type Choice'.Primary && Text('Created On',"dd/mm/yyyy") = Text(DatePicker1.SelectedDate,"dd/mm/yyyy")
-                    ),
-                     'Order List'.Type = "Secondary",
-                    Filter(
-                        OfflineOrderHeaderCollection,
-                        'Order Type' = 'Order Type Choice'.Secondary && Text('Created On',"dd/mm/yyyy") = Text(DatePicker1.SelectedDate,"dd/mm/yyyy")
-                    )
-                    ),
-                            'Total Bill Amount',
-                            SortOrder.Descending
+                    'Sort gallery_4'.Selected.Title = "Highest to Lowest",
+                    Sort(
+                        If(
+                            'Order List'.Type = "Primary",
+                            Filter(
+                                OfflineOrderHeaderCollection,
+                                'Order Type' = 'Order Type Choice'.Primary && Text(
+                                    'Created On',
+                                    "dd/mm/yyyy"
+                                ) = Text(
+                                    DatePicker1.SelectedDate,
+                                    "dd/mm/yyyy"
+                                )
+                            ),
+                            'Order List'.Type = "Secondary",
+                            Filter(
+                                OfflineOrderHeaderCollection,
+                                'Order Type' = 'Order Type Choice'.Secondary && Text(
+                                    'Created On',
+                                    "dd/mm/yyyy"
+                                ) = Text(
+                                    DatePicker1.SelectedDate,
+                                    "dd/mm/yyyy"
+                                )
+                            )
                         ),
+                        'Total Bill Amount',
+                        SortOrder.Descending
+                    ),
                     // Sort with Lowest to Highest-------------------------------------------------
-                        'Sort gallery_4'.Selected.Title = "Lowest to Highest",
-                        Sort(
-                             If(
-                    'Order List'.Type = "Primary",
-                    Filter(
-                        OfflineOrderHeaderCollection,
-                        'Order Type' = 'Order Type Choice'.Primary && Text('Created On',"dd/mm/yyyy") = Text(DatePicker1.SelectedDate,"dd/mm/yyyy")
-                    ),
-                     'Order List'.Type = "Secondary",
-                    Filter(
-                        OfflineOrderHeaderCollection,
-                        'Order Type' = 'Order Type Choice'.Secondary && Text('Created On',"dd/mm/yyyy") = Text(DatePicker1.SelectedDate,"dd/mm/yyyy")
+                    'Sort gallery_4'.Selected.Title = "Lowest to Highest",
+                    Sort(
+                        If(
+                            'Order List'.Type = "Primary",
+                            Filter(
+                                OfflineOrderHeaderCollection,
+                                'Order Type' = 'Order Type Choice'.Primary && Text(
+                                    'Created On',
+                                    "dd/mm/yyyy"
+                                ) = Text(
+                                    DatePicker1.SelectedDate,
+                                    "dd/mm/yyyy"
+                                )
+                            ),
+                            'Order List'.Type = "Secondary",
+                            Filter(
+                                OfflineOrderHeaderCollection,
+                                'Order Type' = 'Order Type Choice'.Secondary && Text(
+                                    'Created On',
+                                    "dd/mm/yyyy"
+                                ) = Text(
+                                    DatePicker1.SelectedDate,
+                                    "dd/mm/yyyy"
+                                )
+                            )
+                        ),
+                        'Total Bill Amount',
+                        SortOrder.Ascending
                     )
-                    ),
-                            'Total Bill Amount',
-                            SortOrder.Ascending
-                        )
-                    ),
+                ),
                     // Custom filter data --------------------------------------------------
                 varfiltergallery = false,
                 // Sort with Newest-------------------------------------------------
