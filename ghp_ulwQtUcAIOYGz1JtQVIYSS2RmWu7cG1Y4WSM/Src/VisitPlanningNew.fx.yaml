@@ -3018,15 +3018,34 @@ VisitPlanningNew As screen:
 
             Button5_11 As button:
                 BorderStyle: =BorderStyle.None
-                Color: =If(ThisItem.Value.Date = ClickedPjpdate, Color.White,_VarGblAppColors.PrimaryRed )
+                Color: |-
+                    =If(ThisItem.Value.Date = ClickedPjpdate, Color.White,ColorValue(
+                        LookUp(
+                            c_EnvironmentVariable,
+                            'Display Name' = "Button Fill"
+                        ).'Default Value'))
                 DisabledBorderColor: =RGBA(166, 166, 166, 1)
                 DisabledColor: =RGBA(166, 166, 166, 1)
                 DisabledFill: =RGBA(244, 244, 244, 1)
-                Fill: =If(ThisItem.Value.Date = ClickedPjpdate, _VarGblAppColors.PrimaryRed,_VarGblAppColors.PrimaryBg )
+                Fill: |-
+                    =If(ThisItem.Value.Date = ClickedPjpdate,ColorValue(
+                        LookUp(
+                            c_EnvironmentVariable,
+                            'Display Name' = "Button Fill"
+                        ).'Default Value'), ColorValue( LookUp('Environment Variable Definitions', 'Display Name'="Common Primary Background").'Default Value'))
                 FontWeight: =FontWeight.Semibold
                 Height: =50
                 HoverColor: =RGBA(255, 255, 255, 1)
-                HoverFill: =ColorFade(_VarGblAppColors.PrimaryRed, -20%)
+                HoverFill: |-
+                    =ColorFade(
+                        ColorValue(
+                            LookUp(
+                                c_EnvironmentVariable,
+                                'Display Name' = "Button Fill"
+                            ).'Default Value'
+                        ),
+                        -20%
+                    )
                 OnSelect: =Set(Clickedvisitdate, ThisItem.Value.Date)
                 Size: =12
                 Text: |-
