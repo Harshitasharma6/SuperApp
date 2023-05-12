@@ -2,17 +2,24 @@
     LoadingSpinnerColor: =RGBA(0, 120, 212, 1)
     OnVisible: |-
         =ClearCollect(
-                OfflineOrderHeaderCollection,
-                Filter(
-                    'Order Header.S',
-                    'Owning User'.'Primary Email' = User().Email && 'Order Type'= 'Order Type Choice'.Secondary
-                )
-            );
-              Set(
-            varFilter,
+            OfflineOrderHeaderCollection,
+            Filter(
+                'Order Header.S',
+                'Owning User'.'Primary Email' = User().Email && 'Order Type' = 'Order Type Choice'.Primary
+            )
+        );
+        Set(
+            varFilterOrder,
+            true
+        );
+        Set(
+            varFilterOrder,
             false
         );
-        Set(varfiltergallery,true)
+        Set(
+            varfiltergallery,
+            true
+        )
 
     "'Order List_2' As 'Order List'":
         Height: =991
