@@ -92,12 +92,12 @@
                             Value: If(
                                 'Product List_1'.OrderType = "Primary" || primarydata.zx_ordertype = 'Order Type Choice'.Primary,
                                 If(
-                                    IsBlank(
+                                    
                                         Sum(
                                             colPrimaryCart,
                                             (baseUnitPrice * quantity)
                                         )
-                                    ),
+                                    =0,
                                     "₹0.00",
                                     Concatenate(
                                         "₹",
@@ -114,12 +114,12 @@
                                 ),
                                 'Product List_1'.OrderType = "Secondary" || secondarydata.zx_ordertype = 'Order Type Choice'.Secondary,
                                 If(
-                                    IsBlank(
+                                    
                                         Sum(
                                             colSecondaryCart,
                                             (baseUnitPrice * quantity)
                                         )
-                                    ),
+                                    =0,
                                     "₹0.00",
                                     Concatenate(
                                         "₹",
@@ -141,12 +141,12 @@
                             Value: If(
                                 'Product List_1'.OrderType = "Primary" || primarydata.zx_ordertype = 'Order Type Choice'.Primary,
                                 If(
-                                    IsBlank(
+                                    
                                         Sum(
                                             colPrimaryCart,
                                             (baseUnitPrice * (discount / 100)) * quantity
                                         )
-                                    ),
+                                    =0,
                                     "₹0.00",
                                     Concatenate(
                                         "₹",
@@ -166,12 +166,12 @@
                                 ),
                                 'Product List_1'.OrderType = "Secondary" || secondarydata.zx_ordertype = 'Order Type Choice'.Secondary,
                                 If(
-                                    IsBlank(
+                                
                                         Sum(
                                             colSecondaryCart,
                                             (baseUnitPrice * (discount / 100)) * quantity
                                         )
-                                    ),
+                                    =0,
                                     "₹0.00",
                                     Concatenate(
                                         "₹",
