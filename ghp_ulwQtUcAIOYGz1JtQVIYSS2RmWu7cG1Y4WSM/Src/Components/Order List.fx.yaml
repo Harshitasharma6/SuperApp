@@ -151,16 +151,12 @@
             HoverColor: =RGBA(255, 255, 255, 1)
             HoverFill: =ColorFade(RGBA(56, 96, 178, 1), -20%)
             OnSelect: |-
-                =Navigate('order detail screen',ScreenTransition.CoverRight);
+                =Navigate('order detail screen',ScreenTransition.CoverRight,{primarydata:
+                        ThisItem,secondarydata:
+                        ThisItem});
                 //Set(varOrderData, ThisItem);
-                Set(
-                        primarydata,
-                        ThisItem
-                    );
-                    Set(
-                        secondarydata,
-                        ThisItem
-                    );
+                
+                
                  
             RadiusBottomLeft: =15
             RadiusBottomRight: =15
@@ -184,16 +180,12 @@
             HoverColor: =RGBA(255, 255, 255, 1)
             HoverFill: =Color.White
             OnSelect: |-
-                =Navigate('order detail screen',ScreenTransition.CoverRight);
+                =Navigate('order detail screen',ScreenTransition.CoverRight,{primarydata:
+                        ThisItem,secondarydata:
+                        ThisItem});
                 //Set(varOrderData, ThisItem);
-                Set(
-                        primarydata,
-                        ThisItem
-                    );
-                    Set(
-                        secondarydata,
-                        ThisItem
-                    );
+                
+                
                  
             Size: =24
             Text: =""
@@ -206,16 +198,12 @@
             Fill: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//_VarGblAppColors.PrimaryRed
             Height: =1
             OnSelect: |-
-                =Navigate('order detail screen',ScreenTransition.CoverRight);
+                =Navigate('order detail screen',ScreenTransition.CoverRight,{primarydata:
+                        ThisItem,secondarydata:
+                        ThisItem});
                 //Set(varOrderData, ThisItem);
-                Set(
-                        primarydata,
-                        ThisItem
-                    );
-                    Set(
-                        secondarydata,
-                        ThisItem
-                    );
+                
+                
                  
             TabIndex: =0
             Width: ='Order Info Gallery'.TemplateWidth
@@ -239,16 +227,12 @@
             FontWeight: =FontWeight.Bold
             Height: =75
             OnSelect: |-
-                =Navigate('order detail screen',ScreenTransition.CoverRight);
+                =Navigate('order detail screen',ScreenTransition.CoverRight,{primarydata:
+                        ThisItem,secondarydata:
+                        ThisItem});
                 //Set(varOrderData, ThisItem);
-                Set(
-                        primarydata,
-                        ThisItem
-                    );
-                    Set(
-                        secondarydata,
-                        ThisItem
-                    );
+                
+                
                  
             Size: =16
             TabIndex: =0
@@ -274,16 +258,12 @@
             FontWeight: =FontWeight.Semibold
             Height: =64
             OnSelect: |-
-                =Navigate('order detail screen',ScreenTransition.CoverRight);
+                =Navigate('order detail screen',ScreenTransition.CoverRight,{primarydata:
+                        ThisItem,secondarydata:
+                        ThisItem});
                 //Set(varOrderData, ThisItem);
-                Set(
-                        primarydata,
-                        ThisItem
-                    );
-                    Set(
-                        secondarydata,
-                        ThisItem
-                    );
+                
+                
                  
             Size: |-
                 =
@@ -310,16 +290,12 @@
             FontWeight: =FontWeight.Semibold
             Height: =39
             OnSelect: |-
-                =Navigate('order detail screen',ScreenTransition.CoverRight);
+                =Navigate('order detail screen',ScreenTransition.CoverRight,{primarydata:
+                        ThisItem,secondarydata:
+                        ThisItem});
                 //Set(varOrderData, ThisItem);
-                Set(
-                        primarydata,
-                        ThisItem
-                    );
-                    Set(
-                        secondarydata,
-                        ThisItem
-                    );
+                
+                
                  
             Size: |-
                 =
@@ -346,16 +322,12 @@
             FontWeight: =FontWeight.Semibold
             Height: =39
             OnSelect: |-
-                =Navigate('order detail screen',ScreenTransition.CoverRight);
+                =Navigate('order detail screen',ScreenTransition.CoverRight,{primarydata:
+                        ThisItem,secondarydata:
+                        ThisItem});
                 //Set(varOrderData, ThisItem);
-                Set(
-                        primarydata,
-                        ThisItem
-                    );
-                    Set(
-                        secondarydata,
-                        ThisItem
-                    );
+                
+                
                  
             Size: |-
                 =
@@ -377,16 +349,12 @@
             Fill: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//_VarGblAppColors.PrimaryRed
             Height: =50
             OnSelect: |-
-                =Navigate('order detail screen',ScreenTransition.CoverRight);
+                =Navigate('order detail screen',ScreenTransition.CoverRight,{primarydata:
+                        ThisItem,secondarydata:
+                        ThisItem});
                 //Set(varOrderData, ThisItem);
-                Set(
-                        primarydata,
-                        ThisItem
-                    );
-                    Set(
-                        secondarydata,
-                        ThisItem
-                    );
+                
+                
                  
             TabIndex: =0
             Width: =50
@@ -400,16 +368,12 @@
             DisabledColor: =RGBA(166, 166, 166, 1)
             Height: =75
             OnSelect: |-
-                =Navigate('order detail screen',ScreenTransition.CoverRight);
+                =Navigate('order detail screen',ScreenTransition.CoverRight,{primarydata:
+                        ThisItem,secondarydata:
+                        ThisItem});
                 //Set(varOrderData, ThisItem);
-                Set(
-                        primarydata,
-                        ThisItem
-                    );
-                    Set(
-                        secondarydata,
-                        ThisItem
-                    );
+                
+                
                  
             Size: =16
             TabIndex: =0
@@ -425,16 +389,12 @@
             DisabledColor: =RGBA(166, 166, 166, 1)
             FontWeight: =FontWeight.Semibold
             OnSelect: |-
-                =Navigate('order detail screen',ScreenTransition.CoverRight);
+                =Navigate('order detail screen',ScreenTransition.CoverRight,{primarydata:
+                        ThisItem,secondarydata:
+                        ThisItem});
                 //Set(varOrderData, ThisItem);
-                Set(
-                        primarydata,
-                        ThisItem
-                    );
-                    Set(
-                        secondarydata,
-                        ThisItem
-                    );
+                
+                
                  
             TabIndex: =0
             Text: =Left(Upper(ThisItem.'Order From'.'First Name'),1) & Left(Upper(ThisItem.'Order From'.'Last Name'),1)
