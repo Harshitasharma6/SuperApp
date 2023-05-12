@@ -28,286 +28,12 @@ takePhotoScreen As screen:
                 Y: =0
                 ZIndex: =2
 
-                Group10 As group:
-                    Height: =5
-                    Width: =5
-                    X: =8
-                    Y: =-242
-                    ZIndex: =3
-
-                    Label26_1 As label:
-                        BorderColor: =RGBA(0, 18, 107, 1)
-                        Color: =RGBA(0, 0, 0, 1)
-                        DisabledColor: =RGBA(166, 166, 166, 1)
-                        FontWeight: =FontWeight.Semibold
-                        Height: =78
-                        Size: =16
-                        Text: ="Select Record"
-                        Width: =560
-                        X: =33
-                        Y: =212
-                        ZIndex: =5
-
-                    AccountComboBox As combobox:
-                        AccessibleLabel: ="Account"
-                        BorderColor: =RGBA(179, 179, 179, 1)
-                        BorderThickness: =1
-                        ChevronBackground: |-
-                            =//RGBA(56, 96, 178, 1)
-                            ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//_VarGblAppColors.PrimaryRed
-                        ChevronDisabledBackground: =RGBA(166, 166, 166, 1)
-                        ChevronDisabledFill: =RGBA(244, 244, 244, 1)
-                        ChevronHoverBackground: =ColorFade(RGBA(56, 96, 178, 1), -20%)
-                        ChevronHoverFill: =RGBA(255, 255, 255, 1)
-                        DisabledBorderColor: =RGBA(166, 166, 166, 1)
-                        DisabledColor: =RGBA(166, 166, 166, 1)
-                        DisabledFill: =RGBA(244, 244, 244, 1)
-                        DisplayFields: =["zx_name"]
-                        FontWeight: =FontWeight.Semibold
-                        Height: =89
-                        HoverColor: =RGBA(0, 0, 0, 1)
-                        HoverFill: =RGBA(186, 202, 226, 1)
-                        IsSearchable: =false
-                        Items: |-
-                            =Filter(
-                                'Parties.S',
-                                'Owning User'.'Primary Email' = User().Email
-                            )
-                        PressedColor: =RGBA(255, 255, 255, 1)
-                        PressedFill: =RGBA(0, 18, 107, 1)
-                        SearchFields: =["zx_name"]
-                        SearchItems: =[]
-                        SelectionFill: =RGBA(56, 96, 178, 1)
-                        SelectMultiple: =false
-                        Size: =18
-                        Visible: |-
-                            =If(
-                                Dropdown1.Selected.Value = "Account",
-                                true,
-                                false
-                            )
-                        Width: =575
-                        X: =33
-                        Y: =291
-                        ZIndex: =9
-
-                leadComboBox As combobox:
-                    AccessibleLabel: ="Lead ComboBox"
-                    BorderColor: =RGBA(179, 179, 179, 1)
-                    BorderThickness: =1
-                    ChevronBackground: |-
-                        =//RGBA(56, 96, 178, 1)
-                        ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//_VarGblAppColors.PrimaryRed
-                    ChevronDisabledBackground: =RGBA(166, 166, 166, 1)
-                    ChevronDisabledFill: =RGBA(244, 244, 244, 1)
-                    ChevronHoverBackground: =ColorFade(RGBA(56, 96, 178, 1), -20%)
-                    ChevronHoverFill: =RGBA(255, 255, 255, 1)
-                    DisabledBorderColor: =RGBA(166, 166, 166, 1)
-                    DisabledColor: =RGBA(166, 166, 166, 1)
-                    DisabledFill: =RGBA(244, 244, 244, 1)
-                    DisplayFields: =["zx_name"]
-                    FontWeight: =FontWeight.Semibold
-                    Height: =60
-                    HoverColor: =RGBA(0, 0, 0, 1)
-                    HoverFill: =RGBA(186, 202, 226, 1)
-                    IsSearchable: =false
-                    Items: |-
-                        =Filter(
-                            'Leads.S',
-                            'Owning User'.'Primary Email' = User().Email
-                        )
-                    PressedColor: =RGBA(255, 255, 255, 1)
-                    PressedFill: =RGBA(0, 18, 107, 1)
-                    SearchFields: =["zx_name"]
-                    SearchItems: =[]
-                    SelectionFill: =RGBA(56, 96, 178, 1)
-                    SelectMultiple: =false
-                    Size: =18
-                    Visible: |-
-                        =If(
-                            Dropdown1.Selected.Value = "Lead",
-                            true,
-                            false
-                        )
-                    Width: =575
-                    X: =33
-                    Y: =251
-                    ZIndex: =6
-
-                contactComboBox As combobox:
-                    AccessibleLabel: ="Select Record"
-                    BorderColor: =RGBA(179, 179, 179, 1)
-                    BorderThickness: =1
-                    ChevronBackground: |-
-                        =//RGBA(56, 96, 178, 1)
-                        ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//_VarGblAppColors.PrimaryRed
-                    ChevronDisabledBackground: =RGBA(166, 166, 166, 1)
-                    ChevronDisabledFill: =RGBA(244, 244, 244, 1)
-                    ChevronHoverBackground: =ColorFade(RGBA(56, 96, 178, 1), -20%)
-                    ChevronHoverFill: =RGBA(255, 255, 255, 1)
-                    DisabledBorderColor: =RGBA(166, 166, 166, 1)
-                    DisabledColor: =RGBA(166, 166, 166, 1)
-                    DisabledFill: =RGBA(244, 244, 244, 1)
-                    DisplayFields: =["zx_name"]
-                    FontWeight: =FontWeight.Semibold
-                    Height: =60
-                    HoverColor: =RGBA(0, 0, 0, 1)
-                    HoverFill: =RGBA(186, 202, 226, 1)
-                    IsSearchable: =false
-                    Items: =Filter('Contacts.S','Owning User'.'Primary Email'=User().Email)
-                    PressedColor: =RGBA(255, 255, 255, 1)
-                    PressedFill: =RGBA(0, 18, 107, 1)
-                    SearchFields: =["zx_name"]
-                    SearchItems: =[]
-                    SelectionFill: =RGBA(56, 96, 178, 1)
-                    SelectMultiple: =false
-                    Size: =18
-                    Visible: |-
-                        =If(
-                            Dropdown1.Selected.Value = "Contact",
-                            true,
-                            false
-                        )
-                    Width: =575
-                    X: =33
-                    Y: =251
-                    ZIndex: =7
-
-                complaintComboBox As combobox:
-                    AccessibleLabel: ="ComboBox"
-                    BorderColor: =RGBA(179, 179, 179, 1)
-                    BorderThickness: =1
-                    ChevronBackground: |-
-                        =//RGBA(56, 96, 178, 1)
-                        ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//_VarGblAppColors.PrimaryRed
-                    ChevronDisabledBackground: =RGBA(166, 166, 166, 1)
-                    ChevronDisabledFill: =RGBA(244, 244, 244, 1)
-                    ChevronHoverBackground: =ColorFade(RGBA(56, 96, 178, 1), -20%)
-                    ChevronHoverFill: =RGBA(255, 255, 255, 1)
-                    DisabledBorderColor: =RGBA(166, 166, 166, 1)
-                    DisabledColor: =RGBA(166, 166, 166, 1)
-                    DisabledFill: =RGBA(244, 244, 244, 1)
-                    DisplayFields: =["zx_complaintno","cra62_natureofcomplaint"]
-                    FontWeight: =FontWeight.Semibold
-                    Height: =60
-                    HoverColor: =RGBA(0, 0, 0, 1)
-                    HoverFill: =RGBA(186, 202, 226, 1)
-                    IsSearchable: =false
-                    Items: |-
-                        =Filter(
-                            'Complaint.S',
-                            'Owning User'.'Primary Email' = User().Email
-                        )
-                    PressedColor: =RGBA(255, 255, 255, 1)
-                    PressedFill: =RGBA(0, 18, 107, 1)
-                    SearchFields: =["zx_complaintno"]
-                    SearchItems: =[]
-                    SelectionFill: =RGBA(56, 96, 178, 1)
-                    SelectMultiple: =false
-                    Size: =18
-                    Visible: |-
-                        =If(
-                            Dropdown1.Selected.Value = "Complaint",
-                            true,
-                            false
-                        )
-                    Width: =575
-                    X: =33
-                    Y: =251
-                    ZIndex: =8
-
-                VisitComboBox As combobox:
-                    AccessibleLabel: ="Visit ComboBox"
-                    BorderColor: =RGBA(179, 179, 179, 1)
-                    BorderThickness: =1
-                    ChevronBackground: |-
-                        =//RGBA(56, 96, 178, 1)
-                        ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//_VarGblAppColors.PrimaryRed
-                    ChevronDisabledBackground: =RGBA(166, 166, 166, 1)
-                    ChevronDisabledFill: =RGBA(244, 244, 244, 1)
-                    ChevronHoverBackground: =ColorFade(RGBA(56, 96, 178, 1), -20%)
-                    ChevronHoverFill: =RGBA(255, 255, 255, 1)
-                    DisabledBorderColor: =RGBA(166, 166, 166, 1)
-                    DisabledColor: =RGBA(166, 166, 166, 1)
-                    DisabledFill: =RGBA(244, 244, 244, 1)
-                    DisplayFields: =["zx_name","new_visittype"]
-                    FontWeight: =FontWeight.Semibold
-                    Height: =60
-                    HoverColor: =RGBA(0, 0, 0, 1)
-                    HoverFill: =RGBA(186, 202, 226, 1)
-                    IsSearchable: =false
-                    Items: |-
-                        =Filter(
-                            'Visit.S',
-                            'Owning User'.'Primary Email' = User().Email
-                        )
-                    PressedColor: =RGBA(255, 255, 255, 1)
-                    PressedFill: =RGBA(0, 18, 107, 1)
-                    SearchFields: =["zx_name"]
-                    SearchItems: =[]
-                    SelectionFill: =RGBA(56, 96, 178, 1)
-                    SelectMultiple: =false
-                    Size: =18
-                    Template: =ListItemTemplate.Double
-                    Visible: |-
-                        =If(
-                            Dropdown1.Selected.Value = "Visit",
-                            true,
-                            false
-                        )
-                    Width: =575
-                    X: =33
-                    Y: =261
-                    ZIndex: =10
-
-                orderComboBox As combobox:
-                    AccessibleLabel: ="Order ComboBox"
-                    BorderColor: =RGBA(179, 179, 179, 1)
-                    BorderThickness: =1
-                    ChevronBackground: |-
-                        =//RGBA(56, 96, 178, 1)
-                        ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//_VarGblAppColors.PrimaryRed
-                    ChevronDisabledBackground: =RGBA(166, 166, 166, 1)
-                    ChevronDisabledFill: =RGBA(244, 244, 244, 1)
-                    ChevronHoverBackground: =ColorFade(RGBA(56, 96, 178, 1), -20%)
-                    ChevronHoverFill: =RGBA(255, 255, 255, 1)
-                    DisabledBorderColor: =RGBA(166, 166, 166, 1)
-                    DisabledColor: =RGBA(166, 166, 166, 1)
-                    DisabledFill: =RGBA(244, 244, 244, 1)
-                    DisplayFields: =["zx_name"]
-                    FontWeight: =FontWeight.Semibold
-                    Height: =60
-                    HoverColor: =RGBA(0, 0, 0, 1)
-                    HoverFill: =RGBA(186, 202, 226, 1)
-                    IsSearchable: =false
-                    Items: |-
-                        =Filter(
-                           'Order Header.S',
-                            'Owning User'.'Primary Email' = User().Email
-                        )
-                    PressedColor: =RGBA(255, 255, 255, 1)
-                    PressedFill: =RGBA(0, 18, 107, 1)
-                    SearchFields: =["zx_name"]
-                    SearchItems: =[]
-                    SelectionFill: =RGBA(56, 96, 178, 1)
-                    SelectMultiple: =false
-                    Size: =18
-                    Visible: |-
-                        =If(
-                            Dropdown1.Selected.Value = "Order",
-                            true,
-                            false
-                        )
-                    Width: =575
-                    X: =33
-                    Y: =265
-                    ZIndex: =11
-
                 Camera1 As camera:
                     AccessibleLabel: ="Camera"
-                    BorderColor: =RGBA(0, 18, 107, 1)
+                    BorderColor: =ColorFade(Button33_8.Fill, -15%)
+                    BorderThickness: =5
                     Camera: =0
-                    Height: =345
+                    Height: =Button33_8.Width-130
                     OnSelect: |-
                         =Collect(
                             colImgToAttach,
@@ -318,24 +44,25 @@ takePhotoScreen As screen:
                             }
                         )
                     Visible: =v_ScreenTab="Camera"
-                    Width: =473
-                    X: =84
+                    Width: =Button33_8.Width
+                    X: =Button33_8.X
                     Y: =TopGallery_3.Y+TopGallery_3.Height+20
-                    ZIndex: =12
+                    ZIndex: =1
 
                 gallCapturedImg As gallery.variableTemplateHeightGallery:
                     AccessibleLabel: ="Gallery"
                     BorderColor: =RGBA(0, 18, 107, 1)
                     DelayItemLoading: =true
-                    Height: =654
+                    Height: =Self.AllItemsCount* Self.TemplateHeight
                     Items: =colImgToAttach
                     Layout: =Layout.Vertical
                     LoadingSpinner: =LoadingSpinner.Data
+                    ShowScrollbar: =false
                     TabIndex: =0//-1
                     TemplateSize: =182
                     Width: =625
                     Y: =If(v_ScreenTab="Attachments",Container1.Y+Container1.Height,Camera1.Y+Camera1.Height)+20
-                    ZIndex: =13
+                    ZIndex: =2
 
                     Button15_1 As button:
                         DisabledBorderColor: =RGBA(153, 207, 236, 1)
@@ -373,13 +100,16 @@ takePhotoScreen As screen:
 
                     TextInput6_2 As text:
                         AccessibleLabel: ="Text Input"
-                        BorderColor: =RGBA(0, 18, 107, 1)
+                        BorderColor: =ColorFade(Self.Fill, -15%)
                         BorderThickness: =2
                         Color: =RGBA(0, 0, 0, 1)
-                        Default: =ThisItem.title
+                        Default: |-
+                            =
+                            If(IsBlank(ThisItem.AttachmentName),ThisItem.title,ThisItem.AttachmentName)
                         DisabledBorderColor: =RGBA(166, 166, 166, 1)
                         DisabledColor: =RGBA(166, 166, 166, 1)
                         DisabledFill: =RGBA(244, 244, 244, 1)
+                        DisplayMode: =If(IsBlank(ThisItem.AttachmentName), DisplayMode.Edit, DisplayMode.Disabled)
                         FocusedBorderThickness: =4
                         HintText: ="Save as..."
                         HoverBorderColor: =RGBA(0, 18, 107, 1)
@@ -403,7 +133,6 @@ takePhotoScreen As screen:
                             )
                         OnSelect: =Select(Parent)
                         Size: =21
-                        Visible: =If(IsBlank(ThisItem.AttachmentName), true, false)
                         Width: =300
                         X: =251
                         Y: =61
@@ -417,7 +146,7 @@ takePhotoScreen As screen:
                         DisabledFill: =RGBA(0, 0, 0, 0)
                         DisplayMode: =DisplayMode.View
                         FocusedBorderThickness: =4
-                        Height: =240
+                        Height: =139
                         HoverBorderColor: =RGBA(0, 0, 0, 0)
                         HoverColor: =ColorFade(RGBA(0, 120, 212, 1), -30%)
                         HoverFill: =RGBA(0, 0, 0, 0)
@@ -427,28 +156,10 @@ takePhotoScreen As screen:
                         PressedColor: =ColorFade(RGBA(0, 120, 212, 1), -30%)
                         PressedFill: =RGBA(0, 0, 0, 0)
                         Visible: =If(IsBlank(ThisItem.AttachmentName), false, true)
-                        Width: =320
-                        X: =16
-                        Y: =22
+                        Width: =215
+                        X: =36
+                        Y: =11
                         ZIndex: =4
-
-                    Label1 As label:
-                        BorderColor: =RGBA(0, 0, 0, 0)
-                        BorderStyle: =BorderStyle.None
-                        BorderThickness: =2
-                        Color: =RGBA(51, 51, 51, 1)
-                        DisabledBorderColor: =RGBA(0, 0, 0, 0)
-                        DisabledColor: =RGBA(166, 166, 166, 1)
-                        FocusedBorderThickness: =4
-                        Font: =Font.'Segoe UI'
-                        Height: =60
-                        OnSelect: =Select(Parent)
-                        Size: =21
-                        Text: =
-                        Width: =184
-                        X: =417
-                        Y: =51
-                        ZIndex: =5
 
                 Button9_9 As button:
                     DisabledBorderColor: =RGBA(166, 166, 166, 1)
@@ -543,14 +254,13 @@ takePhotoScreen As screen:
                     Width: =259
                     X: =191
                     Y: =gallCapturedImg.Height+gallCapturedImg.Y+50
-                    ZIndex: =16
+                    ZIndex: =3
 
                 Container1 As groupContainer.manualLayoutContainer:
                     Height: =225
-                    Visible: =v_ScreenTab="Attachments"
                     Width: =638
                     Y: =TopGallery_3.Y+TopGallery_3.Height
-                    ZIndex: =17
+                    ZIndex: =4
 
                     Form3_1 As form:
                         BorderColor: =RGBA(166, 166, 166, 1)
@@ -577,39 +287,17 @@ takePhotoScreen As screen:
                             Y: =0
                             ZIndex: =1
 
-                            DataCardKey21 As label:
-                                AutoHeight: =true
-                                BorderColor: =RGBA(0, 0, 0, 0)
-                                BorderStyle: =BorderStyle.None
-                                BorderThickness: =2
-                                Color: =RGBA(51, 51, 51, 1)
-                                DisabledBorderColor: =RGBA(0, 0, 0, 0)
-                                DisabledColor: =RGBA(166, 166, 166, 1)
-                                FocusedBorderThickness: =4
-                                Font: =Font.'Segoe UI'
-                                FontWeight: =FontWeight.Semibold
-                                Height: =48
-                                PaddingLeft: =0
-                                Size: =21
-                                Text: =Parent.DisplayName
-                                Width: =Parent.Width - 60
-                                Wrap: =false
-                                X: =44
-                                Y: =10
-                                ZIndex: =1
-
                             DataCardValue20 As attachments:
                                 AddAttachmentText: ="Upload file"
-                                BorderColor: =If(IsBlank(Parent.Error), Parent.BorderColor, Color.Red)
-                                BorderStyle: =BorderStyle.None
-                                BorderThickness: =2
+                                BorderColor: =ColorFade(Button33_8.Fill, -15%)
+                                BorderThickness: =5
                                 Color: =RGBA(51, 51, 51, 1)
                                 DisabledBorderColor: =RGBA(0, 0, 0, 0)
                                 DisabledColor: =RGBA(166, 166, 166, 1)
                                 DisabledFill: =RGBA(244, 244, 244, 1)
                                 FocusedBorderThickness: =4
                                 Font: =Font.'Segoe UI'
-                                Height: =170
+                                Height: =180
                                 HoverColor: =RGBA(51, 51, 51, 1)
                                 HoverFill: =RGBA(212, 212, 212, 1)
                                 IsInDataCard: =true
@@ -634,9 +322,10 @@ takePhotoScreen As screen:
                                 PressedFill: =RGBA(0, 120, 212, 1)
                                 Size: =21
                                 Tooltip: =Parent.DisplayName
-                                Width: =Parent.Width - 60
-                                X: =30
-                                Y: =DataCardKey21.Y + DataCardKey21.Height + 5
+                                Visible: =v_ScreenTab="Attachments"
+                                Width: =Button33_8.Width
+                                X: =Button33_8.X
+                                Y: =Label23_14.Y + Label23_14.Height /2
                                 ZIndex: =2
 
                             ErrorMessage8 As label:
@@ -675,15 +364,30 @@ takePhotoScreen As screen:
                                 FocusedBorderThickness: =4
                                 Font: =Font.'Segoe UI'
                                 FontWeight: =FontWeight.Semibold
-                                Height: =DataCardKey21.Height
+                                Height: =Label23_14.Height
                                 PaddingLeft: =0
                                 Size: =21
                                 Text: ="*"
                                 Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
                                 Width: =30
                                 Wrap: =false
-                                Y: =DataCardKey21.Y
+                                Y: =Label23_14.Y
                                 ZIndex: =4
+
+                            Label23_14 As label:
+                                BorderColor: =RGBA(0, 18, 107, 1)
+                                Color: |-
+                                    =ColorValue(LookUp(c_EnvironmentVariable, 'Display Name'="Button Fill").'Default Value')
+                                    
+                                    //RGBA(0, 0, 0, 1)
+                                DisabledColor: =RGBA(166, 166, 166, 1)
+                                Fill: =RGBA(255, 255, 255, 1)
+                                FontWeight: =FontWeight.Semibold
+                                Size: =15
+                                Text: =If(v_ScreenTab="Camera","Click " & v_ScreenTab, "Documents")
+                                Width: =200
+                                X: =Label23_12.X
+                                ZIndex: =5
 
                 TopGallery_3 As gallery.galleryHorizontal:
                     AccessibleLabel: ="Top Bar"
@@ -708,8 +412,8 @@ takePhotoScreen As screen:
                     TemplatePadding: =0
                     TemplateSize: =TopGallery_3.Width/2
                     Width: =App.Width
-                    Y: =AccountComboBox.Y+AccountComboBox.Height
-                    ZIndex: =18
+                    Y: =AccountComboBox.Y+AccountComboBox.Height+20
+                    ZIndex: =5
 
                     title_6 As label:
                         Align: =Align.Center
@@ -786,23 +490,7 @@ takePhotoScreen As screen:
                     Width: =530
                     X: =55
                     Y: =75
-                    ZIndex: =19
-
-                Label23_12 As label:
-                    BorderColor: =RGBA(0, 18, 107, 1)
-                    Color: |-
-                        =ColorValue(LookUp(c_EnvironmentVariable, 'Display Name'="Button Fill").'Default Value')
-                        
-                        //RGBA(0, 0, 0, 1)
-                    DisabledColor: =RGBA(166, 166, 166, 1)
-                    Fill: =RGBA(255, 255, 255, 1)
-                    FontWeight: =FontWeight.Semibold
-                    Size: =15
-                    Text: ="Select Tab"
-                    Width: =137
-                    X: =100
-                    Y: =54
-                    ZIndex: =21
+                    ZIndex: =6
 
                 Button33_9 As button:
                     DisabledBorderColor: =RGBA(166, 166, 166, 1)
@@ -821,11 +509,11 @@ takePhotoScreen As screen:
                     Size: =24
                     Text: =""
                     Width: =530
-                    X: =60
+                    X: =Button33_8.X
                     Y: =171
-                    ZIndex: =22
+                    ZIndex: =7
 
-                AccountComboBoxT As dropdown:
+                AccountComboBox As dropdown:
                     AccessibleLabel: ="Department"
                     AllowEmptySelection: =true
                     BorderColor: =RGBA(0, 0, 0, 1)
@@ -857,10 +545,268 @@ takePhotoScreen As screen:
                     Reset: =true
                     SelectionFill: =RGBA(56, 96, 178, 1)
                     Size: =18
+                    Visible: |-
+                        =If(
+                            Dropdown1.Selected.Value = "Account",
+                            true,
+                            false
+                        )
                     Width: =500
-                    X: =75
+                    X: =Dropdown1.X
                     Y: =176
-                    ZIndex: =23
+                    ZIndex: =8
+
+                Dropdown1 As dropdown:
+                    AccessibleLabel: ="Department"
+                    AllowEmptySelection: =true
+                    BorderColor: =RGBA(0, 0, 0, 1)
+                    BorderStyle: =BorderStyle.None
+                    BorderThickness: =0
+                    ChevronBackground: =//RGBA(0, 0, 0, 1)
+                    ChevronDisabledBackground: =RGBA(166, 166, 166, 1)
+                    ChevronDisabledFill: =RGBA(244, 244, 244, 1)
+                    ChevronFill: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Text Primary Color").'Default Value') //_VarGblAppColors.textbgbutton
+                    ChevronHoverBackground: =//ColorFade(RGBA(56, 96, 178, 1), -20%)
+                    ChevronHoverFill: =RGBA(50, 86, 160, 1)
+                    Color: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Text Primary Color").'Default Value') //_VarGblAppColors.textbgbutton
+                    Default: =""
+                    DisabledBorderColor: =RGBA(166, 166, 166, 1)
+                    DisabledColor: =RGBA(166, 166, 166, 1)
+                    DisabledFill: =RGBA(244, 244, 244, 1)
+                    HoverColor: =RGBA(0, 0, 0, 1)
+                    HoverFill: =//RGBA(186, 202, 226, 1)
+                    Items: |-
+                        =[
+                            "Account",
+                            "Lead",
+                            "Contact",
+                            "Order",
+                            "Visit",
+                            "Complaint"
+                        ]
+                    PaddingBottom: =5
+                    PaddingRight: =5
+                    PaddingTop: =5
+                    PressedColor: =RGBA(255, 255, 255, 1)
+                    PressedFill: =//RGBA(0, 18, 107, 1)
+                    Reset: =true
+                    SelectionFill: =RGBA(56, 96, 178, 1)
+                    Size: =18
+                    Width: =500
+                    X: =70
+                    Y: =80
+                    ZIndex: =9
+
+                leadComboBox As dropdown:
+                    AccessibleLabel: ="Department"
+                    AllowEmptySelection: =true
+                    BorderColor: =RGBA(0, 0, 0, 1)
+                    BorderStyle: =BorderStyle.None
+                    BorderThickness: =0
+                    ChevronBackground: =//RGBA(0, 0, 0, 1)
+                    ChevronDisabledBackground: =RGBA(166, 166, 166, 1)
+                    ChevronDisabledFill: =RGBA(244, 244, 244, 1)
+                    ChevronFill: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Text Primary Color").'Default Value') //_VarGblAppColors.textbgbutton
+                    ChevronHoverBackground: =//ColorFade(RGBA(56, 96, 178, 1), -20%)
+                    ChevronHoverFill: =RGBA(50, 86, 160, 1)
+                    Color: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Text Primary Color").'Default Value') //_VarGblAppColors.textbgbutton
+                    Default: =""
+                    DisabledBorderColor: =RGBA(166, 166, 166, 1)
+                    DisabledColor: =RGBA(166, 166, 166, 1)
+                    DisabledFill: =RGBA(244, 244, 244, 1)
+                    HoverColor: =RGBA(0, 0, 0, 1)
+                    HoverFill: =//RGBA(186, 202, 226, 1)
+                    Items: |-
+                        =Filter(
+                            'Leads.S',
+                            'Owning User'.'Primary Email' = User().Email
+                        )
+                    PaddingBottom: =5
+                    PaddingRight: =5
+                    PaddingTop: =5
+                    PressedColor: =RGBA(255, 255, 255, 1)
+                    PressedFill: =//RGBA(0, 18, 107, 1)
+                    Reset: =true
+                    SelectionFill: =RGBA(56, 96, 178, 1)
+                    Size: =18
+                    Visible: |-
+                        =If(
+                            Dropdown1.Selected.Value = "Lead",
+                            true,
+                            false
+                        )
+                    Width: =500
+                    X: =Dropdown1.X
+                    Y: =186
+                    ZIndex: =10
+
+                contactComboBox As dropdown:
+                    AccessibleLabel: ="Department"
+                    AllowEmptySelection: =true
+                    BorderColor: =RGBA(0, 0, 0, 1)
+                    BorderStyle: =BorderStyle.None
+                    BorderThickness: =0
+                    ChevronBackground: =//RGBA(0, 0, 0, 1)
+                    ChevronDisabledBackground: =RGBA(166, 166, 166, 1)
+                    ChevronDisabledFill: =RGBA(244, 244, 244, 1)
+                    ChevronFill: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Text Primary Color").'Default Value') //_VarGblAppColors.textbgbutton
+                    ChevronHoverBackground: =//ColorFade(RGBA(56, 96, 178, 1), -20%)
+                    ChevronHoverFill: =RGBA(50, 86, 160, 1)
+                    Color: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Text Primary Color").'Default Value') //_VarGblAppColors.textbgbutton
+                    Default: =""
+                    DisabledBorderColor: =RGBA(166, 166, 166, 1)
+                    DisabledColor: =RGBA(166, 166, 166, 1)
+                    DisabledFill: =RGBA(244, 244, 244, 1)
+                    HoverColor: =RGBA(0, 0, 0, 1)
+                    HoverFill: =//RGBA(186, 202, 226, 1)
+                    Items: =Filter('Contacts.S','Owning User'.'Primary Email'=User().Email)
+                    PaddingBottom: =5
+                    PaddingRight: =5
+                    PaddingTop: =5
+                    PressedColor: =RGBA(255, 255, 255, 1)
+                    PressedFill: =//RGBA(0, 18, 107, 1)
+                    Reset: =true
+                    SelectionFill: =RGBA(56, 96, 178, 1)
+                    Size: =18
+                    Visible: |-
+                        =If(
+                            Dropdown1.Selected.Value = "Contact",
+                            true,
+                            false
+                        )
+                    Width: =500
+                    X: =Dropdown1.X
+                    Y: =186
+                    ZIndex: =11
+
+                complaintComboBox As dropdown:
+                    AccessibleLabel: ="Department"
+                    AllowEmptySelection: =true
+                    BorderColor: =RGBA(0, 0, 0, 1)
+                    BorderStyle: =BorderStyle.None
+                    BorderThickness: =0
+                    ChevronBackground: =//RGBA(0, 0, 0, 1)
+                    ChevronDisabledBackground: =RGBA(166, 166, 166, 1)
+                    ChevronDisabledFill: =RGBA(244, 244, 244, 1)
+                    ChevronFill: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Text Primary Color").'Default Value') //_VarGblAppColors.textbgbutton
+                    ChevronHoverBackground: =//ColorFade(RGBA(56, 96, 178, 1), -20%)
+                    ChevronHoverFill: =RGBA(50, 86, 160, 1)
+                    Color: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Text Primary Color").'Default Value') //_VarGblAppColors.textbgbutton
+                    Default: =""
+                    DisabledBorderColor: =RGBA(166, 166, 166, 1)
+                    DisabledColor: =RGBA(166, 166, 166, 1)
+                    DisabledFill: =RGBA(244, 244, 244, 1)
+                    HoverColor: =RGBA(0, 0, 0, 1)
+                    HoverFill: =//RGBA(186, 202, 226, 1)
+                    Items: |-
+                        =Filter(
+                            'Complaint.S',
+                            'Owning User'.'Primary Email' = User().Email
+                        )
+                    PaddingBottom: =5
+                    PaddingRight: =5
+                    PaddingTop: =5
+                    PressedColor: =RGBA(255, 255, 255, 1)
+                    PressedFill: =//RGBA(0, 18, 107, 1)
+                    Reset: =true
+                    SelectionFill: =RGBA(56, 96, 178, 1)
+                    Size: =18
+                    Visible: |-
+                        =If(
+                            Dropdown1.Selected.Value = "Complaint",
+                            true,
+                            false
+                        )
+                    Width: =500
+                    X: =Dropdown1.X
+                    Y: =186
+                    ZIndex: =12
+
+                orderComboBox As dropdown:
+                    AccessibleLabel: ="Department"
+                    AllowEmptySelection: =true
+                    BorderColor: =RGBA(0, 0, 0, 1)
+                    BorderStyle: =BorderStyle.None
+                    BorderThickness: =0
+                    ChevronBackground: =//RGBA(0, 0, 0, 1)
+                    ChevronDisabledBackground: =RGBA(166, 166, 166, 1)
+                    ChevronDisabledFill: =RGBA(244, 244, 244, 1)
+                    ChevronFill: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Text Primary Color").'Default Value') //_VarGblAppColors.textbgbutton
+                    ChevronHoverBackground: =//ColorFade(RGBA(56, 96, 178, 1), -20%)
+                    ChevronHoverFill: =RGBA(50, 86, 160, 1)
+                    Color: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Text Primary Color").'Default Value') //_VarGblAppColors.textbgbutton
+                    Default: =""
+                    DisabledBorderColor: =RGBA(166, 166, 166, 1)
+                    DisabledColor: =RGBA(166, 166, 166, 1)
+                    DisabledFill: =RGBA(244, 244, 244, 1)
+                    HoverColor: =RGBA(0, 0, 0, 1)
+                    HoverFill: =//RGBA(186, 202, 226, 1)
+                    Items: |-
+                        =Filter(
+                           'Order Header.S',
+                            'Owning User'.'Primary Email' = User().Email
+                        )
+                    PaddingBottom: =5
+                    PaddingRight: =5
+                    PaddingTop: =5
+                    PressedColor: =RGBA(255, 255, 255, 1)
+                    PressedFill: =//RGBA(0, 18, 107, 1)
+                    Reset: =true
+                    SelectionFill: =RGBA(56, 96, 178, 1)
+                    Size: =18
+                    Visible: |-
+                        =If(
+                            Dropdown1.Selected.Value = "Order",
+                            true,
+                            false
+                        )
+                    Width: =500
+                    X: =Dropdown1.X
+                    Y: =186
+                    ZIndex: =13
+
+                VisitComboBox As dropdown:
+                    AccessibleLabel: ="Department"
+                    AllowEmptySelection: =true
+                    BorderColor: =RGBA(0, 0, 0, 1)
+                    BorderStyle: =BorderStyle.None
+                    BorderThickness: =0
+                    ChevronBackground: =//RGBA(0, 0, 0, 1)
+                    ChevronDisabledBackground: =RGBA(166, 166, 166, 1)
+                    ChevronDisabledFill: =RGBA(244, 244, 244, 1)
+                    ChevronFill: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Text Primary Color").'Default Value') //_VarGblAppColors.textbgbutton
+                    ChevronHoverBackground: =//ColorFade(RGBA(56, 96, 178, 1), -20%)
+                    ChevronHoverFill: =RGBA(50, 86, 160, 1)
+                    Color: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Text Primary Color").'Default Value') //_VarGblAppColors.textbgbutton
+                    Default: =""
+                    DisabledBorderColor: =RGBA(166, 166, 166, 1)
+                    DisabledColor: =RGBA(166, 166, 166, 1)
+                    DisabledFill: =RGBA(244, 244, 244, 1)
+                    HoverColor: =RGBA(0, 0, 0, 1)
+                    HoverFill: =//RGBA(186, 202, 226, 1)
+                    Items: |-
+                        =Filter(
+                            'Visit.S',
+                            'Owning User'.'Primary Email' = User().Email
+                        )
+                    PaddingBottom: =5
+                    PaddingRight: =5
+                    PaddingTop: =5
+                    PressedColor: =RGBA(255, 255, 255, 1)
+                    PressedFill: =//RGBA(0, 18, 107, 1)
+                    Reset: =true
+                    SelectionFill: =RGBA(56, 96, 178, 1)
+                    Size: =18
+                    Visible: |-
+                        =If(
+                            Dropdown1.Selected.Value = "Visit",
+                            true,
+                            false
+                        )
+                    Width: =500
+                    X: =Dropdown1.X
+                    Y: =186
+                    ZIndex: =14
 
                 Label23_13 As label:
                     BorderColor: =RGBA(0, 18, 107, 1)
@@ -872,11 +818,27 @@ takePhotoScreen As screen:
                     Fill: =RGBA(255, 255, 255, 1)
                     FontWeight: =FontWeight.Semibold
                     Size: =15
-                    Text: ="Select Account"
+                    Text: ="Select " & Dropdown1.Selected.Value
                     Width: =180
-                    X: =105
+                    X: =Label23_12.X
                     Y: =150
-                    ZIndex: =24
+                    ZIndex: =15
+
+                Label23_12 As label:
+                    BorderColor: =RGBA(0, 18, 107, 1)
+                    Color: |-
+                        =ColorValue(LookUp(c_EnvironmentVariable, 'Display Name'="Button Fill").'Default Value')
+                        
+                        //RGBA(0, 0, 0, 1)
+                    DisabledColor: =RGBA(166, 166, 166, 1)
+                    Fill: =RGBA(255, 255, 255, 1)
+                    FontWeight: =FontWeight.Semibold
+                    Size: =15
+                    Text: ="Select Tab"
+                    Width: =137
+                    X: =100
+                    Y: =54
+                    ZIndex: =16
 
     "'Bottom Bar_20' As 'Bottom Bar'":
         Height: =105

@@ -26,7 +26,7 @@
             "Name": "galleryTemplate3_15",
             "Parent": "Cart Gallery_4",
             "PersistMetaDataIDKey": false,
-            "PublishOrderIndex": 1974,
+            "PublishOrderIndex": 620,
             "Rules": [
               {
                 "Category": "Design",
@@ -196,7 +196,7 @@
             "Name": "Product BG_13",
             "Parent": "Cart Gallery_4",
             "PersistMetaDataIDKey": false,
-            "PublishOrderIndex": 1975,
+            "PublishOrderIndex": 621,
             "Rules": [
               {
                 "Category": "Data",
@@ -525,7 +525,7 @@
             "Name": "Product Name Lbl_10",
             "Parent": "Cart Gallery_4",
             "PersistMetaDataIDKey": false,
-            "PublishOrderIndex": 1976,
+            "PublishOrderIndex": 622,
             "Rules": [
               {
                 "Category": "Data",
@@ -869,7 +869,7 @@
             "Name": "Icon8_4",
             "Parent": "Cart Gallery_4",
             "PersistMetaDataIDKey": false,
-            "PublishOrderIndex": 1977,
+            "PublishOrderIndex": 623,
             "Rules": [
               {
                 "Category": "Data",
@@ -1099,7 +1099,7 @@
             "Name": "Rectangle37_2",
             "Parent": "Cart Gallery_4",
             "PersistMetaDataIDKey": false,
-            "PublishOrderIndex": 1978,
+            "PublishOrderIndex": 624,
             "Rules": [
               {
                 "Category": "Design",
@@ -1329,7 +1329,7 @@
             "Name": "Product Price Lbl_13",
             "Parent": "Cart Gallery_4",
             "PersistMetaDataIDKey": false,
-            "PublishOrderIndex": 1979,
+            "PublishOrderIndex": 625,
             "Rules": [
               {
                 "Category": "Data",
@@ -1694,7 +1694,7 @@
             "Name": "Label55_2",
             "Parent": "Cart Gallery_4",
             "PersistMetaDataIDKey": false,
-            "PublishOrderIndex": 1980,
+            "PublishOrderIndex": 626,
             "Rules": [
               {
                 "Category": "Data",
@@ -2075,7 +2075,7 @@
             "Name": "Product Price Lbl_17",
             "Parent": "Cart Gallery_4",
             "PersistMetaDataIDKey": false,
-            "PublishOrderIndex": 1981,
+            "PublishOrderIndex": 627,
             "Rules": [
               {
                 "Category": "Data",
@@ -2447,7 +2447,7 @@
             "Name": "Label66_2",
             "Parent": "Cart Gallery_4",
             "PersistMetaDataIDKey": false,
-            "PublishOrderIndex": 1982,
+            "PublishOrderIndex": 628,
             "Rules": [
               {
                 "Category": "Data",
@@ -2821,7 +2821,7 @@
             "Name": "Product Discount Lbl_7",
             "Parent": "Cart Gallery_4",
             "PersistMetaDataIDKey": false,
-            "PublishOrderIndex": 1983,
+            "PublishOrderIndex": 629,
             "Rules": [
               {
                 "Category": "Data",
@@ -3186,7 +3186,7 @@
             "Name": "Label59_2",
             "Parent": "Cart Gallery_4",
             "PersistMetaDataIDKey": false,
-            "PublishOrderIndex": 1984,
+            "PublishOrderIndex": 630,
             "Rules": [
               {
                 "Category": "Data",
@@ -3196,7 +3196,7 @@
               },
               {
                 "Category": "Data",
-                "InvariantScript": "ThisItem.discount & \"%\"",
+                "InvariantScript": "If(IsBlank(ThisItem.discount),\"0%\",ThisItem.discount & \"%\")",
                 "Property": "Text",
                 "RuleProviderType": "Unknown"
               },
@@ -3567,7 +3567,7 @@
             "Name": "Product Discount Lbl_10",
             "Parent": "Cart Gallery_4",
             "PersistMetaDataIDKey": false,
-            "PublishOrderIndex": 1985,
+            "PublishOrderIndex": 631,
             "Rules": [
               {
                 "Category": "Data",
@@ -3945,7 +3945,7 @@
             "Name": "Label57_3",
             "Parent": "Cart Gallery_4",
             "PersistMetaDataIDKey": false,
-            "PublishOrderIndex": 1986,
+            "PublishOrderIndex": 632,
             "Rules": [
               {
                 "Category": "Data",
@@ -3955,7 +3955,7 @@
               },
               {
                 "Category": "Data",
-                "InvariantScript": "//\"₹\" & ThisItem.baseUnitPrice * (ThisItem.discount/100) * ThisItem.quantity\r\nConcatenate(\r\n    \"₹\",\r\n    Text(\r\n        ThisItem.baseUnitPrice * (ThisItem.discount / 100) * ThisItem.quantity,\r\n       /* \"[$-hi-IN]##,##,##,###\",\r\n        \"hi-IN\"*/  \"[$-en-US]#.00\"\r\n    )\r\n)",
+                "InvariantScript": "//\"₹\" & ThisItem.baseUnitPrice * (ThisItem.discount/100) * ThisItem.quantity\r\nIf(ThisItem.baseUnitPrice * (ThisItem.discount / 100) * ThisItem.quantity=0,\"₹0.00\",Concatenate(\r\n    \"₹\",\r\n    Text(\r\n        ThisItem.baseUnitPrice * (ThisItem.discount / 100) * ThisItem.quantity,\r\n       /* \"[$-hi-IN]##,##,##,###\",\r\n        \"hi-IN\"*/  \"[$-en-US]#.00\"\r\n    )\r\n))",
                 "Property": "Text",
                 "RuleProviderType": "Unknown"
               },
@@ -4320,7 +4320,7 @@
             "Name": "Quantityn Lbl_9",
             "Parent": "Cart Gallery_4",
             "PersistMetaDataIDKey": false,
-            "PublishOrderIndex": 1987,
+            "PublishOrderIndex": 633,
             "Rules": [
               {
                 "Category": "Data",
@@ -4792,7 +4792,7 @@
             "Name": "Quantity Input_6",
             "Parent": "Cart Gallery_4",
             "PersistMetaDataIDKey": false,
-            "PublishOrderIndex": 1988,
+            "PublishOrderIndex": 634,
             "Rules": [
               {
                 "Category": "Data",
@@ -5185,7 +5185,7 @@
             "Name": "Product Price Lbl_14",
             "Parent": "Cart Gallery_4",
             "PersistMetaDataIDKey": false,
-            "PublishOrderIndex": 1989,
+            "PublishOrderIndex": 635,
             "Rules": [
               {
                 "Category": "Data",
@@ -5550,7 +5550,7 @@
             "Name": "Label60_2",
             "Parent": "Cart Gallery_4",
             "PersistMetaDataIDKey": false,
-            "PublishOrderIndex": 1990,
+            "PublishOrderIndex": 636,
             "Rules": [
               {
                 "Category": "Data",
@@ -5560,7 +5560,7 @@
               },
               {
                 "Category": "Data",
-                "InvariantScript": "  \"₹\" & Text(((ThisItem.baseUnitPrice - (ThisItem.baseUnitPrice * (ThisItem.discount/100))) * ThisItem.quantity)+ ThisItem.igstAmount + ThisItem.cgstAmount+ ThisItem.sgstAmount+ ThisItem.cessAmount,\r\n  /*\"[$-hi-IN]##,##,##,###\",\r\n                        \"hi-IN\"*/  \"[$-en-US]#.00\")\r\n  ",
+                "InvariantScript": "If(((ThisItem.baseUnitPrice - (ThisItem.baseUnitPrice * (ThisItem.discount / 100))) * ThisItem.quantity) + ThisItem.igstAmount + ThisItem.cgstAmount + ThisItem.sgstAmount + ThisItem.cessAmount=0,\"₹0.00\",\"₹\" & Text(\r\n    ((ThisItem.baseUnitPrice - (ThisItem.baseUnitPrice * (ThisItem.discount / 100))) * ThisItem.quantity) + ThisItem.igstAmount + ThisItem.cgstAmount + ThisItem.sgstAmount + ThisItem.cessAmount,\r\n    /*\"[$-hi-IN]##,##,##,###\",\r\n    \"hi-IN\"*/  \"[$-en-US]#.00\"\r\n))",
                 "Property": "Text",
                 "RuleProviderType": "Unknown"
               },
@@ -5901,7 +5901,7 @@
         "Name": "Cart Gallery_4",
         "Parent": "Secondary Cart",
         "PersistMetaDataIDKey": false,
-        "PublishOrderIndex": 1973,
+        "PublishOrderIndex": 618,
         "Rules": [
           {
             "Category": "Data",
@@ -6199,7 +6199,7 @@
         "Name": "btnCnfrm_1",
         "Parent": "Secondary Cart",
         "PersistMetaDataIDKey": false,
-        "PublishOrderIndex": 1991,
+        "PublishOrderIndex": 619,
         "Rules": [
           {
             "Category": "Data",
@@ -6465,7 +6465,7 @@
       "ZIndex",
       "CartType"
     ],
-    "LastModifiedTimestamp": "638194914567775076",
+    "LastModifiedTimestamp": "638195075504237712",
     "Name": "Secondary Cart",
     "Rules": [
       {
@@ -6540,7 +6540,7 @@
   "IsPcfControl": false,
   "IsPremiumPcfControl": false,
   "IsWidgetTemplate": false,
-  "LastModifiedTimestamp": "638194914567775076",
+  "LastModifiedTimestamp": "638195075504237712",
   "Name": "f0e4109ba17740638c577b352f6ba71e",
   "OverridableProperties": {},
   "TemplateOriginalName": "96ce68581def46fcab13b78f74ddacdc",
