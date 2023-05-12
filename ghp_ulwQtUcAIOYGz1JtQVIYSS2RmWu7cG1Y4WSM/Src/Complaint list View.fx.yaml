@@ -7,7 +7,7 @@
         BorderColor: =RGBA(0, 18, 107, 1)
         BorderStyle: =BorderStyle.None
         Height: =850
-        Items: ='Complaint.S'
+        Items: =Search('Complaint.S', SearchBox_4.Text, "zx_complaintno")
         Layout: =Layout.Vertical
         ShowScrollbar: =false
         TabIndex: =0//-1
@@ -408,12 +408,7 @@
         HoverBorderColor: =RGBA(0, 0, 0, 0)
         HoverFill: =RGBA(0, 0, 0, 0)
         Image: =sort
-        OnSelect: |+
-            =Set(
-                varFilterParties,
-                !varFilterParties
-            );
-            
+        OnSelect: =//Set(varFilterParties,!varFilterParties);
         PressedBorderColor: =RGBA(0, 0, 0, 0)
         PressedFill: =RGBA(0, 0, 0, 0)
         TabIndex: =0
