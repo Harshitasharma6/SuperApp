@@ -398,16 +398,30 @@ SideBar As CanvasComponent:
                 =//If(ThisItem.IsSelected, _VarGblAppColors.PrimaryRed, _VarGblAppColors.textbgbutton)
                 ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//_VarGblAppColors.PrimaryRed
             HoverFill: =//ColorFade(RGBA(56, 96, 178, 1), -20%)
-            OnSelect: |-
-                =Navigate(
-                    ThisItem.Screen,
-                    ScreenTransition.CoverRight
-                );
-                Set(
+            OnSelect: |
+                =Set(
                     _varsideNav,
                     false
-                );Set(
-                g_BottomMenuSelected, ThisItem.Title);
+                );
+                Set(
+                    _VarSelectedTab,
+                    ThisItem.Title
+                );
+                If(
+                    ThisItem.Title = "Orders",
+                    Set(
+                        varfiltergallery,
+                        true
+                    );
+                    Navigate(
+                        ThisItem.Screen,
+                        ScreenTransition.CoverRight
+                    ),
+                    Navigate(
+                        ThisItem.Screen,
+                        ScreenTransition.CoverRight
+                    )
+                )
             PressedColor: =//Self.Fill
             PressedFill: =//Self.Color
             Size: =18
@@ -430,14 +444,29 @@ SideBar As CanvasComponent:
                 =//If(ThisItem.IsSelected, _VarGblAppColors.PrimaryRed, _VarGblAppColors.textbgbutton)
                 ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//_VarGblAppColors.PrimaryRed
             Icon: =Icon.ChevronRight
-            OnSelect: |-
-                =Navigate(
-                    ThisItem.Screen,
-                    ScreenTransition.CoverRight
-                );
-                Set(
+            OnSelect: |
+                =Set(
                     _varsideNav,
                     false
+                );
+                Set(
+                    _VarSelectedTab,
+                    ThisItem.Title
+                );
+                If(
+                    ThisItem.Title = "Orders",
+                    Set(
+                        varfiltergallery,
+                        true
+                    );
+                    Navigate(
+                        ThisItem.Screen,
+                        ScreenTransition.CoverRight
+                    ),
+                    Navigate(
+                        ThisItem.Screen,
+                        ScreenTransition.CoverRight
+                    )
                 )
             TabIndex: =0
             Width: =20
@@ -453,14 +482,29 @@ SideBar As CanvasComponent:
             DisabledFill: =RGBA(244, 244, 244, 1)
             Height: =45
             Image: =ThisItem.Icon
-            OnSelect: |-
-                =Navigate(
-                    ThisItem.Screen,
-                    ScreenTransition.CoverRight
-                );
-                Set(
+            OnSelect: |
+                =Set(
                     _varsideNav,
                     false
+                );
+                Set(
+                    _VarSelectedTab,
+                    ThisItem.Title
+                );
+                If(
+                    ThisItem.Title = "Orders",
+                    Set(
+                        varfiltergallery,
+                        true
+                    );
+                    Navigate(
+                        ThisItem.Screen,
+                        ScreenTransition.CoverRight
+                    ),
+                    Navigate(
+                        ThisItem.Screen,
+                        ScreenTransition.CoverRight
+                    )
                 )
             PaddingBottom: =5
             PaddingLeft: =5

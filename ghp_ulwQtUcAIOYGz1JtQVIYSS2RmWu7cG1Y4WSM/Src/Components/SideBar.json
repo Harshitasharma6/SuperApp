@@ -1192,7 +1192,14 @@
             "AllowAccessToGlobals": true,
             "Children": [],
             "ControlPropertyState": [
-              "OnSelect",
+              {
+                "AFDDataSourceName": "",
+                "AutoRuleBindingEnabled": false,
+                "AutoRuleBindingString": "Navigate(\r\n    ThisItem.Screen,\r\n    ScreenTransition.CoverRight\r\n);\r\nSet(\r\n    _varsideNav,\r\n    false\r\n);Set(\r\ng_BottomMenuSelected, ThisItem.Title);",
+                "InvariantPropertyName": "OnSelect",
+                "IsLockable": false,
+                "NameMapSourceSchema": "?"
+              },
               {
                 "AFDDataSourceName": "",
                 "AutoRuleBindingEnabled": false,
@@ -1526,7 +1533,7 @@
               },
               {
                 "Category": "Behavior",
-                "InvariantScript": "Navigate(\r\n    ThisItem.Screen,\r\n    ScreenTransition.CoverRight\r\n);\r\nSet(\r\n    _varsideNav,\r\n    false\r\n);Set(\r\ng_BottomMenuSelected, ThisItem.Title);",
+                "InvariantScript": "Set(\r\n    _varsideNav,\r\n    false\r\n);\r\nSet(\r\n    _VarSelectedTab,\r\n    ThisItem.Title\r\n);\r\nIf(\r\n    ThisItem.Title = \"Orders\",\r\n    Set(\r\n        varfiltergallery,\r\n        true\r\n    );\r\n    Navigate(\r\n        ThisItem.Screen,\r\n        ScreenTransition.CoverRight\r\n    ),\r\n    Navigate(\r\n        ThisItem.Screen,\r\n        ScreenTransition.CoverRight\r\n    )\r\n)\r\n",
                 "Property": "OnSelect",
                 "RuleProviderType": "Unknown"
               }
@@ -1597,7 +1604,14 @@
               "FocusedBorderColor",
               "BorderStyle",
               "DisplayMode",
-              "OnSelect",
+              {
+                "AFDDataSourceName": "",
+                "AutoRuleBindingEnabled": false,
+                "AutoRuleBindingString": "Navigate(\r\n    ThisItem.Screen,\r\n    ScreenTransition.CoverRight\r\n);\r\nSet(\r\n    _varsideNav,\r\n    false\r\n)",
+                "InvariantPropertyName": "OnSelect",
+                "IsLockable": false,
+                "NameMapSourceSchema": "?"
+              },
               "ZIndex",
               "RadiusTopLeft",
               "RadiusTopRight",
@@ -1857,7 +1871,7 @@
               },
               {
                 "Category": "Behavior",
-                "InvariantScript": "Navigate(\r\n    ThisItem.Screen,\r\n    ScreenTransition.CoverRight\r\n);\r\nSet(\r\n    _varsideNav,\r\n    false\r\n)",
+                "InvariantScript": "Set(\r\n    _varsideNav,\r\n    false\r\n);\r\nSet(\r\n    _VarSelectedTab,\r\n    ThisItem.Title\r\n);\r\nIf(\r\n    ThisItem.Title = \"Orders\",\r\n    Set(\r\n        varfiltergallery,\r\n        true\r\n    );\r\n    Navigate(\r\n        ThisItem.Screen,\r\n        ScreenTransition.CoverRight\r\n    ),\r\n    Navigate(\r\n        ThisItem.Screen,\r\n        ScreenTransition.CoverRight\r\n    )\r\n)\r\n",
                 "Property": "OnSelect",
                 "RuleProviderType": "Unknown"
               }
@@ -1923,7 +1937,14 @@
               "PressedBorderColor",
               "HoverBorderColor",
               "FocusedBorderColor",
-              "OnSelect",
+              {
+                "AFDDataSourceName": "",
+                "AutoRuleBindingEnabled": false,
+                "AutoRuleBindingString": "Navigate(\r\n    ThisItem.Screen,\r\n    ScreenTransition.CoverRight\r\n);\r\nSet(\r\n    _varsideNav,\r\n    false\r\n)",
+                "InvariantPropertyName": "OnSelect",
+                "IsLockable": false,
+                "NameMapSourceSchema": "?"
+              },
               "ZIndex",
               "BorderThickness",
               "FocusedBorderThickness",
@@ -2111,7 +2132,7 @@
               },
               {
                 "Category": "Behavior",
-                "InvariantScript": "Navigate(\r\n    ThisItem.Screen,\r\n    ScreenTransition.CoverRight\r\n);\r\nSet(\r\n    _varsideNav,\r\n    false\r\n)",
+                "InvariantScript": "Set(\r\n    _varsideNav,\r\n    false\r\n);\r\nSet(\r\n    _VarSelectedTab,\r\n    ThisItem.Title\r\n);\r\nIf(\r\n    ThisItem.Title = \"Orders\",\r\n    Set(\r\n        varfiltergallery,\r\n        true\r\n    );\r\n    Navigate(\r\n        ThisItem.Screen,\r\n        ScreenTransition.CoverRight\r\n    ),\r\n    Navigate(\r\n        ThisItem.Screen,\r\n        ScreenTransition.CoverRight\r\n    )\r\n)\r\n",
                 "Property": "OnSelect",
                 "RuleProviderType": "Unknown"
               }
@@ -4011,7 +4032,7 @@
       "Y",
       "ZIndex"
     ],
-    "LastModifiedTimestamp": "638194678305789475",
+    "LastModifiedTimestamp": "638194711274202435",
     "Name": "SideBar",
     "Rules": [
       {
@@ -4070,7 +4091,7 @@
   "IsPcfControl": false,
   "IsPremiumPcfControl": false,
   "IsWidgetTemplate": false,
-  "LastModifiedTimestamp": "638194678305789475",
+  "LastModifiedTimestamp": "638194711274202435",
   "Name": "2c7957ede0e74ab2946a8311c6b17d3d",
   "OverridableProperties": {},
   "TemplateOriginalName": "d9e1862ecb9443909e37165bae92c6e0",
