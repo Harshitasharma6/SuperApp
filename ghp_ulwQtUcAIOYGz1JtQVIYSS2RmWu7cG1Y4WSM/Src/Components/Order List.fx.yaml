@@ -464,10 +464,7 @@
                         'Order Header'.'Order Header' = ThisItem.'Order Header'
                     )
                 );
-                Set(
-                    varParty,
-                    ThisItem.'Order From'.'Customer Name'
-                );
+                
                 
                 Set(
                     varActivated,
@@ -518,7 +515,11 @@
                     );
                     Navigate(
                         'Primary Cart Screen',
-                        ScreenTransition.CoverRight
+                        ScreenTransition.CoverRight,{
+                    varParty:
+                    ThisItem.'Order From'.'Customer Name'
+                }
+                
                     ),
                     ThisItem.'Order Type' = 'Order Type Choice'.Secondary,
                     Set(
@@ -554,7 +555,10 @@
                     );
                     Navigate(
                         'Secondary Cart Screen',
-                        ScreenTransition.CoverRight
+                        ScreenTransition.CoverRight,{
+                    varParty:
+                    ThisItem.'Order From'.'Customer Name'
+                }
                     )
                 )
             PressedBorderColor: =ColorFade(RGBA(0, 120, 212, 1), -50%)
