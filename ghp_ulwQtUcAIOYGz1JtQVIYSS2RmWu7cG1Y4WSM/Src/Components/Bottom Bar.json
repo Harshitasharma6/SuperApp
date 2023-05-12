@@ -26,7 +26,7 @@
             "Name": "galleryTemplate2",
             "Parent": "Gallery2",
             "PersistMetaDataIDKey": false,
-            "PublishOrderIndex": 3,
+            "PublishOrderIndex": 1491,
             "Rules": [
               {
                 "Category": "Design",
@@ -117,38 +117,10 @@
                 "NameMapSourceSchema": "?"
               },
               "ZIndex",
-              {
-                "AFDDataSourceName": "",
-                "AutoRuleBindingEnabled": false,
-                "AutoRuleBindingString": "If(ThisItem.Title = varUser.'First Name',25,0)",
-                "InvariantPropertyName": "RadiusTopLeft",
-                "IsLockable": false,
-                "NameMapSourceSchema": "?"
-              },
-              {
-                "AFDDataSourceName": "",
-                "AutoRuleBindingEnabled": false,
-                "AutoRuleBindingString": "If(ThisItem.Title = varUser.'First Name',25,0)",
-                "InvariantPropertyName": "RadiusTopRight",
-                "IsLockable": false,
-                "NameMapSourceSchema": "?"
-              },
-              {
-                "AFDDataSourceName": "",
-                "AutoRuleBindingEnabled": false,
-                "AutoRuleBindingString": "If(ThisItem.Title = varUser.'First Name',25,0)",
-                "InvariantPropertyName": "RadiusBottomLeft",
-                "IsLockable": false,
-                "NameMapSourceSchema": "?"
-              },
-              {
-                "AFDDataSourceName": "",
-                "AutoRuleBindingEnabled": false,
-                "AutoRuleBindingString": "If(ThisItem.Title = varUser.'First Name',25,0)",
-                "InvariantPropertyName": "RadiusBottomRight",
-                "IsLockable": false,
-                "NameMapSourceSchema": "?"
-              },
+              "RadiusTopLeft",
+              "RadiusTopRight",
+              "RadiusBottomLeft",
+              "RadiusBottomRight",
               "BorderThickness",
               "FocusedBorderThickness",
               "PaddingTop",
@@ -185,7 +157,7 @@
             "Name": "Image12",
             "Parent": "Gallery2",
             "PersistMetaDataIDKey": false,
-            "PublishOrderIndex": 4,
+            "PublishOrderIndex": 1492,
             "Rules": [
               {
                 "Category": "Data",
@@ -309,25 +281,25 @@
               },
               {
                 "Category": "Design",
-                "InvariantScript": "0//If(ThisItem.Title = varUser.'First Name',25,0)",
+                "InvariantScript": "If(ThisItem.Title = varUser.'First Name',25,0)",
                 "Property": "RadiusTopLeft",
                 "RuleProviderType": "Unknown"
               },
               {
                 "Category": "Design",
-                "InvariantScript": "0//If(ThisItem.Title = varUser.'First Name',25,0)",
+                "InvariantScript": "If(ThisItem.Title = varUser.'First Name',25,0)",
                 "Property": "RadiusTopRight",
                 "RuleProviderType": "Unknown"
               },
               {
                 "Category": "Design",
-                "InvariantScript": "0//If(ThisItem.Title = varUser.'First Name',25,0)",
+                "InvariantScript": "If(ThisItem.Title = varUser.'First Name',25,0)",
                 "Property": "RadiusBottomLeft",
                 "RuleProviderType": "Unknown"
               },
               {
                 "Category": "Design",
-                "InvariantScript": "0//If(ThisItem.Title = varUser.'First Name',25,0)",
+                "InvariantScript": "If(ThisItem.Title = varUser.'First Name',25,0)",
                 "Property": "RadiusBottomRight",
                 "RuleProviderType": "Unknown"
               },
@@ -375,7 +347,7 @@
               },
               {
                 "Category": "Behavior",
-                "InvariantScript": "Set(\r\n    _VarSelectedTab,\r\n    ThisItem.Title\r\n);\r\nIf(\r\n    ThisItem.Id = 1,\r\n    Set(\r\n        varfiltergallery,\r\n        true\r\n    );\r\n    Navigate(\r\n        ThisItem.Screen,\r\n        ScreenTransition.CoverRight\r\n    ),\r\n\r\n    Navigate(\r\n        ThisItem.Screen,\r\n        ScreenTransition.CoverRight\r\n    )\r\n\r\n);\r\n\r\n\r\nSet(g_BottomMenuSelected, ThisItem.Title);\r\n//Set(_varsideNav, false))\r\n",
+                "InvariantScript": "Set(\r\n    _VarSelectedTab,\r\n    ThisItem.Title\r\n);\r\nIf(\r\n    ThisItem.Id = 1,\r\n    Set(\r\n        varfiltergallery,\r\n        true\r\n    );\r\n    Navigate(\r\n        ThisItem.Screen,\r\n        ScreenTransition.CoverRight\r\n    ),\r\nIf(ThisItem.Id = 5,\r\n\r\n    Navigate(\r\n       'Profile Screen',\r\n        ScreenTransition.CoverRight\r\n    ),\r\n    Navigate(\r\n        ThisItem.Screen,\r\n        ScreenTransition.CoverRight\r\n    )\r\n)\r\n);\r\n\r\n\r\nSet(g_BottomMenuSelected, ThisItem.Title);\r\n//Set(_varsideNav, false))\r\n",
                 "Property": "OnSelect",
                 "RuleProviderType": "Unknown"
               }
@@ -541,7 +513,7 @@
             "Name": "Button2",
             "Parent": "Gallery2",
             "PersistMetaDataIDKey": false,
-            "PublishOrderIndex": 5,
+            "PublishOrderIndex": 1493,
             "Rules": [
               {
                 "Category": "Data",
@@ -898,7 +870,7 @@
             "Name": "Label3",
             "Parent": "Gallery2",
             "PersistMetaDataIDKey": false,
-            "PublishOrderIndex": 6,
+            "PublishOrderIndex": 1494,
             "Rules": [
               {
                 "Category": "Data",
@@ -1276,7 +1248,7 @@
         "Name": "Gallery2",
         "Parent": "Bottom Bar",
         "PersistMetaDataIDKey": false,
-        "PublishOrderIndex": 2,
+        "PublishOrderIndex": 1490,
         "Rules": [
           {
             "Category": "Data",
@@ -1459,14 +1431,7 @@
       }
     ],
     "ControlPropertyState": [
-      {
-        "AFDDataSourceName": "",
-        "AutoRuleBindingEnabled": false,
-        "AutoRuleBindingString": "",
-        "InvariantPropertyName": "Fill",
-        "IsLockable": false,
-        "NameMapSourceSchema": "?"
-      },
+      "Fill",
       {
         "AFDDataSourceName": "",
         "AutoRuleBindingEnabled": false,
@@ -1489,18 +1454,18 @@
       {
         "AFDDataSourceName": "",
         "AutoRuleBindingEnabled": false,
-        "AutoRuleBindingString": "Table(\r\n    {\r\n        Title: \"Orders\",\r\n        Icon : 'shopping-cart',\r\n        Screen: 'Primary Order Screen',\r\n        Id: 1\r\n    },\r\n    {\r\n        Title: \"Visits\",\r\n        Icon: location,\r\n        Screen:'Start Visit',\r\n        Id:2\r\n    },\r\n     {\r\n        Title: \"Home\",\r\n        Icon:home,\r\n        Screen: Home,\r\n        Id:3\r\n    },\r\n     {\r\n        Title: \"Parties\",\r\n        Icon: people,\r\n        Screen: Parties,\r\n        Id:4\r\n    },\r\n    {\r\n         Title: \"Menu\",\r\n        Icon: MenuBar,\r\n         //Icon.Hamburger,\r\n        Screen: Sidebar,\r\n        Id:5\r\n    }\r\n)",
+        "AutoRuleBindingString": "Table(\r\n    {\r\n        Title: \"Orders\",\r\n        Icon : 'shopping-cart',\r\n        Screen: 'Primary Order Screen',\r\n        Id:1\r\n    },\r\n    {\r\n        Title: \"Visit\",\r\n        Icon: location,\r\n        Screen:'Start Visit'\r\n    },\r\n     {\r\n        Title: \"Home\",\r\n        Icon:home,\r\n        Screen: Home\r\n    },\r\n     {\r\n        Title: \"Parties\",\r\n        Icon: people,\r\n        Screen: Parties\r\n    },\r\n    {\r\n        Title: varUser.'First Name',\r\n        Icon: User().Image,\r\n        Screen: Sidebar\r\n    }\r\n)",
         "InvariantPropertyName": "NavItems",
         "IsLockable": false,
         "NameMapSourceSchema": "?"
       }
     ],
-    "LastModifiedTimestamp": "638194719267409919",
+    "LastModifiedTimestamp": "638194576957447565",
     "Name": "Bottom Bar",
     "Rules": [
       {
         "Category": "Data",
-        "InvariantScript": "Table(\r\n    {\r\n        Title: \"Orders\",\r\n        Icon : 'shopping-cart',\r\n        Screen: 'Primary Order Screen',\r\n        Id: 1\r\n    },\r\n    {\r\n        Title: \"Visits\",\r\n        Icon: location,\r\n        Screen:'Start Visit',\r\n        Id:2\r\n    },\r\n     {\r\n        Title: \"Home\",\r\n        Icon:home,\r\n        Screen: Home,\r\n        Id:3\r\n    },\r\n     {\r\n        Title: \"Parties\",\r\n        Icon: people,\r\n        Screen: Parties,\r\n        Id:4\r\n    },\r\n    {\r\n         Title: \"Menu\",\r\n        Icon: images,\r\n         //Icon.Hamburger,\r\n        Screen: Sidebar,\r\n        Id:5\r\n    }\r\n)",
+        "InvariantScript": "Table(\r\n    {\r\n        Title: \"Orders\",\r\n        Icon : 'shopping-cart',\r\n        Screen: 'Primary Order Screen',\r\n        Id: 1\r\n    },\r\n    {\r\n        Title: \"Visit\",\r\n        Icon: location,\r\n        Screen:'Start Visit',\r\n        Id:2\r\n    },\r\n     {\r\n        Title: \"Home\",\r\n        Icon:home,\r\n        Screen: Home,\r\n        Id:3\r\n    },\r\n     {\r\n        Title: \"Parties\",\r\n        Icon: people,\r\n        Screen: Parties,\r\n        Id:4\r\n    },\r\n    {\r\n        Title: varUser.'First Name',\r\n        Icon: User().Image,\r\n        Screen: Sidebar,\r\n        Id:5\r\n    }\r\n)",
         "Property": "NavItems",
         "RuleProviderType": "System"
       },
@@ -1536,7 +1501,7 @@
       },
       {
         "Category": "Design",
-        "InvariantScript": "RGBA(255, 255, 255, 1)",
+        "InvariantScript": "RGBA(0, 0, 0, 0)",
         "Property": "Fill",
         "RuleProviderType": "System"
       }
@@ -1570,7 +1535,7 @@
   "IsPcfControl": false,
   "IsPremiumPcfControl": false,
   "IsWidgetTemplate": false,
-  "LastModifiedTimestamp": "638194719267409919",
+  "LastModifiedTimestamp": "638194576957447565",
   "Name": "bb2b97e209da445bb3aed11de06ad9d1",
   "OverridableProperties": {},
   "Version": "638174987229356020"

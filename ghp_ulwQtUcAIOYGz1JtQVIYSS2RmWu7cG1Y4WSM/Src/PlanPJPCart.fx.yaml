@@ -352,14 +352,14 @@ PlanPJPCart As screen:
         FontWeight: =FontWeight.Semibold
         HoverColor: =RGBA(255, 255, 255, 1)
         HoverFill: =ColorFade(RGBA(56, 96, 178, 1), -20%)
-        OnSelect: |-
+        OnSelect: |
             =ForAll(
                 Gallery1_8.AllItems,
-            Patch(
-                'Beat.S',
-                Defaults('Beat.S'),
-                {
-                    /* 'PJP Line': LookUp(
+                Patch(
+                    'Beat.S',
+                    Defaults('Beat.S'),
+                    {
+                        /* 'PJP Line': LookUp(
                                 'PJP Lines',
                                 Date = DateValue(ClickedPjpdate)
                             ),
@@ -370,7 +370,7 @@ PlanPJPCart As screen:
                     Area: LookUp(
                        'Area.S',Area= _varSelectedArea1.Area
                     ),*/
-                   Owner: LookUp(
+                        Owner: LookUp(
                             Users,
                             'Primary Email' = ComboBox3.Selected.'Primary Email'
                         ),
@@ -382,13 +382,9 @@ PlanPJPCart As screen:
                         ),
                         Date: ClickedPjpdate,
                         Area: ThisRecord.Area
-                }
-            ));
-            
-            
-            
-            
-            
+                    }
+                )
+            );
             Notify(
                 "Your record has been created",
                 NotificationType.Success,
