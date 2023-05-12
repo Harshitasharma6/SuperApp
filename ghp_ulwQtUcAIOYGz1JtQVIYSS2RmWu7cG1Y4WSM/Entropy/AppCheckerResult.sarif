@@ -24822,6 +24822,18 @@
               "message": {
                 "text": "Error occurred running rule app-InefficientDelayLoading."
               }
+            },
+            {
+              "associatedRule": {
+                "id": "app-InefficientDelayLoading",
+                "index": 20
+              },
+              "descriptor": {
+                "id": "app-InefficientDelayLoading"
+              },
+              "message": {
+                "text": "Error occurred running rule app-InefficientDelayLoading."
+              }
             }
           ]
         }
@@ -29650,1098 +29662,6 @@
             {
               "logicalLocations": [
                 {
-                  "fullyQualifiedName": "'Order List'.Display_14.Label31_28.Text"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "'Order List'.Display_14.Label31_28.Text",
-                  "relativeAddress": 0
-                },
-                "region": {
-                  "charLength": 6,
-                  "charOffset": 32,
-                  "snippet": {
-                    "text": ".value"
-                  }
-                }
-              },
-              "properties": {
-                "member": "Text",
-                "module": "Order List",
-                "type": "'Order List'.Display_14.Label31_28"
-              }
-            }
-          ],
-          "message": {
-            "arguments": [
-              "Text, Number, Decimal, Date, Time, DateTimeNoTimeZone, DateTime, Boolean, OptionSetValue, ViewValue, UntypedObject"
-            ],
-            "id": "issue"
-          },
-          "properties": {
-            "level": "High"
-          },
-          "ruleId": "app-ErrBadType-ExpectedTypesCSV",
-          "ruleIndex": 7
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "'Order List'.Container4_28.Display_8.Label31_17.Text"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "'Order List'.Container4_28.Display_8.Label31_17.Text",
-                  "relativeAddress": 0
-                },
-                "region": {
-                  "charLength": 6,
-                  "charOffset": 8,
-                  "snippet": {
-                    "text": ".value"
-                  }
-                }
-              },
-              "properties": {
-                "member": "Text",
-                "module": "Order List",
-                "type": "'Order List'.Container4_28.Display_8.Label31_17"
-              }
-            }
-          ],
-          "message": {
-            "arguments": [
-              "Text",
-              "Error"
-            ],
-            "id": "issue"
-          },
-          "properties": {
-            "level": "High"
-          },
-          "ruleId": "app-ErrIncompatibleRulePropTypes-PropKind-RuleKind",
-          "ruleIndex": 8
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "'Order List'.Container4_28.Display_8.Label31_17.Tooltip"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "'Order List'.Container4_28.Display_8.Label31_17.Tooltip",
-                  "relativeAddress": 0
-                },
-                "region": {
-                  "charLength": 6,
-                  "charOffset": 8,
-                  "snippet": {
-                    "text": ".value"
-                  }
-                }
-              },
-              "properties": {
-                "member": "Tooltip",
-                "module": "Order List",
-                "type": "'Order List'.Container4_28.Display_8.Label31_17"
-              }
-            }
-          ],
-          "message": {
-            "arguments": [
-              "Text",
-              "Error"
-            ],
-            "id": "issue"
-          },
-          "properties": {
-            "level": "High"
-          },
-          "ruleId": "app-ErrIncompatibleRulePropTypes-PropKind-RuleKind",
-          "ruleIndex": 8
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "'Order List'.Container4_28.radioDate_5.OnSelect"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "'Order List'.Container4_28.radioDate_5.OnSelect",
-                  "relativeAddress": 0
-                },
-                "region": {
-                  "charLength": 151,
-                  "charOffset": 169,
-                  "snippet": {
-                    "text": "Collect(\r\n        colFilter,\r\n        {\r\n            Title: Gallery8_5.Selected.Title,\r\n            value: radioDate_5.Selected.Value\r\n        }\r\n    )"
-                  }
-                }
-              },
-              "properties": {
-                "member": "OnSelect",
-                "module": "Order List",
-                "type": "'Order List'.Container4_28.radioDate_5"
-              }
-            }
-          ],
-          "message": {
-            "arguments": [
-              "Collect"
-            ],
-            "id": "issue"
-          },
-          "properties": {
-            "level": "High"
-          },
-          "ruleId": "app-ErrInvalidArgs-Func",
-          "ruleIndex": 2
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "'Order List'.Container4_28.radioDate_5.OnSelect"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "'Order List'.Container4_28.radioDate_5.OnSelect",
-                  "relativeAddress": 0
-                },
-                "region": {
-                  "charLength": 9,
-                  "charOffset": 187,
-                  "snippet": {
-                    "text": "colFilter"
-                  }
-                }
-              },
-              "properties": {
-                "member": "OnSelect",
-                "module": "Order List",
-                "type": "'Order List'.Container4_28.radioDate_5"
-              }
-            }
-          ],
-          "message": {
-            "id": "issue"
-          },
-          "properties": {
-            "level": "High"
-          },
-          "ruleId": "app-ErrCollectionDoesNotAcceptThisType",
-          "ruleIndex": 9
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "'Order List'.Container4_28.radioSalesperson_5.OnSelect"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "'Order List'.Container4_28.radioSalesperson_5.OnSelect",
-                  "relativeAddress": 0
-                },
-                "region": {
-                  "charLength": 164,
-                  "charOffset": 117,
-                  "snippet": {
-                    "text": "Collect(\r\n        colFilter,\r\n        {\r\n            Title: Gallery8_5.Selected.Title,\r\n            value: radioSalesperson_5.Selected.'Full Name'\r\n        }\r\n    )"
-                  }
-                }
-              },
-              "properties": {
-                "member": "OnSelect",
-                "module": "Order List",
-                "type": "'Order List'.Container4_28.radioSalesperson_5"
-              }
-            }
-          ],
-          "message": {
-            "arguments": [
-              "Collect"
-            ],
-            "id": "issue"
-          },
-          "properties": {
-            "level": "High"
-          },
-          "ruleId": "app-ErrInvalidArgs-Func",
-          "ruleIndex": 2
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "'Order List'.Container4_28.radioSalesperson_5.OnSelect"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "'Order List'.Container4_28.radioSalesperson_5.OnSelect",
-                  "relativeAddress": 0
-                },
-                "region": {
-                  "charLength": 9,
-                  "charOffset": 135,
-                  "snippet": {
-                    "text": "colFilter"
-                  }
-                }
-              },
-              "properties": {
-                "member": "OnSelect",
-                "module": "Order List",
-                "type": "'Order List'.Container4_28.radioSalesperson_5"
-              }
-            }
-          ],
-          "message": {
-            "id": "issue"
-          },
-          "properties": {
-            "level": "High"
-          },
-          "ruleId": "app-ErrCollectionDoesNotAcceptThisType",
-          "ruleIndex": 9
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "'Order List'.Container4_28.radioStatus_1.OnSelect"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "'Order List'.Container4_28.radioStatus_1.OnSelect",
-                  "relativeAddress": 0
-                },
-                "region": {
-                  "charLength": 159,
-                  "charOffset": 169,
-                  "snippet": {
-                    "text": "Collect(\r\n        colFilter,\r\n        {\r\n            Title: Gallery8_5.Selected.Title,\r\n            value: Text(radioStatus_1.Selected.Value)\r\n        }\r\n    )"
-                  }
-                }
-              },
-              "properties": {
-                "member": "OnSelect",
-                "module": "Order List",
-                "type": "'Order List'.Container4_28.radioStatus_1"
-              }
-            }
-          ],
-          "message": {
-            "arguments": [
-              "Collect"
-            ],
-            "id": "issue"
-          },
-          "properties": {
-            "level": "High"
-          },
-          "ruleId": "app-ErrInvalidArgs-Func",
-          "ruleIndex": 2
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "'Order List'.Container4_28.radioStatus_1.OnSelect"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "'Order List'.Container4_28.radioStatus_1.OnSelect",
-                  "relativeAddress": 0
-                },
-                "region": {
-                  "charLength": 9,
-                  "charOffset": 187,
-                  "snippet": {
-                    "text": "colFilter"
-                  }
-                }
-              },
-              "properties": {
-                "member": "OnSelect",
-                "module": "Order List",
-                "type": "'Order List'.Container4_28.radioStatus_1"
-              }
-            }
-          ],
-          "message": {
-            "id": "issue"
-          },
-          "properties": {
-            "level": "High"
-          },
-          "ruleId": "app-ErrCollectionDoesNotAcceptThisType",
-          "ruleIndex": 9
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "'Order List'.Container4_28.radioParty_1.OnSelect"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "'Order List'.Container4_28.radioParty_1.OnSelect",
-                  "relativeAddress": 0
-                },
-                "region": {
-                  "charLength": 162,
-                  "charOffset": 169,
-                  "snippet": {
-                    "text": "Collect(\r\n        colFilter,\r\n        {\r\n            Title: Gallery8_5.Selected.Title,\r\n            value: radioParty_1.Selected.'Customer Name'\r\n        }\r\n    )"
-                  }
-                }
-              },
-              "properties": {
-                "member": "OnSelect",
-                "module": "Order List",
-                "type": "'Order List'.Container4_28.radioParty_1"
-              }
-            }
-          ],
-          "message": {
-            "arguments": [
-              "Collect"
-            ],
-            "id": "issue"
-          },
-          "properties": {
-            "level": "High"
-          },
-          "ruleId": "app-ErrInvalidArgs-Func",
-          "ruleIndex": 2
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "'Order List'.Container4_28.radioParty_1.OnSelect"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "'Order List'.Container4_28.radioParty_1.OnSelect",
-                  "relativeAddress": 0
-                },
-                "region": {
-                  "charLength": 9,
-                  "charOffset": 187,
-                  "snippet": {
-                    "text": "colFilter"
-                  }
-                }
-              },
-              "properties": {
-                "member": "OnSelect",
-                "module": "Order List",
-                "type": "'Order List'.Container4_28.radioParty_1"
-              }
-            }
-          ],
-          "message": {
-            "id": "issue"
-          },
-          "properties": {
-            "level": "High"
-          },
-          "ruleId": "app-ErrCollectionDoesNotAcceptThisType",
-          "ruleIndex": 9
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "'Order List'.Container4_28.OrderValue_1.Default"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "'Order List'.Container4_28.OrderValue_1.Default",
-                  "relativeAddress": 0
-                },
-                "region": {
-                  "charLength": 6,
-                  "charOffset": 53,
-                  "snippet": {
-                    "text": ".value"
-                  }
-                }
-              },
-              "properties": {
-                "member": "Default",
-                "module": "Order List",
-                "type": "'Order List'.Container4_28.OrderValue_1"
-              }
-            }
-          ],
-          "message": {
-            "arguments": [
-              "Text",
-              "Error"
-            ],
-            "id": "issue"
-          },
-          "properties": {
-            "level": "High"
-          },
-          "ruleId": "app-ErrIncompatibleRulePropTypes-PropKind-RuleKind",
-          "ruleIndex": 8
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "'Order List'.Container4_28.OrderValue_1.OnChange"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "'Order List'.Container4_28.OrderValue_1.OnChange",
-                  "relativeAddress": 0
-                },
-                "region": {
-                  "charLength": 142,
-                  "charOffset": 169,
-                  "snippet": {
-                    "text": "Collect(\r\n        colFilter,\r\n        {\r\n            Title: Gallery8_5.Selected.Title,\r\n            value: OrderValue_1.Text\r\n        }\r\n    )"
-                  }
-                }
-              },
-              "properties": {
-                "member": "OnChange",
-                "module": "Order List",
-                "type": "'Order List'.Container4_28.OrderValue_1"
-              }
-            }
-          ],
-          "message": {
-            "arguments": [
-              "Collect"
-            ],
-            "id": "issue"
-          },
-          "properties": {
-            "level": "High"
-          },
-          "ruleId": "app-ErrInvalidArgs-Func",
-          "ruleIndex": 2
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "'Order List'.Container4_28.OrderValue_1.OnChange"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "'Order List'.Container4_28.OrderValue_1.OnChange",
-                  "relativeAddress": 0
-                },
-                "region": {
-                  "charLength": 9,
-                  "charOffset": 187,
-                  "snippet": {
-                    "text": "colFilter"
-                  }
-                }
-              },
-              "properties": {
-                "member": "OnChange",
-                "module": "Order List",
-                "type": "'Order List'.Container4_28.OrderValue_1"
-              }
-            }
-          ],
-          "message": {
-            "id": "issue"
-          },
-          "properties": {
-            "level": "High"
-          },
-          "ruleId": "app-ErrCollectionDoesNotAcceptThisType",
-          "ruleIndex": 9
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "'Order List'.Container4_28.DateFrom_5.OnSelect"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "'Order List'.Container4_28.DateFrom_5.OnSelect",
-                  "relativeAddress": 0
-                },
-                "region": {
-                  "charLength": 203,
-                  "charOffset": 155,
-                  "snippet": {
-                    "text": "Collect(\r\n        colFilter,\r\n        {\r\n            Title: \"Date From\",\r\n            value: Text(\r\n                DateFrom_5.SelectedDate,\r\n                \"dd-mm-yyyy\"\r\n            )\r\n        }\r\n    )"
-                  }
-                }
-              },
-              "properties": {
-                "member": "OnSelect",
-                "module": "Order List",
-                "type": "'Order List'.Container4_28.DateFrom_5"
-              }
-            }
-          ],
-          "message": {
-            "arguments": [
-              "Collect"
-            ],
-            "id": "issue"
-          },
-          "properties": {
-            "level": "High"
-          },
-          "ruleId": "app-ErrInvalidArgs-Func",
-          "ruleIndex": 2
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "'Order List'.Container4_28.DateFrom_5.OnSelect"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "'Order List'.Container4_28.DateFrom_5.OnSelect",
-                  "relativeAddress": 0
-                },
-                "region": {
-                  "charLength": 9,
-                  "charOffset": 173,
-                  "snippet": {
-                    "text": "colFilter"
-                  }
-                }
-              },
-              "properties": {
-                "member": "OnSelect",
-                "module": "Order List",
-                "type": "'Order List'.Container4_28.DateFrom_5"
-              }
-            }
-          ],
-          "message": {
-            "id": "issue"
-          },
-          "properties": {
-            "level": "High"
-          },
-          "ruleId": "app-ErrCollectionDoesNotAcceptThisType",
-          "ruleIndex": 9
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "'Order List'.Container4_28.DateTo_5.OnSelect"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "'Order List'.Container4_28.DateTo_5.OnSelect",
-                  "relativeAddress": 0
-                },
-                "region": {
-                  "charLength": 199,
-                  "charOffset": 153,
-                  "snippet": {
-                    "text": "Collect(\r\n        colFilter,\r\n        {\r\n            Title: \"Date To\",\r\n            value: Text(\r\n                DateTo_5.SelectedDate,\r\n                \"dd-mm-yyyy\"\r\n            )\r\n        }\r\n    )"
-                  }
-                }
-              },
-              "properties": {
-                "member": "OnSelect",
-                "module": "Order List",
-                "type": "'Order List'.Container4_28.DateTo_5"
-              }
-            }
-          ],
-          "message": {
-            "arguments": [
-              "Collect"
-            ],
-            "id": "issue"
-          },
-          "properties": {
-            "level": "High"
-          },
-          "ruleId": "app-ErrInvalidArgs-Func",
-          "ruleIndex": 2
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "'Order List'.Container4_28.DateTo_5.OnSelect"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "'Order List'.Container4_28.DateTo_5.OnSelect",
-                  "relativeAddress": 0
-                },
-                "region": {
-                  "charLength": 9,
-                  "charOffset": 171,
-                  "snippet": {
-                    "text": "colFilter"
-                  }
-                }
-              },
-              "properties": {
-                "member": "OnSelect",
-                "module": "Order List",
-                "type": "'Order List'.Container4_28.DateTo_5"
-              }
-            }
-          ],
-          "message": {
-            "id": "issue"
-          },
-          "properties": {
-            "level": "High"
-          },
-          "ruleId": "app-ErrCollectionDoesNotAcceptThisType",
-          "ruleIndex": 9
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "'Visit List View'.Container4_25.Display_2.Label31_5.Text"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "'Visit List View'.Container4_25.Display_2.Label31_5.Text",
-                  "relativeAddress": 0
-                },
-                "region": {
-                  "charLength": 6,
-                  "charOffset": 8,
-                  "snippet": {
-                    "text": ".value"
-                  }
-                }
-              },
-              "properties": {
-                "member": "Text",
-                "module": "Visit List View",
-                "type": "'Visit List View'.Container4_25.Display_2.Label31_5"
-              }
-            }
-          ],
-          "message": {
-            "arguments": [
-              "Text",
-              "Error"
-            ],
-            "id": "issue"
-          },
-          "properties": {
-            "level": "High"
-          },
-          "ruleId": "app-ErrIncompatibleRulePropTypes-PropKind-RuleKind",
-          "ruleIndex": 8
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "'Visit List View'.Container4_25.Display_2.Label31_5.Tooltip"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "'Visit List View'.Container4_25.Display_2.Label31_5.Tooltip",
-                  "relativeAddress": 0
-                },
-                "region": {
-                  "charLength": 6,
-                  "charOffset": 8,
-                  "snippet": {
-                    "text": ".value"
-                  }
-                }
-              },
-              "properties": {
-                "member": "Tooltip",
-                "module": "Visit List View",
-                "type": "'Visit List View'.Container4_25.Display_2.Label31_5"
-              }
-            }
-          ],
-          "message": {
-            "arguments": [
-              "Text",
-              "Error"
-            ],
-            "id": "issue"
-          },
-          "properties": {
-            "level": "High"
-          },
-          "ruleId": "app-ErrIncompatibleRulePropTypes-PropKind-RuleKind",
-          "ruleIndex": 8
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "'Visit List View'.Container4_25.radioDate_2.OnSelect"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "'Visit List View'.Container4_25.radioDate_2.OnSelect",
-                  "relativeAddress": 0
-                },
-                "region": {
-                  "charLength": 151,
-                  "charOffset": 169,
-                  "snippet": {
-                    "text": "Collect(\r\n        colFilter,\r\n        {\r\n            Title: Gallery8_2.Selected.Title,\r\n            value: radioDate_2.Selected.Value\r\n        }\r\n    )"
-                  }
-                }
-              },
-              "properties": {
-                "member": "OnSelect",
-                "module": "Visit List View",
-                "type": "'Visit List View'.Container4_25.radioDate_2"
-              }
-            }
-          ],
-          "message": {
-            "arguments": [
-              "Collect"
-            ],
-            "id": "issue"
-          },
-          "properties": {
-            "level": "High"
-          },
-          "ruleId": "app-ErrInvalidArgs-Func",
-          "ruleIndex": 2
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "'Visit List View'.Container4_25.radioDate_2.OnSelect"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "'Visit List View'.Container4_25.radioDate_2.OnSelect",
-                  "relativeAddress": 0
-                },
-                "region": {
-                  "charLength": 9,
-                  "charOffset": 187,
-                  "snippet": {
-                    "text": "colFilter"
-                  }
-                }
-              },
-              "properties": {
-                "member": "OnSelect",
-                "module": "Visit List View",
-                "type": "'Visit List View'.Container4_25.radioDate_2"
-              }
-            }
-          ],
-          "message": {
-            "id": "issue"
-          },
-          "properties": {
-            "level": "High"
-          },
-          "ruleId": "app-ErrCollectionDoesNotAcceptThisType",
-          "ruleIndex": 9
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "'Visit List View'.Container4_25.radioSalesperson_2.OnSelect"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "'Visit List View'.Container4_25.radioSalesperson_2.OnSelect",
-                  "relativeAddress": 0
-                },
-                "region": {
-                  "charLength": 164,
-                  "charOffset": 117,
-                  "snippet": {
-                    "text": "Collect(\r\n        colFilter,\r\n        {\r\n            Title: Gallery8_2.Selected.Title,\r\n            value: radioSalesperson_2.Selected.'Full Name'\r\n        }\r\n    )"
-                  }
-                }
-              },
-              "properties": {
-                "member": "OnSelect",
-                "module": "Visit List View",
-                "type": "'Visit List View'.Container4_25.radioSalesperson_2"
-              }
-            }
-          ],
-          "message": {
-            "arguments": [
-              "Collect"
-            ],
-            "id": "issue"
-          },
-          "properties": {
-            "level": "High"
-          },
-          "ruleId": "app-ErrInvalidArgs-Func",
-          "ruleIndex": 2
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "'Visit List View'.Container4_25.radioSalesperson_2.OnSelect"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "'Visit List View'.Container4_25.radioSalesperson_2.OnSelect",
-                  "relativeAddress": 0
-                },
-                "region": {
-                  "charLength": 9,
-                  "charOffset": 135,
-                  "snippet": {
-                    "text": "colFilter"
-                  }
-                }
-              },
-              "properties": {
-                "member": "OnSelect",
-                "module": "Visit List View",
-                "type": "'Visit List View'.Container4_25.radioSalesperson_2"
-              }
-            }
-          ],
-          "message": {
-            "id": "issue"
-          },
-          "properties": {
-            "level": "High"
-          },
-          "ruleId": "app-ErrCollectionDoesNotAcceptThisType",
-          "ruleIndex": 9
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "'Visit List View'.Container4_25.DateFrom_2.OnSelect"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "'Visit List View'.Container4_25.DateFrom_2.OnSelect",
-                  "relativeAddress": 0
-                },
-                "region": {
-                  "charLength": 203,
-                  "charOffset": 155,
-                  "snippet": {
-                    "text": "Collect(\r\n        colFilter,\r\n        {\r\n            Title: \"Date From\",\r\n            value: Text(\r\n                DateFrom_2.SelectedDate,\r\n                \"dd-mm-yyyy\"\r\n            )\r\n        }\r\n    )"
-                  }
-                }
-              },
-              "properties": {
-                "member": "OnSelect",
-                "module": "Visit List View",
-                "type": "'Visit List View'.Container4_25.DateFrom_2"
-              }
-            }
-          ],
-          "message": {
-            "arguments": [
-              "Collect"
-            ],
-            "id": "issue"
-          },
-          "properties": {
-            "level": "High"
-          },
-          "ruleId": "app-ErrInvalidArgs-Func",
-          "ruleIndex": 2
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "'Visit List View'.Container4_25.DateFrom_2.OnSelect"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "'Visit List View'.Container4_25.DateFrom_2.OnSelect",
-                  "relativeAddress": 0
-                },
-                "region": {
-                  "charLength": 9,
-                  "charOffset": 173,
-                  "snippet": {
-                    "text": "colFilter"
-                  }
-                }
-              },
-              "properties": {
-                "member": "OnSelect",
-                "module": "Visit List View",
-                "type": "'Visit List View'.Container4_25.DateFrom_2"
-              }
-            }
-          ],
-          "message": {
-            "id": "issue"
-          },
-          "properties": {
-            "level": "High"
-          },
-          "ruleId": "app-ErrCollectionDoesNotAcceptThisType",
-          "ruleIndex": 9
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "'Visit List View'.Container4_25.DateTo_2.OnSelect"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "'Visit List View'.Container4_25.DateTo_2.OnSelect",
-                  "relativeAddress": 0
-                },
-                "region": {
-                  "charLength": 199,
-                  "charOffset": 153,
-                  "snippet": {
-                    "text": "Collect(\r\n        colFilter,\r\n        {\r\n            Title: \"Date To\",\r\n            value: Text(\r\n                DateTo_2.SelectedDate,\r\n                \"dd-mm-yyyy\"\r\n            )\r\n        }\r\n    )"
-                  }
-                }
-              },
-              "properties": {
-                "member": "OnSelect",
-                "module": "Visit List View",
-                "type": "'Visit List View'.Container4_25.DateTo_2"
-              }
-            }
-          ],
-          "message": {
-            "arguments": [
-              "Collect"
-            ],
-            "id": "issue"
-          },
-          "properties": {
-            "level": "High"
-          },
-          "ruleId": "app-ErrInvalidArgs-Func",
-          "ruleIndex": 2
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "'Visit List View'.Container4_25.DateTo_2.OnSelect"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "'Visit List View'.Container4_25.DateTo_2.OnSelect",
-                  "relativeAddress": 0
-                },
-                "region": {
-                  "charLength": 9,
-                  "charOffset": 171,
-                  "snippet": {
-                    "text": "colFilter"
-                  }
-                }
-              },
-              "properties": {
-                "member": "OnSelect",
-                "module": "Visit List View",
-                "type": "'Visit List View'.Container4_25.DateTo_2"
-              }
-            }
-          ],
-          "message": {
-            "id": "issue"
-          },
-          "properties": {
-            "level": "High"
-          },
-          "ruleId": "app-ErrCollectionDoesNotAcceptThisType",
-          "ruleIndex": 9
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
                   "fullyQualifiedName": "krascreen.'Achivement type filter'.title_3.Size"
                 }
               ],
@@ -32799,7 +31719,7 @@
             "level": "High"
           },
           "ruleId": "app-ErrSearchWrongType",
-          "ruleIndex": 10
+          "ruleIndex": 7
         },
         {
           "locations": [
@@ -33726,420 +32646,72 @@
             {
               "logicalLocations": [
                 {
-                  "fullyQualifiedName": "'Start Visit'.Container4_23.Container4_26.Display_3.Label31_3.Text"
+                  "fullyQualifiedName": "'Start Visit'.Label6.Text"
                 }
               ],
               "physicalLocation": {
                 "address": {
-                  "fullyQualifiedName": "'Start Visit'.Container4_23.Container4_26.Display_3.Label31_3.Text",
+                  "fullyQualifiedName": "'Start Visit'.Label6.Text",
                   "relativeAddress": 0
                 },
                 "region": {
-                  "charLength": 6,
-                  "charOffset": 31,
+                  "charLength": 5,
+                  "charOffset": 10,
                   "snippet": {
-                    "text": ".value"
+                    "text": "datt1"
                   }
                 }
               },
               "properties": {
                 "member": "Text",
                 "module": "Start Visit",
-                "type": "'Start Visit'.Container4_23.Container4_26.Display_3.Label31_3"
+                "type": "'Start Visit'.Label6"
               }
             }
           ],
           "message": {
             "arguments": [
-              "Text, Number, Decimal, Date, Time, DateTimeNoTimeZone, DateTime, Boolean, OptionSetValue, ViewValue, UntypedObject"
+              "datt1"
             ],
             "id": "issue"
           },
           "properties": {
             "level": "High"
           },
-          "ruleId": "app-ErrBadType-ExpectedTypesCSV",
-          "ruleIndex": 7
+          "ruleId": "app-ErrInvalidName",
+          "ruleIndex": 0
         },
         {
           "locations": [
             {
               "logicalLocations": [
                 {
-                  "fullyQualifiedName": "'Start Visit'.Container4_23.Container4_26.C_ALL.OnCheck"
+                  "fullyQualifiedName": "'Start Visit'.Label6.Text"
                 }
               ],
               "physicalLocation": {
                 "address": {
-                  "fullyQualifiedName": "'Start Visit'.Container4_23.Container4_26.C_ALL.OnCheck",
+                  "fullyQualifiedName": "'Start Visit'.Label6.Text",
                   "relativeAddress": 0
                 },
                 "region": {
-                  "charLength": 93,
+                  "charLength": 16,
                   "charOffset": 0,
                   "snippet": {
-                    "text": "Collect(\r\n    colFilter,\r\n    {\r\n        Title: \"Type\",\r\n        value: C_ALL.Value\r\n    }\r\n)"
-                  }
-                }
-              },
-              "properties": {
-                "member": "OnCheck",
-                "module": "Start Visit",
-                "type": "'Start Visit'.Container4_23.Container4_26.C_ALL"
-              }
-            }
-          ],
-          "message": {
-            "arguments": [
-              "Collect"
-            ],
-            "id": "issue"
-          },
-          "properties": {
-            "level": "High"
-          },
-          "ruleId": "app-ErrInvalidArgs-Func",
-          "ruleIndex": 2
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "'Start Visit'.Container4_23.Container4_26.C_ALL.OnCheck"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "'Start Visit'.Container4_23.Container4_26.C_ALL.OnCheck",
-                  "relativeAddress": 0
-                },
-                "region": {
-                  "charLength": 9,
-                  "charOffset": 14,
-                  "snippet": {
-                    "text": "colFilter"
-                  }
-                }
-              },
-              "properties": {
-                "member": "OnCheck",
-                "module": "Start Visit",
-                "type": "'Start Visit'.Container4_23.Container4_26.C_ALL"
-              }
-            }
-          ],
-          "message": {
-            "id": "issue"
-          },
-          "properties": {
-            "level": "High"
-          },
-          "ruleId": "app-ErrCollectionDoesNotAcceptThisType",
-          "ruleIndex": 9
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "'Start Visit'.Container4_23.Container4_26.radioSalesperson_3.OnSelect"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "'Start Visit'.Container4_23.Container4_26.radioSalesperson_3.OnSelect",
-                  "relativeAddress": 0
-                },
-                "region": {
-                  "charLength": 164,
-                  "charOffset": 117,
-                  "snippet": {
-                    "text": "Collect(\r\n        colFilter,\r\n        {\r\n            Title: Gallery8_3.Selected.Title,\r\n            value: radioSalesperson_3.Selected.'Full Name'\r\n        }\r\n    )"
-                  }
-                }
-              },
-              "properties": {
-                "member": "OnSelect",
-                "module": "Start Visit",
-                "type": "'Start Visit'.Container4_23.Container4_26.radioSalesperson_3"
-              }
-            }
-          ],
-          "message": {
-            "arguments": [
-              "Collect"
-            ],
-            "id": "issue"
-          },
-          "properties": {
-            "level": "High"
-          },
-          "ruleId": "app-ErrInvalidArgs-Func",
-          "ruleIndex": 2
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "'Start Visit'.Container4_23.Container4_26.radioSalesperson_3.OnSelect"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "'Start Visit'.Container4_23.Container4_26.radioSalesperson_3.OnSelect",
-                  "relativeAddress": 0
-                },
-                "region": {
-                  "charLength": 9,
-                  "charOffset": 135,
-                  "snippet": {
-                    "text": "colFilter"
-                  }
-                }
-              },
-              "properties": {
-                "member": "OnSelect",
-                "module": "Start Visit",
-                "type": "'Start Visit'.Container4_23.Container4_26.radioSalesperson_3"
-              }
-            }
-          ],
-          "message": {
-            "id": "issue"
-          },
-          "properties": {
-            "level": "High"
-          },
-          "ruleId": "app-ErrCollectionDoesNotAcceptThisType",
-          "ruleIndex": 9
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "'Start Visit'.Container4_23.Container4_26.DateFrom_3.OnSelect"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "'Start Visit'.Container4_23.Container4_26.DateFrom_3.OnSelect",
-                  "relativeAddress": 0
-                },
-                "region": {
-                  "charLength": 203,
-                  "charOffset": 155,
-                  "snippet": {
-                    "text": "Collect(\r\n        colFilter,\r\n        {\r\n            Title: \"Date From\",\r\n            value: Text(\r\n                DateFrom_3.SelectedDate,\r\n                \"dd-mm-yyyy\"\r\n            )\r\n        }\r\n    )"
-                  }
-                }
-              },
-              "properties": {
-                "member": "OnSelect",
-                "module": "Start Visit",
-                "type": "'Start Visit'.Container4_23.Container4_26.DateFrom_3"
-              }
-            }
-          ],
-          "message": {
-            "arguments": [
-              "Collect"
-            ],
-            "id": "issue"
-          },
-          "properties": {
-            "level": "High"
-          },
-          "ruleId": "app-ErrInvalidArgs-Func",
-          "ruleIndex": 2
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "'Start Visit'.Container4_23.Container4_26.DateFrom_3.OnSelect"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "'Start Visit'.Container4_23.Container4_26.DateFrom_3.OnSelect",
-                  "relativeAddress": 0
-                },
-                "region": {
-                  "charLength": 9,
-                  "charOffset": 173,
-                  "snippet": {
-                    "text": "colFilter"
-                  }
-                }
-              },
-              "properties": {
-                "member": "OnSelect",
-                "module": "Start Visit",
-                "type": "'Start Visit'.Container4_23.Container4_26.DateFrom_3"
-              }
-            }
-          ],
-          "message": {
-            "id": "issue"
-          },
-          "properties": {
-            "level": "High"
-          },
-          "ruleId": "app-ErrCollectionDoesNotAcceptThisType",
-          "ruleIndex": 9
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "'Start Visit'.Container4_23.Container4_26.DateTo_3.OnSelect"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "'Start Visit'.Container4_23.Container4_26.DateTo_3.OnSelect",
-                  "relativeAddress": 0
-                },
-                "region": {
-                  "charLength": 199,
-                  "charOffset": 153,
-                  "snippet": {
-                    "text": "Collect(\r\n        colFilter,\r\n        {\r\n            Title: \"Date To\",\r\n            value: Text(\r\n                DateTo_3.SelectedDate,\r\n                \"dd-mm-yyyy\"\r\n            )\r\n        }\r\n    )"
-                  }
-                }
-              },
-              "properties": {
-                "member": "OnSelect",
-                "module": "Start Visit",
-                "type": "'Start Visit'.Container4_23.Container4_26.DateTo_3"
-              }
-            }
-          ],
-          "message": {
-            "arguments": [
-              "Collect"
-            ],
-            "id": "issue"
-          },
-          "properties": {
-            "level": "High"
-          },
-          "ruleId": "app-ErrInvalidArgs-Func",
-          "ruleIndex": 2
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "'Start Visit'.Container4_23.Container4_26.DateTo_3.OnSelect"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "'Start Visit'.Container4_23.Container4_26.DateTo_3.OnSelect",
-                  "relativeAddress": 0
-                },
-                "region": {
-                  "charLength": 9,
-                  "charOffset": 171,
-                  "snippet": {
-                    "text": "colFilter"
-                  }
-                }
-              },
-              "properties": {
-                "member": "OnSelect",
-                "module": "Start Visit",
-                "type": "'Start Visit'.Container4_23.Container4_26.DateTo_3"
-              }
-            }
-          ],
-          "message": {
-            "id": "issue"
-          },
-          "properties": {
-            "level": "High"
-          },
-          "ruleId": "app-ErrCollectionDoesNotAcceptThisType",
-          "ruleIndex": 9
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "'Start Visit'.Container4_23.Display_1.Label31_2.Text"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "'Start Visit'.Container4_23.Display_1.Label31_2.Text",
-                  "relativeAddress": 0
-                },
-                "region": {
-                  "charLength": 6,
-                  "charOffset": 31,
-                  "snippet": {
-                    "text": ".value"
+                    "text": "CountRows(datt1)"
                   }
                 }
               },
               "properties": {
                 "member": "Text",
                 "module": "Start Visit",
-                "type": "'Start Visit'.Container4_23.Display_1.Label31_2"
+                "type": "'Start Visit'.Label6"
               }
             }
           ],
           "message": {
             "arguments": [
-              "Text, Number, Decimal, Date, Time, DateTimeNoTimeZone, DateTime, Boolean, OptionSetValue, ViewValue, UntypedObject"
-            ],
-            "id": "issue"
-          },
-          "properties": {
-            "level": "High"
-          },
-          "ruleId": "app-ErrBadType-ExpectedTypesCSV",
-          "ruleIndex": 7
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "'Start Visit'.Container4_23.radioSalesperson_1.OnSelect"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "'Start Visit'.Container4_23.radioSalesperson_1.OnSelect",
-                  "relativeAddress": 0
-                },
-                "region": {
-                  "charLength": 164,
-                  "charOffset": 117,
-                  "snippet": {
-                    "text": "Collect(\r\n        colFilter,\r\n        {\r\n            Title: Gallery8_1.Selected.Title,\r\n            value: radioSalesperson_1.Selected.'Full Name'\r\n        }\r\n    )"
-                  }
-                }
-              },
-              "properties": {
-                "member": "OnSelect",
-                "module": "Start Visit",
-                "type": "'Start Visit'.Container4_23.radioSalesperson_1"
-              }
-            }
-          ],
-          "message": {
-            "arguments": [
-              "Collect"
+              "CountRows"
             ],
             "id": "issue"
           },
@@ -34154,26 +32726,146 @@
             {
               "logicalLocations": [
                 {
-                  "fullyQualifiedName": "'Start Visit'.Container4_23.radioSalesperson_1.OnSelect"
+                  "fullyQualifiedName": "'Start Visit'.Container4_23.Container4_26.ApplyBtn_7.OnSelect"
                 }
               ],
               "physicalLocation": {
                 "address": {
-                  "fullyQualifiedName": "'Start Visit'.Container4_23.radioSalesperson_1.OnSelect",
+                  "fullyQualifiedName": "'Start Visit'.Container4_23.Container4_26.ApplyBtn_7.OnSelect",
                   "relativeAddress": 0
                 },
                 "region": {
-                  "charLength": 9,
-                  "charOffset": 135,
+                  "charOffset": 2760,
                   "snippet": {
-                    "text": "colFilter"
+                    "text": ""
                   }
                 }
               },
               "properties": {
                 "member": "OnSelect",
                 "module": "Start Visit",
-                "type": "'Start Visit'.Container4_23.radioSalesperson_1"
+                "type": "'Start Visit'.Container4_23.Container4_26.ApplyBtn_7"
+              }
+            }
+          ],
+          "message": {
+            "arguments": [
+              "Eof",
+              "ParenClose"
+            ],
+            "id": "issue"
+          },
+          "properties": {
+            "level": "High"
+          },
+          "ruleId": "app-ErrExpectedFound-Ex-Fnd",
+          "ruleIndex": 8
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Start Visit'.Container4_23.Container4_26.ApplyBtn_7.OnSelect"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Start Visit'.Container4_23.Container4_26.ApplyBtn_7.OnSelect",
+                  "relativeAddress": 0
+                },
+                "region": {
+                  "charOffset": 2760,
+                  "snippet": {
+                    "text": ""
+                  }
+                }
+              },
+              "properties": {
+                "member": "OnSelect",
+                "module": "Start Visit",
+                "type": "'Start Visit'.Container4_23.Container4_26.ApplyBtn_7"
+              }
+            }
+          ],
+          "message": {
+            "arguments": [
+              "Eof",
+              "ParenClose"
+            ],
+            "id": "issue"
+          },
+          "properties": {
+            "level": "High"
+          },
+          "ruleId": "app-ErrExpectedFound-Ex-Fnd",
+          "ruleIndex": 8
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Start Visit'.Container4_23.Container4_26.ApplyBtn_7.OnSelect"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Start Visit'.Container4_23.Container4_26.ApplyBtn_7.OnSelect",
+                  "relativeAddress": 0
+                },
+                "region": {
+                  "charLength": 5,
+                  "charOffset": 13,
+                  "snippet": {
+                    "text": "datt1"
+                  }
+                }
+              },
+              "properties": {
+                "member": "OnSelect",
+                "module": "Start Visit",
+                "type": "'Start Visit'.Container4_23.Container4_26.ApplyBtn_7"
+              }
+            }
+          ],
+          "message": {
+            "arguments": [
+              "datt1"
+            ],
+            "id": "issue"
+          },
+          "properties": {
+            "level": "High"
+          },
+          "ruleId": "app-ErrInvalidName",
+          "ruleIndex": 0
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Start Visit'.Container4_23.Container4_26.ApplyBtn_7.OnSelect"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Start Visit'.Container4_23.Container4_26.ApplyBtn_7.OnSelect",
+                  "relativeAddress": 0
+                },
+                "region": {
+                  "charLength": 304,
+                  "charOffset": 623,
+                  "snippet": {
+                    "text": "If(\r\n                First(vt).Value = \"UnPlanned\",\r\n                Filter(\r\n                     OfflineVisitCollection,\r\n                    ('Owning User'.'Primary Email' = User().Email\r\n                    \r\n                    ) && Text('Visit Type') = \"Unplanned\"\r\n                )\r\n            )"
+                  }
+                }
+              },
+              "properties": {
+                "member": "OnSelect",
+                "module": "Start Visit",
+                "type": "'Start Visit'.Container4_23.Container4_26.ApplyBtn_7"
               }
             }
           ],
@@ -34183,7 +32875,7 @@
           "properties": {
             "level": "High"
           },
-          "ruleId": "app-ErrCollectionDoesNotAcceptThisType",
+          "ruleId": "app-ErrBooleanExpected",
           "ruleIndex": 9
         },
         {
@@ -34191,32 +32883,106 @@
             {
               "logicalLocations": [
                 {
-                  "fullyQualifiedName": "'Start Visit'.Container4_23.DateFrom_1.OnSelect"
+                  "fullyQualifiedName": "'Start Visit'.Container4_23.Container4_26.ApplyBtn_7.OnSelect"
                 }
               ],
               "physicalLocation": {
                 "address": {
-                  "fullyQualifiedName": "'Start Visit'.Container4_23.DateFrom_1.OnSelect",
+                  "fullyQualifiedName": "'Start Visit'.Container4_23.Container4_26.ApplyBtn_7.OnSelect",
                   "relativeAddress": 0
                 },
                 "region": {
-                  "charLength": 203,
-                  "charOffset": 155,
+                  "charLength": 638,
+                  "charOffset": 307,
                   "snippet": {
-                    "text": "Collect(\r\n        colFilter,\r\n        {\r\n            Title: \"Date From\",\r\n            value: Text(\r\n                DateFrom_1.SelectedDate,\r\n                \"dd-mm-yyyy\"\r\n            )\r\n        }\r\n    )"
+                    "text": "If(\r\n            First(vt).Value = \"Planned\",\r\n            Filter(\r\n                 OfflineVisitCollection,\r\n                ('Owning User'.'Primary Email' = User().Email && Text('Visit date',\"dd-mm-yyyy\") = Text(DatePicker2.SelectedDate,\"dd-mm-yyyy\") && Text('Visit Type') = \"Planned\"\r\n            ),\r\n            If(\r\n                First(vt).Value = \"UnPlanned\",\r\n                Filter(\r\n                     OfflineVisitCollection,\r\n                    ('Owning User'.'Primary Email' = User().Email\r\n                    \r\n                    ) && Text('Visit Type') = \"Unplanned\"\r\n                )\r\n            )\r\n        )\r\n    )"
                   }
                 }
               },
               "properties": {
                 "member": "OnSelect",
                 "module": "Start Visit",
-                "type": "'Start Visit'.Container4_23.DateFrom_1"
+                "type": "'Start Visit'.Container4_23.Container4_26.ApplyBtn_7"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "High"
+          },
+          "ruleId": "app-ErrBooleanExpected",
+          "ruleIndex": 9
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Start Visit'.Container4_23.Container4_26.ApplyBtn_7.OnSelect"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Start Visit'.Container4_23.Container4_26.ApplyBtn_7.OnSelect",
+                  "relativeAddress": 0
+                },
+                "region": {
+                  "charLength": 246,
+                  "charOffset": 952,
+                  "snippet": {
+                    "text": "If(\r\n        CountRows(vt) = 2,\r\n        Filter(\r\n             OfflineVisitCollection,\r\n            ('Owning User'.'Primary Email' = User().Email && Text('Visit date',\"dd-mm-yyyy\") = Text(DatePicker2.SelectedDate,\"dd-mm-yyyy\") )\r\n        )\r\n    )"
+                  }
+                }
+              },
+              "properties": {
+                "member": "OnSelect",
+                "module": "Start Visit",
+                "type": "'Start Visit'.Container4_23.Container4_26.ApplyBtn_7"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "High"
+          },
+          "ruleId": "app-ErrBooleanExpected",
+          "ruleIndex": 9
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Start Visit'.Container4_23.Container4_26.ApplyBtn_7.OnSelect"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Start Visit'.Container4_23.Container4_26.ApplyBtn_7.OnSelect",
+                  "relativeAddress": 0
+                },
+                "region": {
+                  "charLength": 1,
+                  "charOffset": 12,
+                  "snippet": {
+                    "text": "("
+                  }
+                }
+              },
+              "properties": {
+                "member": "OnSelect",
+                "module": "Start Visit",
+                "type": "'Start Visit'.Container4_23.Container4_26.ApplyBtn_7"
               }
             }
           ],
           "message": {
             "arguments": [
-              "Collect"
+              "ClearCollect"
             ],
             "id": "issue"
           },
@@ -34231,26 +32997,26 @@
             {
               "logicalLocations": [
                 {
-                  "fullyQualifiedName": "'Start Visit'.Container4_23.DateFrom_1.OnSelect"
+                  "fullyQualifiedName": "'Start Visit'.Container4_23.Container4_26.ApplyBtn_7.OnSelect"
                 }
               ],
               "physicalLocation": {
                 "address": {
-                  "fullyQualifiedName": "'Start Visit'.Container4_23.DateFrom_1.OnSelect",
+                  "fullyQualifiedName": "'Start Visit'.Container4_23.Container4_26.ApplyBtn_7.OnSelect",
                   "relativeAddress": 0
                 },
                 "region": {
-                  "charLength": 9,
-                  "charOffset": 173,
+                  "charLength": 1,
+                  "charOffset": 23,
                   "snippet": {
-                    "text": "colFilter"
+                    "text": "("
                   }
                 }
               },
               "properties": {
                 "member": "OnSelect",
                 "module": "Start Visit",
-                "type": "'Start Visit'.Container4_23.DateFrom_1"
+                "type": "'Start Visit'.Container4_23.Container4_26.ApplyBtn_7"
               }
             }
           ],
@@ -34260,85 +33026,8 @@
           "properties": {
             "level": "High"
           },
-          "ruleId": "app-ErrCollectionDoesNotAcceptThisType",
-          "ruleIndex": 9
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "'Start Visit'.Container4_23.DateTo_1.OnSelect"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "'Start Visit'.Container4_23.DateTo_1.OnSelect",
-                  "relativeAddress": 0
-                },
-                "region": {
-                  "charLength": 199,
-                  "charOffset": 153,
-                  "snippet": {
-                    "text": "Collect(\r\n        colFilter,\r\n        {\r\n            Title: \"Date To\",\r\n            value: Text(\r\n                DateTo_1.SelectedDate,\r\n                \"dd-mm-yyyy\"\r\n            )\r\n        }\r\n    )"
-                  }
-                }
-              },
-              "properties": {
-                "member": "OnSelect",
-                "module": "Start Visit",
-                "type": "'Start Visit'.Container4_23.DateTo_1"
-              }
-            }
-          ],
-          "message": {
-            "arguments": [
-              "Collect"
-            ],
-            "id": "issue"
-          },
-          "properties": {
-            "level": "High"
-          },
-          "ruleId": "app-ErrInvalidArgs-Func",
-          "ruleIndex": 2
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "'Start Visit'.Container4_23.DateTo_1.OnSelect"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "'Start Visit'.Container4_23.DateTo_1.OnSelect",
-                  "relativeAddress": 0
-                },
-                "region": {
-                  "charLength": 9,
-                  "charOffset": 171,
-                  "snippet": {
-                    "text": "colFilter"
-                  }
-                }
-              },
-              "properties": {
-                "member": "OnSelect",
-                "module": "Start Visit",
-                "type": "'Start Visit'.Container4_23.DateTo_1"
-              }
-            }
-          ],
-          "message": {
-            "id": "issue"
-          },
-          "properties": {
-            "level": "High"
-          },
-          "ruleId": "app-ErrCollectionDoesNotAcceptThisType",
-          "ruleIndex": 9
+          "ruleId": "app-ErrNeedAgg",
+          "ruleIndex": 10
         },
         {
           "locations": [
@@ -36033,6 +34722,36 @@
             {
               "logicalLocations": [
                 {
+                  "fullyQualifiedName": "'Start Visit'.DatePicker2.AccessibleLabel"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Start Visit'.DatePicker2.AccessibleLabel",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "AccessibleLabel",
+                "module": "Start Visit",
+                "type": "'Start Visit'.DatePicker2"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-AccessibleLabelNeeded",
+          "ruleIndex": 11
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
                   "fullyQualifiedName": "takePhotoScreen.Container2.Canvas4_2.DataCard5_2.Container1.Form3_1.Attachment_DataCard2.DataCardValue20.AccessibleLabel"
                 }
               ],
@@ -36453,6 +35172,66 @@
             {
               "logicalLocations": [
                 {
+                  "fullyQualifiedName": "'Activity List View'.'Activity gallery_1'.Circle19_3.AccessibleLabel"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Activity List View'.'Activity gallery_1'.Circle19_3.AccessibleLabel",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "AccessibleLabel",
+                "module": "Activity List View",
+                "type": "'Activity List View'.'Activity gallery_1'.Circle19_3"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-AccessibleLabelNeeded",
+          "ruleIndex": 11
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "'Activity List View'.'Activity gallery_1'.Circle19_3.TabIndex"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "'Activity List View'.'Activity gallery_1'.Circle19_3.TabIndex",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "TabIndex",
+                "module": "Activity List View",
+                "type": "'Activity List View'.'Activity gallery_1'.Circle19_3"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-TabIndexShouldBeDefinedForInteractiveControl",
+          "ruleIndex": 12
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
                   "fullyQualifiedName": "'Area PJP Plan'.Image7.AccessibleLabel"
                 }
               ],
@@ -36507,36 +35286,6 @@
           },
           "ruleId": "acc-TabIndexShouldBeDefinedForInteractiveControl",
           "ruleIndex": 12
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "'Start Visit'.DatePicker2.AccessibleLabel"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "'Start Visit'.DatePicker2.AccessibleLabel",
-                  "relativeAddress": 0
-                }
-              },
-              "properties": {
-                "member": "AccessibleLabel",
-                "module": "Start Visit",
-                "type": "'Start Visit'.DatePicker2"
-              }
-            }
-          ],
-          "message": {
-            "id": "issue"
-          },
-          "properties": {
-            "level": "Medium"
-          },
-          "ruleId": "acc-AccessibleLabelNeeded",
-          "ruleIndex": 11
         },
         {
           "locations": [
@@ -40287,58 +39036,58 @@
               }
             },
             {
-              "id": "app-ErrBadType-ExpectedTypesCSV",
-              "messageStrings": {
-                "issue": {
-                  "text": "Invalid argument type. Expecting one of the following: {0}."
-                }
-              },
-              "properties": {
-                "componentType": "app",
-                "level": "High",
-                "primaryCategory": "formula",
-                "whyFix": ""
-              }
-            },
-            {
-              "id": "app-ErrIncompatibleRulePropTypes-PropKind-RuleKind",
-              "messageStrings": {
-                "issue": {
-                  "text": "Expected {0} value."
-                }
-              },
-              "properties": {
-                "componentType": "app",
-                "howToFix": [
-                  "Change the rule to produce a {0} value."
-                ],
-                "level": "High",
-                "primaryCategory": "formula",
-                "whyFix": ""
-              }
-            },
-            {
-              "id": "app-ErrCollectionDoesNotAcceptThisType",
-              "messageStrings": {
-                "issue": {
-                  "text": "Incompatible type. The collection can't contain values of this type."
-                }
-              },
-              "properties": {
-                "componentType": "app",
-                "howToFix": [
-                  "You might need to convert the type of the item using, for example, a Datevalue, Text, or Value function."
-                ],
-                "level": "High",
-                "primaryCategory": "formula",
-                "whyFix": ""
-              }
-            },
-            {
               "id": "app-ErrSearchWrongType",
               "messageStrings": {
                 "issue": {
                   "text": "Wrong column type. Expects text type."
+                }
+              },
+              "properties": {
+                "componentType": "app",
+                "level": "High",
+                "primaryCategory": "formula",
+                "whyFix": ""
+              }
+            },
+            {
+              "id": "app-ErrExpectedFound-Ex-Fnd",
+              "messageStrings": {
+                "issue": {
+                  "text": "Unexpected characters. The formula contains '{0}' where '{1}' is expected."
+                }
+              },
+              "properties": {
+                "componentType": "app",
+                "howToFix": [
+                  "Remove or replace the unexpected characters with an expected character."
+                ],
+                "level": "High",
+                "primaryCategory": "formula",
+                "whyFix": ""
+              }
+            },
+            {
+              "id": "app-ErrBooleanExpected",
+              "messageStrings": {
+                "issue": {
+                  "text": "Expected boolean. We expect a boolean (true/false) at this point in the formula."
+                }
+              },
+              "properties": {
+                "componentType": "app",
+                "howToFix": [
+                  "Edit your formula so that it evaluates to a boolean at this point in the formula."
+                ],
+                "level": "High",
+                "primaryCategory": "formula",
+                "whyFix": ""
+              }
+            },
+            {
+              "id": "app-ErrNeedAgg",
+              "messageStrings": {
+                "issue": {
+                  "text": "Expected a record or table value."
                 }
               },
               "properties": {
@@ -40485,7 +39234,7 @@
                 ],
                 "level": "Medium",
                 "primaryCategory": "performance",
-                "whyFix": "Each control consumes resources, and an app may become slow or unresponsive if a screen has too many controls. The estimated complexity of \"Start Visit\" is 348, which exceeds the maximum threshold recommended (300)."
+                "whyFix": "Each control consumes resources, and an app may become slow or unresponsive if a screen has too many controls. The estimated complexity of \"Start Visit\" is 349, which exceeds the maximum threshold recommended (300)."
               }
             },
             {

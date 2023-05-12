@@ -5,7 +5,7 @@
         BorderColor: =RGBA(0, 18, 107, 1)
         DisplayMode: =DisplayMode.View
         Fill: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//_VarGblAppColors.PrimaryRed
-        Height: =240
+        Height: =154
         Width: =640
         Y: =80
         ZIndex: =4
@@ -20,7 +20,7 @@
         Text: =varUser.'First Name' & " " & varUser.'Last Name'
         Width: =400
         X: =203
-        Y: =104
+        Y: =Rectangle23.Y+Rectangle23.Height/2-Self.Height/2
         ZIndex: =7
 
     "'Profile Pic_1' As group":
@@ -36,7 +36,7 @@
             Height: =111
             Width: =111
             X: =48
-            Y: =104
+            Y: =Rectangle23.Y+Rectangle23.Height/2-Self.Height/2
             ZIndex: =5
 
         Image1_2 As image:
@@ -56,19 +56,8 @@
             RadiusTopRight: =200
             Width: =111
             X: =48
-            Y: =104
+            Y: =Rectangle23.Y+Rectangle23.Height/2-Self.Height/2
             ZIndex: =6
-
-    Label38_1 As label:
-        BorderColor: =RGBA(0, 18, 107, 1)
-        Color: =RGBA(255, 255, 255, 1)
-        DisabledColor: =RGBA(166, 166, 166, 1)
-        Size: =16
-        Text: =If(IsBlank(varUser.State.'State Name'), "", varUser.State.'State Name')//& "State-----"
-        Width: =560
-        X: =43
-        Y: =260
-        ZIndex: =9
 
     "'Bottom Bar_33' As 'Bottom Bar'":
         Y: =1026
@@ -98,8 +87,8 @@
                     Data: ""
                 }
             )
-        Height: =726
-        Y: =300
+        Height: =792
+        Y: =234
         ZIndex: =16
 
     Header_32 As Header:
