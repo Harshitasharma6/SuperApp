@@ -25,10 +25,12 @@
                         Sort(
                             If(
                     'Order List'.Type = "Primary",
+                    If(IsToday(DatePicker1.SelectedDate) ,Filter(  OfflineOrderHeaderCollection,
+                        'Order Type' = 'Order Type Choice'.Primary),
                     Filter(
                         OfflineOrderHeaderCollection,
                         'Order Type' = 'Order Type Choice'.Primary && Text('Created On',"dd/mm/yyyy") = Text(DatePicker1.SelectedDate,"dd/mm/yyyy")
-                    )
+                    ))
                     ,
                      'Order List'.Type = "Secondary",
                     Filter(

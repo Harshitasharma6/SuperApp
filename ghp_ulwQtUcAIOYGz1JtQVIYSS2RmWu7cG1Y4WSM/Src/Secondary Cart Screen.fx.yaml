@@ -1,5 +1,6 @@
 "'Secondary Cart Screen' As screen":
     LoadingSpinnerColor: =RGBA(0, 120, 212, 1)
+    OnVisible: =Set(varorderselectedId,1)
 
     Header_6 As Header:
         ScreenName: =varParty
@@ -89,7 +90,7 @@
                         {
                             Title: "Total Price",
                             Value: If(
-                                'Product List_1'.OrderType = "Primary" || primarydata.'Order Type' = 'Order Type Choice'.Primary,
+                                'Product List_1'.OrderType = "Primary" || primarydata.zx_ordertype = 'Order Type Choice'.Primary,
                                 Concatenate(
                                     "₹",
                                     Text(
@@ -102,7 +103,7 @@
                                         "[$-en-US]#.00"
                                     )
                                 ),
-                                'Product List_1'.OrderType = "Secondary" || secondarydata.'Order Type' = 'Order Type Choice'.Secondary,
+                                'Product List_1'.OrderType = "Secondary" || secondarydata.zx_ordertype = 'Order Type Choice'.Secondary,
                                 Concatenate(
                                     "₹",
                                     Text(
@@ -120,7 +121,7 @@
                         {
                             Title: "Discount",
                             Value: If(
-                                'Product List_1'.OrderType = "Primary" || primarydata.'Order Type' = 'Order Type Choice'.Primary,
+                                'Product List_1'.OrderType = "Primary" || primarydata.zx_ordertype = 'Order Type Choice'.Primary,
                                 Concatenate(
                                     "₹",
                                     Text(
@@ -136,7 +137,7 @@
                                         "[$-en-US]#.00"
                                     )
                                 ),
-                                'Product List_1'.OrderType = "Secondary" || secondarydata.'Order Type' = 'Order Type Choice'.Secondary,
+                                'Product List_1'.OrderType = "Secondary" || secondarydata.zx_ordertype = 'Order Type Choice'.Secondary,
                                 Concatenate(
                                     "₹",
                                     Text(
@@ -157,7 +158,7 @@
                         {
                             Title: "Net Price",
                             Value: If(
-                                'Product List_1'.OrderType = "Primary" || primarydata.'Order Type' = 'Order Type Choice'.Primary,
+                                'Product List_1'.OrderType = "Primary" || primarydata.zx_ordertype = 'Order Type Choice'.Primary,
                                 Concatenate(
                                     "₹",
                                     Text(
@@ -182,7 +183,7 @@
                                         "[$-en-US]#.00"
                                     )
                                 ),
-                                'Product List_1'.OrderType = "Secondary" || secondarydata.'Order Type' = 'Order Type Choice'.Secondary,
+                                'Product List_1'.OrderType = "Secondary" || secondarydata.zx_ordertype = 'Order Type Choice'.Secondary,
                                 Concatenate(
                                     "₹",
                                     Text(
@@ -212,7 +213,7 @@
                         {
                             Title: "Tax",
                             Value: If(
-                                'Product List_1'.OrderType = "Primary" || primarydata.'Order Type' = 'Order Type Choice'.Primary,
+                                'Product List_1'.OrderType = "Primary" || primarydata.zx_ordertype = 'Order Type Choice'.Primary,
                                 Concatenate(
                                     "₹",
                                     Text(
@@ -234,7 +235,7 @@
                                         "[$-en-US]#.00"
                                     )
                                 ),
-                                'Product List_1'.OrderType = "Secondary" || secondarydata.'Order Type' = 'Order Type Choice'.Secondary,
+                                'Product List_1'.OrderType = "Secondary" || secondarydata.zx_ordertype = 'Order Type Choice'.Secondary,
                                 Concatenate(
                                     "₹",
                                     Text(
@@ -261,7 +262,7 @@
                         {
                             Title: "Disc. Price",
                             Value: If(
-                                'Product List_1'.OrderType = "Primary" || primarydata.'Order Type' = 'Order Type Choice'.Primary,
+                                'Product List_1'.OrderType = "Primary" || primarydata.zx_ordertype= 'Order Type Choice'.Primary,
                                 Concatenate(
                                     "₹",
                                     Text(
@@ -274,7 +275,7 @@
                                         "[$-en-US]#.00"
                                     )
                                 ),
-                                'Product List_1'.OrderType = "Secondary" || secondarydata.'Order Type' = 'Order Type Choice'.Secondary,
+                                'Product List_1'.OrderType = "Secondary" || secondarydata.zx_ordertype = 'Order Type Choice'.Secondary,
                                 Concatenate(
                                     "₹",
                                     Text(
@@ -416,12 +417,12 @@
             HoverColor: =ColorFade(RGBA(0, 120, 212, 1), -30%)
             HoverFill: =RGBA(0, 0, 0, 0)
             Icon: =Icon.Add
-            OnSelect: |-
+            OnSelect: |
                 =Set(
                     varprimaryparty,
                     LookUp(
                         OfflinePartiesCollection,
-                        Parties = secondarydata.'Order From'.Parties
+                        Parties = secondarydata.zx_OrderFrom.Parties
                     ).'Price List'.Name
                 );
                 Set(
@@ -429,31 +430,26 @@
                     varprimaryparty
                 );
                 Set(
-                    varParty,
-                    secondarydata.'Order From'.'Customer Name'
+                    varCustomerforDiscount,
+                    secondarydata.zx_OrderFrom.Parties
                 );
                 Set(
-                    varCustomerforDiscountTemp,
-                    secondarydata.'Order From'.Parties
+                    varSelectedRetailerAttachedDistributor,
+                    LookUp(
+                        OfflinePartiesCollection,
+                        'Customer Code' = secondarydata.zx_OrderFrom.'Customer Code'
+                    ).'Attached Distributor'.'Customer Name'
                 );
-                Set(
-                        varSelectedRetailerAttachedDistributor,
-                        LookUp(
-                            OfflinePartiesCollection,
-                            'Customer Code' = secondarydata.'Order From'.'Customer Code'
-                        ).'Attached Distributor'.'Customer Name'
-                    );
                 Set(
                     varCustomertype,
-                    secondarydata.'Order From'.'Customer Type'
+                    secondarydata.zx_OrderFrom.'Customer Type'
                 );
-                
                 ClearCollect(
                     colPartyOrder,
                     Sort(
                         Filter(
                             OfflineOrderHeaderCollection,
-                            'Order From'.Parties = secondarydata.'Order From'.Parties
+                            'Order From'.Parties = secondarydata.zx_OrderFrom.Parties
                         ),
                         'Created On',
                         SortOrder.Descending
@@ -476,12 +472,17 @@
                         'Product SKU'.'Product SKU'
                     )
                 );
-                
-                Navigate('Order Screen');
+                Navigate(
+                    'Order Screen',
+                    ScreenTransition.CoverRight,
+                    {
+                        varParty: secondarydata.zx_OrderFrom.'Customer Name',
+                        varCustomertype: secondarydata.zx_OrderFrom.'Customer Type'
+                    }
+                );
             PressedBorderColor: =RGBA(0, 0, 0, 0)
             PressedColor: =ColorFade(RGBA(0, 120, 212, 1), -30%)
             PressedFill: =RGBA(0, 0, 0, 0)
-            Visible: =If(IsBlank(secondarydata),false,true)
             Width: =40
             X: =580
             Y: =260
