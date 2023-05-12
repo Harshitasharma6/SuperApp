@@ -1,5 +1,5 @@
 "'Bottom Bar' As CanvasComponent":
-    Fill: =RGBA(0, 0, 0, 0)
+    Fill: =RGBA(255, 255, 255, 1)
     Height: =110
     NavItems: |-
         =Table(
@@ -10,7 +10,7 @@
                 Id: 1
             },
             {
-                Title: "Visit",
+                Title: "Visits",
                 Icon: location,
                 Screen:'Start Visit',
                 Id:2
@@ -28,8 +28,9 @@
                 Id:4
             },
             {
-                Title: varUser.'First Name',
-                Icon: User().Image,
+                 Title: "Menu",
+                Icon: images,
+                 //Icon.Hamburger,
                 Screen: Sidebar,
                 Id:5
             }
@@ -180,10 +181,10 @@
                 
                 Set(g_BottomMenuSelected, ThisItem.Title);
                 //Set(_varsideNav, false))
-            RadiusBottomLeft: =If(ThisItem.Title = varUser.'First Name',25,0)
-            RadiusBottomRight: =If(ThisItem.Title = varUser.'First Name',25,0)
-            RadiusTopLeft: =If(ThisItem.Title = varUser.'First Name',25,0)
-            RadiusTopRight: =If(ThisItem.Title = varUser.'First Name',25,0)
+            RadiusBottomLeft: =0//If(ThisItem.Title = varUser.'First Name',25,0)
+            RadiusBottomRight: =0//If(ThisItem.Title = varUser.'First Name',25,0)
+            RadiusTopLeft: =0//If(ThisItem.Title = varUser.'First Name',25,0)
+            RadiusTopRight: =0//If(ThisItem.Title = varUser.'First Name',25,0)
             TabIndex: =
             Width: =35
             X: =Parent.TemplateWidth/2 - Self.Width/2

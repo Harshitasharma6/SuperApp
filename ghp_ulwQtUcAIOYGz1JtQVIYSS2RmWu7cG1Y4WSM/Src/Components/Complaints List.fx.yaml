@@ -1,0 +1,320 @@
+"'Complaints List' As CanvasComponent":
+    Fill: =ColorValue(LookUp(c_EnvironmentVariable, 'Display Name'="Light Red").'Default Value')
+    Height: =640
+    Width: =640
+    X: =0
+    Y: =0
+    ZIndex: =1
+
+    "Gallery4_1 As gallery.'BrowseLayout_Vertical_TwoTextOneImageVariant_ver4.0'":
+        AccessibleLabel: ="Gal"
+        BorderColor: =RGBA(0, 18, 107, 1)
+        BorderStyle: =BorderStyle.None
+        Height: =640
+        Items: ='Complaint.S'
+        Layout: =Layout.Vertical
+        ShowScrollbar: =false
+        TabIndex: =0//-1
+        TemplatePadding: =0
+        TemplateSize: =224
+        Width: =600
+        X: =18
+        ZIndex: =1
+
+        Title1_1 As label:
+            Color: =RGBA(0, 0, 0, 1)
+            DisabledColor: =RGBA(166, 166, 166, 1)
+            FontWeight: =FontWeight.Semibold
+            Height: =Self.Size * 1.8
+            OnSelect: =Select(Parent)
+            PaddingBottom: =0
+            PaddingLeft: =0
+            PaddingRight: =0
+            PaddingTop: =0
+            Size: =20
+            Text: =//ThisItem.'Customer Code'
+            VerticalAlign: =VerticalAlign.Top
+            Width: =//Parent.TemplateWidth - Image3.Width - 104
+            X: =//Image3.X + Image3.Width + 24
+            Y: =44
+            ZIndex: =2
+
+        Subtitle1_1 As label:
+            Color: =RGBA(0, 0, 0, 1)
+            DisabledColor: =RGBA(166, 166, 166, 1)
+            Height: =Self.Size * 1.8
+            OnSelect: =Select(Parent)
+            PaddingBottom: =0
+            PaddingLeft: =0
+            PaddingRight: =0
+            PaddingTop: =0
+            Size: =18
+            Text: =//ThisItem.'Customer Name'
+            VerticalAlign: =VerticalAlign.Top
+            Width: =Title1_1.Width
+            X: =Title1_1.X
+            Y: =Title1_1.Y + Title1_1.Height + 4
+            ZIndex: =3
+
+        Button13_1 As button:
+            BorderThickness: =1
+            Color: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Hover Color").'Default Value')
+            DisabledBorderColor: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )
+            DisabledColor: =RGBA(166, 166, 166, 1)
+            DisabledFill: =RGBA(0, 0, 0, 0)
+            DisplayMode: =DisplayMode.Disabled
+            Fill: =RGBA(255, 255, 255, 1)
+            FontWeight: =FontWeight.Semibold
+            Height: =211
+            HoverColor: =RGBA(255, 255, 255, 1)
+            HoverFill: =//ColorFade(RGBA(56, 96, 178, 1), -20%)
+            OnSelect: =Select(Parent)
+            RadiusBottomLeft: =15
+            RadiusBottomRight: =15
+            RadiusTopLeft: =15
+            RadiusTopRight: =15
+            Size: =24
+            Text: =""
+            Width: =Parent.Width-20
+            X: =10
+            Y: =5
+            ZIndex: =6
+
+        Button14_2 As button:
+            BorderThickness: =1
+            DisabledBorderColor: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )
+            DisabledColor: =RGBA(166, 166, 166, 1)
+            DisabledFill: =RGBA(0, 0, 0, 0)
+            DisplayMode: =DisplayMode.Disabled
+            Fill: |-
+                =//RGBA(10, 10, 10, 0.69)
+                ColorFade(ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' ),80%)
+            FontWeight: =FontWeight.Semibold
+            Height: =67
+            HoverColor: =RGBA(255, 255, 255, 1)
+            HoverFill: =//ColorFade(RGBA(56, 96, 178, 1), -20%)
+            OnSelect: =Select(Parent)
+            Size: =24
+            Text: =""
+            Width: =Parent.Width-20
+            X: =10
+            Y: =148
+            ZIndex: =7
+
+        Label11_8 As label:
+            BorderColor: =RGBA(0, 18, 107, 1)
+            Color: =RGBA(0, 0, 0, 1)
+            DisabledColor: =RGBA(166, 166, 166, 1)
+            FocusedBorderThickness: =1
+            Font: =Font.'Segoe UI'
+            FontWeight: =FontWeight.Semibold
+            Height: =47
+            OnSelect: |
+                =Navigate('detail page complaint',ScreenTransition.Fade,{varcomp:ThisItem});
+            Size: =16
+            TabIndex: =0//-1
+            Text: =ThisItem.'Complaint No.'
+            Width: =168
+            X: =21
+            ZIndex: =8
+
+        Label17_4 As label:
+            BorderColor: =RGBA(0, 18, 107, 1)
+            Color: =RGBA(0, 0, 0, 1)
+            DisabledColor: =RGBA(166, 166, 166, 1)
+            Font: =Font.'Segoe UI'
+            Height: =25
+            OnSelect: =Select(Parent)
+            Text: |-
+                ="Assigned Date :"
+            Width: =149
+            X: =21
+            Y: =55
+            ZIndex: =9
+
+        Label17_22 As label:
+            BorderColor: =RGBA(0, 18, 107, 1)
+            Color: |-
+                =//RGBA(255, 255, 255, 1)
+                ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Text Primary Color").'Default Value') //_VarGblAppColors.textbgbutton
+            DisabledColor: =RGBA(166, 166, 166, 1)
+            Font: =Font.'Segoe UI'
+            FontWeight: =FontWeight.Bold
+            Height: =30
+            OnSelect: =Select(Parent)
+            Size: =12
+            Text: ="Resolution Date"
+            Width: =201
+            X: =21
+            Y: =148
+            ZIndex: =14
+
+        Label17_21 As label:
+            BorderColor: =RGBA(0, 18, 107, 1)
+            Color: |-
+                =//RGBA(255, 255, 255, 1)
+                ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Text Primary Color").'Default Value') //_VarGblAppColors.textbgbutton
+            DisabledColor: =RGBA(166, 166, 166, 1)
+            Font: =Font.'Segoe UI'
+            FontWeight: =FontWeight.Bold
+            Height: =30
+            OnSelect: =Select(Parent)
+            Size: =12
+            Text: ="Expected Closure Date"
+            Width: =196
+            X: =404
+            Y: =148
+            ZIndex: =15
+
+        Label17_15 As label:
+            BorderColor: =RGBA(0, 18, 107, 1)
+            Color: =RGBA(0, 0, 0, 1)
+            DisabledColor: =RGBA(166, 166, 166, 1)
+            Font: =Font.'Segoe UI'
+            Height: =25
+            OnSelect: =Select(Parent)
+            PaddingLeft: =7
+            Text: |-
+                ="Department :"
+            Width: =129
+            X: =393
+            Y: =55
+            ZIndex: =16
+
+        Label17_19 As label:
+            BorderColor: =RGBA(0, 18, 107, 1)
+            Color: =RGBA(0, 0, 0, 1)
+            DisabledColor: =RGBA(166, 166, 166, 1)
+            Font: =Font.'Segoe UI'
+            Height: =25
+            OnSelect: =Select(Parent)
+            PaddingLeft: =0
+            Text: |-
+                =" Remark:"
+            Width: =100
+            X: =393
+            Y: =98
+            ZIndex: =17
+
+        Rectangle3_12 As rectangle:
+            BorderColor: =RGBA(0, 18, 107, 1)
+            DisplayMode: =DisplayMode.Disabled
+            Fill: =RGBA(153, 153, 153, 1)
+            Height: =2
+            OnSelect: =Select(Parent)
+            Width: =Parent.Width-20
+            X: =10
+            Y: =50
+            ZIndex: =25
+
+        Label17_17 As label:
+            BorderColor: =RGBA(0, 18, 107, 1)
+            Color: =RGBA(0, 0, 0, 1)
+            DisabledColor: =RGBA(166, 166, 166, 1)
+            Font: =Font.'Segoe UI'
+            Height: =30
+            OnSelect: =Select(Parent)
+            Text: |-
+                ="Nature of complaint:"
+            Width: =190
+            X: =21
+            Y: =94
+            ZIndex: =26
+
+        Label22_9 As label:
+            BorderColor: =RGBA(0, 18, 107, 1)
+            Color: |-
+                =//RGBA(0, 0, 0, 1)
+                ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Text Primary Color").'Default Value') //_VarGblAppColors.textbgbutton
+            DisabledColor: =RGBA(166, 166, 166, 1)
+            Font: =Font.'Segoe UI'
+            Height: =25
+            OnSelect: =Select(Parent)
+            Size: =12
+            Text: =Text(ThisItem.'Assigned Date',"dd-mm-yyyy")
+            Width: =198
+            X: =161
+            Y: =55
+            ZIndex: =27
+
+        Label22_27 As label:
+            BorderColor: =RGBA(0, 18, 107, 1)
+            Color: |-
+                =//RGBA(255, 255, 255, 1)
+                ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Text Primary Color").'Default Value') //_VarGblAppColors.textbgbutton
+            DisabledColor: =RGBA(166, 166, 166, 1)
+            Font: =Font.'Segoe UI'
+            Height: =24
+            OnSelect: =Select(Parent)
+            Size: =12
+            Text: =Text(ThisItem.'Resolution Date',"dd-mm-yyyy")
+            Width: =182
+            X: =29
+            Y: =180
+            ZIndex: =28
+
+        Label22_10 As label:
+            Align: =Align.Center
+            BorderColor: =RGBA(0, 18, 107, 1)
+            Color: |-
+                =//RGBA(0, 0, 0, 1)
+                ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Text Primary Color").'Default Value') //_VarGblAppColors.textbgbutton
+            DisabledColor: =RGBA(166, 166, 166, 1)
+            Font: =Font.'Segoe UI'
+            Height: =25
+            OnSelect: =Select(Parent)
+            Size: =12
+            Text: =ThisItem.Deparment
+            Width: =109
+            X: =491
+            Y: =55
+            ZIndex: =29
+
+        Label22_22 As label:
+            BorderColor: =RGBA(0, 18, 107, 1)
+            Color: |-
+                =//RGBA(0, 0, 0, 1)
+                ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Text Primary Color").'Default Value') //_VarGblAppColors.textbgbutton
+            DisabledColor: =RGBA(166, 166, 166, 1)
+            Font: =Font.'Segoe UI'
+            Height: =25
+            OnSelect: =Select(Parent)
+            Size: =12
+            Text: =ThisItem.Remarks
+            Width: =140
+            X: =460
+            Y: =100
+            ZIndex: =30
+
+        Label22_28 As label:
+            BorderColor: =RGBA(0, 18, 107, 1)
+            Color: |-
+                =//RGBA(255, 255, 255, 1)
+                ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Text Primary Color").'Default Value') //_VarGblAppColors.textbgbutton
+            DisabledColor: =RGBA(166, 166, 166, 1)
+            Font: =Font.'Segoe UI'
+            Height: =24
+            OnSelect: =Select(Parent)
+            Size: =12
+            Text: =Text(ThisItem.'Expected Closure Date',"dd-mm-yyyy")
+            Width: =149
+            X: =451
+            Y: =180
+            ZIndex: =32
+
+        Label22_21 As label:
+            BorderColor: =RGBA(0, 18, 107, 1)
+            Color: |-
+                =//RGBA(0, 0, 0, 1)
+                ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Text Primary Color").'Default Value') //_VarGblAppColors.textbgbutton
+            DisabledColor: =RGBA(166, 166, 166, 1)
+            Font: =Font.'Segoe UI'
+            Height: =47
+            OnSelect: =Select(Parent)
+            Size: =12
+            Text: =ThisItem.'Nature of Complaint'
+            Width: =189
+            X: =205
+            Y: =96
+            ZIndex: =33
+

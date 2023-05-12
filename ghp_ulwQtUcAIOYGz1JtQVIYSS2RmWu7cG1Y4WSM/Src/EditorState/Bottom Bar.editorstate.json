@@ -3,7 +3,14 @@
     "Bottom Bar": {
       "AllowAccessToGlobals": true,
       "ControlPropertyState": [
-        "Fill",
+        {
+          "AFDDataSourceName": "",
+          "AutoRuleBindingEnabled": false,
+          "AutoRuleBindingString": "",
+          "InvariantPropertyName": "Fill",
+          "IsLockable": false,
+          "NameMapSourceSchema": "?"
+        },
         {
           "AFDDataSourceName": "",
           "AutoRuleBindingEnabled": false,
@@ -26,7 +33,7 @@
         {
           "AFDDataSourceName": "",
           "AutoRuleBindingEnabled": false,
-          "AutoRuleBindingString": "Table(\r\n    {\r\n        Title: \"Orders\",\r\n        Icon : 'shopping-cart',\r\n        Screen: 'Primary Order Screen',\r\n        Id:1\r\n    },\r\n    {\r\n        Title: \"Visit\",\r\n        Icon: location,\r\n        Screen:'Start Visit'\r\n    },\r\n     {\r\n        Title: \"Home\",\r\n        Icon:home,\r\n        Screen: Home\r\n    },\r\n     {\r\n        Title: \"Parties\",\r\n        Icon: people,\r\n        Screen: Parties\r\n    },\r\n    {\r\n        Title: varUser.'First Name',\r\n        Icon: User().Image,\r\n        Screen: Sidebar\r\n    }\r\n)",
+          "AutoRuleBindingString": "Table(\r\n    {\r\n        Title: \"Orders\",\r\n        Icon : 'shopping-cart',\r\n        Screen: 'Primary Order Screen',\r\n        Id: 1\r\n    },\r\n    {\r\n        Title: \"Visits\",\r\n        Icon: location,\r\n        Screen:'Start Visit',\r\n        Id:2\r\n    },\r\n     {\r\n        Title: \"Home\",\r\n        Icon:home,\r\n        Screen: Home,\r\n        Id:3\r\n    },\r\n     {\r\n        Title: \"Parties\",\r\n        Icon: people,\r\n        Screen: Parties,\r\n        Id:4\r\n    },\r\n    {\r\n         Title: \"Menu\",\r\n        Icon: MenuBar,\r\n         //Icon.Hamburger,\r\n        Screen: Sidebar,\r\n        Id:5\r\n    }\r\n)",
           "InvariantPropertyName": "NavItems",
           "IsLockable": false,
           "NameMapSourceSchema": "?"
@@ -757,10 +764,38 @@
           "NameMapSourceSchema": "?"
         },
         "ZIndex",
-        "RadiusTopLeft",
-        "RadiusTopRight",
-        "RadiusBottomLeft",
-        "RadiusBottomRight",
+        {
+          "AFDDataSourceName": "",
+          "AutoRuleBindingEnabled": false,
+          "AutoRuleBindingString": "If(ThisItem.Title = varUser.'First Name',25,0)",
+          "InvariantPropertyName": "RadiusTopLeft",
+          "IsLockable": false,
+          "NameMapSourceSchema": "?"
+        },
+        {
+          "AFDDataSourceName": "",
+          "AutoRuleBindingEnabled": false,
+          "AutoRuleBindingString": "If(ThisItem.Title = varUser.'First Name',25,0)",
+          "InvariantPropertyName": "RadiusTopRight",
+          "IsLockable": false,
+          "NameMapSourceSchema": "?"
+        },
+        {
+          "AFDDataSourceName": "",
+          "AutoRuleBindingEnabled": false,
+          "AutoRuleBindingString": "If(ThisItem.Title = varUser.'First Name',25,0)",
+          "InvariantPropertyName": "RadiusBottomLeft",
+          "IsLockable": false,
+          "NameMapSourceSchema": "?"
+        },
+        {
+          "AFDDataSourceName": "",
+          "AutoRuleBindingEnabled": false,
+          "AutoRuleBindingString": "If(ThisItem.Title = varUser.'First Name',25,0)",
+          "InvariantPropertyName": "RadiusBottomRight",
+          "IsLockable": false,
+          "NameMapSourceSchema": "?"
+        },
         "BorderThickness",
         "FocusedBorderThickness",
         "PaddingTop",

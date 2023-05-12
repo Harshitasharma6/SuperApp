@@ -399,7 +399,14 @@
 
             Circle4_5 As circle:
                 BorderColor: =RGBA(0, 18, 107, 1)
-                Fill: =If(Value(varcomp.'Status level') >=1, Color.Red, Color.Black)
+                Fill: |-
+                    =If(varcomp.'Complaint Status' ='Complaint Status (Complaint.S)'.Register
+                    || varcomp.'Complaint Status' ='Complaint Status (Complaint.S)'.Assign
+                    || varcomp.'Complaint Status' ='Complaint Status (Complaint.S)'.Resolution
+                    || varcomp.'Complaint Status' ='Complaint Status (Complaint.S)'.Closure
+                    
+                    , ColorValue(LookUp('Environment Variable Definitions','Display Name'="Button Fill").'Default Value'), Color.Black)
+                    //If(Value(varcomp.'Status level') >=1, Color.Red,Color.Black)
                 Height: =55
                 Width: =55
                 X: =41
@@ -416,7 +423,13 @@
 
             Circle4_6 As circle:
                 BorderColor: =RGBA(0, 18, 107, 1)
-                Fill: =If(Value(varcomp.'Status level') >=2, Color.Red, Color.Black)
+                Fill: |-
+                    =If(
+                     varcomp.'Complaint Status' ='Complaint Status (Complaint.S)'.Assign
+                    || varcomp.'Complaint Status' ='Complaint Status (Complaint.S)'.Resolution
+                    || varcomp.'Complaint Status' ='Complaint Status (Complaint.S)'.Closure
+                    
+                    , ColorValue(LookUp('Environment Variable Definitions','Display Name'="Button Fill").'Default Value'), Color.Black)
                 Height: =55
                 Width: =55
                 X: =194
@@ -433,7 +446,12 @@
 
             Circle4_7 As circle:
                 BorderColor: =RGBA(0, 18, 107, 1)
-                Fill: =If(Value(varcomp.'Status level') >=3, Color.Red, Color.Black)
+                Fill: |-
+                    =If(
+                     varcomp.'Complaint Status' ='Complaint Status (Complaint.S)'.Resolution
+                    || varcomp.'Complaint Status' ='Complaint Status (Complaint.S)'.Closure
+                    
+                    , ColorValue(LookUp('Environment Variable Definitions','Display Name'="Button Fill").'Default Value'), Color.Black)
                 Height: =55
                 Width: =55
                 X: =372
@@ -513,7 +531,11 @@
 
             Circle4_8 As circle:
                 BorderColor: =RGBA(0, 18, 107, 1)
-                Fill: =If(Value(varcomp.'Status level') =4, Color.Red, Color.Black)
+                Fill: |-
+                    =If(
+                    varcomp.'Complaint Status' ='Complaint Status (Complaint.S)'.Closure
+                    
+                    , ColorValue(LookUp('Environment Variable Definitions','Display Name'="Button Fill").'Default Value'), Color.Black)
                 Height: =55
                 Width: =55
                 X: =550
@@ -540,17 +562,6 @@
                 Y: =10
                 ZIndex: =44
 
-            Label25_18 As label:
-                BorderColor: =RGBA(0, 18, 107, 1)
-                Color: =RGBA(255, 255, 255, 1)
-                DisabledColor: =RGBA(166, 166, 166, 1)
-                Size: =18
-                Text: ="5"
-                Width: =25
-                X: =598
-                Y: =7
-                ZIndex: =45
-
             Label25_19 As label:
                 Align: =Align.Center
                 BorderColor: =RGBA(0, 18, 107, 1)
@@ -566,39 +577,6 @@
                 ZIndex: =46
 
     "'Bottom Bar_26' As 'Bottom Bar'":
-        NavItems: |-
-            =Table(
-                {
-                    Title: "Orders",
-                    Icon : 'shopping-cart',
-                    Screen: 'Primary Order Screen',
-                    Id: 1
-                },
-                {
-                    Title: "Visit",
-                    Icon: location,
-                   Screen:'Start Visit',
-                    Id:2
-                },
-                 {
-                    Title: "Home",
-                    Icon:home,
-                    Screen: Home,
-                    Id:3
-                },
-                 {
-                    Title: "Parties",
-                    Icon: people,
-                    Screen: Parties,
-                    Id:4
-                },
-                {
-                    Title: varUser.'First Name',
-                    Icon: User().Image,
-                    Screen: Sidebar,
-                    Id:5
-                }
-            )
         Y: =1026
         ZIndex: =4
 
