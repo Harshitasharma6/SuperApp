@@ -126,7 +126,7 @@
                         },
                         {
                             Title: "Total Price:",
-                            Value:If(IsBlank(primarydata.'Total Price')|| IsBlank(secondarydata.'Total Price'),"0", Concatenate(
+                            Value:If(IsBlank(primarydata.'Total Price')|| IsBlank(secondarydata.'Total Price'),  "₹0.00", Concatenate(
                                 "₹",
                                 Text(
                                     If(
@@ -140,21 +140,21 @@
                         },
                         {
                             Title: "Disc. Price:",
-                            Value: If(IsBlank(primarydata.'Discount ') || IsBlank(secondarydata.'Discount '),"0",//Concatenate(
-                        //        "₹",
+                            Value: If(IsBlank(primarydata.'Discount ') || IsBlank(secondarydata.'Discount '),  "₹0.00",Concatenate(
+                                "₹",
                                 Text(
                                     If(
                                         primarydata.'Order Type' = 'Order Type Choice'.Primary,
                                         primarydata.'Discount ',
                                         secondarydata.'Discount '
                                     ),
-                                    "₹ #.00"
+                                    "[$-en-US]#.00"
                                 )
-                            )//)
+                            ))
                         },
                         {
                             Title: "Net Price:",
-                            Value: Concatenate(
+                            Value: If(IsBlank(primarydata.'Total Bill Amount')|| IsBlank(secondarydata.'Total Bill Amount'),  "₹0.00",Concatenate(
                                 "₹",
                                 Text(
                                     If(
@@ -166,11 +166,11 @@
                                     "hi-IN"*/
                                     "[$-en-US]#.00"
                                 )
-                            )
+                            ))
                         },
                         {
                             Title: "Tax:",
-                            Value: Concatenate(
+                            Value: If(IsBlank(primarydata.'Total Price')|| IsBlank(secondarydata.'Total Price'),  "₹0.00",Concatenate(
                                 "₹",
                                 Text(
                                     Sum(varOrderData.IGST) + Sum(varOrderData.CGST) + Sum(varOrderData.SGST) + Sum(varOrderData.'Cess %'),
@@ -178,11 +178,11 @@
                                     "hi-IN"*/
                                     "[$-en-US]#.00"
                                 )
-                            )
+                            ))
                         },
                         {
                             Title: "Discount:",
-                            Value: Concatenate(
+                            Value: If(IsBlank(primarydata.'Discount%')|| IsBlank(secondarydata.'Discount%'),  "₹0.00",Concatenate(
                                 Text(
                                     If(
                     primarydata.'Order Type' = 'Order Type Choice'.Primary,
@@ -193,7 +193,8 @@
                                     "hi-IN"
                                 ),
                                 "%"
-                            )
+                            ))
+                            
                         },
                         {
                             Title: "IGST:",
