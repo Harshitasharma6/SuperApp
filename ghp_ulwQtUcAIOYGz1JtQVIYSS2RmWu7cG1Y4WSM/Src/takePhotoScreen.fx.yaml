@@ -28,6 +28,28 @@ takePhotoScreen As screen:
                 Y: =0
                 ZIndex: =2
 
+                Button15_2 As button:
+                    DisabledBorderColor: =RGBA(153, 207, 236, 1)
+                    DisabledColor: =RGBA(166, 166, 166, 1)
+                    DisabledFill: =RGBA(255, 255, 255, 1)
+                    DisplayMode: =DisplayMode.Disabled
+                    Fill: =RGBA(56, 96, 178, 1)
+                    FontWeight: =FontWeight.Semibold
+                    Height: =gallCapturedImg.Height+10
+                    HoverColor: =RGBA(255, 255, 255, 1)
+                    HoverFill: =ColorFade(RGBA(56, 96, 178, 1), -20%)
+                    OnSelect: =
+                    RadiusBottomLeft: =15
+                    RadiusBottomRight: =15
+                    RadiusTopLeft: =15
+                    RadiusTopRight: =15
+                    Size: =24
+                    Text: =""
+                    Width: =gallCapturedImg.Width+10
+                    X: =gallCapturedImg.X-5
+                    Y: =gallCapturedImg.Y-5
+                    ZIndex: =1
+
                 Camera1 As camera:
                     AccessibleLabel: ="Camera"
                     BorderColor: =ColorFade(Button33_8.Fill, -15%)
@@ -47,7 +69,7 @@ takePhotoScreen As screen:
                     Width: =Button33_8.Width
                     X: =Button33_8.X
                     Y: =TopGallery_3.Y+TopGallery_3.Height+20
-                    ZIndex: =1
+                    ZIndex: =2
 
                 gallCapturedImg As gallery.variableTemplateHeightGallery:
                     AccessibleLabel: ="Gallery"
@@ -59,10 +81,12 @@ takePhotoScreen As screen:
                     LoadingSpinner: =LoadingSpinner.Data
                     ShowScrollbar: =false
                     TabIndex: =0//-1
+                    TemplatePadding: =0
                     TemplateSize: =182
-                    Width: =625
-                    Y: =If(v_ScreenTab="Attachments",Container1.Y+Container1.Height,Camera1.Y+Camera1.Height)+20
-                    ZIndex: =2
+                    Width: =Button33_9.Width
+                    X: =Button33_9.X
+                    Y: =If(v_ScreenTab="Attachments",Container1.Y+Container1.Height,Camera1.Y+Camera1.Height)+40
+                    ZIndex: =3
 
                     Button15_1 As button:
                         DisabledBorderColor: =RGBA(153, 207, 236, 1)
@@ -71,7 +95,7 @@ takePhotoScreen As screen:
                         DisplayMode: =DisplayMode.Disabled
                         Fill: =RGBA(56, 96, 178, 1)
                         FontWeight: =FontWeight.Semibold
-                        Height: =160
+                        Height: =155
                         HoverColor: =RGBA(255, 255, 255, 1)
                         HoverFill: =ColorFade(RGBA(56, 96, 178, 1), -20%)
                         OnSelect: =Select(Parent)
@@ -81,19 +105,19 @@ takePhotoScreen As screen:
                         RadiusTopRight: =15
                         Size: =24
                         Text: =""
-                        Width: =590
-                        X: =15
+                        Width: =524
+                        Y: =5
                         ZIndex: =1
 
                     Image5 As image:
                         BorderColor: =RGBA(0, 18, 107, 1)
                         DisabledBorderColor: =RGBA(166, 166, 166, 1)
                         DisabledFill: =RGBA(244, 244, 244, 1)
-                        Height: =138
+                        Height: =148
                         Image: =ThisItem.photo
                         OnSelect: =Select(Parent)
                         Visible: =If(IsBlank(ThisItem.photo),false, true)
-                        Width: =180
+                        Width: =146
                         X: =36
                         Y: =12
                         ZIndex: =2
@@ -132,9 +156,9 @@ takePhotoScreen As screen:
                                
                             )
                         OnSelect: =Select(Parent)
-                        Size: =21
+                        Size: =15
                         Width: =300
-                        X: =251
+                        X: =210
                         Y: =61
                         ZIndex: =3
 
@@ -146,7 +170,7 @@ takePhotoScreen As screen:
                         DisabledFill: =RGBA(0, 0, 0, 0)
                         DisplayMode: =DisplayMode.View
                         FocusedBorderThickness: =4
-                        Height: =139
+                        Height: =115
                         HoverBorderColor: =RGBA(0, 0, 0, 0)
                         HoverColor: =ColorFade(RGBA(0, 120, 212, 1), -30%)
                         HoverFill: =RGBA(0, 0, 0, 0)
@@ -156,9 +180,9 @@ takePhotoScreen As screen:
                         PressedColor: =ColorFade(RGBA(0, 120, 212, 1), -30%)
                         PressedFill: =RGBA(0, 0, 0, 0)
                         Visible: =If(IsBlank(ThisItem.AttachmentName), false, true)
-                        Width: =215
+                        Width: =157
                         X: =36
-                        Y: =11
+                        Y: =26
                         ZIndex: =4
 
                 Button9_9 As button:
@@ -253,14 +277,14 @@ takePhotoScreen As screen:
                     Text: ="SUBMIT"
                     Width: =259
                     X: =191
-                    Y: =gallCapturedImg.Height+gallCapturedImg.Y+50
-                    ZIndex: =3
+                    Y: =gallCapturedImg.Height+gallCapturedImg.Y+20
+                    ZIndex: =4
 
                 Container1 As groupContainer.manualLayoutContainer:
                     Height: =225
                     Width: =638
                     Y: =TopGallery_3.Y+TopGallery_3.Height
-                    ZIndex: =4
+                    ZIndex: =5
 
                     Form3_1 As form:
                         BorderColor: =RGBA(166, 166, 166, 1)
@@ -413,7 +437,7 @@ takePhotoScreen As screen:
                     TemplateSize: =TopGallery_3.Width/2
                     Width: =App.Width
                     Y: =AccountComboBox.Y+AccountComboBox.Height+20
-                    ZIndex: =5
+                    ZIndex: =6
 
                     title_6 As label:
                         Align: =Align.Center
@@ -490,7 +514,7 @@ takePhotoScreen As screen:
                     Width: =530
                     X: =55
                     Y: =75
-                    ZIndex: =6
+                    ZIndex: =7
 
                 Button33_9 As button:
                     DisabledBorderColor: =RGBA(166, 166, 166, 1)
@@ -511,7 +535,7 @@ takePhotoScreen As screen:
                     Width: =530
                     X: =Button33_8.X
                     Y: =171
-                    ZIndex: =7
+                    ZIndex: =8
 
                 AccountComboBox As dropdown:
                     AccessibleLabel: ="Department"
@@ -554,7 +578,7 @@ takePhotoScreen As screen:
                     Width: =500
                     X: =Dropdown1.X
                     Y: =176
-                    ZIndex: =8
+                    ZIndex: =9
 
                 Dropdown1 As dropdown:
                     AccessibleLabel: ="Department"
@@ -595,7 +619,7 @@ takePhotoScreen As screen:
                     Width: =500
                     X: =70
                     Y: =80
-                    ZIndex: =9
+                    ZIndex: =10
 
                 leadComboBox As dropdown:
                     AccessibleLabel: ="Department"
@@ -638,7 +662,7 @@ takePhotoScreen As screen:
                     Width: =500
                     X: =Dropdown1.X
                     Y: =186
-                    ZIndex: =10
+                    ZIndex: =11
 
                 contactComboBox As dropdown:
                     AccessibleLabel: ="Department"
@@ -677,7 +701,7 @@ takePhotoScreen As screen:
                     Width: =500
                     X: =Dropdown1.X
                     Y: =186
-                    ZIndex: =11
+                    ZIndex: =12
 
                 complaintComboBox As dropdown:
                     AccessibleLabel: ="Department"
@@ -720,7 +744,7 @@ takePhotoScreen As screen:
                     Width: =500
                     X: =Dropdown1.X
                     Y: =186
-                    ZIndex: =12
+                    ZIndex: =13
 
                 orderComboBox As dropdown:
                     AccessibleLabel: ="Department"
@@ -763,7 +787,7 @@ takePhotoScreen As screen:
                     Width: =500
                     X: =Dropdown1.X
                     Y: =186
-                    ZIndex: =13
+                    ZIndex: =14
 
                 VisitComboBox As dropdown:
                     AccessibleLabel: ="Department"
@@ -806,7 +830,7 @@ takePhotoScreen As screen:
                     Width: =500
                     X: =Dropdown1.X
                     Y: =186
-                    ZIndex: =14
+                    ZIndex: =15
 
                 Label23_13 As label:
                     BorderColor: =RGBA(0, 18, 107, 1)
@@ -822,7 +846,7 @@ takePhotoScreen As screen:
                     Width: =180
                     X: =Label23_12.X
                     Y: =150
-                    ZIndex: =15
+                    ZIndex: =16
 
                 Label23_12 As label:
                     BorderColor: =RGBA(0, 18, 107, 1)
@@ -838,7 +862,23 @@ takePhotoScreen As screen:
                     Width: =137
                     X: =100
                     Y: =54
-                    ZIndex: =16
+                    ZIndex: =17
+
+                Label23_15 As label:
+                    BorderColor: =RGBA(0, 18, 107, 1)
+                    Color: |-
+                        =ColorValue(LookUp(c_EnvironmentVariable, 'Display Name'="Button Fill").'Default Value')
+                        
+                        //RGBA(0, 0, 0, 1)
+                    DisabledColor: =RGBA(166, 166, 166, 1)
+                    Fill: =RGBA(255, 255, 255, 1)
+                    FontWeight: =FontWeight.Semibold
+                    Size: =15
+                    Text: ="Preview"
+                    Width: =200
+                    X: =90
+                    Y: =gallCapturedImg.Y-Self.Height/2
+                    ZIndex: =18
 
     "'Bottom Bar_20' As 'Bottom Bar'":
         Height: =105
