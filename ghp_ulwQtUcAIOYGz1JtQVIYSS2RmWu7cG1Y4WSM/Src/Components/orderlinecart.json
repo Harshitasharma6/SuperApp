@@ -5573,7 +5573,7 @@
           },
           {
             "Category": "Data",
-            "InvariantScript": "//If(Cart_1.CartType = \"Primary\", colPrimaryCart, Cart_1.CartType=\"Secondary\", colSecondaryCart)\r\nFilter(OfflineOrderLineCollection,'Order Header'.'Order Header'= If(primarydata.'Order Type'= 'Order Type Choice'.Primary,primarydata.'Order Header',secondarydata.'Order Type'= 'Order Type Choice'.Secondary,secondarydata.'Order Header'))",
+            "InvariantScript": "//If(Cart_1.CartType = \"Primary\", colPrimaryCart, Cart_1.CartType=\"Secondary\", colSecondaryCart)\nFilter(\n    OfflineOrderLineCollection,\n    'Order Header'.'Order Header' = If(\n        primarydata.zx_ordertype = 'Order Type Choice'.Primary,\n        primarydata.zx_orderheaderid,\n        secondarydata.zx_orderheaderid\n    )\n)",
             "Property": "Items",
             "RuleProviderType": "Unknown"
           },
@@ -5705,7 +5705,7 @@
           },
           {
             "Category": "Design",
-            "InvariantScript": "10",
+            "InvariantScript": "27",
             "Property": "Y",
             "RuleProviderType": "Unknown"
           },
@@ -5775,7 +5775,7 @@
       "ZIndex",
       "CartType"
     ],
-    "LastModifiedTimestamp": "638194779310299673",
+    "LastModifiedTimestamp": "638194844593814074",
     "Name": "orderlinecart",
     "Rules": [
       {
@@ -5850,7 +5850,7 @@
   "IsPcfControl": false,
   "IsPremiumPcfControl": false,
   "IsWidgetTemplate": false,
-  "LastModifiedTimestamp": "638194779310299673",
+  "LastModifiedTimestamp": "638194844593814074",
   "Name": "90883600ac594eda95a316e72190f825",
   "OverridableProperties": {},
   "TemplateOriginalName": "96ce68581def46fcab13b78f74ddacdc",
