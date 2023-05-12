@@ -6413,7 +6413,7 @@
           },
           {
             "Category": "Behavior",
-            "InvariantScript": "Set(\r\n    varTotalBill,\r\n    RoundUp(\r\n        Value(\r\n            Sum(\r\n                colPrimaryCart,\r\n                (baseUnitPrice - (baseUnitPrice * (discount / 100))) * quantity\r\n            ) + (Sum(\r\n                colPrimaryCart,\r\n                igstAmount\r\n            ) + Sum(\r\n                colPrimaryCart,\r\n                cgstAmount\r\n            ) + Sum(\r\n                colPrimaryCart,\r\n                sgstAmount\r\n            ) + Sum(\r\n                colPrimaryCart,\r\n                cessAmount\r\n            ))\r\n        ),\r\n        2\r\n    )\r\n);\r\nSet(\r\n    varorderselectedId,\r\n    2\r\n);\r\nIf(\r\n    IsBlank(ComboBox7_3.SelectedItems) && IsBlank(ComboBox7_2.SelectedItems) && IsBlank(ComboBox7.SelectedItems),\r\n    Notify(\r\n        \"Please fill the order terms\",\r\n        NotificationType.Error,\r\n        2000\r\n    )\r\n);\r\n//Navigate('Primary Cart Screen',ScreenTransition.CoverRight);\r\n",
+            "InvariantScript": "Notify(\"Please fill the order terms\",NotificationType.Information,2000);\r\nSet(\r\n    varTotalBill,\r\n    RoundUp(\r\n        Value(\r\n            Sum(\r\n                colPrimaryCart,\r\n                (baseUnitPrice - (baseUnitPrice * (discount / 100))) * quantity\r\n            ) + (Sum(\r\n                colPrimaryCart,\r\n                igstAmount\r\n            ) + Sum(\r\n                colPrimaryCart,\r\n                cgstAmount\r\n            ) + Sum(\r\n                colPrimaryCart,\r\n                sgstAmount\r\n            ) + Sum(\r\n                colPrimaryCart,\r\n                cessAmount\r\n            ))\r\n        ),\r\n        2\r\n    )\r\n);\r\nNavigate('Primary Cart Screen',ScreenTransition.CoverRight);\r\n",
             "Property": "OnSelect",
             "RuleProviderType": "Unknown"
           }
@@ -6465,7 +6465,7 @@
       "ZIndex",
       "CartType"
     ],
-    "LastModifiedTimestamp": "638194901065069921",
+    "LastModifiedTimestamp": "638194854367286799",
     "Name": "Primary Cart",
     "Rules": [
       {
@@ -6540,7 +6540,7 @@
   "IsPcfControl": false,
   "IsPremiumPcfControl": false,
   "IsWidgetTemplate": false,
-  "LastModifiedTimestamp": "638194901065069921",
+  "LastModifiedTimestamp": "638194854367286799",
   "Name": "96ce68581def46fcab13b78f74ddacdc",
   "OverridableProperties": {},
   "TemplateOriginalName": "1a2675a6f994480ea6566bca42659ae3",

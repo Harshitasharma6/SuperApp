@@ -15,7 +15,9 @@
         BorderColor: =RGBA(153, 207, 236, 1)
         BorderStyle: =BorderStyle.None
         Fill: =ColorValue(LookUp(c_EnvironmentVariable, 'Display Name'="Light Red").'Default Value')
-        Height: =920
+        Height: |-
+            =//920
+            App.Height-230
         Items: |-
             =If(
                 varfiltergallery = true,
@@ -202,7 +204,8 @@
             //'Top Gallery'.Selected.TabId=5
         Width: =620
         X: =10
-        Y: =105
+        Y: |
+            =105
         ZIndex: =1
 
         Button43 As button:
@@ -787,7 +790,10 @@
         Text: ="+"
         Width: =60
         X: =564
-        Y: =930
+        Y: |-
+            =//930
+            
+            App.Height-230-Self.Height
         ZIndex: =12
 
     Icon7 As icon.CalendarBlank:
