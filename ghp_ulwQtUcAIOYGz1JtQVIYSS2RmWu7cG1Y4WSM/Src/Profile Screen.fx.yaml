@@ -79,12 +79,12 @@
                     Data:LookUp(Users, 'Primary Email'=User().Email).'Mobile Phone'
                 },
                 {
-                    Title: "Order From:",
-                    Data: ""
+                    Title: "Address:",
+                    Data:LookUp(Users, 'Primary Email'=User().Email).Address
                 },
                 {
-                    Title: "Order To:",
-                    Data: ""
+                    Title: "Last Attendance:",
+                    Data:If(DateValue(LookUp(Sort('Attendance.S','Created On',SortOrder.Descending), 'Created By'.'Primary Email'=User().Email).'Created On')=Today(), "Today",Text(LookUp(Sort('Attendance.S','Created On',SortOrder.Descending), 'Created By'.'Primary Email'=User().Email).'Created On', "dd/mm/yyyy"))
                 }
             )
         Height: =792
