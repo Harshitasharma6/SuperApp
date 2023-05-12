@@ -1393,7 +1393,11 @@
                 )
             Height: =466
             HoverColor: =RGBA(0, 18, 107, 1)
-            Items: =OfflinePartiesCollection
+            Items: |-
+                =Filter(
+                    OfflinePartiesCollection,
+                    Not('Customer Type' = 'Party Type Choices'.Retailer)
+                )
             LineHeight: =2
             OnSelect: |-
                 =If(

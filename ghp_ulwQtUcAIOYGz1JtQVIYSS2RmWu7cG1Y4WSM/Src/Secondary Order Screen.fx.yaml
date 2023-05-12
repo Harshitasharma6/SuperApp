@@ -460,3 +460,1478 @@
         ScreenName: ="Secondary Order"
         ZIndex: =15
 
+    Display_15 As gallery.galleryHorizontal:
+        AccessibleLabel: ="Filter Displayed"
+        BorderColor: =RGBA(0, 18, 107, 1)
+        DelayItemLoading: =true
+        Fill: |-
+            =RGBA(0, 0, 0, 0)
+            //_VarGblAppColors.PrimaryRed
+        Height: =75
+        Items: =colsecorderFilter
+        LoadingSpinner: =LoadingSpinner.Data
+        ShowScrollbar: =false
+        TabIndex: =0//-1
+        TemplateSize: =216
+        Visible: |-
+            =true
+            //varFilter
+        Width: =454
+        X: =30
+        Y: =88
+        ZIndex: =16
+
+        Button20_18 As button:
+            DisabledBorderColor: =RGBA(166, 166, 166, 1)
+            DisabledColor: =RGBA(166, 166, 166, 1)
+            DisabledFill: =RGBA(244, 244, 244, 1)
+            DisplayMode: =DisplayMode.View
+            Fill: |-
+                =//RGBA(204, 204, 204, 1)
+                ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//_VarGblAppColors.PrimaryRed
+            FontWeight: =FontWeight.Semibold
+            Height: =41
+            HoverColor: =RGBA(255, 255, 255, 1)
+            HoverFill: =ColorFade(RGBA(56, 96, 178, 1), -20%)
+            RadiusBottomLeft: =15
+            RadiusBottomRight: =15
+            RadiusTopLeft: =15
+            RadiusTopRight: =15
+            Size: =24
+            Text: =""
+            Width: =210
+            X: =6
+            ZIndex: =1
+
+        Label31_29 As label:
+            BorderColor: =RGBA(0, 18, 107, 1)
+            Color: |-
+                =ColorValue( LookUp('Environment Variable Definitions', 'Display Name'="Common Primary Background").'Default Value'   
+                )
+            DisabledColor: =RGBA(166, 166, 166, 1)
+            FontWeight: =FontWeight.Bold
+            Height: =41
+            OnSelect: =Select(Parent)
+            Size: =10
+            Text: |-
+                =ThisItem.Title & ": " & ThisItem.value
+            Tooltip: |-
+                =ThisItem.Title & ":"
+            Width: =161
+            Wrap: =false
+            X: =16
+            ZIndex: =2
+
+        Icon21_18 As icon.Cancel:
+            AccessibleLabel: ="Close the filter applied"
+            BorderColor: =RGBA(0, 18, 107, 1)
+            Color: |-
+                =ColorValue( LookUp('Environment Variable Definitions', 'Display Name'="Common Primary Background").'Default Value'   
+                )
+            DisabledBorderColor: =RGBA(166, 166, 166, 1)
+            DisabledColor: =RGBA(244, 244, 244, 1)
+            Height: =25
+            Icon: =Icon.Cancel
+            OnSelect: |-
+                =Remove(colsecorderFilter,ThisItem);
+                Reset(radioDate_7);
+                Reset(radioParty_5);
+                Reset(radioStatus_5);
+                Set(varCollectionEmpty,true)
+            TabIndex: =0//-1
+            Width: =30
+            X: =175
+            Y: =8
+            ZIndex: =4
+
+    backdrop_8 As rectangle:
+        BorderColor: =RGBA(0, 18, 107, 1)
+        DisplayMode: =DisplayMode.View
+        Fill: =RGBA(153, 153, 153, 0.59)
+        Height: =1131
+        Visible: |
+            =varFilterOrder
+        Width: =App.Width
+        ZIndex: =17
+
+    "'filter button_9' As button":
+        DisabledBorderColor: =RGBA(166, 166, 166, 1)
+        DisabledColor: =RGBA(166, 166, 166, 1)
+        DisabledFill: =RGBA(244, 244, 244, 1)
+        DisplayMode: =DisplayMode.View
+        Fill: =RGBA(255, 255, 255, 1)
+        FontWeight: =FontWeight.Semibold
+        Height: =900
+        HoverColor: =RGBA(255, 255, 255, 1)
+        HoverFill: =ColorFade(RGBA(56, 96, 178, 1), -20%)
+        RadiusBottomLeft: =0
+        RadiusBottomRight: =0
+        RadiusTopLeft: =25
+        RadiusTopRight: =25
+        Size: =24
+        Text: =""
+        Visible: =varFilterOrder
+        Width: =640
+        Y: =236
+        ZIndex: =18
+
+    Container4_33 As groupContainer:
+        Height: =899
+        Visible: =varFilterOrder
+        Width: =640
+        Y: =236
+        ZIndex: =19
+
+        Rectangle16_13 As rectangle:
+            BorderColor: =RGBA(0, 18, 107, 1)
+            DisplayMode: =DisplayMode.View
+            Fill: =RGBA(0, 0, 0, 1)
+            Height: =470
+            Visible: =varFilterOrder
+            Width: =2
+            X: =290
+            Y: =157
+            ZIndex: =1
+
+        Label8_13 As label:
+            BorderColor: =RGBA(0, 18, 107, 1)
+            Color: =RGBA(0, 0, 0, 1)
+            DisabledColor: =RGBA(166, 166, 166, 1)
+            Font: =Font.'Segoe UI'
+            FontWeight: =FontWeight.Bold
+            Height: =58
+            PaddingLeft: =30
+            Size: =21
+            Text: ="All Filters" 
+            Visible: =varFilterOrder
+            Width: =273
+            X: =27
+            ZIndex: =2
+
+        ApplyBtn_13 As button:
+            BorderColor: =RGBA(0, 0, 0, 1)
+            BorderThickness: =0
+            DisabledBorderColor: =RGBA(166, 166, 166, 1)
+            DisabledColor: =RGBA(166, 166, 166, 1)
+            DisabledFill: =RGBA(244, 244, 244, 1)
+            Fill: |-
+                =//RGBA(184, 0, 0, 1)
+                ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//_VarGblAppColors.PrimaryRed
+            FocusedBorderThickness: =
+            Font: =Font.'Segoe UI'
+            FontWeight: =FontWeight.Semibold
+            Height: =60
+            HoverColor: =RGBA(255, 255, 255, 1)
+            HoverFill: |-
+                =ColorFade(
+                    
+                    ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//_VarGblAppColors.PrimaryRed
+                    , 10%)
+            OnSelect: |-
+                =ClearCollect(
+                    colFilterData,
+                    If(
+                        'Order List_1'.Type = "Primary",
+                        If(
+                         //Date selected-----------------------------------------------------------------------
+                            !IsBlank(radioDate_7.SelectedText) && IsBlank(radioParty_5.SelectedText) && IsBlank(radioStatus_5.SelectedText) && IsBlank(OrderValue_2.Text) && IsBlank(DateFrom_10.SelectedDate),
+                            If(
+                                radioDate_7.Selected.Value = "Today",
+                                Filter(
+                                    OfflineOrderHeaderCollection,
+                                    IsToday('Created On') && 'Order Type' = 'Order Type Choice'.Primary && 'Owning User'.'Primary Email' = radioSalesperson_7.Selected.'Primary Email'
+                                ),
+                                radioDate_7.Selected.Value = "This Week",
+                                Filter(
+                                    OfflineOrderHeaderCollection,
+                                    (DateValue('Created On') >= DateValue(Today()) - Weekday(Today()) + 2 && DateValue('Created On') <= DateValue(Today()) + (9 - Weekday(Today()))) && 'Order Type' = 'Order Type Choice'.Primary && 'Owning User'.'Primary Email' = radioSalesperson_7.Selected.'Primary Email'
+                                ),
+                                radioDate_7.Selected.Value = "This Month",
+                                Filter(
+                                    OfflineOrderHeaderCollection,
+                                    (Text(
+                                        'Created On',
+                                        "mmmm"
+                                    ) = Text(
+                                        Today(),
+                                        "mmmm"
+                                    )) && 'Order Type' = 'Order Type Choice'.Primary && 'Owning User'.'Primary Email' = radioSalesperson_7.Selected.'Primary Email'
+                                )
+                            ),
+                        //Party selected-----------------------------------------------------------------------
+                            IsBlank(radioDate_7.SelectedText) && !IsBlank(radioParty_5.SelectedText) && IsBlank(radioStatus_5.SelectedText) && IsBlank(OrderValue_2.Text) && IsBlank(DateFrom_10.SelectedDate),
+                            Filter(
+                                OfflineOrderHeaderCollection,
+                                'Order From'.'Customer Code' = radioParty_5.Selected.'Customer Code' && 'Owning User'.'Primary Email' = radioSalesperson_7.Selected.'Primary Email' && 'Order Type' = 'Order Type Choice'.Primary
+                            ),
+                        //Status selected-----------------------------------------------------------------------
+                            IsBlank(radioDate_7.SelectedText) && IsBlank(radioParty_5.SelectedText) && !IsBlank(radioStatus_5.SelectedText) && IsBlank(OrderValue_2.Text) && IsBlank(DateFrom_10.SelectedDate),
+                            Filter(
+                                OfflineOrderHeaderCollection,
+                                'Order Status' = radioStatus_5.Selected.Value && 'Owning User'.'Primary Email' = radioSalesperson_7.Selected.'Primary Email' && 'Order Type' = 'Order Type Choice'.Primary
+                            ),
+                        // total order amount ------------------------------------------------------
+                            IsBlank(radioDate_7.SelectedText) && IsBlank(radioParty_5.SelectedText) && IsBlank(radioStatus_5.SelectedText) && !IsBlank(OrderValue_2.Text) && IsBlank(DateFrom_10.SelectedDate),
+                            Filter(
+                                OfflineOrderHeaderCollection,
+                                'Total Bill Amount' = Value(OrderValue_2.Text) && 'Owning User'.'Primary Email' = radioSalesperson_7.Selected.'Primary Email' && 'Order Type' = 'Order Type Choice'.Primary
+                            ),
+                        // Selected salesperson-------------------------
+                            !IsBlank(radioSalesperson_7.SelectedText) && IsBlank(radioDate_7.SelectedText) && IsBlank(radioParty_5.SelectedText) && IsBlank(radioStatus_5.SelectedText) && IsBlank(OrderValue_2.Text) && IsBlank(DateFrom_10.SelectedDate),
+                            Filter(
+                                OfflineOrderHeaderCollection,
+                                'Owning User'.'Primary Email' = radioSalesperson_7.Selected.'Primary Email' && 'Order Type' = 'Order Type Choice'.Primary
+                            ),
+                        // Date to and date from -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+                            !IsBlank(DateFrom_10.SelectedDate) && !IsBlank(DateTo_7.SelectedDate) && IsBlank(radioDate_7.SelectedText) && IsBlank(radioParty_5.SelectedText) && IsBlank(radioStatus_5.SelectedText) && IsBlank(OrderValue_2.Text),
+                            Filter(
+                                OfflineOrderHeaderCollection,
+                                DateValue('Created On') >= DateValue(DateFrom_10.SelectedDate) && DateValue('Created On') <= DateValue(DateTo_7.SelectedDate) && 'Order Type' = 'Order Type Choice'.Primary && 'Owning User'.'Primary Email' = radioSalesperson_7.Selected.'Primary Email'
+                            ),
+                      // Select date and party------------------------------------------------------------------
+                            !IsBlank(radioDate_7.SelectedText) && !IsBlank(radioParty_5.SelectedText) && IsBlank(radioStatus_5.SelectedText) && IsBlank(OrderValue_2.Text) && IsBlank(DateFrom_10.SelectedDate),
+                            If(
+                                radioDate_7.Selected.Value = "Today",
+                                Filter(
+                                    OfflineOrderHeaderCollection,
+                                    IsToday('Created On') && 'Order Type' = 'Order Type Choice'.Primary && 'Order From'.'Customer Code' = radioParty_5.Selected.'Customer Code' && 'Owning User'.'Primary Email' = radioSalesperson_7.Selected.'Primary Email'
+                                ),
+                                radioDate_7.Selected.Value = "This Week",
+                                Filter(
+                                    OfflineOrderHeaderCollection,
+                                    (DateValue('Created On') >= DateValue(Today()) - Weekday(Today()) + 2 && DateValue('Created On') <= DateValue(Today()) + (9 - Weekday(Today()))) && 'Order Type' = 'Order Type Choice'.Primary && 'Order From'.'Customer Code' = radioParty_5.Selected.'Customer Code' && 'Owning User'.'Primary Email' = radioSalesperson_7.Selected.'Primary Email'
+                                ),
+                                radioDate_7.Selected.Value = "This Month",
+                                Filter(
+                                    OfflineOrderHeaderCollection,
+                                    (Text(
+                                        'Created On',
+                                        "mmmm"
+                                    ) = Text(
+                                        Today(),
+                                        "mmmm"
+                                    )) && 'Order Type' = 'Order Type Choice'.Primary && 'Order From'.'Customer Code' = radioParty_5.Selected.'Customer Code' && 'Owning User'.'Primary Email' = radioSalesperson_7.Selected.'Primary Email'
+                                )
+                            ),
+                             // Select date and Status------------------------------------------------------------------
+                            !IsBlank(radioDate_7.SelectedText) && IsBlank(radioParty_5.SelectedText) && !IsBlank(radioStatus_5.SelectedText) && IsBlank(OrderValue_2.Text) && IsBlank(DateFrom_10.SelectedDate),
+                            If(
+                                radioDate_7.Selected.Value = "Today",
+                                Filter(
+                                    OfflineOrderHeaderCollection,
+                                    IsToday('Created On') && 'Order Type' = 'Order Type Choice'.Primary && 'Order Status' = radioStatus_5.Selected.Value && 'Owning User'.'Primary Email' = radioSalesperson_7.Selected.'Primary Email'
+                                ),
+                                radioDate_7.Selected.Value = "This Week",
+                                Filter(
+                                    OfflineOrderHeaderCollection,
+                                    (DateValue('Created On') >= DateValue(Today()) - Weekday(Today()) + 2 && DateValue('Created On') <= DateValue(Today()) + (9 - Weekday(Today()))) && 'Order Type' = 'Order Type Choice'.Primary && 'Order Status' = radioStatus_5.Selected.Value && 'Owning User'.'Primary Email' = radioSalesperson_7.Selected.'Primary Email'
+                                ),
+                                radioDate_7.Selected.Value = "This Month",
+                                Filter(
+                                    OfflineOrderHeaderCollection,
+                                    (Text(
+                                        'Created On',
+                                        "mmmm"
+                                    ) = Text(
+                                        Today(),
+                                        "mmmm"
+                                    )) && 'Order Type' = 'Order Type Choice'.Primary && 'Order Status' = radioStatus_5.Selected.Value && 'Owning User'.'Primary Email' = radioSalesperson_7.Selected.'Primary Email'
+                                )
+                            ),
+                        // Select date and order value------------------------------------------------------------------
+                            !IsBlank(radioDate_7.SelectedText) && IsBlank(radioParty_5.SelectedText) && IsBlank(radioStatus_5.SelectedText) && !IsBlank(OrderValue_2.Text) && IsBlank(DateFrom_10.SelectedDate),
+                            If(
+                                radioDate_7.Selected.Value = "Today",
+                                Filter(
+                                    OfflineOrderHeaderCollection,
+                                    IsToday('Created On') && 'Order Type' = 'Order Type Choice'.Primary && 'Total Bill Amount' = Value(OrderValue_2.Text) && 'Owning User'.'Primary Email' = radioSalesperson_7.Selected.'Primary Email'
+                                ),
+                                radioDate_7.Selected.Value = "This Week",
+                                Filter(
+                                    OfflineOrderHeaderCollection,
+                                    (DateValue('Created On') >= DateValue(Today()) - Weekday(Today()) + 2 && DateValue('Created On') <= DateValue(Today()) + (9 - Weekday(Today()))) && 'Order Type' = 'Order Type Choice'.Primary && 'Total Bill Amount' = Value(OrderValue_2.Text) && 'Owning User'.'Primary Email' = radioSalesperson_7.Selected.'Primary Email'
+                                ),
+                                radioDate_7.Selected.Value = "This Month",
+                                Filter(
+                                    OfflineOrderHeaderCollection,
+                                    (Text(
+                                        'Created On',
+                                        "mmmm"
+                                    ) = Text(
+                                        Today(),
+                                        "mmmm"
+                                    )) && 'Order Type' = 'Order Type Choice'.Primary && 'Total Bill Amount' = Value(OrderValue_2.Text) && 'Owning User'.'Primary Email' = radioSalesperson_7.Selected.'Primary Email'
+                                )
+                            ),
+                        //Party  and status selected--------------------------------------------------------------
+                            IsBlank(radioDate_7.SelectedText) && !IsBlank(radioParty_5.SelectedText) && !IsBlank(radioStatus_5.SelectedText) && IsBlank(OrderValue_2.Text) && IsBlank(DateFrom_10.SelectedDate),
+                            Filter(
+                                OfflineOrderHeaderCollection,
+                                'Order From'.'Customer Code' = radioParty_5.Selected.'Customer Code' && 'Order Type' = 'Order Type Choice'.Primary && 'Order Status' = radioStatus_5.Selected.Value && 'Owning User'.'Primary Email' = radioSalesperson_7.Selected.'Primary Email'
+                            ),
+                         //Party  and order value selected--------------------------------------------------------------
+                            IsBlank(radioDate_7.SelectedText) && !IsBlank(radioParty_5.SelectedText) && IsBlank(radioStatus_5.SelectedText) && !IsBlank(OrderValue_2.Text) && IsBlank(DateFrom_10.SelectedDate),
+                            Filter(
+                                OfflineOrderHeaderCollection,
+                                'Order From'.'Customer Code' = radioParty_5.Selected.'Customer Code' && 'Total Bill Amount' = Value(OrderValue_2.Text) && 'Owning User'.'Primary Email' = radioSalesperson_7.Selected.'Primary Email'
+                            ),
+                        //Party  and date value selected--------------------------------------------------------------
+                            !IsBlank(radioParty_5.SelectedText) && !IsBlank(DateFrom_10.SelectedDate) && !IsBlank(DateTo_7.SelectedDate) && IsBlank(radioDate_7.SelectedText) && !IsBlank(radioStatus_5.SelectedText) && IsBlank(OrderValue_2.Text),
+                            Filter(
+                                OfflineOrderHeaderCollection,
+                                'Order From'.'Customer Code' = radioParty_5.Selected.'Customer Code' && DateValue('Created On') >= DateValue(DateFrom_10.SelectedDate) && DateValue('Created On') <= DateValue(DateTo_7.SelectedDate) && 'Order Type' = 'Order Type Choice'.Primary && 'Owning User'.'Primary Email' = radioSalesperson_7.Selected.'Primary Email'
+                            ),
+                        //Status  and order value selected---------------------------------------------------------
+                            IsBlank(radioDate_7.SelectedText) && IsBlank(radioParty_5.SelectedText) && !IsBlank(radioStatus_5.SelectedText) && !IsBlank(OrderValue_2.Text) && IsBlank(DateFrom_10.SelectedDate),
+                            Filter(
+                                OfflineOrderHeaderCollection,
+                                'Order Status' = radioStatus_5.Selected.Value && 'Total Bill Amount' = Value(OrderValue_2.Text) && 'Owning User'.'Primary Email' = radioSalesperson_7.Selected.'Primary Email' && 'Order Type' = 'Order Type Choice'.Primary
+                            ),
+                        //Status  and date value selected--------------------------------------------------------------
+                            !IsBlank(radioStatus_5.SelectedText) && !IsBlank(DateFrom_10.SelectedDate) && !IsBlank(DateTo_7.SelectedDate) && IsBlank(radioDate_7.SelectedText) && IsBlank(radioParty_5.SelectedText) && IsBlank(OrderValue_2.Text),
+                            Filter(
+                                OfflineOrderHeaderCollection,
+                                'Order Status' = radioStatus_5.Selected.Value && DateValue('Created On') >= DateValue(DateFrom_10.SelectedDate) && DateValue('Created On') <= DateValue(DateTo_7.SelectedDate) && 'Order Type' = 'Order Type Choice'.Primary && 'Owning User'.'Primary Email' = radioSalesperson_7.Selected.'Primary Email'
+                            ),
+                    //Party,Status and date selected-------------------------------------------------------------
+                            !IsBlank(radioDate_7.SelectedText) && !IsBlank(radioParty_5.SelectedText) && !IsBlank(radioStatus_5.SelectedText) && IsBlank(OrderValue_2.Text) && IsBlank(DateFrom_10.SelectedDate),
+                            If(
+                                radioDate_7.Selected.Value = "Today",
+                                Filter(
+                                    OfflineOrderHeaderCollection,
+                                    IsToday('Created On') && 'Order Type' = 'Order Type Choice'.Primary && 'Order Status' = radioStatus_5.Selected.Value && 'Order From'.'Customer Code' = radioParty_5.Selected.'Customer Code' && 'Owning User'.'Primary Email' = radioSalesperson_7.Selected.'Primary Email'
+                                ),
+                                radioDate_7.Selected.Value = "This Week",
+                                Filter(
+                                    OfflineOrderHeaderCollection,
+                                    (DateValue('Created On') >= DateValue(Today()) - Weekday(Today()) + 2 && DateValue('Created On') <= DateValue(Today()) + (9 - Weekday(Today()))) && 'Order Type' = 'Order Type Choice'.Primary && 'Order Status' = radioStatus_5.Selected.Value && 'Order From'.'Customer Code' = radioParty_5.Selected.'Customer Code' && 'Owning User'.'Primary Email' = radioSalesperson_7.Selected.'Primary Email'
+                                ),
+                                radioDate_7.Selected.Value = "This Month",
+                                Filter(
+                                    OfflineOrderHeaderCollection,
+                                    (Text(
+                                        'Created On',
+                                        "mmmm"
+                                    ) = Text(
+                                        Today(),
+                                        "mmmm"
+                                    )) && 'Order Type' = 'Order Type Choice'.Primary && 'Order Status' = radioStatus_5.Selected.Value && 'Order From'.'Customer Code' = radioParty_5.Selected.'Customer Code' && 'Owning User'.'Primary Email' = radioSalesperson_7.Selected.'Primary Email'
+                                )
+                            ),
+                 //Party,ordervalue and date selected-------------------------------------------------------------
+                            !IsBlank(radioDate_7.SelectedText) && !IsBlank(radioParty_5.SelectedText) && IsBlank(radioStatus_5.SelectedText) && !IsBlank(OrderValue_2.Text) && IsBlank(DateFrom_10.SelectedDate),
+                            If(
+                                radioDate_7.Selected.Value = "Today",
+                                Filter(
+                                    OfflineOrderHeaderCollection,
+                                    IsToday('Created On') && 'Order Type' = 'Order Type Choice'.Primary && 'Order From'.'Customer Code' = radioParty_5.Selected.'Customer Code' && 'Total Bill Amount' = Value(OrderValue_2.Text) && 'Owning User'.'Primary Email' = radioSalesperson_7.Selected.'Primary Email'
+                                ),
+                                radioDate_7.Selected.Value = "This Week",
+                                Filter(
+                                    OfflineOrderHeaderCollection,
+                                    (DateValue('Created On') >= DateValue(Today()) - Weekday(Today()) + 2 && DateValue('Created On') <= DateValue(Today()) + (9 - Weekday(Today()))) && 'Order Type' = 'Order Type Choice'.Primary && 'Order From'.'Customer Code' = radioParty_5.Selected.'Customer Code' && 'Total Bill Amount' = Value(OrderValue_2.Text) && 'Owning User'.'Primary Email' = radioSalesperson_7.Selected.'Primary Email'
+                                ),
+                                radioDate_7.Selected.Value = "This Month",
+                                Filter(
+                                    OfflineOrderHeaderCollection,
+                                    (Text(
+                                        'Created On',
+                                        "mmmm"
+                                    ) = Text(
+                                        Today(),
+                                        "mmmm"
+                                    )) && 'Order Type' = 'Order Type Choice'.Primary && 'Order From'.'Customer Code' = radioParty_5.Selected.'Customer Code' && 'Total Bill Amount' = Value(OrderValue_2.Text) && 'Owning User'.'Primary Email' = radioSalesperson_7.Selected.'Primary Email'
+                                )
+                            ),
+                    //Party,Status and date value selected--------------------------------------------------------------
+                            !IsBlank(radioStatus_5.SelectedText) && !IsBlank(DateFrom_10.SelectedDate) && !IsBlank(DateTo_7.SelectedDate) && IsBlank(radioDate_7.SelectedText) && !IsBlank(radioParty_5.SelectedText) && IsBlank(OrderValue_2.Text),
+                            Filter(
+                                OfflineOrderHeaderCollection,
+                                'Order Status' = radioStatus_5.Selected.Value && DateValue('Created On') >= DateValue(DateFrom_10.SelectedDate) && DateValue('Created On') <= DateValue(DateTo_7.SelectedDate) && 'Order From'.'Customer Code' = radioParty_5.Selected.'Customer Code' && 'Order Type' = 'Order Type Choice'.Primary && 'Owning User'.'Primary Email' = radioSalesperson_7.Selected.'Primary Email'
+                            ),
+                //Party,ordervalue and date value selected--------------------------------------------------------------
+                            IsBlank(radioStatus_5.SelectedText) && !IsBlank(DateFrom_10.SelectedDate) && !IsBlank(DateTo_7.SelectedDate) && IsBlank(radioDate_7.SelectedText) && !IsBlank(radioParty_5.SelectedText) && !IsBlank(OrderValue_2.Text),
+                            Filter(
+                                OfflineOrderHeaderCollection,
+                                'Total Bill Amount' = Value(OrderValue_2.Text) && DateValue('Created On') >= DateValue(DateFrom_10.SelectedDate) && DateValue('Created On') <= DateValue(DateTo_7.SelectedDate) && 'Order From'.'Customer Code' = radioParty_5.Selected.'Customer Code' && 'Order Type' = 'Order Type Choice'.Primary && 'Owning User'.'Primary Email' = radioSalesperson_7.Selected.'Primary Email'
+                            ),
+                 //status,ordervalue and date value selected--------------------------------------------------------------
+                            !IsBlank(radioStatus_5.SelectedText) && !IsBlank(DateFrom_10.SelectedDate) && !IsBlank(DateTo_7.SelectedDate) && IsBlank(radioDate_7.SelectedText) && IsBlank(radioParty_5.SelectedText) && !IsBlank(OrderValue_2.Text),
+                            Filter(
+                                OfflineOrderHeaderCollection,
+                                'Total Bill Amount' = Value(OrderValue_2.Text) && DateValue('Created On') >= DateValue(DateFrom_10.SelectedDate) && DateValue('Created On') <= DateValue(DateTo_7.SelectedDate) && 'Order Status' = radioStatus_5.Selected.Value && 'Order Type' = 'Order Type Choice'.Primary && 'Owning User'.'Primary Email' = radioSalesperson_7.Selected.'Primary Email'
+                            ),
+                 //Party,ordervalue and status selected--------------------------------------------------------------
+                            !IsBlank(radioStatus_5.SelectedText) && IsBlank(DateFrom_10.SelectedDate) && IsBlank(DateTo_7.SelectedDate) && IsBlank(radioDate_7.SelectedText) && !IsBlank(radioParty_5.SelectedText) && !IsBlank(OrderValue_2.Text),
+                            Filter(
+                                OfflineOrderHeaderCollection,
+                                'Total Bill Amount' = Value(OrderValue_2.Text) && 'Order Status' = radioStatus_5.Selected.Value && 'Order From'.'Customer Code' = radioParty_5.Selected.'Customer Code' && 'Order Type' = 'Order Type Choice'.Primary && 'Owning User'.'Primary Email' = radioSalesperson_7.Selected.'Primary Email'
+                            ),
+                        //all selected-------------------------------------------------------------
+                            !IsBlank(radioDate_7.SelectedText) && !IsBlank(radioParty_5.SelectedText) && !IsBlank(radioStatus_5.SelectedText) && !IsBlank(OrderValue_2.Text) && IsBlank(DateFrom_10.SelectedDate),
+                            If(
+                                radioDate_7.Selected.Value = "Today",
+                                Filter(
+                                    OfflineOrderHeaderCollection,
+                                    IsToday('Created On') && 'Order Type' = 'Order Type Choice'.Primary && 'Order Status' = radioStatus_5.Selected.Value && 'Order From'.'Customer Code' = radioParty_5.Selected.'Customer Code' && 'Total Bill Amount' = Value(OrderValue_2.Text) && 'Owning User'.'Primary Email' = radioSalesperson_7.Selected.'Primary Email'
+                                ),
+                                radioDate_7.Selected.Value = "This Week",
+                                Filter(
+                                    OfflineOrderHeaderCollection,
+                                    (DateValue('Created On') >= DateValue(Today()) - Weekday(Today()) + 2 && DateValue('Created On') <= DateValue(Today()) + (9 - Weekday(Today()))) && 'Order Type' = 'Order Type Choice'.Primary && 'Order Status' = radioStatus_5.Selected.Value && 'Order From'.'Customer Code' = radioParty_5.Selected.'Customer Code' && 'Total Bill Amount' = Value(OrderValue_2.Text) && 'Owning User'.'Primary Email' = radioSalesperson_7.Selected.'Primary Email'
+                                ),
+                                radioDate_7.Selected.Value = "This Month",
+                                Filter(
+                                    OfflineOrderHeaderCollection,
+                                    (Text(
+                                        'Created On',
+                                        "mmmm"
+                                    ) = Text(
+                                        Today(),
+                                        "mmmm"
+                                    )) && 'Order Type' = 'Order Type Choice'.Primary && 'Order Status' = radioStatus_5.Selected.Value && 'Order From'.'Customer Code' = radioParty_5.Selected.'Customer Code' && 'Total Bill Amount' = Value(OrderValue_2.Text) && 'Owning User'.'Primary Email' = radioSalesperson_7.Selected.'Primary Email'
+                                )
+                            ),
+                            !IsBlank(radioStatus_5.SelectedText) && !IsBlank(DateFrom_10.SelectedDate) && !IsBlank(DateTo_7.SelectedDate) && IsBlank(radioDate_7.SelectedText) && !IsBlank(radioParty_5.SelectedText) && !IsBlank(OrderValue_2.Text),
+                            Filter(
+                                OfflineOrderHeaderCollection,
+                                'Order Status' = radioStatus_5.Selected.Value && 'Order From'.'Customer Code' = radioParty_5.Selected.'Customer Code' && 'Total Bill Amount' = Value(OrderValue_2.Text) && DateValue('Created On') >= DateValue(DateFrom_10.SelectedDate) && DateValue('Created On') <= DateValue(DateTo_7.SelectedDate) && 'Order Type' = 'Order Type Choice'.Primary && 'Owning User'.'Primary Email' = radioSalesperson_7.Selected.'Primary Email'
+                            )
+                        ),
+                        'Order List_2'.Type = "Secondary",
+                        If(
+                         //Date selected-----------------------------------------------------------------------
+                            (!IsBlank(radioDate_7.SelectedText) && IsBlank(radioParty_5.SelectedText) && IsBlank(radioStatus_5.SelectedText) && IsBlank(OrderValue_2.Text) && IsBlank(DateFrom_10.SelectedDate)),
+                            If(
+                                radioDate_7.Selected.Value = "Today",
+                                Filter(
+                                    OfflineOrderHeaderCollection,
+                                    IsToday('Created On') && 'Order Type' = 'Order Type Choice'.Secondary && 'Owning User'.'Primary Email' = radioSalesperson_7.Selected.'Primary Email'
+                                ),
+                                radioDate_7.Selected.Value = "This Week",
+                                Filter(
+                                    OfflineOrderHeaderCollection,
+                                    (DateValue('Created On') >= DateValue(Today()) - Weekday(Today()) + 2 && DateValue('Created On') <= DateValue(Today()) + (9 - Weekday(Today()))) && 'Order Type' = 'Order Type Choice'.Secondary && 'Owning User'.'Primary Email' = radioSalesperson_7.Selected.'Primary Email'
+                                ),
+                                radioDate_7.Selected.Value = "This Month",
+                                Filter(
+                                    OfflineOrderHeaderCollection,
+                                    (Text(
+                                        'Created On',
+                                        "mmmm"
+                                    ) = Text(
+                                        Today(),
+                                        "mmmm"
+                                    )) && 'Order Type' = 'Order Type Choice'.Secondary && 'Owning User'.'Primary Email' = radioSalesperson_7.Selected.'Primary Email'
+                                )
+                            ),
+                        //Party selected-----------------------------------------------------------------------
+                            IsBlank(radioDate_7.SelectedText) && !IsBlank(radioParty_5.SelectedText) && IsBlank(radioStatus_5.SelectedText) && IsBlank(OrderValue_2.Text) && IsBlank(DateFrom_10.SelectedDate),
+                            Filter(
+                                OfflineOrderHeaderCollection,
+                                'Order From'.'Customer Code' = radioParty_5.Selected.'Customer Code' && 'Owning User'.'Primary Email' = radioSalesperson_7.Selected.'Primary Email' && 'Order Type' = 'Order Type Choice'.Secondary
+                            ),
+                        //Status selected-----------------------------------------------------------------------
+                            IsBlank(radioDate_7.SelectedText) && IsBlank(radioParty_5.SelectedText) && !IsBlank(radioStatus_5.SelectedText) && IsBlank(OrderValue_2.Text) && IsBlank(DateFrom_10.SelectedDate),
+                            Filter(
+                                OfflineOrderHeaderCollection,
+                                'Order Status' = radioStatus_5.Selected.Value && 'Owning User'.'Primary Email' = radioSalesperson_7.Selected.'Primary Email' && 'Order Type' = 'Order Type Choice'.Secondary
+                            ),
+                        // total order amount ------------------------------------------------------
+                            IsBlank(radioDate_7.SelectedText) && IsBlank(radioParty_5.SelectedText) && IsBlank(radioStatus_5.SelectedText) && !IsBlank(OrderValue_2.Text) && IsBlank(DateFrom_10.SelectedDate),
+                            Filter(
+                                OfflineOrderHeaderCollection,
+                                'Total Bill Amount' = Value(OrderValue_2.Text) && 'Owning User'.'Primary Email' = radioSalesperson_7.Selected.'Primary Email' && 'Order Type' = 'Order Type Choice'.Secondary
+                            ),
+                        // Selected salesperson-------------------------
+                            !IsBlank(radioSalesperson_7.SelectedText) && IsBlank(radioDate_7.SelectedText) && IsBlank(radioParty_5.SelectedText) && IsBlank(radioStatus_5.SelectedText) && IsBlank(OrderValue_2.Text) && IsBlank(DateFrom_10.SelectedDate),
+                            Filter(
+                                OfflineOrderHeaderCollection,
+                                'Owning User'.'Primary Email' = radioSalesperson_7.Selected.'Primary Email' && 'Order Type' = 'Order Type Choice'.Secondary
+                            ),
+                        // Date to and date from -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+                            !IsBlank(DateFrom_10.SelectedDate) && !IsBlank(DateTo_7.SelectedDate) && IsBlank(radioDate_7.SelectedText) && IsBlank(radioParty_5.SelectedText) && IsBlank(radioStatus_5.SelectedText) && IsBlank(OrderValue_2.Text),
+                            Filter(
+                                OfflineOrderHeaderCollection,
+                                DateValue('Created On') >= DateValue(DateFrom_10.SelectedDate) && DateValue('Created On') <= DateValue(DateTo_7.SelectedDate) && 'Order Type' = 'Order Type Choice'.Secondary && 'Owning User'.'Primary Email' = radioSalesperson_7.Selected.'Primary Email'
+                            ),
+                      // Select date and party------------------------------------------------------------------
+                            !IsBlank(radioDate_7.SelectedText) && !IsBlank(radioParty_5.SelectedText) && IsBlank(radioStatus_5.SelectedText) && IsBlank(OrderValue_2.Text) && IsBlank(DateFrom_10.SelectedDate),
+                            If(
+                                radioDate_7.Selected.Value = "Today",
+                                Filter(
+                                    OfflineOrderHeaderCollection,
+                                    IsToday('Created On') && 'Order Type' = 'Order Type Choice'.Secondary && 'Order From'.'Customer Code' = radioParty_5.Selected.'Customer Code' && 'Owning User'.'Primary Email' = radioSalesperson_7.Selected.'Primary Email'
+                                ),
+                                radioDate_7.Selected.Value = "This Week",
+                                Filter(
+                                    OfflineOrderHeaderCollection,
+                                    (DateValue('Created On') >= DateValue(Today()) - Weekday(Today()) + 2 && DateValue('Created On') <= DateValue(Today()) + (9 - Weekday(Today()))) && 'Order Type' = 'Order Type Choice'.Secondary && 'Order From'.'Customer Code' = radioParty_5.Selected.'Customer Code' && 'Owning User'.'Primary Email' = radioSalesperson_7.Selected.'Primary Email'
+                                ),
+                                radioDate_7.Selected.Value = "This Month",
+                                Filter(
+                                    OfflineOrderHeaderCollection,
+                                    (Text(
+                                        'Created On',
+                                        "mmmm"
+                                    ) = Text(
+                                        Today(),
+                                        "mmmm"
+                                    )) && 'Order Type' = 'Order Type Choice'.Secondary && 'Order From'.'Customer Code' = radioParty_5.Selected.'Customer Code' && 'Owning User'.'Primary Email' = radioSalesperson_7.Selected.'Primary Email'
+                                )
+                            ),
+                             // Select date and Status------------------------------------------------------------------
+                            !IsBlank(radioDate_7.SelectedText) && IsBlank(radioParty_5.SelectedText) && !IsBlank(radioStatus_5.SelectedText) && IsBlank(OrderValue_2.Text) && IsBlank(DateFrom_10.SelectedDate),
+                            If(
+                                radioDate_7.Selected.Value = "Today",
+                                Filter(
+                                    OfflineOrderHeaderCollection,
+                                    IsToday('Created On') && 'Order Type' = 'Order Type Choice'.Secondary && 'Order Status' = radioStatus_5.Selected.Value && 'Owning User'.'Primary Email' = radioSalesperson_7.Selected.'Primary Email'
+                                ),
+                                radioDate_7.Selected.Value = "This Week",
+                                Filter(
+                                    OfflineOrderHeaderCollection,
+                                    (DateValue('Created On') >= DateValue(Today()) - Weekday(Today()) + 2 && DateValue('Created On') <= DateValue(Today()) + (9 - Weekday(Today()))) && 'Order Type' = 'Order Type Choice'.Primary && 'Order Status' = radioStatus_5.Selected.Value && 'Owning User'.'Primary Email' = radioSalesperson_7.Selected.'Primary Email'
+                                ),
+                                radioDate_7.Selected.Value = "This Month",
+                                Filter(
+                                    OfflineOrderHeaderCollection,
+                                    (Text(
+                                        'Created On',
+                                        "mmmm"
+                                    ) = Text(
+                                        Today(),
+                                        "mmmm"
+                                    )) && 'Order Type' = 'Order Type Choice'.Secondary && 'Order Status' = radioStatus_5.Selected.Value && 'Owning User'.'Primary Email' = radioSalesperson_7.Selected.'Primary Email'
+                                )
+                            ),
+                        // Select date and order value------------------------------------------------------------------
+                            !IsBlank(radioDate_7.SelectedText) && IsBlank(radioParty_5.SelectedText) && IsBlank(radioStatus_5.SelectedText) && !IsBlank(OrderValue_2.Text) && IsBlank(DateFrom_10.SelectedDate),
+                            If(
+                                radioDate_7.Selected.Value = "Today",
+                                Filter(
+                                    OfflineOrderHeaderCollection,
+                                    IsToday('Created On') && 'Order Type' = 'Order Type Choice'.Secondary && 'Total Bill Amount' = Value(OrderValue_2.Text) && 'Owning User'.'Primary Email' = radioSalesperson_7.Selected.'Primary Email'
+                                ),
+                                radioDate_7.Selected.Value = "This Week",
+                                Filter(
+                                    OfflineOrderHeaderCollection,
+                                    (DateValue('Created On') >= DateValue(Today()) - Weekday(Today()) + 2 && DateValue('Created On') <= DateValue(Today()) + (9 - Weekday(Today()))) && 'Order Type' = 'Order Type Choice'.Secondary && 'Total Bill Amount' = Value(OrderValue_2.Text) && 'Owning User'.'Primary Email' = radioSalesperson_7.Selected.'Primary Email'
+                                ),
+                                radioDate_7.Selected.Value = "This Month",
+                                Filter(
+                                    OfflineOrderHeaderCollection,
+                                    (Text(
+                                        'Created On',
+                                        "mmmm"
+                                    ) = Text(
+                                        Today(),
+                                        "mmmm"
+                                    )) && 'Order Type' = 'Order Type Choice'.Secondary && 'Total Bill Amount' = Value(OrderValue_2.Text) && 'Owning User'.'Primary Email' = radioSalesperson_7.Selected.'Primary Email'
+                                )
+                            ),
+                        //Party  and status selected--------------------------------------------------------------
+                            IsBlank(radioDate_7.SelectedText) && !IsBlank(radioParty_5.SelectedText) && !IsBlank(radioStatus_5.SelectedText) && IsBlank(OrderValue_2.Text) && IsBlank(DateFrom_10.SelectedDate),
+                            Filter(
+                                OfflineOrderHeaderCollection,
+                                'Order From'.'Customer Code' = radioParty_5.Selected.'Customer Code' && 'Order Type' = 'Order Type Choice'.Secondary && 'Order Status' = radioStatus_5.Selected.Value && 'Owning User'.'Primary Email' = radioSalesperson_7.Selected.'Primary Email'
+                            ),
+                         //Party  and order value selected--------------------------------------------------------------
+                            IsBlank(radioDate_7.SelectedText) && !IsBlank(radioParty_5.SelectedText) && IsBlank(radioStatus_5.SelectedText) && !IsBlank(OrderValue_2.Text) && IsBlank(DateFrom_10.SelectedDate),
+                            Filter(
+                                OfflineOrderHeaderCollection,
+                                'Order From'.'Customer Code' = radioParty_5.Selected.'Customer Code' && 'Order Type' = 'Order Type Choice'.Secondary && 'Total Bill Amount' = Value(OrderValue_2.Text) && 'Owning User'.'Primary Email' = radioSalesperson_7.Selected.'Primary Email'
+                            ),
+                        //Party  and date value selected--------------------------------------------------------------
+                            !IsBlank(radioParty_5.SelectedText) && !IsBlank(DateFrom_10.SelectedDate) && !IsBlank(DateTo_7.SelectedDate) && IsBlank(radioDate_7.SelectedText) && !IsBlank(radioStatus_5.SelectedText) && IsBlank(OrderValue_2.Text),
+                            Filter(
+                                OfflineOrderHeaderCollection,
+                                'Order From'.'Customer Code' = radioParty_5.Selected.'Customer Code' && DateValue('Created On') >= DateValue(DateFrom_10.SelectedDate) && DateValue('Created On') <= DateValue(DateTo_7.SelectedDate) && 'Order Type' = 'Order Type Choice'.Secondary && 'Owning User'.'Primary Email' = radioSalesperson_7.Selected.'Primary Email'
+                            ),
+                        //Status  and order value selected---------------------------------------------------------
+                            IsBlank(radioDate_7.SelectedText) && IsBlank(radioParty_5.SelectedText) && !IsBlank(radioStatus_5.SelectedText) && !IsBlank(OrderValue_2.Text) && IsBlank(DateFrom_10.SelectedDate),
+                            Filter(
+                                OfflineOrderHeaderCollection,
+                                'Order Status' = radioStatus_5.Selected.Value && 'Total Bill Amount' = Value(OrderValue_2.Text) && 'Owning User'.'Primary Email' = radioSalesperson_7.Selected.'Primary Email' && 'Order Type' = 'Order Type Choice'.Secondary
+                            ),
+                        //Status  and date value selected--------------------------------------------------------------
+                            !IsBlank(radioStatus_5.SelectedText) && !IsBlank(DateFrom_10.SelectedDate) && !IsBlank(DateTo_7.SelectedDate) && IsBlank(radioDate_7.SelectedText) && IsBlank(radioParty_5.SelectedText) && IsBlank(OrderValue_2.Text),
+                            Filter(
+                                OfflineOrderHeaderCollection,
+                                'Order Status' = radioStatus_5.Selected.Value && DateValue('Created On') >= DateValue(DateFrom_10.SelectedDate) && DateValue('Created On') <= DateValue(DateTo_7.SelectedDate) && 'Order Type' = 'Order Type Choice'.Secondary && 'Owning User'.'Primary Email' = radioSalesperson_7.Selected.'Primary Email'
+                            ),
+                            //Party,Status and date selected-------------------------------------------------------------
+                            !IsBlank(radioDate_7.SelectedText) && !IsBlank(radioParty_5.SelectedText) && !IsBlank(radioStatus_5.SelectedText) && IsBlank(OrderValue_2.Text) && IsBlank(DateFrom_10.SelectedDate),
+                            If(
+                                radioDate_7.Selected.Value = "Today",
+                                Filter(
+                                    OfflineOrderHeaderCollection,
+                                    IsToday('Created On') && 'Order Type' = 'Order Type Choice'.Secondary && 'Order Status' = radioStatus_5.Selected.Value && 'Order From'.'Customer Code' = radioParty_5.Selected.'Customer Code' && 'Owning User'.'Primary Email' = radioSalesperson_7.Selected.'Primary Email'
+                                ),
+                                radioDate_7.Selected.Value = "This Week",
+                                Filter(
+                                    OfflineOrderHeaderCollection,
+                                    (DateValue('Created On') >= DateValue(Today()) - Weekday(Today()) + 2 && DateValue('Created On') <= DateValue(Today()) + (9 - Weekday(Today()))) && 'Order Type' = 'Order Type Choice'.Secondary && 'Order Status' = radioStatus_5.Selected.Value && 'Order From'.'Customer Code' = radioParty_5.Selected.'Customer Code' && 'Owning User'.'Primary Email' = radioSalesperson_7.Selected.'Primary Email'
+                                ),
+                                radioDate_7.Selected.Value = "This Month",
+                                Filter(
+                                    OfflineOrderHeaderCollection,
+                                    (Text(
+                                        'Created On',
+                                        "mmmm"
+                                    ) = Text(
+                                        Today(),
+                                        "mmmm"
+                                    )) && 'Order Type' = 'Order Type Choice'.Secondary && 'Order Status' = radioStatus_5.Selected.Value && 'Order From'.'Customer Code' = radioParty_5.Selected.'Customer Code' && 'Owning User'.'Primary Email' = radioSalesperson_7.Selected.'Primary Email'
+                                )
+                            ),
+                             //Party,ordervalue and date selected-------------------------------------------------------------
+                            !IsBlank(radioDate_7.SelectedText) && !IsBlank(radioParty_5.SelectedText) && IsBlank(radioStatus_5.SelectedText) && !IsBlank(OrderValue_2.Text) && IsBlank(DateFrom_10.SelectedDate),
+                            If(
+                                radioDate_7.Selected.Value = "Today",
+                                Filter(
+                                    OfflineOrderHeaderCollection,
+                                    IsToday('Created On') && 'Order Type' = 'Order Type Choice'.Secondary && 'Order From'.'Customer Code' = radioParty_5.Selected.'Customer Code' && 'Total Bill Amount' = Value(OrderValue_2.Text) && 'Owning User'.'Primary Email' = radioSalesperson_7.Selected.'Primary Email'
+                                ),
+                                radioDate_7.Selected.Value = "This Week",
+                                Filter(
+                                    OfflineOrderHeaderCollection,
+                                    (DateValue('Created On') >= DateValue(Today()) - Weekday(Today()) + 2 && DateValue('Created On') <= DateValue(Today()) + (9 - Weekday(Today()))) && 'Order Type' = 'Order Type Choice'.Secondary && 'Order From'.'Customer Code' = radioParty_5.Selected.'Customer Code' && 'Total Bill Amount' = Value(OrderValue_2.Text) && 'Owning User'.'Primary Email' = radioSalesperson_7.Selected.'Primary Email'
+                                ),
+                                radioDate_7.Selected.Value = "This Month",
+                                Filter(
+                                    OfflineOrderHeaderCollection,
+                                    (Text(
+                                        'Created On',
+                                        "mmmm"
+                                    ) = Text(
+                                        Today(),
+                                        "mmmm"
+                                    )) && 'Order Type' = 'Order Type Choice'.Secondary && 'Order From'.'Customer Code' = radioParty_5.Selected.'Customer Code' && 'Total Bill Amount' = Value(OrderValue_2.Text) && 'Owning User'.'Primary Email' = radioSalesperson_7.Selected.'Primary Email'
+                                )
+                            ),
+                        //Party,Status and date value selected--------------------------------------------------------------
+                            !IsBlank(radioStatus_5.SelectedText) && !IsBlank(DateFrom_10.SelectedDate) && !IsBlank(DateTo_7.SelectedDate) && IsBlank(radioDate_7.SelectedText) && !IsBlank(radioParty_5.SelectedText) && IsBlank(OrderValue_2.Text),
+                            Filter(
+                                OfflineOrderHeaderCollection,
+                                'Order Status' = radioStatus_5.Selected.Value && DateValue('Created On') >= DateValue(DateFrom_10.SelectedDate) && DateValue('Created On') <= DateValue(DateTo_7.SelectedDate) && 'Order From'.'Customer Code' = radioParty_5.Selected.'Customer Code' && 'Order Type' = 'Order Type Choice'.Secondary && 'Owning User'.'Primary Email' = radioSalesperson_7.Selected.'Primary Email'
+                            ),
+                //Party,ordervalue and date value selected--------------------------------------------------------------
+                            IsBlank(radioStatus_5.SelectedText) && !IsBlank(DateFrom_10.SelectedDate) && !IsBlank(DateTo_7.SelectedDate) && IsBlank(radioDate_7.SelectedText) && !IsBlank(radioParty_5.SelectedText) && !IsBlank(OrderValue_2.Text),
+                            Filter(
+                                OfflineOrderHeaderCollection,
+                                'Total Bill Amount' = Value(OrderValue_2.Text) && DateValue('Created On') >= DateValue(DateFrom_10.SelectedDate) && DateValue('Created On') <= DateValue(DateTo_7.SelectedDate) && 'Order From'.'Customer Code' = radioParty_5.Selected.'Customer Code' && 'Order Type' = 'Order Type Choice'.Secondary && 'Owning User'.'Primary Email' = radioSalesperson_7.Selected.'Primary Email'
+                            ),
+                 //status,ordervalue and date value selected--------------------------------------------------------------
+                            !IsBlank(radioStatus_5.SelectedText) && !IsBlank(DateFrom_10.SelectedDate) && !IsBlank(DateTo_7.SelectedDate) && IsBlank(radioDate_7.SelectedText) && IsBlank(radioParty_5.SelectedText) && !IsBlank(OrderValue_2.Text),
+                            Filter(
+                                OfflineOrderHeaderCollection,
+                                'Total Bill Amount' = Value(OrderValue_2.Text) && DateValue('Created On') >= DateValue(DateFrom_10.SelectedDate) && DateValue('Created On') <= DateValue(DateTo_7.SelectedDate) && 'Order Status' = radioStatus_5.Selected.Value && 'Order Type' = 'Order Type Choice'.Secondary && 'Owning User'.'Primary Email' = radioSalesperson_7.Selected.'Primary Email'
+                            ),
+                 //Party,ordervalue and status selected--------------------------------------------------------------
+                            !IsBlank(radioStatus_5.SelectedText) && IsBlank(DateFrom_10.SelectedDate) && IsBlank(DateTo_7.SelectedDate) && IsBlank(radioDate_7.SelectedText) && !IsBlank(radioParty_5.SelectedText) && !IsBlank(OrderValue_2.Text),
+                            Filter(
+                                OfflineOrderHeaderCollection,
+                                'Total Bill Amount' = Value(OrderValue_2.Text) && 'Order Status' = radioStatus_5.Selected.Value && 'Order From'.'Customer Code' = radioParty_5.Selected.'Customer Code' && 'Order Type' = 'Order Type Choice'.Secondary && 'Owning User'.'Primary Email' = radioSalesperson_7.Selected.'Primary Email'
+                            ),
+                        //all selected-------------------------------------------------------------
+                            !IsBlank(radioDate_7.SelectedText) && !IsBlank(radioParty_5.SelectedText) && !IsBlank(radioStatus_5.SelectedText) && !IsBlank(OrderValue_2.Text) && IsBlank(DateFrom_10.SelectedDate),
+                            If(
+                                radioDate_7.Selected.Value = "Today",
+                                Filter(
+                                    OfflineOrderHeaderCollection,
+                                    IsToday('Created On') && 'Order Type' = 'Order Type Choice'.Secondary && 'Order Status' = radioStatus_5.Selected.Value && 'Order From'.'Customer Code' = radioParty_5.Selected.'Customer Code' && 'Total Bill Amount' = Value(OrderValue_2.Text) && 'Owning User'.'Primary Email' = radioSalesperson_7.Selected.'Primary Email'
+                                ),
+                                radioDate_7.Selected.Value = "This Week",
+                                Filter(
+                                    OfflineOrderHeaderCollection,
+                                    (DateValue('Created On') >= DateValue(Today()) - Weekday(Today()) + 2 && DateValue('Created On') <= DateValue(Today()) + (9 - Weekday(Today()))) && 'Order Type' = 'Order Type Choice'.Secondary && 'Order Status' = radioStatus_5.Selected.Value && 'Order From'.'Customer Code' = radioParty_5.Selected.'Customer Code' && 'Total Bill Amount' = Value(OrderValue_2.Text) && 'Owning User'.'Primary Email' = radioSalesperson_7.Selected.'Primary Email'
+                                ),
+                                radioDate_7.Selected.Value = "This Month",
+                                Filter(
+                                    OfflineOrderHeaderCollection,
+                                    (Text(
+                                        'Created On',
+                                        "mmmm"
+                                    ) = Text(
+                                        Today(),
+                                        "mmmm"
+                                    )) && 'Order Type' = 'Order Type Choice'.Secondary && 'Order Status' = radioStatus_5.Selected.Value && 'Order From'.'Customer Code' = radioParty_5.Selected.'Customer Code' && 'Total Bill Amount' = Value(OrderValue_2.Text) && 'Owning User'.'Primary Email' = radioSalesperson_7.Selected.'Primary Email'
+                                )
+                            ),
+                            !IsBlank(radioStatus_5.SelectedText) && !IsBlank(DateFrom_10.SelectedDate) && !IsBlank(DateTo_7.SelectedDate) && IsBlank(radioDate_7.SelectedText) && !IsBlank(radioParty_5.SelectedText) && !IsBlank(OrderValue_2.Text),
+                            Filter(
+                                OfflineOrderHeaderCollection,
+                                'Order Status' = radioStatus_5.Selected.Value && 'Order From'.'Customer Code' = radioParty_5.Selected.'Customer Code' && 'Total Bill Amount' = Value(OrderValue_2.Text) && DateValue('Created On') >= DateValue(DateFrom_10.SelectedDate) && DateValue('Created On') <= DateValue(DateTo_7.SelectedDate) && 'Order Type' = 'Order Type Choice'.Secondary && 'Owning User'.'Primary Email' = radioSalesperson_7.Selected.'Primary Email'
+                            )
+                        )
+                    )
+                );
+                Set(
+                    varFilterOrder,
+                    false
+                );
+                Set(
+                    varfiltergallery,
+                    false
+                );
+                Set(
+                    varCollectionEmpty,
+                    false
+                );
+                Reset(DateFrom_10);
+                Reset(DateTo_7);
+                Reset(radioDate_7);
+                Reset(radioStatus_5);
+                Reset(OrderValue_2);
+                Reset(radioParty_5);
+            Size: |+
+                =LookUp('Environment Variable Definitions', 'Display Name'="Text Title Font Size").'Default Value'
+                //_VarGblAppFonts.Size.Title
+                
+            Text: ="Apply Filters"
+            Visible: =varFilterOrder
+            Width: =274
+            X: =337
+            Y: =647
+            ZIndex: =3
+
+        ClearBtn_11 As button:
+            Color: |
+                =RGBA(255, 255, 255, 1)
+                //RGBA(153, 160, 196, 1)
+            DisabledBorderColor: =RGBA(166, 166, 166, 1)
+            DisabledColor: =RGBA(166, 166, 166, 1)
+            DisabledFill: =RGBA(244, 244, 244, 1)
+            Fill: |-
+                =//RGBA(184, 0, 0, 1)
+                ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//_VarGblAppColors.PrimaryRed
+            Font: =Font.'Segoe UI'
+            FontWeight: =FontWeight.Semibold
+            Height: =60
+            HoverColor: =RGBA(255, 255, 255, 1)
+            HoverFill: |-
+                =ColorFade(
+                    
+                    ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//_VarGblAppColors.PrimaryRed
+                , 10%)
+            OnSelect: |
+                =Reset(DateFrom_10);
+                Reset(DateTo_7);
+                Reset(radioDate_7);
+                Reset(radioStatus_5);
+                Reset(OrderValue_4);
+                Reset(radioParty_5);
+                
+                
+                
+                Clear(colsecorderFilter);
+                Clear(colFilterData);
+                Set(varCollectionEmpty,true)
+            Size: =20
+            Text: ="Clear Filters"
+            Visible: =varFilterOrder
+            Width: =274
+            X: =27
+            Y: =647
+            ZIndex: =4
+
+        Rectangle17_11 As rectangle:
+            BorderColor: =RGBA(0, 18, 107, 1)
+            Fill: =RGBA(0, 0, 0, 1)
+            Height: =2
+            Visible: =varFilterOrder
+            Width: =640
+            Y: =154
+            ZIndex: =5
+
+        Label30_27 As label:
+            BorderColor: =RGBA(0, 18, 107, 1)
+            Color: |-
+                =//RGBA(0, 0, 0, 1)
+                ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Text Primary Color").'Default Value')
+            DisabledColor: =RGBA(166, 166, 166, 1)
+            Font: =Font.'Segoe UI'
+            FontWeight: =FontWeight.Semibold
+            Height: =57
+            Size: =18
+            Text: ="Date From"
+            Visible: =If(Gallery8_11.Selected.tabid=1,true,false)
+            Width: =173
+            X: =335
+            Y: =391
+            ZIndex: =6
+
+        DateTo_7 As datepicker:
+            AccessibleLabel: ="To Date Filter"
+            BorderColor: |-
+                =//RGBA(0, 0, 0, 1)
+                ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Text Primary Color").'Default Value')
+            BorderThickness: =1
+            CalendarHeaderFill: =RGBA(56, 96, 178, 1)
+            Color: |-
+                =//RGBA(0, 0, 0, 1)
+                ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Text Primary Color").'Default Value')
+            DisabledBorderColor: =RGBA(166, 166, 166, 1)
+            DisabledColor: =RGBA(166, 166, 166, 1)
+            DisabledFill: =RGBA(244, 244, 244, 1)
+            DisplayMode: =If(IsBlank(radioDate_7.SelectedText),DisplayMode.Edit,DisplayMode.View)
+            Fill: =RGBA(255,255,255,0)
+            Height: =63
+            HoverDateFill: =RGBA(186, 202, 226, 1)
+            IconBackground: =Color.Transparent
+            IconFill: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//_VarGblAppColors.PrimaryRed
+            InputTextPlaceholder: =If(IsBlank(Self.SelectedDate), Text(Today(), "dd/mm/yyyy"))
+            OnChange: =
+            OnSelect: |-
+                =If(
+                    Gallery8_11.Selected.tabid = 1 && IsBlank(
+                        LookUp(
+                            colorderFilter,
+                            Title = "Date To"
+                        ).Title
+                    ),
+                    Collect(
+                        colorderFilter,
+                        {
+                            Title: "Date To",
+                            value: Text(
+                                DateTo_7.SelectedDate,
+                                "dd-mm-yyyy"
+                            )
+                        }
+                    ),
+                    Patch(
+                        colorderFilter,
+                        LookUp(
+                            colorderFilter,
+                            Title = "Date To"
+                        ),
+                        {
+                            value: Text(
+                                DateTo_7.SelectedDate,
+                                "dd-mm-yyyy"
+                            )
+                        }
+                    )
+                )
+            SelectedDateFill: =RGBA(56, 96, 178, 1)
+            Size: =16
+            Visible: =If(Gallery8_11.Selected.tabid=1,true,false)
+            Width: =238
+            X: =336
+            Y: =564
+            ZIndex: =7
+
+        Label30_31 As label:
+            BorderColor: =RGBA(0, 18, 107, 1)
+            Color: |-
+                =//RGBA(0, 0, 0, 1)
+                ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Text Primary Color").'Default Value')
+            DisabledColor: =RGBA(166, 166, 166, 1)
+            Font: =Font.'Segoe UI'
+            FontWeight: =FontWeight.Semibold
+            Height: =49
+            Size: =18
+            Text: ="Date To"
+            Visible: =If(Gallery8_11.Selected.tabid=1,true,false)
+            Width: =173
+            X: =335
+            Y: =515
+            ZIndex: =8
+
+        DateFrom_10 As datepicker:
+            AccessibleLabel: ="From Date Filter"
+            BorderColor: |-
+                =//RGBA(0, 0, 0, 1)
+                ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Text Primary Color").'Default Value')
+            BorderThickness: =1
+            CalendarHeaderFill: =RGBA(56, 96, 178, 1)
+            Color: |-
+                =//RGBA(0, 0, 0, 1)
+                ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Text Primary Color").'Default Value')
+            DefaultDate: =//Today()
+            DisabledBorderColor: =RGBA(166, 166, 166, 1)
+            DisabledColor: =RGBA(166, 166, 166, 1)
+            DisabledFill: =RGBA(244, 244, 244, 1)
+            DisplayMode: |-
+                =//DisplayMode.Edit
+                If(IsBlank(radioDate_7.SelectedText),DisplayMode.Edit,DisplayMode.View)
+            Fill: =RGBA(255,255,255,0)
+            Height: =63
+            HoverDateFill: =RGBA(186, 202, 226, 1)
+            IconBackground: =Color.Transparent
+            IconFill: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//_VarGblAppColors.PrimaryRed
+            InputTextPlaceholder: =If(IsBlank(Self.SelectedDate), Text(Today(), "dd/mm/yyyy"))
+            OnChange: =If(!IsBlank(radioDate_7.SelectedText),Notify("You cannot select both option",NotificationType.Error,2000);Reset(radioDate_7))
+            OnSelect: |-
+                =If(
+                    Gallery8_11.Selected.tabid = 1 && IsBlank(
+                        LookUp(
+                            colorderFilter,
+                            Title = "Date From"
+                        ).Title
+                    ),
+                    Collect(
+                        colorderFilter,
+                        {
+                            Title: "Date From",
+                            value: Text(
+                                DateFrom_10.SelectedDate,
+                                "dd-mm-yyyy"
+                            )
+                        }
+                    ),
+                    Patch(
+                        colorderFilter,
+                        LookUp(
+                            colorderFilter,
+                            Title = "Date From"
+                        ),
+                        {
+                            value: Text(
+                                DateFrom_10.SelectedDate,
+                                "dd-mm-yyyy"
+                            )
+                        }
+                    )
+                )
+            SelectedDateFill: =RGBA(56, 96, 178, 1)
+            Size: =16
+            Visible: =If(Gallery8_11.Selected.tabid=1,true,false)
+            Width: =238
+            X: =335
+            Y: =448
+            ZIndex: =9
+
+        Icon18_14 As icon.Cancel:
+            AccessibleLabel: ="Close the Filter"
+            BorderColor: =RGBA(0, 18, 107, 1)
+            DisabledBorderColor: =RGBA(166, 166, 166, 1)
+            DisabledColor: =RGBA(244, 244, 244, 1)
+            Height: =30
+            Icon: =Icon.CancelBadge
+            OnSelect: |
+                =Set(varFilterOrder,false);
+            TabIndex: =0//-1
+            Visible: =varFilterOrder
+            Width: =30
+            X: =583
+            Y: =14
+            ZIndex: =10
+
+        radioDate_7 As radio:
+            AccessibleLabel: ="Date Selection"
+            BorderColor: =RGBA(0, 18, 107, 1)
+            Color: |-
+                =//RGBA(0, 13, 75, 1)
+                //RGBA(153, 160, 196, 1)
+                If(
+                    radioDate_7.Selected.Value,
+                    ColorValue( LookUp('Environment Variable Definitions', 'Display Name'="Common Primary Background").'Default Value')//_VarGblAppColors.PrimaryBg
+                    ,ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Text Primary Color").'Default Value')   
+                )
+            DisplayMode: =If(IsBlank(DateFrom_10.SelectedDate),DisplayMode.Edit,DisplayMode.View)
+            Font: =Font.'Segoe UI'
+            Height: =209
+            HoverColor: =RGBA(0, 18, 107, 1)
+            Items: =["Today","This Week","This Month"]
+            LineHeight: =2
+            OnChange: =
+            OnSelect: |-
+                =If(
+                    Gallery8_11.Selected.tabid = 1 && IsBlank(
+                        LookUp(
+                            colsecorderFilter,
+                            Title = Gallery8_11.Selected.Title
+                        ).Title
+                    ),
+                    Collect(
+                        colsecorderFilter,
+                        {
+                            Title: Gallery8_11.Selected.Title,
+                            value: radioDate_7.Selected.Value
+                        }
+                    ),
+                    Patch(
+                        colsecorderFilter,
+                        LookUp(
+                            colsecorderFilter,
+                            Title = Gallery8_11.Selected.Title
+                        ),
+                        {value: radioDate_7.Selected.Value}
+                    )
+                )
+            RadioSelectionFill: |-
+                =//RGBA(153, 160, 196, 1)
+                If(
+                    //ThisItem.IsSelected,
+                    radioDate_7.Selected.Value,
+                    ColorValue( LookUp('Environment Variable Definitions', 'Display Name'="Common Primary Background").'Default Value')//_VarGblAppColors.PrimaryBg
+                    ,ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Text Primary Color").'Default Value')   
+                )
+            RadioSize: =40
+            Size: =18
+            Visible: |-
+                =If(
+                    Gallery8_11.Selected.tabid = 1,
+                    true,
+                    false
+                )
+            Width: =340
+            X: =292
+            Y: =158
+            ZIndex: =11
+
+        radioSalesperson_7 As radio:
+            AccessibleLabel: ="Salesperson"
+            BorderColor: =RGBA(0, 18, 107, 1)
+            Color: |-
+                =//RGBA(0, 0, 0, 1)
+                If(
+                    //ThisItem.IsSelected,
+                    radioSalesperson_7.Selected.'Full Name',
+                    ColorValue( LookUp('Environment Variable Definitions', 'Display Name'="Common Primary Background").'Default Value')//_VarGblAppColors.PrimaryBg
+                    ,ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Text Primary Color").'Default Value')  
+                )
+            Default: =LookUp(Users,'Primary Email'=User().Email).'Full Name'
+            Height: =466
+            HoverColor: =RGBA(0, 18, 107, 1)
+            Items: |-
+                =Filter(
+                    Users,
+                    Manager.'Primary Email' = User().Email || 'Primary Email' = User().Email
+                )
+            LineHeight: =2
+            OnSelect: |-
+                =
+                
+                    If(Gallery8_11.Selected.tabid = 3  && IsBlank(LookUp(colsecorderFilter,Title= Gallery8_11.Selected.Title).Title),
+                    Collect(
+                        colsecorderFilter,
+                        {
+                            Title: Gallery8_11.Selected.Title,
+                            value: radioSalesperson_7.Selected.'Full Name'
+                        }
+                    ),
+                    Patch(colsecorderFilter,LookUp(colsecorderFilter,Title= Gallery8_11.Selected.Title),{value: radioSalesperson_7.Selected.'Full Name'})
+                )
+            RadioSelectionFill: |-
+                =//RGBA(0, 0, 0, 1)
+                If(
+                    //ThisItem.IsSelected,
+                    radioSalesperson_7.Selected.'Full Name',
+                    ColorValue( LookUp('Environment Variable Definitions', 'Display Name'="Common Primary Background").'Default Value')//_VarGblAppColors.PrimaryBg
+                    ,ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Text Primary Color").'Default Value')
+                )
+            RadioSize: =40
+            Size: =18
+            Visible: =If(Gallery8_11.Selected.tabid=2,true,false)
+            Width: =340
+            X: =300
+            Y: =158
+            ZIndex: =12
+
+        Gallery8_11 As gallery.galleryVertical:
+            AccessibleLabel: ="Available Filters"
+            BorderColor: =RGBA(0, 18, 107, 1)
+            Height: =471
+            Items: |-
+                =Table(
+                    {
+                        Title: "Date",
+                        tabid: 1
+                    },
+                    {
+                        Title: "Salesperson",
+                        tabid: 2
+                    },
+                    {
+                        Title: "Order From",
+                        tabid: 3
+                    },
+                    {
+                        Title: "Status",
+                        tabid: 4
+                    },
+                    {
+                        Title: "Order value",
+                        tabid: 5
+                    }
+                )
+            Layout: =Layout.Vertical
+            ShowScrollbar: =false
+            TabIndex: =0//-1
+            TemplateSize: =84
+            Visible: =varFilterOrder
+            Width: =234
+            X: =46
+            Y: =158
+            ZIndex: =13
+
+            Button18_12 As button:
+                Align: =Align.Left
+                Color: |-
+                    =//RGBA(0, 0, 0, 1)
+                    If(
+                        //ThisItem.IsSelected,
+                        radioParty_5.Selected.'Customer Name',
+                        ColorValue( LookUp('Environment Variable Definitions', 'Display Name'="Common Primary Background").'Default Value')//_VarGblAppColors.PrimaryBg
+                        ,ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Text Primary Color").'Default Value')
+                    )
+                DisabledBorderColor: =RGBA(166, 166, 166, 1)
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                DisabledFill: =RGBA(244, 244, 244, 1)
+                Fill: |-
+                    =//Color.Transparent
+                    If(ThisItem.IsSelected,ColorFade(
+                        ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//_VarGblAppColors.PrimaryRed
+                        
+                        ,80%),Color.Transparent)
+                Font: =Font.'Segoe UI'
+                FontWeight: =FontWeight.Semibold
+                Height: =77
+                HoverColor: =RGBA(255, 255, 255, 1)
+                HoverFill: |-
+                    =//ColorFade(Color.DimGrey,80%)
+                    If(ThisItem.IsSelected,ColorFade(
+                        ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//_VarGblAppColors.PrimaryRed
+                        ,80%),Color.Transparent)
+                OnSelect: =
+                PaddingLeft: =25
+                PressedColor: =Color.DimGrey
+                PressedFill: |-
+                    =//ColorFade(Color.DimGrey,80%)
+                    If(ThisItem.IsSelected,ColorFade(
+                        ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//_VarGblAppColors.PrimaryRed
+                        
+                        ,80%),Color.Transparent)
+                Size: =20
+                Text: =ThisItem.Title
+                Width: =224
+                Y: =7
+                ZIndex: =1
+
+        Display_12 As gallery.galleryHorizontal:
+            AccessibleLabel: ="Filter Applied"
+            BorderColor: =RGBA(0, 18, 107, 1)
+            DelayItemLoading: =true
+            Height: =109
+            Items: =colsecorderFilter
+            LoadingSpinner: =LoadingSpinner.Data
+            ShowScrollbar: =false
+            TabIndex: =0//-1
+            TemplateSize: =306
+            Visible: |-
+                =
+                true
+            Y: =50
+            ZIndex: =14
+
+            Button20_19 As button:
+                DisabledBorderColor: =RGBA(166, 166, 166, 1)
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                DisabledFill: =RGBA(244, 244, 244, 1)
+                DisplayMode: =DisplayMode.View
+                Fill: |-
+                    =//RGBA(204, 204, 204, 1)
+                    ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//_VarGblAppColors.PrimaryRed
+                FontWeight: =FontWeight.Semibold
+                Height: =82
+                HoverColor: =RGBA(255, 255, 255, 1)
+                HoverFill: =ColorFade(RGBA(56, 96, 178, 1), -20%)
+                RadiusBottomLeft: =15
+                RadiusBottomRight: =15
+                RadiusTopLeft: =15
+                RadiusTopRight: =15
+                Size: =24
+                Text: =""
+                Width: =281
+                X: =14
+                Y: =12
+                ZIndex: =1
+
+            Label31_24 As label:
+                Align: =Align.Center
+                BorderColor: =RGBA(0, 18, 107, 1)
+                Color: |-
+                    =ColorValue( LookUp('Environment Variable Definitions', 'Display Name'="Common Primary Background").'Default Value'   
+                    )
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                FontWeight: =FontWeight.Bold
+                Height: =37
+                OnSelect: =Select(Parent)
+                Size: =18
+                Text: |-
+                    =ThisItem.Title & ":"
+                Tooltip: |-
+                    =ThisItem.Title & ":"
+                Width: =269
+                Wrap: =false
+                X: =14
+                Y: =12
+                ZIndex: =2
+
+            Label31_25 As label:
+                Align: =Align.Center
+                BorderColor: =RGBA(0, 18, 107, 1)
+                Color: |-
+                    =ColorValue( LookUp('Environment Variable Definitions', 'Display Name'="Common Primary Background").'Default Value'   
+                    )
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                Height: =45
+                OnSelect: =Select(Parent)
+                Size: =18
+                Text: =ThisItem.value
+                Tooltip: =ThisItem.value
+                Width: =289
+                X: =6
+                Y: =50
+                ZIndex: =3
+
+            Icon21_15 As icon.Cancel:
+                AccessibleLabel: ="Close the filter applied"
+                BorderColor: =RGBA(0, 18, 107, 1)
+                Color: |-
+                    =ColorValue( LookUp('Environment Variable Definitions', 'Display Name'="Common Primary Background").'Default Value'   
+                    )
+                DisabledBorderColor: =RGBA(166, 166, 166, 1)
+                DisabledColor: =RGBA(244, 244, 244, 1)
+                Height: =25
+                Icon: =Icon.Cancel
+                OnSelect: |-
+                    =Remove(colsecorderFilter,ThisItem);
+                    Reset(radioDate_7);
+                    Reset(radioParty_5);
+                    Reset(radioStatus_5);
+                    Set(varCollectionEmpty,true)
+                TabIndex: =0//-1
+                Width: =52
+                X: =243
+                Y: =18
+                ZIndex: =4
+
+        radioParty_5 As radio:
+            AccessibleLabel: ="Parties Selection"
+            BorderColor: =RGBA(0, 18, 107, 1)
+            Color: |-
+                =//RGBA(0, 0, 0, 1)
+                If(
+                    //ThisItem.IsSelected,
+                    radioParty_5.Selected.'Customer Name',
+                    ColorValue( LookUp('Environment Variable Definitions', 'Display Name'="Common Primary Background").'Default Value')//_VarGblAppColors.PrimaryBg
+                    ,ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Text Primary Color").'Default Value')   
+                )
+            Height: =466
+            HoverColor: =RGBA(0, 18, 107, 1)
+            Items: =Filter(OfflinePartiesCollection,'Customer Type'= 'Party Type Choices'.Retailer)
+            LineHeight: =2
+            OnSelect: |-
+                =If(
+                    Gallery8_11.Selected.tabid = 3 && IsBlank(
+                        LookUp(
+                            colsecorderFilter,
+                            Title = Gallery8_11.Selected.Title
+                        ).Title
+                    ),
+                    Collect(
+                        colsecorderFilter,
+                        {
+                            Title: Gallery8_11.Selected.Title,
+                            value: radioParty_5.Selected.'Customer Name'
+                        }
+                    ),
+                    Patch(
+                        colsecorderFilter,
+                        LookUp(
+                            colsecorderFilter,
+                            Title = Gallery8_11.Selected.Title
+                        ),
+                        {value: radioParty_5.Selected.'Customer Name'}
+                    )
+                )
+            RadioSelectionFill: |-
+                =//RGBA(0, 0, 0, 1)
+                If(
+                    //ThisItem.IsSelected,
+                    radioParty_5.Selected.'Customer Name',
+                    ColorValue( LookUp('Environment Variable Definitions', 'Display Name'="Common Primary Background").'Default Value')//_VarGblAppColors.PrimaryBg
+                    ,ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Text Primary Color").'Default Value')   
+                )
+            RadioSize: =40
+            Size: =18
+            Visible: =If(Gallery8_11.Selected.tabid=3,true,false)
+            Width: =340
+            X: =300
+            Y: =181
+            ZIndex: =15
+
+        radioStatus_5 As radio:
+            AccessibleLabel: ="Status options"
+            BorderColor: =RGBA(0, 18, 107, 1)
+            Color: =RGBA(0, 0, 0, 1)
+            Height: =312
+            HoverColor: =RGBA(0, 18, 107, 1)
+            Items: =Choices('Order Status Choice')
+            LineHeight: =2
+            OnSelect: |-
+                =If(
+                    Gallery8_11.Selected.tabid = 4 && IsBlank(
+                        LookUp(
+                            colsecorderFilter,
+                            Title = Gallery8_11.Selected.Title
+                        ).Title
+                    ),
+                    Collect(
+                        colsecorderFilter,
+                        {
+                            Title: Gallery8_11.Selected.Title,
+                            value: Text(radioStatus_5.Selected.Value)
+                        }
+                    ),
+                     Patch(
+                        colsecorderFilter,
+                        LookUp(
+                            colsecorderFilter,
+                            Title = Gallery8_11.Selected.Title
+                        ),
+                        {value: Text(radioStatus_5.Selected.Value)}
+                    )
+                   
+                )
+            RadioSelectionFill: |-
+                =RGBA(0, 0, 0, 1)
+                /*If(
+                    //ThisItem.IsSelected,
+                    radioStatus.Selected.Value,
+                    ColorValue( LookUp('Environment Variable Definitions', 'Display Name'="Common Primary Background").'Default Value')//_VarGblAppColors.PrimaryBg
+                    ,ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Text Primary Color").'Default Value')   
+                )*/
+            RadioSize: =40
+            Size: =18
+            Visible: =If(Gallery8_11.Selected.tabid=4,true,false)
+            Width: =340
+            X: =300
+            Y: =162
+            ZIndex: =16
+
+        Label15_6 As label:
+            BorderColor: =RGBA(0, 18, 107, 1)
+            Color: |-
+                =//RGBA(0, 0, 0, 1)
+                ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Text Primary Color").'Default Value')
+            DisabledColor: =RGBA(166, 166, 166, 1)
+            FontWeight: =FontWeight.Bold
+            Height: =64
+            Size: =18
+            Text: ="Order Value"
+            Visible: =If(Gallery8_11.Selected.tabid=5,true,false)
+            Width: =272
+            X: =319
+            Y: =244
+            ZIndex: =17
+
+        OrderValue_4 As text:
+            AccessibleLabel: ="Order Value"
+            BorderColor: =RGBA(136, 160, 209, 1)
+            Color: |-
+                =//RGBA(0, 0, 0, 1)
+                ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Text Primary Color").'Default Value')
+            Default: |-
+                =LookUp(
+                    colsecorderFilter,
+                    Title = "Order value"
+                ).value
+            DisabledBorderColor: =RGBA(166, 166, 166, 1)
+            DisabledColor: =RGBA(166, 166, 166, 1)
+            DisabledFill: =RGBA(244, 244, 244, 1)
+            FocusedBorderThickness: =4
+            Format: =TextFormat.Number
+            Height: =76
+            HintText: ="Enter Value"
+            HoverBorderColor: =RGBA(0, 18, 107, 1)
+            HoverColor: =RGBA(0, 0, 0, 1)
+            HoverFill: =RGBA(186, 202, 226, 1)
+            OnChange: |-
+                =If(
+                    Gallery8_11.Selected.tabid = 5 && IsBlank(
+                        LookUp(
+                            colsecorderFilter,
+                            Title = Gallery8_11.Selected.Title
+                        ).Title
+                    ),
+                    Collect(
+                        colsecorderFilter,
+                        {
+                            Title: Gallery8_11.Selected.Title,
+                            value: OrderValue_4.Text
+                        }
+                    ),
+                    Patch(
+                        colsecorderFilter,
+                        LookUp(
+                            colsecorderFilter,
+                            Title =Gallery8_11.Selected.Title
+                        ),
+                        {
+                            value: OrderValue_4.Text
+                        }
+                    )
+                )
+            Size: =18
+            Visible: =If(Gallery8_11.Selected.tabid=5,true,false)
+            Width: =309
+            X: =319
+            Y: =315
+            ZIndex: =18
+
+        Label30_26 As label:
+            BorderColor: =RGBA(0, 18, 107, 1)
+            Color: |-
+                =//RGBA(0, 0, 0, 1)
+                ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Text Primary Color").'Default Value')
+            DisabledColor: =RGBA(166, 166, 166, 1)
+            Font: =Font.'Segoe UI'
+            FontWeight: =FontWeight.Bold
+            Height: =59
+            Size: =18
+            Text: ="OR"
+            Visible: =If(Gallery8_11.Selected.tabid=1,true,false)
+            Width: =129
+            X: =399
+            Y: =346
+            ZIndex: =19
+
+        Group10_7 As group:
+            Height: =5
+            Width: =5
+            X: =-296
+            Y: =-250
+            ZIndex: =22
+
+            Icon20_13 As icon.ArrowsUpDown:
+                BorderColor: =RGBA(0, 18, 107, 1)
+                DisabledBorderColor: =RGBA(166, 166, 166, 1)
+                DisabledColor: =RGBA(244, 244, 244, 1)
+                DisplayMode: =DisplayMode.View
+                Height: =30
+                Icon: =Icon.Sort
+                Visible: =If(varSort=true,true,false)
+                Width: =30
+                X: =138
+                Y: =43
+                ZIndex: =20
+
+            Label29_39 As label:
+                BorderColor: =RGBA(0, 18, 107, 1)
+                Color: =RGBA(0, 0, 0, 1)
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                FontWeight: =FontWeight.Bold
+                Size: =20
+                Text: ="Sort By"
+                Visible: =If(varSort=true,true,false)
+                Width: =272
+                X: =40
+                Y: =40
+                ZIndex: =21
+
