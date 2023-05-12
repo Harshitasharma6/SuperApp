@@ -2734,7 +2734,7 @@
                         =ColorFade(ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )
                         , 10%)
                     OnSelect: |
-                        =ClearCollect(datt1,
+                        =ClearCollect(dat11,
                         If(
                             CountRows(vt) = 1,
                             If(
@@ -2742,33 +2742,40 @@
                                 Filter(
                                     OfflineVisitCollection,
                                     ('Owning User'.'Primary Email' = User().Email && Text('Visit date',"dd-mm-yyyy") = Text(DatePicker2.SelectedDate,"dd-mm-yyyy")
+                                )
+                                       
                                 ),
-                                If(
+                          If(
                                     First(vt).Value = "Planned",
                                     Filter(
                                          OfflineVisitCollection,
                                         ('Owning User'.'Primary Email' = User().Email && Text('Visit date',"dd-mm-yyyy") = Text(DatePicker2.SelectedDate,"dd-mm-yyyy") && Text('Visit Type') = "Planned"
-                                    ),
+                                    )),
                                     If(
-                                        First(vt).Value = "UnPlanned",
-                                        Filter(
-                                             OfflineVisitCollection,
-                                            ('Owning User'.'Primary Email' = User().Email
-                                            
-                                            ) && Text('Visit Type') = "Unplanned"
-                                        )
-                                    )
-                                )
-                            ),
-                            If(
+                                    First(vt).Value = "UnPlanned",
+                                    Filter(
+                                         OfflineVisitCollection,
+                                        ('Owning User'.'Primary Email' = User().Email && Text('Visit date',"dd-mm-yyyy") = Text(DatePicker2.SelectedDate,"dd-mm-yyyy") && Text('Visit Type') = "Unplanned"
+                                    ))))),
+                        
+                                      If(
                                 CountRows(vt) = 2,
                                 Filter(
                                      OfflineVisitCollection,
                                     ('Owning User'.'Primary Email' = User().Email && Text('Visit date',"dd-mm-yyyy") = Text(DatePicker2.SelectedDate,"dd-mm-yyyy") )
                                 )
-                            )
-                        ));
-                        Set(varFilter,false);
+                            )));
+                            Set(varFilter,false);
+                        
+                        
+                        
+                           
+                        
+                        
+                        
+                        
+                            
+                           
                         
                         /*ClearCollect(
                             colFilterData,
@@ -2823,6 +2830,7 @@
                     ZIndex: =3
 
                 ClearBtn_3 As button:
+                    BorderStyle: =BorderStyle.None
                     Color: |-
                         =If(
                             ApplyBtn_7,ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )
@@ -2835,7 +2843,7 @@
                         =If(
                             ApplyBtn_7,ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )
                             //ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )
-                            ,Color.LightGray)
+                            ,ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' ))
                     FontWeight: =FontWeight.Semibold
                     Height: =50
                     HoverColor: =RGBA(255, 255, 255, 1)
@@ -3010,6 +3018,7 @@
                 Icon18_7 As icon.Cancel:
                     AccessibleLabel: ="Icon"
                     BorderColor: =RGBA(0, 18, 107, 1)
+                    Color: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )
                     DisabledBorderColor: =RGBA(166, 166, 166, 1)
                     DisabledColor: =RGBA(244, 244, 244, 1)
                     Height: =40
@@ -3576,10 +3585,9 @@
         Font: =Font.'Segoe UI'
         Height: =70
         Size: =21
-        Text: =CountRows(datt1)
-        Width: =326
-        X: =13
-        Y: =163
+        Text: =CountRows(dat11)
+        Width: =59
+        X: =239
         ZIndex: =20
 
     Group8 As group:
@@ -3629,4 +3637,98 @@
             X: =496
             Y: =171
             ZIndex: =18
+
+    Display_4 As gallery.galleryHorizontal:
+        AccessibleLabel: ="Display Gallery"
+        BorderColor: =RGBA(0, 18, 107, 1)
+        DelayItemLoading: =true
+        Height: =106
+        Items: =vt
+        LoadingSpinner: =LoadingSpinner.Data
+        ShowScrollbar: =false
+        TabIndex: =0//-1
+        TemplateSize: =298
+        Visible: |-
+            =//If(CountRows(colFilter)=1,false,true)
+            If(CountRows(dat11)=0,false,true)
+        Width: =315
+        X: =4
+        Y: =139
+        ZIndex: =21
+
+        Button20_3 As button:
+            DisabledBorderColor: =RGBA(166, 166, 166, 1)
+            DisabledColor: =RGBA(166, 166, 166, 1)
+            DisabledFill: =RGBA(244, 244, 244, 1)
+            DisplayMode: =DisplayMode.View
+            Fill: |-
+                =//RGBA(204, 204, 204, 1)
+                ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )
+            FontWeight: =FontWeight.Semibold
+            Height: =60
+            HoverColor: =RGBA(255, 255, 255, 1)
+            HoverFill: =ColorFade(RGBA(56, 96, 178, 1), -20%)
+            RadiusBottomLeft: =15
+            RadiusBottomRight: =15
+            RadiusTopLeft: =15
+            RadiusTopRight: =15
+            Size: =24
+            Text: =""
+            Width: =285
+            X: =8
+            Y: =12
+            ZIndex: =1
+
+        Label31_6 As label:
+            Align: =Align.Center
+            BorderColor: =RGBA(0, 18, 107, 1)
+            Color: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Hover Color").'Default Value')
+            DisabledColor: =RGBA(166, 166, 166, 1)
+            Height: =37
+            OnSelect: =Select(Parent)
+            Size: =16
+            Text: |-
+                =ThisItem.Title & " : " & ThisItem.Value
+            Tooltip: |-
+                =ThisItem.Title & ":"
+            Width: =269
+            Wrap: =false
+            Y: =25
+            ZIndex: =2
+
+        Icon21_3 As icon.Cancel:
+            AccessibleLabel: ="Ico"
+            BorderColor: =RGBA(0, 18, 107, 1)
+            Color: =RGBA(255, 255, 255, 1)
+            DisabledBorderColor: =RGBA(166, 166, 166, 1)
+            DisabledColor: =RGBA(244, 244, 244, 1)
+            Height: =30
+            Icon: =Icon.Cancel
+            OnSelect: |-
+                =Remove(
+                    vt,
+                    ThisItem
+                );
+                //Reset(radioDate_1);
+                If(
+                    ThisItem.Value = "All",
+                    Reset(C_ALL),
+                    If(
+                        ThisItem.Value = "Planned",
+                        Reset(C_Planned),
+                        If(
+                            ThisItem.Value = "UnPlanned",
+                            Reset(C_Unplanned)
+                        )
+                    )
+                )
+            PaddingBottom: =4
+            PaddingLeft: =3
+            PaddingRight: =3
+            PaddingTop: =4
+            TabIndex: =0//-1
+            Width: =40
+            X: =248
+            Y: =15
+            ZIndex: =4
 
