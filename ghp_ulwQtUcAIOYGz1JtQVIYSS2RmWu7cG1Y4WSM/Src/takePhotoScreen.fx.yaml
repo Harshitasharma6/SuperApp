@@ -425,14 +425,17 @@ takePhotoScreen As screen:
                                     NotificationType.Error,
                                     1000
                                 ),
+                              
                                 Patch(
-                                    colImgToAttach,
-                                    ThisItem,
-                                    {title: Self.Text}
-                                )
+                               colImgToAttach,
+                               ThisItem,
+                               {title:Self.Text}
+                            )
+                               
                             )
                         OnSelect: =Select(Parent)
                         Size: =21
+                        Visible: =If(IsBlank(ThisItem.AttachmentName), true, false)
                         Width: =235
                         X: =366
                         Y: =105
@@ -561,8 +564,8 @@ takePhotoScreen As screen:
                                 1000
                             )*/
                         );
-                        Clear(colImgToAttach);
-                        Navigate(Sidebar);
+                        //Clear(colImgToAttach);
+                        //Navigate(Sidebar);
                     Size: =18
                     Text: ="SUBMIT"
                     Width: =259
