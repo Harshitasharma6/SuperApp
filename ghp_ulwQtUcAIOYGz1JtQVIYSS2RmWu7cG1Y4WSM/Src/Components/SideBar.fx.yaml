@@ -379,8 +379,8 @@ SideBar As CanvasComponent:
 
         Button19 As button:
             BorderColor: |-
-                =If(ThisItem.IsSelected, ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//_VarGblAppColors.PrimaryRed
-                , ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Text Primary Color").'Default Value'))
+                =ColorFade(ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Text Primary Color").'Default Value' ), 50%)
+                //If(ThisItem.IsSelected, ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//_VarGblAppColors.PrimaryRed, ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Text Primary Color").'Default Value'))
             BorderThickness: =1
             Color: |-
                 =//If(ThisItem.IsSelected, _VarGblAppColors.PrimaryRed, _VarGblAppColors.textbgbutton)
