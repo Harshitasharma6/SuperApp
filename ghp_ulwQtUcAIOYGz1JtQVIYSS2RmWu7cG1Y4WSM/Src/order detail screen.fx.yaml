@@ -170,10 +170,26 @@
                         },
                         {
                             Title: "Tax:",
-                            Value: If(IsBlank(primarydata.'Total Price')|| IsBlank(secondarydata.'Total Price'),  "₹0.00",Concatenate(
+                            Value: If(IsBlank(Sum(primarydata.IGST)+Sum(primarydata.SGST)+Sum(primarydata.CGST)+Sum(primarydata.'Cess %'))|| IsBlank(Sum(secondarydata.IGST)+Sum(secondarydata.SGST)+Sum(secondarydata.CGST)+Sum(secondarydata.'Cess %')),  "₹0.00",Concatenate(
                                 "₹",
                                 Text(
-                                    Sum(varOrderData.IGST) + Sum(varOrderData.CGST) + Sum(varOrderData.SGST) + Sum(varOrderData.'Cess %'),
+                                    Sum(If(
+                                        primarydata.'Order Type' = 'Order Type Choice'.Primary,
+                                        primarydata.IGST,
+                                        secondarydata.IGST
+                                    )) + Sum(If(
+                                        primarydata.'Order Type' = 'Order Type Choice'.Primary,
+                                        primarydata.CGST,
+                                        secondarydata.CGST
+                                    )) + Sum(If(
+                                        primarydata.'Order Type' = 'Order Type Choice'.Primary,
+                                        primarydata.SGST,
+                                        secondarydata.SGST
+                                    )) + Sum(If(
+                                        primarydata.'Order Type' = 'Order Type Choice'.Primary,
+                                        primarydata.'Cess %',
+                                        secondarydata.'Cess %'
+                                    )),
                                    /* "[$-hi-IN]##,##,##,###",
                                     "hi-IN"*/
                                     "[$-en-US]#.00"
