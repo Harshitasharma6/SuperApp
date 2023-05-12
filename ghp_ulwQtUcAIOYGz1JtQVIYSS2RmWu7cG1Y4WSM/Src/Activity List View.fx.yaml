@@ -1,10 +1,12 @@
 "'Activity List View' As screen":
+    Fill: =RGBA(230, 230, 230, 0.54)
     LoadingSpinnerColor: =RGBA(0, 120, 212, 1)
 
     Header_20 As Header:
         ScreenName: ="Activities"
 
     "'Bottom Bar_22' As 'Bottom Bar'":
+        Fill: =RGBA(255, 255, 255, 1)
         NavItems: |-
             =Table(
                 {
@@ -44,7 +46,6 @@
     "'Activity gallery_1' As gallery.galleryVertical":
         AccessibleLabel: ="Orderline Gallery"
         BorderColor: =RGBA(0, 18, 107, 1)
-        Fill: =ColorValue(LookUp(c_EnvironmentVariable, 'Display Name'="Light Red").'Default Value')
         Height: =953
         Items: |-
             =Sort(
@@ -56,6 +57,8 @@
         ShowScrollbar: =false
         TabIndex: =0
         TemplateSize: =230
+        Width: =600
+        X: =15
         Y: =86
         ZIndex: =3
 
@@ -77,7 +80,7 @@
                 Set(varActivityData,ThisItem);
             Size: =24
             Text: =""
-            Width: =630
+            Width: =600
             ZIndex: =1
 
         Rectangle1_16 As rectangle:
@@ -92,7 +95,9 @@
                 Navigate('Activity Detail Screen',ScreenTransition.CoverRight);
                 Set(varActivityData,ThisItem);
             TabIndex: =0
-            Width: ='Activity gallery_1'.TemplateWidth
+            Width: |-
+                =//'Activity gallery_1'.TemplateWidth
+                600
             Y: =84
             ZIndex: =2
 
