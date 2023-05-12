@@ -862,16 +862,15 @@
             OnSelect: |
                 =Navigate(
                     'Visit Info',
-                    ScreenTransition.CoverRight
+                    ScreenTransition.CoverRight,{varParty:
+                       ThisItem.Party.'Customer Name',varCustomertype:
+                         ThisItem.Party.'Customer Type'}
                 );
                 Set(
                     dataVisit,
                     ThisItem
                 );
-                Set(
-                        varParty,
-                       ThisItem.Party.'Customer Name'
-                    );
+                
                     Set(
                         varParties,
                         false
@@ -880,10 +879,7 @@
                         varCustomerforDiscount,
                         ThisItem.Party.Parties
                     );
-                   Set(
-                        varCustomertype,
-                         ThisItem.Party.'Customer Type'
-                    );
+                 
                     Set(
                         varpaymentterm,
                         LookUp(
@@ -952,7 +948,7 @@
                     colCustomerMapping,
                     LookUp(
                         OfflineProductOfferMappingCollection,
-                        Customer.Parties = GUID(varCustomerforDiscount)
+                        Customer.Parties = varCustomerforDiscount
                     )
                 );
                 ClearCollect(

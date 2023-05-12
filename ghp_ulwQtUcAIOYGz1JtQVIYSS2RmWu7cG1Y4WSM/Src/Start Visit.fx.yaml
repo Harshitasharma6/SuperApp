@@ -1457,7 +1457,7 @@
                                         )
                                     );
                                     Set(
-                                        varCustomerforDiscount,
+                                        varCustomerforDiscountTemp,
                                         LookUp(
                                             'Visit.S',
                                             Party.Parties = ThisItem.zx_partiesid
@@ -1546,7 +1546,7 @@
                         colCustomerMapping,
                         LookUp(
                             OfflineProductOfferMappingCollection,
-                            Customer.Parties = GUID(varCustomerforDiscount)
+                            Customer.Parties = varCustomerforDiscountTemp
                         )
                     );
                     ClearCollect(
@@ -1767,7 +1767,7 @@
                                         )
                                     );
                                     Set(
-                                        varCustomerforDiscount,
+                                        varCustomerforDiscountTemp,
                                         LookUp(
                                             'Visit.S',
                                             Party.Parties = ThisItem.zx_partiesid
@@ -1856,7 +1856,7 @@
                         colCustomerMapping,
                         LookUp(
                             OfflineProductOfferMappingCollection,
-                            Customer.Parties = GUID(varCustomerforDiscount)
+                            Customer.Parties = varCustomerforDiscountTemp
                         )
                     );
                     ClearCollect(
@@ -1985,6 +1985,7 @@
         RadiusTopRight: =5
         Size: =LookUp(c_EnvironmentVariable,'Display Name'="Text Medium Font Size").'Default Value'
         Text: ="CREATE VISIT"
+        Visible: =false
         Width: =206
         X: =424
         Y: =20
@@ -2057,6 +2058,7 @@
             )
         TabIndex: =0
         Tooltip: ="Sync Offline Data"
+        Visible: =false
         Width: =37
         X: =367
         Y: =22
@@ -3572,21 +3574,53 @@
                     Y: =413
                     ZIndex: =19
 
-    Label6 As label:
-        BorderColor: =RGBA(0, 0, 0, 0)
-        BorderStyle: =BorderStyle.None
-        BorderThickness: =2
-        Color: =RGBA(51, 51, 51, 1)
-        DisabledBorderColor: =RGBA(0, 0, 0, 0)
-        DisabledColor: =RGBA(166, 166, 166, 1)
-        FocusedBorderThickness: =4
-        Font: =Font.'Segoe UI'
-        Height: =70
-        Size: =21
-        Text: =CountRows(dat11)
-        Width: =59
-        X: =239
-        ZIndex: =20
+    Group8 As group:
+        Height: =5
+        Width: =5
+        X: =60
+        Y: =60
+        ZIndex: =21
+
+        Label5 As label:
+            Align: =Align.Center
+            BorderColor: =RGBA(0, 0, 0, 0)
+            BorderStyle: =BorderStyle.None
+            BorderThickness: =2
+            Color: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )
+            DisabledBorderColor: =RGBA(0, 0, 0, 0)
+            DisabledColor: =RGBA(166, 166, 166, 1)
+            FocusedBorderThickness: =4
+            Font: =Font.'Segoe UI'
+            FontWeight: =FontWeight.Semibold
+            Height: =46
+            PaddingRight: =8
+            PaddingTop: =10
+            Size: =18
+            Text: =Text(DatePicker2.SelectedDate,"dd")
+            Visible: =If('Top Tab_1'.ActiveTabId = "2", true, false)
+            Width: =50
+            X: =496
+            Y: =175
+            ZIndex: =16
+
+        Image14 As image:
+            BorderColor: =RGBA(0, 0, 0, 0)
+            BorderStyle: =BorderStyle.None
+            BorderThickness: =2
+            DisabledBorderColor: =RGBA(0, 0, 0, 0)
+            DisabledFill: =RGBA(0, 0, 0, 0)
+            FocusedBorderThickness: =4
+            Height: =50
+            HoverBorderColor: =RGBA(0, 0, 0, 0)
+            HoverFill: =RGBA(0, 0, 0, 0)
+            Image: ='Vector (4)'
+            PressedBorderColor: =RGBA(0, 0, 0, 0)
+            PressedFill: =RGBA(0, 0, 0, 0)
+            Visible: =If('Top Tab_1'.ActiveTabId = "2", true, false)
+            Width: =50
+            X: =496
+            Y: =171
+            ZIndex: =18
 
     Display_4 As gallery.galleryHorizontal:
         AccessibleLabel: ="Display Gallery"
@@ -3681,52 +3715,4 @@
             X: =248
             Y: =15
             ZIndex: =4
-
-    Group8 As group:
-        Height: =5
-        Width: =5
-        X: =60
-        Y: =60
-        ZIndex: =21
-
-        Label5 As label:
-            Align: =Align.Center
-            BorderColor: =RGBA(0, 0, 0, 0)
-            BorderStyle: =BorderStyle.None
-            BorderThickness: =2
-            Color: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )
-            DisabledBorderColor: =RGBA(0, 0, 0, 0)
-            DisabledColor: =RGBA(166, 166, 166, 1)
-            FocusedBorderThickness: =4
-            Font: =Font.'Segoe UI'
-            FontWeight: =FontWeight.Semibold
-            Height: =46
-            PaddingRight: =8
-            PaddingTop: =10
-            Size: =18
-            Text: =Text(DatePicker2.SelectedDate,"dd")
-            Visible: =If('Top Tab_1'.ActiveTabId = "2", true, false)
-            Width: =50
-            X: =496
-            Y: =175
-            ZIndex: =16
-
-        Image14 As image:
-            BorderColor: =RGBA(0, 0, 0, 0)
-            BorderStyle: =BorderStyle.None
-            BorderThickness: =2
-            DisabledBorderColor: =RGBA(0, 0, 0, 0)
-            DisabledFill: =RGBA(0, 0, 0, 0)
-            FocusedBorderThickness: =4
-            Height: =50
-            HoverBorderColor: =RGBA(0, 0, 0, 0)
-            HoverFill: =RGBA(0, 0, 0, 0)
-            Image: ='Vector (4)'
-            PressedBorderColor: =RGBA(0, 0, 0, 0)
-            PressedFill: =RGBA(0, 0, 0, 0)
-            Visible: =If('Top Tab_1'.ActiveTabId = "2", true, false)
-            Width: =50
-            X: =496
-            Y: =171
-            ZIndex: =18
 
