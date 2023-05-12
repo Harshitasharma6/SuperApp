@@ -103,16 +103,16 @@
         PaddingLeft: =45
         PressedFill: =
         Size: =15
-        Width: =602
-        X: =10
-        Y: =210
+        Width: =586
+        X: =27
+        Y: =234
         ZIndex: =2
 
     Gallery1_3 As gallery.galleryVertical:
         AccessibleLabel: ="List View"
         BorderColor: =RGBA(0, 18, 107, 1)
         FocusedBorderThickness: =
-        Height: =706
+        Height: =693
         Items: |-
             =If(
                 varAreaFilter && !IsBlank(Display_10.Selected.value),
@@ -140,7 +140,7 @@
         TabIndex: =
         TemplatePadding: =10
         TemplateSize: =201
-        Y: =281
+        Y: =286
         ZIndex: =3
 
         Background_6 As button:
@@ -164,7 +164,8 @@
             RadiusTopRight: =15
             Size: =24
             Text: =""
-            Width: =Gallery1_3.TemplateWidth 
+            Width: =583
+            X: =19
             Y: =3
             ZIndex: =1
 
@@ -179,8 +180,8 @@
             Size: =LookUp(c_EnvironmentVariable,'Display Name'="Text Medium Font Size").'Default Value'
             Text: =ThisItem.Area.'Area Name'
             Width: =249
-            X: =21
-            Y: =10
+            X: =44
+            Y: =24
             ZIndex: =2
 
         Title2Lbl_3 As label:
@@ -196,8 +197,8 @@
                 ="Area Code: "& ThisItem.Name
             Width: =249
             Wrap: =false
-            X: =21
-            Y: =40
+            X: =44
+            Y: =54
             ZIndex: =3
 
         Button4_5 As button:
@@ -221,7 +222,7 @@
                     false
                 )
             Width: =43
-            X: =557
+            X: =530
             Y: =27
             ZIndex: =4
 
@@ -230,36 +231,10 @@
             Fill: =RGBA(219, 219, 219, 1)
             Height: =1
             OnSelect: =Select(Parent)
-            Width: =Gallery1_3.TemplateWidth
-            Y: =78
+            Width: =583
+            X: =19
+            Y: =90
             ZIndex: =5
-
-        Background_7 As button:
-            BorderThickness: =0
-            Color: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Hover Color").'Default Value')
-            DisabledBorderColor: =RGBA(208, 231, 233, 1)
-            DisabledColor: =RGBA(116, 116, 116, 1)
-            DisabledFill: =RGBA(255, 255, 255, 1)
-            DisplayMode: =DisplayMode.Disabled
-            Fill: =RGBA(56, 96, 178, 1)
-            FontWeight: =FontWeight.Semibold
-            Height: =3
-            HoverColor: =RGBA(255, 255, 255, 1)
-            HoverFill: =ColorFade(RGBA(56, 96, 178, 1), -20%)
-            OnSelect: =Select(Parent)
-            RadiusBottomLeft: =15
-            RadiusBottomRight: =15
-            RadiusTopLeft: |-
-                =
-                0
-            RadiusTopRight: |-
-                =
-                0
-            Size: =24
-            Text: =""
-            Width: =Gallery1_3.TemplateWidth 
-            Y: =79
-            ZIndex: =6
 
         Body1_12 As label:
             BorderColor: =RGBA(0, 18, 107, 1)
@@ -274,8 +249,8 @@
                 ="Pincode: "& LookUp('Area.S', Area = ThisItem.Area.Area).Pincode.Name
             Width: =290
             Wrap: =false
-            X: =21
-            Y: =82
+            X: =44
+            Y: =96
             ZIndex: =7
 
         Body1Value_8 As label:
@@ -291,8 +266,8 @@
                 ="City: " & LookUp('Area.S', Area = ThisItem.Area.Area).City.'City Name'
             Width: =296
             Wrap: =false
-            X: =21
-            Y: =145
+            X: =44
+            Y: =159
             ZIndex: =8
 
         Body1_13 As label:
@@ -308,8 +283,8 @@
                 ="District: "& LookUp('Area.S', Area = ThisItem.Area.Area).District.'District Name'
             Width: =290
             Wrap: =false
-            X: =21
-            Y: =113
+            X: =44
+            Y: =127
             ZIndex: =9
 
         Body1Value_9 As label:
@@ -477,7 +452,7 @@
                     false
                 )
             Width: =30
-            X: =564
+            X: =537
             Y: =29
             ZIndex: =12
 
@@ -495,7 +470,7 @@
                 Set(_VarClickedArea1, ThisItem.Area.Area)
             TabIndex: =0
             Width: =20
-            X: =496
+            X: =505
             Y: =145
             ZIndex: =13
 
@@ -548,7 +523,7 @@
             Text: =""
             Visible: =If(Icon9.DisplayMode=DisplayMode.Disabled,true,false)
             Width: =43
-            X: =501
+            X: =474
             Y: =27
             ZIndex: =15
 
@@ -1501,8 +1476,8 @@
         PressedBorderColor: =RGBA(0, 0, 0, 0)
         PressedFill: =RGBA(0, 0, 0, 0)
         Width: =22
-        X: =24
-        Y: =216
+        X: =37
+        Y: =240
         ZIndex: =23
 
     Group5 As group:
@@ -1533,7 +1508,7 @@
             PressedFill: =RGBA(0, 0, 0, 0)
             Width: =32
             X: =528
-            Y: =145
+            Y: =159
             ZIndex: =7
 
         Button3 As button:
@@ -1567,7 +1542,7 @@
             Text: =""
             Width: =35
             X: =525
-            Y: =147
+            Y: =161
             ZIndex: =8
 
     Group6 As group:
@@ -1705,7 +1680,7 @@
             TabIndex: =0
             Width: =44
             X: =566
-            Y: =150
+            Y: =164
             ZIndex: =5
 
         Button4_3 As button:
@@ -1728,37 +1703,33 @@
             Text: =CountRows(colAddAreaParty)
             Width: =30
             X: =600
-            Y: =142
+            Y: =156
             ZIndex: =6
 
     Display_11 As gallery.galleryHorizontal:
-        AccessibleLabel: ="Display Gallery"
+        AccessibleLabel: ="Filter Applied"
         BorderColor: =RGBA(0, 18, 107, 1)
         DelayItemLoading: =true
-        Height: =106
+        Height: =67
         Items: =colAreaFilter
         LoadingSpinner: =LoadingSpinner.Data
         ShowScrollbar: =false
         TabIndex: =0//-1
-        TemplateSize: =262
-        Visible: |-
-            =//If(CountRows(colFilter)=1,false,true)
-            true
-        Width: =321
-        X: =50
-        Y: =127
+        TemplateSize: =250
+        Visible: =If(IsBlank(varPartyFilter),false,true)
+        Width: =256
+        X: =24
+        Y: =148
         ZIndex: =26
 
-        Button20_4 As button:
+        Button20_16 As button:
             DisabledBorderColor: =RGBA(166, 166, 166, 1)
             DisabledColor: =RGBA(166, 166, 166, 1)
             DisabledFill: =RGBA(244, 244, 244, 1)
             DisplayMode: =DisplayMode.View
-            Fill: |-
-                =//RGBA(204, 204, 204, 1)
-                ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )
+            Fill: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )
             FontWeight: =FontWeight.Semibold
-            Height: =50
+            Height: =54
             HoverColor: =RGBA(255, 255, 255, 1)
             HoverFill: =ColorFade(RGBA(56, 96, 178, 1), -20%)
             RadiusBottomLeft: =15
@@ -1767,31 +1738,29 @@
             RadiusTopRight: =15
             Size: =24
             Text: =""
-            Width: =285
-            X: =8
-            Y: =12
+            Width: =246
+            Y: =3
             ZIndex: =1
 
-        Label31_7 As label:
-            Align: =Align.Center
+        Label31_13 As label:
             BorderColor: =RGBA(0, 18, 107, 1)
-            Color: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Hover Color").'Default Value')
+            Color: =RGBA(255, 255, 255, 1)
             DisabledColor: =RGBA(166, 166, 166, 1)
-            Height: =50
+            Height: =53
             OnSelect: =Select(Parent)
             Size: =16
             Text: |-
-                =ThisItem.Title & " : " & ThisItem.value
+                =ThisItem.Title & ":" & " " & ThisItem.value
             Tooltip: |-
-                =ThisItem.Title & ":"
-            Width: =256
+                =//ThisItem.Title & ":"
+            Width: =192
             Wrap: =false
-            X: =21
-            Y: =12
+            X: =11
+            Y: =4
             ZIndex: =2
 
-        Icon21_4 As icon.Cancel:
-            AccessibleLabel: ="Ico"
+        Icon21_14 As icon.Cancel:
+            AccessibleLabel: ="Filter Removed"
             BorderColor: =RGBA(0, 18, 107, 1)
             Color: =RGBA(255, 255, 255, 1)
             DisabledBorderColor: =RGBA(166, 166, 166, 1)
@@ -1803,14 +1772,10 @@
                 
                 Reset(radioParty_2);
                 Reset(radioArea);
-            PaddingBottom: =4
-            PaddingLeft: =3
-            PaddingRight: =3
-            PaddingTop: =4
             TabIndex: =0//-1
-            Width: =40
-            X: =248
-            Y: =15
+            Width: =20
+            X: =216
+            Y: =4
             ZIndex: =4
 
     Group9 As group:
