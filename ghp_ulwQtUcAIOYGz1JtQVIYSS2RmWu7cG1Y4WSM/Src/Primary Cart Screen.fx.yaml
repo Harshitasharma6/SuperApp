@@ -195,7 +195,7 @@
                             Value: If(
                                 'Product List_1'.OrderType = "Primary" || primarydata.zx_ordertype = 'Order Type Choice'.Primary,
                                 If(
-                                    IsBlank(
+                                    
                                         Sum(
                                             colPrimaryCart,
                                             (baseUnitPrice - (baseUnitPrice * (discount / 100))) * quantity
@@ -211,8 +211,8 @@
                                         ) + Sum(
                                             colPrimaryCart,
                                             cessAmount
-                                        ))
-                                    ),
+                                        ))=0
+                                    ,
                                     "₹0.00",
                                     Concatenate(
                                         "₹",
@@ -241,7 +241,7 @@
                                 ),
                                 'Product List_1'.OrderType = "Secondary" || secondarydata.zx_ordertype = 'Order Type Choice'.Secondary,
                                 If(
-                                    IsBlank(
+                                    
                                         Sum(
                                             colSecondaryCart,
                                             (baseUnitPrice - (baseUnitPrice * (discount / 100))) * quantity
@@ -258,7 +258,7 @@
                                             colSecondaryCart,
                                             cessAmount
                                         ))
-                                    ),
+                                    =0,
                                     "₹0.00",
                                     Concatenate(
                                         "₹",
@@ -292,7 +292,7 @@
                             Value: If(
                                 'Product List_1'.OrderType = "Primary" || primarydata.zx_ordertype = 'Order Type Choice'.Primary,
                                 If(
-                                    IsBlank(
+                                    
                                         (Sum(
                                             colPrimaryCart,
                                             igstAmount
@@ -306,7 +306,7 @@
                                             colPrimaryCart,
                                             cessAmount
                                         ))
-                                    ),
+                                    =0,
                                     "₹0.00",
                                     Concatenate(
                                         "₹",
@@ -332,7 +332,7 @@
                                 ),
                                 'Product List_1'.OrderType = "Secondary" || secondarydata.zx_ordertype = 'Order Type Choice'.Secondary,
                                 If(
-                                    IsBlank(
+                                    
                                         (Sum(
                                             colSecondaryCart,
                                             igstAmount
@@ -345,8 +345,8 @@
                                         ) + Sum(
                                             colSecondaryCart,
                                             cessAmount
-                                        ))
-                                    ),
+                                        )
+                                    )=0,
                                     "₹0.00",
                                     Concatenate(
                                         "₹",
@@ -377,12 +377,12 @@
                             Value: If(
                                 'Product List_1'.OrderType = "Primary" || primarydata.zx_ordertype = 'Order Type Choice'.Primary,
                                 If(
-                                    IsBlank(
+                                    
                                         Sum(
                                             colPrimaryCart,
                                             (baseUnitPrice - (baseUnitPrice * (discount / 100))) * quantity
-                                        )
-                                    ),
+                                        
+                                    )=0,
                                     "₹0.00",
                                     Concatenate(
                                         "₹",
