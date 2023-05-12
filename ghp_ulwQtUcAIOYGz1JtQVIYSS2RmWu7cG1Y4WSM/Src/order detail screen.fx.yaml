@@ -86,7 +86,7 @@
                 =ForAll(
                     [
                         {
-                            Title: "Order Date",
+                            Title: "Order Date:",
                             Value: Text(
                                 If(
                                     primarydata.'Order Type' = 'Order Type Choice'.Primary,
@@ -97,7 +97,7 @@
                             )
                         },
                         {
-                            Title: If(primarydata.'Order Type'= 'Order Type Choice'.Primary,"Customer","Supplier"),
+                            Title: If(primarydata.'Order Type'= 'Order Type Choice'.Primary,"Customer:","Supplier:"),
                             Value: If(
                                 primarydata.'Order Type' = 'Order Type Choice'.Primary,
                                 primarydata.'Order From'.'Customer Name',
@@ -106,7 +106,16 @@
                             )
                         },
                         {
-                            Title: "Total Price",
+                            Title: "Order Status:",
+                            Value: If(
+                                primarydata.'Order Type' = 'Order Type Choice'.Primary,
+                                primarydata.'Order Status',
+                                secondarydata.'Order Type' = 'Order Type Choice'.Secondary,
+                                secondarydata.'Order Status'
+                            )
+                        },
+                        {
+                            Title: "Total Price:",
                             Value: Concatenate(
                                 "₹",
                                 Text(
@@ -120,7 +129,7 @@
                             )
                         },
                         {
-                            Title: "Disc. Price",
+                            Title: "Disc. Price:",
                             Value: Concatenate(
                                 "₹",
                                 Text(
@@ -134,7 +143,7 @@
                             )
                         },
                         {
-                            Title: "Net Price",
+                            Title: "Net Price:",
                             Value: Concatenate(
                                 "₹",
                                 Text(
@@ -150,7 +159,7 @@
                             )
                         },
                         {
-                            Title: "Tax",
+                            Title: "Tax:",
                             Value: Concatenate(
                                 "₹",
                                 Text(
@@ -162,7 +171,7 @@
                             )
                         },
                         {
-                            Title: "Discount",
+                            Title: "Discount:",
                             Value: Concatenate(
                                 Text(
                                     If(
@@ -177,7 +186,7 @@
                             )
                         },
                         {
-                            Title: "IGST",
+                            Title: "IGST:",
                             Value: If(
                                 If(
                     primarydata.'Order Type' = 'Order Type Choice'.Primary,
@@ -200,7 +209,7 @@
                             )
                         },
                         {
-                            Title: "CGST",
+                            Title: "CGST:",
                             Value: If(
                                 If(
                     primarydata.'Order Type' = 'Order Type Choice'.Primary,
@@ -222,7 +231,7 @@
                             )
                         },
                         {
-                            Title: "SGST",
+                            Title: "SGST:",
                             Value: If(
                                 If(
                     primarydata.'Order Type' = 'Order Type Choice'.Primary,
@@ -244,7 +253,7 @@
                             )
                         },
                         {
-                            Title: "CESS",
+                            Title: "CESS:",
                             Value: If(
                                 If(
                     primarydata.'Order Type' = 'Order Type Choice'.Primary,
