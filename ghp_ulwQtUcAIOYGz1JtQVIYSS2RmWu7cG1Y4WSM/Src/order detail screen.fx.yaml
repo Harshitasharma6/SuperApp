@@ -97,12 +97,12 @@
                             )
                         },
                         {
-                            Title: "Supplier",
+                            Title: If(primarydata.'Order Type'= 'Order Type Choice'.Primary,"Customer","Supplier"),
                             Value: If(
                                 primarydata.'Order Type' = 'Order Type Choice'.Primary,
                                 primarydata.'Order From'.'Customer Name',
                                 secondarydata.'Order Type' = 'Order Type Choice'.Secondary,
-                                secondarydata.'Order From'.'Customer Name'
+                                secondarydata.'Order To'.'Customer Name'
                             )
                         },
                         {

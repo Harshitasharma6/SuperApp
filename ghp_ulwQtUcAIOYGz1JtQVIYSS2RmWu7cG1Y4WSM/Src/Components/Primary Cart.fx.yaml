@@ -371,7 +371,7 @@
                 ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//_VarGblAppColors.PrimaryRed
                 , -20%)
         OnSelect: |
-            =Notify("Please fill the order terms",NotificationType.Information,2000);
+            =//Notify("Please fill the order terms",NotificationType.Information,2000);
             Set(
                 varTotalBill,
                 RoundUp(
@@ -396,7 +396,8 @@
                     2
                 )
             );
-            Navigate('Primary Cart Screen',ScreenTransition.CoverRight);
+            Set(varorderselectedId,2)
+            //Navigate('Primary Cart Screen',ScreenTransition.CoverRight);
         Size: =20
         Text: ="Place Order"
         Width: =258

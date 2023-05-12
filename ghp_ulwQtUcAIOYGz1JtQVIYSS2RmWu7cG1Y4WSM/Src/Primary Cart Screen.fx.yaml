@@ -1,5 +1,6 @@
 "'Primary Cart Screen' As screen":
     LoadingSpinnerColor: =RGBA(0, 120, 212, 1)
+    OnVisible: =Set(varorderselectedId,1)
 
     Header_3 As Header:
         ScreenName: =varParty
@@ -398,7 +399,13 @@
 
         "Cart_10 As 'Primary Cart'":
             CartType: =  "Primary"
-            Fill: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Screen Background Color").'Default Value') //ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Screen Background Color").'Default Value') //_VarGblAppColors.BackgroundColor
+            Fill: |-
+                =ColorValue(
+                    LookUp(
+                        c_EnvironmentVariable,
+                        'Display Name' = "Screen Background Color"
+                    ).'Default Value'
+                )//ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Screen Background Color").'Default Value') //_VarGblAppColors.BackgroundColor
             Height: =600
             Visible: =true
             Y: =300
@@ -468,7 +475,6 @@
             PressedBorderColor: =RGBA(0, 0, 0, 0)
             PressedColor: =ColorFade(RGBA(0, 120, 212, 1), -30%)
             PressedFill: =RGBA(0, 0, 0, 0)
-            Visible: =If(IsBlank(primarydata),false,true)
             Width: =40
             X: =580
             Y: =260
