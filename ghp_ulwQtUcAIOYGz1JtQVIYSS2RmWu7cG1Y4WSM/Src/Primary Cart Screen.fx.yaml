@@ -88,7 +88,7 @@
                         {
                             Title: "Total Price",
                             Value: If(
-                                'Product List_1'.OrderType = "Primary" || primarydata.'Order Type' = 'Order Type Choice'.Primary,
+                                'Product List_1'.OrderType = "Primary" || primarydata.zx_ordertype= 'Order Type Choice'.Primary,
                                 Concatenate(
                                     "₹",
                                     Text(
@@ -101,7 +101,7 @@
                                         "[$-en-US]#.00"
                                     )
                                 ),
-                                'Product List_1'.OrderType = "Secondary" || secondarydata.'Order Type' = 'Order Type Choice'.Secondary,
+                                'Product List_1'.OrderType = "Secondary" || secondarydata.zx_ordertype = 'Order Type Choice'.Secondary,
                                 Concatenate(
                                     "₹",
                                     Text(
@@ -119,7 +119,7 @@
                         {
                             Title: "Discount",
                             Value: If(
-                                'Product List_1'.OrderType = "Primary" || primarydata.'Order Type' = 'Order Type Choice'.Primary,
+                                'Product List_1'.OrderType = "Primary" || primarydata.zx_ordertype = 'Order Type Choice'.Primary,
                                 Concatenate(
                                     "₹",
                                     Text(
@@ -135,7 +135,7 @@
                                         "[$-en-US]#.00"
                                     )
                                 ),
-                                'Product List_1'.OrderType = "Secondary" || secondarydata.'Order Type' = 'Order Type Choice'.Secondary,
+                                'Product List_1'.OrderType = "Secondary" || secondarydata.zx_ordertype = 'Order Type Choice'.Secondary,
                                 Concatenate(
                                     "₹",
                                     Text(
@@ -156,7 +156,7 @@
                         {
                             Title: "Net Price",
                             Value: If(
-                                'Product List_1'.OrderType = "Primary" || primarydata.'Order Type' = 'Order Type Choice'.Primary,
+                                'Product List_1'.OrderType = "Primary" || primarydata.zx_ordertype = 'Order Type Choice'.Primary,
                                 Concatenate(
                                     "₹",
                                     Text(
@@ -181,7 +181,7 @@
                                         "[$-en-US]#.00"
                                     )
                                 ),
-                                'Product List_1'.OrderType = "Secondary" || secondarydata.'Order Type' = 'Order Type Choice'.Secondary,
+                                'Product List_1'.OrderType = "Secondary" || secondarydata.zx_ordertype = 'Order Type Choice'.Secondary,
                                 Concatenate(
                                     "₹",
                                     Text(
@@ -211,7 +211,7 @@
                         {
                             Title: "Tax",
                             Value: If(
-                                'Product List_1'.OrderType = "Primary" || primarydata.'Order Type' = 'Order Type Choice'.Primary,
+                                'Product List_1'.OrderType = "Primary" || primarydata.zx_ordertype = 'Order Type Choice'.Primary,
                                 Concatenate(
                                     "₹",
                                     Text(
@@ -233,7 +233,7 @@
                                         "[$-en-US]#.00"
                                     )
                                 ),
-                                'Product List_1'.OrderType = "Secondary" || secondarydata.'Order Type' = 'Order Type Choice'.Secondary,
+                                'Product List_1'.OrderType = "Secondary" || secondarydata.zx_ordertype = 'Order Type Choice'.Secondary,
                                 Concatenate(
                                     "₹",
                                     Text(
@@ -260,7 +260,7 @@
                         {
                             Title: "Disc.Price",
                             Value: If(
-                                'Product List_1'.OrderType = "Primary" || primarydata.'Order Type' = 'Order Type Choice'.Primary,
+                                'Product List_1'.OrderType = "Primary" || primarydata.zx_ordertype = 'Order Type Choice'.Primary,
                                 Concatenate(
                                     "₹",
                                     Text(
@@ -273,7 +273,7 @@
                                         "[$-en-US]#.00"
                                     )
                                 ),
-                                'Product List_1'.OrderType = "Secondary" || secondarydata.'Order Type' = 'Order Type Choice'.Secondary,
+                                'Product List_1'.OrderType = "Secondary" || secondarydata.zx_ordertype = 'Order Type Choice'.Secondary,
                                 Concatenate(
                                     "₹",
                                     Text(
@@ -421,31 +421,25 @@
                     varprimaryparty,
                     LookUp(
                         OfflinePartiesCollection,
-                        Parties = primarydata.'Order From'.Parties
+                        Parties = primarydata.zx_OrderFrom.Parties
                     ).'Price List'.Name
                 );
                 Set(
                     varPartyPricelist,
                     varprimaryparty
                 );
-                Set(
-                    varParty,
-                    primarydata.'Order From'.'Customer Name'
-                );
+                
                 Set(
                     varCustomerforDiscount,
-                    primarydata.'Order From'.Parties
+                    primarydata.zx_OrderFrom.Parties
                 );
-                Set(
-                    varCustomertype,
-                    primarydata.'Order From'.'Customer Type'
-                );
+                
                 ClearCollect(
                     colPartyOrder,
                     Sort(
                         Filter(
                             OfflineOrderHeaderCollection,
-                            'Order From'.Parties = primarydata.'Order From'.Parties
+                            'Order From'.Parties = primarydata.zx_OrderFrom.Parties
                         ),
                         'Created On',
                         SortOrder.Descending
@@ -468,7 +462,9 @@
                         'Product SKU'.'Product SKU'
                     )
                 );
-                Navigate('Order Screen');
+                Navigate('Order Screen',ScreenTransition.CoverRight,{ varParty:
+                  primarydata.zx_OrderFrom.'Customer Name',varCustomertype:
+                    primarydata.zx_OrderFrom.'Customer Type'});
             PressedBorderColor: =RGBA(0, 0, 0, 0)
             PressedColor: =ColorFade(RGBA(0, 120, 212, 1), -30%)
             PressedFill: =RGBA(0, 0, 0, 0)
@@ -963,7 +959,7 @@
                                 IsBlank(
                                     LookUp(
                                         'Stock.S',
-                                        'Product SKU'.'Product SKU' = ItemOrderLine.productSKU && Customer.Parties = GUID(varCustomerforDiscount)
+                                        'Product SKU'.'Product SKU' = ItemOrderLine.productSKU && Customer.Parties = varCustomerforDiscount
                                     )
                                 ),
                                 Patch(
@@ -976,7 +972,7 @@
                                         ),
                                         Customer: LookUp(
                                             OfflinePartiesCollection,
-                                            Parties = GUID(varCustomerforDiscount)
+                                            Parties = varCustomerforDiscount
                                         ),
                                         'Last Updated Date': Now(),
                                         Quantity: Value(ItemOrderLine.quantity)
@@ -988,7 +984,7 @@
                                     'Stock.S',
                                     LookUp(
                                         'Stock.S',
-                                        'Product SKU'.'Product SKU' = ItemOrderLine.productSKU && Customer.Parties = GUID(varCustomerforDiscount)
+                                        'Product SKU'.'Product SKU' = ItemOrderLine.productSKU && Customer.Parties = varCustomerforDiscount
                                     ),
                                     {
                                         'Product SKU': LookUp(
@@ -997,13 +993,13 @@
                                         ),
                                         Customer: LookUp(
                                             OfflinePartiesCollection,
-                                            Parties = GUID(varCustomerforDiscount)
+                                            Parties = varCustomerforDiscount
                                         ),
                                         'Last Updated Date': Now(),
                                         Quantity: Value(
                                             LookUp(
                                                 'Stock.S',
-                                                'Product SKU'.'Product SKU' = ItemOrderLine.productSKU && Customer.Parties = GUID(varCustomerforDiscount)
+                                                'Product SKU'.'Product SKU' = ItemOrderLine.productSKU && Customer.Parties = varCustomerforDiscount
                                             ).Quantity
                                         ) + Value(ItemOrderLine.quantity)
                                     }
@@ -1098,13 +1094,11 @@
                     );
                     Clear(colPrimaryCart);
                     Clear(colPrimaryCart);
-                    Set(
-                        varParty,
-                        Blank()
-                    );
+                   
                     Navigate(
                         'Primary Order Screen',
-                        ScreenTransition.CoverRight
+                        ScreenTransition.CoverRight,{varParty:
+                        Blank()}
                     )
                 );
             Size: =20

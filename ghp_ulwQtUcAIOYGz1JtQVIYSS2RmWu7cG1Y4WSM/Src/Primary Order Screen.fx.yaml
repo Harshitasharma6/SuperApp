@@ -87,37 +87,41 @@
                 ),
                 Navigate(
                     'Order Screen',
-                    ScreenTransition.CoverRight
-                );
-                Set(
-                    varParty,
-                    ComboBox1_1.Selected.'Customer Name'
-                );
-                Set(
-                    varParties,
-                    false
-                );
-                Set(
-                    varCustomerforDiscount,
-                    ComboBox1_1.Selected.Parties
-                );
-                Set(
-                    varActivated,
-                    ComboBox1_1.Selected.'Credit Activated'
-                );
-                Set(
-                    varRemainingCreditLimit,
-                    Text(RoundUp(Value(ComboBox1_1.Selected.'Remaining Credit Limit'),2),"[$-en-US]#,###.00")
-                );
-                Set(
-                    varCustomertype,
-                    ComboBox1_1.Selected.'Customer Type'
-                );
-                Set(
-                    varpaymentterm,
-                    ComboBox1_1.Selected.'Payment Terms'.Name
-                );
-                
+                    ScreenTransition.CoverRight,
+                    {
+                        varParty: ComboBox1_1.Selected.'Customer Name',
+                        varCustomertype: ComboBox1_1.Selected.'Customer Type'
+                    }
+                )
+            );
+            Set(
+                varParties,
+                false
+            );
+            Set (
+                varCustomerforDiscount,
+                LookUp(
+                    'Parties.S',
+                    Parties = ComboBox1_1.Selected.Parties
+                ).Parties
+            );
+            Set(
+                varActivated,
+                ComboBox1_1.Selected.'Credit Activated'
+            );
+            Set(
+                varRemainingCreditLimit,
+                Text(
+                    RoundUp(
+                        Value(ComboBox1_1.Selected.'Remaining Credit Limit'),
+                        2
+                    ),
+                    "[$-en-US]#,###.00"
+                )
+            );
+            Set(
+                varpaymentterm,
+                ComboBox1_1.Selected.'Payment Terms'.Name
             );
             Set(
                 varOrderfrom,
@@ -133,13 +137,6 @@
                     'Customer Code' = ComboBox1_1.Selected.'Customer Code'
                 ).Region.Name
             );
-            /*Set(
-                varOrderTo,
-                LookUp(
-                    colZoximaParty,
-                    'Customer Code' = First(colZoximaParty).'Customer Code'
-                ).State.'State Name'
-            );*/
             Set(
                 varPartyPricelist,
                 ComboBox1_1.Selected.'Price List'.Name
@@ -176,7 +173,7 @@
                 colCustomerMapping,
                 LookUp(
                     OfflineProductOfferMappingCollection,
-                    Customer.Parties = GUID(varCustomerforDiscount)
+                    Customer.Parties = varCustomerforDiscount
                 )
             );
             ClearCollect(
@@ -291,7 +288,7 @@
         Y: =406
         ZIndex: =8
 
-    Display_14 As gallery.galleryHorizontal:
+    Display_16 As gallery.galleryHorizontal:
         AccessibleLabel: ="Filter Displayed"
         BorderColor: =RGBA(0, 18, 107, 1)
         DelayItemLoading: =true
@@ -308,9 +305,77 @@
             =true
             //varFilter
         Width: =454
-        X: =30
-        Y: =88
-        ZIndex: =9
+        X: =33
+        Y: =85
+        ZIndex: =10
+
+        Button20_20 As button:
+            DisabledBorderColor: =RGBA(166, 166, 166, 1)
+            DisabledColor: =RGBA(166, 166, 166, 1)
+            DisabledFill: =RGBA(244, 244, 244, 1)
+            DisplayMode: =DisplayMode.View
+            Fill: |-
+                =//RGBA(204, 204, 204, 1)
+                ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//_VarGblAppColors.PrimaryRed
+            FontWeight: =FontWeight.Semibold
+            Height: =41
+            HoverColor: =RGBA(255, 255, 255, 1)
+            HoverFill: =ColorFade(RGBA(56, 96, 178, 1), -20%)
+            RadiusBottomLeft: =15
+            RadiusBottomRight: =15
+            RadiusTopLeft: =15
+            RadiusTopRight: =15
+            Size: =24
+            Text: =""
+            Width: =210
+            X: =6
+            ZIndex: =1
+
+        Label31_30 As label:
+            BorderColor: =RGBA(0, 18, 107, 1)
+            Color: |-
+                =ColorValue( LookUp('Environment Variable Definitions', 'Display Name'="Common Primary Background").'Default Value'   
+                )
+            DisabledColor: =RGBA(166, 166, 166, 1)
+            FontWeight: =FontWeight.Bold
+            Height: =41
+            OnSelect: =Select(Parent)
+            Size: =10
+            Text: |-
+                =ThisItem.Title & ": " & ThisItem.value
+            Tooltip: |-
+                =ThisItem.Title & ":"
+            Width: =161
+            Wrap: =false
+            X: =16
+            ZIndex: =2
+
+        Icon21_20 As icon.Cancel:
+            AccessibleLabel: ="Close the filter applied"
+            BorderColor: =RGBA(0, 18, 107, 1)
+            Color: |-
+                =ColorValue( LookUp('Environment Variable Definitions', 'Display Name'="Common Primary Background").'Default Value'   
+                )
+            DisabledBorderColor: =RGBA(166, 166, 166, 1)
+            DisabledColor: =RGBA(244, 244, 244, 1)
+            Height: =25
+            Icon: =Icon.Cancel
+            OnSelect: |-
+                =Remove(colorderFilter,ThisItem);
+                Reset(DateFrom_7);
+                Reset(DateTo_6);
+                Reset(radioDate_6);
+                Reset(radioStatus_3);
+                Reset(OrderValue_3);
+                Reset(radioParty_4);
+                
+                
+                Set(varCollectionEmpty,true)
+            TabIndex: =0//-1
+            Width: =30
+            X: =175
+            Y: =8
+            ZIndex: =4
 
     backdrop_7 As rectangle:
         BorderColor: =RGBA(0, 18, 107, 1)
@@ -320,7 +385,7 @@
         Visible: |
             =varFilterOrder
         Width: =App.Width
-        ZIndex: =10
+        ZIndex: =11
 
     "'filter button_6' As button":
         DisabledBorderColor: =RGBA(166, 166, 166, 1)
@@ -341,14 +406,14 @@
         Visible: =varFilterOrder
         Width: =640
         Y: =236
-        ZIndex: =11
+        ZIndex: =12
 
     Container4_31 As groupContainer:
         Height: =899
         Visible: =varFilterOrder
         Width: =640
         Y: =236
-        ZIndex: =12
+        ZIndex: =13
 
         Rectangle16_10 As rectangle:
             BorderColor: =RGBA(0, 18, 107, 1)
@@ -1608,7 +1673,96 @@
                 Y: =40
                 ZIndex: =21
 
+        Display_17 As gallery.galleryHorizontal:
+            AccessibleLabel: ="Filter Displayed"
+            BorderColor: =RGBA(0, 18, 107, 1)
+            DelayItemLoading: =true
+            Fill: |-
+                =RGBA(0, 0, 0, 0)
+                //_VarGblAppColors.PrimaryRed
+            Height: =78
+            Items: =colorderFilter
+            LoadingSpinner: =LoadingSpinner.Data
+            ShowScrollbar: =false
+            TabIndex: =0//-1
+            TemplateSize: =216
+            Visible: |-
+                =true
+                //varFilter
+            Width: =564
+            X: =27
+            Y: =61
+            ZIndex: =22
+
+            Button20_21 As button:
+                DisabledBorderColor: =RGBA(166, 166, 166, 1)
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                DisabledFill: =RGBA(244, 244, 244, 1)
+                DisplayMode: =DisplayMode.View
+                Fill: |-
+                    =//RGBA(204, 204, 204, 1)
+                    ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//_VarGblAppColors.PrimaryRed
+                FontWeight: =FontWeight.Semibold
+                Height: =41
+                HoverColor: =RGBA(255, 255, 255, 1)
+                HoverFill: =ColorFade(RGBA(56, 96, 178, 1), -20%)
+                RadiusBottomLeft: =15
+                RadiusBottomRight: =15
+                RadiusTopLeft: =15
+                RadiusTopRight: =15
+                Size: =24
+                Text: =""
+                Width: =210
+                X: =6
+                ZIndex: =1
+
+            Label31_31 As label:
+                BorderColor: =RGBA(0, 18, 107, 1)
+                Color: |-
+                    =ColorValue( LookUp('Environment Variable Definitions', 'Display Name'="Common Primary Background").'Default Value'   
+                    )
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                FontWeight: =FontWeight.Bold
+                Height: =41
+                OnSelect: =Select(Parent)
+                Size: =10
+                Text: |-
+                    =ThisItem.Title & ": " & ThisItem.value
+                Tooltip: |-
+                    =ThisItem.Title & ":"
+                Width: =161
+                Wrap: =false
+                X: =16
+                ZIndex: =2
+
+            Icon21_21 As icon.Cancel:
+                AccessibleLabel: ="Close the filter applied"
+                BorderColor: =RGBA(0, 18, 107, 1)
+                Color: |-
+                    =ColorValue( LookUp('Environment Variable Definitions', 'Display Name'="Common Primary Background").'Default Value'   
+                    )
+                DisabledBorderColor: =RGBA(166, 166, 166, 1)
+                DisabledColor: =RGBA(244, 244, 244, 1)
+                Height: =25
+                Icon: =Icon.Cancel
+                OnSelect: |-
+                    =Remove(colorderFilter,ThisItem);
+                    Reset(DateFrom_7);
+                    Reset(DateTo_6);
+                    Reset(radioDate_6);
+                    Reset(radioStatus_3);
+                    Reset(OrderValue_3);
+                    Reset(radioParty_4);
+                    
+                    
+                    Set(varCollectionEmpty,true)
+                TabIndex: =0//-1
+                Width: =30
+                X: =175
+                Y: =8
+                ZIndex: =3
+
     "'Bottom Bar_24' As 'Bottom Bar'":
         Y: =1026
-        ZIndex: =13
+        ZIndex: =14
 

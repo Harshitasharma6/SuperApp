@@ -15,13 +15,20 @@ orderlinecart As CanvasComponent:
         Height: =505
         Items: |-
             =//If(Cart_1.CartType = "Primary", colPrimaryCart, Cart_1.CartType="Secondary", colSecondaryCart)
-            Filter(OfflineOrderLineCollection,'Order Header'.'Order Header'= If(primarydata.'Order Type'= 'Order Type Choice'.Primary,primarydata.'Order Header',secondarydata.'Order Type'= 'Order Type Choice'.Secondary,secondarydata.'Order Header'))
+            Filter(
+                OfflineOrderLineCollection,
+                'Order Header'.'Order Header' = If(
+                    primarydata.zx_ordertype = 'Order Type Choice'.Primary,
+                    primarydata.zx_orderheaderid,
+                    secondarydata.zx_orderheaderid
+                )
+            )
         Layout: =Layout.Vertical
         ShowScrollbar: =false
         TabIndex: =0
         TemplateSize: =238
         Width: =orderlinecart.Width
-        Y: =10
+        Y: =27
         ZIndex: =1
 
         "'Product BG_12' As button":
