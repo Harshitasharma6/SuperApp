@@ -433,7 +433,7 @@
                     secondarydata.'Order From'.'Customer Name'
                 );
                 Set(
-                    varCustomerforDiscount,
+                    varCustomerforDiscountTemp,
                     secondarydata.'Order From'.Parties
                 );
                 Set(
@@ -972,7 +972,7 @@
                                 IsBlank(
                                     LookUp(
                                         'Stock.S',
-                                        'Product SKU'.'Product SKU' = ItemOrderLine.productSKU && Customer.Parties = GUID(varCustomerforDiscount)
+                                        'Product SKU'.'Product SKU' = ItemOrderLine.productSKU && Customer.Parties = varCustomerforDiscountTemp
                                     )
                                 ),
                                 Patch(
@@ -985,7 +985,7 @@
                                         ),
                                         Customer: LookUp(
                                             OfflinePartiesCollection,
-                                            Parties = GUID(varCustomerforDiscount)
+                                            Parties = varCustomerforDiscountTemp
                                         ),
                                         'Last Updated Date': Now(),
                                         Quantity: Value(ItemOrderLine.quantity)
@@ -997,7 +997,7 @@
                                     'Stock.S',
                                     LookUp(
                                         'Stock.S',
-                                        'Product SKU'.'Product SKU' = ItemOrderLine.productSKU && Customer.Parties = GUID(varCustomerforDiscount)
+                                        'Product SKU'.'Product SKU' = ItemOrderLine.productSKU && Customer.Parties = varCustomerforDiscountTemp
                                     ),
                                     {
                                         'Product SKU': LookUp(
@@ -1006,13 +1006,13 @@
                                         ),
                                         Customer: LookUp(
                                             OfflinePartiesCollection,
-                                            Parties = GUID(varCustomerforDiscount)
+                                            Parties = varCustomerforDiscountTemp
                                         ),
                                         'Last Updated Date': Now(),
                                         Quantity: Value(
                                             LookUp(
                                                 'Stock.S',
-                                                'Product SKU'.'Product SKU' = ItemOrderLine.productSKU && Customer.Parties = GUID(varCustomerforDiscount)
+                                                'Product SKU'.'Product SKU' = ItemOrderLine.productSKU && Customer.Parties = varCustomerforDiscountTemp
                                             ).Quantity
                                         ) + Value(ItemOrderLine.quantity)
                                     }

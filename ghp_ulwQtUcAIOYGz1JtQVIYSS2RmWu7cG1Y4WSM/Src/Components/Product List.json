@@ -13306,9 +13306,16 @@
       "Y",
       "ZIndex",
       "OrderType",
-      "Party"
+      {
+        "AFDDataSourceName": "",
+        "AutoRuleBindingEnabled": false,
+        "AutoRuleBindingString": "",
+        "InvariantPropertyName": "Party",
+        "IsLockable": false,
+        "NameMapSourceSchema": "?"
+      }
     ],
-    "LastModifiedTimestamp": "638194754723537403",
+    "LastModifiedTimestamp": "638194787280035295",
     "Name": "Product List",
     "Rules": [
       {
@@ -13319,7 +13326,7 @@
       },
       {
         "Category": "Data",
-        "InvariantScript": "LookUp(\r\n    OfflinePartiesCollection,Parties= varCustomerforDiscount\r\n  \r\n)",
+        "InvariantScript": "LookUp(\r\n    OfflinePartiesCollection,Parties= varCustomerforDiscountTemp\r\n  \r\n)",
         "Property": "Party",
         "RuleProviderType": "System"
       },
@@ -13398,7 +13405,7 @@
   "IsPcfControl": false,
   "IsPremiumPcfControl": false,
   "IsWidgetTemplate": false,
-  "LastModifiedTimestamp": "638194754723537403",
+  "LastModifiedTimestamp": "638194787280035295",
   "Name": "f22957dfb10248beba734f1dc6985182",
   "OverridableProperties": {},
   "Version": "638174994516580466"

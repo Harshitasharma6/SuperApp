@@ -87,37 +87,41 @@
                 ),
                 Navigate(
                     'Order Screen',
-                    ScreenTransition.CoverRight
-                );
-                Set(
-                    varParty,
-                    ComboBox1_1.Selected.'Customer Name'
-                );
-                Set(
-                    varParties,
-                    false
-                );
-                Set(
-                    varCustomerforDiscount,
-                    ComboBox1_1.Selected.Parties
-                );
-                Set(
-                    varActivated,
-                    ComboBox1_1.Selected.'Credit Activated'
-                );
-                Set(
-                    varRemainingCreditLimit,
-                    Text(RoundUp(Value(ComboBox1_1.Selected.'Remaining Credit Limit'),2),"[$-en-US]#,###.00")
-                );
-                Set(
-                    varCustomertype,
-                    ComboBox1_1.Selected.'Customer Type'
-                );
-                Set(
-                    varpaymentterm,
-                    ComboBox1_1.Selected.'Payment Terms'.Name
-                );
-                
+                    ScreenTransition.CoverRight,
+                    {
+                        varParty: ComboBox1_1.Selected.'Customer Name',
+                        varCustomertype: ComboBox1_1.Selected.'Customer Type'
+                    }
+                )
+            );
+            Set(
+                varParties,
+                false
+            );
+            Set (
+                varCustomerforDiscount,
+                LookUp(
+                    'Parties.S',
+                    Parties = ComboBox1_1.Selected.Parties
+                ).Parties
+            );
+            Set(
+                varActivated,
+                ComboBox1_1.Selected.'Credit Activated'
+            );
+            Set(
+                varRemainingCreditLimit,
+                Text(
+                    RoundUp(
+                        Value(ComboBox1_1.Selected.'Remaining Credit Limit'),
+                        2
+                    ),
+                    "[$-en-US]#,###.00"
+                )
+            );
+            Set(
+                varpaymentterm,
+                ComboBox1_1.Selected.'Payment Terms'.Name
             );
             Set(
                 varOrderfrom,
@@ -133,13 +137,6 @@
                     'Customer Code' = ComboBox1_1.Selected.'Customer Code'
                 ).Region.Name
             );
-            /*Set(
-                varOrderTo,
-                LookUp(
-                    colZoximaParty,
-                    'Customer Code' = First(colZoximaParty).'Customer Code'
-                ).State.'State Name'
-            );*/
             Set(
                 varPartyPricelist,
                 ComboBox1_1.Selected.'Price List'.Name
@@ -176,7 +173,7 @@
                 colCustomerMapping,
                 LookUp(
                     OfflineProductOfferMappingCollection,
-                    Customer.Parties = GUID(varCustomerforDiscount)
+                    Customer.Parties = varCustomerforDiscount
                 )
             );
             ClearCollect(

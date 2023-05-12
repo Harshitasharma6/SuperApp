@@ -47,7 +47,7 @@
                 =FirstN(
                     Filter(
                         OfflineOrderHeaderCollection,
-                        'Order Type' = 'Order Type Choice'.Primary && 'Order From'.Parties = varCustomerforDiscount && 'Owning User'.'Primary Email'= User().Email
+                        'Order Type' = 'Order Type Choice'.Primary && 'Order From'.Parties = varCustomerforDiscountTemp && 'Owning User'.'Primary Email'= User().Email
                     ),
                     5
                 )

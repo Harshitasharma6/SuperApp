@@ -5,7 +5,7 @@
             OfflineOrderHeaderCollection,
             Filter(
                 'Order Header.S',
-                'Owning User'.'Primary Email' = User().Email && 'Order Type' = 'Order Type Choice'.Primary
+                'Owning User'.'Primary Email' = User().Email && 'Order Type' = 'Order Type Choice'.Secondary
             )
         );
         Set(
@@ -89,12 +89,10 @@
                 ),
                 Navigate(
                     'Order Screen',
-                    ScreenTransition.CoverRight
+                    ScreenTransition.CoverRight,{ varParty:
+                    ComboBox1_2.Selected.'Customer Name'}
                 );
-                Set(
-                    varParty,
-                    ComboBox1_2.Selected.'Customer Name'
-                );
+               
                 Set(
                     varCustomerforDiscount,
                     ComboBox1_2.Selected.Parties
@@ -242,12 +240,13 @@
                 ),
                 Navigate(
                     'Order Screen',
-                    ScreenTransition.CoverRight
-                );
-                Set(
-                    varParty,
-                    ComboBox1_3.Selected.'Customer Name'
-                );
+                    ScreenTransition.CoverRight,
+                    {
+                        varParty: ComboBox1_3.Selected.'Customer Name',
+                        varCustomertype: ComboBox1_3.Selected.'Customer Type'
+                    }
+                ));
+               
                 Set(
                     varCustomerforDiscount,
                     ComboBox1_3.Selected.Parties
@@ -263,10 +262,7 @@
                     varParties,
                     false
                 );
-                Set(
-                    varCustomerforDiscount,
-                    ComboBox1_3.Selected.Parties
-                );
+                
                 Set(
                     varActivated,
                     ComboBox1_3.Selected.'Credit Activated'
@@ -275,16 +271,13 @@
                     varRemainingCreditLimit,
                     Text(RoundUp(Value(ComboBox1_3.Selected.'Remaining Credit Limit'),2),"[$-en-US]#,###.00")
                 );
-                Set(
-                    varCustomertype,
-                    ComboBox1_3.Selected.'Customer Type'
-                );
+               
                 Set(
                     varpaymentterm,
                     ComboBox1_3.Selected.'Payment Terms'.Name
                 );
                 
-            );
+            
             Set(
                 varOrderfrom,
                 LookUp(
@@ -342,7 +335,7 @@
                 colCustomerMapping,
                 LookUp(
                     OfflineProductOfferMappingCollection,
-                    Customer.Parties = GUID(varCustomerforDiscount)
+                    Customer.Parties = varCustomerforDiscount
                 )
             );
             ClearCollect(

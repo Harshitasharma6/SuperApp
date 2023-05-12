@@ -1457,7 +1457,7 @@
                                         )
                                     );
                                     Set(
-                                        varCustomerforDiscount,
+                                        varCustomerforDiscountTemp,
                                         LookUp(
                                             'Visit.S',
                                             Party.Parties = ThisItem.zx_partiesid
@@ -1546,7 +1546,7 @@
                         colCustomerMapping,
                         LookUp(
                             OfflineProductOfferMappingCollection,
-                            Customer.Parties = GUID(varCustomerforDiscount)
+                            Customer.Parties = varCustomerforDiscountTemp
                         )
                     );
                     ClearCollect(
@@ -1767,7 +1767,7 @@
                                         )
                                     );
                                     Set(
-                                        varCustomerforDiscount,
+                                        varCustomerforDiscountTemp,
                                         LookUp(
                                             'Visit.S',
                                             Party.Parties = ThisItem.zx_partiesid
@@ -1856,7 +1856,7 @@
                         colCustomerMapping,
                         LookUp(
                             OfflineProductOfferMappingCollection,
-                            Customer.Parties = GUID(varCustomerforDiscount)
+                            Customer.Parties = varCustomerforDiscountTemp
                         )
                     );
                     ClearCollect(
