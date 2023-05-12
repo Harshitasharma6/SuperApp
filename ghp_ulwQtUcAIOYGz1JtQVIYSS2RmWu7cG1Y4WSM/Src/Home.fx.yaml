@@ -922,7 +922,7 @@ Home As screen:
         Visible: =//_VarStartdayModal
         X: =550
         Y: =559
-        ZIndex: =11
+        ZIndex: =13
 
     AttendanceRct As rectangle:
         BorderColor: =RGBA(0, 18, 107, 1)
@@ -933,7 +933,7 @@ Home As screen:
         Visible: =_VarAttendanceCamera
         Width: =640
         Y: =74
-        ZIndex: =12
+        ZIndex: =14
 
     Rectangle1 As rectangle:
         BorderColor: =RGBA(0, 0, 0, 0)
@@ -948,7 +948,7 @@ Home As screen:
         PressedFill: =RGBA(0, 120, 212, 1)
         Visible: =_VarAttendanceCamera
         Width: =640
-        ZIndex: =13
+        ZIndex: =17
 
     "'Take Selfie Lbl' As label":
         Align: =Align.Center
@@ -963,7 +963,7 @@ Home As screen:
         Width: =560
         X: =40
         Y: =166
-        ZIndex: =14
+        ZIndex: =18
 
     PreviousIcn As icon.NextArrow:
         AccessibleLabel: ="Back Icon"
@@ -983,7 +983,7 @@ Home As screen:
         Width: =42
         X: =18
         Y: =21
-        ZIndex: =15
+        ZIndex: =19
 
     SubmitBtn As button:
         BorderColor: =RGBA(0, 0, 0, 1)
@@ -1053,7 +1053,7 @@ Home As screen:
         Width: =500
         X: =70
         Y: =719
-        ZIndex: =16
+        ZIndex: =20
 
     Button13 As button:
         BorderColor: =RGBA(0, 0, 0, 1)
@@ -1079,7 +1079,7 @@ Home As screen:
         Width: =500
         X: =70
         Y: =277
-        ZIndex: =17
+        ZIndex: =21
 
     "'Attendance Image Take' As group":
         Height: =5
@@ -1103,7 +1103,7 @@ Home As screen:
             Width: =313
             X: =164
             Y: =330
-            ZIndex: =18
+            ZIndex: =22
 
         AddMediaButton1 As addMedia:
             AccessibleLabel: ="Add Photo"
@@ -1119,7 +1119,7 @@ Home As screen:
             Width: =313
             X: =164
             Y: =330
-            ZIndex: =19
+            ZIndex: =23
 
     visitCartBackdrop_1 As rectangle:
         AccessibleLabel: ="Backdrop"
@@ -1190,45 +1190,7 @@ Home As screen:
             Width: =586
             X: =27
             Y: =449
-            ZIndex: =20
-
-        Image6 As image:
-            BorderColor: =RGBA(0, 0, 0, 0)
-            BorderStyle: =BorderStyle.None
-            BorderThickness: =2
-            DisabledBorderColor: =RGBA(0, 0, 0, 0)
-            DisabledFill: =RGBA(0, 0, 0, 0)
-            FocusedBorderThickness: =4
-            Height: =35
-            HoverBorderColor: =RGBA(0, 0, 0, 0)
-            HoverFill: =RGBA(0, 0, 0, 0)
-            Image: =In_office
-            PressedBorderColor: =RGBA(0, 0, 0, 0)
-            PressedFill: =RGBA(0, 0, 0, 0)
-            Visible: =_VarStartdayModal
-            Width: =30
-            X: =194
-            Y: =565
-            ZIndex: =21
-
-        Image6_1 As image:
-            BorderColor: =RGBA(0, 0, 0, 0)
-            BorderStyle: =BorderStyle.None
-            BorderThickness: =2
-            DisabledBorderColor: =RGBA(0, 0, 0, 0)
-            DisabledFill: =RGBA(0, 0, 0, 0)
-            FocusedBorderThickness: =4
-            Height: =35
-            HoverBorderColor: =RGBA(0, 0, 0, 0)
-            HoverFill: =RGBA(0, 0, 0, 0)
-            Image: =Market_place
-            PressedBorderColor: =RGBA(0, 0, 0, 0)
-            PressedFill: =RGBA(0, 0, 0, 0)
-            Visible: =_VarStartdayModal
-            Width: =30
-            X: =194
-            Y: =485
-            ZIndex: =22
+            ZIndex: =11
 
         "'Present type Gallery' As gallery.galleryVertical":
             AccessibleLabel: ="Present"
@@ -1245,7 +1207,7 @@ Home As screen:
             Width: =585
             X: =28
             Y: =456
-            ZIndex: =23
+            ZIndex: =12
 
             HtmlText1_3 As htmlViewer:
                 Height: =79
@@ -1317,4 +1279,42 @@ Home As screen:
                 X: =120
                 Y: =16
                 ZIndex: =3
+
+        Image6 As image:
+            BorderColor: =RGBA(0, 0, 0, 0)
+            BorderStyle: =BorderStyle.None
+            BorderThickness: =2
+            DisabledBorderColor: =RGBA(0, 0, 0, 0)
+            DisabledFill: =RGBA(0, 0, 0, 0)
+            FocusedBorderThickness: =4
+            Height: =35
+            HoverBorderColor: =RGBA(0, 0, 0, 0)
+            HoverFill: =RGBA(0, 0, 0, 0)
+            Image: =In_office
+            PressedBorderColor: =RGBA(0, 0, 0, 0)
+            PressedFill: =RGBA(0, 0, 0, 0)
+            Visible: =_VarStartdayModal
+            Width: =30
+            X: =194
+            Y: =565
+            ZIndex: =15
+
+        Image6_1 As image:
+            BorderColor: =RGBA(0, 0, 0, 0)
+            BorderStyle: =BorderStyle.None
+            BorderThickness: =2
+            DisabledBorderColor: =RGBA(0, 0, 0, 0)
+            DisabledFill: =RGBA(0, 0, 0, 0)
+            FocusedBorderThickness: =4
+            Height: =35
+            HoverBorderColor: =RGBA(0, 0, 0, 0)
+            HoverFill: =RGBA(0, 0, 0, 0)
+            Image: =Market_place
+            PressedBorderColor: =RGBA(0, 0, 0, 0)
+            PressedFill: =RGBA(0, 0, 0, 0)
+            Visible: =_VarStartdayModal
+            Width: =30
+            X: =194
+            Y: =485
+            ZIndex: =16
 
