@@ -820,7 +820,7 @@
         OnSelect: |
             =Set(varFilter, true)
         TabIndex: =0
-        Visible: =true  //If('Top Tab_1'.ActiveTabId = "2", true, false)
+        Visible: =If('Top Tab_1'.ActiveTabId = "2", true, false)
         Width: =50
         X: =428
         Y: =170
@@ -2086,6 +2086,7 @@
         RadiusTopRight: =50
         Size: =14
         Text: =Left(Upper(User().FullName),2)
+        Visible: =If('Top Tab_1'.ActiveTabId = "2", true, false)
         Width: =55
         X: =565
         Y: =170
@@ -2108,6 +2109,7 @@
         PaddingTop: =5
         SelectedDateFill: =RGBA(0, 120, 212, 1)
         Size: =21
+        Visible: =If('Top Tab_1'.ActiveTabId = "2", true, false)
         Width: =50
         X: =496
         Y: =177
@@ -2732,25 +2734,28 @@
                         =ColorFade(ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )
                         , 10%)
                     OnSelect: |
-                        =If(
+                        =ClearCollect(datt1,
+                        If(
                             CountRows(vt) = 1,
                             If(
                                 First(vt).Value = "All",
                                 Filter(
                                     OfflineVisitCollection,
-                                    ('Owning User'.'Primary Email' = User().Email && 'Visit date' = DatePicker2.SelectedDate)
+                                    ('Owning User'.'Primary Email' = User().Email && Text('Visit date',"dd-mm-yyyy") = Text(DatePicker2.SelectedDate,"dd-mm-yyyy")
                                 ),
                                 If(
                                     First(vt).Value = "Planned",
                                     Filter(
-                                        OfflineVisitCollection,
-                                        ('Owning User'.'Primary Email' = User().Email && 'Visit date' = DatePicker2.SelectedDate) && Text('Visit Type') = "Planned"
+                                         OfflineVisitCollection,
+                                        ('Owning User'.'Primary Email' = User().Email && Text('Visit date',"dd-mm-yyyy") = Text(DatePicker2.SelectedDate,"dd-mm-yyyy") && Text('Visit Type') = "Planned"
                                     ),
                                     If(
                                         First(vt).Value = "UnPlanned",
                                         Filter(
-                                            OfflineVisitCollection,
-                                            ('Owning User'.'Primary Email' = User().Email && 'Visit date' = DatePicker2.SelectedDate) && Text('Visit Type') = "Unplanned"
+                                             OfflineVisitCollection,
+                                            ('Owning User'.'Primary Email' = User().Email
+                                            
+                                            ) && Text('Visit Type') = "Unplanned"
                                         )
                                     )
                                 )
@@ -2758,16 +2763,18 @@
                             If(
                                 CountRows(vt) = 2,
                                 Filter(
-                                    OfflineVisitCollection,
-                                    ('Owning User'.'Primary Email' = User().Email && 'Visit date' = DatePicker2.SelectedDate)
+                                     OfflineVisitCollection,
+                                    ('Owning User'.'Primary Email' = User().Email && Text('Visit date',"dd-mm-yyyy") = Text(DatePicker2.SelectedDate,"dd-mm-yyyy") )
                                 )
                             )
-                        )
+                        ));
+                        Set(varFilter,false);
+                        
                         /*ClearCollect(
                             colFilterData,
                             If(
                                 IsBlank(DateFrom_1.SelectedDate) && IsBlank(radioDate_1.Selected),
-                                OfflineVisitCollection,
+                                 OfflineVisitCollection,
                         
                                radioDate_1.Selected.Value = "All",
                                 Filter(
@@ -3558,6 +3565,23 @@
                     Y: =413
                     ZIndex: =19
 
+    Label6 As label:
+        BorderColor: =RGBA(0, 0, 0, 0)
+        BorderStyle: =BorderStyle.None
+        BorderThickness: =2
+        Color: =RGBA(51, 51, 51, 1)
+        DisabledBorderColor: =RGBA(0, 0, 0, 0)
+        DisabledColor: =RGBA(166, 166, 166, 1)
+        FocusedBorderThickness: =4
+        Font: =Font.'Segoe UI'
+        Height: =70
+        Size: =21
+        Text: =CountRows(datt1)
+        Width: =326
+        X: =13
+        Y: =163
+        ZIndex: =20
+
     Group8 As group:
         Height: =5
         Width: =5
@@ -3581,6 +3605,7 @@
             PaddingTop: =10
             Size: =18
             Text: =Text(DatePicker2.SelectedDate,"dd")
+            Visible: =If('Top Tab_1'.ActiveTabId = "2", true, false)
             Width: =50
             X: =496
             Y: =175
@@ -3599,6 +3624,7 @@
             Image: ='Vector (4)'
             PressedBorderColor: =RGBA(0, 0, 0, 0)
             PressedFill: =RGBA(0, 0, 0, 0)
+            Visible: =If('Top Tab_1'.ActiveTabId = "2", true, false)
             Width: =50
             X: =496
             Y: =171
