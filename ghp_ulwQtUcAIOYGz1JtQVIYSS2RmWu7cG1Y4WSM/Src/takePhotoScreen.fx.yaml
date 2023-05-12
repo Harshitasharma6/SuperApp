@@ -788,47 +788,6 @@ takePhotoScreen As screen:
                     Y: =75
                     ZIndex: =19
 
-                Dropdown1 As dropdown:
-                    AccessibleLabel: ="Department"
-                    AllowEmptySelection: =true
-                    BorderColor: =RGBA(0, 0, 0, 1)
-                    BorderStyle: =BorderStyle.None
-                    BorderThickness: =0
-                    ChevronBackground: =//RGBA(0, 0, 0, 1)
-                    ChevronDisabledBackground: =RGBA(166, 166, 166, 1)
-                    ChevronDisabledFill: =RGBA(244, 244, 244, 1)
-                    ChevronFill: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Text Primary Color").'Default Value') //_VarGblAppColors.textbgbutton
-                    ChevronHoverBackground: =//ColorFade(RGBA(56, 96, 178, 1), -20%)
-                    ChevronHoverFill: =RGBA(50, 86, 160, 1)
-                    Color: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Text Primary Color").'Default Value') //_VarGblAppColors.textbgbutton
-                    Default: =""
-                    DisabledBorderColor: =RGBA(166, 166, 166, 1)
-                    DisabledColor: =RGBA(166, 166, 166, 1)
-                    DisabledFill: =RGBA(244, 244, 244, 1)
-                    HoverColor: =RGBA(0, 0, 0, 1)
-                    HoverFill: =//RGBA(186, 202, 226, 1)
-                    Items: |-
-                        =[
-                            "Account",
-                            "Lead",
-                            "Contact",
-                            "Order",
-                            "Visit",
-                            "Complaint"
-                        ]
-                    PaddingBottom: =5
-                    PaddingRight: =5
-                    PaddingTop: =5
-                    PressedColor: =RGBA(255, 255, 255, 1)
-                    PressedFill: =//RGBA(0, 18, 107, 1)
-                    Reset: =true
-                    SelectionFill: =RGBA(56, 96, 178, 1)
-                    Size: =18
-                    Width: =500
-                    X: =70
-                    Y: =80
-                    ZIndex: =20
-
                 Label23_12 As label:
                     BorderColor: =RGBA(0, 18, 107, 1)
                     Color: |-

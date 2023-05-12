@@ -59,8 +59,7 @@
             Navigate('Secondary Cart Screen',ScreenTransition.CoverRight));
         TabIndex: =0
         Text: |
-            =
-            If(
+            =If(
                 varCustomertype = 'Party Type Choices'.Distributor || varCustomertype = 'Party Type Choices'.Dealer,
                 CountRows(colPrimaryCart),
                 CountRows(colSecondaryCart)

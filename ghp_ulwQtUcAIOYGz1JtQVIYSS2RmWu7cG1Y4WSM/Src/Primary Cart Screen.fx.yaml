@@ -83,36 +83,54 @@
                             )
                         },
                         {
-                            Title: "Supplier",
+                            Title: "Customer",
                             Value: varParty
                         },
                         {
                             Title: "Total Price",
                             Value: If(
-                                'Product List_1'.OrderType = "Primary" || primarydata.zx_ordertype= 'Order Type Choice'.Primary,
-                                Concatenate(
-                                    "₹",
-                                    Text(
+                                'Product List_1'.OrderType = "Primary" || primarydata.zx_ordertype = 'Order Type Choice'.Primary,
+                                If(
+                                    IsBlank(
                                         Sum(
                                             colPrimaryCart,
                                             (baseUnitPrice * quantity)
-                                        ),
+                                        )
+                                    ),
+                                    "₹0.00",
+                                    Concatenate(
+                                        "₹",
+                                        Text(
+                                            Sum(
+                                                colPrimaryCart,
+                                                (baseUnitPrice * quantity)
+                                            ),
                                         //"[$-hi-IN]##,##,##,###",
                                        // "hi-IN"
-                                        "[$-en-US]#.00"
+                                            "[$-en-US]#.00"
+                                        )
                                     )
                                 ),
                                 'Product List_1'.OrderType = "Secondary" || secondarydata.zx_ordertype = 'Order Type Choice'.Secondary,
-                                Concatenate(
-                                    "₹",
-                                    Text(
+                                If(
+                                    IsBlank(
                                         Sum(
                                             colSecondaryCart,
                                             (baseUnitPrice * quantity)
-                                        ),
+                                        )
+                                    ),
+                                    "₹0.00",
+                                    Concatenate(
+                                        "₹",
+                                        Text(
+                                            Sum(
+                                                colSecondaryCart,
+                                                (baseUnitPrice * quantity)
+                                            ),
                                        /* "[$-hi-IN]##,##,##,###",
                                         "hi-IN"*/
-                                        "[$-en-US]#.00"
+                                            "[$-en-US]#.00"
+                                        )
                                     )
                                 )
                             )
@@ -121,35 +139,53 @@
                             Title: "Discount",
                             Value: If(
                                 'Product List_1'.OrderType = "Primary" || primarydata.zx_ordertype = 'Order Type Choice'.Primary,
-                                Concatenate(
-                                    "₹",
-                                    Text(
-                                        Round(
-                                            Sum(
-                                                colPrimaryCart,
-                                                (baseUnitPrice * (discount / 100)) * quantity
+                                If(
+                                    
+                                        Sum(
+                                            colPrimaryCart,
+                                            (baseUnitPrice * (discount / 100)) * quantity
+                                        )
+                                    =0,
+                                    "₹0.00",
+                                    Concatenate(
+                                        "₹",
+                                        Text(
+                                            Round(
+                                                Sum(
+                                                    colPrimaryCart,
+                                                    (baseUnitPrice * (discount / 100)) * quantity
+                                                ),
+                                                2
                                             ),
-                                            2
-                                        ),
                                        /* "[$-hi-IN]##,##,##,###",
                                         "hi-IN"*/
-                                        "[$-en-US]#.00"
+                                            "[$-en-US]#.00"
+                                        )
                                     )
                                 ),
                                 'Product List_1'.OrderType = "Secondary" || secondarydata.zx_ordertype = 'Order Type Choice'.Secondary,
-                                Concatenate(
-                                    "₹",
-                                    Text(
-                                        Round(
-                                            Sum(
-                                                colSecondaryCart,
-                                                (baseUnitPrice * (discount / 100)) * quantity
+                                If(
+                                    
+                                        Sum(
+                                            colSecondaryCart,
+                                            (baseUnitPrice * (discount / 100)) * quantity
+                                        )
+                                    =0,
+                                    "₹0.00",
+                                    Concatenate(
+                                        "₹",
+                                        Text(
+                                            Round(
+                                                Sum(
+                                                    colSecondaryCart,
+                                                    (baseUnitPrice * (discount / 100)) * quantity
+                                                ),
+                                                2
                                             ),
-                                            2
-                                        ),
                                         /*"[$-hi-IN]##,##,##,###",
                                         "hi-IN"*/
-                                        "[$-en-US]#.00"
+                                            "[$-en-US]#.00"
+                                        )
                                     )
                                 )
                             )
@@ -158,9 +194,8 @@
                             Title: "Net Price",
                             Value: If(
                                 'Product List_1'.OrderType = "Primary" || primarydata.zx_ordertype = 'Order Type Choice'.Primary,
-                                Concatenate(
-                                    "₹",
-                                    Text(
+                                If(
+                                    
                                         Sum(
                                             colPrimaryCart,
                                             (baseUnitPrice - (baseUnitPrice * (discount / 100))) * quantity
@@ -176,16 +211,37 @@
                                         ) + Sum(
                                             colPrimaryCart,
                                             cessAmount
-                                        )),
+                                        ))=0
+                                    ,
+                                    "₹0.00",
+                                    Concatenate(
+                                        "₹",
+                                        Text(
+                                            Sum(
+                                                colPrimaryCart,
+                                                (baseUnitPrice - (baseUnitPrice * (discount / 100))) * quantity
+                                            ) + (Sum(
+                                                colPrimaryCart,
+                                                igstAmount
+                                            ) + Sum(
+                                                colPrimaryCart,
+                                                cgstAmount
+                                            ) + Sum(
+                                                colPrimaryCart,
+                                                sgstAmount
+                                            ) + Sum(
+                                                colPrimaryCart,
+                                                cessAmount
+                                            )),
                                         /*"[$-hi-IN]##,##,##,###",
                                         "hi-IN"*/
-                                        "[$-en-US]#.00"
+                                            "[$-en-US]#.00"
+                                        )
                                     )
                                 ),
                                 'Product List_1'.OrderType = "Secondary" || secondarydata.zx_ordertype = 'Order Type Choice'.Secondary,
-                                Concatenate(
-                                    "₹",
-                                    Text(
+                                If(
+                                    
                                         Sum(
                                             colSecondaryCart,
                                             (baseUnitPrice - (baseUnitPrice * (discount / 100))) * quantity
@@ -201,10 +257,32 @@
                                         ) + Sum(
                                             colSecondaryCart,
                                             cessAmount
-                                        )),
+                                        ))
+                                    =0,
+                                    "₹0.00",
+                                    Concatenate(
+                                        "₹",
+                                        Text(
+                                            Sum(
+                                                colSecondaryCart,
+                                                (baseUnitPrice - (baseUnitPrice * (discount / 100))) * quantity
+                                            ) + (Sum(
+                                                colSecondaryCart,
+                                                igstAmount
+                                            ) + Sum(
+                                                colSecondaryCart,
+                                                cgstAmount
+                                            ) + Sum(
+                                                colSecondaryCart,
+                                                sgstAmount
+                                            ) + Sum(
+                                                colSecondaryCart,
+                                                cessAmount
+                                            )),
                                        /* "[$-hi-IN]##,##,##,###",
                                         "hi-IN"*/
-                                        "[$-en-US]#.00"
+                                            "[$-en-US]#.00"
+                                        )
                                     )
                                 )
                             )
@@ -213,9 +291,8 @@
                             Title: "Tax",
                             Value: If(
                                 'Product List_1'.OrderType = "Primary" || primarydata.zx_ordertype = 'Order Type Choice'.Primary,
-                                Concatenate(
-                                    "₹",
-                                    Text(
+                                If(
+                                    
                                         (Sum(
                                             colPrimaryCart,
                                             igstAmount
@@ -228,16 +305,34 @@
                                         ) + Sum(
                                             colPrimaryCart,
                                             cessAmount
-                                        )) ,
+                                        ))
+                                    =0,
+                                    "₹0.00",
+                                    Concatenate(
+                                        "₹",
+                                        Text(
+                                            (Sum(
+                                                colPrimaryCart,
+                                                igstAmount
+                                            ) + Sum(
+                                                colPrimaryCart,
+                                                cgstAmount
+                                            ) + Sum(
+                                                colPrimaryCart,
+                                                sgstAmount
+                                            ) + Sum(
+                                                colPrimaryCart,
+                                                cessAmount
+                                            )),
                                       /*  "[$-hi-IN]##,##,##,###",
                                         "hi-IN"*/
-                                        "[$-en-US]#.00"
+                                            "[$-en-US]#.00"
+                                        )
                                     )
                                 ),
                                 'Product List_1'.OrderType = "Secondary" || secondarydata.zx_ordertype = 'Order Type Choice'.Secondary,
-                                Concatenate(
-                                    "₹",
-                                    Text(
+                                If(
+                                    
                                         (Sum(
                                             colSecondaryCart,
                                             igstAmount
@@ -250,10 +345,29 @@
                                         ) + Sum(
                                             colSecondaryCart,
                                             cessAmount
-                                        )),
+                                        )
+                                    )=0,
+                                    "₹0.00",
+                                    Concatenate(
+                                        "₹",
+                                        Text(
+                                            (Sum(
+                                                colSecondaryCart,
+                                                igstAmount
+                                            ) + Sum(
+                                                colSecondaryCart,
+                                                cgstAmount
+                                            ) + Sum(
+                                                colSecondaryCart,
+                                                sgstAmount
+                                            ) + Sum(
+                                                colSecondaryCart,
+                                                cessAmount
+                                            )),
                                        /* "[$-hi-IN]##,##,##,###",
                                         "hi-IN"*/
-                                        "[$-en-US]#.00"
+                                            "[$-en-US]#.00"
+                                        )
                                     )
                                 )
                             )
@@ -262,51 +376,85 @@
                             Title: "Disc.Price",
                             Value: If(
                                 'Product List_1'.OrderType = "Primary" || primarydata.zx_ordertype = 'Order Type Choice'.Primary,
-                                Concatenate(
-                                    "₹",
-                                    Text(
+                                If(
+                                    
                                         Sum(
                                             colPrimaryCart,
                                             (baseUnitPrice - (baseUnitPrice * (discount / 100))) * quantity
-                                        ),
+                                        
+                                    )=0,
+                                    "₹0.00",
+                                    Concatenate(
+                                        "₹",
+                                        Text(
+                                            Sum(
+                                                colPrimaryCart,
+                                                (baseUnitPrice - (baseUnitPrice * (discount / 100))) * quantity
+                                            ),
                                        /* "[$-hi-IN]##,##,##,###",
                                         "hi-IN"*/
-                                        "[$-en-US]#.00"
+                                            "[$-en-US]#.00"
+                                        )
                                     )
                                 ),
                                 'Product List_1'.OrderType = "Secondary" || secondarydata.zx_ordertype = 'Order Type Choice'.Secondary,
-                                Concatenate(
-                                    "₹",
-                                    Text(
+                                If(
+                                    IsBlank(
                                         Sum(
                                             colSecondaryCart,
                                             (baseUnitPrice - (baseUnitPrice * (discount / 100))) * quantity
-                                        ),
+                                        )
+                                    ),
+                                    "₹0.00",
+                                    Concatenate(
+                                        "₹",
+                                        Text(
+                                            Sum(
+                                                colSecondaryCart,
+                                                (baseUnitPrice - (baseUnitPrice * (discount / 100))) * quantity
+                                            ),
                                       /*  "[$-hi-IN]##,##,##,###",
                                         "hi-IN"*/
-                                        "[$-en-US]#.00"
+                                            "[$-en-US]#.00"
+                                        )
                                     )
                                 )
                             )
                         },
                         {
                             Title: "IGST",
-                            Value: Concatenate(
-                                "₹",
-                                Text(
+                            Value: If(
+                                
                                     Sum(
                                         colPrimaryCart,
                                         igstAmount
-                                    ),
+                                    )
+                                =0,
+                                "₹0.00",
+                                Concatenate(
+                                    "₹",
+                                    Text(
+                                        Sum(
+                                            colPrimaryCart,
+                                            igstAmount
+                                        ),
                                     /*"[$-hi-IN]##,##,##,###",
                                     "hi-IN"*/
-                                    "[$-en-US]#.00"
+                                        "[$-en-US]#.00"
+                                    )
                                 )
                             )
                         },
                         {
                             Title: "CGST",
-                            Value: Concatenate(
+                            Value: If(
+                                
+                                    Sum(
+                                        colPrimaryCart,
+                                        cgstAmount
+                                    )
+                                =0,
+                                "₹0.00",Concatenate(
                                 "₹",
                                 Text(
                                     Sum(
@@ -316,12 +464,19 @@
                                     /*"[$-hi-IN]##,##,##,###",
                                     "hi-IN"*/
                                     "[$-en-US]#.00"
-                                )
+                                ))
                             )
                         },
                         {
                             Title: "SGST",
-                            Value: Concatenate(
+                            Value: If(
+                                
+                                    Sum(
+                                        colPrimaryCart,
+                                        sgstAmount
+                                    )
+                                =0,
+                                "₹0.00",Concatenate(
                                 "₹",
                                 Text(
                                     Sum(
@@ -332,11 +487,18 @@
                                     "hi-IN"*/
                                     "[$-en-US]#.00"
                                 )
-                            )
+                            ))
                         },
                         {
                             Title: "Cess",
-                            Value: Concatenate(
+                            Value:If(
+                                
+                                    Sum(
+                                        colPrimaryCart,
+                                        cessAmount
+                                    )
+                                =0,
+                                "₹0.00", Concatenate(
                                 "₹",
                                 Text(
                                     Sum(
@@ -347,7 +509,7 @@
                                     "hi-IN"*/
                                     "[$-en-US]#.00"
                                 )
-                            )
+                            ))
                         },
                     ],
                     {Value: ThisRecord}
