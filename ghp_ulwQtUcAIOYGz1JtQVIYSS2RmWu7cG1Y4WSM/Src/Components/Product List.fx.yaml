@@ -741,7 +741,21 @@
                             NotificationType.Information,
                             1000
                         );
-                        Reset('Quantity Input_8'),
+                        Reset('Quantity Input_8');
+                        Remove(
+                                colPrimaryCart,
+                                LookUp(
+                                    colPrimaryCart,
+                                    productSKU = ThisItem.'Product SKU Price'.'Product SKU'
+                                )
+                            );
+                        Remove(
+                                colSecondaryCart,
+                                LookUp(
+                                    colSecondaryCart,
+                                    productSKU =  ThisItem.'Product SKU Price'.'Product SKU'
+                                )
+                            ),
                         If(
                             Value('Quantity Input_8'.Text) > 0,
                             If(
