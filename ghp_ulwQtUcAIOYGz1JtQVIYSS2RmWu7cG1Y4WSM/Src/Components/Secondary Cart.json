@@ -26,7 +26,7 @@
             "Name": "galleryTemplate3_15",
             "Parent": "Cart Gallery_4",
             "PersistMetaDataIDKey": false,
-            "PublishOrderIndex": 624,
+            "PublishOrderIndex": 1974,
             "Rules": [
               {
                 "Category": "Design",
@@ -196,7 +196,7 @@
             "Name": "Product BG_13",
             "Parent": "Cart Gallery_4",
             "PersistMetaDataIDKey": false,
-            "PublishOrderIndex": 625,
+            "PublishOrderIndex": 1975,
             "Rules": [
               {
                 "Category": "Data",
@@ -525,7 +525,7 @@
             "Name": "Product Name Lbl_10",
             "Parent": "Cart Gallery_4",
             "PersistMetaDataIDKey": false,
-            "PublishOrderIndex": 626,
+            "PublishOrderIndex": 1976,
             "Rules": [
               {
                 "Category": "Data",
@@ -869,7 +869,7 @@
             "Name": "Icon8_4",
             "Parent": "Cart Gallery_4",
             "PersistMetaDataIDKey": false,
-            "PublishOrderIndex": 627,
+            "PublishOrderIndex": 1977,
             "Rules": [
               {
                 "Category": "Data",
@@ -1099,7 +1099,7 @@
             "Name": "Rectangle37_2",
             "Parent": "Cart Gallery_4",
             "PersistMetaDataIDKey": false,
-            "PublishOrderIndex": 628,
+            "PublishOrderIndex": 1978,
             "Rules": [
               {
                 "Category": "Design",
@@ -1329,7 +1329,7 @@
             "Name": "Product Price Lbl_13",
             "Parent": "Cart Gallery_4",
             "PersistMetaDataIDKey": false,
-            "PublishOrderIndex": 629,
+            "PublishOrderIndex": 1979,
             "Rules": [
               {
                 "Category": "Data",
@@ -1694,7 +1694,7 @@
             "Name": "Label55_2",
             "Parent": "Cart Gallery_4",
             "PersistMetaDataIDKey": false,
-            "PublishOrderIndex": 630,
+            "PublishOrderIndex": 1980,
             "Rules": [
               {
                 "Category": "Data",
@@ -2075,7 +2075,7 @@
             "Name": "Product Price Lbl_17",
             "Parent": "Cart Gallery_4",
             "PersistMetaDataIDKey": false,
-            "PublishOrderIndex": 631,
+            "PublishOrderIndex": 1981,
             "Rules": [
               {
                 "Category": "Data",
@@ -2447,7 +2447,7 @@
             "Name": "Label66_2",
             "Parent": "Cart Gallery_4",
             "PersistMetaDataIDKey": false,
-            "PublishOrderIndex": 632,
+            "PublishOrderIndex": 1982,
             "Rules": [
               {
                 "Category": "Data",
@@ -2821,7 +2821,7 @@
             "Name": "Product Discount Lbl_7",
             "Parent": "Cart Gallery_4",
             "PersistMetaDataIDKey": false,
-            "PublishOrderIndex": 633,
+            "PublishOrderIndex": 1983,
             "Rules": [
               {
                 "Category": "Data",
@@ -3186,7 +3186,7 @@
             "Name": "Label59_2",
             "Parent": "Cart Gallery_4",
             "PersistMetaDataIDKey": false,
-            "PublishOrderIndex": 634,
+            "PublishOrderIndex": 1984,
             "Rules": [
               {
                 "Category": "Data",
@@ -3567,7 +3567,7 @@
             "Name": "Product Discount Lbl_10",
             "Parent": "Cart Gallery_4",
             "PersistMetaDataIDKey": false,
-            "PublishOrderIndex": 635,
+            "PublishOrderIndex": 1985,
             "Rules": [
               {
                 "Category": "Data",
@@ -3945,7 +3945,7 @@
             "Name": "Label57_3",
             "Parent": "Cart Gallery_4",
             "PersistMetaDataIDKey": false,
-            "PublishOrderIndex": 636,
+            "PublishOrderIndex": 1986,
             "Rules": [
               {
                 "Category": "Data",
@@ -4320,7 +4320,7 @@
             "Name": "Quantityn Lbl_9",
             "Parent": "Cart Gallery_4",
             "PersistMetaDataIDKey": false,
-            "PublishOrderIndex": 637,
+            "PublishOrderIndex": 1987,
             "Rules": [
               {
                 "Category": "Data",
@@ -4792,7 +4792,7 @@
             "Name": "Quantity Input_6",
             "Parent": "Cart Gallery_4",
             "PersistMetaDataIDKey": false,
-            "PublishOrderIndex": 638,
+            "PublishOrderIndex": 1988,
             "Rules": [
               {
                 "Category": "Data",
@@ -5185,7 +5185,7 @@
             "Name": "Product Price Lbl_14",
             "Parent": "Cart Gallery_4",
             "PersistMetaDataIDKey": false,
-            "PublishOrderIndex": 639,
+            "PublishOrderIndex": 1989,
             "Rules": [
               {
                 "Category": "Data",
@@ -5550,7 +5550,7 @@
             "Name": "Label60_2",
             "Parent": "Cart Gallery_4",
             "PersistMetaDataIDKey": false,
-            "PublishOrderIndex": 640,
+            "PublishOrderIndex": 1990,
             "Rules": [
               {
                 "Category": "Data",
@@ -5901,7 +5901,7 @@
         "Name": "Cart Gallery_4",
         "Parent": "Secondary Cart",
         "PersistMetaDataIDKey": false,
-        "PublishOrderIndex": 622,
+        "PublishOrderIndex": 1973,
         "Rules": [
           {
             "Category": "Data",
@@ -6199,7 +6199,7 @@
         "Name": "btnCnfrm_1",
         "Parent": "Secondary Cart",
         "PersistMetaDataIDKey": false,
-        "PublishOrderIndex": 623,
+        "PublishOrderIndex": 1991,
         "Rules": [
           {
             "Category": "Data",
@@ -6413,7 +6413,7 @@
           },
           {
             "Category": "Behavior",
-            "InvariantScript": "Notify(\r\n    \"Please fill the order terms\",\r\n    NotificationType.Information,\r\n    2000\r\n);\r\nSet(\r\n    varTotalBill,\r\n    RoundUp(\r\n        Value(\r\n            Sum(\r\n                colSecondaryCart,\r\n                (baseUnitPrice - (baseUnitPrice * (discount / 100))) * quantity\r\n            ) + (Sum(\r\n                colSecondaryCart,\r\n                igstAmount\r\n            ) + Sum(\r\n                colSecondaryCart,\r\n                cgstAmount\r\n            ) + Sum(\r\n                colSecondaryCart,\r\n                sgstAmount\r\n            ) + Sum(\r\n                colSecondaryCart,\r\n                cessAmount\r\n            ))\r\n        ),\r\n        2\r\n    )\r\n);\r\nNavigate(\r\n    'Secondary Cart Screen',\r\n    ScreenTransition.CoverRight\r\n);\r\n",
+            "InvariantScript": "\r\nSet(\r\n    varTotalBill,\r\n    RoundUp(\r\n        Value(\r\n            Sum(\r\n                colSecondaryCart,\r\n                (baseUnitPrice - (baseUnitPrice * (discount / 100))) * quantity\r\n            ) + (Sum(\r\n                colSecondaryCart,\r\n                igstAmount\r\n            ) + Sum(\r\n                colSecondaryCart,\r\n                cgstAmount\r\n            ) + Sum(\r\n                colSecondaryCart,\r\n                sgstAmount\r\n            ) + Sum(\r\n                colSecondaryCart,\r\n                cessAmount\r\n            ))\r\n        ),\r\n        2\r\n    )\r\n);\r\nSet(varorderselectedId,2);\r\nIf(\r\n    IsBlank(ComboBox7_6.SelectedItems) && IsBlank(ComboBox7_7.SelectedItems) && IsBlank(ComboBox7_8.SelectedItems),\r\n    Notify(\r\n        \"Please fill the order terms\",\r\n        NotificationType.Error,\r\n        2000\r\n    )\r\n);\r\n",
             "Property": "OnSelect",
             "RuleProviderType": "Unknown"
           }
@@ -6465,7 +6465,7 @@
       "ZIndex",
       "CartType"
     ],
-    "LastModifiedTimestamp": "638194854367296173",
+    "LastModifiedTimestamp": "638194903492162632",
     "Name": "Secondary Cart",
     "Rules": [
       {
@@ -6540,7 +6540,7 @@
   "IsPcfControl": false,
   "IsPremiumPcfControl": false,
   "IsWidgetTemplate": false,
-  "LastModifiedTimestamp": "638194854367296173",
+  "LastModifiedTimestamp": "638194903492162632",
   "Name": "f0e4109ba17740638c577b352f6ba71e",
   "OverridableProperties": {},
   "TemplateOriginalName": "96ce68581def46fcab13b78f74ddacdc",
