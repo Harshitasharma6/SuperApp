@@ -2731,8 +2731,39 @@
                     HoverFill: |-
                         =ColorFade(ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )
                         , 10%)
-                    OnSelect: |-
-                        =/*ClearCollect(
+                    OnSelect: |
+                        =If(
+                            CountRows(vt) = 1,
+                            If(
+                                First(vt).Value = "All",
+                                Filter(
+                                    OfflineVisitCollection,
+                                    ('Owning User'.'Primary Email' = User().Email && 'Visit date' = DatePicker2.SelectedDate)
+                                ),
+                                If(
+                                    First(vt).Value = "Planned",
+                                    Filter(
+                                        OfflineVisitCollection,
+                                        ('Owning User'.'Primary Email' = User().Email && 'Visit date' = DatePicker2.SelectedDate) && Text('Visit Type') = "Planned"
+                                    ),
+                                    If(
+                                        First(vt).Value = "UnPlanned",
+                                        Filter(
+                                            OfflineVisitCollection,
+                                            ('Owning User'.'Primary Email' = User().Email && 'Visit date' = DatePicker2.SelectedDate) && Text('Visit Type') = "Unplanned"
+                                        )
+                                    )
+                                )
+                            ),
+                            If(
+                                CountRows(vt) = 2,
+                                Filter(
+                                    OfflineVisitCollection,
+                                    ('Owning User'.'Primary Email' = User().Email && 'Visit date' = DatePicker2.SelectedDate)
+                                )
+                            )
+                        )
+                        /*ClearCollect(
                             colFilterData,
                             If(
                                 IsBlank(DateFrom_1.SelectedDate) && IsBlank(radioDate_1.Selected),
