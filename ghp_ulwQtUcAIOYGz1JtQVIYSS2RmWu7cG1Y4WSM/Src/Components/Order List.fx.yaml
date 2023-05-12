@@ -597,7 +597,7 @@
         Fill: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//_VarGblAppColors.PrimaryRed
         Height: =50
         OnSelect: =
-        Width: =40
+        Width: =50
         X: =590
         Y: =30
         ZIndex: =3
@@ -612,7 +612,7 @@
         OnSelect: =
         Text: |
             =Left(Upper(LookUp(Users,'Primary Email'= User().Email).'First Name'),1) & Left(Upper(LookUp(Users,'Primary Email'= User().Email).'Last Name'),1)
-        Width: =40
+        Width: =50
         X: =590
         Y: =30
         ZIndex: =4
@@ -625,7 +625,7 @@
             =RGBA(0, 0, 0, 0)
             //_VarGblAppColors.PrimaryRed
         Height: =75
-        Items: =colFilter
+        Items: =colorderFilter
         LoadingSpinner: =LoadingSpinner.Data
         ShowScrollbar: =false
         TabIndex: =0//-1
@@ -690,7 +690,7 @@
             Height: =25
             Icon: =Icon.Cancel
             OnSelect: |-
-                =Remove(colFilter,ThisItem);
+                =Remove(colorderFilter,ThisItem);
                 Reset(radioDate_5);
                 Reset(radioParty_1);
                 Reset(radioStatus_1);
@@ -1518,7 +1518,7 @@
                 
                 
                 
-                Clear(colFilter);
+                Clear(colorderFilter);
                 Clear(colFilterData);
                 Set(varCollectionEmpty,true)
             Size: =20
@@ -1580,12 +1580,12 @@
                 =If(
                     Gallery8_5.Selected.tabid = 1 && IsBlank(
                         LookUp(
-                            colFilter,
+                            colorderFilter,
                             Title = "Date To"
                         ).Title
                     ),
                     Collect(
-                        colFilter,
+                        colorderFilter,
                         {
                             Title: "Date To",
                             value: Text(
@@ -1595,9 +1595,9 @@
                         }
                     ),
                     Patch(
-                        colFilter,
+                        colorderFilter,
                         LookUp(
-                            colFilter,
+                            colorderFilter,
                             Title = "Date To"
                         ),
                         {
@@ -1661,12 +1661,12 @@
                 =If(
                     Gallery8_5.Selected.tabid = 1 && IsBlank(
                         LookUp(
-                            colFilter,
+                            colorderFilter,
                             Title = "Date From"
                         ).Title
                     ),
                     Collect(
-                        colFilter,
+                        colorderFilter,
                         {
                             Title: "Date From",
                             value: Text(
@@ -1676,9 +1676,9 @@
                         }
                     ),
                     Patch(
-                        colFilter,
+                        colorderFilter,
                         LookUp(
-                            colFilter,
+                            colorderFilter,
                             Title = "Date From"
                         ),
                         {
@@ -1740,16 +1740,16 @@
                         ).Title
                     ),
                     Collect(
-                        colFilter,
+                        colorderFilter,
                         {
                             Title: Gallery8_5.Selected.Title,
                             value: radioDate_5.Selected.Value
                         }
                     ),
                     Patch(
-                        colFilter,
+                        colorderFilter,
                         LookUp(
-                            colFilter,
+                            colorderFilter,
                             Title = Gallery8_5.Selected.Title
                         ),
                         {value: radioDate_5.Selected.Value}
@@ -1799,15 +1799,15 @@
             OnSelect: |-
                 =
                 
-                    If(Gallery8_5.Selected.tabid = 3  && IsBlank(LookUp(colFilter,Title= Gallery8_5.Selected.Title).Title),
+                    If(Gallery8_5.Selected.tabid = 3  && IsBlank(LookUp(colorderFilter,Title= Gallery8_5.Selected.Title).Title),
                     Collect(
-                        colFilter,
+                        colorderFilter,
                         {
                             Title: Gallery8_5.Selected.Title,
                             value: radioSalesperson_5.Selected.'Full Name'
                         }
                     ),
-                    Patch(colFilter,LookUp(colFilter,Title= Gallery8_5.Selected.Title),{value: radioSalesperson_5.Selected.'Full Name'})
+                    Patch(colorderFilter,LookUp(colorderFilter,Title= Gallery8_5.Selected.Title),{value: radioSalesperson_5.Selected.'Full Name'})
                 )
             RadioSelectionFill: |-
                 =//RGBA(0, 0, 0, 1)
@@ -1910,7 +1910,7 @@
             BorderColor: =RGBA(0, 18, 107, 1)
             DelayItemLoading: =true
             Height: =109
-            Items: =colFilter
+            Items: =colorderFilter
             LoadingSpinner: =LoadingSpinner.Data
             ShowScrollbar: =false
             TabIndex: =0//-1
@@ -1993,7 +1993,7 @@
                 Height: =25
                 Icon: =Icon.Cancel
                 OnSelect: |-
-                    =Remove(colFilter,ThisItem);
+                    =Remove(colorderFilter,ThisItem);
                     Reset(radioDate_5);
                     Reset(radioParty_1);
                     Reset(radioStatus_1);
@@ -2023,21 +2023,21 @@
                 =If(
                     Gallery8_5.Selected.tabid = 3 && IsBlank(
                         LookUp(
-                            colFilter,
+                            colorderFilter,
                             Title = Gallery8_5.Selected.Title
                         ).Title
                     ),
                     Collect(
-                        colFilter,
+                        colorderFilter,
                         {
                             Title: Gallery8_5.Selected.Title,
                             value: radioParty_1.Selected.'Customer Name'
                         }
                     ),
                     Patch(
-                        colFilter,
+                        colorderFilter,
                         LookUp(
-                            colFilter,
+                            colorderFilter,
                             Title = Gallery8_5.Selected.Title
                         ),
                         {value: radioParty_1.Selected.'Customer Name'}
@@ -2071,21 +2071,21 @@
                 =If(
                     Gallery8_5.Selected.tabid = 4 && IsBlank(
                         LookUp(
-                            colFilter,
+                            colorderFilter,
                             Title = Gallery8_5.Selected.Title
                         ).Title
                     ),
                     Collect(
-                        colFilter,
+                        colorderFilter,
                         {
                             Title: Gallery8_5.Selected.Title,
                             value: Text(radioStatus_1.Selected.Value)
                         }
                     ),
                      Patch(
-                        colFilter,
+                        colorderFilter,
                         LookUp(
-                            colFilter,
+                            colorderFilter,
                             Title = Gallery8_5.Selected.Title
                         ),
                         {value: Text(radioStatus_1.Selected.Value)}
@@ -2132,7 +2132,7 @@
                 ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Text Primary Color").'Default Value')
             Default: |-
                 =LookUp(
-                    colFilter,
+                    colorderFilter,
                     Title = "Order value"
                 ).value
             DisabledBorderColor: =RGBA(166, 166, 166, 1)
@@ -2149,21 +2149,21 @@
                 =If(
                     Gallery8_5.Selected.tabid = 5 && IsBlank(
                         LookUp(
-                            colFilter,
+                            colorderFilter,
                             Title = Gallery8_5.Selected.Title
                         ).Title
                     ),
                     Collect(
-                        colFilter,
+                        colorderFilter,
                         {
                             Title: Gallery8_5.Selected.Title,
                             value: OrderValue_1.Text
                         }
                     ),
                     Patch(
-                        colFilter,
+                        colorderFilter,
                         LookUp(
-                            colFilter,
+                            colorderFilter,
                             Title =Gallery8_5.Selected.Title
                         ),
                         {
@@ -2270,6 +2270,7 @@
     DatePicker1 As datepicker:
         AccessibleLabel: ="Text"
         BorderColor: =RGBA(166, 166, 166, 1)
+        BorderStyle: =BorderStyle.None
         CalendarHeaderFill: =ColorFade(RGBA(0, 120, 212, 1), -30%)
         Color: =Color.Transparent
         DisabledBorderColor: =RGBA(0, 0, 0, 0)
