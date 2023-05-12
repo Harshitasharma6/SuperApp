@@ -2942,7 +2942,7 @@
               },
               {
                 "Category": "Data",
-                "InvariantScript": "ThisItem.'Discount %' & \"%\"",
+                "InvariantScript": "If(IsBlank(ThisItem.'Discount %'),\"0%\",ThisItem.'Discount %' & \"%\")",
                 "Property": "Text",
                 "RuleProviderType": "Unknown"
               },
@@ -3694,7 +3694,7 @@
               },
               {
                 "Category": "Data",
-                "InvariantScript": "If(ThisItem.'Discount Amount' = 0,\"₹0.00\",Concatenate(\r\n                \"₹\",\r\n                Text(\r\n                    ThisItem.'Discount Amount',\r\n                    /*\"[$-hi-IN]##,##,##,###\",\r\n                    \"hi-IN\"*/  \"[$-en-US]#.00\"\r\n                )\r\n            ))\r\n ",
+                "InvariantScript": "If(IsBlank(ThisItem.'Discount Amount'),\"₹0.00\",Concatenate(\r\n                \"₹\",\r\n                Text(\r\n                    ThisItem.'Discount Amount',\r\n                    /*\"[$-hi-IN]##,##,##,###\",\r\n                    \"hi-IN\"*/  \"[$-en-US]#.00\"\r\n                )\r\n            ))\r\n ",
                 "Property": "Text",
                 "RuleProviderType": "Unknown"
               },
@@ -5775,7 +5775,7 @@
       "ZIndex",
       "CartType"
     ],
-    "LastModifiedTimestamp": "638195033027128337",
+    "LastModifiedTimestamp": "638195053107049548",
     "Name": "orderlinecart",
     "Rules": [
       {
@@ -5850,7 +5850,7 @@
   "IsPcfControl": false,
   "IsPremiumPcfControl": false,
   "IsWidgetTemplate": false,
-  "LastModifiedTimestamp": "638195033027128337",
+  "LastModifiedTimestamp": "638195053107049548",
   "Name": "90883600ac594eda95a316e72190f825",
   "OverridableProperties": {},
   "TemplateOriginalName": "96ce68581def46fcab13b78f74ddacdc",

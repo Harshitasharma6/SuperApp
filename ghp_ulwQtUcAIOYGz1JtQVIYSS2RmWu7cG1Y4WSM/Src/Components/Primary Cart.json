@@ -3196,7 +3196,7 @@
               },
               {
                 "Category": "Data",
-                "InvariantScript": "ThisItem.discount & \"%\"",
+                "InvariantScript": "If(IsBlank(ThisItem.discount),\"0%\",ThisItem.discount & \"%\")",
                 "Property": "Text",
                 "RuleProviderType": "Unknown"
               },
@@ -3955,7 +3955,7 @@
               },
               {
                 "Category": "Data",
-                "InvariantScript": "Concatenate(\r\n    \"₹\",\r\n    Text(\r\n        ThisItem.baseUnitPrice * (ThisItem.discount / 100) * ThisItem.quantity,\r\n       /* \"[$-hi-IN]##,##,##,###\",\r\n        \"hi-IN\"*/  \"[$-en-US]#.00\"\r\n    )\r\n)",
+                "InvariantScript": "//\"₹\" & ThisItem.baseUnitPrice * (ThisItem.discount/100) * ThisItem.quantity\r\nIf(ThisItem.baseUnitPrice * (ThisItem.discount / 100) * ThisItem.quantity=0,\"₹0.00\",Concatenate(\r\n    \"₹\",\r\n    Text(\r\n        ThisItem.baseUnitPrice * (ThisItem.discount / 100) * ThisItem.quantity,\r\n       /* \"[$-hi-IN]##,##,##,###\",\r\n        \"hi-IN\"*/  \"[$-en-US]#.00\"\r\n    )\r\n))",
                 "Property": "Text",
                 "RuleProviderType": "Unknown"
               },
@@ -5560,7 +5560,7 @@
               },
               {
                 "Category": "Data",
-                "InvariantScript": "\"₹\" & Text(\r\n    ((ThisItem.baseUnitPrice - (ThisItem.baseUnitPrice * (ThisItem.discount / 100))) * ThisItem.quantity) + ThisItem.igstAmount + ThisItem.cgstAmount + ThisItem.sgstAmount + ThisItem.cessAmount,\r\n    /*\"[$-hi-IN]##,##,##,###\",\r\n    \"hi-IN\"*/  \"[$-en-US]#.00\"\r\n)",
+                "InvariantScript": "If(((ThisItem.baseUnitPrice - (ThisItem.baseUnitPrice * (ThisItem.discount / 100))) * ThisItem.quantity) + ThisItem.igstAmount + ThisItem.cgstAmount + ThisItem.sgstAmount + ThisItem.cessAmount=0,\"₹0.00\",\"₹\" & Text(\r\n    ((ThisItem.baseUnitPrice - (ThisItem.baseUnitPrice * (ThisItem.discount / 100))) * ThisItem.quantity) + ThisItem.igstAmount + ThisItem.cgstAmount + ThisItem.sgstAmount + ThisItem.cessAmount,\r\n    /*\"[$-hi-IN]##,##,##,###\",\r\n    \"hi-IN\"*/  \"[$-en-US]#.00\"\r\n))",
                 "Property": "Text",
                 "RuleProviderType": "Unknown"
               },
@@ -6465,7 +6465,7 @@
       "ZIndex",
       "CartType"
     ],
-    "LastModifiedTimestamp": "638195033027129099",
+    "LastModifiedTimestamp": "638195056097566508",
     "Name": "Primary Cart",
     "Rules": [
       {
@@ -6540,7 +6540,7 @@
   "IsPcfControl": false,
   "IsPremiumPcfControl": false,
   "IsWidgetTemplate": false,
-  "LastModifiedTimestamp": "638195033027129099",
+  "LastModifiedTimestamp": "638195056097566508",
   "Name": "96ce68581def46fcab13b78f74ddacdc",
   "OverridableProperties": {},
   "TemplateOriginalName": "1a2675a6f994480ea6566bca42659ae3",

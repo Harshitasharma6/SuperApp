@@ -295,7 +295,7 @@
             OnSelect: =Select(Parent)
             Size: |
                 =16
-            Text: =ThisItem.discount & "%"
+            Text: =If(IsBlank(ThisItem.discount),"0%",ThisItem.discount & "%")
             Width: =120
             X: =174
             Y: =119
@@ -309,11 +309,11 @@
             Size: |
                 =16
             Text: |-
-                ="₹" & Text(
+                =If(((ThisItem.baseUnitPrice - (ThisItem.baseUnitPrice * (ThisItem.discount / 100))) * ThisItem.quantity) + ThisItem.igstAmount + ThisItem.cgstAmount + ThisItem.sgstAmount + ThisItem.cessAmount=0,"₹0.00","₹" & Text(
                     ((ThisItem.baseUnitPrice - (ThisItem.baseUnitPrice * (ThisItem.discount / 100))) * ThisItem.quantity) + ThisItem.igstAmount + ThisItem.cgstAmount + ThisItem.sgstAmount + ThisItem.cessAmount,
                     /*"[$-hi-IN]##,##,##,###",
                     "hi-IN"*/  "[$-en-US]#.00"
-                )
+                ))
             Width: =95
             X: =504
             Y: =162
@@ -326,14 +326,15 @@
             FontWeight: =FontWeight.Bold
             Size: =16
             Text: |-
-                =Concatenate(
+                =//"₹" & ThisItem.baseUnitPrice * (ThisItem.discount/100) * ThisItem.quantity
+                If(ThisItem.baseUnitPrice * (ThisItem.discount / 100) * ThisItem.quantity=0,"₹0.00",Concatenate(
                     "₹",
                     Text(
                         ThisItem.baseUnitPrice * (ThisItem.discount / 100) * ThisItem.quantity,
                        /* "[$-hi-IN]##,##,##,###",
                         "hi-IN"*/  "[$-en-US]#.00"
                     )
-                )
+                ))
             Width: =96
             X: =504
             Y: =119

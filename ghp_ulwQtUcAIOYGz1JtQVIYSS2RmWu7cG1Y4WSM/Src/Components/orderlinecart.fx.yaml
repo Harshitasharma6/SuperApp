@@ -203,7 +203,7 @@ orderlinecart As CanvasComponent:
             OnSelect: =Select(Parent)
             Size: |
                 =16
-            Text: =ThisItem.'Discount %' & "%"
+            Text: =If(IsBlank(ThisItem.'Discount %'),"0%",ThisItem.'Discount %' & "%")
             Width: =120
             X: =174
             Y: =119
@@ -229,7 +229,7 @@ orderlinecart As CanvasComponent:
             FontWeight: =FontWeight.Bold
             Size: =16
             Text: |-
-                =If(ThisItem.'Discount Amount' = 0,"₹0.00",Concatenate(
+                =If(IsBlank(ThisItem.'Discount Amount'),"₹0.00",Concatenate(
                                 "₹",
                                 Text(
                                     ThisItem.'Discount Amount',
