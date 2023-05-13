@@ -443,6 +443,10 @@ VisitPlanningNew As screen:
                 =/*Navigate('Leads Detail Page',ScreenTransition.CoverRight);
                 Set(varLeadData, ThisItem)*/
                  
+            RadiusBottomLeft: =20
+            RadiusBottomRight: =20
+            RadiusTopLeft: =20
+            RadiusTopRight: =20
             Size: =24
             Text: =""
             Width: =600
@@ -497,7 +501,7 @@ VisitPlanningNew As screen:
                 */
             Size: =16
             TabIndex: =0
-            Text: =ThisItem.zx_leadname
+            Text: =ThisItem.'Lead Name'
             Tooltip: =
             Width: =222
             Wrap: =false
@@ -600,8 +604,11 @@ VisitPlanningNew As screen:
                         LookUp(
                             c_EnvironmentVariable,
                             'Display Name' = "Button Fill"
-                        ).'Default Value'
-                    )//ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )
+                        ).'Default Value')
+                    
+                    
+                    
+                    //ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )
                 Height: =43
                 OnSelect: |-
                     =/* 
