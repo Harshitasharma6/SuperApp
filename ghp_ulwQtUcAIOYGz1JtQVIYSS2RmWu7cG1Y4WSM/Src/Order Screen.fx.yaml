@@ -11,12 +11,12 @@
 
     Header_1 As Header:
         ScreenName: |-
-            =//"New Primary Order"
-            If(
+            ="Book Order"
+            /*If(
                 varCustomertype = 'Party Type Choices'.Distributor || varCustomertype = 'Party Type Choices'.Dealer,
                 "New Primary Order",
                 "New Secondary Order"
-            )
+            )*/
 
     "'Product List_1' As 'Product List'":
         Height: =988
@@ -39,10 +39,17 @@
         Y: =1026
         ZIndex: =3
 
-    Circle13 As circle:
-        BorderColor: =RGBA(0, 18, 107, 1)
-        Fill: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )
-        Height: =30
+    Image20 As image:
+        BorderColor: =RGBA(0, 0, 0, 0)
+        BorderStyle: =BorderStyle.None
+        BorderThickness: =2
+        DisabledBorderColor: =RGBA(0, 0, 0, 0)
+        DisabledFill: =RGBA(0, 0, 0, 0)
+        FocusedBorderThickness: =4
+        Height: =52
+        HoverBorderColor: =RGBA(0, 0, 0, 0)
+        HoverFill: =RGBA(0, 0, 0, 0)
+        Image: ='Group 1 (1)'
         OnSelect: |-
             =If('Product List_1'.OrderType="Primary",Navigate('Primary Cart Screen', ScreenTransition.CoverRight,{
                         varParty: ComboBox1_1.Selected.'Customer Name',
@@ -52,14 +59,17 @@
                         varParty: ComboBox1_3.Selected.'Customer Name',
                         varCustomertype: ComboBox1_3.Selected.'Customer Type'
                     }));
-        Width: =30
-        X: =597
+        PressedBorderColor: =RGBA(0, 0, 0, 0)
+        PressedFill: =RGBA(0, 0, 0, 0)
+        Width: =52
+        X: =575
         Y: =14
-        ZIndex: =5
+        ZIndex: =4
 
     Label14 As label:
+        Align: =Align.Center
         BorderColor: =RGBA(0, 18, 107, 1)
-        Color: =RGBA(0, 0, 0, 1)
+        Color: =RGBA(255, 255, 255, 1)
         DisabledColor: =RGBA(166, 166, 166, 1)
         FocusedBorderThickness: =01
         Height: =30
@@ -80,38 +90,7 @@
                 CountRows(colSecondaryCart)
             )
         Width: =30
-        X: =601
-        Y: =14
-        ZIndex: =6
-
-    Icon1 As icon.Shop:
-        AccessibleLabel: ="Icon1"
-        BorderColor: =RGBA(166, 166, 166, 1)
-        Color: =RGBA(0, 120, 212, 1)
-        DisabledBorderColor: =RGBA(0, 0, 0, 0)
-        DisabledColor: =RGBA(220, 220, 220, 1)
-        DisabledFill: =RGBA(0, 0, 0, 0)
-        FocusedBorderThickness: =4
-        Height: =45
-        HoverBorderColor: =RGBA(0, 0, 0, 0)
-        HoverColor: =ColorFade(RGBA(0, 120, 212, 1), -30%)
-        HoverFill: =RGBA(0, 0, 0, 0)
-        Icon: =Icon.Shop
-        OnSelect: |-
-            =If('Product List_1'.OrderType="Primary",Navigate('Primary Cart Screen', ScreenTransition.CoverRight,{
-                        varParty: ComboBox1_1.Selected.'Customer Name',
-                        varCustomertype: ComboBox1_1.Selected.'Customer Type'
-                    }),
-            Navigate('Secondary Cart Screen',ScreenTransition.CoverRight,{
-                        varParty: ComboBox1_3.Selected.'Customer Name',
-                        varCustomertype: ComboBox1_3.Selected.'Customer Type'
-                    }));
-        PressedBorderColor: =RGBA(0, 0, 0, 0)
-        PressedColor: =ColorFade(RGBA(0, 120, 212, 1), -30%)
-        PressedFill: =RGBA(0, 0, 0, 0)
-        TabIndex: =0
-        Width: =50
-        X: =563
-        Y: =22
-        ZIndex: =7
+        X: =597
+        Y: =19
+        ZIndex: =5
 

@@ -1,4 +1,5 @@
 "'Secondary Order Screen' As screen":
+    Fill: =ColorValue(LookUp(c_EnvironmentVariable, 'Display Name'="Ordergallerybcakgroundcolor").'Default Value')
     LoadingSpinnerColor: =RGBA(0, 120, 212, 1)
     OnVisible: |-
         =ClearCollect(

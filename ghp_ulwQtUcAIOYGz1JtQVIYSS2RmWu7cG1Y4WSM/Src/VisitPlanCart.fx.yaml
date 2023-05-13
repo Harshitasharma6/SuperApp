@@ -627,34 +627,6 @@ VisitPlanCart As screen:
             Y: =44
             ZIndex: =3
 
-        Rectangle1_19 As rectangle:
-            AccessibleLabel: ="Rectangle1_6"
-            BorderColor: =RGBA(0, 18, 107, 1)
-            Fill: =RGBA(202, 202, 202, 1)
-            FocusedBorderThickness: =0
-            Height: =1
-            OnSelect: =
-            TabIndex: =0
-            Width: =Background_15.Width
-            X: =9
-            Y: =84
-            ZIndex: =4
-
-        Body1_38 As label:
-            BorderColor: =RGBA(0, 18, 107, 1)
-            Color: =RGBA(0, 0, 0, 1)
-            DisabledColor: =RGBA(166, 166, 166, 1)
-            Height: =33
-            OnSelect: =
-            TabIndex: =0
-            Text: |-
-                ="Account No : "
-            Width: =140
-            Wrap: =false
-            X: =30
-            Y: =97
-            ZIndex: =5
-
         Body1Value_16 As label:
             BorderColor: =RGBA(0, 18, 107, 1)
             Color: =RGBA(0, 0, 0, 1)
@@ -669,53 +641,6 @@ VisitPlanCart As screen:
             X: =332
             Y: =97
             ZIndex: =6
-
-        Body1_40 As label:
-            BorderColor: =RGBA(0, 18, 107, 1)
-            Color: =RGBA(0, 0, 0, 1)
-            DisabledColor: =RGBA(166, 166, 166, 1)
-            Height: =33
-            OnSelect: =
-            TabIndex: =0
-            Text: |-
-                ="Last Visit Date :"
-            X: =30
-            Y: =130
-            ZIndex: =7
-
-        Body1_41 As label:
-            BorderColor: =RGBA(0, 18, 107, 1)
-            Color: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Text Primary Color").'Default Value') //ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Text Primary Color").'Default Value') //_VarGblAppColors.textbgbutton
-            DisabledColor: =RGBA(166, 166, 166, 1)
-            Font: =Font.'Segoe UI'
-            FontWeight: =FontWeight.Semibold
-            Height: =33
-            OnSelect: =
-            TabIndex: =0
-            Text: |-
-                =/*Text(
-                    LookUp(
-                        Visits,
-                        Party.'Customer Code' = ThisItem.'Customer Code'
-                    ).'Visit date',
-                    "dd/mm/yyyy"
-                );*/
-                Text(
-                    LookUp(
-                        Sort(
-                           OfflineVisitCollection,
-                            zx_visitdate,
-                            SortOrder.Descending
-                        ),
-                        zx_Party.Parties = ThisItem.zx_partiesid && 'Visit Status' = [@'Visit Status'].Completed
-                        
-                    ).zx_visitdate,
-                    "dd/mm/yyyy"
-                )
-            Width: =137
-            X: =167
-            Y: =130
-            ZIndex: =8
 
         Body1_42 As label:
             BorderColor: =RGBA(0, 18, 107, 1)

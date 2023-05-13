@@ -9,6 +9,7 @@
         AccessibleLabel: ="Gallery14"
         BorderColor: =RGBA(0, 18, 107, 1)
         DelayItemLoading: =true
+        FocusedBorderThickness: =0
         Height: =60
         Items: |-
             =Table(
@@ -41,6 +42,7 @@
         Label69_2 As label:
             Align: =Align.Center
             BorderColor: =RGBA(0, 18, 107, 1)
+            BorderStyle: =BorderStyle.None
             Color: |-
                 =If(ThisItem.IsSelected,ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )
                 ,
@@ -57,6 +59,7 @@
 
         Rectangle38_2 As rectangle:
             BorderColor: =RGBA(0, 18, 107, 1)
+            BorderStyle: =BorderStyle.None
             Fill: |-
                 =If(ThisItem.IsSelected,ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )
                 ,Color.White
@@ -1141,7 +1144,7 @@
                                 IsBlank(
                                     LookUp(
                                         'Stock.S',
-                                        'Product SKU'.'Product SKU' = ItemOrderLine.productSKU && Customer.Parties = varCustomerforDiscountTemp
+                                        'Product SKU'.'Product SKU' = ItemOrderLine.productSKU && Customer.Parties = varCustomerforDiscount
                                     )
                                 ),
                                 Patch(
@@ -1154,7 +1157,7 @@
                                         ),
                                         Customer: LookUp(
                                             OfflinePartiesCollection,
-                                            Parties = varCustomerforDiscountTemp
+                                            Parties = varCustomerforDiscount
                                         ),
                                         'Last Updated Date': Now(),
                                         Quantity: Value(ItemOrderLine.quantity)
@@ -1166,7 +1169,7 @@
                                     'Stock.S',
                                     LookUp(
                                         'Stock.S',
-                                        'Product SKU'.'Product SKU' = ItemOrderLine.productSKU && Customer.Parties = varCustomerforDiscountTemp
+                                        'Product SKU'.'Product SKU' = ItemOrderLine.productSKU && Customer.Parties = varCustomerforDiscount
                                     ),
                                     {
                                         'Product SKU': LookUp(
@@ -1175,13 +1178,13 @@
                                         ),
                                         Customer: LookUp(
                                             OfflinePartiesCollection,
-                                            Parties = varCustomerforDiscountTemp
+                                            Parties = varCustomerforDiscount
                                         ),
                                         'Last Updated Date': Now(),
                                         Quantity: Value(
                                             LookUp(
                                                 'Stock.S',
-                                                'Product SKU'.'Product SKU' = ItemOrderLine.productSKU && Customer.Parties = varCustomerforDiscountTemp
+                                                'Product SKU'.'Product SKU' = ItemOrderLine.productSKU && Customer.Parties = varCustomerforDiscount
                                             ).Quantity
                                         ) + Value(ItemOrderLine.quantity)
                                     }
