@@ -478,7 +478,7 @@ VisitPlanningNew As screen:
                         CountRows(
                             Filter(
                                 colAddLeadParty,
-                                zx_leadsid = ThisItem.zx_leadsid
+                             zx_partiesid= ThisItem.Party.Parties  
                             )
                         ) = 0,
                         DisplayMode.Edit,
@@ -491,8 +491,8 @@ VisitPlanningNew As screen:
                     If(
                         CountRows(
                             Filter(
-                                colAddLeadParty1,
-                                Parties = ThisItem.Party.Parties  //_varSelectedArea1.Area
+                                colAddLeadParty,
+                                 zx_partiesid= ThisItem.Party.Parties  
                             )
                         ) = 0,
                      If(
@@ -564,8 +564,8 @@ VisitPlanningNew As screen:
                                     1000
                                 ),
                                 Collect(
-                                    colAddLeadParty1,
-                                    ThisItem.Party
+                                    colAddLeadParty,
+                                  AddColumns( Filter('Parties.S',Parties=ThisItem.Party.Parties) ,"My_lead",ThisItem)
                                 )
                             ),
                             Notify(
@@ -909,7 +909,7 @@ VisitPlanningNew As screen:
         FocusedBorderThickness: =
         Height: =765
         Items: |-
-            =If(IsBlank('areaCmb_1'.Selected),
+            =If(IsBlank(areaCmb_1.Selected),
             
             Filter(
                 OfflinePartiesCollection,
@@ -1352,7 +1352,7 @@ VisitPlanningNew As screen:
                         CountRows(
                             Filter(
                                 colAddLeadParty,
-                                Party.Parties = ThisItem.Parties
+                                zx_partiesid= ThisItem.Parties
                             )
                         ) = 0,
                         DisplayMode.Edit,
@@ -1365,8 +1365,8 @@ VisitPlanningNew As screen:
                     If(
                         CountRows(
                             Filter(
-                                colAddLeadParty1,
-                                Parties= ThisItem.Parties  //_varSelectedArea1.Area
+                                colAddLeadParty,
+                                zx_partiesid= ThisItem.Parties  //_varSelectedArea1.Area
                             )
                         ) = 0,
                      If(
@@ -1438,7 +1438,7 @@ VisitPlanningNew As screen:
                                     1000
                                 ),
                                 Collect(
-                                    colAddLeadParty1,
+                                    colAddLeadParty,
                                     Filter(
                                         OfflinePartiesCollection,
                                         Parties = ThisItem.Parties
@@ -3477,6 +3477,35 @@ VisitPlanningNew As screen:
             Y: =221
             ZIndex: =3
 
+    Button8 As button:
+        BorderColor: =RGBA(0, 0, 0, 0)
+        DisabledBorderColor: =RGBA(0, 0, 0, 0)
+        DisabledColor: =RGBA(166, 166, 166, 1)
+        DisabledFill: =RGBA(244, 244, 244, 1)
+        Fill: =RGBA(0, 120, 212, 1)
+        FocusedBorderColor: =ColorFade(Self.Fill, -75%)
+        Font: =Font.'Segoe UI'
+        FontWeight: =FontWeight.Semibold
+        Height: =70
+        HoverBorderColor: =RGBA(0, 0, 0, 0)
+        HoverColor: =RGBA(255, 255, 255, 1)
+        HoverFill: =ColorFade(RGBA(0, 120, 212, 1), -10%)
+        OnSelect: |
+            =Clear(colAddLeadParty);
+        PressedBorderColor: =ColorFade(RGBA(0, 120, 212, 1), -50%)
+        PressedColor: =RGBA(255, 255, 255, 1)
+        PressedFill: =ColorFade(RGBA(0, 120, 212, 1), -30%)
+        RadiusBottomLeft: =0
+        RadiusBottomRight: =0
+        RadiusTopLeft: =0
+        RadiusTopRight: =0
+        Size: =24
+        Text: ="Button"
+        Width: =280
+        X: =98
+        Y: =5
+        ZIndex: =30
+
     Main_screen_search_bar_2 As group:
         Height: =5
         Width: =5
@@ -3530,33 +3559,4 @@ VisitPlanningNew As screen:
             X: =40
             Y: =230
             ZIndex: =29
-
-    Button8 As button:
-        BorderColor: =RGBA(0, 0, 0, 0)
-        DisabledBorderColor: =RGBA(0, 0, 0, 0)
-        DisabledColor: =RGBA(166, 166, 166, 1)
-        DisabledFill: =RGBA(244, 244, 244, 1)
-        Fill: =RGBA(0, 120, 212, 1)
-        FocusedBorderColor: =ColorFade(Self.Fill, -75%)
-        Font: =Font.'Segoe UI'
-        FontWeight: =FontWeight.Semibold
-        Height: =70
-        HoverBorderColor: =RGBA(0, 0, 0, 0)
-        HoverColor: =RGBA(255, 255, 255, 1)
-        HoverFill: =ColorFade(RGBA(0, 120, 212, 1), -10%)
-        OnSelect: |-
-            =Clear(colAddLeadParty);
-            Clear(colAddLeadParty1)
-        PressedBorderColor: =ColorFade(RGBA(0, 120, 212, 1), -50%)
-        PressedColor: =RGBA(255, 255, 255, 1)
-        PressedFill: =ColorFade(RGBA(0, 120, 212, 1), -30%)
-        RadiusBottomLeft: =0
-        RadiusBottomRight: =0
-        RadiusTopLeft: =0
-        RadiusTopRight: =0
-        Size: =24
-        Text: ="Button"
-        Width: =280
-        X: =282
-        ZIndex: =30
 
