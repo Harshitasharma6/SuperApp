@@ -14,7 +14,7 @@ VisitPlanningNew As screen:
         
         
         Set(varCollectionEmpty,true);
-        Set(mylead,1)
+        Set(mylead,2)
 
     "'Bottom Bar_15' As 'Bottom Bar'":
         Height: =105
@@ -904,17 +904,17 @@ VisitPlanningNew As screen:
         AccessibleLabel: ="List View"
         BorderColor: =RGBA(0, 18, 107, 1)
         FocusedBorderThickness: =
-        Height: =756
+        Height: =729
         Items: =Filter(OfflinePartiesCollection,Area.Area=areaCmb_1.Selected.Area.Area && 'Customer Type'='Type Filter_1'.Selected.Title)
         Layout: =Layout.Vertical
         ShowScrollbar: =false
         TabIndex: =
         TemplatePadding: =10
         TemplateSize: =217
-        Visible: =If('Type Filter_1'.Selected.Id>1,true,false)
+        Visible: =false
         Width: =630
         X: =10
-        Y: =268
+        Y: =264
         ZIndex: =16
 
         Background_14 As button:
