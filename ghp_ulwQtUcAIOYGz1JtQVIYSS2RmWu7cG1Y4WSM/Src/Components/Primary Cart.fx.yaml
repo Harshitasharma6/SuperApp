@@ -338,7 +338,7 @@
         DisplayMode: |-
             =//DisplayMode.Edit
             If(
-                CountRows(colPrimaryCart) > 0  &&  IsBlank(ComboBox7_3.SelectedItems) && IsBlank(ComboBox7_2.SelectedItems) && IsBlank(ComboBox7.SelectedItems),
+                CountRows(colPrimaryCart) > 0  ,
                 DisplayMode.Edit,
                 DisplayMode.Disabled
             )
@@ -394,6 +394,7 @@
             //Navigate('Primary Cart Screen',ScreenTransition.CoverRight);
         Size: =20
         Text: ="Place Order"
+        Visible: =If(IsBlank(ComboBox7_3.SelectedItems) && IsBlank(ComboBox7_2.SelectedItems) && IsBlank(ComboBox7.SelectedItems),true,false)
         Width: =258
         X: =191
         Y: =513

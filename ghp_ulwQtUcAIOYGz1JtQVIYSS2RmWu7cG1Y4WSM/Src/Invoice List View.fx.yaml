@@ -1,5 +1,13 @@
 "'Invoice List View' As screen":
     LoadingSpinnerColor: =RGBA(0, 120, 212, 1)
+    OnVisible: |-
+        =ClearCollect(
+                    OfflineInvoiceCollection,
+                    Filter(
+                        'Invoice.S',
+                        'Owning User'.'Primary Email' = User().Email
+                    )
+                );
 
     Header_30 As Header:
         ScreenName: ="Invoice List View"
@@ -7,4 +15,412 @@
     "'Bottom Bar_32' As 'Bottom Bar'":
         Y: =1026
         ZIndex: =2
+
+    "'Order Info Gallery_3' As gallery.galleryVertical":
+        AccessibleLabel: ="Order Info Gallery"
+        BorderColor: =RGBA(153, 207, 236, 1)
+        BorderStyle: =BorderStyle.None
+        Fill: =ColorValue(LookUp(c_EnvironmentVariable, 'Display Name'="Ordergallerybcakgroundcolor").'Default Value')
+        Height: |-
+            =//920
+            App.Height-230
+        Items: |-
+            =//If(
+               // varfiltergallery = true,
+                Sort( If(
+                                IsToday(DatePicker1_6.SelectedDate),
+                                Filter(
+                                    OfflineInvoiceCollection,
+                                     'Created On' <= Today()+1 && 'Created On' > DateAdd(
+                                        Today(),
+                                        -7
+                                    )
+                                ),
+                                Filter(
+                                    OfflineInvoiceCollection,
+                                     Text(
+                                        'Created On',
+                                        "dd/mm/yyyy"
+                                    ) = Text(
+                                        DatePicker1_6.SelectedDate,
+                                        "dd/mm/yyyy"
+                                    )
+                                )
+                            ),
+                        'Created On',
+                        SortOrder.Descending
+                    )
+        Layout: =Layout.Vertical
+        ShowScrollbar: =false
+        TabIndex: =0
+        TemplateSize: =202
+        Visible: |-
+            =true
+            //'Top Gallery'.Selected.TabId=5
+        Width: =620
+        X: =10
+        Y: =131
+        ZIndex: =3
+
+        Button43_5 As button:
+            DisabledBorderColor: =RGBA(153, 207, 236, 1)
+            DisabledColor: =RGBA(166, 166, 166, 1)
+            DisabledFill: =RGBA(255, 255, 255, 1)
+            DisplayMode: =DisplayMode.Disabled
+            Fill: =RGBA(56, 96, 178, 1)
+            FontWeight: =FontWeight.Semibold
+            Height: =191
+            HoverColor: =RGBA(255, 255, 255, 1)
+            HoverFill: =ColorFade(RGBA(56, 96, 178, 1), -20%)
+            OnSelect: |-
+                =Navigate('order detail screen',ScreenTransition.CoverRight,{primarydata:
+                        ThisItem,secondarydata:
+                        ThisItem});
+                //Set(varOrderData, ThisItem);
+                
+                
+                 
+            RadiusBottomLeft: =15
+            RadiusBottomRight: =15
+            RadiusTopLeft: =15
+            RadiusTopRight: =15
+            Size: =24
+            Text: =""
+            Width: =610
+            ZIndex: =1
+
+        Button5_5 As button:
+            BorderColor: =Color.Black
+            BorderStyle: =BorderStyle.None
+            BorderThickness: =0
+            DisabledBorderColor: =RGBA(166, 166, 166, 1)
+            DisabledColor: =RGBA(166, 166, 166, 1)
+            DisabledFill: =RGBA(244, 244, 244, 1)
+            Fill: =RGBA(255, 255, 255, 1)
+            FontWeight: =FontWeight.Semibold
+            Height: =202
+            HoverColor: =RGBA(255, 255, 255, 1)
+            HoverFill: =Color.White
+            OnSelect: |-
+                =Navigate('order detail screen',ScreenTransition.CoverRight,{primarydata:
+                        ThisItem,secondarydata:
+                        ThisItem});
+                //Set(varOrderData, ThisItem);
+                
+                
+                 
+            Size: =24
+            Text: =""
+            Width: =1
+            ZIndex: =2
+
+        Circle18_4 As circle:
+            AccessibleLabel: ="Text"
+            BorderColor: =RGBA(0, 18, 107, 1)
+            Fill: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//_VarGblAppColors.PrimaryRed
+            Height: =50
+            OnSelect: |-
+                =Navigate('order detail screen',ScreenTransition.CoverRight,{primarydata:
+                        ThisItem,secondarydata:
+                        ThisItem});
+                //Set(varOrderData, ThisItem);
+                
+                
+                 
+            TabIndex: =0
+            Width: =50
+            X: =20
+            Y: =10
+            ZIndex: =10
+
+        Label80_4 As label:
+            Align: =Align.Center
+            BorderColor: =RGBA(0, 18, 107, 1)
+            BorderStyle: =BorderStyle.None
+            Color: =RGBA(255, 255, 255, 1)
+            DisabledColor: =RGBA(166, 166, 166, 1)
+            FontWeight: =FontWeight.Semibold
+            OnSelect: |-
+                =Navigate('Invoice Detail Page',ScreenTransition.CoverRight);
+                Set(varInvoiceData, ThisItem);
+                
+                
+                 
+            TabIndex: =0
+            Text: =Left(Upper(ThisItem.Party.'First Name'),1) & Left(Upper(ThisItem.Party.'Last Name'),1)
+            Width: =40
+            X: =26
+            Y: =16
+            ZIndex: =12
+
+        Body1_115 As label:
+            BorderColor: =RGBA(0, 18, 107, 1)
+            BorderStyle: =BorderStyle.None
+            Color: |-
+                =//_VarGblAppColors.PrimaryText
+                
+                
+                
+                ColorValue(LookUp(c_EnvironmentVariable, 'Display Name'="Text Background Color").'Default Value')
+            DisabledColor: =RGBA(166, 166, 166, 1)
+            FocusedBorderThickness: =01
+            Font: |-
+                =LookUp(c_EnvironmentVariable, 'Display Name'="Text Heading Font").'Default Value'
+                
+                //_VarGblAppFonts.Heading
+            FontWeight: =FontWeight.Semibold
+            Height: =54
+            OnSelect: |-
+                =Navigate('Invoice Detail Page',ScreenTransition.CoverRight);
+                Set(varInvoiceData, ThisItem);
+                
+                
+                 
+            Size: |-
+                =
+                LookUp('Environment Variable Definitions', 'Display Name'="Text Sub Title Font Size").'Default Value'
+            TabIndex: =0
+            Text: = ThisItem.Party.'Customer Name'
+            Tooltip: =
+            Width: =154
+            X: =196
+            Y: =85
+            ZIndex: =15
+
+        Body1_122 As label:
+            BorderColor: =RGBA(0, 18, 107, 1)
+            BorderStyle: =BorderStyle.None
+            Color: |-
+                =//_VarGblAppColors.PrimaryText
+                
+                
+                
+                ColorValue(LookUp(c_EnvironmentVariable, 'Display Name'="Text Background Color").'Default Value')
+            DisabledColor: =RGBA(166, 166, 166, 1)
+            FocusedBorderThickness: =01
+            Font: |-
+                =LookUp(c_EnvironmentVariable, 'Display Name'="Text Heading Font").'Default Value'
+                
+                //_VarGblAppFonts.Heading
+            FontWeight: =FontWeight.Semibold
+            Height: =54
+            OnSelect: |-
+                =Navigate('Invoice Detail Page',ScreenTransition.CoverRight);
+                Set(varInvoiceData, ThisItem);
+                
+                
+                 
+            Size: |-
+                =
+                LookUp('Environment Variable Definitions', 'Display Name'="Text Sub Title Font Size").'Default Value'
+            TabIndex: =0
+            Text: = "₹" &ThisItem.'Total Amount'
+            Tooltip: =
+            Width: =154
+            X: =196
+            Y: =130
+            ZIndex: =17
+
+        Body1_84 As label:
+            BorderColor: =RGBA(0, 18, 107, 1)
+            BorderStyle: =BorderStyle.None
+            Color: |-
+                =//_VarGblAppColors.PrimaryText
+                
+                
+                
+                ColorValue(LookUp(c_EnvironmentVariable, 'Display Name'="Button Border Color").'Default Value')
+            DisabledColor: =RGBA(166, 166, 166, 1)
+            FocusedBorderThickness: =01
+            Font: |-
+                =LookUp(c_EnvironmentVariable, 'Display Name'="Text Heading Font").'Default Value'
+                
+                //_VarGblAppFonts.Heading
+            FontWeight: =FontWeight.Semibold
+            Height: =54
+            OnSelect: |-
+                =Navigate('Invoice Detail Page',ScreenTransition.CoverRight);
+                Set(varInvoiceData, ThisItem);
+                
+                
+                 
+            Size: |-
+                =
+                LookUp('Environment Variable Definitions', 'Display Name'="Text Sub Title Font Size").'Default Value'
+            TabIndex: =0
+            Text: |-
+                ="Invoice Status: " 
+            Tooltip: =
+            Width: =185
+            X: =328
+            Y: =130
+            ZIndex: =18
+
+        Body1_127 As label:
+            BorderColor: =RGBA(0, 18, 107, 1)
+            BorderStyle: =BorderStyle.None
+            Color: |-
+                =//_VarGblAppColors.PrimaryText
+                
+                
+                
+                ColorValue(LookUp(c_EnvironmentVariable, 'Display Name'="Text Background Color").'Default Value')
+            DisabledColor: =RGBA(166, 166, 166, 1)
+            FocusedBorderThickness: =01
+            Font: |-
+                =LookUp(c_EnvironmentVariable, 'Display Name'="Text Heading Font").'Default Value'
+                
+                //_VarGblAppFonts.Heading
+            FontWeight: =FontWeight.Semibold
+            Height: =54
+            OnSelect: |-
+                =Navigate('Invoice Detail Page',ScreenTransition.CoverRight);
+                Set(varInvoiceData, ThisItem);
+                
+                
+                 
+            Size: |-
+                =
+                LookUp('Environment Variable Definitions', 'Display Name'="Text Sub Title Font Size").'Default Value'
+            TabIndex: =0
+            Text: =ThisItem.'Invoice Status'
+            Tooltip: =
+            Width: =137
+            X: =472
+            Y: =130
+            ZIndex: =19
+
+        Body1_128 As label:
+            BorderColor: =RGBA(0, 18, 107, 1)
+            BorderStyle: =BorderStyle.None
+            Color: |-
+                =//_VarGblAppColors.PrimaryText
+                
+                
+                
+                ColorValue(LookUp(c_EnvironmentVariable, 'Display Name'="Text Background Color").'Default Value')
+            DisabledColor: =RGBA(166, 166, 166, 1)
+            FocusedBorderThickness: =01
+            Font: |-
+                =LookUp(c_EnvironmentVariable, 'Display Name'="Text Heading Font").'Default Value'
+                
+                //_VarGblAppFonts.Heading
+            FontWeight: =FontWeight.Semibold
+            Height: =54
+            OnSelect: |-
+                =Navigate('Invoice Detail Page',ScreenTransition.CoverRight);
+                Set(varInvoiceData, ThisItem);
+                
+                
+                 
+            Size: |-
+                =
+                LookUp('Environment Variable Definitions', 'Display Name'="Text Sub Title Font Size").'Default Value'
+            TabIndex: =0
+            Text: =ThisItem.'Invoice Status'
+            Tooltip: =
+            Width: =137
+            X: =473
+            Y: =85
+            ZIndex: =20
+
+    Image1_4 As image:
+        AccessibleLabel: ="Text"
+        BorderColor: =RGBA(0, 0, 0, 0)
+        BorderStyle: =BorderStyle.None
+        BorderThickness: =2
+        DisabledBorderColor: =RGBA(0, 0, 0, 0)
+        DisabledFill: =RGBA(0, 0, 0, 0)
+        FocusedBorderThickness: =4
+        Height: =50
+        HoverBorderColor: =RGBA(0, 0, 0, 0)
+        HoverFill: =RGBA(0, 0, 0, 0)
+        Image: ='Vector (1)'
+        OnSelect: |+
+            =Set(
+                varFilterOrder
+            ,
+                !varFilterOrder
+            
+            );
+            
+        PressedBorderColor: =RGBA(0, 0, 0, 0)
+        PressedFill: =RGBA(0, 0, 0, 0)
+        TabIndex: =0
+        Width: =50
+        X: =455
+        Y: =66
+        ZIndex: =4
+
+    DatePicker1_6 As datepicker:
+        AccessibleLabel: ="Text"
+        BorderColor: =RGBA(166, 166, 166, 1)
+        BorderStyle: =BorderStyle.None
+        CalendarHeaderFill: =ColorFade(RGBA(0, 120, 212, 1), -30%)
+        Color: =Color.Transparent
+        DisabledBorderColor: =RGBA(0, 0, 0, 0)
+        DisabledColor: =Color.Transparent
+        DisabledFill: =RGBA(244, 244, 244, 1)
+        Fill: =Color.Transparent
+        Font: =Font.'Segoe UI'
+        Height: =41
+        HoverDateFill: =RGBA(200, 200, 200, 1)
+        IconBackground: =Color.Transparent
+        IconFill: =Color.Transparent
+        InputTextPlaceholder: |-
+            =//If(IsBlank(Self.SelectedDate), Text(Date(2001,12,31), Self.Format, Self.Language))
+            Text(Today(),"dd/mm/yyyy")
+        PaddingTop: =5
+        SelectedDateFill: =RGBA(0, 120, 212, 1)
+        Size: =21
+        Width: =50
+        X: =563
+        Y: =74
+        ZIndex: =5
+
+    Group8_2 As group:
+        Height: =5
+        Width: =5
+        X: =60
+        Y: =60
+        ZIndex: =8
+
+        Label5_2 As label:
+            Align: =Align.Center
+            BorderColor: =RGBA(0, 0, 0, 0)
+            BorderStyle: =BorderStyle.None
+            BorderThickness: =2
+            Color: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )
+            DisabledBorderColor: =RGBA(0, 0, 0, 0)
+            DisabledColor: =RGBA(166, 166, 166, 1)
+            FocusedBorderThickness: =4
+            Font: =Font.'Segoe UI'
+            FontWeight: =FontWeight.Semibold
+            Height: =46
+            PaddingRight: =8
+            PaddingTop: =10
+            Size: =18
+            Text: =Text(DatePicker1_6.SelectedDate,"dd")
+            Width: =50
+            X: =536
+            Y: =72
+            ZIndex: =6
+
+        Image14_2 As image:
+            BorderColor: =RGBA(0, 0, 0, 0)
+            BorderStyle: =BorderStyle.None
+            BorderThickness: =2
+            DisabledBorderColor: =RGBA(0, 0, 0, 0)
+            DisabledFill: =RGBA(0, 0, 0, 0)
+            FocusedBorderThickness: =4
+            Height: =50
+            HoverBorderColor: =RGBA(0, 0, 0, 0)
+            HoverFill: =RGBA(0, 0, 0, 0)
+            Image: ='Vector (4)'
+            PressedBorderColor: =RGBA(0, 0, 0, 0)
+            PressedFill: =RGBA(0, 0, 0, 0)
+            Width: =50
+            X: =536
+            Y: =68
+            ZIndex: =7
 

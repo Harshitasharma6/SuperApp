@@ -457,11 +457,13 @@
     Display_15 As gallery.galleryHorizontal:
         AccessibleLabel: ="Filter Displayed"
         BorderColor: =RGBA(0, 18, 107, 1)
+        BorderStyle: =BorderStyle.None
         DelayItemLoading: =true
         Fill: |-
             =RGBA(0, 0, 0, 0)
             //_VarGblAppColors.PrimaryRed
-        Height: =75
+        FocusedBorderThickness: =0
+        Height: =57
         Items: =colsecorderFilter
         LoadingSpinner: =LoadingSpinner.Data
         ShowScrollbar: =false
@@ -470,8 +472,8 @@
         Visible: |-
             =true
             //varFilter
-        Width: =454
-        X: =30
+        Width: =404
+        X: =33
         Y: =85
         ZIndex: =16
 
@@ -487,10 +489,10 @@
             Height: =41
             HoverColor: =RGBA(255, 255, 255, 1)
             HoverFill: =ColorFade(RGBA(56, 96, 178, 1), -20%)
-            RadiusBottomLeft: =15
-            RadiusBottomRight: =15
-            RadiusTopLeft: =15
-            RadiusTopRight: =15
+            RadiusBottomLeft: =8
+            RadiusBottomRight: =8
+            RadiusTopLeft: =8
+            RadiusTopRight: =8
             Size: =24
             Text: =""
             Width: =210
@@ -506,7 +508,7 @@
             FontWeight: =FontWeight.Bold
             Height: =41
             OnSelect: =Select(Parent)
-            Size: =10
+            Size: =12
             Text: |-
                 =ThisItem.Title & ": " & ThisItem.value
             Tooltip: |-
@@ -533,7 +535,7 @@
                 Reset(radioStatus_5);
                 Set(varCollectionEmpty,true)
             TabIndex: =0//-1
-            Width: =30
+            Width: =25
             X: =175
             Y: =8
             ZIndex: =4

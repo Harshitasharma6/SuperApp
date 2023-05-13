@@ -1,5 +1,6 @@
 "'order detail screen' As screen":
     LoadingSpinnerColor: =RGBA(0, 120, 212, 1)
+    OnVisible: =Set(varorderselectedId,1)
 
     Header_7 As Header:
         ScreenName: |-
@@ -57,15 +58,14 @@
             BorderColor: =RGBA(0, 18, 107, 1)
             BorderStyle: =BorderStyle.None
             Color: |-
-                =If(ThisItem.IsSelected,ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )
-                //ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )
+                =If(ThisItem.IsSelected,ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )
                 ,
-                ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Text Primary Color").'Default Value') //ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Text Primary Color").'Default Value') //_VarGblAppColors.textbgbutton
+                ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Text Background Color").'Default Value') //ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Text Primary Color").'Default Value') //_VarGblAppColors.textbgbutton
                 )
             DisabledColor: =RGBA(166, 166, 166, 1)
             FontWeight: =FontWeight.Semibold
             Height: =50
-            OnSelect: =Select(Parent)
+            OnSelect: =Set(varorderselectedId,ThisItem.ID)
             Size: =16
             Text: =ThisItem.Title
             Width: =Parent.TemplateWidth
@@ -76,16 +76,19 @@
             BorderStyle: =BorderStyle.None
             Fill: |-
                 =If(ThisItem.IsSelected,ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )
-                ,Color.White)
+                ,
+                ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Text Background Color").'Default Value') //ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Text Primary Color").'Default Value') //_VarGblAppColors.textbgbutton
+                )
             Height: =2
-            OnSelect: =Select(Parent)
+            OnSelect: =Set(varorderselectedId,ThisItem.ID)
+            Visible: =If(varorderselectedId = ThisItem.ID,true,false)
             X: =Parent.TemplateWidth/2-Self.Width/2
             Y: =48
             ZIndex: =2
 
     Container16_1 As groupContainer.manualLayoutContainer:
         Height: =900
-        Visible: =If(Gallery14_1.Selected.Title="Order Summary",true,false)
+        Visible: =If(varorderselectedId = 1,true,false)
         Width: =640
         Y: =142
         ZIndex: =4
@@ -98,6 +101,16 @@
             Items: |-
                 =ForAll(
                     [
+                        
+                        {
+                            Title: If(primarydata.'Order Type'= 'Order Type Choice'.Primary,"Customer:","Supplier:"),
+                            Value: If(
+                                primarydata.'Order Type' = 'Order Type Choice'.Primary,
+                                primarydata.'Order From'.'Customer Name',
+                                secondarydata.'Order Type' = 'Order Type Choice'.Secondary,
+                                secondarydata.'Order To'.'Customer Name'
+                            )
+                        },
                         {
                             Title: "Order Date:",
                             Value: Text(
@@ -110,15 +123,6 @@
                             )
                         },
                         {
-                            Title: If(primarydata.'Order Type'= 'Order Type Choice'.Primary,"Customer:","Supplier:"),
-                            Value: If(
-                                primarydata.'Order Type' = 'Order Type Choice'.Primary,
-                                primarydata.'Order From'.'Customer Name',
-                                secondarydata.'Order Type' = 'Order Type Choice'.Secondary,
-                                secondarydata.'Order To'.'Customer Name'
-                            )
-                        },
-                        {
                             Title: "Order Status:",
                             Value: If(
                                 primarydata.'Order Type' = 'Order Type Choice'.Primary,
@@ -126,6 +130,22 @@
                                 secondarydata.'Order Type' = 'Order Type Choice'.Secondary,
                                 secondarydata.'Order Status'
                             )
+                        },
+                        {
+                            Title: "Discount:",
+                            Value: If(IsBlank(primarydata.'Discount%')|| IsBlank(secondarydata.'Discount%'),  "₹0.00",Concatenate(
+                                Text(
+                                    If(
+                    primarydata.'Order Type' = 'Order Type Choice'.Primary,
+                    primarydata.'Discount%',
+                    secondarydata.'Discount%'
+                ),
+                                    "[$-hi-IN]##,##,##,###",
+                                    "hi-IN"
+                                ),
+                                "%"
+                            ))
+                            
                         },
                         {
                             Title: "Total Price:",
@@ -142,6 +162,29 @@
                             ))
                         },
                         {
+                            Title: "IGST:",
+                            Value: If(
+                                If(
+                    primarydata.'Order Type' = 'Order Type Choice'.Primary,
+                    primarydata.IGST,
+                    secondarydata.IGST) = 0,
+                                "₹0.00",
+                                Concatenate(
+                                    "₹",
+                                    Text(
+                                        If(
+                    primarydata.'Order Type' = 'Order Type Choice'.Primary,
+                    primarydata.IGST,
+                    secondarydata.IGST
+                ),
+                                   /* "[$-hi-IN]##,##,##,###",
+                                    "hi-IN"*/
+                                        "[$-en-US]#.00"
+                                    )
+                                )
+                            )
+                        },
+                        {
                             Title: "Disc. Price:",
                             Value: If(primarydata.'Discount '=0 || secondarydata.'Discount '=0,  "₹0.00",Concatenate(
                                 "₹",
@@ -154,6 +197,28 @@
                                     "[$-en-US]#.00"
                                 )
                             ))
+                        },
+                        {
+                            Title: "SGST:",
+                            Value: If(
+                                If(
+                    primarydata.'Order Type' = 'Order Type Choice'.Primary,
+                    primarydata.SGST,
+                    secondarydata.SGST) = 0,
+                                "₹0.00",
+                                Concatenate(
+                                    "₹",
+                                    Text(
+                                        If(
+                    primarydata.'Order Type' = 'Order Type Choice'.Primary,
+                    primarydata.SGST,
+                    secondarydata.SGST),
+                                   /* "[$-hi-IN]##,##,##,###",
+                                    "hi-IN"*/
+                                        "[$-en-US]#.00"
+                                    )
+                                )
+                            )
                         },
                         {
                             Title: "Net Price:",
@@ -170,6 +235,28 @@
                                     "[$-en-US]#.00"
                                 )
                             ))
+                        },
+                        {
+                            Title: "CGST:",
+                            Value: If(
+                                If(
+                    primarydata.'Order Type' = 'Order Type Choice'.Primary,
+                    primarydata.CGST,
+                    secondarydata.CGST) = 0,
+                                "₹0.00",
+                                Concatenate(
+                                    "₹",
+                                    Text(
+                                      If(
+                    primarydata.'Order Type' = 'Order Type Choice'.Primary,
+                    primarydata.CGST,
+                    secondarydata.CGST),
+                                    /*"[$-hi-IN]##,##,##,###",
+                                    "hi-IN"*/
+                                        "[$-en-US]#.00"
+                                    )
+                                )
+                            )
                         },
                         {
                             Title: "Tax:",
@@ -199,89 +286,10 @@
                                 )
                             ))
                         },
-                        {
-                            Title: "Discount:",
-                            Value: If(IsBlank(primarydata.'Discount%')|| IsBlank(secondarydata.'Discount%'),  "₹0.00",Concatenate(
-                                Text(
-                                    If(
-                    primarydata.'Order Type' = 'Order Type Choice'.Primary,
-                    primarydata.'Discount%',
-                    secondarydata.'Discount%'
-                ),
-                                    "[$-hi-IN]##,##,##,###",
-                                    "hi-IN"
-                                ),
-                                "%"
-                            ))
-                            
-                        },
-                        {
-                            Title: "IGST:",
-                            Value: If(
-                                If(
-                    primarydata.'Order Type' = 'Order Type Choice'.Primary,
-                    primarydata.IGST,
-                    secondarydata.IGST) = 0,
-                                "₹0.00",
-                                Concatenate(
-                                    "₹",
-                                    Text(
-                                        If(
-                    primarydata.'Order Type' = 'Order Type Choice'.Primary,
-                    primarydata.IGST,
-                    secondarydata.IGST
-                ),
-                                   /* "[$-hi-IN]##,##,##,###",
-                                    "hi-IN"*/
-                                        "[$-en-US]#.00"
-                                    )
-                                )
-                            )
-                        },
-                        {
-                            Title: "CGST:",
-                            Value: If(
-                                If(
-                    primarydata.'Order Type' = 'Order Type Choice'.Primary,
-                    primarydata.CGST,
-                    secondarydata.CGST) = 0,
-                                "₹0.00",
-                                Concatenate(
-                                    "₹",
-                                    Text(
-                                      If(
-                    primarydata.'Order Type' = 'Order Type Choice'.Primary,
-                    primarydata.CGST,
-                    secondarydata.CGST),
-                                    /*"[$-hi-IN]##,##,##,###",
-                                    "hi-IN"*/
-                                        "[$-en-US]#.00"
-                                    )
-                                )
-                            )
-                        },
-                        {
-                            Title: "SGST:",
-                            Value: If(
-                                If(
-                    primarydata.'Order Type' = 'Order Type Choice'.Primary,
-                    primarydata.SGST,
-                    secondarydata.SGST) = 0,
-                                "₹0.00",
-                                Concatenate(
-                                    "₹",
-                                    Text(
-                                        If(
-                    primarydata.'Order Type' = 'Order Type Choice'.Primary,
-                    primarydata.SGST,
-                    secondarydata.SGST),
-                                   /* "[$-hi-IN]##,##,##,###",
-                                    "hi-IN"*/
-                                        "[$-en-US]#.00"
-                                    )
-                                )
-                            )
-                        },
+                        
+                        
+                        
+                        
                         {
                             Title: "CESS:",
                             Value: If(
@@ -312,7 +320,7 @@
             ShowScrollbar: =false
             TabIndex: =0
             TemplateSize: =35
-            Width: =600
+            Width: =620
             WrapCount: =2
             X: =20
             ZIndex: =1
@@ -326,7 +334,7 @@
                 OnSelect: =Select(Parent)
                 Size: =16
                 Text: =ThisItem.Value.Title
-                Width: =216
+                Width: =182
                 ZIndex: =1
 
             Label72_1 As label:
@@ -336,7 +344,7 @@
                 Height: =30
                 OnSelect: =Select(Parent)
                 Text: =ThisItem.Value.Value
-                X: =142.5
+                X: =152
                 ZIndex: =2
 
         Label73_1 As label:
@@ -349,7 +357,7 @@
             Text: ="Order Products"
             Width: =560
             X: =20
-            Y: =250
+            Y: =270
             ZIndex: =2
 
         Cart_2 As orderlinecart:
@@ -360,7 +368,7 @@
 
     Container17_1 As groupContainer.manualLayoutContainer:
         Height: =862
-        Visible: =If(Gallery14_1.Selected.Title="Order Terms",true,false)
+        Visible: =If(varorderselectedId = 2,true,false)
         Width: =App.Width
         Y: =140
         ZIndex: =5
@@ -648,5 +656,46 @@
                 Width: =483
                 X: =81
                 Y: =358
-                ZIndex: =13
+                ZIndex: =12
+
+        Group21_7 As group:
+            Height: =5
+            Width: =5
+            X: =-25
+            Y: =-11
+            ZIndex: =17
+
+            Button42_8 As button:
+                DisabledBorderColor: =RGBA(219, 219, 219, 1)
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                DisabledFill: =RGBA(255, 255, 255, 1)
+                DisplayMode: =DisplayMode.Disabled
+                Fill: =RGBA(56, 96, 178, 1)
+                FontWeight: =FontWeight.Semibold
+                Height: =60
+                HoverColor: =RGBA(255, 255, 255, 1)
+                HoverFill: =ColorFade(RGBA(56, 96, 178, 1), -20%)
+                RadiusBottomLeft: =15
+                RadiusBottomRight: =15
+                RadiusTopLeft: =15
+                RadiusTopRight: =15
+                Size: =24
+                Text: =""
+                Width: =525
+                X: =59
+                Y: =349
+                ZIndex: =10
+
+            Label74_7 As label:
+                BorderColor: =RGBA(0, 18, 107, 1)
+                Color: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                Fill: =RGBA(255, 255, 255, 1)
+                FontWeight: =FontWeight.Semibold
+                Size: =16
+                Text: ="Ship To Address"
+                Width: =180
+                X: =112
+                Y: =328
+                ZIndex: =11
 

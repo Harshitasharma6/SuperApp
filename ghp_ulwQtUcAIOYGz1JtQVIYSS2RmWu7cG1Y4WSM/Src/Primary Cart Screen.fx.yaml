@@ -74,13 +74,14 @@
                 )
             Height: =2
             OnSelect: =Set(varorderselectedId,ThisItem.TabID)
+            Visible: =If(varorderselectedId = ThisItem.TabID,true,false)
             X: =Parent.TemplateWidth/2-Self.Width/2
             Y: =48
             ZIndex: =2
 
     Container16 As groupContainer.manualLayoutContainer:
         Height: =900
-        Visible: =If(Gallery14.Selected.Title="Order Summary",true,false)
+        Visible: =If(varorderselectedId = 1,true,false)
         Width: =640
         Y: =122
         ZIndex: =3
@@ -93,19 +94,20 @@
             Items: |-
                 =ForAll(
                     [
+                        
                         {
-                            Title: "Order Date",
+                            Title: "Customer:",
+                            Value: varParty
+                        },
+                        {
+                            Title: "Order Date:",
                             Value: Text(
                                 Today(),
                                 "dd-mm-yy"
                             )
                         },
                         {
-                            Title: "Customer",
-                            Value: varParty
-                        },
-                        {
-                            Title: "Total Price",
+                            Title: "Total Price:",
                             Value: If(
                                 'Product List_1'.OrderType = "Primary" || primarydata.zx_ordertype = 'Order Type Choice'.Primary,
                                 If(
@@ -154,7 +156,7 @@
                             )
                         },
                         {
-                            Title: "Discount",
+                            Title: "Discount:",
                             Value: If(
                                 'Product List_1'.OrderType = "Primary" || primarydata.zx_ordertype = 'Order Type Choice'.Primary,
                                 If(
@@ -209,7 +211,7 @@
                             )
                         },
                         {
-                            Title: "Net Price",
+                            Title: "Net Price:",
                             Value: If(
                                 'Product List_1'.OrderType = "Primary" || primarydata.zx_ordertype = 'Order Type Choice'.Primary,
                                 If(
@@ -306,7 +308,7 @@
                             )
                         },
                         {
-                            Title: "Tax",
+                            Title: "Tax:",
                             Value: If(
                                 'Product List_1'.OrderType = "Primary" || primarydata.zx_ordertype = 'Order Type Choice'.Primary,
                                 If(
@@ -391,7 +393,7 @@
                             )
                         },
                         {
-                            Title: "Disc.Price",
+                            Title: "Disc.Price:",
                             Value: If(
                                 'Product List_1'.OrderType = "Primary" || primarydata.zx_ordertype = 'Order Type Choice'.Primary,
                                 If(
@@ -440,7 +442,7 @@
                             )
                         },
                         {
-                            Title: "IGST",
+                            Title: "IGST:",
                             Value: If(
                                 
                                     Sum(
@@ -464,7 +466,7 @@
                             )
                         },
                         {
-                            Title: "CGST",
+                            Title: "CGST:",
                             Value: If(
                                 
                                     Sum(
@@ -486,7 +488,7 @@
                             )
                         },
                         {
-                            Title: "SGST",
+                            Title: "SGST:",
                             Value: If(
                                 
                                     Sum(
@@ -508,7 +510,7 @@
                             ))
                         },
                         {
-                            Title: "Cess",
+                            Title: "Cess:",
                             Value:If(
                                 
                                     Sum(
@@ -666,7 +668,7 @@
 
     Container17 As groupContainer.manualLayoutContainer:
         Height: =862
-        Visible: =If(Gallery14.Selected.Title="Order Terms",true,false)
+        Visible: =If(varorderselectedId = 2,true,false)
         Width: =App.Width
         Y: =120
         ZIndex: =5
@@ -816,7 +818,7 @@
                 Size: =16
                 Text: ="Ship To Party"
                 Width: =160
-                X: =111
+                X: =112
                 Y: =232
                 ZIndex: =6
 
@@ -877,7 +879,7 @@
                 SelectMultiple: =false
                 Size: =14
                 Width: =510
-                X: =65
+                X: =74
                 Y: =81
                 ZIndex: =8
 
@@ -890,7 +892,7 @@
                 Size: =16
                 Text: ="Payment Terms"
                 Width: =180
-                X: =65
+                X: =112
                 Y: =51
                 ZIndex: =9
 
@@ -983,13 +985,13 @@
                                 ),
                                 'Bill To': LookUp(
                                     OfflinePartiesCollection,
-                                    'Customer Name' = ComboBox7_7.Selected.'Customer Name'
+                                    'Customer Name' = ComboBox7.Selected.'Customer Name'
                                 ),
                                 'Ship To': LookUp(
                                     OfflinePartiesCollection,
-                                    'Customer Name' = ComboBox7_8.Selected.'Customer Name'
+                                    'Customer Name' = ComboBox7_2.Selected.'Customer Name'
                                 ),
-                                'Ship to Address': TextInput1_2.Text,
+                                'Ship to Address': TextInput1.Text,
                                 'Cess %': Sum(
                                     colPrimaryCart,
                                     cessAmount
@@ -1219,14 +1221,48 @@
             Width: =258
             X: =189
             Y: =655
-            ZIndex: =14
+            ZIndex: =10
 
         Group5 As group:
             Height: =5
             Width: =5
-            X: =40
-            Y: =40
-            ZIndex: =15
+            X: =80
+            Y: =80
+            ZIndex: =17
+
+            Button42_3 As button:
+                DisabledBorderColor: =RGBA(219, 219, 219, 1)
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                DisabledFill: =RGBA(255, 255, 255, 1)
+                DisplayMode: =DisplayMode.Disabled
+                Fill: =RGBA(56, 96, 178, 1)
+                FontWeight: =FontWeight.Semibold
+                Height: =75
+                HoverColor: =RGBA(255, 255, 255, 1)
+                HoverFill: =ColorFade(RGBA(56, 96, 178, 1), -20%)
+                RadiusBottomLeft: =15
+                RadiusBottomRight: =15
+                RadiusTopLeft: =15
+                RadiusTopRight: =15
+                Size: =24
+                Text: =""
+                Width: =525
+                X: =66
+                Y: =343
+                ZIndex: =11
+
+            Label74_3 As label:
+                BorderColor: =RGBA(0, 18, 107, 1)
+                Color: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                Fill: =RGBA(255, 255, 255, 1)
+                FontWeight: =FontWeight.Semibold
+                Size: =16
+                Text: ="Ship To Address"
+                Width: =180
+                X: =112
+                Y: =313
+                ZIndex: =12
 
             TextInput1 As text:
                 AccessibleLabel: ="TextInput1"
@@ -1254,7 +1290,7 @@
                 RadiusTopRight: =0
                 Size: =16
                 Width: =483
-                X: =77
-                Y: =362
+                X: =74
+                Y: =360
                 ZIndex: =13
 

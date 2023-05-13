@@ -292,11 +292,13 @@
     Display_16 As gallery.galleryHorizontal:
         AccessibleLabel: ="Filter Displayed"
         BorderColor: =RGBA(0, 18, 107, 1)
+        BorderStyle: =BorderStyle.None
         DelayItemLoading: =true
         Fill: |-
             =RGBA(0, 0, 0, 0)
             //_VarGblAppColors.PrimaryRed
-        Height: =75
+        FocusedBorderThickness: =0
+        Height: =57
         Items: =colorderFilter
         LoadingSpinner: =LoadingSpinner.Data
         ShowScrollbar: =false
@@ -305,9 +307,9 @@
         Visible: |-
             =true
             //varFilter
-        Width: =454
+        Width: =404
         X: =33
-        Y: =85
+        Y: =105
         ZIndex: =10
 
         Button20_20 As button:
@@ -322,13 +324,13 @@
             Height: =41
             HoverColor: =RGBA(255, 255, 255, 1)
             HoverFill: =ColorFade(RGBA(56, 96, 178, 1), -20%)
-            RadiusBottomLeft: =15
-            RadiusBottomRight: =15
-            RadiusTopLeft: =15
-            RadiusTopRight: =15
+            RadiusBottomLeft: =8
+            RadiusBottomRight: =8
+            RadiusTopLeft: =8
+            RadiusTopRight: =8
             Size: =24
             Text: =""
-            Width: =210
+            Width: =199
             X: =6
             ZIndex: =1
 
@@ -341,7 +343,7 @@
             FontWeight: =FontWeight.Bold
             Height: =41
             OnSelect: =Select(Parent)
-            Size: =10
+            Size: =12
             Text: |-
                 =ThisItem.Title & ": " & ThisItem.value
             Tooltip: |-
@@ -373,7 +375,7 @@
                 
                 Set(varCollectionEmpty,true)
             TabIndex: =0//-1
-            Width: =30
+            Width: =25
             X: =175
             Y: =8
             ZIndex: =4

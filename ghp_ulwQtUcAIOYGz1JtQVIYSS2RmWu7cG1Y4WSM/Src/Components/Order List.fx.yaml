@@ -487,10 +487,10 @@
                 );
                 
                 
-                Set(
+                /*Set(
                     varActivated,
                     ThisItem.'Order From'.'Credit Activated'
-                );
+                );*/
                 Set(
                     varRemainingCreditLimit,
                     Text(
@@ -536,10 +536,8 @@
                     );
                     Navigate(
                         'Primary Cart Screen',
-                        ScreenTransition.CoverRight,{
-                    varParty:
-                    ThisItem.'Order From'.'Customer Name'
-                }
+                        ScreenTransition.CoverRight,{varActivated:
+                    ThisItem.'Order From'.'Credit Activated'}
                 
                     ),
                     ThisItem.'Order Type' = 'Order Type Choice'.Secondary,
@@ -576,11 +574,13 @@
                     );
                     Navigate(
                         'Secondary Cart Screen',
-                        ScreenTransition.CoverRight,{
-                    varParty:
-                    ThisItem.'Order From'.'Customer Name'
-                }
+                        ScreenTransition.CoverRight,{varActivated:
+                    ThisItem.'Order From'.'Credit Activated'}
+                  
                     )
+                );
+                Set(  varParty,
+                    ThisItem.'Order From'.'Customer Name'
                 );
                 Set(varorderselectedId,1)
             PressedBorderColor: =ColorFade(RGBA(0, 120, 212, 1), -50%)
