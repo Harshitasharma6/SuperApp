@@ -2,7 +2,10 @@ VisitPlanningNew As screen:
     Fill: =RGBA(227, 228, 230, 0.57)
     LoadingSpinnerColor: =RGBA(0, 120, 212, 1)
     OnVisible: |-
-        =
+        =Set(MY_Lead,2);
+        
+        Set(cust_type,'Party Type Choices'.Distributor);
+        
         Set(
             VarvisitDate,
             Today()
@@ -14,7 +17,6 @@ VisitPlanningNew As screen:
         
         
         Set(varCollectionEmpty,true);
-        Set(mylead,2)
 
     "'Bottom Bar_15' As 'Bottom Bar'":
         Height: =105
@@ -25,7 +27,7 @@ VisitPlanningNew As screen:
         BorderColor: =RGBA(0, 18, 107, 1)
         BorderStyle: =BorderStyle.None
         FocusedBorderThickness: =01
-        Height: =688
+        Height: =679
         Items: |-
             =If(
                 varCollectionEmpty = true,
@@ -223,10 +225,10 @@ VisitPlanningNew As screen:
         ShowScrollbar: =false
         TabIndex: =0
         TemplateSize: =242
-        Visible: =If(mylead=1, true, false)
+        Visible: =If(MY_Lead=1, true, false)
         Width: =610
         X: =10
-        Y: =341
+        Y: =345
         ZIndex: =4
 
         Button5_26 As button:
@@ -308,7 +310,7 @@ VisitPlanningNew As screen:
             Width: =222
             Wrap: =false
             X: =94
-            Y: =11
+            Y: =15
             ZIndex: =5
 
         Button6_3 As button:
@@ -478,7 +480,7 @@ VisitPlanningNew As screen:
                         CountRows(
                             Filter(
                                 colAddLeadParty,
-                             zx_partiesid= ThisItem.Party.Parties  && Date=Clickedvisitdate
+                             zx_leadsid = ThisItem.zx_leadsid   && Date=Clickedvisitdate
                             )
                         ) = 0,
                         DisplayMode.Edit,
@@ -492,7 +494,7 @@ VisitPlanningNew As screen:
                         CountRows(
                             Filter(
                                 colAddLeadParty,
-                                 zx_partiesid= ThisItem.Party.Parties  && Date=Clickedvisitdate
+                               zx_leadsid = ThisItem.zx_leadsid   && Date=Clickedvisitdate
                             )
                         ) = 0,
                      If(
@@ -565,7 +567,7 @@ VisitPlanningNew As screen:
                                 ),
                                 Collect(
                                     colAddLeadParty,
-                                  AddColumns( Filter('Parties.S',Parties=ThisItem.Party.Parties) ,"My_lead",ThisItem,"Date",Clickedvisitdate)
+                                  AddColumns( Filter('Leads.S',Leads=ThisItem.Leads) ,"Date",Clickedvisitdate)
                                 )
                             ),
                             Notify(
@@ -626,8 +628,8 @@ VisitPlanningNew As screen:
             TabIndex: =0
             Visible: =If('Type Filter_1'.Selected.Id=1, true, false)
             Width: =45
-            X: =35
-            Y: =27
+            X: =38
+            Y: =33
             ZIndex: =25
 
         Body1_125 As label:
@@ -669,7 +671,7 @@ VisitPlanningNew As screen:
             Tooltip: =
             Wrap: =false
             X: =94
-            Y: =50
+            Y: =54
             ZIndex: =26
 
         Label56_1 As label:
@@ -679,7 +681,7 @@ VisitPlanningNew As screen:
             OnSelect: =Select(Parent)
             Text: =Text(ThisItem.createdon,"dd-mm-yyyy")
             X: =213
-            Y: =46
+            Y: =50
             ZIndex: =27
 
         Label61_1 As label:
@@ -690,8 +692,8 @@ VisitPlanningNew As screen:
             OnSelect: =Select(Parent)
             Text: =Left(Upper(ThisItem.zx_Party.'Customer Name'),2)
             Width: =40
-            X: =41
-            Y: =30
+            X: =44
+            Y: =36
             ZIndex: =28
 
         Label62_6 As label:
@@ -860,77 +862,53 @@ VisitPlanningNew As screen:
         ScreenName: ="Visit Planning"
         ZIndex: =10
 
-    Icon7_4 As icon.ShoppingCart:
-        AccessibleLabel: ="Cart"
-        BorderColor: =RGBA(0, 18, 107, 1)
-        Color: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )
-        DisabledBorderColor: =RGBA(166, 166, 166, 1)
-        DisabledColor: =RGBA(244, 244, 244, 1)
-        Height: =43
-        Icon: =Icon.ShoppingCart
-        OnSelect: =Navigate(VisitPlanCart)
-        PaddingBottom: =5
-        PaddingLeft: =5
-        PaddingRight: =5
-        PaddingTop: =5
-        TabIndex: =0
-        Width: =44
-        X: =545
-        Y: =25
-        ZIndex: =11
-
-    Button4_4 As button:
-        BorderThickness: =0
-        Color: =RGBA(0, 0, 0, 1)
-        DisabledBorderColor: =RGBA(166, 166, 166, 1)
-        DisabledColor: =RGBA(166, 166, 166, 1)
-        DisabledFill: =RGBA(244, 244, 244, 1)
-        DisplayMode: =DisplayMode.View
-        Fill: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )
-        FontWeight: =FontWeight.Semibold
-        Height: =30
-        HoverColor: =RGBA(255, 255, 255, 1)
-        HoverFill: =ColorFade(RGBA(56, 96, 178, 1), -20%)
-        OnSelect: =Navigate(VisitPlanCart)
-        RadiusBottomLeft: =50
-        RadiusBottomRight: =50
-        RadiusTopLeft: =50
-        RadiusTopRight: =50
-        Size: =LookUp(c_EnvironmentVariable,'Display Name'="Text Regular Font Size").'Default Value'
-        Text: =CountRows(colAddLeadParty)
-        Width: =30
-        X: =584
-        Y: =17
-        ZIndex: =12
-
     Gallery1_5 As gallery.galleryVertical:
         AccessibleLabel: ="List View"
         BorderColor: =RGBA(0, 18, 107, 1)
         FocusedBorderThickness: =
-        Height: =765
+        Height: =755
         Items: |-
-            =If(IsBlank(areaCmb_1.Selected),
-            
-            Filter(
-                OfflinePartiesCollection,
-              'Customer Type' = 'Type Filter_1'.Selected.Title
-            ),
-            
-            
-            Filter(
-                OfflinePartiesCollection,
-                Area.Area = areaCmb_1.Selected.Area.Area && 'Customer Type' = 'Type Filter_1'.Selected.Title
-            ))
+            =If(
+                IsBlank(areaCmb_1.Selected),
+                If(
+                    IsBlank(TextInput2_7.Text),
+                    Filter(
+                        OfflinePartiesCollection,
+                        'Customer Type' = cust_type
+                    ),
+                    Filter(
+                        Filter(
+                            OfflinePartiesCollection,
+                            'Customer Type' =cust_type
+                        ),
+                        TextInput2_7.Text in 'Customer Name'
+                    )
+                ),
+                If(
+                    IsBlank(TextInput2_7.Text),
+                    Filter(
+                        OfflinePartiesCollection,
+                        Area.Area = areaCmb_1.Selected.Area.Area && 'Customer Type' =cust_type
+                    ),
+                    Filter(
+                        Filter(
+                            OfflinePartiesCollection,
+                            Area.Area = areaCmb_1.Selected.Area.Area && 'Customer Type' =cust_type
+                        ),
+                        TextInput2_7.Text in 'Customer Name'
+                    )
+                )
+            )
         Layout: =Layout.Vertical
         ShowScrollbar: =false
         TabIndex: =
         TemplatePadding: =10
         TemplateSize: =217
-        Visible: =If(mylead>1,true,false)
+        Visible: =If(MY_Lead>=2,true,false)
         Width: =630
         X: =10
-        Y: =264
-        ZIndex: =16
+        Y: =274
+        ZIndex: =13
 
         Background_14 As button:
             BorderThickness: =0//1
@@ -1351,7 +1329,7 @@ VisitPlanningNew As screen:
                     =If(
                         CountRows(
                             Filter(
-                                colAddLeadParty,
+                                colAddLeadParty1,
                                 zx_partiesid= ThisItem.Parties && Date = Clickedvisitdate
                             )
                         ) = 0,
@@ -1367,7 +1345,7 @@ VisitPlanningNew As screen:
                     If(
                         CountRows(
                             Filter(
-                                colAddLeadParty,
+                                colAddLeadParty1,
                                zx_partiesid= ThisItem.Parties &&  Date = Clickedvisitdate//_varSelectedArea1.Area
                             )
                         ) = 0,
@@ -1440,7 +1418,7 @@ VisitPlanningNew As screen:
                                     1000
                                 ),
                                 Collect(
-                                    colAddLeadParty,
+                                    colAddLeadParty1,
                                     AddColumns(
                                     Filter(
                                         OfflinePartiesCollection,
@@ -1597,8 +1575,8 @@ VisitPlanningNew As screen:
                 },
                 {
                     Title: 'Party Type Choices'.Dealer,
-                    Id: 3,
-                     Search_PlaceHolder:"Dealer"
+                    Id: 3
+                   
                 },
                 {
                     Title: 'Party Type Choices'.Retailer,
@@ -1617,7 +1595,7 @@ VisitPlanningNew As screen:
         Width: =588
         X: =27
         Y: =144
-        ZIndex: =23
+        ZIndex: =18
 
         Border_4 As button:
             BorderColor: |-
@@ -1642,7 +1620,7 @@ VisitPlanningNew As screen:
             Height: =54
             HoverColor: =RGBA(255, 255, 255, 1)
             HoverFill: =
-            OnSelect: =mylead
+            OnSelect: =MY_Lead
             RadiusBottomLeft: =15
             RadiusBottomRight: =15
             RadiusTopLeft: =15
@@ -1663,7 +1641,9 @@ VisitPlanningNew As screen:
             FocusedBorderThickness: =0.3
             FontWeight: =FontWeight.Semibold
             Height: =60
-            OnSelect: =Set(mylead,ThisItem.Id)
+            OnSelect: |-
+                =Set(MY_Lead,ThisItem.Id);
+                Set(cust_type,ThisItem.Title)
             Size: =LookUp(c_EnvironmentVariable,'Display Name'="Text Medium Font Size").'Default Value'
             TabIndex: =0
             Text: =ThisItem.Title
@@ -1675,18 +1655,239 @@ VisitPlanningNew As screen:
             Fill: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )
             Height: =2
             OnSelect: =Select(Parent)
-            Visible: =If(mylead=ThisItem.Id,true,false)
+            Visible: =If(MY_Lead=ThisItem.Id,true,false)
             Width: =170
             X: =20
             Y: =56
             ZIndex: =3
+
+    Display_8 As gallery.galleryHorizontal:
+        AccessibleLabel: ="Filter Applied"
+        BorderColor: =RGBA(0, 18, 107, 1)
+        DelayItemLoading: =true
+        Height: =60
+        Items: =colLeadFilter
+        LoadingSpinner: =LoadingSpinner.Data
+        ShowScrollbar: =false
+        TabIndex: =0//-1
+        TemplateSize: =255
+        Visible: |
+            =If(MY_Lead=1,true,false)
+        Width: =264
+        X: =27
+        Y: =212
+        ZIndex: =19
+
+        Button20_11 As button:
+            DisabledBorderColor: =RGBA(166, 166, 166, 1)
+            DisabledColor: =RGBA(166, 166, 166, 1)
+            DisabledFill: =RGBA(244, 244, 244, 1)
+            DisplayMode: =DisplayMode.View
+            Fill: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )
+            FontWeight: =FontWeight.Semibold
+            Height: =46
+            HoverColor: =RGBA(255, 255, 255, 1)
+            HoverFill: =ColorFade(RGBA(56, 96, 178, 1), -20%)
+            RadiusBottomLeft: =15
+            RadiusBottomRight: =15
+            RadiusTopLeft: =15
+            RadiusTopRight: =15
+            Size: =24
+            Text: =""
+            Width: =246
+            X: =2
+            ZIndex: =1
+
+        Label31_15 As label:
+            BorderColor: =RGBA(0, 18, 107, 1)
+            Color: =RGBA(255, 255, 255, 1)
+            DisabledColor: =RGBA(166, 166, 166, 1)
+            Height: =46
+            OnSelect: =Select(Parent)
+            Size: =16
+            Text: |-
+                =ThisItem.Title & " :" & " " & ThisItem.value.Value
+            Tooltip: |-
+                =//ThisItem.Title & ":"
+            Width: =193
+            Wrap: =false
+            X: =17
+            ZIndex: =2
+
+        Icon21_11 As icon.Cancel:
+            AccessibleLabel: ="Filter Removed"
+            BorderColor: =RGBA(0, 18, 107, 1)
+            Color: =RGBA(255, 255, 255, 1)
+            DisabledBorderColor: =RGBA(166, 166, 166, 1)
+            DisabledColor: =RGBA(244, 244, 244, 1)
+            Height: =20
+            Icon: =Icon.Cancel
+            OnSelect: |-
+                =Remove(
+                    colLeadFilter,
+                    ThisItem
+                );
+                Reset(radioStage_2);
+                Set(varCollectionEmpty,true);
+                Switch(
+                    ThisItem.Title,
+                    "Stage",
+                    Reset(radioStage_2);
+                    ,
+                    "Commit",
+                    Reset(radioCommit_2),
+                    "Date From",
+                    Reset(DateFrom_11);
+                    Set(
+                        varCreateddate,
+                        false
+                    ),
+                    "Lead Value",
+                    Reset(Leadvalue_2),
+                    "Estimated Closure Date",
+                    Reset(DateFrom_12);
+                    Set(
+                        varEstimated,
+                        false
+                    ),
+                    "Customer",
+                    Reset(radioCustomers_2),
+                    "Customer",
+                    Reset(radioCustomers_2),
+                    "Area",
+                    Reset(radioArea_3),
+                    "Competitor",
+                    Reset(radioCompetitor_2)
+                )
+            TabIndex: =0//-1
+            Width: =27
+            X: =220
+            Y: =4
+            ZIndex: =4
+
+    Group6_1 As group:
+        Height: =5
+        Width: =5
+        X: =40
+        Y: =20
+        ZIndex: =24
+
+        DateFilter_1 As gallery.galleryHorizontal:
+            AccessibleLabel: ="Date Gallery"
+            BorderColor: =RGBA(230, 230, 230, 1)
+            Height: =60
+            Items: |-
+                =ForAll(
+                    [
+                        {
+                            Title: "Yesterday",
+                            Date: DateValue(VarvisitDate) - 1
+                        },
+                        {
+                            Title: "Today",
+                            Date: DateValue(VarvisitDate)
+                        },
+                        {
+                            Title: "Tomorrow",
+                            Date: DateValue(VarvisitDate) + 1
+                        }
+                    ],
+                    {Value: ThisRecord}
+                )
+            ShowScrollbar: =false
+            TabIndex: =0
+            TemplatePadding: =0
+            TemplateSize: =DateFilter_1.Width / 3
+            Width: =App.Width - 100
+            X: =50
+            Y: =85
+            ZIndex: =11
+
+            Button5_11 As button:
+                BorderStyle: =BorderStyle.None
+                Color: |-
+                    =If(ThisItem.Value.Date = Clickedvisitdate, Color.White,ColorValue(
+                        LookUp(
+                            c_EnvironmentVariable,
+                            'Display Name' = "Button Fill"
+                        ).'Default Value'))
+                DisabledBorderColor: =RGBA(166, 166, 166, 1)
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                DisabledFill: =RGBA(244, 244, 244, 1)
+                Fill: |-
+                    =If(ThisItem.Value.Date = Clickedvisitdate,ColorValue(
+                        LookUp(
+                            c_EnvironmentVariable,
+                            'Display Name' = "Button Fill"
+                        ).'Default Value'), ColorValue( LookUp('Environment Variable Definitions', 'Display Name'="Common Primary Background").'Default Value'))
+                FontWeight: =FontWeight.Semibold
+                Height: =50
+                HoverColor: =RGBA(255, 255, 255, 1)
+                HoverFill: |-
+                    =ColorFade(
+                        ColorValue(
+                            LookUp(
+                                c_EnvironmentVariable,
+                                'Display Name' = "Button Fill"
+                            ).'Default Value'
+                        ),
+                        -20%
+                    )
+                OnSelect: =Set(Clickedvisitdate, ThisItem.Value.Date)
+                Size: =12
+                Text: |-
+                    =If(
+                        (ThisItem.Value.Date = Today() - 1) || (ThisItem.Value.Date = Today()) || (ThisItem.Value.Date = Today() + 1),
+                        ThisItem.Value.Title & " (" & Text(
+                            DateValue(ThisItem.Value.Date),
+                            "mmm dd"
+                        ) & ")",
+                        Text(
+                            DateValue(ThisItem.Value.Date),
+                            "mmm dd"
+                        )
+                    )
+                Width: =170
+                X: =10
+                Y: =10
+                ZIndex: =1
+
+        PrevDateIcn_1 As icon.ChevronLeft:
+            AccessibleLabel: ="Left Date Icon"
+            BorderColor: =RGBA(0, 18, 107, 1)
+            Color: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )
+            DisabledBorderColor: =RGBA(166, 166, 166, 1)
+            DisabledColor: =RGBA(244, 244, 244, 1)
+            Height: =30
+            Icon: =Icon.ChevronLeft
+            OnSelect: =Set(VarvisitDate, DateValue(VarPjpDate) - 3)
+            TabIndex: =0
+            Width: =50
+            X: =10
+            Y: =104
+            ZIndex: =12
+
+        NextDateIcn_1 As icon.ChevronLeft:
+            AccessibleLabel: ="Right Date Icon"
+            BorderColor: =RGBA(0, 18, 107, 1)
+            Color: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )
+            DisabledBorderColor: =RGBA(166, 166, 166, 1)
+            DisabledColor: =RGBA(244, 244, 244, 1)
+            Height: =30
+            Icon: =Icon.ChevronRight
+            OnSelect: =Set(VarvisitDate, DateValue(VarPjpDate) + 3)
+            TabIndex: =0
+            Width: =50
+            X: =582
+            Y: =104
+            ZIndex: =26
 
     Container5_3 As groupContainer.manualLayoutContainer:
         Height: =860
         Visible: =varPartyFilter
         Width: =640
         Y: =193
-        ZIndex: =24
+        ZIndex: =25
 
         "'filter button_13' As button":
             DisabledBorderColor: =RGBA(166, 166, 166, 1)
@@ -3070,227 +3271,6 @@ VisitPlanningNew As screen:
                     Y: =14
                     ZIndex: =4
 
-    Group6_1 As group:
-        Height: =5
-        Width: =5
-        X: =40
-        Y: =20
-        ZIndex: =24
-
-        DateFilter_1 As gallery.galleryHorizontal:
-            AccessibleLabel: ="Date Gallery"
-            BorderColor: =RGBA(230, 230, 230, 1)
-            Height: =60
-            Items: |-
-                =ForAll(
-                    [
-                        {
-                            Title: "Yesterday",
-                            Date: DateValue(VarvisitDate) - 1
-                        },
-                        {
-                            Title: "Today",
-                            Date: DateValue(VarvisitDate)
-                        },
-                        {
-                            Title: "Tomorrow",
-                            Date: DateValue(VarvisitDate) + 1
-                        }
-                    ],
-                    {Value: ThisRecord}
-                )
-            ShowScrollbar: =false
-            TabIndex: =0
-            TemplatePadding: =0
-            TemplateSize: =DateFilter_1.Width / 3
-            Width: =App.Width - 100
-            X: =50
-            Y: =85
-            ZIndex: =13
-
-            Button5_11 As button:
-                BorderStyle: =BorderStyle.None
-                Color: |-
-                    =If(ThisItem.Value.Date = Clickedvisitdate, Color.White,ColorValue(
-                        LookUp(
-                            c_EnvironmentVariable,
-                            'Display Name' = "Button Fill"
-                        ).'Default Value'))
-                DisabledBorderColor: =RGBA(166, 166, 166, 1)
-                DisabledColor: =RGBA(166, 166, 166, 1)
-                DisabledFill: =RGBA(244, 244, 244, 1)
-                Fill: |-
-                    =If(ThisItem.Value.Date = Clickedvisitdate,ColorValue(
-                        LookUp(
-                            c_EnvironmentVariable,
-                            'Display Name' = "Button Fill"
-                        ).'Default Value'), ColorValue( LookUp('Environment Variable Definitions', 'Display Name'="Common Primary Background").'Default Value'))
-                FontWeight: =FontWeight.Semibold
-                Height: =50
-                HoverColor: =RGBA(255, 255, 255, 1)
-                HoverFill: |-
-                    =ColorFade(
-                        ColorValue(
-                            LookUp(
-                                c_EnvironmentVariable,
-                                'Display Name' = "Button Fill"
-                            ).'Default Value'
-                        ),
-                        -20%
-                    )
-                OnSelect: =Set(Clickedvisitdate, ThisItem.Value.Date)
-                Size: =12
-                Text: |-
-                    =If(
-                        (ThisItem.Value.Date = Today() - 1) || (ThisItem.Value.Date = Today()) || (ThisItem.Value.Date = Today() + 1),
-                        ThisItem.Value.Title & " (" & Text(
-                            DateValue(ThisItem.Value.Date),
-                            "mmm dd"
-                        ) & ")",
-                        Text(
-                            DateValue(ThisItem.Value.Date),
-                            "mmm dd"
-                        )
-                    )
-                Width: =170
-                X: =10
-                Y: =10
-                ZIndex: =1
-
-        PrevDateIcn_1 As icon.ChevronLeft:
-            AccessibleLabel: ="Left Date Icon"
-            BorderColor: =RGBA(0, 18, 107, 1)
-            Color: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )
-            DisabledBorderColor: =RGBA(166, 166, 166, 1)
-            DisabledColor: =RGBA(244, 244, 244, 1)
-            Height: =30
-            Icon: =Icon.ChevronLeft
-            OnSelect: =Set(VarvisitDate, DateValue(VarPjpDate) - 3)
-            TabIndex: =0
-            Width: =50
-            X: =10
-            Y: =104
-            ZIndex: =14
-
-        NextDateIcn_1 As icon.ChevronLeft:
-            AccessibleLabel: ="Right Date Icon"
-            BorderColor: =RGBA(0, 18, 107, 1)
-            Color: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )
-            DisabledBorderColor: =RGBA(166, 166, 166, 1)
-            DisabledColor: =RGBA(244, 244, 244, 1)
-            Height: =30
-            Icon: =Icon.ChevronRight
-            OnSelect: =Set(VarvisitDate, DateValue(VarPjpDate) + 3)
-            TabIndex: =0
-            Width: =50
-            X: =582
-            Y: =104
-            ZIndex: =15
-
-    Display_8 As gallery.galleryHorizontal:
-        AccessibleLabel: ="Filter Applied"
-        BorderColor: =RGBA(0, 18, 107, 1)
-        DelayItemLoading: =true
-        Height: =60
-        Items: =colLeadFilter
-        LoadingSpinner: =LoadingSpinner.Data
-        ShowScrollbar: =false
-        TabIndex: =0//-1
-        TemplateSize: =255
-        Visible: |
-            =If('Type Filter_1'.Selected.Id=1,true,false)
-        Width: =264
-        X: =27
-        Y: =212
-        ZIndex: =25
-
-        Button20_11 As button:
-            DisabledBorderColor: =RGBA(166, 166, 166, 1)
-            DisabledColor: =RGBA(166, 166, 166, 1)
-            DisabledFill: =RGBA(244, 244, 244, 1)
-            DisplayMode: =DisplayMode.View
-            Fill: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )
-            FontWeight: =FontWeight.Semibold
-            Height: =46
-            HoverColor: =RGBA(255, 255, 255, 1)
-            HoverFill: =ColorFade(RGBA(56, 96, 178, 1), -20%)
-            RadiusBottomLeft: =15
-            RadiusBottomRight: =15
-            RadiusTopLeft: =15
-            RadiusTopRight: =15
-            Size: =24
-            Text: =""
-            Width: =246
-            X: =2
-            ZIndex: =1
-
-        Label31_15 As label:
-            BorderColor: =RGBA(0, 18, 107, 1)
-            Color: =RGBA(255, 255, 255, 1)
-            DisabledColor: =RGBA(166, 166, 166, 1)
-            Height: =46
-            OnSelect: =Select(Parent)
-            Size: =16
-            Text: |-
-                =ThisItem.Title & " :" & " " & ThisItem.value.Value
-            Tooltip: |-
-                =//ThisItem.Title & ":"
-            Width: =193
-            Wrap: =false
-            X: =17
-            ZIndex: =2
-
-        Icon21_11 As icon.Cancel:
-            AccessibleLabel: ="Filter Removed"
-            BorderColor: =RGBA(0, 18, 107, 1)
-            Color: =RGBA(255, 255, 255, 1)
-            DisabledBorderColor: =RGBA(166, 166, 166, 1)
-            DisabledColor: =RGBA(244, 244, 244, 1)
-            Height: =20
-            Icon: =Icon.Cancel
-            OnSelect: |-
-                =Remove(
-                    colLeadFilter,
-                    ThisItem
-                );
-                Reset(radioStage_2);
-                Set(varCollectionEmpty,true);
-                Switch(
-                    ThisItem.Title,
-                    "Stage",
-                    Reset(radioStage_2);
-                    ,
-                    "Commit",
-                    Reset(radioCommit_2),
-                    "Date From",
-                    Reset(DateFrom_11);
-                    Set(
-                        varCreateddate,
-                        false
-                    ),
-                    "Lead Value",
-                    Reset(Leadvalue_2),
-                    "Estimated Closure Date",
-                    Reset(DateFrom_12);
-                    Set(
-                        varEstimated,
-                        false
-                    ),
-                    "Customer",
-                    Reset(radioCustomers_2),
-                    "Customer",
-                    Reset(radioCustomers_2),
-                    "Area",
-                    Reset(radioArea_3),
-                    "Competitor",
-                    Reset(radioCompetitor_2)
-                )
-            TabIndex: =0//-1
-            Width: =27
-            X: =220
-            Y: =4
-            ZIndex: =4
-
     Main_screen_search_bar_1 As group:
         Height: =5
         Width: =5
@@ -3320,11 +3300,11 @@ VisitPlanningNew As screen:
             RadiusTopLeft: =10
             RadiusTopRight: =10
             Size: =15
-            Visible: =If('Type Filter_1'.Selected.Id=1,true,false)
+            Visible: =If(MY_Lead=1,true,false)
             Width: =585
             X: =27
             Y: =282
-            ZIndex: =19
+            ZIndex: =16
 
         Image17_3 As image:
             BorderColor: =RGBA(0, 0, 0, 0)
@@ -3339,11 +3319,11 @@ VisitPlanningNew As screen:
             Image: ='Vector (5)'
             PressedBorderColor: =RGBA(0, 0, 0, 0)
             PressedFill: =RGBA(0, 0, 0, 0)
-            Visible: =If('Type Filter_1'.Selected.Id=1,true,false)
+            Visible: =If(MY_Lead=1,true,false)
             Width: =29
             X: =41
             Y: =295
-            ZIndex: =20
+            ZIndex: =17
 
     Group5_1 As group:
         Height: =5
@@ -3371,11 +3351,11 @@ VisitPlanningNew As screen:
                 
             PressedBorderColor: =RGBA(0, 0, 0, 0)
             PressedFill: =RGBA(0, 0, 0, 0)
-            Visible: =If('Type Filter_1'.Selected.Id=1,true,false)
+            Visible: =If(MY_Lead=1,true,false)
             Width: =32
-            X: =580
+            X: =501
             Y: =217
-            ZIndex: =17
+            ZIndex: =14
 
         Button3_2 As button:
             BorderColor: =RGBA(0, 0, 0, 0)
@@ -3406,11 +3386,11 @@ VisitPlanningNew As screen:
             RadiusTopRight: =0
             Size: =24
             Text: =""
-            Visible: =If('Type Filter_1'.Selected.Id=1,true,false)
+            Visible: =If(MY_Lead=1,true,false)
             Width: =35
-            X: =577
+            X: =498
             Y: =219
-            ZIndex: =18
+            ZIndex: =15
 
     Group7 As group:
         Height: =5
@@ -3432,7 +3412,7 @@ VisitPlanningNew As screen:
             Size: =24
             Text: =""
             Width: =156
-            X: =If('Type Filter_1'.Selected.Id>1,459,399)
+            X: =If(MY_Lead>1,369,320)
             Y: =218
             ZIndex: =2
 
@@ -3479,7 +3459,9 @@ VisitPlanningNew As screen:
             SelectMultiple: =false
             Size: =14
             Width: =148
-            X: =If('Type Filter_1'.Selected.Id>1,464,404)
+            X: |-
+                =
+                If(MY_Lead>1,374,325)
             Y: =221
             ZIndex: =3
 
@@ -3501,7 +3483,19 @@ VisitPlanningNew As screen:
             DisabledFill: =RGBA(244, 244, 244, 1)
             FocusedBorderThickness: =4
             Height: =46
-            HintText: ="Search by Lead, Account or Contact"
+            HintText: |-
+                ="Search by " & If(
+                    MY_Lead = 2,
+                    "Distributor",
+                    If(
+                        MY_Lead = 3,
+                        "Dealer",
+                        If(
+                            MY_Lead = 4,
+                            "Retailer"
+                        )
+                    )
+                )
             HoverBorderColor: =RGBA(208, 231, 233, 1)
             HoverColor: =RGBA(0, 0, 0, 1)
             HoverFill: =RGBA(0, 0, 0, 0)
@@ -3512,11 +3506,10 @@ VisitPlanningNew As screen:
             RadiusTopLeft: =10
             RadiusTopRight: =10
             Size: =15
-            Visible: =If('Type Filter_1'.Selected.Id>1,true,false)
-            Width: =416
+            Visible: =If(MY_Lead>1,true,false)
             X: =30
             Y: =218
-            ZIndex: =28
+            ZIndex: =20
 
         Image17_4 As image:
             BorderColor: =RGBA(0, 0, 0, 0)
@@ -3531,9 +3524,87 @@ VisitPlanningNew As screen:
             Image: ='Vector (5)'
             PressedBorderColor: =RGBA(0, 0, 0, 0)
             PressedFill: =RGBA(0, 0, 0, 0)
-            Visible: =If('Type Filter_1'.Selected.Id>1,true,false)
+            Visible: =If(MY_Lead>1,true,false)
             Width: =20
             X: =46
             Y: =230
-            ZIndex: =29
+            ZIndex: =21
+
+    PJP_Cart_1 As group:
+        Height: =5
+        Width: =5
+        X: =40
+        Y: =40
+        ZIndex: =33
+
+        Image18_1 As image:
+            BorderColor: =RGBA(0, 0, 0, 0)
+            BorderStyle: =BorderStyle.None
+            BorderThickness: =2
+            DisabledBorderColor: =RGBA(0, 0, 0, 0)
+            DisabledFill: =RGBA(0, 0, 0, 0)
+            FocusedBorderThickness: =4
+            Height: =52
+            HoverBorderColor: =RGBA(0, 0, 0, 0)
+            HoverFill: =RGBA(0, 0, 0, 0)
+            Image: ='Group 1 (1)'
+            OnSelect: =Navigate(PlanPJPCart)
+            PressedBorderColor: =RGBA(0, 0, 0, 0)
+            PressedFill: =RGBA(0, 0, 0, 0)
+            Width: =52
+            X: =551
+            Y: =211
+            ZIndex: =22
+
+        Button4_8 As button:
+            BorderThickness: =0
+            DisabledBorderColor: =RGBA(166, 166, 166, 1)
+            DisabledColor: =RGBA(166, 166, 166, 1)
+            DisabledFill: =RGBA(244, 244, 244, 1)
+            DisplayMode: =DisplayMode.View
+            Fill: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )
+            FontWeight: =FontWeight.Semibold
+            Height: =30
+            HoverColor: =RGBA(255, 255, 255, 1)
+            HoverFill: =ColorFade(RGBA(56, 96, 178, 1), -20%)
+            OnSelect: =Navigate(PlanPJPCart)
+            RadiusBottomLeft: =50
+            RadiusBottomRight: =50
+            RadiusTopLeft: =50
+            RadiusTopRight: =50
+            Size: =LookUp(c_EnvironmentVariable,'Display Name'="Text Regular Font Size").'Default Value'
+            Text: =CountRows(colAddLeadParty)+CountRows(colAddLeadParty1)
+            Width: =30
+            X: =573
+            Y: =215
+            ZIndex: =23
+
+        Button3_4 As button:
+            BorderColor: =RGBA(0, 0, 0, 0)
+            BorderStyle: =BorderStyle.None
+            DisabledBorderColor: =RGBA(0, 0, 0, 0)
+            DisabledColor: =RGBA(166, 166, 166, 1)
+            DisabledFill: =RGBA(244, 244, 244, 1)
+            Fill: =RGBA(0, 0, 0, 0)
+            FocusedBorderColor: =ColorFade(Self.Fill, -75%)
+            Font: =Font.'Segoe UI'
+            FontWeight: =FontWeight.Semibold
+            Height: =47
+            HoverBorderColor: =RGBA(0, 0, 0, 0)
+            HoverColor: =RGBA(255, 255, 255, 1)
+            HoverFill: =
+            OnSelect: =Navigate(VisitPlanCart)
+            PressedBorderColor: =ColorFade(RGBA(0, 120, 212, 1), -50%)
+            PressedColor: =RGBA(255, 255, 255, 1)
+            PressedFill: =
+            RadiusBottomLeft: =0
+            RadiusBottomRight: =0
+            RadiusTopLeft: =0
+            RadiusTopRight: =0
+            Size: =24
+            Text: =""
+            Width: =35
+            X: =552
+            Y: =216
+            ZIndex: =24
 
