@@ -2,9 +2,7 @@
     DataSource: =
     Fill: =RGBA(237, 237, 237, 1)
     Height: =App.Height - 180
-    VisitDate: |-
-        =//Now()
-        Today()
+    VisitDate: =
     Width: =640
     X: =0
     Y: =0
@@ -21,8 +19,13 @@
                    // Filter(
                     Filter(
                         OfflineVisitCollection,
-                        'Visit date' >= 'Visit List View'.VisitDate && 'Owning User'.'Primary Email' =User().Email
-            
+                        Text(
+                            'Visit date',
+                            "dd-mm-yyyy"
+                        ) = Text(
+                            DatePicker2.SelectedDate,
+                            "dd-mm-yyyy"
+                        ) && 'Owning User'.'Primary Email' = User().Email
                         // ComboBox2_1.Selected.'Primary Email
                     ),
                        // IsToday('Created On')
@@ -1058,6 +1061,23 @@
             X: =493
             Y: =236
             ZIndex: =27
+
+        Label1 As label:
+            BorderColor: =RGBA(0, 0, 0, 0)
+            BorderStyle: =BorderStyle.None
+            BorderThickness: =2
+            Color: =RGBA(51, 51, 51, 1)
+            DisabledBorderColor: =RGBA(0, 0, 0, 0)
+            DisabledColor: =RGBA(166, 166, 166, 1)
+            FocusedBorderThickness: =4
+            Font: =Font.'Segoe UI'
+            Height: =104
+            OnSelect: =Select(Parent)
+            Size: =21
+            Text: =Text(ThisItem.'Visit date' ,"dd/mm/yyyy")&"           " & ThisItem.'Visit Type'
+            Width: =189
+            X: =234
+            ZIndex: =28
 
     Container4_25 As groupContainer:
         Height: =774

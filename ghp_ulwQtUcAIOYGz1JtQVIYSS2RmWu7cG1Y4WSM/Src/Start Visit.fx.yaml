@@ -1,10 +1,26 @@
 "'Start Visit' As screen":
     Fill: =RGBA(237, 237, 237, 1)
     LoadingSpinnerColor: =RGBA(0, 120, 212, 1)
-    OnVisible: |
-        =Set(VarStartVisitDate, Today());
-        Set(ClickedStartVisitdate, Today());
-        Set(_VarActivetopTabID, 1);
+    OnVisible: |-
+        =Set(
+            VarStartVisitDate,
+            Today()
+        );
+        Set(
+            ClickedStartVisitdate,
+            Today()
+        );
+        Set(
+            _VarActivetopTabID,
+            1
+        );
+        ClearCollect(
+            OfflineVisitCollection,
+            Filter(
+                'Visit.S',
+                'Owning User'.'Primary Email' = User().Email
+            )
+        )
 
     Button1 As button:
         BorderColor: =RGBA(0, 0, 0, 0)
@@ -806,7 +822,7 @@
     "'Visit List View_1' As 'Visit List View'":
         Height: =818
         Visible: ='Top Tab_1'.ActiveTabId="2"
-        VisitDate: =ClickedStartVisitdate
+        VisitDate: =DatePicker2.SelectedDate
         Y: =230
         ZIndex: =5
 
@@ -2106,6 +2122,7 @@
         HoverDateFill: =RGBA(200, 200, 200, 1)
         IconBackground: =RGBA(0, 0, 0, 0)
         IconFill: =RGBA(0, 0, 0, 0)
+        OnChange: =
         PaddingTop: =5
         SelectedDateFill: =RGBA(0, 120, 212, 1)
         Size: =21
@@ -2740,17 +2757,22 @@
                             If(
                                 First(vt).Value = "All",
                                 Filter(
-                                    OfflineVisitCollection,
-                                    ('Owning User'.'Primary Email' = User().Email && Text('Visit date',"dd-mm-yyyy") = Text(DatePicker2.SelectedDate,"dd-mm-yyyy")
-                                )
-                                       
-                                ),
+                                'Visit.S',
+                                'Owning User'.'Primary Email' = User().Email
+                            )
+                                
+                                
+                                ,
                           If(
                                     First(vt).Value = "Planned",
                                     Filter(
                                          OfflineVisitCollection,
                                         ('Owning User'.'Primary Email' = User().Email && Text('Visit date',"dd-mm-yyyy") = Text(DatePicker2.SelectedDate,"dd-mm-yyyy") && Text('Visit Type') = "Planned"
-                                    )),
+                                    ))
+                                    
+                                    
+                                    
+                                    ,
                                     If(
                                     First(vt).Value = "UnPlanned",
                                     Filter(
@@ -2760,11 +2782,12 @@
                         
                                       If(
                                 CountRows(vt) = 2,
-                                Filter(
-                                     OfflineVisitCollection,
-                                    ('Owning User'.'Primary Email' = User().Email && Text('Visit date',"dd-mm-yyyy") = Text(DatePicker2.SelectedDate,"dd-mm-yyyy") )
-                                )
+                              Filter(
+                                'Visit.S',
+                                'Owning User'.'Primary Email' = User().Email
+                            )
                             )));
+                            ClearCollect(OfflineVisitCollection,dat11);
                             Set(varFilter,false);
                         
                         
@@ -2850,7 +2873,7 @@
                     HoverFill: |-
                         =ColorFade(ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )
                         , 10%)
-                    OnSelect: |
+                    OnSelect: |+
                         =Reset(DateFrom_3);
                         Reset(DateTo_3);
                         //Reset(radioDate_1);
@@ -2860,7 +2883,12 @@
                         Clear(vt);
                         Reset(C_ALL);
                         Reset(C_Planned);
-                        Reset(C_Unplanned)
+                        Reset(C_Unplanned);
+                        Reset(DatePicker2);
+                        Set(varFilter,false);
+                        
+                        
+                        
                     Size: =16
                     Text: ="Clear Filters"
                     Visible: =varFilter
@@ -3307,7 +3335,7 @@
                             =ClearCollect(vt,{Title:"Visit Type",Value:"All"});
                             Reset(C_Planned);
                             Reset(C_Unplanned)
-                        OnUncheck: =true
+                        OnUncheck: =Remove(vt,LookUp(vt,Value="All"))
                         Size: =21
                         Text: ="All"
                         Width: =280
@@ -3374,7 +3402,7 @@
                                 )
                             );
                             Reset(C_ALL)
-                        OnUncheck: =true
+                        OnUncheck: =Remove(vt,LookUp(vt,Value="Planned"))
                         Size: =21
                         Text: ="Planned"
                         Width: =250
@@ -3441,6 +3469,7 @@
                                 )
                             );
                             Reset(C_ALL)
+                        OnUncheck: =Remove(vt,LookUp(vt,Value="UnPlanned"))
                         Size: =21
                         Text: ="UnPlanned"
                         Width: =250
@@ -3655,6 +3684,16 @@
                         If(
                             ThisItem.Value = "UnPlanned",
                             Reset(C_Unplanned)
+                        )
+                    )
+                );
+                If(
+                    CountRows(dat11) = 1,
+                    ClearCollect(
+                        OfflineVisitCollection,
+                        Filter(
+                            'Visit.S',
+                            'Owning User'.'Primary Email' = User().Email
                         )
                     )
                 )

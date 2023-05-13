@@ -478,7 +478,7 @@ VisitPlanningNew As screen:
                         CountRows(
                             Filter(
                                 colAddLeadParty,
-                             zx_partiesid= ThisItem.Party.Parties  
+                             zx_partiesid= ThisItem.Party.Parties  && Date=Clickedvisitdate
                             )
                         ) = 0,
                         DisplayMode.Edit,
@@ -492,7 +492,7 @@ VisitPlanningNew As screen:
                         CountRows(
                             Filter(
                                 colAddLeadParty,
-                                 zx_partiesid= ThisItem.Party.Parties  
+                                 zx_partiesid= ThisItem.Party.Parties  && Date=Clickedvisitdate
                             )
                         ) = 0,
                      If(
@@ -555,7 +555,7 @@ VisitPlanningNew As screen:
                                 CountRows(
                                     Filter(
                                         'Visit.S',
-                                        'Created By'.'Primary Email' = User().Email && 'Visit date' = Clickedvisitdate && Lead.Leads = ThisItem.Leads//_varSelectedArea1.Area
+                                        'Created By'.'Primary Email' = User().Email && 'Visit date' = Clickedvisitdate && Lead.Leads = ThisItem.Leads //_varSelectedArea1.Area
                                     )
                                 ) > 0,
                                 Notify(
@@ -565,7 +565,7 @@ VisitPlanningNew As screen:
                                 ),
                                 Collect(
                                     colAddLeadParty,
-                                  AddColumns( Filter('Parties.S',Parties=ThisItem.Party.Parties) ,"My_lead",ThisItem)
+                                  AddColumns( Filter('Parties.S',Parties=ThisItem.Party.Parties) ,"My_lead",ThisItem,"Date",Clickedvisitdate)
                                 )
                             ),
                             Notify(
@@ -926,7 +926,7 @@ VisitPlanningNew As screen:
         TabIndex: =
         TemplatePadding: =10
         TemplateSize: =217
-        Visible: =If('Type Filter_1'.Selected.Id>1,true,false)
+        Visible: =If(mylead>1,true,false)
         Width: =630
         X: =10
         Y: =264
@@ -1347,17 +1347,19 @@ VisitPlanningNew As screen:
                 Color: =RGBA(255, 255, 255, 1)
                 DisabledBorderColor: =RGBA(166, 166, 166, 1)
                 DisabledColor: =RGBA(244, 244, 244, 1)
-                DisplayMode: |-
+                DisplayMode: |+
                     =If(
                         CountRows(
                             Filter(
                                 colAddLeadParty,
-                                zx_partiesid= ThisItem.Parties
+                                zx_partiesid= ThisItem.Parties && Date = Clickedvisitdate
                             )
                         ) = 0,
                         DisplayMode.Edit,
                         DisplayMode.Disabled
                     )
+                    
+                    
                 Height: =25
                 Icon: |-
                     =
@@ -1366,7 +1368,7 @@ VisitPlanningNew As screen:
                         CountRows(
                             Filter(
                                 colAddLeadParty,
-                                zx_partiesid= ThisItem.Parties  //_varSelectedArea1.Area
+                               zx_partiesid= ThisItem.Parties &&  Date = Clickedvisitdate//_varSelectedArea1.Area
                             )
                         ) = 0,
                      If(
@@ -1439,10 +1441,11 @@ VisitPlanningNew As screen:
                                 ),
                                 Collect(
                                     colAddLeadParty,
+                                    AddColumns(
                                     Filter(
                                         OfflinePartiesCollection,
                                         Parties = ThisItem.Parties
-                                    )
+                                    ),"Date",Clickedvisitdate)
                                 )
                             ),
                             Notify(
@@ -1589,11 +1592,13 @@ VisitPlanningNew As screen:
             =Table(
                 {
                     Title: 'Party Type Choices'.Distributor,
-                    Id: 2
+                    Id: 2,
+                    Search_PlaceHolder:"Distributor"
                 },
                 {
                     Title: 'Party Type Choices'.Dealer,
-                    Id: 3
+                    Id: 3,
+                     Search_PlaceHolder:"Dealer"
                 },
                 {
                     Title: 'Party Type Choices'.Retailer,
@@ -1605,6 +1610,7 @@ VisitPlanningNew As screen:
                 }
             )
         OnSelect: =//Set(_VarActivetopTab, ThisItem.TabId)
+        ShowScrollbar: =false
         TabIndex: =0
         TemplatePadding: =0
         TemplateSize: =206
@@ -1669,7 +1675,7 @@ VisitPlanningNew As screen:
             Fill: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )
             Height: =2
             OnSelect: =Select(Parent)
-            Visible: =If(ThisItem.Id=mylead,true,false)
+            Visible: =If(mylead=ThisItem.Id,true,false)
             Width: =170
             X: =20
             Y: =56
@@ -3477,35 +3483,6 @@ VisitPlanningNew As screen:
             Y: =221
             ZIndex: =3
 
-    Button8 As button:
-        BorderColor: =RGBA(0, 0, 0, 0)
-        DisabledBorderColor: =RGBA(0, 0, 0, 0)
-        DisabledColor: =RGBA(166, 166, 166, 1)
-        DisabledFill: =RGBA(244, 244, 244, 1)
-        Fill: =RGBA(0, 120, 212, 1)
-        FocusedBorderColor: =ColorFade(Self.Fill, -75%)
-        Font: =Font.'Segoe UI'
-        FontWeight: =FontWeight.Semibold
-        Height: =70
-        HoverBorderColor: =RGBA(0, 0, 0, 0)
-        HoverColor: =RGBA(255, 255, 255, 1)
-        HoverFill: =ColorFade(RGBA(0, 120, 212, 1), -10%)
-        OnSelect: |
-            =Clear(colAddLeadParty);
-        PressedBorderColor: =ColorFade(RGBA(0, 120, 212, 1), -50%)
-        PressedColor: =RGBA(255, 255, 255, 1)
-        PressedFill: =ColorFade(RGBA(0, 120, 212, 1), -30%)
-        RadiusBottomLeft: =0
-        RadiusBottomRight: =0
-        RadiusTopLeft: =0
-        RadiusTopRight: =0
-        Size: =24
-        Text: ="Button"
-        Width: =280
-        X: =98
-        Y: =5
-        ZIndex: =30
-
     Main_screen_search_bar_2 As group:
         Height: =5
         Width: =5
@@ -3556,7 +3533,7 @@ VisitPlanningNew As screen:
             PressedFill: =RGBA(0, 0, 0, 0)
             Visible: =If('Type Filter_1'.Selected.Id>1,true,false)
             Width: =20
-            X: =40
+            X: =46
             Y: =230
             ZIndex: =29
 
