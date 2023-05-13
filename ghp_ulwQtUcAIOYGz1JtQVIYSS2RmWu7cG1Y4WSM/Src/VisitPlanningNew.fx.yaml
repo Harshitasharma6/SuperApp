@@ -649,7 +649,7 @@ VisitPlanningNew As screen:
                 TabIndex: =0
                 Visible: |-
                     =If(
-                        'Type Filter_1'.Selected.Id = 1 && (Clickedvisitdate > Today() || Clickedvisitdate = Today()),
+                        'Type Filter_1'.Selected.Id = 1 ,
                         true,
                         false
                     )
@@ -740,6 +740,9 @@ VisitPlanningNew As screen:
                             varSelectVisitForPlanning,
                             ThisItem
                         );
+                    
+                    
+                    If(Clickedvisitdate>=Today(),
                         If(
                             CountRows(
                                 Filter(
@@ -755,12 +758,15 @@ VisitPlanningNew As screen:
                                     zx_leadsid = ThisItem.zx_leadsid
                                 )
                             )
-                        )
+                        ),
+                        Notify("You can't plan a visit for yesterday",NotificationType.Error,1000))
+                    
+                    
                     )
                 TabIndex: =0
                 Visible: |-
                     =If(
-                        'Type Filter_1'.Selected.Id = 1 && (Clickedvisitdate > Today() || Clickedvisitdate = Today()),
+                        'Type Filter_1'.Selected.Id = 1 ,
                         true,
                         false
                     )
