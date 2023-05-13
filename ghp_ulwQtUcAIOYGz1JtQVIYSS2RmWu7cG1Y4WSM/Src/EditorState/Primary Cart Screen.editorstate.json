@@ -501,7 +501,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "Button42",
-      "ParentIndex": 4,
+      "ParentIndex": 6,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -802,7 +802,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "Button42_1",
-      "ParentIndex": 7,
+      "ParentIndex": 9,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -1103,7 +1103,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "Button42_2",
-      "ParentIndex": 1,
+      "ParentIndex": 2,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -1336,14 +1336,7 @@
         "FontWeight",
         "Align",
         "VerticalAlign",
-        {
-          "AFDDataSourceName": "",
-          "AutoRuleBindingEnabled": false,
-          "AutoRuleBindingString": "",
-          "InvariantPropertyName": "X",
-          "IsLockable": false,
-          "NameMapSourceSchema": "?"
-        },
+        "X",
         "Y",
         "Width",
         {
@@ -1404,7 +1397,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "Button42_3",
-      "ParentIndex": 10,
+      "ParentIndex": 3,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -1874,7 +1867,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "ComboBox7",
-      "ParentIndex": 5,
+      "ParentIndex": 7,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -2283,7 +2276,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "ComboBox7_2",
-      "ParentIndex": 8,
+      "ParentIndex": 10,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -2598,7 +2591,14 @@
         "HoverFill",
         "Font",
         "FontWeight",
-        "X",
+        {
+          "AFDDataSourceName": "",
+          "AutoRuleBindingEnabled": false,
+          "AutoRuleBindingString": "",
+          "InvariantPropertyName": "X",
+          "IsLockable": false,
+          "NameMapSourceSchema": "?"
+        },
         {
           "AFDDataSourceName": "",
           "AutoRuleBindingEnabled": false,
@@ -2685,7 +2685,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "ComboBox7_3",
-      "ParentIndex": 2,
+      "ParentIndex": 4,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -3319,7 +3319,9 @@
           "InvariantPropertyName": "TabIndex",
           "IsLockable": false,
           "NameMapSourceSchema": "?"
-        }
+        },
+        "FocusedBorderThickness",
+        "Visible"
       ],
       "GalleryTemplateChildName": "galleryTemplate29",
       "HasDynamicProperties": false,
@@ -3343,6 +3345,11 @@
         {
           "Category": "Data",
           "PropertyName": "AccessibleLabel",
+          "RuleProviderType": "Unknown"
+        },
+        {
+          "Category": "Design",
+          "PropertyName": "FocusedBorderThickness",
           "RuleProviderType": "Unknown"
         },
         {
@@ -3468,6 +3475,11 @@
         {
           "Category": "Design",
           "PropertyName": "TabIndex",
+          "RuleProviderType": "Unknown"
+        },
+        {
+          "Category": "Design",
+          "PropertyName": "Visible",
           "RuleProviderType": "Unknown"
         }
       ],
@@ -5661,7 +5673,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "Label74",
-      "ParentIndex": 3,
+      "ParentIndex": 5,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -5979,7 +5991,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "Label74_1",
-      "ParentIndex": 6,
+      "ParentIndex": 8,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -6234,7 +6246,14 @@
         },
         "Align",
         "VerticalAlign",
-        "X",
+        {
+          "AFDDataSourceName": "",
+          "AutoRuleBindingEnabled": false,
+          "AutoRuleBindingString": "",
+          "InvariantPropertyName": "X",
+          "IsLockable": false,
+          "NameMapSourceSchema": "?"
+        },
         {
           "AFDDataSourceName": "",
           "AutoRuleBindingEnabled": false,
@@ -6500,7 +6519,7 @@
         {
           "AFDDataSourceName": "",
           "AutoRuleBindingEnabled": false,
-          "AutoRuleBindingString": "\"Text\"",
+          "AutoRuleBindingString": "",
           "InvariantPropertyName": "Text",
           "IsLockable": false,
           "NameMapSourceSchema": "?"
@@ -6608,7 +6627,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "Label74_3",
-      "ParentIndex": 9,
+      "ParentIndex": 1,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -6937,7 +6956,15 @@
         "OnSelect",
         "ZIndex",
         "BorderThickness",
-        "FocusedBorderThickness"
+        "FocusedBorderThickness",
+        {
+          "AFDDataSourceName": "",
+          "AutoRuleBindingEnabled": false,
+          "AutoRuleBindingString": "true",
+          "InvariantPropertyName": "Visible",
+          "IsLockable": false,
+          "NameMapSourceSchema": "?"
+        }
       ],
       "HasDynamicProperties": false,
       "IsAutoGenerated": false,
@@ -7028,6 +7055,11 @@
           "RuleProviderType": "Unknown"
         },
         {
+          "Category": "Design",
+          "PropertyName": "Visible",
+          "RuleProviderType": "Unknown"
+        },
+        {
           "Category": "Behavior",
           "PropertyName": "OnSelect",
           "RuleProviderType": "Unknown"
@@ -7075,8 +7107,22 @@
         "Font",
         "FontWeight",
         "Align",
-        "X",
-        "Y",
+        {
+          "AFDDataSourceName": "",
+          "AutoRuleBindingEnabled": false,
+          "AutoRuleBindingString": "",
+          "InvariantPropertyName": "X",
+          "IsLockable": false,
+          "NameMapSourceSchema": "?"
+        },
+        {
+          "AFDDataSourceName": "",
+          "AutoRuleBindingEnabled": false,
+          "AutoRuleBindingString": "",
+          "InvariantPropertyName": "Y",
+          "IsLockable": false,
+          "NameMapSourceSchema": "?"
+        },
         "Width",
         {
           "AFDDataSourceName": "",
