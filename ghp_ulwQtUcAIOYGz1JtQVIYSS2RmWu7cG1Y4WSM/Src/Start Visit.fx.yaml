@@ -1330,8 +1330,8 @@
                 OnSelect: =Select(Parent)
                 Text: =Left(Upper(ThisItem.zx_customertype),2)
                 Width: =35
-                X: =202
-                Y: =33
+                X: =29
+                Y: =25
                 ZIndex: =14
 
         Group14_1 As group:
@@ -1457,7 +1457,7 @@
                                         )
                                     );
                                     Set(
-                                        varCustomerforDiscountTemp,
+                                        varCustomerforDiscount,
                                         LookUp(
                                             'Visit.S',
                                             Party.Parties = ThisItem.zx_partiesid
@@ -1767,7 +1767,7 @@
                                         )
                                     );
                                     Set(
-                                        varCustomerforDiscountTemp,
+                                        varCustomerforDiscount,
                                         LookUp(
                                             'Visit.S',
                                             Party.Parties = ThisItem.zx_partiesid

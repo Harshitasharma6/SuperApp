@@ -359,7 +359,7 @@
         DisplayMode: |-
             =//DisplayMode.Edit
             If(
-                CountRows(colPrimaryCart) > 0 ,
+                CountRows(colPrimaryCart) > 0  &&  IsBlank(ComboBox7_3.SelectedItems) && IsBlank(ComboBox7_2.SelectedItems) && IsBlank(ComboBox7.SelectedItems),
                 DisplayMode.Edit,
                 DisplayMode.Disabled
             )
@@ -410,7 +410,7 @@
                 Set(
                 varorderselectedId,
                 2
-            );
+            )
             );
             //Navigate('Primary Cart Screen',ScreenTransition.CoverRight);
         Size: =20

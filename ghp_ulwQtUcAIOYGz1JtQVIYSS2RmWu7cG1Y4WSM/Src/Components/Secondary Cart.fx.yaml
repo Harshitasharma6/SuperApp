@@ -366,7 +366,7 @@
         DisplayMode: |-
             =//DisplayMode.Edit
             If(
-                CountRows(colSecondaryCart) > 0 ,
+                CountRows(colSecondaryCart) > 0 && IsBlank(ComboBox7_6.SelectedItems) && IsBlank(ComboBox7_7.SelectedItems) && IsBlank(ComboBox7_8.SelectedItems) ,
                 DisplayMode.Edit,
                 DisplayMode.Disabled
             )
