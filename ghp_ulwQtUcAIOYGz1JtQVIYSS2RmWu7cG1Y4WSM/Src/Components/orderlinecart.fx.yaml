@@ -80,7 +80,7 @@ orderlinecart As CanvasComponent:
             DisabledColor: =RGBA(166, 166, 166, 1)
             FontWeight: =FontWeight.Semibold
             OnSelect: =Select(Parent)
-            Size: =16
+            Size: =LookUp(c_EnvironmentVariable,'Display Name'="Text Medium Font Size").'Default Value'
             Text: |-
                 ="Unit Price: " 
             Width: =140
@@ -97,8 +97,7 @@ orderlinecart As CanvasComponent:
             DisabledColor: =RGBA(166, 166, 166, 1)
             FontWeight: =FontWeight.Semibold
             OnSelect: =Select(Parent)
-            Size: |
-                =16
+            Size: =LookUp(c_EnvironmentVariable,'Display Name'="Text Medium Font Size").'Default Value'
             Text: |-
                 ="Discount: "
             Width: =140
@@ -130,11 +129,10 @@ orderlinecart As CanvasComponent:
             DisabledColor: =RGBA(166, 166, 166, 1)
             FontWeight: =FontWeight.Semibold
             OnSelect: =Select(Parent)
-            Size: |
-                =16
+            Size: =LookUp(c_EnvironmentVariable,'Display Name'="Text Medium Font Size").'Default Value'
             Text: |-
-                ="Net Price: "
-            Width: =140
+                ="Net Price:    " & "₹" & ThisItem.'Total Unit Price'
+            Width: =253
             Wrap: =false
             X: =362
             Y: =162
@@ -148,7 +146,7 @@ orderlinecart As CanvasComponent:
             DisabledColor: =RGBA(166, 166, 166, 1)
             FontWeight: =FontWeight.Semibold
             OnSelect: =Select(Parent)
-            Size: =16
+            Size: =LookUp(c_EnvironmentVariable,'Display Name'="Text Medium Font Size").'Default Value'
             Text: |-
                 ="Total Price: " 
             Width: =140
@@ -167,7 +165,7 @@ orderlinecart As CanvasComponent:
             OnSelect: =Select(Parent)
             Size: =LookUp(c_EnvironmentVariable,'Display Name'="Text Medium Font Size").'Default Value'
             Text: |-
-                ="Discount: "
+                ="Disc.Price: "
             Width: =130
             Wrap: =false
             X: =362
@@ -186,10 +184,10 @@ orderlinecart As CanvasComponent:
 
         Label55_1 As label:
             BorderColor: =RGBA(0, 18, 107, 1)
-            Color: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//_VarGblAppColors.PrimaryRed
+            Color: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Text Background Color").'Default Value' )//_VarGblAppColors.PrimaryRed
             DisabledColor: =RGBA(166, 166, 166, 1)
             OnSelect: =Select(Parent)
-            Size: =16
+            Size: =LookUp(c_EnvironmentVariable,'Display Name'="Text Medium Font Size").'Default Value'
             Text: ="₹" & ThisItem.'Unit Price'
             Width: =135
             X: =174
@@ -198,36 +196,21 @@ orderlinecart As CanvasComponent:
 
         Label59_1 As label:
             BorderColor: =RGBA(0, 18, 107, 1)
-            Color: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//_VarGblAppColors.PrimaryRed
+            Color: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Text Background Color").'Default Value' )//_VarGblAppColors.PrimaryRed
             DisabledColor: =RGBA(166, 166, 166, 1)
             OnSelect: =Select(Parent)
-            Size: |
-                =16
+            Size: =LookUp(c_EnvironmentVariable,'Display Name'="Text Medium Font Size").'Default Value'
             Text: =If(IsBlank(ThisItem.'Discount %'),"0%",ThisItem.'Discount %' & "%")
             Width: =120
             X: =174
             Y: =119
             ZIndex: =17
 
-        Label60_1 As label:
-            BorderColor: =RGBA(0, 18, 107, 1)
-            Color: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//_VarGblAppColors.PrimaryRed
-            DisabledColor: =RGBA(166, 166, 166, 1)
-            OnSelect: =Select(Parent)
-            Size: |
-                =16
-            Text: =  "₹" & ThisItem.'Total Unit Price'
-            Width: =95
-            X: =504
-            Y: =162
-            ZIndex: =18
-
         Label57_2 As label:
             BorderColor: =RGBA(0, 18, 107, 1)
-            Color: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//_VarGblAppColors.PrimaryRed
+            Color: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Text Background Color").'Default Value' )//_VarGblAppColors.PrimaryRed
             DisabledColor: =RGBA(166, 166, 166, 1)
-            FontWeight: =FontWeight.Bold
-            Size: =16
+            Size: =LookUp(c_EnvironmentVariable,'Display Name'="Text Medium Font Size").'Default Value'
             Text: |-
                 =If(IsBlank(ThisItem.'Discount Amount'),"₹0.00",Concatenate(
                                 "₹",
@@ -239,16 +222,16 @@ orderlinecart As CanvasComponent:
                             ))
                  
             Width: =96
-            X: =504
+            X: =486
             Y: =119
             ZIndex: =20
 
         Label66_1 As label:
             BorderColor: =RGBA(0, 18, 107, 1)
-            Color: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//_VarGblAppColors.PrimaryRed
+            Color: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Text Background Color").'Default Value' )//_VarGblAppColors.PrimaryRed
             DisabledColor: =RGBA(166, 166, 166, 1)
             OnSelect: =Select(Parent)
-            Size: =16
+            Size: =LookUp(c_EnvironmentVariable,'Display Name'="Text Medium Font Size").'Default Value'
             Text: |-
                 =/*LookUp(
                     OfflineProductSKUCollection,
@@ -256,15 +239,14 @@ orderlinecart As CanvasComponent:
                 ).Variant.'Variant Name'*/
                 "₹"&ThisItem.'Unit Price' * ThisItem.Quantity
             Width: =96
-            X: =504
+            X: =486
             Y: =76
             ZIndex: =21
 
         "'Quantityn Lbl_8' As label":
             BorderColor: =RGBA(0, 18, 107, 1)
-            Color: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//_VarGblAppColors.PrimaryRed
+            Color: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Text Background Color").'Default Value' )//_VarGblAppColors.PrimaryRed
             DisabledColor: =RGBA(166, 166, 166, 1)
-            FontWeight: =FontWeight.Semibold
             OnSelect: =Select(Parent)
             Size: =LookUp(c_EnvironmentVariable,'Display Name'="Text Medium Font Size").'Default Value'
             Text: =ThisItem.Quantity
