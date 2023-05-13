@@ -8,6 +8,7 @@
     Gallery14_2 As gallery.galleryHorizontal:
         AccessibleLabel: ="Gallery14"
         BorderColor: =RGBA(0, 18, 107, 1)
+        BorderStyle: =BorderStyle.None
         DelayItemLoading: =true
         FocusedBorderThickness: =0
         Height: =60
@@ -695,7 +696,7 @@
                 Text: =""
                 Width: =525
                 X: =60
-                Y: =170
+                Y: =161
                 ZIndex: =1
 
             ComboBox7_7 As combobox:
@@ -729,7 +730,7 @@
                 Size: =14
                 Width: =510
                 X: =74
-                Y: =179
+                Y: =170
                 ZIndex: =2
 
             Label74_9 As label:
@@ -742,7 +743,7 @@
                 Text: ="Bill To"
                 Width: =90
                 X: =112
-                Y: =149
+                Y: =140
                 ZIndex: =3
 
         Group21_9 As group:
@@ -770,7 +771,7 @@
                 Text: =""
                 Width: =525
                 X: =60
-                Y: =280
+                Y: =253
                 ZIndex: =4
 
             ComboBox7_8 As combobox:
@@ -803,7 +804,7 @@
                 Size: =14
                 Width: =500
                 X: =77
-                Y: =289
+                Y: =262
                 ZIndex: =5
 
             Label74_10 As label:
@@ -816,7 +817,7 @@
                 Text: ="Ship To Party"
                 Width: =160
                 X: =111
-                Y: =259
+                Y: =232
                 ZIndex: =6
 
         Group21_10 As group:
@@ -892,78 +893,6 @@
                 X: =65
                 Y: =51
                 ZIndex: =9
-
-        TextInput1_2 As text:
-            AccessibleLabel: ="TextInput1"
-            BorderColor: =RGBA(166, 166, 166, 1)
-            BorderStyle: =BorderStyle.None
-            BorderThickness: =0
-            Color: =RGBA(51, 51, 51, 1)
-            Default: =LookUp(OfflinePartiesCollection,'Customer Name'= varParty).Address
-            DisabledBorderColor: =RGBA(0, 0, 0, 0)
-            DisabledColor: =RGBA(166, 166, 166, 1)
-            DisabledFill: =RGBA(244, 244, 244, 1)
-            FocusedBorderThickness: =4
-            Font: =Font.'Segoe UI'
-            Height: =67
-            HintText: ="Ship to Address"
-            HoverBorderColor: =ColorFade(RGBA(0, 120, 212, 1), -30%)
-            HoverColor: =RGBA(51, 51, 51, 1)
-            HoverFill: =RGBA(255, 255, 255, 1)
-            PressedBorderColor: =RGBA(0, 120, 212, 1)
-            PressedColor: =RGBA(51, 51, 51, 1)
-            PressedFill: =RGBA(255, 255, 255, 1)
-            RadiusBottomLeft: =0
-            RadiusBottomRight: =0
-            RadiusTopLeft: =0
-            RadiusTopRight: =0
-            Size: =16
-            Width: =483
-            X: =77
-            Y: =407
-            ZIndex: =13
-
-        Group21_11 As group:
-            Height: =5
-            Width: =5
-            X: =31
-            Y: =18
-            ZIndex: =13
-
-            Button42_11 As button:
-                DisabledBorderColor: =RGBA(219, 219, 219, 1)
-                DisabledColor: =RGBA(166, 166, 166, 1)
-                DisabledFill: =RGBA(255, 255, 255, 1)
-                DisplayMode: =DisplayMode.Disabled
-                Fill: =RGBA(56, 96, 178, 1)
-                FontWeight: =FontWeight.Semibold
-                Height: =90
-                HoverColor: =RGBA(255, 255, 255, 1)
-                HoverFill: =ColorFade(RGBA(56, 96, 178, 1), -20%)
-                RadiusBottomLeft: =15
-                RadiusBottomRight: =15
-                RadiusTopLeft: =15
-                RadiusTopRight: =15
-                Size: =24
-                Text: =""
-                Width: =525
-                X: =60
-                Y: =396
-                ZIndex: =10
-
-            Label74_11 As label:
-                BorderColor: =RGBA(0, 18, 107, 1)
-                Color: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )
-                DisabledColor: =RGBA(166, 166, 166, 1)
-                Fill: =RGBA(255, 255, 255, 1)
-                FontWeight: =FontWeight.Semibold
-                Height: =60
-                Size: =16
-                Text: ="Ship To Address"
-                Width: =180
-                X: =111
-                Y: =365
-                ZIndex: =12
 
         btnCnfrm_3 As button:
             DisabledBorderColor: =RGBA(166, 166, 166, 1)
@@ -1294,4 +1223,76 @@
             X: =160
             Y: =665
             ZIndex: =14
+
+        Group9 As group:
+            Height: =5
+            Width: =5
+            X: =40
+            Y: =40
+            ZIndex: =15
+
+            Button42_11 As button:
+                DisabledBorderColor: =RGBA(219, 219, 219, 1)
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                DisabledFill: =RGBA(255, 255, 255, 1)
+                DisplayMode: =DisplayMode.Disabled
+                Fill: =RGBA(56, 96, 178, 1)
+                FontWeight: =FontWeight.Semibold
+                Height: =60
+                HoverColor: =RGBA(255, 255, 255, 1)
+                HoverFill: =ColorFade(RGBA(56, 96, 178, 1), -20%)
+                RadiusBottomLeft: =15
+                RadiusBottomRight: =15
+                RadiusTopLeft: =15
+                RadiusTopRight: =15
+                Size: =24
+                Text: =""
+                Width: =525
+                X: =60
+                Y: =351
+                ZIndex: =10
+
+            Label74_11 As label:
+                BorderColor: =RGBA(0, 18, 107, 1)
+                Color: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                Fill: =RGBA(255, 255, 255, 1)
+                FontWeight: =FontWeight.Semibold
+                Height: =60
+                Size: =16
+                Text: ="Ship To Address"
+                Width: =180
+                X: =111
+                Y: =320
+                ZIndex: =12
+
+            TextInput1_2 As text:
+                AccessibleLabel: ="TextInput1"
+                BorderColor: =RGBA(166, 166, 166, 1)
+                BorderStyle: =BorderStyle.None
+                BorderThickness: =0
+                Color: =RGBA(51, 51, 51, 1)
+                Default: =LookUp(OfflinePartiesCollection,'Customer Name'= varParty).Address
+                DisabledBorderColor: =RGBA(0, 0, 0, 0)
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                DisabledFill: =RGBA(244, 244, 244, 1)
+                FocusedBorderThickness: =4
+                Font: =Font.'Segoe UI'
+                Height: =45
+                HintText: ="Ship to Address"
+                HoverBorderColor: =ColorFade(RGBA(0, 120, 212, 1), -30%)
+                HoverColor: =RGBA(51, 51, 51, 1)
+                HoverFill: =RGBA(255, 255, 255, 1)
+                PressedBorderColor: =RGBA(0, 120, 212, 1)
+                PressedColor: =RGBA(51, 51, 51, 1)
+                PressedFill: =RGBA(255, 255, 255, 1)
+                RadiusBottomLeft: =0
+                RadiusBottomRight: =0
+                RadiusTopLeft: =0
+                RadiusTopRight: =0
+                Size: =16
+                Width: =483
+                X: =77
+                Y: =362
+                ZIndex: =13
 

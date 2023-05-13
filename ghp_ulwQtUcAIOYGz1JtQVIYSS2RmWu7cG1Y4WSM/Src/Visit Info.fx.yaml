@@ -133,6 +133,7 @@
 
             Body1_40 As label:
                 BorderColor: =RGBA(0, 18, 107, 1)
+                BorderStyle: =BorderStyle.None
                 Color: |-
                     =//_VarGblAppColors.PrimaryText
                     
@@ -169,6 +170,7 @@
 
             Body1_108 As label:
                 BorderColor: =RGBA(0, 18, 107, 1)
+                BorderStyle: =BorderStyle.None
                 Color: |-
                     =//_VarGblAppColors.PrimaryText
                     
@@ -206,6 +208,7 @@
 
             Body1_112 As label:
                 BorderColor: =RGBA(0, 18, 107, 1)
+                BorderStyle: =BorderStyle.None
                 Color: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Ordercolor").'Default Value' )//_VarGblAppColors.PrimaryRed
                 DisabledColor: =RGBA(166, 166, 166, 1)
                 FocusedBorderThickness: =01
@@ -238,6 +241,7 @@
 
             Body1_111 As label:
                 BorderColor: =RGBA(0, 18, 107, 1)
+                BorderStyle: =BorderStyle.None
                 Color: |-
                     =//_VarGblAppColors.PrimaryText
                     
@@ -295,6 +299,7 @@
             Label80_3 As label:
                 Align: =Align.Center
                 BorderColor: =RGBA(0, 18, 107, 1)
+                BorderStyle: =BorderStyle.None
                 Color: =RGBA(255, 255, 255, 1)
                 DisabledColor: =RGBA(166, 166, 166, 1)
                 FontWeight: =FontWeight.Semibold
@@ -315,6 +320,7 @@
 
             Button1_4 As button:
                 BorderColor: =RGBA(0, 0, 0, 0)
+                BorderStyle: =BorderStyle.None
                 DisabledBorderColor: =RGBA(0, 0, 0, 0)
                 DisabledColor: =RGBA(166, 166, 166, 1)
                 DisabledFill: =RGBA(244, 244, 244, 1)
@@ -444,6 +450,7 @@
 
             Body1_41 As label:
                 BorderColor: =RGBA(0, 18, 107, 1)
+                BorderStyle: =BorderStyle.None
                 Color: |-
                     =//_VarGblAppColors.PrimaryText
                     
@@ -479,6 +486,7 @@
 
             Body1_113 As label:
                 BorderColor: =RGBA(0, 18, 107, 1)
+                BorderStyle: =BorderStyle.None
                 Color: |-
                     =//_VarGblAppColors.PrimaryText
                     
@@ -515,6 +523,7 @@
 
             Body1_114 As label:
                 BorderColor: =RGBA(0, 18, 107, 1)
+                BorderStyle: =BorderStyle.None
                 Color: |-
                     =//_VarGblAppColors.PrimaryText
                     
@@ -692,6 +701,34 @@
         Y: =1026
         ZIndex: =16
 
+    Image20_1 As image:
+        BorderColor: =RGBA(0, 0, 0, 0)
+        BorderStyle: =BorderStyle.None
+        BorderThickness: =2
+        DisabledBorderColor: =RGBA(0, 0, 0, 0)
+        DisabledFill: =RGBA(0, 0, 0, 0)
+        FocusedBorderThickness: =4
+        Height: =52
+        HoverBorderColor: =RGBA(0, 0, 0, 0)
+        HoverFill: =RGBA(0, 0, 0, 0)
+        Image: ='Group 1 (1)'
+        OnSelect: |-
+            =If('Product List_1'.OrderType="Primary",Navigate('Primary Cart Screen', ScreenTransition.CoverRight,{
+                        varParty: ComboBox1_1.Selected.'Customer Name',
+                        varCustomertype: ComboBox1_1.Selected.'Customer Type'
+                    }),
+            Navigate('Secondary Cart Screen',ScreenTransition.CoverRight,{
+                        varParty: ComboBox1_3.Selected.'Customer Name',
+                        varCustomertype: ComboBox1_3.Selected.'Customer Type'
+                    }));
+        PressedBorderColor: =RGBA(0, 0, 0, 0)
+        PressedFill: =RGBA(0, 0, 0, 0)
+        Visible: ='Top Gallery_1'.Selected.TabId=2
+        Width: =52
+        X: =564
+        Y: =14
+        ZIndex: =17
+
     Group3 As group:
         Height: =5
         Width: =5
@@ -801,34 +838,6 @@
             Width: =640
             Y: =339
             ZIndex: =13
-
-    Image20_1 As image:
-        BorderColor: =RGBA(0, 0, 0, 0)
-        BorderStyle: =BorderStyle.None
-        BorderThickness: =2
-        DisabledBorderColor: =RGBA(0, 0, 0, 0)
-        DisabledFill: =RGBA(0, 0, 0, 0)
-        FocusedBorderThickness: =4
-        Height: =52
-        HoverBorderColor: =RGBA(0, 0, 0, 0)
-        HoverFill: =RGBA(0, 0, 0, 0)
-        Image: ='Group 1 (1)'
-        OnSelect: |-
-            =If('Product List_1'.OrderType="Primary",Navigate('Primary Cart Screen', ScreenTransition.CoverRight,{
-                        varParty: ComboBox1_1.Selected.'Customer Name',
-                        varCustomertype: ComboBox1_1.Selected.'Customer Type'
-                    }),
-            Navigate('Secondary Cart Screen',ScreenTransition.CoverRight,{
-                        varParty: ComboBox1_3.Selected.'Customer Name',
-                        varCustomertype: ComboBox1_3.Selected.'Customer Type'
-                    }));
-        PressedBorderColor: =RGBA(0, 0, 0, 0)
-        PressedFill: =RGBA(0, 0, 0, 0)
-        Visible: ='Top Gallery_1'.Selected.TabId=2
-        Width: =52
-        X: =564
-        Y: =14
-        ZIndex: =17
 
     Label14_1 As label:
         Align: =Align.Center
