@@ -28,6 +28,7 @@
     Gallery3 As gallery.galleryHorizontal:
         AccessibleLabel: ="Top Bar"
         BorderColor: =RGBA(0, 18, 107, 1)
+        BorderStyle: =BorderStyle.None
         Height: =60
         Items: ='Top Tab'.TopItems
         OnSelect: =
@@ -39,6 +40,7 @@
         title As label:
             Align: =Align.Center
             BorderColor: =RGBA(0, 18, 107, 1)
+            BorderStyle: =BorderStyle.None
             Color: =If(_VarActivetopTabID= ThisItem.TabId, ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' ), ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Text Primary Color").'Default Value' ))
             DisabledColor: =RGBA(166, 166, 166, 1)
             FocusedBorderThickness: =0.3
