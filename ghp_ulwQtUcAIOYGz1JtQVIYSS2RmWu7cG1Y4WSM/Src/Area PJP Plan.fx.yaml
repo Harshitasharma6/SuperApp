@@ -430,14 +430,16 @@
                     true
                 )
                 */
-                If(
+                
+                /*If(
                     ClickedPjpdate > Today() || ClickedPjpdate = Today(),
                     true,
                     false
-                )
+                )*/
+                false
             Width: =30
-            X: =537
-            Y: =29
+            X: =563
+            Y: =130
             ZIndex: =12
 
         Icon11 As icon.View:
@@ -507,9 +509,126 @@
             Text: =""
             Visible: =If(Icon9.DisplayMode=DisplayMode.Disabled,true,false)
             Width: =43
-            X: =528
-            Y: =27
+            X: =462
             ZIndex: =15
+
+        Image21 As image:
+            BorderColor: =RGBA(0, 0, 0, 0)
+            BorderStyle: =BorderStyle.None
+            BorderThickness: =2
+            DisabledBorderColor: =RGBA(0, 0, 0, 0)
+            DisabledFill: =RGBA(0, 0, 0, 0)
+            DisplayMode: |-
+                =/*If(
+                    CountRows(
+                        Filter(
+                            colAddAreaParty,
+                            Area.Area = _varSelectedArea1.Area
+                        )
+                    ) = 0,
+                    DisplayMode.Edit,
+                    DisplayMode.Disabled
+                )*/
+                //DisplayMode.Edit
+                If(
+                    IsBlank(
+                        LookUp(
+                            'Beat.S',
+                            Area.Area = ThisItem.Area.Area && Date = ClickedPjpdate && 'Created By'.'Primary Email' = User().Email
+                        )
+                    ),
+                    If(
+                        CountRows(
+                            Filter(
+                                colAddAreaParty,
+                                Area.Area = ThisItem.Area.Area && Date=ClickedPjpdate
+                            )
+                        ) = 0,
+                        DisplayMode.Edit,
+                        DisplayMode.Disabled
+                    ),
+                    DisplayMode.Disabled
+                )
+            FocusedBorderThickness: =4
+            Height: =25
+            HoverBorderColor: =RGBA(0, 0, 0, 0)
+            HoverFill: =RGBA(0, 0, 0, 0)
+            Image: |-
+                =If(
+                    CountRows(
+                        Filter(
+                            colAddAreaParty,
+                            Area.Area = ThisItem.Area.Area && Date = ClickedPjpdate
+                        )
+                    ) = 0,
+                    If(
+                        CountRows(
+                            Filter(
+                                'Beat.S',
+                                Area.Area = ThisItem.Area.Area && 'Created By'.'Primary Email' = User().Email && Date = ClickedPjpdate//_varSelectedArea1.Area
+                            )
+                        ) > 0,
+                        "data:image/svg+xml;utf8, " & EncodeUrl(
+                            "
+                <svg width='7914' height='5722' viewBox='0 0 7914 5722' fill='none' xmlns='http://www.w3.org/2000/svg'>
+                <path d='M2723.1 5722L0 2994.92L522.737 2471.42L2723.1 4675L7391.26 0L7914 523.502L2723.1 5722Z' fill='white'/>
+                </svg>
+                
+                "
+                        ),
+                        "data:image/svg+xml;utf8, " & EncodeUrl(
+                            "
+                <svg width='7914' height='7914' viewBox='0 0 7914 7914' fill='none' xmlns='http://www.w3.org/2000/svg'>
+                <path d='M3533.04 7914V4380.96H0V3533.04H3533.04V0H4380.96V3533.04H7914V4380.96H4380.96V7914H3533.04Z' fill='#ECF0F5'/>
+                </svg>
+                
+                "
+                        )
+                    ),
+                    "data:image/svg+xml;utf8, " & EncodeUrl(
+                        "
+                <svg width='7914' height='5722' viewBox='0 0 7914 5722' fill='none' xmlns='http://www.w3.org/2000/svg'>
+                <path d='M2723.1 5722L0 2994.92L522.737 2471.42L2723.1 4675L7391.26 0L7914 523.502L2723.1 5722Z' fill='white'/>
+                </svg>
+                
+                "
+                    )
+                )
+            OnSelect: |-
+                =If(
+                    LookUp(
+                        'Attendance.S',
+                        User.'Primary Email' = User().Email && Date = DateValue(Today())
+                    ).'Attendance Type' = 'Attendance Type Choices'.Absent,
+                    Notify(
+                        "Cannot plan visit on leave",
+                        NotificationType.Error,
+                        1000
+                    ),
+                    Set(
+                        _varSelectedArea1,
+                        ThisItem.Area
+                    );
+                    Collect(
+                        colAddAreaParty,
+                       AddColumns(Filter(
+                            UserAssignedAreas,
+                            Area.Area = _varSelectedArea1.Area
+                        ),"Date",ClickedPjpdate)
+                    )
+                )
+            PressedBorderColor: =RGBA(0, 0, 0, 0)
+            PressedFill: =RGBA(0, 0, 0, 0)
+            Visible: |-
+                =If(
+                    ClickedPjpdate > Today() || ClickedPjpdate = Today(),
+                    true,
+                    false
+                )
+            Width: =25
+            X: =540
+            Y: =35
+            ZIndex: =16
 
     ShowPartiesBackdrop As rectangle:
         AccessibleLabel: ="Party Dropback"
@@ -521,12 +640,12 @@
         TabIndex: =0
         Visible: =_VarShowPartiesModal
         Width: =640
-        ZIndex: =9
+        ZIndex: =8
 
     "'Bottom Bar_13' As 'Bottom Bar'":
         Height: =105
         Y: =1029
-        ZIndex: =10
+        ZIndex: =9
 
     "'Plan Visits Btn' As button":
         BorderColor: =ColorFade(Self.Fill, 20%)
@@ -548,9 +667,9 @@
         Width: =193
         X: =431
         Y: =18
-        ZIndex: =11
+        ZIndex: =10
 
-    Button8 As button:
+    Parties_backgound_for_popUP As button:
         BorderColor: =RGBA(0, 0, 0, 0)
         DisabledBorderColor: =RGBA(0, 0, 0, 0)
         DisabledColor: =RGBA(166, 166, 166, 1)
@@ -577,7 +696,7 @@
         Width: =500
         X: =App.Width/2 - 250
         Y: =281
-        ZIndex: =12
+        ZIndex: =11
 
     PartiesGallery As gallery.galleryVertical:
         AccessibleLabel: ="List View"
@@ -609,7 +728,7 @@
         Width: =464
         X: =88
         Y: =411
-        ZIndex: =13
+        ZIndex: =12
 
         Background_10 As button:
             BorderThickness: =1
@@ -791,9 +910,9 @@
         Text: ="No parties available"
         Visible: =CountRows(PartiesGallery.AllItems)=0 && _VarShowPartiesModal
         Width: =500
-        X: =110
-        Y: =482
-        ZIndex: =14
+        X: =68
+        Y: =547
+        ZIndex: =13
 
     PartiesLbl As label:
         Align: =Align.Center
@@ -808,7 +927,7 @@
         Width: =500
         X: =70
         Y: =281
-        ZIndex: =15
+        ZIndex: =14
 
     ShowPartiesCancelIcon As icon.Cancel:
         AccessibleLabel: ="Cancel Icon"
@@ -827,13 +946,13 @@
         Width: =35
         X: =519
         Y: =293
-        ZIndex: =18
+        ZIndex: =17
 
     Header_11 As Header:
         ScreenName: ="PJP Planning"
-        ZIndex: =19
+        ZIndex: =18
 
-    Display_11 As gallery.galleryHorizontal:
+    Selected_filter_for_Pjp As gallery.galleryHorizontal:
         AccessibleLabel: ="Filter Applied"
         BorderColor: =RGBA(0, 18, 107, 1)
         DelayItemLoading: =true
@@ -847,7 +966,7 @@
         Width: =256
         X: =21
         Y: =149
-        ZIndex: =23
+        ZIndex: =22
 
         Button20_16 As button:
             DisabledBorderColor: =RGBA(166, 166, 166, 1)
@@ -880,9 +999,9 @@
                 =ThisItem.Title & ":" & " " & ThisItem.value
             Tooltip: |-
                 =//ThisItem.Title & ":"
-            Width: =192
+            Width: =175
             Wrap: =false
-            X: =11
+            X: =10
             Y: =4
             ZIndex: =2
 
@@ -905,7 +1024,7 @@
             Y: =4
             ZIndex: =4
 
-    Button4 As button:
+    Filte_popup_for_outside_screen As button:
         BorderColor: =RGBA(0, 0, 0, 0)
         BorderStyle: =BorderStyle.None
         DisabledBorderColor: =RGBA(0, 0, 0, 0)
@@ -932,9 +1051,30 @@
         Text: =""
         Visible: =varFilter
         Width: =640
+        ZIndex: =23
+
+    filter_background As button:
+        DisabledBorderColor: =RGBA(166, 166, 166, 1)
+        DisabledColor: =RGBA(166, 166, 166, 1)
+        DisabledFill: =RGBA(244, 244, 244, 1)
+        DisplayMode: =DisplayMode.View
+        Fill: =RGBA(255, 255, 255, 1)
+        FontWeight: =FontWeight.Semibold
+        Height: =778
+        HoverColor: =RGBA(255, 255, 255, 1)
+        HoverFill: =ColorFade(RGBA(56, 96, 178, 1), -20%)
+        RadiusBottomLeft: =0
+        RadiusBottomRight: =0
+        RadiusTopLeft: =25
+        RadiusTopRight: =25
+        Size: =24
+        Text: =""
+        Visible: =varFilter
+        Width: =640
+        Y: =277
         ZIndex: =24
 
-    Group5 As group:
+    Filter_pJP As group:
         Height: =5
         Width: =5
         X: =40
@@ -963,7 +1103,7 @@
             Width: =32
             X: =508
             Y: =159
-            ZIndex: =7
+            ZIndex: =6
 
         Button3 As button:
             BorderColor: =RGBA(0, 0, 0, 0)
@@ -997,9 +1137,9 @@
             Width: =35
             X: =505
             Y: =161
-            ZIndex: =8
+            ZIndex: =7
 
-    Group6 As group:
+    PJP_Date_Bar As group:
         Height: =5
         Width: =5
         X: =40
@@ -1094,7 +1234,7 @@
             TabIndex: =0
             Width: =50
             Y: =90
-            ZIndex: =16
+            ZIndex: =15
 
         NextDateIcn As icon.ChevronLeft:
             AccessibleLabel: ="Right Date Icon"
@@ -1109,84 +1249,14 @@
             Width: =50
             X: =590
             Y: =90
-            ZIndex: =17
+            ZIndex: =16
 
-    Group7 As group:
-        Height: =5
-        Width: =5
-        X: =40
-        Y: =40
-        ZIndex: =24
-
-        Icon7_3 As icon.ShoppingCart:
-            AccessibleLabel: ="Cart"
-            BorderColor: =RGBA(0, 18, 107, 1)
-            Color: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )
-            DisabledBorderColor: =RGBA(166, 166, 166, 1)
-            DisabledColor: =RGBA(244, 244, 244, 1)
-            Height: =43
-            Icon: =Icon.ShoppingCart
-            OnSelect: =Navigate(PlanPJPCart)
-            PaddingBottom: =5
-            PaddingLeft: =5
-            PaddingRight: =5
-            PaddingTop: =5
-            TabIndex: =0
-            Width: =44
-            X: =546
-            Y: =164
-            ZIndex: =5
-
-        Button4_3 As button:
-            BorderThickness: =0
-            DisabledBorderColor: =RGBA(166, 166, 166, 1)
-            DisabledColor: =RGBA(166, 166, 166, 1)
-            DisabledFill: =RGBA(244, 244, 244, 1)
-            DisplayMode: =DisplayMode.View
-            Fill: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )
-            FontWeight: =FontWeight.Semibold
-            Height: =30
-            HoverColor: =RGBA(255, 255, 255, 1)
-            HoverFill: =ColorFade(RGBA(56, 96, 178, 1), -20%)
-            OnSelect: =Navigate(PlanPJPCart)
-            RadiusBottomLeft: =50
-            RadiusBottomRight: =50
-            RadiusTopLeft: =50
-            RadiusTopRight: =50
-            Size: =LookUp(c_EnvironmentVariable,'Display Name'="Text Regular Font Size").'Default Value'
-            Text: =CountRows(colAddAreaParty)
-            Width: =30
-            X: =580
-            Y: =156
-            ZIndex: =6
-
-    "'filter button_5' As button":
-        DisabledBorderColor: =RGBA(166, 166, 166, 1)
-        DisabledColor: =RGBA(166, 166, 166, 1)
-        DisabledFill: =RGBA(244, 244, 244, 1)
-        DisplayMode: =DisplayMode.View
-        Fill: =RGBA(255, 255, 255, 1)
-        FontWeight: =FontWeight.Semibold
-        Height: =778
-        HoverColor: =RGBA(255, 255, 255, 1)
-        HoverFill: =ColorFade(RGBA(56, 96, 178, 1), -20%)
-        RadiusBottomLeft: =0
-        RadiusBottomRight: =0
-        RadiusTopLeft: =25
-        RadiusTopRight: =25
-        Size: =24
-        Text: =""
-        Visible: =varFilter
-        Width: =640
-        Y: =277
-        ZIndex: =25
-
-    Container4_29 As groupContainer:
+    Area_contaner As groupContainer:
         Height: =745
         Visible: =varFilter
         Width: =640
         Y: =294
-        ZIndex: =26
+        ZIndex: =25
 
         Rectangle16_8 As rectangle:
             BorderColor: =RGBA(0, 18, 107, 1)
@@ -1734,7 +1804,7 @@
                 Y: =4
                 ZIndex: =4
 
-    Group15 As group:
+    Main_screen_search_bar As group:
         Height: =5
         Width: =5
         X: =40
@@ -1752,12 +1822,16 @@
             DisabledFill: =RGBA(244, 244, 244, 1)
             FocusedBorderThickness: =4
             Height: =43
-            HintText: ="Search"
+            HintText: ="Search By Area"
             HoverBorderColor: =RGBA(208, 231, 233, 1)
             HoverColor: =RGBA(0, 0, 0, 1)
             HoverFill: =RGBA(0, 0, 0, 0)
             PaddingLeft: =50
             PressedFill: =
+            RadiusBottomLeft: =10
+            RadiusBottomRight: =10
+            RadiusTopLeft: =10
+            RadiusTopRight: =10
             Size: =15
             Width: =586
             X: =27
@@ -1780,9 +1854,9 @@
             Width: =29
             X: =41
             Y: =245
-            ZIndex: =20
+            ZIndex: =19
 
-    Group9 As group:
+    POP_UP_Search_Bar As group:
         Height: =5
         Width: =5
         X: =40
@@ -1811,7 +1885,7 @@
             Width: =439
             X: =101
             Y: =345
-            ZIndex: =21
+            ZIndex: =20
 
         Image17_1 As image:
             BorderColor: =RGBA(0, 0, 0, 0)
@@ -1830,5 +1904,83 @@
             Width: =20
             X: =115
             Y: =348
-            ZIndex: =22
+            ZIndex: =21
+
+    PJP_Cart As group:
+        Height: =5
+        Width: =5
+        X: =40
+        Y: =40
+        ZIndex: =29
+
+        Image18 As image:
+            BorderColor: =RGBA(0, 0, 0, 0)
+            BorderStyle: =BorderStyle.None
+            BorderThickness: =2
+            DisabledBorderColor: =RGBA(0, 0, 0, 0)
+            DisabledFill: =RGBA(0, 0, 0, 0)
+            FocusedBorderThickness: =4
+            Height: =52
+            HoverBorderColor: =RGBA(0, 0, 0, 0)
+            HoverFill: =RGBA(0, 0, 0, 0)
+            Image: ='Group 1 (1)'
+            OnSelect: =Navigate(PlanPJPCart)
+            PressedBorderColor: =RGBA(0, 0, 0, 0)
+            PressedFill: =RGBA(0, 0, 0, 0)
+            Width: =52
+            X: =554
+            Y: =154
+            ZIndex: =26
+
+        Button4_3 As button:
+            BorderThickness: =0
+            DisabledBorderColor: =RGBA(166, 166, 166, 1)
+            DisabledColor: =RGBA(166, 166, 166, 1)
+            DisabledFill: =RGBA(244, 244, 244, 1)
+            DisplayMode: =DisplayMode.View
+            Fill: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )
+            FontWeight: =FontWeight.Semibold
+            Height: =30
+            HoverColor: =RGBA(255, 255, 255, 1)
+            HoverFill: =ColorFade(RGBA(56, 96, 178, 1), -20%)
+            OnSelect: =Navigate(PlanPJPCart)
+            RadiusBottomLeft: =50
+            RadiusBottomRight: =50
+            RadiusTopLeft: =50
+            RadiusTopRight: =50
+            Size: =LookUp(c_EnvironmentVariable,'Display Name'="Text Regular Font Size").'Default Value'
+            Text: =CountRows(colAddAreaParty)
+            Width: =30
+            X: =576
+            Y: =158
+            ZIndex: =27
+
+        Button3_3 As button:
+            BorderColor: =RGBA(0, 0, 0, 0)
+            BorderStyle: =BorderStyle.None
+            DisabledBorderColor: =RGBA(0, 0, 0, 0)
+            DisabledColor: =RGBA(166, 166, 166, 1)
+            DisabledFill: =RGBA(244, 244, 244, 1)
+            Fill: =RGBA(0, 0, 0, 0)
+            FocusedBorderColor: =ColorFade(Self.Fill, -75%)
+            Font: =Font.'Segoe UI'
+            FontWeight: =FontWeight.Semibold
+            Height: =47
+            HoverBorderColor: =RGBA(0, 0, 0, 0)
+            HoverColor: =RGBA(255, 255, 255, 1)
+            HoverFill: =
+            OnSelect: =Navigate(PlanPJPCart)
+            PressedBorderColor: =ColorFade(RGBA(0, 120, 212, 1), -50%)
+            PressedColor: =RGBA(255, 255, 255, 1)
+            PressedFill: =
+            RadiusBottomLeft: =0
+            RadiusBottomRight: =0
+            RadiusTopLeft: =0
+            RadiusTopRight: =0
+            Size: =24
+            Text: =""
+            Width: =35
+            X: =555
+            Y: =159
+            ZIndex: =28
 
