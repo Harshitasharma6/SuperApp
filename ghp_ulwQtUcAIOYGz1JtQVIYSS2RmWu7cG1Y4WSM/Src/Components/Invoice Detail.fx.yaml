@@ -111,39 +111,6 @@
             Width: ='Invoice Detail'.Width
             ZIndex: =1
 
-            Label20_2 As label:
-                BorderColor: =RGBA(0, 18, 107, 1)
-                Color: =RGBA(0, 0, 0, 1)
-                DisabledColor: =RGBA(166, 166, 166, 1)
-                Height: =66
-                OnSelect: =Select(Parent)
-                Size: =16
-                Text: =ThisItem.Title
-                Width: =246
-                X: =24
-                ZIndex: =1
-
-            Label21_2 As label:
-                BorderColor: =RGBA(0, 18, 107, 1)
-                Color: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Text Background Color").'Default Value') 
-                DisabledColor: =RGBA(166, 166, 166, 1)
-                FontWeight: =FontWeight.Semibold
-                Height: =66
-                OnSelect: =Select(Parent)
-                Text: =ThisItem.Data
-                Width: =253
-                X: =360
-                ZIndex: =2
-
-            Rectangle5_6 As rectangle:
-                BorderColor: =RGBA(0, 0, 0, 1)
-                Fill: =RGBA(0, 0, 0, 1)
-                Height: =1
-                OnSelect: =Select(Parent)
-                Width: =630
-                Y: =68
-                ZIndex: =3
-
     "'Lines Container_2' As groupContainer.manualLayoutContainer":
         Height: ='Invoice Detail'.Height-100
         Visible: =If(varinvoiceId=2,true,false)

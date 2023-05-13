@@ -114,127 +114,6 @@
             Width: =1
             ZIndex: =2
 
-        Rectangle1_10 As rectangle:
-            AccessibleLabel: ="Rectangle1_9"
-            BorderColor: =RGBA(0, 18, 107, 1)
-            Fill: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//_VarGblAppColors.PrimaryRed
-            Height: =1
-            OnSelect: |-
-                =Navigate('order detail screen',ScreenTransition.CoverRight,{primarydata:
-                        ThisItem,secondarydata:
-                        ThisItem});
-                //Set(varOrderData, ThisItem);
-                
-                
-                 
-            TabIndex: =0
-            Width: ='Order Info Gallery_3'.TemplateWidth
-            Y: =74
-            ZIndex: =3
-
-        Body1_39 As label:
-            BorderColor: =RGBA(0, 18, 107, 1)
-            BorderStyle: =BorderStyle.None
-            Color: |-
-                =//_VarGblAppColors.PrimaryText
-                
-                
-                
-                ColorValue(LookUp(c_EnvironmentVariable, 'Display Name'="Button Border Color").'Default Value')
-            DisabledColor: =RGBA(166, 166, 166, 1)
-            FocusedBorderThickness: =01
-            Font: |-
-                =LookUp(c_EnvironmentVariable, 'Display Name'="Text Heading Font").'Default Value'
-                
-                //_VarGblAppFonts.Heading
-            FontWeight: =FontWeight.Bold
-            Height: =75
-            OnSelect: |-
-                =Navigate('Invoice Detail Page',ScreenTransition.CoverRight);
-                Set(varInvoiceData, ThisItem);
-                
-                
-                 
-            Size: =16
-            TabIndex: =0
-            Text: |-
-                ="Invoice No:" 
-            Tooltip: =
-            Width: =146
-            Wrap: =false
-            X: =80
-            ZIndex: =5
-
-        Body1_49 As label:
-            BorderColor: =RGBA(0, 18, 107, 1)
-            BorderStyle: =BorderStyle.None
-            Color: |-
-                =//_VarGblAppColors.PrimaryText
-                
-                
-                
-                ColorValue(LookUp(c_EnvironmentVariable, 'Display Name'="Button Border Color").'Default Value')
-            DisabledColor: =RGBA(166, 166, 166, 1)
-            FocusedBorderThickness: =01
-            Font: |-
-                =LookUp(c_EnvironmentVariable, 'Display Name'="Text Heading Font").'Default Value'
-                
-                //_VarGblAppFonts.Heading
-            FontWeight: =FontWeight.Semibold
-            Height: =54
-            OnSelect: |-
-                =Navigate('Invoice Detail Page',ScreenTransition.CoverRight);
-                Set(varInvoiceData, ThisItem);
-                
-                
-                 
-            Size: |-
-                =
-                LookUp('Environment Variable Definitions', 'Display Name'="Text Sub Title Font Size").'Default Value'
-            TabIndex: =0
-            Text: |-
-                ="Customer Name: " 
-            Tooltip: =
-            Width: =171
-            X: =25
-            Y: =85
-            ZIndex: =7
-
-        Body1_50 As label:
-            BorderColor: =RGBA(0, 18, 107, 1)
-            BorderStyle: =BorderStyle.None
-            Color: |-
-                =//_VarGblAppColors.PrimaryText
-                
-                
-                
-                ColorValue(LookUp(c_EnvironmentVariable, 'Display Name'="Button Border Color").'Default Value')
-            DisabledColor: =RGBA(166, 166, 166, 1)
-            FocusedBorderThickness: =01
-            Font: |-
-                =LookUp(c_EnvironmentVariable, 'Display Name'="Text Heading Font").'Default Value'
-                
-                //_VarGblAppFonts.Heading
-            FontWeight: =FontWeight.Semibold
-            Height: =54
-            OnSelect: |-
-                =Navigate('Invoice Detail Page',ScreenTransition.CoverRight);
-                Set(varInvoiceData, ThisItem);
-                
-                
-                 
-            Size: |-
-                =
-                LookUp('Environment Variable Definitions', 'Display Name'="Text Sub Title Font Size").'Default Value'
-            TabIndex: =0
-            Text: |-
-                ="Invoice Amount: " 
-            Tooltip: =
-            Width: =185
-            X: =25
-            Y: =130
-            ZIndex: =9
-
         Circle18_4 As circle:
             AccessibleLabel: ="Text"
             BorderColor: =RGBA(0, 18, 107, 1)
@@ -274,38 +153,6 @@
             Y: =16
             ZIndex: =12
 
-        Body1_42 As label:
-            BorderColor: =RGBA(0, 18, 107, 1)
-            BorderStyle: =BorderStyle.None
-            Color: |-
-                =//_VarGblAppColors.PrimaryText
-                
-                
-                
-                ColorValue(LookUp(c_EnvironmentVariable, 'Display Name'="Text Background Color").'Default Value')
-            DisabledColor: =RGBA(166, 166, 166, 1)
-            FocusedBorderThickness: =01
-            Font: |-
-                =LookUp(c_EnvironmentVariable, 'Display Name'="Text Heading Font").'Default Value'
-                
-                //_VarGblAppFonts.Heading
-            FontWeight: =FontWeight.Bold
-            Height: =75
-            OnSelect: |-
-                =Navigate('Invoice Detail Page',ScreenTransition.CoverRight);
-                Set(varInvoiceData, ThisItem);
-                
-                
-                 
-            Size: =16
-            TabIndex: =0
-            Text: =ThisItem.zx_name
-            Tooltip: =
-            Width: =198
-            Wrap: =false
-            X: =222
-            ZIndex: =14
-
         Body1_115 As label:
             BorderColor: =RGBA(0, 18, 107, 1)
             BorderStyle: =BorderStyle.None
@@ -339,41 +186,6 @@
             X: =196
             Y: =85
             ZIndex: =15
-
-        Body1_54 As label:
-            BorderColor: =RGBA(0, 18, 107, 1)
-            BorderStyle: =BorderStyle.None
-            Color: |-
-                =//_VarGblAppColors.PrimaryText
-                
-                
-                
-                ColorValue(LookUp(c_EnvironmentVariable, 'Display Name'="Button Border Color").'Default Value')
-            DisabledColor: =RGBA(166, 166, 166, 1)
-            FocusedBorderThickness: =01
-            Font: |-
-                =LookUp(c_EnvironmentVariable, 'Display Name'="Text Heading Font").'Default Value'
-                
-                //_VarGblAppFonts.Heading
-            FontWeight: =FontWeight.Semibold
-            Height: =54
-            OnSelect: |-
-                =Navigate('Invoice Detail Page',ScreenTransition.CoverRight);
-                Set(varInvoiceData, ThisItem);
-                
-                
-                 
-            Size: |-
-                =
-                LookUp('Environment Variable Definitions', 'Display Name'="Text Sub Title Font Size").'Default Value'
-            TabIndex: =0
-            Text: |-
-                ="Invoice Date: " 
-            Tooltip: =
-            Width: =171
-            X: =328
-            Y: =85
-            ZIndex: =16
 
         Body1_122 As label:
             BorderColor: =RGBA(0, 18, 107, 1)
