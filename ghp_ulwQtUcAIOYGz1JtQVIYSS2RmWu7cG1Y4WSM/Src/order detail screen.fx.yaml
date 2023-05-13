@@ -182,7 +182,7 @@
                         },
                         {
                             Title: "Disc. Price:",
-                            Value: If(primarydata.zx_discount=0 || secondarydata.zx_discount=0,  "₹0.00",Concatenate(
+                            Value: If(IsBlank(primarydata.zx_discount=0 || secondarydata.zx_discount),  "₹0.00",Concatenate(
                                 "₹",
                                 Text(
                                     If(

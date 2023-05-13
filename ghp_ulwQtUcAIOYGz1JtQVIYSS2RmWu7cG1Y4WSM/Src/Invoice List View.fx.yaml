@@ -1,13 +1,20 @@
 "'Invoice List View' As screen":
     LoadingSpinnerColor: =RGBA(0, 120, 212, 1)
-    OnVisible: |-
+    OnVisible: |
         =ClearCollect(
                     OfflineInvoiceCollection,
                     Filter(
                         'Invoice.S',
                         'Owning User'.'Primary Email' = User().Email
                     )
-                );
+                );  Set(
+            varFilterInvoice,
+            true
+        );Set(
+            varFilterInvoice,
+            false
+        );
+        Set(varfiltergallery,true)
 
     Header_30 As Header:
         ScreenName: ="Invoice List View"
@@ -326,6 +333,197 @@
             Y: =85
             ZIndex: =20
 
+        Body1_136 As label:
+            BorderColor: =RGBA(0, 18, 107, 1)
+            BorderStyle: =BorderStyle.None
+            Color: |-
+                =//_VarGblAppColors.PrimaryText
+                
+                
+                
+                ColorValue(LookUp(c_EnvironmentVariable, 'Display Name'="Button Border Color").'Default Value')
+            DisabledColor: =RGBA(166, 166, 166, 1)
+            FocusedBorderThickness: =01
+            Font: |-
+                =LookUp(c_EnvironmentVariable, 'Display Name'="Text Heading Font").'Default Value'
+                
+                //_VarGblAppFonts.Heading
+            FontWeight: =FontWeight.Bold
+            Height: =75
+            OnSelect: |-
+                =Navigate('Invoice Detail Page',ScreenTransition.CoverRight);
+                Set(varInvoiceData, ThisItem);
+                
+                
+                 
+            Size: =16
+            TabIndex: =0
+            Text: |-
+                ="Invoice No:" 
+            Tooltip: =
+            Width: =146
+            Wrap: =false
+            X: =99
+            ZIndex: =21
+
+        Body1_137 As label:
+            BorderColor: =RGBA(0, 18, 107, 1)
+            BorderStyle: =BorderStyle.None
+            Color: |-
+                =//_VarGblAppColors.PrimaryText
+                
+                
+                
+                ColorValue(LookUp(c_EnvironmentVariable, 'Display Name'="Button Border Color").'Default Value')
+            DisabledColor: =RGBA(166, 166, 166, 1)
+            FocusedBorderThickness: =01
+            Font: |-
+                =LookUp(c_EnvironmentVariable, 'Display Name'="Text Heading Font").'Default Value'
+                
+                //_VarGblAppFonts.Heading
+            FontWeight: =FontWeight.Semibold
+            Height: =54
+            OnSelect: |-
+                =Navigate('Invoice Detail Page',ScreenTransition.CoverRight);
+                Set(varInvoiceData, ThisItem);
+                
+                
+                 
+            Size: |-
+                =
+                LookUp('Environment Variable Definitions', 'Display Name'="Text Sub Title Font Size").'Default Value'
+            TabIndex: =0
+            Text: |-
+                ="Customer Name: " 
+            Tooltip: =
+            Width: =171
+            X: =30
+            Y: =85
+            ZIndex: =22
+
+        Body1_138 As label:
+            BorderColor: =RGBA(0, 18, 107, 1)
+            BorderStyle: =BorderStyle.None
+            Color: |-
+                =//_VarGblAppColors.PrimaryText
+                
+                
+                
+                ColorValue(LookUp(c_EnvironmentVariable, 'Display Name'="Button Border Color").'Default Value')
+            DisabledColor: =RGBA(166, 166, 166, 1)
+            FocusedBorderThickness: =01
+            Font: |-
+                =LookUp(c_EnvironmentVariable, 'Display Name'="Text Heading Font").'Default Value'
+                
+                //_VarGblAppFonts.Heading
+            FontWeight: =FontWeight.Semibold
+            Height: =54
+            OnSelect: |-
+                =Navigate('Invoice Detail Page',ScreenTransition.CoverRight);
+                Set(varInvoiceData, ThisItem);
+                
+                
+                 
+            Size: |-
+                =
+                LookUp('Environment Variable Definitions', 'Display Name'="Text Sub Title Font Size").'Default Value'
+            TabIndex: =0
+            Text: |-
+                ="Invoice Amount: " 
+            Tooltip: =
+            Width: =185
+            X: =30
+            Y: =130
+            ZIndex: =23
+
+        Body1_139 As label:
+            BorderColor: =RGBA(0, 18, 107, 1)
+            BorderStyle: =BorderStyle.None
+            Color: |-
+                =//_VarGblAppColors.PrimaryText
+                
+                
+                
+                ColorValue(LookUp(c_EnvironmentVariable, 'Display Name'="Text Background Color").'Default Value')
+            DisabledColor: =RGBA(166, 166, 166, 1)
+            FocusedBorderThickness: =01
+            Font: |-
+                =LookUp(c_EnvironmentVariable, 'Display Name'="Text Heading Font").'Default Value'
+                
+                //_VarGblAppFonts.Heading
+            FontWeight: =FontWeight.Bold
+            Height: =75
+            OnSelect: |-
+                =Navigate('Invoice Detail Page',ScreenTransition.CoverRight);
+                Set(varInvoiceData, ThisItem);
+                
+                
+                 
+            Size: =16
+            TabIndex: =0
+            Text: =ThisItem.zx_name
+            Tooltip: =
+            Width: =198
+            Wrap: =false
+            X: =241
+            ZIndex: =24
+
+        Body1_140 As label:
+            BorderColor: =RGBA(0, 18, 107, 1)
+            BorderStyle: =BorderStyle.None
+            Color: |-
+                =//_VarGblAppColors.PrimaryText
+                
+                
+                
+                ColorValue(LookUp(c_EnvironmentVariable, 'Display Name'="Button Border Color").'Default Value')
+            DisabledColor: =RGBA(166, 166, 166, 1)
+            FocusedBorderThickness: =01
+            Font: |-
+                =LookUp(c_EnvironmentVariable, 'Display Name'="Text Heading Font").'Default Value'
+                
+                //_VarGblAppFonts.Heading
+            FontWeight: =FontWeight.Semibold
+            Height: =54
+            OnSelect: |-
+                =Navigate('Invoice Detail Page',ScreenTransition.CoverRight);
+                Set(varInvoiceData, ThisItem);
+                
+                
+                 
+            Size: |-
+                =
+                LookUp('Environment Variable Definitions', 'Display Name'="Text Sub Title Font Size").'Default Value'
+            TabIndex: =0
+            Text: |-
+                ="Invoice Date: " 
+            Tooltip: =
+            Width: =171
+            X: =328
+            Y: =85
+            ZIndex: =25
+
+        Rectangle2 As rectangle:
+            BorderColor: =RGBA(0, 0, 0, 0)
+            BorderStyle: =BorderStyle.None
+            BorderThickness: =2
+            DisabledFill: =RGBA(166, 166, 166, 1)
+            Fill: =RGBA(153, 207, 236, 1)
+            FocusedBorderThickness: =4
+            Height: =3
+            HoverFill: =RGBA(0, 120, 212, 1)
+            OnSelect: |-
+                =Navigate('Invoice Detail Page',ScreenTransition.CoverRight);
+                Set(varInvoiceData, ThisItem);
+                
+                
+                 
+            PressedFill: =RGBA(0, 120, 212, 1)
+            Width: =608
+            X: =1
+            Y: =72
+            ZIndex: =26
+
     Image1_4 As image:
         AccessibleLabel: ="Text"
         BorderColor: =RGBA(0, 0, 0, 0)
@@ -340,9 +538,9 @@
         Image: ='Vector (1)'
         OnSelect: |+
             =Set(
-                varFilterOrder
+                varFilterInvoice
             ,
-                !varFilterOrder
+                !varFilterInvoice
             
             );
             
@@ -379,6 +577,97 @@
         X: =563
         Y: =74
         ZIndex: =5
+
+    Display_18 As gallery.galleryHorizontal:
+        AccessibleLabel: ="Filter Displayed"
+        BorderColor: =RGBA(0, 18, 107, 1)
+        BorderStyle: =BorderStyle.None
+        DelayItemLoading: =true
+        Fill: |-
+            =RGBA(0, 0, 0, 0)
+            //_VarGblAppColors.PrimaryRed
+        FocusedBorderThickness: =0
+        Height: =57
+        Items: =colInvoiceFilter
+        LoadingSpinner: =LoadingSpinner.Data
+        ShowScrollbar: =false
+        TabIndex: =0//-1
+        TemplateSize: =216
+        Visible: |-
+            =true
+            //varFilter
+        Width: =404
+        X: =33
+        Y: =66
+        ZIndex: =8
+
+        Button20_22 As button:
+            DisabledBorderColor: =RGBA(166, 166, 166, 1)
+            DisabledColor: =RGBA(166, 166, 166, 1)
+            DisabledFill: =RGBA(244, 244, 244, 1)
+            DisplayMode: =DisplayMode.View
+            Fill: |-
+                =//RGBA(204, 204, 204, 1)
+                ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//_VarGblAppColors.PrimaryRed
+            FontWeight: =FontWeight.Semibold
+            Height: =41
+            HoverColor: =RGBA(255, 255, 255, 1)
+            HoverFill: =ColorFade(RGBA(56, 96, 178, 1), -20%)
+            RadiusBottomLeft: =8
+            RadiusBottomRight: =8
+            RadiusTopLeft: =8
+            RadiusTopRight: =8
+            Size: =24
+            Text: =""
+            Width: =199
+            X: =6
+            ZIndex: =1
+
+        Label31_32 As label:
+            BorderColor: =RGBA(0, 18, 107, 1)
+            Color: |-
+                =ColorValue( LookUp('Environment Variable Definitions', 'Display Name'="Common Primary Background").'Default Value'   
+                )
+            DisabledColor: =RGBA(166, 166, 166, 1)
+            FontWeight: =FontWeight.Bold
+            Height: =41
+            OnSelect: =Select(Parent)
+            Size: =12
+            Text: |-
+                =ThisItem.Title & ": " & ThisItem.value
+            Tooltip: |-
+                =ThisItem.Title & ":"
+            Width: =161
+            Wrap: =false
+            X: =16
+            ZIndex: =2
+
+        Icon21_22 As icon.Cancel:
+            AccessibleLabel: ="Close the filter applied"
+            BorderColor: =RGBA(0, 18, 107, 1)
+            Color: |-
+                =ColorValue( LookUp('Environment Variable Definitions', 'Display Name'="Common Primary Background").'Default Value'   
+                )
+            DisabledBorderColor: =RGBA(166, 166, 166, 1)
+            DisabledColor: =RGBA(244, 244, 244, 1)
+            Height: =25
+            Icon: =Icon.Cancel
+            OnSelect: |-
+                =Remove(colInvoiceFilter,ThisItem);
+                Reset(DateFrom_13);
+                Reset(DateTo_10);
+                Reset(radioDate_8);
+                Reset(radioStatus_8);
+                Reset(OrderValue_6);
+                Reset(radioParty_7);
+                
+                
+                Set(varCollectionEmpty,true)
+            TabIndex: =0//-1
+            Width: =25
+            X: =175
+            Y: =8
+            ZIndex: =4
 
     Group8_2 As group:
         Height: =5
@@ -425,4 +714,1209 @@
             X: =536
             Y: =68
             ZIndex: =7
+
+    backdrop_10 As rectangle:
+        BorderColor: =RGBA(0, 18, 107, 1)
+        DisplayMode: =DisplayMode.View
+        Fill: =RGBA(153, 153, 153, 0.59)
+        Height: =1131
+        Visible: =varFilterInvoice
+        Width: =App.Width
+        ZIndex: =9
+
+    "'filter button_10' As button":
+        DisabledBorderColor: =RGBA(166, 166, 166, 1)
+        DisabledColor: =RGBA(166, 166, 166, 1)
+        DisabledFill: =RGBA(244, 244, 244, 1)
+        DisplayMode: =DisplayMode.View
+        Fill: =RGBA(255, 255, 255, 1)
+        FontWeight: =FontWeight.Semibold
+        Height: =900
+        HoverColor: =RGBA(255, 255, 255, 1)
+        HoverFill: =ColorFade(RGBA(56, 96, 178, 1), -20%)
+        RadiusBottomLeft: =0
+        RadiusBottomRight: =0
+        RadiusTopLeft: =25
+        RadiusTopRight: =25
+        Size: =24
+        Text: =""
+        Visible: =varFilterInvoice
+        Width: =640
+        Y: =236
+        ZIndex: =10
+
+    Container4_35 As groupContainer:
+        Height: =899
+        Visible: =varFilterInvoice
+        Width: =640
+        Y: =236
+        ZIndex: =11
+
+        Rectangle16_15 As rectangle:
+            BorderColor: =RGBA(0, 18, 107, 1)
+            DisplayMode: =DisplayMode.View
+            Fill: =RGBA(0, 0, 0, 1)
+            Height: =470
+            Visible: =varFilterInvoice
+            Width: =2
+            X: =290
+            Y: =157
+            ZIndex: =1
+
+        Label8_15 As label:
+            BorderColor: =RGBA(0, 18, 107, 1)
+            Color: =RGBA(0, 0, 0, 1)
+            DisabledColor: =RGBA(166, 166, 166, 1)
+            Font: =Font.'Segoe UI'
+            FontWeight: =FontWeight.Bold
+            Height: =58
+            PaddingLeft: =30
+            Size: =21
+            Text: ="All Filters" 
+            Visible: =varFilterInvoice
+            Width: =273
+            X: =27
+            ZIndex: =2
+
+        ApplyBtn_15 As button:
+            BorderColor: =RGBA(0, 0, 0, 1)
+            BorderThickness: =0
+            DisabledBorderColor: =RGBA(166, 166, 166, 1)
+            DisabledColor: =RGBA(166, 166, 166, 1)
+            DisabledFill: =RGBA(244, 244, 244, 1)
+            Fill: |-
+                =//RGBA(184, 0, 0, 1)
+                ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//_VarGblAppColors.PrimaryRed
+            FocusedBorderThickness: =
+            Font: =Font.'Segoe UI'
+            FontWeight: =FontWeight.Semibold
+            Height: =60
+            HoverColor: =RGBA(255, 255, 255, 1)
+            HoverFill: |-
+                =ColorFade(
+                    
+                    ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//_VarGblAppColors.PrimaryRed
+                    , 10%)
+            OnSelect: |-
+                =ClearCollect(
+                    colFilterData,
+                        If(
+                         //Date selected-----------------------------------------------------------------------
+                            !IsBlank(radioDate_8.SelectedText) && IsBlank(radioParty_7.SelectedText) && IsBlank(radioStatus_8.SelectedText) && IsBlank(OrderValue_2.Text) && IsBlank(DateFrom_13.SelectedDate),
+                            If(
+                                radioDate_8.Selected.Value = "Today",
+                                Filter(
+                                    OfflineInvoiceCollection,
+                                    IsToday('Created On') && 'Owning User'.'Primary Email' = radioSalesperson_8.Selected.'Primary Email'
+                                ),
+                                radioDate_8.Selected.Value = "This Week",
+                                Filter(
+                                    OfflineInvoiceCollection,
+                                    (DateValue('Created On') >= DateValue(Today()) - Weekday(Today()) + 2 && DateValue('Created On') <= DateValue(Today()) + (9 - Weekday(Today()))) &&'Owning User'.'Primary Email' = radioSalesperson_8.Selected.'Primary Email'
+                                ),
+                                radioDate_8.Selected.Value = "This Month",
+                                Filter(
+                                    OfflineInvoiceCollection,
+                                    (Text(
+                                        'Created On',
+                                        "mmmm"
+                                    ) = Text(
+                                        Today(),
+                                        "mmmm"
+                                    )) &&  'Owning User'.'Primary Email' = radioSalesperson_8.Selected.'Primary Email'
+                                )
+                            ),
+                        //Party selected-----------------------------------------------------------------------
+                            IsBlank(radioDate_8.SelectedText) && !IsBlank(radioParty_7.SelectedText) && IsBlank(radioStatus_8.SelectedText) && IsBlank(OrderValue_2.Text) && IsBlank(DateFrom_13.SelectedDate),
+                            Filter(
+                                OfflineInvoiceCollection,
+                                'Order From'.'Customer Code' = radioParty_7.Selected.'Customer Code' && 'Owning User'.'Primary Email' = radioSalesperson_8.Selected.'Primary Email' 
+                            ),
+                        //Status selected-----------------------------------------------------------------------
+                            IsBlank(radioDate_8.SelectedText) && IsBlank(radioParty_7.SelectedText) && !IsBlank(radioStatus_8.SelectedText) && IsBlank(OrderValue_2.Text) && IsBlank(DateFrom_13.SelectedDate),
+                            Filter(
+                                OfflineInvoiceCollection,
+                                'Invoice Status' = radioStatus_8.Selected.Value && 'Owning User'.'Primary Email' = radioSalesperson_8.Selected.'Primary Email' 
+                            ),
+                        // total order amount ------------------------------------------------------
+                            IsBlank(radioDate_8.SelectedText) && IsBlank(radioParty_7.SelectedText) && IsBlank(radioStatus_8.SelectedText) && !IsBlank(OrderValue_2.Text) && IsBlank(DateFrom_13.SelectedDate),
+                            Filter(
+                                OfflineInvoiceCollection,
+                                'Total Bill Amount' = Value(OrderValue_2.Text) && 'Owning User'.'Primary Email' = radioSalesperson_8.Selected.'Primary Email' && 'Order Type' = 'Order Type Choice'.Primary
+                            ),
+                        // Selected salesperson-------------------------
+                            !IsBlank(radioSalesperson_8.SelectedText) && IsBlank(radioDate_8.SelectedText) && IsBlank(radioParty_7.SelectedText) && IsBlank(radioStatus_8.SelectedText) && IsBlank(OrderValue_2.Text) && IsBlank(DateFrom_13.SelectedDate),
+                            Filter(
+                                OfflineInvoiceCollection,
+                                'Owning User'.'Primary Email' = radioSalesperson_8.Selected.'Primary Email' && 'Order Type' = 'Order Type Choice'.Primary
+                            ),
+                        // Date to and date from -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+                            !IsBlank(DateFrom_13.SelectedDate) && !IsBlank(DateTo_10.SelectedDate) && IsBlank(radioDate_8.SelectedText) && IsBlank(radioParty_7.SelectedText) && IsBlank(radioStatus_8.SelectedText) && IsBlank(OrderValue_2.Text),
+                            Filter(
+                                OfflineInvoiceCollection,
+                                DateValue('Created On') >= DateValue(DateFrom_13.SelectedDate) && DateValue('Created On') <= DateValue(DateTo_10.SelectedDate) && 'Order Type' = 'Order Type Choice'.Primary && 'Owning User'.'Primary Email' = radioSalesperson_8.Selected.'Primary Email'
+                            ),
+                      // Select date and party------------------------------------------------------------------
+                            !IsBlank(radioDate_8.SelectedText) && !IsBlank(radioParty_7.SelectedText) && IsBlank(radioStatus_8.SelectedText) && IsBlank(OrderValue_2.Text) && IsBlank(DateFrom_13.SelectedDate),
+                            If(
+                                radioDate_8.Selected.Value = "Today",
+                                Filter(
+                                    OfflineInvoiceCollection,
+                                    IsToday('Created On') && 'Order Type' = 'Order Type Choice'.Primary && 'Order From'.'Customer Code' = radioParty_7.Selected.'Customer Code' && 'Owning User'.'Primary Email' = radioSalesperson_8.Selected.'Primary Email'
+                                ),
+                                radioDate_8.Selected.Value = "This Week",
+                                Filter(
+                                    OfflineInvoiceCollection,
+                                    (DateValue('Created On') >= DateValue(Today()) - Weekday(Today()) + 2 && DateValue('Created On') <= DateValue(Today()) + (9 - Weekday(Today()))) && 'Order Type' = 'Order Type Choice'.Primary && 'Order From'.'Customer Code' = radioParty_7.Selected.'Customer Code' && 'Owning User'.'Primary Email' = radioSalesperson_8.Selected.'Primary Email'
+                                ),
+                                radioDate_8.Selected.Value = "This Month",
+                                Filter(
+                                    OfflineInvoiceCollection,
+                                    (Text(
+                                        'Created On',
+                                        "mmmm"
+                                    ) = Text(
+                                        Today(),
+                                        "mmmm"
+                                    )) && 'Order Type' = 'Order Type Choice'.Primary && 'Order From'.'Customer Code' = radioParty_7.Selected.'Customer Code' && 'Owning User'.'Primary Email' = radioSalesperson_8.Selected.'Primary Email'
+                                )
+                            ),
+                             // Select date and Status------------------------------------------------------------------
+                            !IsBlank(radioDate_8.SelectedText) && IsBlank(radioParty_7.SelectedText) && !IsBlank(radioStatus_8.SelectedText) && IsBlank(OrderValue_2.Text) && IsBlank(DateFrom_13.SelectedDate),
+                            If(
+                                radioDate_8.Selected.Value = "Today",
+                                Filter(
+                                    OfflineInvoiceCollection,
+                                    IsToday('Created On') && 'Order Type' = 'Order Type Choice'.Primary && 'Order Status' = radioStatus_8.Selected.Value && 'Owning User'.'Primary Email' = radioSalesperson_8.Selected.'Primary Email'
+                                ),
+                                radioDate_8.Selected.Value = "This Week",
+                                Filter(
+                                    OfflineInvoiceCollection,
+                                    (DateValue('Created On') >= DateValue(Today()) - Weekday(Today()) + 2 && DateValue('Created On') <= DateValue(Today()) + (9 - Weekday(Today()))) && 'Order Type' = 'Order Type Choice'.Primary && 'Order Status' = radioStatus_8.Selected.Value && 'Owning User'.'Primary Email' = radioSalesperson_8.Selected.'Primary Email'
+                                ),
+                                radioDate_8.Selected.Value = "This Month",
+                                Filter(
+                                    OfflineInvoiceCollection,
+                                    (Text(
+                                        'Created On',
+                                        "mmmm"
+                                    ) = Text(
+                                        Today(),
+                                        "mmmm"
+                                    )) && 'Order Type' = 'Order Type Choice'.Primary && 'Order Status' = radioStatus_8.Selected.Value && 'Owning User'.'Primary Email' = radioSalesperson_8.Selected.'Primary Email'
+                                )
+                            ),
+                        // Select date and order value------------------------------------------------------------------
+                            !IsBlank(radioDate_8.SelectedText) && IsBlank(radioParty_7.SelectedText) && IsBlank(radioStatus_8.SelectedText) && !IsBlank(OrderValue_2.Text) && IsBlank(DateFrom_13.SelectedDate),
+                            If(
+                                radioDate_8.Selected.Value = "Today",
+                                Filter(
+                                    OfflineInvoiceCollection,
+                                    IsToday('Created On') && 'Order Type' = 'Order Type Choice'.Primary && 'Total Bill Amount' = Value(OrderValue_2.Text) && 'Owning User'.'Primary Email' = radioSalesperson_8.Selected.'Primary Email'
+                                ),
+                                radioDate_8.Selected.Value = "This Week",
+                                Filter(
+                                    OfflineInvoiceCollection,
+                                    (DateValue('Created On') >= DateValue(Today()) - Weekday(Today()) + 2 && DateValue('Created On') <= DateValue(Today()) + (9 - Weekday(Today()))) && 'Order Type' = 'Order Type Choice'.Primary && 'Total Bill Amount' = Value(OrderValue_2.Text) && 'Owning User'.'Primary Email' = radioSalesperson_8.Selected.'Primary Email'
+                                ),
+                                radioDate_8.Selected.Value = "This Month",
+                                Filter(
+                                    OfflineInvoiceCollection,
+                                    (Text(
+                                        'Created On',
+                                        "mmmm"
+                                    ) = Text(
+                                        Today(),
+                                        "mmmm"
+                                    )) && 'Order Type' = 'Order Type Choice'.Primary && 'Total Bill Amount' = Value(OrderValue_2.Text) && 'Owning User'.'Primary Email' = radioSalesperson_8.Selected.'Primary Email'
+                                )
+                            ),
+                        //Party  and status selected--------------------------------------------------------------
+                            IsBlank(radioDate_8.SelectedText) && !IsBlank(radioParty_7.SelectedText) && !IsBlank(radioStatus_8.SelectedText) && IsBlank(OrderValue_2.Text) && IsBlank(DateFrom_13.SelectedDate),
+                            Filter(
+                                OfflineInvoiceCollection,
+                                'Order From'.'Customer Code' = radioParty_7.Selected.'Customer Code' && 'Order Type' = 'Order Type Choice'.Primary && 'Order Status' = radioStatus_8.Selected.Value && 'Owning User'.'Primary Email' = radioSalesperson_8.Selected.'Primary Email'
+                            ),
+                         //Party  and order value selected--------------------------------------------------------------
+                            IsBlank(radioDate_8.SelectedText) && !IsBlank(radioParty_7.SelectedText) && IsBlank(radioStatus_8.SelectedText) && !IsBlank(OrderValue_2.Text) && IsBlank(DateFrom_13.SelectedDate),
+                            Filter(
+                                OfflineInvoiceCollection,
+                                'Order From'.'Customer Code' = radioParty_7.Selected.'Customer Code' && 'Total Bill Amount' = Value(OrderValue_2.Text) && 'Owning User'.'Primary Email' = radioSalesperson_8.Selected.'Primary Email'
+                            ),
+                        //Party  and date value selected--------------------------------------------------------------
+                            !IsBlank(radioParty_7.SelectedText) && !IsBlank(DateFrom_13.SelectedDate) && !IsBlank(DateTo_10.SelectedDate) && IsBlank(radioDate_8.SelectedText) && !IsBlank(radioStatus_8.SelectedText) && IsBlank(OrderValue_2.Text),
+                            Filter(
+                                OfflineInvoiceCollection,
+                                'Order From'.'Customer Code' = radioParty_7.Selected.'Customer Code' && DateValue('Created On') >= DateValue(DateFrom_13.SelectedDate) && DateValue('Created On') <= DateValue(DateTo_10.SelectedDate) && 'Order Type' = 'Order Type Choice'.Primary && 'Owning User'.'Primary Email' = radioSalesperson_8.Selected.'Primary Email'
+                            ),
+                        //Status  and order value selected---------------------------------------------------------
+                            IsBlank(radioDate_8.SelectedText) && IsBlank(radioParty_7.SelectedText) && !IsBlank(radioStatus_8.SelectedText) && !IsBlank(OrderValue_2.Text) && IsBlank(DateFrom_13.SelectedDate),
+                            Filter(
+                                OfflineInvoiceCollection,
+                                'Order Status' = radioStatus_8.Selected.Value && 'Total Bill Amount' = Value(OrderValue_2.Text) && 'Owning User'.'Primary Email' = radioSalesperson_8.Selected.'Primary Email' && 'Order Type' = 'Order Type Choice'.Primary
+                            ),
+                        //Status  and date value selected--------------------------------------------------------------
+                            !IsBlank(radioStatus_8.SelectedText) && !IsBlank(DateFrom_13.SelectedDate) && !IsBlank(DateTo_10.SelectedDate) && IsBlank(radioDate_8.SelectedText) && IsBlank(radioParty_7.SelectedText) && IsBlank(OrderValue_2.Text),
+                            Filter(
+                                OfflineInvoiceCollection,
+                                'Order Status' = radioStatus_8.Selected.Value && DateValue('Created On') >= DateValue(DateFrom_13.SelectedDate) && DateValue('Created On') <= DateValue(DateTo_10.SelectedDate) && 'Order Type' = 'Order Type Choice'.Primary && 'Owning User'.'Primary Email' = radioSalesperson_8.Selected.'Primary Email'
+                            ),
+                    //Party,Status and date selected-------------------------------------------------------------
+                            !IsBlank(radioDate_8.SelectedText) && !IsBlank(radioParty_7.SelectedText) && !IsBlank(radioStatus_8.SelectedText) && IsBlank(OrderValue_2.Text) && IsBlank(DateFrom_13.SelectedDate),
+                            If(
+                                radioDate_8.Selected.Value = "Today",
+                                Filter(
+                                    OfflineInvoiceCollection,
+                                    IsToday('Created On') && 'Order Type' = 'Order Type Choice'.Primary && 'Order Status' = radioStatus_8.Selected.Value && 'Order From'.'Customer Code' = radioParty_7.Selected.'Customer Code' && 'Owning User'.'Primary Email' = radioSalesperson_8.Selected.'Primary Email'
+                                ),
+                                radioDate_8.Selected.Value = "This Week",
+                                Filter(
+                                    OfflineInvoiceCollection,
+                                    (DateValue('Created On') >= DateValue(Today()) - Weekday(Today()) + 2 && DateValue('Created On') <= DateValue(Today()) + (9 - Weekday(Today()))) && 'Order Type' = 'Order Type Choice'.Primary && 'Order Status' = radioStatus_8.Selected.Value && 'Order From'.'Customer Code' = radioParty_7.Selected.'Customer Code' && 'Owning User'.'Primary Email' = radioSalesperson_8.Selected.'Primary Email'
+                                ),
+                                radioDate_8.Selected.Value = "This Month",
+                                Filter(
+                                    OfflineInvoiceCollection,
+                                    (Text(
+                                        'Created On',
+                                        "mmmm"
+                                    ) = Text(
+                                        Today(),
+                                        "mmmm"
+                                    )) && 'Order Type' = 'Order Type Choice'.Primary && 'Order Status' = radioStatus_8.Selected.Value && 'Order From'.'Customer Code' = radioParty_7.Selected.'Customer Code' && 'Owning User'.'Primary Email' = radioSalesperson_8.Selected.'Primary Email'
+                                )
+                            ),
+                 //Party,ordervalue and date selected-------------------------------------------------------------
+                            !IsBlank(radioDate_8.SelectedText) && !IsBlank(radioParty_7.SelectedText) && IsBlank(radioStatus_8.SelectedText) && !IsBlank(OrderValue_2.Text) && IsBlank(DateFrom_13.SelectedDate),
+                            If(
+                                radioDate_8.Selected.Value = "Today",
+                                Filter(
+                                    OfflineInvoiceCollection,
+                                    IsToday('Created On') && 'Order Type' = 'Order Type Choice'.Primary && 'Order From'.'Customer Code' = radioParty_7.Selected.'Customer Code' && 'Total Bill Amount' = Value(OrderValue_2.Text) && 'Owning User'.'Primary Email' = radioSalesperson_8.Selected.'Primary Email'
+                                ),
+                                radioDate_8.Selected.Value = "This Week",
+                                Filter(
+                                    OfflineInvoiceCollection,
+                                    (DateValue('Created On') >= DateValue(Today()) - Weekday(Today()) + 2 && DateValue('Created On') <= DateValue(Today()) + (9 - Weekday(Today()))) && 'Order Type' = 'Order Type Choice'.Primary && 'Order From'.'Customer Code' = radioParty_7.Selected.'Customer Code' && 'Total Bill Amount' = Value(OrderValue_2.Text) && 'Owning User'.'Primary Email' = radioSalesperson_8.Selected.'Primary Email'
+                                ),
+                                radioDate_8.Selected.Value = "This Month",
+                                Filter(
+                                    OfflineInvoiceCollection,
+                                    (Text(
+                                        'Created On',
+                                        "mmmm"
+                                    ) = Text(
+                                        Today(),
+                                        "mmmm"
+                                    )) && 'Order Type' = 'Order Type Choice'.Primary && 'Order From'.'Customer Code' = radioParty_7.Selected.'Customer Code' && 'Total Bill Amount' = Value(OrderValue_2.Text) && 'Owning User'.'Primary Email' = radioSalesperson_8.Selected.'Primary Email'
+                                )
+                            ),
+                    //Party,Status and date value selected--------------------------------------------------------------
+                            !IsBlank(radioStatus_8.SelectedText) && !IsBlank(DateFrom_13.SelectedDate) && !IsBlank(DateTo_10.SelectedDate) && IsBlank(radioDate_8.SelectedText) && !IsBlank(radioParty_7.SelectedText) && IsBlank(OrderValue_2.Text),
+                            Filter(
+                                OfflineInvoiceCollection,
+                                'Order Status' = radioStatus_8.Selected.Value && DateValue('Created On') >= DateValue(DateFrom_13.SelectedDate) && DateValue('Created On') <= DateValue(DateTo_10.SelectedDate) && 'Order From'.'Customer Code' = radioParty_7.Selected.'Customer Code' && 'Order Type' = 'Order Type Choice'.Primary && 'Owning User'.'Primary Email' = radioSalesperson_8.Selected.'Primary Email'
+                            ),
+                //Party,ordervalue and date value selected--------------------------------------------------------------
+                            IsBlank(radioStatus_8.SelectedText) && !IsBlank(DateFrom_13.SelectedDate) && !IsBlank(DateTo_10.SelectedDate) && IsBlank(radioDate_8.SelectedText) && !IsBlank(radioParty_7.SelectedText) && !IsBlank(OrderValue_2.Text),
+                            Filter(
+                                OfflineInvoiceCollection,
+                                'Total Bill Amount' = Value(OrderValue_2.Text) && DateValue('Created On') >= DateValue(DateFrom_13.SelectedDate) && DateValue('Created On') <= DateValue(DateTo_10.SelectedDate) && 'Order From'.'Customer Code' = radioParty_7.Selected.'Customer Code' && 'Order Type' = 'Order Type Choice'.Primary && 'Owning User'.'Primary Email' = radioSalesperson_8.Selected.'Primary Email'
+                            ),
+                 //status,ordervalue and date value selected--------------------------------------------------------------
+                            !IsBlank(radioStatus_8.SelectedText) && !IsBlank(DateFrom_13.SelectedDate) && !IsBlank(DateTo_10.SelectedDate) && IsBlank(radioDate_8.SelectedText) && IsBlank(radioParty_7.SelectedText) && !IsBlank(OrderValue_2.Text),
+                            Filter(
+                                OfflineInvoiceCollection,
+                                'Total Bill Amount' = Value(OrderValue_2.Text) && DateValue('Created On') >= DateValue(DateFrom_13.SelectedDate) && DateValue('Created On') <= DateValue(DateTo_10.SelectedDate) && 'Order Status' = radioStatus_8.Selected.Value && 'Order Type' = 'Order Type Choice'.Primary && 'Owning User'.'Primary Email' = radioSalesperson_8.Selected.'Primary Email'
+                            ),
+                 //Party,ordervalue and status selected--------------------------------------------------------------
+                            !IsBlank(radioStatus_8.SelectedText) && IsBlank(DateFrom_13.SelectedDate) && IsBlank(DateTo_10.SelectedDate) && IsBlank(radioDate_8.SelectedText) && !IsBlank(radioParty_7.SelectedText) && !IsBlank(OrderValue_2.Text),
+                            Filter(
+                                OfflineInvoiceCollection,
+                                'Total Bill Amount' = Value(OrderValue_2.Text) && 'Order Status' = radioStatus_8.Selected.Value && 'Order From'.'Customer Code' = radioParty_7.Selected.'Customer Code' && 'Order Type' = 'Order Type Choice'.Primary && 'Owning User'.'Primary Email' = radioSalesperson_8.Selected.'Primary Email'
+                            ),
+                        //all selected-------------------------------------------------------------
+                            !IsBlank(radioDate_8.SelectedText) && !IsBlank(radioParty_7.SelectedText) && !IsBlank(radioStatus_8.SelectedText) && !IsBlank(OrderValue_2.Text) && IsBlank(DateFrom_13.SelectedDate),
+                            If(
+                                radioDate_8.Selected.Value = "Today",
+                                Filter(
+                                    OfflineInvoiceCollection,
+                                    IsToday('Created On') && 'Order Type' = 'Order Type Choice'.Primary && 'Order Status' = radioStatus_8.Selected.Value && 'Order From'.'Customer Code' = radioParty_7.Selected.'Customer Code' && 'Total Bill Amount' = Value(OrderValue_2.Text) && 'Owning User'.'Primary Email' = radioSalesperson_8.Selected.'Primary Email'
+                                ),
+                                radioDate_8.Selected.Value = "This Week",
+                                Filter(
+                                    OfflineInvoiceCollection,
+                                    (DateValue('Created On') >= DateValue(Today()) - Weekday(Today()) + 2 && DateValue('Created On') <= DateValue(Today()) + (9 - Weekday(Today()))) && 'Order Type' = 'Order Type Choice'.Primary && 'Order Status' = radioStatus_8.Selected.Value && 'Order From'.'Customer Code' = radioParty_7.Selected.'Customer Code' && 'Total Bill Amount' = Value(OrderValue_2.Text) && 'Owning User'.'Primary Email' = radioSalesperson_8.Selected.'Primary Email'
+                                ),
+                                radioDate_8.Selected.Value = "This Month",
+                                Filter(
+                                    OfflineInvoiceCollection,
+                                    (Text(
+                                        'Created On',
+                                        "mmmm"
+                                    ) = Text(
+                                        Today(),
+                                        "mmmm"
+                                    )) && 'Order Type' = 'Order Type Choice'.Primary && 'Order Status' = radioStatus_8.Selected.Value && 'Order From'.'Customer Code' = radioParty_7.Selected.'Customer Code' && 'Total Bill Amount' = Value(OrderValue_2.Text) && 'Owning User'.'Primary Email' = radioSalesperson_8.Selected.'Primary Email'
+                                )
+                            ),
+                            !IsBlank(radioStatus_8.SelectedText) && !IsBlank(DateFrom_13.SelectedDate) && !IsBlank(DateTo_10.SelectedDate) && IsBlank(radioDate_8.SelectedText) && !IsBlank(radioParty_7.SelectedText) && !IsBlank(OrderValue_2.Text),
+                            Filter(
+                                OfflineInvoiceCollection,
+                                'Order Status' = radioStatus_8.Selected.Value && 'Order From'.'Customer Code' = radioParty_7.Selected.'Customer Code' && 'Total Bill Amount' = Value(OrderValue_2.Text) && DateValue('Created On') >= DateValue(DateFrom_13.SelectedDate) && DateValue('Created On') <= DateValue(DateTo_10.SelectedDate) && 'Order Type' = 'Order Type Choice'.Primary && 'Owning User'.'Primary Email' = radioSalesperson_8.Selected.'Primary Email'
+                            )
+                        ),
+                        'Order List_2'.Type = "Secondary",
+                        If(
+                         //Date selected-----------------------------------------------------------------------
+                            (!IsBlank(radioDate_8.SelectedText) && IsBlank(radioParty_7.SelectedText) && IsBlank(radioStatus_8.SelectedText) && IsBlank(OrderValue_2.Text) && IsBlank(DateFrom_13.SelectedDate)),
+                            If(
+                                radioDate_8.Selected.Value = "Today",
+                                Filter(
+                                    OfflineInvoiceCollection,
+                                    IsToday('Created On') && 'Order Type' = 'Order Type Choice'.Secondary && 'Owning User'.'Primary Email' = radioSalesperson_8.Selected.'Primary Email'
+                                ),
+                                radioDate_8.Selected.Value = "This Week",
+                                Filter(
+                                    OfflineInvoiceCollection,
+                                    (DateValue('Created On') >= DateValue(Today()) - Weekday(Today()) + 2 && DateValue('Created On') <= DateValue(Today()) + (9 - Weekday(Today()))) && 'Order Type' = 'Order Type Choice'.Secondary && 'Owning User'.'Primary Email' = radioSalesperson_8.Selected.'Primary Email'
+                                ),
+                                radioDate_8.Selected.Value = "This Month",
+                                Filter(
+                                    OfflineInvoiceCollection,
+                                    (Text(
+                                        'Created On',
+                                        "mmmm"
+                                    ) = Text(
+                                        Today(),
+                                        "mmmm"
+                                    )) && 'Order Type' = 'Order Type Choice'.Secondary && 'Owning User'.'Primary Email' = radioSalesperson_8.Selected.'Primary Email'
+                                )
+                            ),
+                        //Party selected-----------------------------------------------------------------------
+                            IsBlank(radioDate_8.SelectedText) && !IsBlank(radioParty_7.SelectedText) && IsBlank(radioStatus_8.SelectedText) && IsBlank(OrderValue_2.Text) && IsBlank(DateFrom_13.SelectedDate),
+                            Filter(
+                                OfflineInvoiceCollection,
+                                'Order From'.'Customer Code' = radioParty_7.Selected.'Customer Code' && 'Owning User'.'Primary Email' = radioSalesperson_8.Selected.'Primary Email' && 'Order Type' = 'Order Type Choice'.Secondary
+                            ),
+                        //Status selected-----------------------------------------------------------------------
+                            IsBlank(radioDate_8.SelectedText) && IsBlank(radioParty_7.SelectedText) && !IsBlank(radioStatus_8.SelectedText) && IsBlank(OrderValue_2.Text) && IsBlank(DateFrom_13.SelectedDate),
+                            Filter(
+                                OfflineInvoiceCollection,
+                                'Order Status' = radioStatus_8.Selected.Value && 'Owning User'.'Primary Email' = radioSalesperson_8.Selected.'Primary Email' && 'Order Type' = 'Order Type Choice'.Secondary
+                            ),
+                        // total order amount ------------------------------------------------------
+                            IsBlank(radioDate_8.SelectedText) && IsBlank(radioParty_7.SelectedText) && IsBlank(radioStatus_8.SelectedText) && !IsBlank(OrderValue_2.Text) && IsBlank(DateFrom_13.SelectedDate),
+                            Filter(
+                                OfflineInvoiceCollection,
+                                'Total Bill Amount' = Value(OrderValue_2.Text) && 'Owning User'.'Primary Email' = radioSalesperson_8.Selected.'Primary Email' && 'Order Type' = 'Order Type Choice'.Secondary
+                            ),
+                        // Selected salesperson-------------------------
+                            !IsBlank(radioSalesperson_8.SelectedText) && IsBlank(radioDate_8.SelectedText) && IsBlank(radioParty_7.SelectedText) && IsBlank(radioStatus_8.SelectedText) && IsBlank(OrderValue_2.Text) && IsBlank(DateFrom_13.SelectedDate),
+                            Filter(
+                                OfflineInvoiceCollection,
+                                'Owning User'.'Primary Email' = radioSalesperson_8.Selected.'Primary Email' && 'Order Type' = 'Order Type Choice'.Secondary
+                            ),
+                        // Date to and date from -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+                            !IsBlank(DateFrom_13.SelectedDate) && !IsBlank(DateTo_10.SelectedDate) && IsBlank(radioDate_8.SelectedText) && IsBlank(radioParty_7.SelectedText) && IsBlank(radioStatus_8.SelectedText) && IsBlank(OrderValue_2.Text),
+                            Filter(
+                                OfflineInvoiceCollection,
+                                DateValue('Created On') >= DateValue(DateFrom_13.SelectedDate) && DateValue('Created On') <= DateValue(DateTo_10.SelectedDate) && 'Order Type' = 'Order Type Choice'.Secondary && 'Owning User'.'Primary Email' = radioSalesperson_8.Selected.'Primary Email'
+                            ),
+                      // Select date and party------------------------------------------------------------------
+                            !IsBlank(radioDate_8.SelectedText) && !IsBlank(radioParty_7.SelectedText) && IsBlank(radioStatus_8.SelectedText) && IsBlank(OrderValue_2.Text) && IsBlank(DateFrom_13.SelectedDate),
+                            If(
+                                radioDate_8.Selected.Value = "Today",
+                                Filter(
+                                    OfflineInvoiceCollection,
+                                    IsToday('Created On') && 'Order Type' = 'Order Type Choice'.Secondary && 'Order From'.'Customer Code' = radioParty_7.Selected.'Customer Code' && 'Owning User'.'Primary Email' = radioSalesperson_8.Selected.'Primary Email'
+                                ),
+                                radioDate_8.Selected.Value = "This Week",
+                                Filter(
+                                    OfflineInvoiceCollection,
+                                    (DateValue('Created On') >= DateValue(Today()) - Weekday(Today()) + 2 && DateValue('Created On') <= DateValue(Today()) + (9 - Weekday(Today()))) && 'Order Type' = 'Order Type Choice'.Secondary && 'Order From'.'Customer Code' = radioParty_7.Selected.'Customer Code' && 'Owning User'.'Primary Email' = radioSalesperson_8.Selected.'Primary Email'
+                                ),
+                                radioDate_8.Selected.Value = "This Month",
+                                Filter(
+                                    OfflineInvoiceCollection,
+                                    (Text(
+                                        'Created On',
+                                        "mmmm"
+                                    ) = Text(
+                                        Today(),
+                                        "mmmm"
+                                    )) && 'Order Type' = 'Order Type Choice'.Secondary && 'Order From'.'Customer Code' = radioParty_7.Selected.'Customer Code' && 'Owning User'.'Primary Email' = radioSalesperson_8.Selected.'Primary Email'
+                                )
+                            ),
+                             // Select date and Status------------------------------------------------------------------
+                            !IsBlank(radioDate_8.SelectedText) && IsBlank(radioParty_7.SelectedText) && !IsBlank(radioStatus_8.SelectedText) && IsBlank(OrderValue_2.Text) && IsBlank(DateFrom_13.SelectedDate),
+                            If(
+                                radioDate_8.Selected.Value = "Today",
+                                Filter(
+                                    OfflineInvoiceCollection,
+                                    IsToday('Created On') && 'Order Type' = 'Order Type Choice'.Secondary && 'Order Status' = radioStatus_8.Selected.Value && 'Owning User'.'Primary Email' = radioSalesperson_8.Selected.'Primary Email'
+                                ),
+                                radioDate_8.Selected.Value = "This Week",
+                                Filter(
+                                    OfflineInvoiceCollection,
+                                    (DateValue('Created On') >= DateValue(Today()) - Weekday(Today()) + 2 && DateValue('Created On') <= DateValue(Today()) + (9 - Weekday(Today()))) && 'Order Type' = 'Order Type Choice'.Pr
+                    ))
+                );
+                Set(
+                    varFilterInvoice,
+                    false
+                );
+                Set(
+                    varfiltergallery,
+                    false
+                );
+                Set(
+                    varCollectionEmpty,
+                    false
+                );
+                Reset(DateFrom_13);
+                Reset(DateTo_10);
+                Reset(radioDate_8);
+                Reset(radioStatus_8);
+                Reset(OrderValue_2);
+                Reset(radioParty_7);
+            Size: |+
+                =LookUp('Environment Variable Definitions', 'Display Name'="Text Title Font Size").'Default Value'
+                //_VarGblAppFonts.Size.Title
+                
+            Text: ="Apply Filters"
+            Visible: =varFilterInvoice
+            Width: =274
+            X: =337
+            Y: =647
+            ZIndex: =3
+
+        ClearBtn_13 As button:
+            Color: |
+                =RGBA(255, 255, 255, 1)
+                //RGBA(153, 160, 196, 1)
+            DisabledBorderColor: =RGBA(166, 166, 166, 1)
+            DisabledColor: =RGBA(166, 166, 166, 1)
+            DisabledFill: =RGBA(244, 244, 244, 1)
+            Fill: |-
+                =//RGBA(184, 0, 0, 1)
+                ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//_VarGblAppColors.PrimaryRed
+            Font: =Font.'Segoe UI'
+            FontWeight: =FontWeight.Semibold
+            Height: =60
+            HoverColor: =RGBA(255, 255, 255, 1)
+            HoverFill: |-
+                =ColorFade(
+                    
+                    ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//_VarGblAppColors.PrimaryRed
+                , 10%)
+            OnSelect: |
+                =Reset(DateFrom_13);
+                Reset(DateTo_10);
+                Reset(radioDate_8);
+                Reset(radioStatus_8);
+                Reset(OrderValue_6);
+                Reset(radioParty_7);
+                
+                
+                
+                Clear(colorderFilter);
+                Clear(colFilterData);
+                Set(varCollectionEmpty,true)
+            Size: =20
+            Text: ="Clear Filters"
+            Visible: =varFilterInvoice
+            Width: =274
+            X: =27
+            Y: =647
+            ZIndex: =4
+
+        Rectangle17_13 As rectangle:
+            BorderColor: =RGBA(0, 18, 107, 1)
+            Fill: =RGBA(0, 0, 0, 1)
+            Height: =2
+            Visible: =varFilterInvoice
+            Width: =640
+            Y: =154
+            ZIndex: =5
+
+        Label30_33 As label:
+            BorderColor: =RGBA(0, 18, 107, 1)
+            Color: |-
+                =//RGBA(0, 0, 0, 1)
+                ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Text Primary Color").'Default Value')
+            DisabledColor: =RGBA(166, 166, 166, 1)
+            Font: =Font.'Segoe UI'
+            FontWeight: =FontWeight.Semibold
+            Height: =57
+            Size: =18
+            Text: ="Date From"
+            Visible: =If(Gallery8_13.Selected.tabid=1,true,false)
+            Width: =173
+            X: =335
+            Y: =391
+            ZIndex: =6
+
+        DateTo_10 As datepicker:
+            AccessibleLabel: ="To Date Filter"
+            BorderColor: |-
+                =//RGBA(0, 0, 0, 1)
+                ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Text Primary Color").'Default Value')
+            BorderThickness: =1
+            CalendarHeaderFill: =RGBA(56, 96, 178, 1)
+            Color: |-
+                =//RGBA(0, 0, 0, 1)
+                ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Text Primary Color").'Default Value')
+            DisabledBorderColor: =RGBA(166, 166, 166, 1)
+            DisabledColor: =RGBA(166, 166, 166, 1)
+            DisabledFill: =RGBA(244, 244, 244, 1)
+            DisplayMode: =If(IsBlank(radioDate_8.SelectedText),DisplayMode.Edit,DisplayMode.View)
+            Fill: =RGBA(255,255,255,0)
+            Height: =63
+            HoverDateFill: =RGBA(186, 202, 226, 1)
+            IconBackground: =Color.Transparent
+            IconFill: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//_VarGblAppColors.PrimaryRed
+            InputTextPlaceholder: =If(IsBlank(Self.SelectedDate), Text(Today(), "dd/mm/yyyy"))
+            OnChange: =
+            OnSelect: |-
+                =If(
+                    Gallery8_13.Selected.tabid = 1 && IsBlank(
+                        LookUp(
+                            colInvoiceFilter,
+                            Title = "Date To"
+                        ).Title
+                    ),
+                    Collect(
+                        colInvoiceFilter,
+                        {
+                            Title: "Date To",
+                            value: Text(
+                                DateTo_10.SelectedDate,
+                                "dd-mm-yyyy"
+                            )
+                        }
+                    ),
+                    Patch(
+                        colInvoiceFilter,
+                        LookUp(
+                            colInvoiceFilter,
+                            Title = "Date To"
+                        ),
+                        {
+                            value: Text(
+                                DateTo_10.SelectedDate,
+                                "dd-mm-yyyy"
+                            )
+                        }
+                    )
+                )
+            SelectedDateFill: =RGBA(56, 96, 178, 1)
+            Size: =16
+            Visible: =If(Gallery8_13.Selected.tabid=1,true,false)
+            Width: =238
+            X: =336
+            Y: =564
+            ZIndex: =7
+
+        Label30_34 As label:
+            BorderColor: =RGBA(0, 18, 107, 1)
+            Color: |-
+                =//RGBA(0, 0, 0, 1)
+                ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Text Primary Color").'Default Value')
+            DisabledColor: =RGBA(166, 166, 166, 1)
+            Font: =Font.'Segoe UI'
+            FontWeight: =FontWeight.Semibold
+            Height: =49
+            Size: =18
+            Text: ="Date To"
+            Visible: =If(Gallery8_13.Selected.tabid=1,true,false)
+            Width: =173
+            X: =335
+            Y: =515
+            ZIndex: =8
+
+        DateFrom_13 As datepicker:
+            AccessibleLabel: ="From Date Filter"
+            BorderColor: |-
+                =//RGBA(0, 0, 0, 1)
+                ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Text Primary Color").'Default Value')
+            BorderThickness: =1
+            CalendarHeaderFill: =RGBA(56, 96, 178, 1)
+            Color: |-
+                =//RGBA(0, 0, 0, 1)
+                ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Text Primary Color").'Default Value')
+            DefaultDate: =//Today()
+            DisabledBorderColor: =RGBA(166, 166, 166, 1)
+            DisabledColor: =RGBA(166, 166, 166, 1)
+            DisabledFill: =RGBA(244, 244, 244, 1)
+            DisplayMode: |-
+                =//DisplayMode.Edit
+                If(IsBlank(radioDate_8.SelectedText),DisplayMode.Edit,DisplayMode.View)
+            Fill: =RGBA(255,255,255,0)
+            Height: =63
+            HoverDateFill: =RGBA(186, 202, 226, 1)
+            IconBackground: =Color.Transparent
+            IconFill: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//_VarGblAppColors.PrimaryRed
+            InputTextPlaceholder: =If(IsBlank(Self.SelectedDate), Text(Today(), "dd/mm/yyyy"))
+            OnChange: =If(!IsBlank(radioDate_8.SelectedText),Notify("You cannot select both option",NotificationType.Error,2000);Reset(radioDate_8))
+            OnSelect: |-
+                =If(
+                    Gallery8_13.Selected.tabid = 1 && IsBlank(
+                        LookUp(
+                            colInvoiceFilter,
+                            Title = "Date From"
+                        ).Title
+                    ),
+                    Collect(
+                        colInvoiceFilter,
+                        {
+                            Title: "Date From",
+                            value: Text(
+                                DateFrom_13.SelectedDate,
+                                "dd-mm-yyyy"
+                            )
+                        }
+                    ),
+                    Patch(
+                        colInvoiceFilter,
+                        LookUp(
+                            colInvoiceFilter,
+                            Title = "Date From"
+                        ),
+                        {
+                            value: Text(
+                                DateFrom_13.SelectedDate,
+                                "dd-mm-yyyy"
+                            )
+                        }
+                    )
+                )
+            SelectedDateFill: =RGBA(56, 96, 178, 1)
+            Size: =16
+            Visible: =If(Gallery8_13.Selected.tabid=1,true,false)
+            Width: =238
+            X: =335
+            Y: =448
+            ZIndex: =9
+
+        Icon18_16 As icon.Cancel:
+            AccessibleLabel: ="Close the Filter"
+            BorderColor: =RGBA(0, 18, 107, 1)
+            DisabledBorderColor: =RGBA(166, 166, 166, 1)
+            DisabledColor: =RGBA(244, 244, 244, 1)
+            Height: =30
+            Icon: =Icon.CancelBadge
+            OnSelect: |
+                =Set(varFilterInvoice,false);
+            TabIndex: =0//-1
+            Visible: =varFilterInvoice
+            Width: =30
+            X: =583
+            Y: =14
+            ZIndex: =10
+
+        radioDate_8 As radio:
+            AccessibleLabel: ="Date Selection"
+            BorderColor: =RGBA(0, 18, 107, 1)
+            Color: |-
+                =//RGBA(0, 13, 75, 1)
+                //RGBA(153, 160, 196, 1)
+                If(
+                    radioDate_8.Selected.Value,
+                    ColorValue( LookUp('Environment Variable Definitions', 'Display Name'="Common Primary Background").'Default Value')//_VarGblAppColors.PrimaryBg
+                    ,ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Text Primary Color").'Default Value')   
+                )
+            DisplayMode: =If(IsBlank(DateFrom_13.SelectedDate),DisplayMode.Edit,DisplayMode.View)
+            Font: =Font.'Segoe UI'
+            Height: =209
+            HoverColor: =RGBA(0, 18, 107, 1)
+            Items: =["Today","This Week","This Month"]
+            LineHeight: =2
+            OnChange: =
+            OnSelect: |-
+                =If(
+                    Gallery8_13.Selected.tabid = 1 && IsBlank(
+                        LookUp(
+                            colInvoiceFilter,
+                            Title = Gallery8_13.Selected.Title
+                        ).Title
+                    ),
+                    Collect(
+                        colInvoiceFilter,
+                        {
+                            Title: Gallery8_13.Selected.Title,
+                            value: radioDate_8.Selected.Value
+                        }
+                    ),
+                    Patch(
+                        colInvoiceFilter,
+                        LookUp(
+                            colInvoiceFilter,
+                            Title = Gallery8_13.Selected.Title
+                        ),
+                        {value: radioDate_8.Selected.Value}
+                    )
+                )
+            RadioSelectionFill: |-
+                =//RGBA(153, 160, 196, 1)
+                If(
+                    //ThisItem.IsSelected,
+                    radioDate_8.Selected.Value,
+                    ColorValue( LookUp('Environment Variable Definitions', 'Display Name'="Common Primary Background").'Default Value')//_VarGblAppColors.PrimaryBg
+                    ,ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Text Primary Color").'Default Value')   
+                )
+            RadioSize: =40
+            Size: =18
+            Visible: |-
+                =If(
+                    Gallery8_13.Selected.tabid = 1,
+                    true,
+                    false
+                )
+            Width: =340
+            X: =292
+            Y: =158
+            ZIndex: =11
+
+        radioSalesperson_8 As radio:
+            AccessibleLabel: ="Salesperson"
+            BorderColor: =RGBA(0, 18, 107, 1)
+            Color: |-
+                =//RGBA(0, 0, 0, 1)
+                If(
+                    //ThisItem.IsSelected,
+                    radioSalesperson_8.Selected.'Full Name',
+                    ColorValue( LookUp('Environment Variable Definitions', 'Display Name'="Common Primary Background").'Default Value')//_VarGblAppColors.PrimaryBg
+                    ,ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Text Primary Color").'Default Value')  
+                )
+            Default: =LookUp(Users,'Primary Email'=User().Email).'Full Name'
+            Height: =466
+            HoverColor: =RGBA(0, 18, 107, 1)
+            Items: |-
+                =Filter(
+                    Users,
+                    Manager.'Primary Email' = User().Email || 'Primary Email' = User().Email
+                )
+            LineHeight: =2
+            OnSelect: |-
+                =
+                
+                    If(Gallery8_13.Selected.tabid = 3  && IsBlank(LookUp(colInvoiceFilter,Title= Gallery8_13.Selected.Title).Title),
+                    Collect(
+                        colInvoiceFilter,
+                        {
+                            Title: Gallery8_13.Selected.Title,
+                            value: radioSalesperson_8.Selected.'Full Name'
+                        }
+                    ),
+                    Patch(colInvoiceFilter,LookUp(colInvoiceFilter,Title= Gallery8_13.Selected.Title),{value: radioSalesperson_8.Selected.'Full Name'})
+                )
+            RadioSelectionFill: |-
+                =//RGBA(0, 0, 0, 1)
+                If(
+                    //ThisItem.IsSelected,
+                    radioSalesperson_8.Selected.'Full Name',
+                    ColorValue( LookUp('Environment Variable Definitions', 'Display Name'="Common Primary Background").'Default Value')//_VarGblAppColors.PrimaryBg
+                    ,ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Text Primary Color").'Default Value')
+                )
+            RadioSize: =40
+            Size: =18
+            Visible: =If(Gallery8_13.Selected.tabid=2,true,false)
+            Width: =340
+            X: =300
+            Y: =158
+            ZIndex: =12
+
+        Gallery8_13 As gallery.galleryVertical:
+            AccessibleLabel: ="Available Filters"
+            BorderColor: =RGBA(0, 18, 107, 1)
+            Height: =471
+            Items: |-
+                =Table(
+                    {
+                        Title: "Date",
+                        tabid: 1
+                    },
+                    {
+                        Title: "Salesperson",
+                        tabid: 2
+                    },
+                    {
+                        Title: "Customer",
+                        tabid: 3
+                    },
+                    {
+                        Title: "Status",
+                        tabid: 4
+                    }
+                )
+            Layout: =Layout.Vertical
+            ShowScrollbar: =false
+            TabIndex: =0//-1
+            TemplateSize: =84
+            Visible: =varFilterInvoice
+            Width: =234
+            X: =46
+            Y: =158
+            ZIndex: =13
+
+            Button18_14 As button:
+                Align: =Align.Left
+                Color: |-
+                    =//RGBA(0, 0, 0, 1)
+                    If(
+                        //ThisItem.IsSelected,
+                        radioParty_7.Selected.'Customer Name',
+                        ColorValue( LookUp('Environment Variable Definitions', 'Display Name'="Common Primary Background").'Default Value')//_VarGblAppColors.PrimaryBg
+                        ,ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Text Primary Color").'Default Value')
+                    )
+                DisabledBorderColor: =RGBA(166, 166, 166, 1)
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                DisabledFill: =RGBA(244, 244, 244, 1)
+                Fill: |-
+                    =//Color.Transparent
+                    If(ThisItem.IsSelected,ColorFade(
+                        ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//_VarGblAppColors.PrimaryRed
+                        
+                        ,80%),Color.Transparent)
+                Font: =Font.'Segoe UI'
+                FontWeight: =FontWeight.Semibold
+                Height: =77
+                HoverColor: =RGBA(255, 255, 255, 1)
+                HoverFill: |-
+                    =//ColorFade(Color.DimGrey,80%)
+                    If(ThisItem.IsSelected,ColorFade(
+                        ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//_VarGblAppColors.PrimaryRed
+                        ,80%),Color.Transparent)
+                OnSelect: =
+                PaddingLeft: =25
+                PressedColor: =Color.DimGrey
+                PressedFill: |-
+                    =//ColorFade(Color.DimGrey,80%)
+                    If(ThisItem.IsSelected,ColorFade(
+                        ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//_VarGblAppColors.PrimaryRed
+                        
+                        ,80%),Color.Transparent)
+                Size: =20
+                Text: =ThisItem.Title
+                Width: =224
+                Y: =7
+                ZIndex: =1
+
+        radioParty_7 As radio:
+            AccessibleLabel: ="Parties Selection"
+            BorderColor: =RGBA(0, 18, 107, 1)
+            Color: |-
+                =//RGBA(0, 0, 0, 1)
+                If(
+                    //ThisItem.IsSelected,
+                    radioParty_7.Selected.'Customer Name',
+                    ColorValue( LookUp('Environment Variable Definitions', 'Display Name'="Common Primary Background").'Default Value')//_VarGblAppColors.PrimaryBg
+                    ,ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Text Primary Color").'Default Value')   
+                )
+            Height: =466
+            HoverColor: =RGBA(0, 18, 107, 1)
+            Items: |-
+                =Filter(
+                    OfflinePartiesCollection,
+                    Not('Customer Type' = 'Party Type Choices'.Retailer)
+                )
+            LineHeight: =2
+            OnSelect: |-
+                =If(
+                    Gallery8_13.Selected.tabid = 3 && IsBlank(
+                        LookUp(
+                            colorderFilter,
+                            Title = Gallery8_13.Selected.Title
+                        ).Title
+                    ),
+                    Collect(
+                        colorderFilter,
+                        {
+                            Title: Gallery8_13.Selected.Title,
+                            value: radioParty_7.Selected.'Customer Name'
+                        }
+                    ),
+                    Patch(
+                        colorderFilter,
+                        LookUp(
+                            colorderFilter,
+                            Title = Gallery8_13.Selected.Title
+                        ),
+                        {value: radioParty_7.Selected.'Customer Name'}
+                    )
+                )
+            RadioSelectionFill: |-
+                =//RGBA(0, 0, 0, 1)
+                If(
+                    //ThisItem.IsSelected,
+                    radioParty_7.Selected.'Customer Name',
+                    ColorValue( LookUp('Environment Variable Definitions', 'Display Name'="Common Primary Background").'Default Value')//_VarGblAppColors.PrimaryBg
+                    ,ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Text Primary Color").'Default Value')   
+                )
+            RadioSize: =40
+            Size: =18
+            Visible: =If(Gallery8_13.Selected.tabid=3,true,false)
+            Width: =340
+            X: =300
+            Y: =181
+            ZIndex: =15
+
+        radioStatus_8 As radio:
+            AccessibleLabel: ="Status options"
+            BorderColor: =RGBA(0, 18, 107, 1)
+            Color: =RGBA(0, 0, 0, 1)
+            Height: =312
+            HoverColor: =RGBA(0, 18, 107, 1)
+            Items: =Choices('Invoice Status')
+            LineHeight: =2
+            OnSelect: |-
+                =If(
+                    Gallery8_13.Selected.tabid = 4 && IsBlank(
+                        LookUp(
+                            colInvoiceFilter,
+                            Title = Gallery8_13.Selected.Title
+                        ).Title
+                    ),
+                    Collect(
+                        colInvoiceFilter,
+                        {
+                            Title: Gallery8_13.Selected.Title,
+                            value: Text(radioStatus_8.Selected.Value)
+                        }
+                    ),
+                     Patch(
+                        colInvoiceFilter,
+                        LookUp(
+                            colInvoiceFilter,
+                            Title = Gallery8_13.Selected.Title
+                        ),
+                        {value: Text(radioStatus_8.Selected.Value)}
+                    )
+                   
+                )
+            RadioSelectionFill: |-
+                =RGBA(0, 0, 0, 1)
+                /*If(
+                    //ThisItem.IsSelected,
+                    radioStatus.Selected.Value,
+                    ColorValue( LookUp('Environment Variable Definitions', 'Display Name'="Common Primary Background").'Default Value')//_VarGblAppColors.PrimaryBg
+                    ,ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Text Primary Color").'Default Value')   
+                )*/
+            RadioSize: =40
+            Size: =18
+            Visible: =If(Gallery8_13.Selected.tabid=4,true,false)
+            Width: =340
+            X: =300
+            Y: =162
+            ZIndex: =16
+
+        Label15_8 As label:
+            BorderColor: =RGBA(0, 18, 107, 1)
+            Color: |-
+                =//RGBA(0, 0, 0, 1)
+                ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Text Primary Color").'Default Value')
+            DisabledColor: =RGBA(166, 166, 166, 1)
+            FontWeight: =FontWeight.Bold
+            Height: =64
+            Size: =18
+            Text: ="Order Value"
+            Visible: =If(Gallery8_13.Selected.tabid=5,true,false)
+            Width: =272
+            X: =319
+            Y: =244
+            ZIndex: =17
+
+        OrderValue_6 As text:
+            AccessibleLabel: ="Order Value"
+            BorderColor: =RGBA(136, 160, 209, 1)
+            Color: |-
+                =//RGBA(0, 0, 0, 1)
+                ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Text Primary Color").'Default Value')
+            Default: |-
+                =LookUp(
+                    colorderFilter,
+                    Title = "Order value"
+                ).value
+            DisabledBorderColor: =RGBA(166, 166, 166, 1)
+            DisabledColor: =RGBA(166, 166, 166, 1)
+            DisabledFill: =RGBA(244, 244, 244, 1)
+            FocusedBorderThickness: =4
+            Format: =TextFormat.Number
+            Height: =76
+            HintText: ="Enter Value"
+            HoverBorderColor: =RGBA(0, 18, 107, 1)
+            HoverColor: =RGBA(0, 0, 0, 1)
+            HoverFill: =RGBA(186, 202, 226, 1)
+            OnChange: |-
+                =If(
+                    Gallery8_13.Selected.tabid = 5 && IsBlank(
+                        LookUp(
+                            colorderFilter,
+                            Title = Gallery8_13.Selected.Title
+                        ).Title
+                    ),
+                    Collect(
+                        colorderFilter,
+                        {
+                            Title: Gallery8_13.Selected.Title,
+                            value: OrderValue_6.Text
+                        }
+                    ),
+                    Patch(
+                        colorderFilter,
+                        LookUp(
+                            colorderFilter,
+                            Title =Gallery8_13.Selected.Title
+                        ),
+                        {
+                            value: OrderValue_6.Text
+                        }
+                    )
+                )
+            Size: =18
+            Visible: =If(Gallery8_13.Selected.tabid=5,true,false)
+            Width: =309
+            X: =319
+            Y: =315
+            ZIndex: =18
+
+        Label30_32 As label:
+            BorderColor: =RGBA(0, 18, 107, 1)
+            Color: |-
+                =//RGBA(0, 0, 0, 1)
+                ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Text Primary Color").'Default Value')
+            DisabledColor: =RGBA(166, 166, 166, 1)
+            Font: =Font.'Segoe UI'
+            FontWeight: =FontWeight.Bold
+            Height: =59
+            Size: =18
+            Text: ="OR"
+            Visible: =If(Gallery8_13.Selected.tabid=1,true,false)
+            Width: =129
+            X: =399
+            Y: =346
+            ZIndex: =19
+
+        Display_19 As gallery.galleryHorizontal:
+            AccessibleLabel: ="Filter Displayed"
+            BorderColor: =RGBA(0, 18, 107, 1)
+            DelayItemLoading: =true
+            Fill: |-
+                =RGBA(0, 0, 0, 0)
+                //_VarGblAppColors.PrimaryRed
+            Height: =78
+            Items: =colInvoiceFilter
+            LoadingSpinner: =LoadingSpinner.Data
+            ShowScrollbar: =false
+            TabIndex: =0//-1
+            TemplateSize: =216
+            Visible: |-
+                =true
+                //varFilter
+            Width: =564
+            X: =27
+            Y: =61
+            ZIndex: =22
+
+            Button20_23 As button:
+                DisabledBorderColor: =RGBA(166, 166, 166, 1)
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                DisabledFill: =RGBA(244, 244, 244, 1)
+                DisplayMode: =DisplayMode.View
+                Fill: |-
+                    =//RGBA(204, 204, 204, 1)
+                    ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//_VarGblAppColors.PrimaryRed
+                FontWeight: =FontWeight.Semibold
+                Height: =41
+                HoverColor: =RGBA(255, 255, 255, 1)
+                HoverFill: =ColorFade(RGBA(56, 96, 178, 1), -20%)
+                RadiusBottomLeft: =15
+                RadiusBottomRight: =15
+                RadiusTopLeft: =15
+                RadiusTopRight: =15
+                Size: =24
+                Text: =""
+                Width: =210
+                X: =6
+                ZIndex: =1
+
+            Label31_33 As label:
+                BorderColor: =RGBA(0, 18, 107, 1)
+                Color: |-
+                    =ColorValue( LookUp('Environment Variable Definitions', 'Display Name'="Common Primary Background").'Default Value'   
+                    )
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                FontWeight: =FontWeight.Bold
+                Height: =41
+                OnSelect: =Select(Parent)
+                Size: =10
+                Text: |-
+                    =ThisItem.Title & ": " & ThisItem.value
+                Tooltip: |-
+                    =ThisItem.Title & ":"
+                Width: =161
+                Wrap: =false
+                X: =16
+                ZIndex: =2
+
+            Icon21_23 As icon.Cancel:
+                AccessibleLabel: ="Close the filter applied"
+                BorderColor: =RGBA(0, 18, 107, 1)
+                Color: |-
+                    =ColorValue( LookUp('Environment Variable Definitions', 'Display Name'="Common Primary Background").'Default Value'   
+                    )
+                DisabledBorderColor: =RGBA(166, 166, 166, 1)
+                DisabledColor: =RGBA(244, 244, 244, 1)
+                Height: =25
+                Icon: =Icon.Cancel
+                OnSelect: |-
+                    =Remove(colInvoiceFilter,ThisItem);
+                    Reset(DateFrom_13);
+                    Reset(DateTo_10);
+                    Reset(radioDate_8);
+                    Reset(radioStatus_8);
+                    Reset(OrderValue_6);
+                    Reset(radioParty_7);
+                    
+                    
+                    Set(varCollectionEmpty,true)
+                TabIndex: =0//-1
+                Width: =30
+                X: =175
+                Y: =8
+                ZIndex: =3
+
+        Group10_9 As group:
+            Height: =5
+            Width: =5
+            X: =-296
+            Y: =-250
+            ZIndex: =22
+
+            Icon20_15 As icon.ArrowsUpDown:
+                BorderColor: =RGBA(0, 18, 107, 1)
+                DisabledBorderColor: =RGBA(166, 166, 166, 1)
+                DisabledColor: =RGBA(244, 244, 244, 1)
+                DisplayMode: =DisplayMode.View
+                Height: =30
+                Icon: =Icon.Sort
+                Visible: =If(varSort=true,true,false)
+                Width: =30
+                X: =138
+                Y: =43
+                ZIndex: =20
+
+            Label29_41 As label:
+                BorderColor: =RGBA(0, 18, 107, 1)
+                Color: =RGBA(0, 0, 0, 1)
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                FontWeight: =FontWeight.Bold
+                Size: =20
+                Text: ="Sort By"
+                Visible: =If(varSort=true,true,false)
+                Width: =272
+                X: =40
+                Y: =40
+                ZIndex: =21
 
