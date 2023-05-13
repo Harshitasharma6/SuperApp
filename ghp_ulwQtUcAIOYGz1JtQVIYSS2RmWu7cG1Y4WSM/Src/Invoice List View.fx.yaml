@@ -505,7 +505,9 @@
                 =
                 LookUp('Environment Variable Definitions', 'Display Name'="Text Sub Title Font Size").'Default Value'
             TabIndex: =0
-            Text: =ThisItem.'Invoice Status'
+            Text: |-
+                =//ThisItem.'Invoice Status'
+                Text(LookUp('Order Header.S','Order Header'= ThisItem.'Order No.'.'Order Header').'Order Date',"dd/mm/yyyy")
             Tooltip: =
             Width: =137
             X: =473

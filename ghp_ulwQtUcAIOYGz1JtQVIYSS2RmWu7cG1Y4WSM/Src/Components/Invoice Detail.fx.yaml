@@ -7,72 +7,14 @@
     Y: =0
     ZIndex: =1
 
-    "'Dashboard Toptab_3' As gallery.galleryHorizontal":
-        AccessibleLabel: ="Dashboard Toptab_1"
-        BorderColor: =RGBA(109, 109, 109, 1)
-        Fill: =RGBA(0,0,0,0)
-        Height: =56
-        Items: |-
-            =Table(
-                {
-                    Title: "Invoices",
-                    Id:1
-                },
-                {
-                    Title: "Invoice Lines",
-                    Id:2
-                }
-            )
-        OnSelect: =
-        ShowScrollbar: =false
-        TabIndex: =0
-        TemplateSize: =195
-        Width: =405
-        X: =106
-        Y: =15
-        ZIndex: =1
-
-        Rectangle3_9 As rectangle:
-            BorderColor: =RGBA(0, 0, 0, 0)
-            BorderStyle: =BorderStyle.None
-            DisabledFill: =RGBA(166, 166, 166, 1)
-            Fill: |-
-                =If(ThisItem.IsSelected, ColorValue("#A00002"), RGBA(103, 204, 107, 0.1))
-            FocusedBorderThickness: =4
-            Height: =46
-            HoverFill: =RGBA(103, 204, 107, 0.28)
-            OnSelect: =Select(Parent)
-            PressedFill: =RGBA(103, 204, 107, 0.25)
-            Width: =195
-            ZIndex: =1
-
-        Label2_51 As label:
-            Align: =Align.Center
-            BorderColor: =RGBA(0, 0, 0, 0)
-            BorderStyle: =BorderStyle.None
-            BorderThickness: =2
-            Color: =RGBA(255, 255, 255, 1)
-            DisabledBorderColor: =RGBA(0, 0, 0, 0)
-            DisabledColor: =RGBA(166, 166, 166, 1)
-            Fill: =If(ThisItem.IsSelected, _VarGblAppColors.PrimaryRed,ColorFade( _VarGblAppColors.PrimaryBg,20%))
-            FocusedBorderThickness: =4
-            Font: =Font.Lato
-            FontWeight: =FontWeight.Semibold
-            Height: =46
-            OnSelect: =
-            Size: =18
-            Text: =ThisItem.Title
-            Width: =195
-            ZIndex: =3
-
     "'Header Container_3' As groupContainer.manualLayoutContainer":
         Height: =956
-        Visible: =If('Dashboard Toptab_3'.Selected.Id=1,true,false)
+        Visible: =If(varinvoiceId=1,true,false)
         Width: ='Invoice Detail'.Width
         Y: =92
         ZIndex: =2
 
-        "'Order Header Gallery_1' As gallery.galleryVertical":
+        Invoice As gallery.galleryVertical:
             AccessibleLabel: ="Order Header Gallery"
             BorderColor: =RGBA(0, 18, 107, 1)
             FocusedBorderColor: =Color.Transparent
@@ -105,12 +47,12 @@
                     },
                    
                    
-                   /* {
+                    {
                         Title: "CGST",
                         Data: Concatenate(
                             "₹",
                             Text(
-                                varInvoiceData.new_cgst,
+                                varInvoiceData.CGST,
                                 "[$-hi-IN]##,##,##,###",
                                 "hi-IN"
                             )
@@ -121,7 +63,7 @@
                         Data: Concatenate(
                             "₹",
                             Text(
-                                varInvoiceData.new_sgst,
+                                varInvoiceData.SGST,
                                 "[$-hi-IN]##,##,##,###",
                                 "hi-IN"
                             )
@@ -139,19 +81,6 @@
                         )
                     },
                  
-                    */ 
-                    {
-                        Title: "Discount",
-                        Data: Concatenate(
-                            Text(
-                                varOrderData.'Discount %',
-                                "[$-hi-IN]##,##,##,###",
-                                "hi-IN"
-                            ),
-                            "%"
-                        )
-                    },
-                  
                     {
                         Title: "Total Discount",
                         Data: Concatenate(
@@ -188,7 +117,7 @@
                 DisabledColor: =RGBA(166, 166, 166, 1)
                 Height: =66
                 OnSelect: =Select(Parent)
-                Size: =_VarGblAppFonts.Size.Medium
+                Size: =16
                 Text: =ThisItem.Title
                 Width: =246
                 X: =24
@@ -196,12 +125,11 @@
 
             Label21_2 As label:
                 BorderColor: =RGBA(0, 18, 107, 1)
-                Color: =RGBA(0, 0, 0, 1)
+                Color: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Text Background Color").'Default Value') 
                 DisabledColor: =RGBA(166, 166, 166, 1)
                 FontWeight: =FontWeight.Semibold
                 Height: =66
                 OnSelect: =Select(Parent)
-                Size: =16
                 Text: =ThisItem.Data
                 Width: =253
                 X: =360
@@ -218,7 +146,7 @@
 
     "'Lines Container_2' As groupContainer.manualLayoutContainer":
         Height: ='Invoice Detail'.Height-100
-        Visible: =If('Dashboard Toptab_3'.Selected.Id=2,true,false)
+        Visible: =If(varinvoiceId=2,true,false)
         Width: ='Invoice Detail'.Width
         Y: =81
         ZIndex: =3
@@ -250,7 +178,7 @@
                 HoverColor: =RGBA(255, 255, 255, 1)
                 HoverFill: =Color.White
                 OnSelect: |-
-                    =Navigate('Invoice Line Detail',ScreenTransition.CoverRight);
+                    =//Navigate('Invoice Line Detail',ScreenTransition.CoverRight);
                     Set(varInvoicelineData,ThisItem)
                 Size: =24
                 Text: =""
@@ -261,10 +189,10 @@
             Rectangle1_18 As rectangle:
                 AccessibleLabel: ="Rectangle1_8"
                 BorderColor: =RGBA(0, 18, 107, 1)
-                Fill: =_VarGblAppColors.HeaderBg
+                Fill: =//_VarGblAppColors.HeaderBg
                 Height: =1
                 OnSelect: |-
-                    =Navigate('Invoice Line Detail',ScreenTransition.CoverRight);
+                    =//Navigate('Invoice Line Detail',ScreenTransition.CoverRight);
                     Set(varInvoicelineData,ThisItem)
                 TabIndex: =0
                 Width: ='Invoice line gallery'.TemplateWidth
@@ -273,18 +201,18 @@
 
             Background_17 As button:
                 BorderThickness: =0
-                Color: =_VarGblAppColors.AccentBg
+                Color: =//_VarGblAppColors.AccentBg
                 DisabledBorderColor: =RGBA(166, 166, 166, 1)
                 DisabledColor: =RGBA(116, 116, 116, 1)
-                DisabledFill: =_VarGblAppColors.BottomListBg
+                DisabledFill: =//_VarGblAppColors.BottomListBg
                 DisplayMode: =DisplayMode.Disabled
-                Fill: =_VarGblAppColors.BottomListBg
+                Fill: =//_VarGblAppColors.BottomListBg
                 FontWeight: =FontWeight.Semibold
                 Height: =72
                 HoverColor: =RGBA(255, 255, 255, 1)
                 HoverFill: =ColorFade(Self.Fill, -20%)
                 OnSelect: |-
-                    =Navigate('Invoice Line Detail',ScreenTransition.CoverRight);
+                    =//Navigate('Invoice Line Detail',ScreenTransition.CoverRight);
                     Set(varInvoicelineData,ThisItem)
                 RadiusBottomLeft: =15
                 RadiusBottomRight: =15
@@ -302,16 +230,15 @@
 
             Body1_90 As label:
                 BorderColor: =RGBA(0, 18, 107, 1)
-                Color: =_VarGblAppColors.PrimaryRed
+                Color: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Text Background Color").'Default Value') 
                 DisabledColor: =RGBA(166, 166, 166, 1)
                 FocusedBorderThickness: =1
-                Font: =_VarGblAppFonts.Heading
+                Font: =Font.'Segoe UI'
                 FontWeight: =FontWeight.Bold
                 Height: =74
                 OnSelect: |-
-                    =Navigate('Invoice Line Detail',ScreenTransition.CoverRight);
+                    =//Navigate('Invoice Line Detail',ScreenTransition.CoverRight);
                     Set(varInvoicelineData,ThisItem)
-                Size: =20
                 TabIndex: =0
                 Text: =ThisItem.'Invoice Line Id'
                 Tooltip: =
@@ -323,16 +250,15 @@
 
             Body1_91 As label:
                 BorderColor: =RGBA(0, 18, 107, 1)
-                Color: =_VarGblAppColors.PrimaryRed
+                Color: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Text Background Color").'Default Value') 
                 DisabledColor: =RGBA(166, 166, 166, 1)
                 FocusedBorderThickness: =1
-                Font: =_VarGblAppFonts.Heading
+                Font: =Font.'Segoe UI'
                 FontWeight: =FontWeight.Bold
                 Height: =75
                 OnSelect: |-
-                    =Navigate('Invoice Line Detail',ScreenTransition.CoverRight);
+                    =//Navigate('Invoice Line Detail',ScreenTransition.CoverRight);
                     Set(varInvoicelineData,ThisItem)
-                Size: =_VarGblAppFonts.Size.Medium
                 TabIndex: =0
                 Text: =Text(ThisItem.'Created On')
                 Tooltip: =
@@ -344,16 +270,15 @@
 
             Body1_92 As label:
                 BorderColor: =RGBA(0, 18, 107, 1)
-                Color: =RGBA(0, 0, 0, 1)
+                Color: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Text Background Color").'Default Value') 
                 DisabledColor: =RGBA(166, 166, 166, 1)
                 FocusedBorderThickness: =1
-                Font: =_VarGblAppFonts.Heading
+                Font: =Font.'Segoe UI'
                 FontWeight: =FontWeight.Semibold
                 Height: =62
                 OnSelect: |-
-                    =Navigate('Invoice Line Detail',ScreenTransition.CoverRight);
+                    =//Navigate('Invoice Line Detail',ScreenTransition.CoverRight);
                     Set(varInvoicelineData,ThisItem)
-                Size: =_VarGblAppFonts.Size.Subtitle
                 TabIndex: =0
                 Text: |-
                     ="Product Name: " & ThisItem.'Product SKU'.'Item Name'
@@ -366,16 +291,15 @@
 
             Body1_95 As label:
                 BorderColor: =RGBA(0, 18, 107, 1)
-                Color: =RGBA(0, 0, 0, 1)
+                Color: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Text Background Color").'Default Value') 
                 DisabledColor: =RGBA(166, 166, 166, 1)
                 FocusedBorderThickness: =01
-                Font: =_VarGblAppFonts.Heading
+                Font: =Font.'Segoe UI'
                 FontWeight: =FontWeight.Semibold
                 Height: =62
                 OnSelect: |-
-                    =Navigate('Invoice Line Detail',ScreenTransition.CoverRight);
+                    =//Navigate('Invoice Line Detail',ScreenTransition.CoverRight);
                     Set(varInvoicelineData,ThisItem)
-                Size: =_VarGblAppFonts.Size.Subtitle
                 TabIndex: =0
                 Text: |-
                     ="Discount: " & ThisItem.Discount  &"%"
@@ -388,16 +312,15 @@
 
             Body1_96 As label:
                 BorderColor: =RGBA(0, 18, 107, 1)
-                Color: =RGBA(0, 0, 0, 1)
+                Color: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Text Background Color").'Default Value') 
                 DisabledColor: =RGBA(166, 166, 166, 1)
                 FocusedBorderThickness: =01
-                Font: =_VarGblAppFonts.Heading
+                Font: =Font.'Segoe UI'
                 FontWeight: =FontWeight.Semibold
                 Height: =72
                 OnSelect: |-
-                    =Navigate('Invoice Line Detail',ScreenTransition.CoverRight);
+                    =//Navigate('Invoice Line Detail',ScreenTransition.CoverRight);
                     Set(varInvoicelineData,ThisItem)
-                Size: =_VarGblAppFonts.Size.Subtitle
                 TabIndex: =0
                 Text: |-
                     ="Discounted Price:" & "₹"& ThisItem.'Discounted Base Price'
@@ -408,16 +331,15 @@
 
             Body1_93 As label:
                 BorderColor: =RGBA(0, 18, 107, 1)
-                Color: =RGBA(0, 0, 0, 1)
+                Color: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Text Background Color").'Default Value') 
                 DisabledColor: =RGBA(166, 166, 166, 1)
                 FocusedBorderThickness: =01
-                Font: =_VarGblAppFonts.Heading
+                Font: =Font.'Segoe UI'
                 FontWeight: =FontWeight.Semibold
                 Height: =62
                 OnSelect: |-
-                    =Navigate('Invoice Line Detail',ScreenTransition.CoverRight);
+                    =//Navigate('Invoice Line Detail',ScreenTransition.CoverRight);
                     Set(varInvoicelineData,ThisItem)
-                Size: =_VarGblAppFonts.Size.Subtitle
                 TabIndex: =0
                 Text: |-
                     ="Quantity: "& ThisItem.Quantity
@@ -430,16 +352,15 @@
 
             Body1_94 As label:
                 BorderColor: =RGBA(0, 18, 107, 1)
-                Color: =RGBA(0, 0, 0, 1)
+                Color: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Text Background Color").'Default Value') 
                 DisabledColor: =RGBA(166, 166, 166, 1)
                 FocusedBorderThickness: =01
-                Font: =_VarGblAppFonts.Heading
+                Font: =Font.'Segoe UI'
                 FontWeight: =FontWeight.Semibold
                 Height: =62
                 OnSelect: |-
-                    =Navigate('Invoice Line Detail',ScreenTransition.CoverRight);
+                    =//Navigate('Invoice Line Detail',ScreenTransition.CoverRight);
                     Set(varInvoicelineData,ThisItem)
-                Size: =_VarGblAppFonts.Size.Subtitle
                 TabIndex: =0
                 Text: |-
                     ="Unit Price: " &"₹"& ThisItem.'Unit Price'
@@ -448,4 +369,70 @@
                 X: =16
                 Y: =146
                 ZIndex: =13
+
+    Gallery14_3 As gallery.galleryHorizontal:
+        AccessibleLabel: ="Gallery14"
+        BorderColor: =RGBA(0, 18, 107, 1)
+        BorderStyle: =BorderStyle.None
+        DelayItemLoading: =true
+        FocusedBorderThickness: =0
+        Height: =55
+        Items: |-
+            =Table(
+                {
+                    TabID: 1,
+                    Title: "Invoice"
+                },
+                {
+                    TabID: 2,
+                    Title: "Invoice Line"
+                }
+            )
+        LoadingSpinner: =LoadingSpinner.Data
+        ShowScrollbar: =false
+        TabIndex: =0
+        TemplateSize: =289
+        Width: =600
+        X: =10
+        Y: =9
+        ZIndex: =4
+
+        Label69_3 As label:
+            Align: =Align.Center
+            BorderColor: =RGBA(0, 18, 107, 1)
+            BorderStyle: =BorderStyle.None
+            Color: |-
+                =If(ThisItem.IsSelected,ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )
+                //ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )
+                ,ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Text Background Color").'Default Value') //ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Text Primary Color").'Default Value') //_VarGblAppColors.textbgbutton
+                )
+            DisabledColor: =RGBA(166, 166, 166, 1)
+            FontWeight: =FontWeight.Semibold
+            Height: =45
+            OnSelect: =Set(varinvoiceId,ThisItem.TabID)
+            Size: =16
+            Text: =ThisItem.Title
+            Width: =Parent.TemplateWidth
+            ZIndex: =1
+
+        Rectangle38_3 As rectangle:
+            BorderColor: =RGBA(0, 18, 107, 1)
+            BorderStyle: =BorderStyle.None
+            Fill: |-
+                =If(
+                    ThisItem.IsSelected,
+                    ColorValue(
+                        LookUp(
+                            c_EnvironmentVariable,
+                            'Display Name' = "Button Fill"
+                        ).'Default Value'
+                    ),//ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' ),
+                    ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Text Background Color").'Default Value' )
+                )
+            Height: =2
+            OnSelect: =Set(varinvoiceId,ThisItem.TabID)
+            Visible: =If(varinvoiceId = ThisItem.TabID,true,false)
+            X: =Parent.TemplateWidth/2-Self.Width/2
+            Y: =43
+            ZIndex: =2
 
