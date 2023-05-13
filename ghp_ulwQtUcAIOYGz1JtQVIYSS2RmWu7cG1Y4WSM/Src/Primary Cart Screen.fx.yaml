@@ -9,26 +9,32 @@
         AccessibleLabel: ="Gallery14"
         BorderColor: =RGBA(0, 18, 107, 1)
         DelayItemLoading: =true
-        Height: =60
+        Height: =55
         Items: |-
             =Table(
                 {
-                    ID: 1,
+                    TabID: 1,
                     Title: "Order Summary"
-                    
                 },
                 {
-                     ID: 2,
+                    TabID: 2,
                     Title: "Order Terms"
-                   
+                },
+                {
+                    TabID: 3,
+                    Title: "Invoices"
+                },
+                {
+                    TabID: 4,
+                    Title: "Payment"
                 }
             )
         LoadingSpinner: =LoadingSpinner.Data
         ShowScrollbar: =false
         TabIndex: =0
-        TemplateSize: =Self.Width/CountRows(Self.AllItems) - 8
+        TemplateSize: =289
         Width: =600
-        X: =40
+        X: =10
         Y: =60
         ZIndex: =2
 
@@ -43,7 +49,7 @@
             DisabledColor: =RGBA(166, 166, 166, 1)
             FontWeight: =FontWeight.Semibold
             Height: =50
-            OnSelect: =Select(Parent)
+            OnSelect: =Set(varorderselectedId,ThisItem.TabID)
             Size: =16
             Text: =ThisItem.Title
             Width: =Parent.TemplateWidth
@@ -55,7 +61,7 @@
                 =If(ThisItem.IsSelected,ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )
                 ,Color.White)
             Height: =2
-            OnSelect: =Select(Parent)
+            OnSelect: =Set(varorderselectedId,ThisItem.TabID)
             X: =Parent.TemplateWidth/2-Self.Width/2
             Y: =48
             ZIndex: =2
@@ -969,31 +975,31 @@
                     , -20%)
             OnSelect: |
                 =Set(
-                        varTotalBill,
-                        RoundUp(
-                            Value(
-                                Sum(
-                                    colPrimaryCart,
-                                    (baseUnitPrice - (baseUnitPrice * (discount / 100))) * quantity
-                                ) + (Sum(
-                                    colPrimaryCart,
-                                    igstAmount
-                                ) + Sum(
-                                    colPrimaryCart,
-                                    cgstAmount
-                                ) + Sum(
-                                    colPrimaryCart,
-                                    sgstAmount
-                                ) + Sum(
-                                    colPrimaryCart,
-                                    cessAmount
-                                ))
-                            ),
-                            2
-                        )
-                    );
-                    If(
-                    (varActivated = 'Credit Activated (Parties.S)'.Yes && Value(varRemainingCreditLimit) < Value(varTotalBill)),
+                    varTotalBill,
+                    RoundUp(
+                        Value(
+                            Sum(
+                                colPrimaryCart,
+                                (baseUnitPrice - (baseUnitPrice * (discount / 100))) * quantity
+                            ) + (Sum(
+                                colPrimaryCart,
+                                igstAmount
+                            ) + Sum(
+                                colPrimaryCart,
+                                cgstAmount
+                            ) + Sum(
+                                colPrimaryCart,
+                                sgstAmount
+                            ) + Sum(
+                                colPrimaryCart,
+                                cessAmount
+                            ))
+                        ),
+                        2
+                    )
+                );
+                If(
+                    varActivated = 'Credit Activated (Parties.S)'.Yes && Value(varRemainingCreditLimit) < Value(varTotalBill),
                     Notify(
                         "You have insufficient credit balance",
                         NotificationType.Error,
@@ -1009,10 +1015,10 @@
                                     OfflinePartiesCollection,
                                     'Customer Name' = varParty
                                 ),
-                                'Order To': LookUp(
-                                    OfflinePartiesCollection,
-                                    'Customer Name' = varSelectedRetailerAttachedDistributor
-                                ),
+                                 'Order To': LookUp(
+                                'Parties.S',
+                                'Customer Name' = "Zoxima Solutions"
+                            ),
                                 'Order Status': 'Order Status Choice'.Open,
                                 'Order Type': 'Order Type Choice'.Primary,
                                 SGST: /*(Sum(
@@ -1262,11 +1268,10 @@
                     );
                     Clear(colPrimaryCart);
                     Clear(colPrimaryCart);
-                   
                     Navigate(
                         'Primary Order Screen',
-                        ScreenTransition.CoverRight,{varParty:
-                        Blank()}
+                        ScreenTransition.CoverRight,
+                        {varParty: Blank()}
                     )
                 );
             Size: =20

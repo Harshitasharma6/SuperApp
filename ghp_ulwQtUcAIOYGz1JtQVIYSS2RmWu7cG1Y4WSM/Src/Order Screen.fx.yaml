@@ -43,6 +43,15 @@
         BorderColor: =RGBA(0, 18, 107, 1)
         Fill: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )
         Height: =30
+        OnSelect: |-
+            =If('Product List_1'.OrderType="Primary",Navigate('Primary Cart Screen', ScreenTransition.CoverRight,{
+                        varParty: ComboBox1_1.Selected.'Customer Name',
+                        varCustomertype: ComboBox1_1.Selected.'Customer Type'
+                    }),
+            Navigate('Secondary Cart Screen',ScreenTransition.CoverRight,{
+                        varParty: ComboBox1_3.Selected.'Customer Name',
+                        varCustomertype: ComboBox1_3.Selected.'Customer Type'
+                    }));
         Width: =30
         X: =597
         Y: =14
@@ -55,8 +64,14 @@
         FocusedBorderThickness: =01
         Height: =30
         OnSelect: |-
-            =If('Product List_1'.OrderType="Primary",Navigate('Primary Cart Screen', ScreenTransition.CoverRight),
-            Navigate('Secondary Cart Screen',ScreenTransition.CoverRight));
+            =If('Product List_1'.OrderType="Primary",Navigate('Primary Cart Screen', ScreenTransition.CoverRight,{
+                        varParty: ComboBox1_1.Selected.'Customer Name',
+                        varCustomertype: ComboBox1_1.Selected.'Customer Type'
+                    }),
+            Navigate('Secondary Cart Screen',ScreenTransition.CoverRight,{
+                        varParty: ComboBox1_3.Selected.'Customer Name',
+                        varCustomertype: ComboBox1_3.Selected.'Customer Type'
+                    }));
         TabIndex: =0
         Text: |
             =If(
@@ -83,8 +98,14 @@
         HoverFill: =RGBA(0, 0, 0, 0)
         Icon: =Icon.Shop
         OnSelect: |-
-            =If('Product List_1'.OrderType="Primary",Navigate('Primary Cart Screen', ScreenTransition.CoverRight),
-            Navigate('Secondary Cart Screen',ScreenTransition.CoverRight));
+            =If('Product List_1'.OrderType="Primary",Navigate('Primary Cart Screen', ScreenTransition.CoverRight,{
+                        varParty: ComboBox1_1.Selected.'Customer Name',
+                        varCustomertype: ComboBox1_1.Selected.'Customer Type'
+                    }),
+            Navigate('Secondary Cart Screen',ScreenTransition.CoverRight,{
+                        varParty: ComboBox1_3.Selected.'Customer Name',
+                        varCustomertype: ComboBox1_3.Selected.'Customer Type'
+                    }));
         PressedBorderColor: =RGBA(0, 0, 0, 0)
         PressedColor: =ColorFade(RGBA(0, 120, 212, 1), -30%)
         PressedFill: =RGBA(0, 0, 0, 0)

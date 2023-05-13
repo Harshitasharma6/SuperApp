@@ -396,17 +396,21 @@
                     2
                 )
             );
-            Set(
+            /*Set(
                 varorderselectedId,
                 2
-            );
+            );*/
             If(
                 IsBlank(ComboBox7_3.SelectedItems) && IsBlank(ComboBox7_2.SelectedItems) && IsBlank(ComboBox7.SelectedItems),
                 Notify(
                     "Please fill the order terms",
                     NotificationType.Error,
                     2000
-                )
+                ),
+                Set(
+                varorderselectedId,
+                2
+            );
             );
             //Navigate('Primary Cart Screen',ScreenTransition.CoverRight);
         Size: =20
