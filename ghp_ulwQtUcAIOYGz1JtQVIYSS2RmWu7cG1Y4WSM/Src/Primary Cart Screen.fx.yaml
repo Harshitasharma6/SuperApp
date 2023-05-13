@@ -81,7 +81,7 @@
 
     Container16 As groupContainer.manualLayoutContainer:
         Height: =900
-        Visible: =If(Gallery14.Selected.Title="Order Summary",true,false)
+        Visible: =If(varorderselectedId = 1,true,false)
         Width: =640
         Y: =122
         ZIndex: =3
@@ -96,18 +96,18 @@
                     [
                         
                         {
-                            Title: "Customer",
+                            Title: "Customer:",
                             Value: varParty
                         },
                         {
-                            Title: "Order Date",
+                            Title: "Order Date:",
                             Value: Text(
                                 Today(),
                                 "dd-mm-yy"
                             )
                         },
                         {
-                            Title: "Total Price",
+                            Title: "Total Price:",
                             Value: If(
                                 'Product List_1'.OrderType = "Primary" || primarydata.zx_ordertype = 'Order Type Choice'.Primary,
                                 If(
@@ -156,7 +156,7 @@
                             )
                         },
                         {
-                            Title: "Discount",
+                            Title: "Discount:",
                             Value: If(
                                 'Product List_1'.OrderType = "Primary" || primarydata.zx_ordertype = 'Order Type Choice'.Primary,
                                 If(
@@ -211,7 +211,7 @@
                             )
                         },
                         {
-                            Title: "Net Price",
+                            Title: "Net Price:",
                             Value: If(
                                 'Product List_1'.OrderType = "Primary" || primarydata.zx_ordertype = 'Order Type Choice'.Primary,
                                 If(
@@ -308,7 +308,7 @@
                             )
                         },
                         {
-                            Title: "Tax",
+                            Title: "Tax:",
                             Value: If(
                                 'Product List_1'.OrderType = "Primary" || primarydata.zx_ordertype = 'Order Type Choice'.Primary,
                                 If(
@@ -393,7 +393,7 @@
                             )
                         },
                         {
-                            Title: "Disc.Price",
+                            Title: "Disc.Price:",
                             Value: If(
                                 'Product List_1'.OrderType = "Primary" || primarydata.zx_ordertype = 'Order Type Choice'.Primary,
                                 If(
@@ -442,7 +442,7 @@
                             )
                         },
                         {
-                            Title: "IGST",
+                            Title: "IGST:",
                             Value: If(
                                 
                                     Sum(
@@ -466,7 +466,7 @@
                             )
                         },
                         {
-                            Title: "CGST",
+                            Title: "CGST:",
                             Value: If(
                                 
                                     Sum(
@@ -488,7 +488,7 @@
                             )
                         },
                         {
-                            Title: "SGST",
+                            Title: "SGST:",
                             Value: If(
                                 
                                     Sum(
@@ -510,7 +510,7 @@
                             ))
                         },
                         {
-                            Title: "Cess",
+                            Title: "Cess:",
                             Value:If(
                                 
                                     Sum(
@@ -668,7 +668,7 @@
 
     Container17 As groupContainer.manualLayoutContainer:
         Height: =862
-        Visible: =If(Gallery14.Selected.Title="Order Terms",true,false)
+        Visible: =If(varorderselectedId = 2,true,false)
         Width: =App.Width
         Y: =120
         ZIndex: =5

@@ -1,5 +1,6 @@
 "'order detail screen' As screen":
     LoadingSpinnerColor: =RGBA(0, 120, 212, 1)
+    OnVisible: =Set(varorderselectedId,1)
 
     Header_7 As Header:
         ScreenName: |-
@@ -87,7 +88,7 @@
 
     Container16_1 As groupContainer.manualLayoutContainer:
         Height: =900
-        Visible: =If(Gallery14_1.Selected.Title="Order Summary",true,false)
+        Visible: =If(varorderselectedId = 1,true,false)
         Width: =640
         Y: =142
         ZIndex: =4
@@ -367,7 +368,7 @@
 
     Container17_1 As groupContainer.manualLayoutContainer:
         Height: =862
-        Visible: =If(Gallery14_1.Selected.Title="Order Terms",true,false)
+        Visible: =If(varorderselectedId = 2,true,false)
         Width: =App.Width
         Y: =140
         ZIndex: =5
