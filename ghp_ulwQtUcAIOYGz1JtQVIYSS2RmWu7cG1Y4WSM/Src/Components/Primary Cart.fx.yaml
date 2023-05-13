@@ -121,9 +121,7 @@
 
         "'Quantity Input_5' As text":
             AccessibleLabel: ="Quan"
-            BorderColor: |-
-                =//_VarGblAppColors.SecondaryText
-                ColorValue(LookUp(c_EnvironmentVariable, 'Display Name'="Text Secondary Color").'Default Value')
+            BorderColor: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//_VarGblAppColors.PrimaryRed
             BorderThickness: =2
             Color: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//_VarGblAppColors.PrimaryRed
             Default: =ThisItem.quantity
@@ -132,8 +130,7 @@
             DisabledFill: =RGBA(244, 244, 244, 1)
             FontWeight: =FontWeight.Bold
             Format: =TextFormat.Number
-            Height: =35
-            HintText: ="Enter here"
+            HintText: ="Enter Qty"
             HoverBorderColor: =RGBA(128, 128, 128, 1)
             HoverColor: =RGBA(0, 0, 0, 1)
             HoverFill: =RGBA(230, 230, 230, 1)
