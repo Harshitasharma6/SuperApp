@@ -26,7 +26,7 @@
         {
           "AFDDataSourceName": "",
           "AutoRuleBindingEnabled": false,
-          "AutoRuleBindingString": "/*Table(\r\n    {\r\n        Title: \"Orders\",\r\n        Icon : 'shopping-cart',\r\n        Screen: 'Primary Order Screen',\r\n        Id: 1\r\n    },\r\n    {\r\n        Title: \"Visits\",\r\n        Icon: location,\r\n        Screen:'Start Visit',\r\n        Id:2\r\n    },\r\n     {\r\n        Title: \"Home\",\r\n        Icon:home,\r\n        Screen: Home,\r\n        Id:3\r\n    },\r\n     {\r\n        Title: \"Parties\",\r\n        Icon: people,\r\n        Screen: Parties,\r\n        Id:4\r\n    },\r\n    {\r\n         Title: \"Menu\",\r\n        Icon: images,\r\n         //Icon.Hamburger,\r\n        Screen: Sidebar,\r\n        Id:5\r\n    }\r\n)*/\r\nTable(\r\n    {\r\n        Title: \"Orders\",\r\n        Icon : 'shopping-cart',\r\n        Screen: 'Primary Order Screen',\r\n        Id: 1\r\n    },\r\n    {\r\n        Title: \"Visits\",\r\n        Icon: location,\r\n        Screen:'Start Visit',\r\n        Id:2\r\n    },\r\n     {\r\n        Title: \"Home\",\r\n        Icon:home,\r\n        Screen: Home,\r\n        Id:3\r\n    },\r\n     {\r\n        Title: \"Parties\",\r\n        Icon: people,\r\n        Screen: Parties,\r\n        Id:4\r\n    },\r\n    {\r\n         Title: \"Menu\",\r\n        Icon: \"data:image/svg+xml;utf8, \"&EncodeUrl(\"\r\n<svg width='1373' height='1392' viewBox='0 0 1373 1392' fill='none' xmlns='http://www.w3.org/2000/svg'>\r\n<path d='M0 638V0H629.292V638H0ZM0 1392V754H629.292V1392H0ZM743.708 638V0H1373V638H743.708ZM743.708 1392V754H1373V1392H743.708ZM114.417 522H514.875V116H114.417V522ZM858.125 522H1258.58V116H858.125V522ZM858.125 1276H1258.58V870H858.125V1276ZM114.417 1276H514.875V870H114.417V1276Z' fill='#2AB8C5'/>\r\n</svg>\r\n\r\n\")\r\n,\r\n         //Icon.Hamburger,\r\n        Screen: Sidebar,\r\n        Id:5\r\n    }\r\n)",
+          "AutoRuleBindingString": "Table(\r\n    {\r\n        Title: \"Orders\",\r\n        Icon : 'shopping-cart',\r\n        Screen: 'Primary Order Screen',\r\n        Id:1\r\n    },\r\n    {\r\n        Title: \"Visit\",\r\n        Icon: location,\r\n        Screen:'Start Visit'\r\n    },\r\n     {\r\n        Title: \"Home\",\r\n        Icon:home,\r\n        Screen: Home\r\n    },\r\n     {\r\n        Title: \"Parties\",\r\n        Icon: people,\r\n        Screen: Parties\r\n    },\r\n    {\r\n        Title: varUser.'First Name',\r\n        Icon: User().Image,\r\n        Screen: Sidebar\r\n    }\r\n)",
           "InvariantPropertyName": "NavItems",
           "IsLockable": false,
           "NameMapSourceSchema": "?"
@@ -705,7 +705,14 @@
         },
         "ImagePosition",
         "ImageRotation",
-        "X",
+        {
+          "AFDDataSourceName": "",
+          "AutoRuleBindingEnabled": false,
+          "AutoRuleBindingString": "0",
+          "InvariantPropertyName": "X",
+          "IsLockable": false,
+          "NameMapSourceSchema": "?"
+        },
         {
           "AFDDataSourceName": "",
           "AutoRuleBindingEnabled": false,

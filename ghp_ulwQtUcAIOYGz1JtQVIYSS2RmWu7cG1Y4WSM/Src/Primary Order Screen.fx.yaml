@@ -1,7 +1,7 @@
 "'Primary Order Screen' As screen":
     Fill: =ColorValue(LookUp(c_EnvironmentVariable, 'Display Name'="Ordergallerybcakgroundcolor").'Default Value')
     LoadingSpinnerColor: =RGBA(0, 120, 212, 1)
-    OnVisible: |-
+    OnVisible: |
         =ClearCollect(
             OfflineOrderHeaderCollection,
             Filter(
@@ -1278,7 +1278,7 @@
                 =If(
                     Gallery8_8.Selected.tabid = 1 && IsBlank(
                         LookUp(
-                            colFilter,
+                            colorderFilter,
                             Title = Gallery8_8.Selected.Title
                         ).Title
                     ),
