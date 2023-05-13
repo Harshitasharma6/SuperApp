@@ -491,8 +491,8 @@ VisitPlanningNew As screen:
                     If(
                         CountRows(
                             Filter(
-                                colAddLeadParty,
-                                zx_leadsid = ThisItem.zx_leadsid  //_varSelectedArea1.Area
+                                colAddLeadParty1,
+                                Parties = ThisItem.Party.Parties  //_varSelectedArea1.Area
                             )
                         ) = 0,
                      If(
@@ -549,28 +549,31 @@ VisitPlanningNew As screen:
                             varSelectVisitForPlanning,
                             ThisItem
                         );
-                    
-                    
-                    If(Clickedvisitdate>=Today(),
                         If(
-                            CountRows(
-                                Filter(
-                                    'Visit.S',
-                                    'Created By'.'Primary Email' = User().Email && 'Visit date' = Clickedvisitdate && Lead.Leads = ThisItem.Leads//_varSelectedArea1.Area
+                            Clickedvisitdate >= Today(),
+                            If(
+                                CountRows(
+                                    Filter(
+                                        'Visit.S',
+                                        'Created By'.'Primary Email' = User().Email && 'Visit date' = Clickedvisitdate && Lead.Leads = ThisItem.Leads//_varSelectedArea1.Area
+                                    )
+                                ) > 0,
+                                Notify(
+                                    "Visit is Already Created",
+                                    NotificationType.Error,
+                                    1000
+                                ),
+                                Collect(
+                                    colAddLeadParty1,
+                                    ThisItem.Party
                                 )
-                            ) > 0,
-                            Notify("Visit is Already Created",NotificationType.Error,1000),
-                            Collect(
-                                colAddLeadParty,
-                                Filter(
-                                    offlineLeadCollection,
-                                    zx_leadsid = ThisItem.zx_leadsid
-                                )
+                            ),
+                            Notify(
+                                "You can't plan a visit for yesterday",
+                                NotificationType.Error,
+                                1000
                             )
-                        ),
-                        Notify("You can't plan a visit for yesterday",NotificationType.Error,1000))
-                    
-                    
+                        )
                     )
                 TabIndex: =0
                 Visible: |-
@@ -904,14 +907,26 @@ VisitPlanningNew As screen:
         AccessibleLabel: ="List View"
         BorderColor: =RGBA(0, 18, 107, 1)
         FocusedBorderThickness: =
-        Height: =729
-        Items: =Filter(OfflinePartiesCollection,Area.Area=areaCmb_1.Selected.Area.Area && 'Customer Type'='Type Filter_1'.Selected.Title)
+        Height: =765
+        Items: |-
+            =If(IsBlank('areaCmb_1'.Selected),
+            
+            Filter(
+                OfflinePartiesCollection,
+              'Customer Type' = 'Type Filter_1'.Selected.Title
+            ),
+            
+            
+            Filter(
+                OfflinePartiesCollection,
+                Area.Area = areaCmb_1.Selected.Area.Area && 'Customer Type' = 'Type Filter_1'.Selected.Title
+            ))
         Layout: =Layout.Vertical
         ShowScrollbar: =false
         TabIndex: =
         TemplatePadding: =10
         TemplateSize: =217
-        Visible: =false
+        Visible: =If('Type Filter_1'.Selected.Id>1,true,false)
         Width: =630
         X: =10
         Y: =264
@@ -1309,14 +1324,15 @@ VisitPlanningNew As screen:
                             colAddLeadParty,
                             Filter(
                                 colFilterLeadData,
-                                zx_leadsid = ThisItem.zx_leadsid
+                                Party.Parties = ThisItem.Parties
+                    
                             )
                         )
                     )
                 TabIndex: =0
                 Visible: |-
                     =If(
-                        'Type Filter_1'.Selected.Id = 1 ,
+                        'Type Filter_1'.Selected.Id >1 ,
                         true,
                         false
                     )
@@ -1336,7 +1352,7 @@ VisitPlanningNew As screen:
                         CountRows(
                             Filter(
                                 colAddLeadParty,
-                                zx_leadsid = ThisItem.zx_leadsid
+                                Party.Parties = ThisItem.Parties
                             )
                         ) = 0,
                         DisplayMode.Edit,
@@ -1349,8 +1365,8 @@ VisitPlanningNew As screen:
                     If(
                         CountRows(
                             Filter(
-                                colAddLeadParty,
-                                Part= ThisItem.Parties  //_varSelectedArea1.Area
+                                colAddLeadParty1,
+                                Parties= ThisItem.Parties  //_varSelectedArea1.Area
                             )
                         ) = 0,
                      If(
@@ -1368,7 +1384,8 @@ VisitPlanningNew As screen:
                        Icon.Check
                     )
                 OnSelect: |-
-                    =/* 
+                    =
+                    /* 
                     Set(
                         varShowPlanText,
                         ThisItem.'Lead Name'
@@ -1377,7 +1394,6 @@ VisitPlanningNew As screen:
                         varSelectTimeForVisit,
                         true
                     );
-                    
                     Set(varSelectedLeadForPlanning, ThisItem) 
                     */
                     If(
@@ -1407,28 +1423,34 @@ VisitPlanningNew As screen:
                             varSelectVisitForPlanning,
                             ThisItem
                         );
-                    
-                    
-                    If(Clickedvisitdate>=Today(),
                         If(
-                            CountRows(
-                                Filter(
-                                    'Visit.S',
-                                    'Created By'.'Primary Email' = User().Email && 'Visit date' = Clickedvisitdate && Party.Parties = ThisItem.Parties
+                            Clickedvisitdate >= Today(),
+                            If(
+                                CountRows(
+                                    Filter(
+                                        'Visit.S',
+                                        'Created By'.'Primary Email' = User().Email && 'Visit date' = Clickedvisitdate && Party.Parties = ThisItem.Parties
+                                    )
+                                ) > 0,
+                                Notify(
+                                    "Visit is Already Created",
+                                    NotificationType.Error,
+                                    1000
+                                ),
+                                Collect(
+                                    colAddLeadParty1,
+                                    Filter(
+                                        OfflinePartiesCollection,
+                                        Parties = ThisItem.Parties
+                                    )
                                 )
-                            ) > 0,
-                            Notify("Visit is Already Created",NotificationType.Error,1000),
-                            Collect(
-                                colAddLeadParty,
-                                Filter(
-                                    OfflinePartiesCollection,
-                                    Parties= ThisItem.Parties
-                                )
+                            ),
+                            Notify(
+                                "You can't plan a visit for yesterday",
+                                NotificationType.Error,
+                                1000
                             )
-                        ),
-                        Notify("You can't plan a visit for yesterday",NotificationType.Error,1000))
-                    
-                    
+                        )
                     )
                 TabIndex: =0
                 Visible: |-
@@ -3083,7 +3105,7 @@ VisitPlanningNew As screen:
             Button5_11 As button:
                 BorderStyle: =BorderStyle.None
                 Color: |-
-                    =If(ThisItem.Value.Date = ClickedPjpdate, Color.White,ColorValue(
+                    =If(ThisItem.Value.Date = Clickedvisitdate, Color.White,ColorValue(
                         LookUp(
                             c_EnvironmentVariable,
                             'Display Name' = "Button Fill"
@@ -3092,7 +3114,7 @@ VisitPlanningNew As screen:
                 DisabledColor: =RGBA(166, 166, 166, 1)
                 DisabledFill: =RGBA(244, 244, 244, 1)
                 Fill: |-
-                    =If(ThisItem.Value.Date = ClickedPjpdate,ColorValue(
+                    =If(ThisItem.Value.Date = Clickedvisitdate,ColorValue(
                         LookUp(
                             c_EnvironmentVariable,
                             'Display Name' = "Button Fill"
@@ -3454,6 +3476,35 @@ VisitPlanningNew As screen:
             X: =If('Type Filter_1'.Selected.Id>1,464,404)
             Y: =221
             ZIndex: =3
+
+    Button8 As button:
+        BorderColor: =RGBA(0, 0, 0, 0)
+        DisabledBorderColor: =RGBA(0, 0, 0, 0)
+        DisabledColor: =RGBA(166, 166, 166, 1)
+        DisabledFill: =RGBA(244, 244, 244, 1)
+        Fill: =RGBA(0, 120, 212, 1)
+        FocusedBorderColor: =ColorFade(Self.Fill, -75%)
+        Font: =Font.'Segoe UI'
+        FontWeight: =FontWeight.Semibold
+        Height: =70
+        HoverBorderColor: =RGBA(0, 0, 0, 0)
+        HoverColor: =RGBA(255, 255, 255, 1)
+        HoverFill: =ColorFade(RGBA(0, 120, 212, 1), -10%)
+        OnSelect: |-
+            =Clear(colAddLeadParty);
+            Clear(colAddLeadParty1)
+        PressedBorderColor: =ColorFade(RGBA(0, 120, 212, 1), -50%)
+        PressedColor: =RGBA(255, 255, 255, 1)
+        PressedFill: =ColorFade(RGBA(0, 120, 212, 1), -30%)
+        RadiusBottomLeft: =0
+        RadiusBottomRight: =0
+        RadiusTopLeft: =0
+        RadiusTopRight: =0
+        Size: =24
+        Text: ="Button"
+        Width: =280
+        X: =282
+        ZIndex: =30
 
     Main_screen_search_bar_2 As group:
         Height: =5
