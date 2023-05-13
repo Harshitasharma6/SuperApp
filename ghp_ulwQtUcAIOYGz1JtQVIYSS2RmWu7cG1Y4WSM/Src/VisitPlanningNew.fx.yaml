@@ -1310,7 +1310,7 @@ VisitPlanningNew As screen:
                 TabIndex: =0
                 Visible: |-
                     =If(
-                        'Type Filter_1'.Selected.Id >1 ,
+                       MY_Lead >1 ,
                         true,
                         false
                     )
@@ -1436,7 +1436,7 @@ VisitPlanningNew As screen:
                 TabIndex: =0
                 Visible: |-
                     =If(
-                        'Type Filter_1'.Selected.Id > 1 ,
+                      MY_Lead> 1 ,
                         true,
                         false
                     )
@@ -3572,7 +3572,9 @@ VisitPlanningNew As screen:
             RadiusBottomRight: =50
             RadiusTopLeft: =50
             RadiusTopRight: =50
-            Size: =LookUp(c_EnvironmentVariable,'Display Name'="Text Regular Font Size").'Default Value'
+            Size: |-
+                =//LookUp(c_EnvironmentVariable,'Display Name'="Text Regular Font Size").'Default Value'
+                12
             Text: =CountRows(colAddLeadParty)+CountRows(colAddLeadParty1)
             Width: =30
             X: =573
