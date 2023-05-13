@@ -588,7 +588,8 @@
                     ThisItem.'Order From'.'Customer Name'
                 }
                     )
-                )
+                );
+                Set(varorderselectedId,1)
             PressedBorderColor: =ColorFade(RGBA(0, 120, 212, 1), -50%)
             PressedColor: =RGBA(255, 255, 255, 1)
             PressedFill: =ColorFade(Self.Fill, -30%)
@@ -821,13 +822,16 @@
         BorderColor: =RGBA(0, 0, 0, 0)
         BorderStyle: =BorderStyle.None
         BorderThickness: =2
-        Color: =RGBA(51, 51, 51, 1)
+        Color: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )
         DisabledBorderColor: =RGBA(0, 0, 0, 0)
         DisabledColor: =RGBA(166, 166, 166, 1)
         FocusedBorderThickness: =4
         Font: =Font.'Segoe UI'
         FontWeight: =FontWeight.Bold
         Height: =DatePicker1.Height+20
+        PaddingLeft: =10
+        PaddingTop: =10
+        Size: =12
         Text: =Text(DatePicker1.SelectedDate,"dd")
         Width: =DatePicker1.Width+20
         X: =538

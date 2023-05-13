@@ -404,14 +404,18 @@
                     2
                 )
             );
-            Set(varorderselectedId,2);
+            //Set(varorderselectedId,2);
             If(
                 IsBlank(ComboBox7_6.SelectedItems) && IsBlank(ComboBox7_7.SelectedItems) && IsBlank(ComboBox7_8.SelectedItems),
                 Notify(
                     "Please fill the order terms",
                     NotificationType.Error,
                     2000
-                )
+                ),
+                Set(
+                varorderselectedId,
+                2
+            );
             );
         Size: =20
         Text: ="Place Order"
