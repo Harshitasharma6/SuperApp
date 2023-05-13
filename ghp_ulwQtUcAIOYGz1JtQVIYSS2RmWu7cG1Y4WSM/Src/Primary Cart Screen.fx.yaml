@@ -93,16 +93,17 @@
             Items: |-
                 =ForAll(
                     [
+                        
+                        {
+                            Title: "Customer",
+                            Value: varParty
+                        },
                         {
                             Title: "Order Date",
                             Value: Text(
                                 Today(),
                                 "dd-mm-yy"
                             )
-                        },
-                        {
-                            Title: "Customer",
-                            Value: varParty
                         },
                         {
                             Title: "Total Price",

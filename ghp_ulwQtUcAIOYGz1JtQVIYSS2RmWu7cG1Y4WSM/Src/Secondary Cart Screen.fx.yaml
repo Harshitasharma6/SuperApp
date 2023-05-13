@@ -87,16 +87,17 @@
             Items: |-
                 =ForAll(
                     [
+                        
+                        {
+                            Title: "Supplier",
+                            Value: varSelectedRetailerAttachedDistributor
+                        },
                         {
                             Title: "Order Date",
                             Value: Text(
                                 Today(),
                                 "dd-mm-yy"
                             )
-                        },
-                        {
-                            Title: "Supplier",
-                            Value: varSelectedRetailerAttachedDistributor
                         },
                         {
                             Title: "Total Price",
