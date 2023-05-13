@@ -235,7 +235,7 @@
             Wrap: =false
             X: =44
             Y: =96
-            ZIndex: =7
+            ZIndex: =6
 
         Body1Value_8 As label:
             BorderColor: =RGBA(0, 18, 107, 1)
@@ -252,7 +252,7 @@
             Wrap: =false
             X: =44
             Y: =159
-            ZIndex: =8
+            ZIndex: =7
 
         Body1_13 As label:
             BorderColor: =RGBA(0, 18, 107, 1)
@@ -269,7 +269,7 @@
             Wrap: =false
             X: =44
             Y: =127
-            ZIndex: =9
+            ZIndex: =8
 
         Body1Value_9 As label:
             Align: =Align.Right
@@ -288,7 +288,7 @@
             Wrap: =false
             X: =295
             Y: =121
-            ZIndex: =10
+            ZIndex: =9
 
         TitleLbl_6 As label:
             BorderColor: =RGBA(0, 18, 107, 1)
@@ -313,7 +313,7 @@
             Width: =138
             X: =358
             Y: =135
-            ZIndex: =11
+            ZIndex: =10
 
         Icon9 As icon.Add:
             AccessibleLabel: ="Add Area Icon"
@@ -440,7 +440,7 @@
             Width: =30
             X: =563
             Y: =130
-            ZIndex: =12
+            ZIndex: =11
 
         Icon11 As icon.View:
             AccessibleLabel: ="View icon"
@@ -458,7 +458,7 @@
             Width: =20
             X: =505
             Y: =145
-            ZIndex: =13
+            ZIndex: =12
 
         Button26 As button:
             BorderColor: =RGBA(103, 136, 174, 1)
@@ -481,36 +481,7 @@
             Width: =201
             X: =343
             Y: =135
-            ZIndex: =14
-
-        Button3_1 As button:
-            BorderColor: =RGBA(0, 0, 0, 0)
-            BorderStyle: =BorderStyle.None
-            DisabledBorderColor: =RGBA(0, 0, 0, 0)
-            DisabledColor: =RGBA(166, 166, 166, 1)
-            DisabledFill: =RGBA(244, 244, 244, 1)
-            Fill: =RGBA(0, 0, 0, 0)
-            FocusedBorderColor: =ColorFade(Self.Fill, -75%)
-            Font: =Font.'Segoe UI'
-            FontWeight: =FontWeight.Semibold
-            Height: =36
-            HoverBorderColor: =RGBA(0, 0, 0, 0)
-            HoverColor: =RGBA(255, 255, 255, 1)
-            HoverFill: =
-            OnSelect: =Notify("Beat plan already added", NotificationType.Error)
-            PressedBorderColor: =ColorFade(RGBA(0, 120, 212, 1), -50%)
-            PressedColor: =RGBA(255, 255, 255, 1)
-            PressedFill: =
-            RadiusBottomLeft: =0
-            RadiusBottomRight: =0
-            RadiusTopLeft: =0
-            RadiusTopRight: =0
-            Size: =24
-            Text: =""
-            Visible: =If(Icon9.DisplayMode=DisplayMode.Disabled,true,false)
-            Width: =43
-            X: =462
-            ZIndex: =15
+            ZIndex: =13
 
         Image21 As image:
             BorderColor: =RGBA(0, 0, 0, 0)
@@ -628,7 +599,37 @@
             Width: =25
             X: =540
             Y: =35
-            ZIndex: =16
+            ZIndex: =14
+
+        Button3_1 As button:
+            BorderColor: =RGBA(0, 0, 0, 0)
+            BorderStyle: =BorderStyle.None
+            DisabledBorderColor: =RGBA(0, 0, 0, 0)
+            DisabledColor: =RGBA(166, 166, 166, 1)
+            DisabledFill: =RGBA(244, 244, 244, 1)
+            Fill: =RGBA(0, 0, 0, 0)
+            FocusedBorderColor: =ColorFade(Self.Fill, -75%)
+            Font: =Font.'Segoe UI'
+            FontWeight: =FontWeight.Semibold
+            Height: =36
+            HoverBorderColor: =RGBA(0, 0, 0, 0)
+            HoverColor: =RGBA(255, 255, 255, 1)
+            HoverFill: =
+            OnSelect: =Notify("Beat plan already added", NotificationType.Error)
+            PressedBorderColor: =ColorFade(RGBA(0, 120, 212, 1), -50%)
+            PressedColor: =RGBA(255, 255, 255, 1)
+            PressedFill: =
+            RadiusBottomLeft: =0
+            RadiusBottomRight: =0
+            RadiusTopLeft: =0
+            RadiusTopRight: =0
+            Size: =24
+            Text: =""
+            Visible: =If(Icon9.DisplayMode=DisplayMode.Disabled,true,false)
+            Width: =43
+            X: =531
+            Y: =29
+            ZIndex: =15
 
     ShowPartiesBackdrop As rectangle:
         AccessibleLabel: ="Party Dropback"
@@ -928,25 +929,6 @@
         X: =70
         Y: =281
         ZIndex: =14
-
-    ShowPartiesCancelIcon As icon.Cancel:
-        AccessibleLabel: ="Cancel Icon"
-        BorderColor: =RGBA(0, 18, 107, 1)
-        Color: |-
-            = //ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Border Color").'Default Value' )
-             ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )
-        DisabledBorderColor: =RGBA(166, 166, 166, 1)
-        DisabledColor: =RGBA(244, 244, 244, 1)
-        FocusedBorderThickness: =0.1
-        Height: =41
-        Icon: =Icon.Cancel
-        OnSelect: =Set(_VarShowPartiesModal, false)
-        TabIndex: =0
-        Visible: =_VarShowPartiesModal
-        Width: =35
-        X: =519
-        Y: =293
-        ZIndex: =17
 
     Header_11 As Header:
         ScreenName: ="PJP Planning"
@@ -1490,29 +1472,6 @@
             Y: =339
             ZIndex: =9
 
-        Icon18_9 As icon.Cancel:
-            AccessibleLabel: ="Cancel Icon"
-            BorderColor: =RGBA(0, 18, 107, 1)
-            Color: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )
-            DisabledBorderColor: =RGBA(166, 166, 166, 1)
-            DisabledColor: =RGBA(244, 244, 244, 1)
-            Height: =30
-            Icon: =Icon.Cancel
-            OnSelect: |-
-                =Set(varFilter,false);
-                Reset(DateFrom_6);
-                Reset(radioArea);
-                Reset(radioParty_2);
-                
-                Clear(colAreaFilter);
-                Clear(colPJPFilterData)
-            TabIndex: =0//-1
-            Visible: =varFilter
-            Width: =30
-            X: =583
-            Y: =27
-            ZIndex: =10
-
         Gallery8_6 As gallery.galleryVertical:
             AccessibleLabel: ="Gallery"
             BorderColor: =RGBA(0, 18, 107, 1)
@@ -1804,6 +1763,86 @@
                 Y: =4
                 ZIndex: =4
 
+        Group6_3 As group:
+            Height: =5
+            Width: =5
+            X: =-464
+            Y: =-237
+            ZIndex: =27
+
+            Image19_2 As image:
+                BorderColor: =RGBA(0, 0, 0, 0)
+                BorderStyle: =BorderStyle.None
+                BorderThickness: =2
+                DisabledBorderColor: =RGBA(0, 0, 0, 0)
+                DisabledFill: =RGBA(0, 0, 0, 0)
+                FocusedBorderThickness: =4
+                Height: =20
+                HoverBorderColor: =RGBA(0, 0, 0, 0)
+                HoverFill: =RGBA(0, 0, 0, 0)
+                Image: |+
+                    ="data:image/svg+xml;utf8, "&EncodeUrl("
+                    <svg width='1536' height='1536' viewBox='0 0 1536 1536' fill='none' xmlns='http://www.w3.org/2000/svg'>
+                    <path d='M32.2256 32.2256C42.4149 22.0105 54.5194 13.906 67.8457 8.37614C81.172 2.84633 95.4583 0 109.886 0C124.315 0 138.601 2.84633 151.927 8.37614C165.253 13.906 177.358 22.0105 187.547 32.2256L768.029 612.927L1348.51 32.2256C1358.71 22.0271 1370.82 13.9371 1384.14 8.41767C1397.47 2.89825 1411.75 0.0574303 1426.17 0.0574303C1440.59 0.0574303 1454.88 2.89825 1468.2 8.41767C1481.53 13.9371 1493.63 22.0271 1503.83 32.2256C1514.03 42.4242 1522.12 54.5316 1527.64 67.8567C1533.16 81.1817 1536 95.4635 1536 109.886C1536 124.309 1533.16 138.591 1527.64 151.916C1522.12 165.241 1514.03 177.349 1503.83 187.547L923.131 768.029L1503.83 1348.51C1514.03 1358.71 1522.12 1370.82 1527.64 1384.14C1533.16 1397.47 1536 1411.75 1536 1426.17C1536 1440.59 1533.16 1454.88 1527.64 1468.2C1522.12 1481.53 1514.03 1493.63 1503.83 1503.83C1493.63 1514.03 1481.53 1522.12 1468.2 1527.64C1454.88 1533.16 1440.59 1536 1426.17 1536C1411.75 1536 1397.47 1533.16 1384.14 1527.64C1370.82 1522.12 1358.71 1514.03 1348.51 1503.83L768.029 923.131L187.547 1503.83C177.349 1514.03 165.241 1522.12 151.916 1527.64C138.591 1533.16 124.309 1536 109.886 1536C95.4635 1536 81.1817 1533.16 67.8567 1527.64C54.5316 1522.12 42.4242 1514.03 32.2256 1503.83C22.0271 1493.63 13.9371 1481.53 8.41767 1468.2C2.89825 1454.88 0.0574303 1440.59 0.0574303 1426.17C0.0574303 1411.75 2.89825 1397.47 8.41767 1384.14C13.9371 1370.82 22.0271 1358.71 32.2256 1348.51L612.927 768.029L32.2256 187.547C22.0105 177.358 13.906 165.253 8.37614 151.927C2.84633 138.601 0 124.315 0 109.886C0 95.4583 2.84633 81.172 8.37614 67.8457C13.906 54.5194 22.0105 42.4149 32.2256 32.2256Z' fill='"&LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value'&"'
+                    
+                    />
+                    </svg>
+                    
+                    ")
+                    
+                OnSelect: |-
+                    =Set(varFilter,false);
+                    Reset(DateFrom_6);
+                    Reset(radioArea);
+                    Reset(radioParty_2);
+                    
+                    Clear(colAreaFilter);
+                    Clear(colPJPFilterData)
+                PressedBorderColor: =RGBA(0, 0, 0, 0)
+                PressedFill: =RGBA(0, 0, 0, 0)
+                Visible: =varFilter
+                Width: =20
+                X: =582
+                Y: =33
+                ZIndex: =25
+
+            Button4_2 As button:
+                BorderColor: =RGBA(0, 0, 0, 0)
+                BorderStyle: =BorderStyle.None
+                DisabledBorderColor: =RGBA(0, 0, 0, 0)
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                DisabledFill: =RGBA(244, 244, 244, 1)
+                Fill: =RGBA(0, 0, 0, 0)
+                FocusedBorderColor: =ColorFade(Self.Fill, -75%)
+                Font: =Font.'Segoe UI'
+                FontWeight: =FontWeight.Semibold
+                Height: =30
+                HoverBorderColor: =RGBA(0, 0, 0, 0)
+                HoverColor: =RGBA(255, 255, 255, 1)
+                HoverFill: =
+                OnSelect: |-
+                    =Set(varFilter,false);
+                    Reset(DateFrom_6);
+                    Reset(radioArea);
+                    Reset(radioParty_2);
+                    
+                    Clear(colAreaFilter);
+                    Clear(colPJPFilterData)
+                PressedBorderColor: =ColorFade(RGBA(0, 120, 212, 1), -50%)
+                PressedColor: =RGBA(255, 255, 255, 1)
+                PressedFill: =
+                RadiusBottomLeft: =0
+                RadiusBottomRight: =0
+                RadiusTopLeft: =0
+                RadiusTopRight: =0
+                Size: =24
+                Text: =""
+                Visible: =varFilter
+                Width: =30
+                X: =578
+                Y: =27
+                ZIndex: =26
+
     Main_screen_search_bar As group:
         Height: =5
         Width: =5
@@ -1983,4 +2022,70 @@
             X: =555
             Y: =159
             ZIndex: =28
+
+    Group6_2 As group:
+        Height: =5
+        Width: =5
+        X: =40
+        Y: =40
+        ZIndex: =31
+
+        Image19_1 As image:
+            BorderColor: =RGBA(0, 0, 0, 0)
+            BorderStyle: =BorderStyle.None
+            BorderThickness: =2
+            DisabledBorderColor: =RGBA(0, 0, 0, 0)
+            DisabledFill: =RGBA(0, 0, 0, 0)
+            FocusedBorderThickness: =4
+            Height: =20
+            HoverBorderColor: =RGBA(0, 0, 0, 0)
+            HoverFill: =RGBA(0, 0, 0, 0)
+            Image: |+
+                ="data:image/svg+xml;utf8, "&EncodeUrl("
+                <svg width='1536' height='1536' viewBox='0 0 1536 1536' fill='none' xmlns='http://www.w3.org/2000/svg'>
+                <path d='M32.2256 32.2256C42.4149 22.0105 54.5194 13.906 67.8457 8.37614C81.172 2.84633 95.4583 0 109.886 0C124.315 0 138.601 2.84633 151.927 8.37614C165.253 13.906 177.358 22.0105 187.547 32.2256L768.029 612.927L1348.51 32.2256C1358.71 22.0271 1370.82 13.9371 1384.14 8.41767C1397.47 2.89825 1411.75 0.0574303 1426.17 0.0574303C1440.59 0.0574303 1454.88 2.89825 1468.2 8.41767C1481.53 13.9371 1493.63 22.0271 1503.83 32.2256C1514.03 42.4242 1522.12 54.5316 1527.64 67.8567C1533.16 81.1817 1536 95.4635 1536 109.886C1536 124.309 1533.16 138.591 1527.64 151.916C1522.12 165.241 1514.03 177.349 1503.83 187.547L923.131 768.029L1503.83 1348.51C1514.03 1358.71 1522.12 1370.82 1527.64 1384.14C1533.16 1397.47 1536 1411.75 1536 1426.17C1536 1440.59 1533.16 1454.88 1527.64 1468.2C1522.12 1481.53 1514.03 1493.63 1503.83 1503.83C1493.63 1514.03 1481.53 1522.12 1468.2 1527.64C1454.88 1533.16 1440.59 1536 1426.17 1536C1411.75 1536 1397.47 1533.16 1384.14 1527.64C1370.82 1522.12 1358.71 1514.03 1348.51 1503.83L768.029 923.131L187.547 1503.83C177.349 1514.03 165.241 1522.12 151.916 1527.64C138.591 1533.16 124.309 1536 109.886 1536C95.4635 1536 81.1817 1533.16 67.8567 1527.64C54.5316 1522.12 42.4242 1514.03 32.2256 1503.83C22.0271 1493.63 13.9371 1481.53 8.41767 1468.2C2.89825 1454.88 0.0574303 1440.59 0.0574303 1426.17C0.0574303 1411.75 2.89825 1397.47 8.41767 1384.14C13.9371 1370.82 22.0271 1358.71 32.2256 1348.51L612.927 768.029L32.2256 187.547C22.0105 177.358 13.906 165.253 8.37614 151.927C2.84633 138.601 0 124.315 0 109.886C0 95.4583 2.84633 81.172 8.37614 67.8457C13.906 54.5194 22.0105 42.4149 32.2256 32.2256Z' fill='"&LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value'&"'
+                
+                />
+                </svg>
+                
+                ")
+                
+            OnSelect: =Set(_VarShowPartiesModal, false)
+            PressedBorderColor: =RGBA(0, 0, 0, 0)
+            PressedFill: =RGBA(0, 0, 0, 0)
+            Visible: =_VarShowPartiesModal
+            Width: =20
+            X: =528
+            Y: =303
+            ZIndex: =29
+
+        Button4_1 As button:
+            BorderColor: =RGBA(0, 0, 0, 0)
+            BorderStyle: =BorderStyle.None
+            DisabledBorderColor: =RGBA(0, 0, 0, 0)
+            DisabledColor: =RGBA(166, 166, 166, 1)
+            DisabledFill: =RGBA(244, 244, 244, 1)
+            Fill: =RGBA(0, 0, 0, 0)
+            FocusedBorderColor: =ColorFade(Self.Fill, -75%)
+            Font: =Font.'Segoe UI'
+            FontWeight: =FontWeight.Semibold
+            Height: =30
+            HoverBorderColor: =RGBA(0, 0, 0, 0)
+            HoverColor: =RGBA(255, 255, 255, 1)
+            HoverFill: =
+            OnSelect: =Set(_VarShowPartiesModal, false)
+            PressedBorderColor: =ColorFade(RGBA(0, 120, 212, 1), -50%)
+            PressedColor: =RGBA(255, 255, 255, 1)
+            PressedFill: =
+            RadiusBottomLeft: =0
+            RadiusBottomRight: =0
+            RadiusTopLeft: =0
+            RadiusTopRight: =0
+            Size: =24
+            Text: =""
+            Visible: =_VarShowPartiesModal
+            Width: =30
+            X: =524
+            Y: =297
+            ZIndex: =30
 
