@@ -273,7 +273,7 @@
                     LookUp('Environment Variable Definitions', 'Display Name'="Text Sub Title Font Size").'Default Value'
                 TabIndex: =0
                 Text: |-
-                    ="Activity ID: " & If(IsBlank(ThisItem.'Lead Activity Id'), ThisItem.VisitID, ThisItem.'Lead Activity Id')
+                    ="Action Taken by: " & If(!IsBlank(ThisItem.Lead), "Lead", !IsBlank(ThisItem.Visit), "Visit")
                 Tooltip: =
                 Width: =316
                 X: =4
@@ -300,7 +300,7 @@
                     LookUp('Environment Variable Definitions', 'Display Name'="Text Sub Title Font Size").'Default Value'
                 TabIndex: =0
                 Text: |-
-                    ="Remarks: " & ThisItem.ActivityRemark
+                    ="Remarks: " & ThisItem.'Activity Remarks'
                 Tooltip: =
                 Width: =310
                 X: =320
@@ -327,7 +327,7 @@
                     LookUp('Environment Variable Definitions', 'Display Name'="Text Sub Title Font Size").'Default Value'
                 TabIndex: =0
                 Text: |-
-                    ="Next FollowUp Date: "& Text(DateValue(ThisItem.NextFolllowUpDate),"dd-mm-yyyy")
+                    ="Next FollowUp Date: "& Text(DateValue(ThisItem.'Next Followup Date'),"dd-mm-yyyy")
                 Tooltip: =
                 Width: =320
                 X: =4
@@ -354,7 +354,7 @@
                     LookUp('Environment Variable Definitions', 'Display Name'="Text Sub Title Font Size").'Default Value'
                 TabIndex: =0
                 Text: |-
-                    ="Next Followup Activity: "& ThisItem.FollowUpActivity
+                    ="Next Followup Activity: "& ThisItem.'Follow-Up Activity Type'
                 Tooltip: =
                 Width: =310
                 X: =320
@@ -408,7 +408,7 @@
                     LookUp('Environment Variable Definitions', 'Display Name'="Text Sub Title Font Size").'Default Value'
                 TabIndex: =0
                 Text: |-
-                    ="Outcome: "& ThisItem.ActivityOutCome
+                    ="Outcome: "& ThisItem.'Activity Outcome'
                 Tooltip: =
                 Width: =316
                 X: =4

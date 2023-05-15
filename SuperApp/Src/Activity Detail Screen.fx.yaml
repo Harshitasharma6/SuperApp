@@ -4,36 +4,36 @@
     "'Detail Page_3' As 'Detail Page'":
         DataSource: |-
             =Table({
-                    Title: "Activity Id:",
-                    Data:If(IsBlank(varActivityData.'Lead Activity Id'), varActivityData.VisitID,varActivityData.'Lead Activity Id')
+                    Title: "Action taken by:",
+                    Data:If(!IsBlank(varActivityData.zx_Visit), "Visit",!IsBlank(varActivityData.zx_Lead), "Lead")
                 },
                 {
                     Title: "Type:",
-                    Data:Text(varActivityData.VisitActivity)
+                    Data:Text(varActivityData.zx_activitytype)
                 },
                 {
                     Title: "Contact:",
-                    Data: varActivityData.Contact.'First Name' & " "& varActivityData.Contact.'Last Name'
+                    Data: varActivityData.zx_Contact.'First Name' & " "& varActivityData.zx_Contact.'Last Name'
                 },
                 {
                     Title: "Remarks:",
-                    Data:varActivityData.ActivityRemark
+                    Data:varActivityData.zx_activityremarks
                 },
                 {
                     Title: "Outcome:",
-                    Data: Text(varActivityData.ActivityOutCome)
+                    Data: Text(varActivityData.zx_activityoutcome)
                 },
                 {
                     Title: "Duration:",
-                    Data: Text(varActivityData.Duration)
+                    Data: Text(varActivityData.zx_duration)
                 },
                 {
                     Title: "Next Follow-Up Date:",
-                    Data: Text(varActivityData.NextFolllowUpDate,"dd-mm-yyyy")
+                    Data: Text(varActivityData.zx_nextfollowupdate,"dd-mm-yyyy")
                 },
                 {
                     Title: "Next Follow-Up Activity:",
-                    Data: Text(varActivityData.FollowUpActivity)
+                    Data: Text(varActivityData.zx_followupactivitytype)
                 }
             )
         Fill: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Screen Background Color").'Default Value') //ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Screen Background Color").'Default Value') //_VarGblAppColors.BackgroundColor

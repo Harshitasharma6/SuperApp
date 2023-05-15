@@ -6858,7 +6858,7 @@
                   },
                   {
                     "Category": "Data",
-                    "InvariantScript": "\"Activity ID: \" & If(IsBlank(ThisItem.'Lead Activity Id'), ThisItem.VisitID, ThisItem.'Lead Activity Id')",
+                    "InvariantScript": "\"Action Taken by: \" & If(!IsBlank(ThisItem.Lead), \"Lead\", !IsBlank(ThisItem.Visit), \"Visit\")",
                     "Property": "Text",
                     "RuleProviderType": "Unknown"
                   },
@@ -7716,7 +7716,7 @@
                   },
                   {
                     "Category": "Data",
-                    "InvariantScript": "\"Outcome: \"& ThisItem.ActivityOutCome",
+                    "InvariantScript": "\"Outcome: \"& ThisItem.'Activity Outcome'",
                     "Property": "Text",
                     "RuleProviderType": "Unknown"
                   },
@@ -8159,7 +8159,7 @@
                   },
                   {
                     "Category": "Data",
-                    "InvariantScript": "\"Remarks: \" & ThisItem.ActivityRemark",
+                    "InvariantScript": "\"Remarks: \" & ThisItem.'Activity Remarks'",
                     "Property": "Text",
                     "RuleProviderType": "Unknown"
                   },
@@ -8989,7 +8989,7 @@
                   },
                   {
                     "Category": "Data",
-                    "InvariantScript": "\"Next FollowUp Date: \"& Text(DateValue(ThisItem.NextFolllowUpDate),\"dd-mm-yyyy\")",
+                    "InvariantScript": "\"Next FollowUp Date: \"& Text(DateValue(ThisItem.'Next Followup Date'),\"dd-mm-yyyy\")",
                     "Property": "Text",
                     "RuleProviderType": "Unknown"
                   },
@@ -9425,7 +9425,7 @@
                   },
                   {
                     "Category": "Data",
-                    "InvariantScript": "\"Next Followup Activity: \"& ThisItem.FollowUpActivity",
+                    "InvariantScript": "\"Next Followup Activity: \"& ThisItem.'Follow-Up Activity Type'",
                     "Property": "Text",
                     "RuleProviderType": "Unknown"
                   },
@@ -63918,7 +63918,7 @@
       },
       "ProductCall"
     ],
-    "LastModifiedTimestamp": "638197387094743021",
+    "LastModifiedTimestamp": "638197406470836927",
     "Name": "Lead Detail",
     "Rules": [
       {
@@ -64023,7 +64023,7 @@
   "IsPcfControl": false,
   "IsPremiumPcfControl": false,
   "IsWidgetTemplate": false,
-  "LastModifiedTimestamp": "638197387094743021",
+  "LastModifiedTimestamp": "638197406470836927",
   "Name": "faa7ee8782af41fb94ebfc5a4619c922",
   "OverridableProperties": {},
   "TemplateOriginalName": "5ffbd2772db845fbb8178e9b015a9273",
