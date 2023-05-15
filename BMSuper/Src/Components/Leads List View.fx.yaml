@@ -1,0 +1,623 @@
+"'Leads List View' As CanvasComponent":
+    Customer: =_VarClickedVisitAccount
+    DataSource: =offlineLeadCollection
+    Fill: =RGBA(0, 0, 0, 0)
+    Height: =App.Height
+    Width: =App.Width
+    X: =0
+    Y: =0
+    ZIndex: =1
+
+    "'Lead Gallery' As gallery.galleryVertical":
+        AccessibleLabel: ="Order Gallery"
+        BorderColor: =RGBA(0, 18, 107, 1)
+        BorderStyle: =BorderStyle.None
+        Height: =886
+        Items: |-
+            =If(
+                IsBlank('Leads List View'.Customer),
+                //For Lead Page-----------------------------------------------------------------
+                Sort(
+                    Switch(
+                        'Filter Gallery_1'.Selected.Value,
+                        "Last 30 Days",
+                        Filter(
+                            Filter(
+                                offlineLeadCollection,
+                                'Lead Stage ' = 'Lead stage gallery'.Selected.Value  && 'Owning User'.'Primary Email'= ComboBox2.Selected.'Primary Email'
+                            ),
+                            'Created On' > (Today() - 30)&& Not( IsToday('Created On'))
+                        ),
+                        "Last 7 Days",
+                        Filter(
+                            Filter(
+                                offlineLeadCollection,
+                                'Lead Stage ' = 'Lead stage gallery'.Selected.Value && 'Owning User'.'Primary Email'= ComboBox2.Selected.'Primary Email'
+                            ),
+                            'Created On' > (Today() - 7)&& Not( IsToday('Created On'))
+                        ),
+                        "Today's Leads",
+                        Filter(
+                            Filter(
+                                offlineLeadCollection,
+                                'Lead Stage ' = 'Lead stage gallery'.Selected.Value && 'Owning User'.'Primary Email'= ComboBox2.Selected.'Primary Email'
+                            ),
+                            IsToday('Created On')
+                        )
+                    ),
+                    'Created On',
+                    SortOrder.Descending
+                ),
+                //For Customer-----------------------------------------------------------------
+                Sort(
+                    Switch(
+                        'Filter Gallery_1'.Selected.Value,
+                        "Last 30 Days",
+                        Filter(
+                            Filter(
+                                offlineLeadCollection,
+                                Party.'Customer Code' = LookUp(
+                                    'Parties.S',
+                                    Party.Parties = 'Leads List View'.Customer.Party.Parties
+                                ).'Customer Code' && 'Lead Stage ' = 'Lead stage gallery'.Selected.Value && 'Owning User'.'Primary Email'= ComboBox2.Selected.'Primary Email' 
+                            ),
+                            'Created On' > (Today() - 30)&& Not( IsToday('Created On'))
+                        ),
+                        "Last 7 Days",
+                        Filter(
+                            Filter(
+                                offlineLeadCollection,
+                                Party.'Customer Code' = LookUp(
+                                    'Parties.S',
+                                    Party.Parties = 'Leads List View'.Customer.Party.Parties
+                                ).'Customer Code' && 'Lead Stage ' = 'Lead stage gallery'.Selected.Value && 'Owning User'.'Primary Email'= ComboBox2.Selected.'Primary Email'
+                            ),
+                            'Created On' > (Today() - 7)&& Not( IsToday('Created On'))
+                        ),
+                        "Today's Orders",
+                        Filter(
+                            Filter(
+                                offlineLeadCollection,
+                                Party.'Customer Code' = LookUp(
+                                    'Parties.S',
+                                    Party.Parties = 'Leads List View'.Customer.Party.Parties
+                                ).'Customer Code' && 'Lead Stage ' = 'Lead stage gallery'.Selected.Value && 'Owning User'.'Primary Email'= ComboBox2.Selected.'Primary Email'
+                            ),
+                            IsToday('Created On')
+                        )
+                    ),
+                    'Created On',
+                    SortOrder.Descending
+                )
+            )
+        Layout: =Layout.Vertical
+        ShowScrollbar: =false
+        TabIndex: =0
+        TemplateSize: =207
+        Width: ='Leads List View'.Width
+        Y: =244
+        ZIndex: =1
+
+        Button5_7 As button:
+            BorderColor: =Color.Black
+            BorderStyle: =BorderStyle.None
+            BorderThickness: =0
+            DisabledBorderColor: =RGBA(166, 166, 166, 1)
+            DisabledColor: =RGBA(166, 166, 166, 1)
+            DisabledFill: =RGBA(244, 244, 244, 1)
+            Fill: =RGBA(255, 255, 255, 1)
+            FontWeight: =FontWeight.Semibold
+            Height: =204
+            HoverColor: =RGBA(255, 255, 255, 1)
+            HoverFill: =Color.White
+            OnSelect: |-
+                =Navigate('Leads Detail Page',ScreenTransition.CoverRight);
+                Set(varLeadData, ThisItem)
+                 
+            Size: =24
+            Text: =""
+            Width: =1
+            ZIndex: =2
+
+        Rectangle1_12 As rectangle:
+            AccessibleLabel: ="Rectangle1_7"
+            BorderColor: =RGBA(0, 18, 107, 1)
+            Fill: |-
+                =
+                ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Header Band Color").'Default Value' )
+            Height: =1
+            OnSelect: |-
+                =Navigate('Leads Detail Page',ScreenTransition.CoverRight);
+                Set(varLeadData, ThisItem)
+                 
+            TabIndex: =0
+            Width: ='Lead Gallery'.TemplateWidth
+            Y: =74
+            ZIndex: =3
+
+        Background_18 As button:
+            BorderThickness: =0
+            Color: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Hover Color").'Default Value')
+            DisabledBorderColor: =RGBA(166, 166, 166, 1)
+            DisabledColor: =RGBA(116, 116, 116, 1)
+            DisabledFill: |-
+                =//_VarGblAppColors.BottomListBg
+                
+                ColorValue(LookUp(c_EnvironmentVariable, 'Display Name'="Button Border Color").'Default Value')
+            DisplayMode: =DisplayMode.Disabled
+            Fill: |-
+                =//_VarGblAppColors.BottomListBg
+                
+                ColorValue(LookUp(c_EnvironmentVariable, 'Display Name'="Button Border Color").'Default Value')
+            FontWeight: =FontWeight.Semibold
+            Height: =55
+            HoverColor: =RGBA(255, 255, 255, 1)
+            HoverFill: =ColorFade(Self.Fill, -20%)
+            OnSelect: |-
+                =Navigate('Leads Detail Page',ScreenTransition.CoverRight);
+                Set(varLeadData, ThisItem)
+                 
+            RadiusTopLeft: =0
+            RadiusTopRight: =0
+            Size: =24
+            Text: =""
+            Width: ='Lead Gallery'.TemplateWidth 
+            Y: =149
+            ZIndex: =4
+
+        Body1_56 As label:
+            BorderColor: =RGBA(0, 18, 107, 1)
+            Color: |-
+                =
+                ColorValue(LookUp(c_EnvironmentVariable, 'Display Name'="Button Fill").'Default Value')
+            DisabledColor: =RGBA(166, 166, 166, 1)
+            FocusedBorderColor: =Color.Transparent
+            FocusedBorderThickness: =01
+            Font: |-
+                =LookUp(c_EnvironmentVariable, 'Display Name'="Text Heading Font").'Default Value'
+                
+                //_VarGblAppFonts.Heading
+            FontWeight: =FontWeight.Bold
+            Height: =75
+            OnSelect: |
+                =Navigate(
+                    'Leads Detail Page',
+                    ScreenTransition.CoverRight
+                );
+                Set(
+                    varLeadData,
+                    ThisItem
+                );
+                If(
+                    ThisItem.Party.'Customer Type' = 'Party Type Choices'.Retailer,
+                    Set(
+                        varSelectedRetailerAttachedDistributor,
+                        LookUp(
+                            OfflinePartiesCollection,
+                            'Customer Code' = ThisItem.Party.'Customer Code'
+                        ).'Attached Distributor'.Parties
+                    );
+                    ,
+                    Set(
+                        varSelectedRetailerAttachedDistributor,
+                        Blank()
+                    )
+                );
+            Size: =16
+            TabIndex: =0
+            Text: =ThisItem.'Lead Name'
+            Tooltip: =
+            Width: =100
+            Wrap: =false
+            ZIndex: =5
+
+        Body1_57 As label:
+            Align: =Align.Center
+            BorderColor: =RGBA(0, 18, 107, 1)
+            Color: |-
+                =
+                ColorValue(LookUp(c_EnvironmentVariable, 'Display Name'="Button Fill").'Default Value')
+            DisabledColor: =RGBA(166, 166, 166, 1)
+            FocusedBorderThickness: =01
+            Font: |-
+                =LookUp(c_EnvironmentVariable, 'Display Name'="Text Heading Font").'Default Value'
+                
+                //_VarGblAppFonts.Heading
+            FontWeight: =FontWeight.Bold
+            Height: =74
+            OnSelect: |-
+                =Navigate('Leads Detail Page',ScreenTransition.CoverRight);
+                Set(varLeadData, ThisItem)
+                 
+            Size: =LookUp(c_EnvironmentVariable,'Display Name'="Text Medium Font Size").'Default Value'
+            TabIndex: =0
+            Text: =DateValue(ThisItem.'Created On')
+            Tooltip: |-
+                ="Order Date: "& DateValue(ThisItem.'Created On')
+            Width: =1
+            Wrap: =false
+            ZIndex: =6
+
+        Body1_58 As label:
+            BorderColor: =RGBA(0, 18, 107, 1)
+            Color: =RGBA(0, 0, 0, 1)
+            DisabledColor: =RGBA(166, 166, 166, 1)
+            FocusedBorderThickness: =01
+            Font: |-
+                =LookUp(c_EnvironmentVariable, 'Display Name'="Text Heading Font").'Default Value'
+                
+                //_VarGblAppFonts.Heading
+            FontWeight: =FontWeight.Semibold
+            Height: =75
+            OnSelect: |-
+                =Navigate('Leads Detail Page',ScreenTransition.CoverRight);
+                Set(varLeadData, ThisItem)
+                 
+            Size: |-
+                =
+                LookUp('Environment Variable Definitions', 'Display Name'="Text Sub Title Font Size").'Default Value'
+            TabIndex: =0
+            Text: |-
+                ="Commited: "
+            Tooltip: |-
+                ="Order Status: " & ThisItem.Status
+            Width: =1
+            Wrap: =false
+            Y: =74
+            ZIndex: =7
+
+        Body1_59 As label:
+            BorderColor: =RGBA(0, 18, 107, 1)
+            Color: =RGBA(0, 0, 0, 1)
+            DisabledColor: =RGBA(166, 166, 166, 1)
+            FocusedBorderThickness: =01
+            Font: |-
+                =LookUp(c_EnvironmentVariable, 'Display Name'="Text Heading Font").'Default Value'
+                
+                //_VarGblAppFonts.Heading
+            FontWeight: =FontWeight.Semibold
+            Height: =74
+            OnSelect: |-
+                =Navigate('Leads Detail Page',ScreenTransition.CoverRight);
+                Set(varLeadData, ThisItem)
+                 
+            Size: |-
+                =
+                LookUp('Environment Variable Definitions', 'Display Name'="Text Sub Title Font Size").'Default Value'
+            TabIndex: =0
+            Text: |-
+                ="Contact: " & ThisItem.Contact.'First Name'
+            Tooltip: =
+            Width: =1
+            Y: =75
+            ZIndex: =10
+
+        Body1_60 As label:
+            BorderColor: =RGBA(0, 18, 107, 1)
+            Color: =RGBA(0, 0, 0, 1)
+            DisabledColor: =RGBA(166, 166, 166, 1)
+            FocusedBorderThickness: =1
+            Font: |-
+                =LookUp(c_EnvironmentVariable, 'Display Name'="Text Heading Font").'Default Value'
+                
+                //_VarGblAppFonts.Heading
+            FontWeight: =FontWeight.Semibold
+            Height: =55
+            OnSelect: |-
+                =Navigate('Leads Detail Page',ScreenTransition.CoverRight);
+                Set(varLeadData, ThisItem)
+                 
+            Size: |-
+                =
+                LookUp('Environment Variable Definitions', 'Display Name'="Text Sub Title Font Size").'Default Value'
+            TabIndex: =0
+            Text: |-
+                ="Stage: " 
+            Tooltip: =
+            Width: =1
+            Y: =148
+            ZIndex: =11
+
+        Body1_61 As label:
+            BorderColor: =RGBA(0, 18, 107, 1)
+            Color: =RGBA(0, 0, 0, 1)
+            DisabledColor: =RGBA(166, 166, 166, 1)
+            FocusedBorderThickness: =1
+            Font: |-
+                =LookUp(c_EnvironmentVariable, 'Display Name'="Text Heading Font").'Default Value'
+                
+                //_VarGblAppFonts.Heading
+            FontWeight: =FontWeight.Semibold
+            Height: =55
+            OnSelect: |-
+                =Navigate('Leads Detail Page',ScreenTransition.CoverRight);
+                Set(varLeadData, ThisItem)
+                 
+            Size: |-
+                =
+                LookUp('Environment Variable Definitions', 'Display Name'="Text Sub Title Font Size").'Default Value'
+            TabIndex: =0
+            Text: |-
+                ="Source: " &ThisItem.Source
+            Tooltip: =
+            Width: =1
+            Y: =149
+            ZIndex: =12
+
+        Icon10_3 As icon.Waypoint:
+            AccessibleLabel: ="Icon10_3"
+            BorderColor: =RGBA(0, 18, 107, 1)
+            Color: |-
+                =
+                ColorValue(LookUp(c_EnvironmentVariable, 'Display Name'="Button Fill").'Default Value')
+            DisabledBorderColor: =RGBA(166, 166, 166, 1)
+            DisabledColor: =RGBA(244, 244, 244, 1)
+            Height: =40
+            Icon: =Icon.Phone
+            OnSelect: |-
+                =Launch("tel://" & ThisItem.'Mobile No.');
+                Navigate(
+                    'Leads Detail Page',
+                    ScreenTransition.Fade
+                );
+                Set(
+                    varNewActivityForm,
+                    true
+                );
+                Set(varLeadData, ThisItem);
+                //NewForm('Activity Form');
+                
+                Set(VarCallClicked, true)
+            TabIndex: =0
+            Width: =49
+            X: =404
+            ZIndex: =13
+
+        Icon10_4 As icon.Waypoint:
+            AccessibleLabel: ="Icon10_3"
+            BorderColor: =RGBA(0, 18, 107, 1)
+            Color: |-
+                =
+                ColorValue(LookUp(c_EnvironmentVariable, 'Display Name'="Button Fill").'Default Value')
+            DisabledBorderColor: =RGBA(166, 166, 166, 1)
+            DisabledColor: =RGBA(244, 244, 244, 1)
+            Height: =40
+            Icon: =Icon.People
+            OnSelect: |-
+                =Set(varLeadData, ThisItem);
+                Set(varClickedCreateLeadVisit, true);
+            TabIndex: =0
+            Tooltip: ="Visit"
+            Width: =1
+            Y: =15
+            ZIndex: =14
+
+        dropStage As dropdown:
+            AccessibleLabel: ="Stage of the Lead"
+            BorderColor: =RGBA(0, 18, 107, 1)
+            BorderStyle: =BorderStyle.None
+            BorderThickness: =0
+            ChevronBackground: =RGBA(0, 0, 0, 0)
+            ChevronDisabledBackground: =RGBA(166, 166, 166, 1)
+            ChevronDisabledFill: =RGBA(244, 244, 244, 1)
+            ChevronFill: |-
+                =
+                ColorValue(LookUp(c_EnvironmentVariable, 'Display Name'="Button Fill").'Default Value')
+            ChevronHoverBackground: |-
+                =ColorFade(
+                    
+                ColorValue(LookUp(c_EnvironmentVariable, 'Display Name'="Button Fill").'Default Value')
+                    ,50%)
+            ChevronHoverFill: =RGBA(255, 255, 255, 1)
+            Default: =ThisItem.'Lead Stage '
+            DisabledBorderColor: =RGBA(166, 166, 166, 1)
+            DisabledColor: =RGBA(166, 166, 166, 1)
+            DisabledFill: =RGBA(244, 244, 244, 1)
+            DisplayMode: =If(varEdit=true,DisplayMode.Edit,DisplayMode.View)
+            Fill: |-
+                =//RGBA(0, 0, 0, 0)
+                If(varEdit=true,RGBA(255, 255, 255, 1),RGBA(0, 0, 0, 0))
+            FontWeight: =FontWeight.Semibold
+            Height: =55
+            HoverBorderColor: =ColorFade(Self.ChevronFill, 15%)
+            HoverColor: =RGBA(0, 0, 0, 1)
+            HoverFill: =RGBA(186, 202, 226, 1)
+            Items: =Choices('Stage Choice')
+            OnChange: |-
+                =Patch(
+                    'Leads.S',
+                    LookUp(
+                        'Leads.S',
+                       Leads = ThisItem.Leads
+                    ),
+                    {'Lead Stage ': dropStage.Selected.Value
+                    //'Stage date update':Now()
+                    }
+                );
+                Notify("Lead stage update successfully",NotificationType.Success,2000);
+                ClearCollect(offlineLeadCollection,'Leads.S')
+            PressedBorderColor: =Self.ChevronFill
+            PressedColor: =RGBA(255, 255, 255, 1)
+            PressedFill: =RGBA(0, 0, 0, 0)
+            SelectionFill: =RGBA(175, 191, 224, 1)
+            Size: =14
+            Width: =130
+            Y: =148
+            ZIndex: =15
+
+        dropCommited As dropdown:
+            AccessibleLabel: ="Commited or Not"
+            BorderColor: =RGBA(0, 18, 107, 1)
+            BorderStyle: =BorderStyle.None
+            BorderThickness: =0
+            ChevronBackground: =RGBA(0, 0, 0, 0)
+            ChevronDisabledBackground: =RGBA(166, 166, 166, 1)
+            ChevronDisabledFill: =RGBA(244, 244, 244, 1)
+            ChevronFill: |-
+                =
+                ColorValue(LookUp(c_EnvironmentVariable, 'Display Name'="Button Fill").'Default Value')
+            ChevronHoverBackground: |-
+                =ColorFade(
+                    
+                ColorValue(LookUp(c_EnvironmentVariable, 'Display Name'="Button Fill").'Default Value')
+                    ,50%)
+            ChevronHoverFill: =RGBA(255, 255, 255, 1)
+            Default: =ThisItem.Commited
+            DisabledBorderColor: =RGBA(166, 166, 166, 1)
+            DisabledColor: =RGBA(166, 166, 166, 1)
+            DisabledFill: =RGBA(244, 244, 244, 1)
+            DisplayMode: =If(varEdit=true,DisplayMode.Edit,DisplayMode.View)
+            FontWeight: =FontWeight.Semibold
+            Height: =73
+            HoverColor: =RGBA(0, 0, 0, 1)
+            HoverFill: =RGBA(186, 202, 226, 1)
+            Items: =Choices('Commited (Leads.S)')
+            OnChange: |-
+                =Patch(
+                'Leads.S',    LookUp(
+                        'Leads.S',
+                          Leads = ThisItem.Leads
+                    ),
+                    {Commited: dropCommited.Selected.Value}
+                );
+                Notify(
+                    "Lead Update successfully",
+                    NotificationType.Success,
+                    2000
+                );
+                ClearCollect(offlineLeadCollection,'Leads.S')
+            PressedColor: =RGBA(255, 255, 255, 1)
+            PressedFill: =RGBA(175, 191, 224, 1)
+            SelectionFill: =RGBA(56, 96, 178, 1)
+            Size: =14
+            Width: =100
+            Y: =76
+            ZIndex: =16
+
+    "'Filter Gallery_1' As gallery.galleryHorizontal":
+        AccessibleLabel: ="Filter Gallery"
+        BorderColor: =RGBA(0, 18, 107, 1)
+        Height: =55
+        Items: |-
+            =[
+                "Today's Leads",
+                "Last 7 Days",
+                "Last 30 Days"
+            ]
+        ShowScrollbar: =false
+        TabIndex: =0
+        TemplateSize: =201
+        Width: =623
+        X: =7
+        Y: =10
+        ZIndex: =2
+
+        Button7_2 As button:
+            DisabledBorderColor: =RGBA(166, 166, 166, 1)
+            DisabledColor: =RGBA(166, 166, 166, 1)
+            DisabledFill: =RGBA(244, 244, 244, 1)
+            Fill: |-
+                =If(ThisItem.IsSelected, ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//_VarGblAppColors.PrimaryRed
+                , ColorFade( 
+                   ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Common Primary Background").'Default Value' )//_VarGblAppColors.PrimaryBg
+                    ,20%))
+            Font: =Font.'Segoe UI'
+            FontWeight: =FontWeight.Bold
+            Height: =43
+            HoverColor: =RGBA(255, 255, 255, 1)
+            HoverFill: =Self.Fill
+            OnSelect: =Select(Parent)
+            Size: =12
+            Text: =ThisItem.Value
+            Width: =195
+            ZIndex: =2
+
+    "'Lead stage gallery' As gallery.galleryHorizontal":
+        AccessibleLabel: ="Status Gallery"
+        BorderColor: =RGBA(0, 18, 107, 1)
+        Height: =40
+        Items: =Choices('Stage Choice')
+        ShowScrollbar: =false
+        TabIndex: =0
+        TemplateSize: =162
+        Width: ='Leads List View'.Width
+        Y: =75
+        ZIndex: =3
+
+        Button7_3 As button:
+            DisabledBorderColor: =RGBA(166, 166, 166, 1)
+            DisabledColor: =RGBA(166, 166, 166, 1)
+            DisabledFill: =RGBA(244, 244, 244, 1)
+            Fill: |-
+                =If(ThisItem.IsSelected, 
+                ColorValue(LookUp(c_EnvironmentVariable, 'Display Name'="Button Fill").'Default Value'),ColorFade( ColorValue( LookUp('Environment Variable Definitions', 'Display Name'="Common Primary Background").'Default Value')//_VarGblAppColors.PrimaryBg
+                ,20%)
+                )
+            Font: =Font.'Segoe UI'
+            FontWeight: =FontWeight.Bold
+            Height: =29.5
+            HoverColor: =RGBA(255, 255, 255, 1)
+            HoverFill: =ColorFade(Self.Fill, -20%)
+            OnSelect: =Select(Parent)
+            Size: =12
+            Text: =ThisItem.Value
+            Width: =159
+            ZIndex: =2
+
+    ComboBox2 As combobox:
+        AccessibleLabel: ="Salesperson combobox"
+        BorderColor: =RGBA(179, 179, 179, 1)
+        BorderThickness: =1
+        ChevronBackground: =RGBA(0, 0, 0, 0)
+        ChevronDisabledBackground: =RGBA(166, 166, 166, 1)
+        ChevronDisabledFill: =RGBA(244, 244, 244, 1)
+        ChevronFill: |-
+            =
+            ColorValue(LookUp(c_EnvironmentVariable, 'Display Name'="Button Fill").'Default Value')
+        ChevronHoverBackground: =ColorFade(RGBA(56, 96, 178, 1), -20%)
+        ChevronHoverFill: =RGBA(255, 255, 255, 1)
+        Default: =LookUp(Users,'Primary Email'=User().Email)
+        DefaultSelectedItems: =LookUp(Users,'Primary Email'=User().Email)
+        DisabledBorderColor: =RGBA(166, 166, 166, 1)
+        DisabledColor: =RGBA(0, 0, 0, 1)
+        DisabledFill: =RGBA(244, 244, 244, 1)
+        DisplayFields: =["fullname"]
+        DisplayMode: =If(IsBlank(LookUp(Users,Manager.'Primary Email'= User().Email)),DisplayMode.Disabled,DisplayMode.Edit)
+        Height: =55
+        HoverColor: =RGBA(0, 0, 0, 1)
+        HoverFill: =RGBA(186, 202, 226, 1)
+        InputTextPlaceholder: ="Search Users"
+        IsSearchable: =false
+        Items: =Filter(Users,Manager.'Primary Email'= User().Email || 'Primary Email'= User().Email)
+        PressedColor: =RGBA(255, 255, 255, 1)
+        PressedFill: =RGBA(0, 18, 107, 1)
+        SearchFields: =["fullname"]
+        SearchItems: =[]
+        SelectionFill: =RGBA(56, 96, 178, 1)
+        SelectMultiple: =false
+        Size: =21
+        Width: ='Leads List View'.Width-20
+        Y: =424
+        ZIndex: =4
+
+    Button17_1 As button:
+        BorderThickness: =1
+        DisabledBorderColor: =RGBA(166, 166, 166, 1)
+        DisabledColor: =RGBA(166, 166, 166, 1)
+        DisabledFill: =RGBA(244, 244, 244, 1)
+        Fill: |-
+            =
+            ColorValue(LookUp(c_EnvironmentVariable, 'Display Name'="Button Fill").'Default Value')
+        Font: =Font.'Segoe UI'
+        FontWeight: =FontWeight.Semibold
+        Height: =44
+        HoverColor: =RGBA(255, 255, 255, 1)
+        HoverFill: =ColorFade(Self.Fill, -20%)
+        OnSelect: =Set(varEdit,!varEdit)
+        Size: =16
+        Text: ="Edit"
+        Width: =90
+        X: =550
+        Y: =224
+        ZIndex: =5
+

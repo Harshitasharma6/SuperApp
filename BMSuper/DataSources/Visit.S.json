@@ -1,0 +1,246 @@
+[
+  {
+    "CdsFCBContext": "{\"FileType\":true,\"ImageExternalStorage\":true}",
+    "EntitySetName": "zx_visits",
+    "IsHidden": false,
+    "IsSampleData": false,
+    "IsWritable": true,
+    "LogicalName": "zx_visit",
+    "MaxGetRowsCount": 500,
+    "Name": "Visit.S",
+    "NativeCDSDataSourceInfoNameMapping": {
+      "_ownerid_value": "Owner",
+      "createdby": "Created By",
+      "createdon": "Created On",
+      "createdonbehalfby": "Created By (Delegate)",
+      "importsequencenumber": "Import Sequence Number",
+      "modifiedby": "Modified By",
+      "modifiedon": "Modified On",
+      "modifiedonbehalfby": "Modified By (Delegate)",
+      "overriddencreatedon": "Record Created On",
+      "owningbusinessunit": "Owning Business Unit",
+      "owningteam": "Owning Team",
+      "owninguser": "Owning User",
+      "statecode": "Status",
+      "statuscode": "Status Reason",
+      "timezoneruleversionnumber": "Time Zone Rule Version Number",
+      "utcconversiontimezonecode": "UTC Conversion Time Zone Code",
+      "versionnumber": "Version Number",
+      "zx_attachment": "Attachment ",
+      "zx_call": "Call",
+      "zx_checkinaddress": "Check-in Address",
+      "zx_checkingeolocationlat": "Check-in Geo Location Lat",
+      "zx_checkingeolocationlong": "Check-in Geo Location Long",
+      "zx_checkintime": "Check-in Time",
+      "zx_checkoutaddress": "Check-out Address",
+      "zx_checkouttime": "Check-out Time",
+      "zx_Contact": "Contact",
+      "zx_KRA": "KRA",
+      "zx_Lead": "Lead",
+      "zx_locationmatched": "Location Matched",
+      "zx_name": "Visit ID",
+      "zx_objective": "Objective",
+      "zx_Party": "Party",
+      "zx_partylocation": "Party Location",
+      "zx_PjpRoute": "Pjp Route",
+      "zx_rescheduledate": "Reschedule Date",
+      "zx_reschedulereason": "Reschedule Reason",
+      "zx_TaggedVisit": "Tagged Visit",
+      "zx_visibilitylevel": "Visibility Level",
+      "zx_visit_AsyncOperations": "System Jobs",
+      "zx_visit_BulkDeleteFailures": "Bulk Delete Failures",
+      "zx_visit_DuplicateBaseRecord": "Duplicate Records (zx_visit_DuplicateBaseRecord)",
+      "zx_visit_DuplicateMatchingRecord": "Duplicate Records (zx_visit_DuplicateMatchingRecord)",
+      "zx_visit_FileAttachments": "FileAttachments",
+      "zx_visit_MailboxTrackingFolders": "Mailbox Auto Tracking Folders",
+      "zx_visit_PrincipalObjectAttributeAccesses": "Field Sharing",
+      "zx_visit_ProcessSession": "Process Sessions",
+      "zx_visit_SyncErrors": "Sync Errors",
+      "zx_visitdate": "Visit date",
+      "zx_visitid": "Visit",
+      "zx_visitstatus": "Visit Status",
+      "zx_visittype": "Visit Type",
+      "zx_zx_leadactivities_Visit_zx_visit": "Lead Activities.S",
+      "zx_zx_orderheader_Visit_zx_visit": "Order Header.S",
+      "zx_zx_visit_TaggedVisit_zx_visit": "Visit.S"
+    },
+    "PreferredName": "Visit.S",
+    "Type": "NativeCDSDataSourceInfo"
+  },
+  {
+    "DisplayName": "Visit.S (Views)",
+    "Name": "_zx_visit_views",
+    "RelatedEntityName": "Visit.S",
+    "TrimmedViewName": true,
+    "Type": "ViewInfo",
+    "ViewInfoNameMapping": {
+      "0529d5c3-90f4-429e-a0dd-b785cc073369": "Visit Lookup View",
+      "5ad748bc-46dd-4bbe-a949-1e05248f5242": "Visit Associated View",
+      "c8c8305d-aa4b-48ea-b4f1-e4d855967842": "Visit Advanced Find View",
+      "eb2ea301-89f0-465f-a808-fdc6feb53aa9": "Inactive Visits",
+      "f67d8d61-fc44-4c43-afd6-15fc09d0b82a": "Active Visits"
+    }
+  },
+  {
+    "DisplayName": "Objective",
+    "Name": "new_objective",
+    "OptionSetInfoNameMapping": {
+      "100000000": "1"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": true,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "zx_objective",
+        "OptionSetReferenceEntityName": "Visit.S"
+      }
+    },
+    "OptionSetTypeKey": "PicklistType",
+    "RelatedColumnInvariantName": "zx_objective",
+    "RelatedEntityName": "Visit.S",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Reschedule Reason",
+    "Name": "new_reschedulereason",
+    "OptionSetInfoNameMapping": {
+      "100000000": "1"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": true,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "zx_reschedulereason",
+        "OptionSetReferenceEntityName": "Visit.S"
+      }
+    },
+    "OptionSetTypeKey": "PicklistType",
+    "RelatedColumnInvariantName": "zx_reschedulereason",
+    "RelatedEntityName": "Visit.S",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Visit Status",
+    "Name": "new_visitstatus",
+    "OptionSetInfoNameMapping": {
+      "100000000": "Not Started",
+      "100000001": "Started",
+      "100000002": "Paused",
+      "100000003": "Completed",
+      "100000004": "Cancelled",
+      "100000005": "Rescheduled"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": true,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "zx_visitstatus",
+        "OptionSetReferenceEntityName": "Visit.S"
+      }
+    },
+    "OptionSetTypeKey": "PicklistType",
+    "RelatedColumnInvariantName": "zx_visitstatus",
+    "RelatedEntityName": "Visit.S",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Visit Type",
+    "Name": "new_visittype",
+    "OptionSetInfoNameMapping": {
+      "100000000": "Planned",
+      "100000001": "Unplanned"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": true,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "zx_visittype",
+        "OptionSetReferenceEntityName": "Visit.S"
+      }
+    },
+    "OptionSetTypeKey": "PicklistType",
+    "RelatedColumnInvariantName": "zx_visittype",
+    "RelatedEntityName": "Visit.S",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Status (Visit.S)",
+    "Name": "zx_visit_statecode",
+    "OptionSetInfoNameMapping": {
+      "0": "Active",
+      "1": "Inactive"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "statecode",
+        "OptionSetReferenceEntityName": "Visit.S"
+      }
+    },
+    "OptionSetTypeKey": "StateType",
+    "RelatedColumnInvariantName": "statecode",
+    "RelatedEntityName": "Visit.S",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Status Reason (Visit.S)",
+    "Name": "zx_visit_statuscode",
+    "OptionSetInfoNameMapping": {
+      "1": "Active",
+      "2": "Inactive"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "statuscode",
+        "OptionSetReferenceEntityName": "Visit.S"
+      }
+    },
+    "OptionSetTypeKey": "StatusType",
+    "RelatedColumnInvariantName": "statuscode",
+    "RelatedEntityName": "Visit.S",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Call (Visit.S)",
+    "Name": "zx_visit_zx_call",
+    "OptionSetInfoNameMapping": {
+      "0": "No",
+      "1": "Yes"
+    },
+    "OptionSetIsBooleanValued": true,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "zx_call",
+        "OptionSetReferenceEntityName": "Visit.S"
+      }
+    },
+    "OptionSetTypeKey": "BooleanType",
+    "RelatedColumnInvariantName": "zx_call",
+    "RelatedEntityName": "Visit.S",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Location Matched (Visit.S)",
+    "Name": "zx_visit_zx_locationmatched",
+    "OptionSetInfoNameMapping": {
+      "0": "No",
+      "1": "Yes"
+    },
+    "OptionSetIsBooleanValued": true,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "zx_locationmatched",
+        "OptionSetReferenceEntityName": "Visit.S"
+      }
+    },
+    "OptionSetTypeKey": "BooleanType",
+    "RelatedColumnInvariantName": "zx_locationmatched",
+    "RelatedEntityName": "Visit.S",
+    "Type": "OptionSetInfo"
+  }
+]

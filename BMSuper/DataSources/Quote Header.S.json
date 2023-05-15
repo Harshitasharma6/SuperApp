@@ -1,0 +1,158 @@
+[
+  {
+    "CdsFCBContext": "{\"FileType\":true,\"ImageExternalStorage\":true}",
+    "EntitySetName": "zx_quoteheaders",
+    "IsHidden": false,
+    "IsSampleData": false,
+    "IsWritable": true,
+    "LogicalName": "zx_quoteheader",
+    "MaxGetRowsCount": 500,
+    "Name": "Quote Header.S",
+    "NativeCDSDataSourceInfoNameMapping": {
+      "_ownerid_value": "Owner",
+      "createdby": "Created By",
+      "createdon": "Created On",
+      "createdonbehalfby": "Created By (Delegate)",
+      "exchangerate": "Exchange Rate",
+      "importsequencenumber": "Import Sequence Number",
+      "modifiedby": "Modified By",
+      "modifiedon": "Modified On",
+      "modifiedonbehalfby": "Modified By (Delegate)",
+      "overriddencreatedon": "Record Created On",
+      "owningbusinessunit": "Owning Business Unit",
+      "owningteam": "Owning Team",
+      "owninguser": "Owning User",
+      "statecode": "Status (statecode)",
+      "statuscode": "Status Reason",
+      "timezoneruleversionnumber": "Time Zone Rule Version Number",
+      "transactioncurrencyid": "Currency",
+      "utcconversiontimezonecode": "UTC Conversion Time Zone Code",
+      "versionnumber": "Version Number",
+      "zx_approvalstatus": "Approval Status",
+      "zx_Approver": "Approver",
+      "zx_BillTo": "Bill To",
+      "zx_discount": "Discount",
+      "zx_discountp": "DiscountP %",
+      "zx_gst": "GST",
+      "zx_gst_base": "GST (Base)",
+      "zx_Lead": "Lead",
+      "zx_name": "Quote ID",
+      "zx_new_orderheader_QuoteHeader_zx_quoteheade": "Order Headers",
+      "zx_Party": "Party",
+      "zx_quantity": "Quantity",
+      "zx_quoteheader_AsyncOperations": "System Jobs",
+      "zx_quoteheader_BulkDeleteFailures": "Bulk Delete Failures",
+      "zx_quoteheader_DuplicateBaseRecord": "Duplicate Records (zx_quoteheader_DuplicateBaseRecord)",
+      "zx_quoteheader_DuplicateMatchingRecord": "Duplicate Records (zx_quoteheader_DuplicateMatchingRecord)",
+      "zx_quoteheader_MailboxTrackingFolders": "Mailbox Auto Tracking Folders",
+      "zx_quoteheader_PrincipalObjectAttributeAccesses": "Field Sharing",
+      "zx_quoteheader_ProcessSession": "Process Sessions",
+      "zx_quoteheader_SyncErrors": "Sync Errors",
+      "zx_quoteheaderid": "Quote Header",
+      "zx_ShipTo": "Ship To",
+      "zx_status": "Status (zx_status)",
+      "zx_totalprice": "Total Price",
+      "zx_totalprice_base": "Total Price (Base)",
+      "zx_version": "Version",
+      "zx_zx_quoteline_QuoteHeader_zx_quoteheader": "Quote Line.S"
+    },
+    "PreferredName": "Quote Header.S",
+    "Type": "NativeCDSDataSourceInfo"
+  },
+  {
+    "DisplayName": "Quote Header.S (Views)",
+    "Name": "_zx_quoteheader_views",
+    "RelatedEntityName": "Quote Header.S",
+    "TrimmedViewName": true,
+    "Type": "ViewInfo",
+    "ViewInfoNameMapping": {
+      "6294cded-4f1b-4017-8492-8937a5370268": "Quote Header Lookup View",
+      "7768e6b1-9152-4bb1-bc8e-0662b0b99c51": "Quote Header Advanced Find View",
+      "8b63b6b9-7e07-40b1-966f-13d303b3f82b": "Quote Header Associated View",
+      "ada13b92-65dc-4e95-92cf-2cec09302435": "Inactive Quote Headers",
+      "de81ccfd-84ed-4e93-a7f0-bbcd6e0a86d0": "Active Quote Headers"
+    }
+  },
+  {
+    "DisplayName": "ApprovalChoiceQuoteHeader",
+    "Name": "zx_approvalchoicequoteheader",
+    "OptionSetInfoNameMapping": {
+      "0": "Pending",
+      "1": "Pending for Approval",
+      "2": "Approved",
+      "3": "Rejected"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": true,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "zx_approvalstatus",
+        "OptionSetReferenceEntityName": "Quote Header.S"
+      }
+    },
+    "OptionSetTypeKey": "PicklistType",
+    "RelatedColumnInvariantName": "zx_approvalstatus",
+    "RelatedEntityName": "Quote Header.S",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Status (Quote Header.S)",
+    "Name": "zx_quoteheader_statecode",
+    "OptionSetInfoNameMapping": {
+      "0": "Active",
+      "1": "Inactive"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "statecode",
+        "OptionSetReferenceEntityName": "Quote Header.S"
+      }
+    },
+    "OptionSetTypeKey": "StateType",
+    "RelatedColumnInvariantName": "statecode",
+    "RelatedEntityName": "Quote Header.S",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Status Reason (Quote Header.S)",
+    "Name": "zx_quoteheader_statuscode",
+    "OptionSetInfoNameMapping": {
+      "1": "Active",
+      "2": "Inactive"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "statuscode",
+        "OptionSetReferenceEntityName": "Quote Header.S"
+      }
+    },
+    "OptionSetTypeKey": "StatusType",
+    "RelatedColumnInvariantName": "statuscode",
+    "RelatedEntityName": "Quote Header.S",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "QuoteStatus",
+    "Name": "zx_quotestatus",
+    "OptionSetInfoNameMapping": {
+      "0": "Activated",
+      "1": "Deactivated"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": true,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "zx_status",
+        "OptionSetReferenceEntityName": "Quote Header.S"
+      }
+    },
+    "OptionSetTypeKey": "PicklistType",
+    "RelatedColumnInvariantName": "zx_status",
+    "RelatedEntityName": "Quote Header.S",
+    "Type": "OptionSetInfo"
+  }
+]

@@ -1,0 +1,101 @@
+[
+  {
+    "CdsFCBContext": "{\"FileType\":true,\"ImageExternalStorage\":true}",
+    "EntitySetName": "zx_productvariantses",
+    "IsHidden": false,
+    "IsSampleData": false,
+    "IsWritable": true,
+    "LogicalName": "zx_productvariants",
+    "MaxGetRowsCount": 500,
+    "Name": "Product Variants.S",
+    "NativeCDSDataSourceInfoNameMapping": {
+      "_ownerid_value": "Owner",
+      "createdby": "Created By",
+      "createdon": "Created On",
+      "createdonbehalfby": "Created By (Delegate)",
+      "importsequencenumber": "Import Sequence Number",
+      "modifiedby": "Modified By",
+      "modifiedon": "Modified On",
+      "modifiedonbehalfby": "Modified By (Delegate)",
+      "overriddencreatedon": "Record Created On",
+      "owningbusinessunit": "Owning Business Unit",
+      "owningteam": "Owning Team",
+      "owninguser": "Owning User",
+      "statecode": "Status",
+      "statuscode": "Status Reason",
+      "timezoneruleversionnumber": "Time Zone Rule Version Number",
+      "utcconversiontimezonecode": "UTC Conversion Time Zone Code",
+      "versionnumber": "Version Number",
+      "zx_name": "Name",
+      "zx_Product": "Product",
+      "zx_productvariants_AsyncOperations": "System Jobs",
+      "zx_productvariants_BulkDeleteFailures": "Bulk Delete Failures",
+      "zx_productvariants_DuplicateBaseRecord": "Duplicate Records (zx_productvariants_DuplicateBaseRecord)",
+      "zx_productvariants_DuplicateMatchingRecord": "Duplicate Records (zx_productvariants_DuplicateMatchingRecord)",
+      "zx_productvariants_MailboxTrackingFolders": "Mailbox Auto Tracking Folders",
+      "zx_productvariants_PrincipalObjectAttributeAccesses": "Field Sharing",
+      "zx_productvariants_ProcessSession": "Process Sessions",
+      "zx_productvariants_SyncErrors": "Sync Errors",
+      "zx_productvariantsid": "Product Variants",
+      "zx_Variant": "Variant",
+      "zx_zx_orderlines_Variant_zx_productvariants": "Order Lines.S",
+      "zx_zx_productsku_ProductVariant_zx_productva": "Product SKU.S"
+    },
+    "PreferredName": "Product Variants.S",
+    "Type": "NativeCDSDataSourceInfo"
+  },
+  {
+    "DisplayName": "Product Variants.S (Views)",
+    "Name": "_zx_productvariants_views",
+    "RelatedEntityName": "Product Variants.S",
+    "TrimmedViewName": true,
+    "Type": "ViewInfo",
+    "ViewInfoNameMapping": {
+      "2e22848e-6ed0-4ba4-8978-5cc76b13859d": "Inactive Product Variants",
+      "319e68c8-8694-48ba-ac9c-3cb17400e0f4": "Active Product Variants",
+      "8b2b5fad-3c35-48f0-bb9f-7c55c4ec03e3": "Product Variants Lookup View",
+      "99bf2cb3-27fc-4589-8f92-6bec03c66d58": "Product Variants Associated View",
+      "e4c4de80-411c-45bd-b5e3-d7d6cc2d494a": "Product Variants Advanced Find View"
+    }
+  },
+  {
+    "DisplayName": "Status (Product Variants.S)",
+    "Name": "zx_productvariants_statecode",
+    "OptionSetInfoNameMapping": {
+      "0": "Active",
+      "1": "Inactive"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "statecode",
+        "OptionSetReferenceEntityName": "Product Variants.S"
+      }
+    },
+    "OptionSetTypeKey": "StateType",
+    "RelatedColumnInvariantName": "statecode",
+    "RelatedEntityName": "Product Variants.S",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Status Reason (Product Variants.S)",
+    "Name": "zx_productvariants_statuscode",
+    "OptionSetInfoNameMapping": {
+      "1": "Active",
+      "2": "Inactive"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "statuscode",
+        "OptionSetReferenceEntityName": "Product Variants.S"
+      }
+    },
+    "OptionSetTypeKey": "StatusType",
+    "RelatedColumnInvariantName": "statuscode",
+    "RelatedEntityName": "Product Variants.S",
+    "Type": "OptionSetInfo"
+  }
+]

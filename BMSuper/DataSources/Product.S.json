@@ -1,0 +1,105 @@
+[
+  {
+    "CdsFCBContext": "{\"FileType\":true,\"ImageExternalStorage\":true}",
+    "EntitySetName": "zx_products",
+    "IsHidden": false,
+    "IsSampleData": false,
+    "IsWritable": true,
+    "LogicalName": "zx_product",
+    "MaxGetRowsCount": 500,
+    "Name": "Product.S",
+    "NativeCDSDataSourceInfoNameMapping": {
+      "_ownerid_value": "Owner",
+      "createdby": "Created By",
+      "createdon": "Created On",
+      "createdonbehalfby": "Created By (Delegate)",
+      "importsequencenumber": "Import Sequence Number",
+      "modifiedby": "Modified By",
+      "modifiedon": "Modified On",
+      "modifiedonbehalfby": "Modified By (Delegate)",
+      "overriddencreatedon": "Record Created On",
+      "owningbusinessunit": "Owning Business Unit",
+      "owningteam": "Owning Team",
+      "owninguser": "Owning User",
+      "statecode": "Status",
+      "statuscode": "Status Reason",
+      "timezoneruleversionnumber": "Time Zone Rule Version Number",
+      "utcconversiontimezonecode": "UTC Conversion Time Zone Code",
+      "versionnumber": "Version Number",
+      "zx_name": "ID",
+      "zx_product_AsyncOperations": "System Jobs",
+      "zx_product_BulkDeleteFailures": "Bulk Delete Failures",
+      "zx_product_DuplicateBaseRecord": "Duplicate Records (zx_product_DuplicateBaseRecord)",
+      "zx_product_DuplicateMatchingRecord": "Duplicate Records (zx_product_DuplicateMatchingRecord)",
+      "zx_product_MailboxTrackingFolders": "Mailbox Auto Tracking Folders",
+      "zx_product_PrincipalObjectAttributeAccesses": "Field Sharing",
+      "zx_product_ProcessSession": "Process Sessions",
+      "zx_product_SyncErrors": "Sync Errors",
+      "zx_ProductCategory": "Product Category",
+      "zx_productcode": "Product Code",
+      "zx_ProductGroup": "Product Group",
+      "zx_productid": "Product",
+      "zx_productname": "Product Name",
+      "zx_ProductSubCategory": "Product Sub-Category",
+      "zx_zx_orderlines_Product_zx_product": "Order Lines.S",
+      "zx_zx_productsku_Product_zx_product": "Product SKU.S",
+      "zx_zx_productvariants_Product_zx_product": "Product Variants.S"
+    },
+    "PreferredName": "Product.S",
+    "Type": "NativeCDSDataSourceInfo"
+  },
+  {
+    "DisplayName": "Product.S (Views)",
+    "Name": "_zx_product_views",
+    "RelatedEntityName": "Product.S",
+    "TrimmedViewName": true,
+    "Type": "ViewInfo",
+    "ViewInfoNameMapping": {
+      "0311e156-2bec-46da-a949-57408af00358": "Inactive Products",
+      "3754aaa3-63b7-43d5-8131-069c80283dc3": "Product Advanced Find View",
+      "39a02eb8-5294-4a39-93a7-f58df15b9fef": "Active Products",
+      "4d85587e-fe16-479b-a5cd-36ae074fd669": "Product Lookup View",
+      "dcc198a4-39e7-4973-8485-4699d02ccbe1": "Product Associated View"
+    }
+  },
+  {
+    "DisplayName": "Status (Product.S)",
+    "Name": "zx_product_statecode",
+    "OptionSetInfoNameMapping": {
+      "0": "Active",
+      "1": "Inactive"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "statecode",
+        "OptionSetReferenceEntityName": "Product.S"
+      }
+    },
+    "OptionSetTypeKey": "StateType",
+    "RelatedColumnInvariantName": "statecode",
+    "RelatedEntityName": "Product.S",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Status Reason (Product.S)",
+    "Name": "zx_product_statuscode",
+    "OptionSetInfoNameMapping": {
+      "1": "Active",
+      "2": "Inactive"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "statuscode",
+        "OptionSetReferenceEntityName": "Product.S"
+      }
+    },
+    "OptionSetTypeKey": "StatusType",
+    "RelatedColumnInvariantName": "statuscode",
+    "RelatedEntityName": "Product.S",
+    "Type": "OptionSetInfo"
+  }
+]

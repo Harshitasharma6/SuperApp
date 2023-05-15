@@ -1,0 +1,183 @@
+[
+  {
+    "CdsFCBContext": "{\"FileType\":true,\"ImageExternalStorage\":true}",
+    "EntitySetName": "zx_complaints",
+    "IsHidden": false,
+    "IsSampleData": false,
+    "IsWritable": true,
+    "LogicalName": "zx_complaint",
+    "MaxGetRowsCount": 500,
+    "Name": "Complaint.S",
+    "NativeCDSDataSourceInfoNameMapping": {
+      "_ownerid_value": "Owner",
+      "{Attachments}": "Attachments",
+      "createdby": "Created By",
+      "createdon": "Created On",
+      "createdonbehalfby": "Created By (Delegate)",
+      "importsequencenumber": "Import Sequence Number",
+      "modifiedby": "Modified By",
+      "modifiedon": "Modified On",
+      "modifiedonbehalfby": "Modified By (Delegate)",
+      "overriddencreatedon": "Record Created On",
+      "owningbusinessunit": "Owning Business Unit",
+      "owningteam": "Owning Team",
+      "owninguser": "Owning User",
+      "statecode": "Status",
+      "statuscode": "Status Reason",
+      "timezoneruleversionnumber": "Time Zone Rule Version Number",
+      "utcconversiontimezonecode": "UTC Conversion Time Zone Code",
+      "versionnumber": "Version Number",
+      "zx_assigneddate": "Assigned Date",
+      "zx_attachment": "Attachment",
+      "zx_complaint_Annotations": "Notes",
+      "zx_complaint_AsyncOperations": "System Jobs",
+      "zx_complaint_BulkDeleteFailures": "Bulk Delete Failures",
+      "zx_complaint_DuplicateBaseRecord": "Duplicate Records (zx_complaint_DuplicateBaseRecord)",
+      "zx_complaint_DuplicateMatchingRecord": "Duplicate Records (zx_complaint_DuplicateMatchingRecord)",
+      "zx_complaint_FileAttachments": "FileAttachments",
+      "zx_complaint_MailboxTrackingFolders": "Mailbox Auto Tracking Folders",
+      "zx_complaint_PrincipalObjectAttributeAccesses": "Field Sharing",
+      "zx_complaint_ProcessSession": "Process Sessions",
+      "zx_complaint_SyncErrors": "Sync Errors",
+      "zx_complaintid": "Complaint",
+      "zx_complaintno": "Complaint No.",
+      "zx_complaintstatus": "Complaint Status",
+      "zx_deparment": "Deparment",
+      "zx_expectedclosuredate": "Expected Closure Date",
+      "zx_issuedescription": "Issue Description",
+      "zx_name": "Name",
+      "zx_natureofcomplaint": "Nature of Complaint",
+      "zx_remarks": "Remarks",
+      "zx_resolutiondate": "Resolution Date",
+      "zx_ResolvedBy": "Resolved By",
+      "zx_statuslevel": "Status level"
+    },
+    "PreferredName": "Complaint.S",
+    "Type": "NativeCDSDataSourceInfo"
+  },
+  {
+    "DisplayName": "Complaint.S (Views)",
+    "Name": "_zx_complaint_views",
+    "RelatedEntityName": "Complaint.S",
+    "TrimmedViewName": true,
+    "Type": "ViewInfo",
+    "ViewInfoNameMapping": {
+      "2a1d1b10-808a-44f3-9857-241f27fc761c": "Complaint. Lookup View",
+      "80978752-a931-4583-887f-8414d7f4c922": "Complaint. Associated View",
+      "9af5a178-65b7-4aa3-98d6-eca7b4357b14": "Inactive Complaint.S",
+      "a9c14d79-e54c-466b-bb4e-8b1ce45bcf0f": "Complaint. Advanced Find View",
+      "ad04afd6-8c58-4274-99e6-bce175f94fd9": "Active Complaint.S"
+    }
+  },
+  {
+    "DisplayName": "Status (Complaint.S)",
+    "Name": "zx_complaint_statecode",
+    "OptionSetInfoNameMapping": {
+      "0": "Active",
+      "1": "Inactive"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "statecode",
+        "OptionSetReferenceEntityName": "Complaint.S"
+      }
+    },
+    "OptionSetTypeKey": "StateType",
+    "RelatedColumnInvariantName": "statecode",
+    "RelatedEntityName": "Complaint.S",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Status Reason (Complaint.S)",
+    "Name": "zx_complaint_statuscode",
+    "OptionSetInfoNameMapping": {
+      "1": "Active",
+      "2": "Inactive"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "statuscode",
+        "OptionSetReferenceEntityName": "Complaint.S"
+      }
+    },
+    "OptionSetTypeKey": "StatusType",
+    "RelatedColumnInvariantName": "statuscode",
+    "RelatedEntityName": "Complaint.S",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Complaint Status (Complaint.S)",
+    "Name": "zx_complaint_zx_complaintstatus",
+    "OptionSetInfoNameMapping": {
+      "128780000": "Register",
+      "128780001": "Assign",
+      "128780002": "Resolution",
+      "128780003": "Closure"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "zx_complaintstatus",
+        "OptionSetReferenceEntityName": "Complaint.S"
+      }
+    },
+    "OptionSetTypeKey": "PicklistType",
+    "RelatedColumnInvariantName": "zx_complaintstatus",
+    "RelatedEntityName": "Complaint.S",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Deparment (Complaint.S)",
+    "Name": "zx_complaint_zx_deparment",
+    "OptionSetInfoNameMapping": {
+      "128780000": "Marketing",
+      "128780001": "Sales",
+      "128780002": "Finance"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "zx_deparment",
+        "OptionSetReferenceEntityName": "Complaint.S"
+      }
+    },
+    "OptionSetTypeKey": "PicklistType",
+    "RelatedColumnInvariantName": "zx_deparment",
+    "RelatedEntityName": "Complaint.S",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Nature of Complaint (Complaint.S)",
+    "Name": "zx_complaint_zx_natureofcomplaint",
+    "OptionSetInfoNameMapping": {
+      "128780000": "Account statement and Reconciliation Matters",
+      "128780001": "Credit notes related",
+      "128780002": "GST and TDS/TCS Related Queries",
+      "128780003": "Payments Related Queries",
+      "128780004": "Schemes and Discount",
+      "128780005": "Product",
+      "128780006": "Price",
+      "128780007": "Limit Related ",
+      "128780008": "Credit Note",
+      "128780009": "Customer Onboarding"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "zx_natureofcomplaint",
+        "OptionSetReferenceEntityName": "Complaint.S"
+      }
+    },
+    "OptionSetTypeKey": "PicklistType",
+    "RelatedColumnInvariantName": "zx_natureofcomplaint",
+    "RelatedEntityName": "Complaint.S",
+    "Type": "OptionSetInfo"
+  }
+]

@@ -1,0 +1,101 @@
+[
+  {
+    "CdsFCBContext": "{\"FileType\":true,\"ImageExternalStorage\":true}",
+    "EntitySetName": "zx_pjplineses",
+    "IsHidden": false,
+    "IsSampleData": false,
+    "IsWritable": true,
+    "LogicalName": "zx_pjplines",
+    "MaxGetRowsCount": 500,
+    "Name": "PJP Lines.S",
+    "NativeCDSDataSourceInfoNameMapping": {
+      "_ownerid_value": "Owner",
+      "createdby": "Created By",
+      "createdon": "Created On",
+      "createdonbehalfby": "Created By (Delegate)",
+      "importsequencenumber": "Import Sequence Number",
+      "modifiedby": "Modified By",
+      "modifiedon": "Modified On",
+      "modifiedonbehalfby": "Modified By (Delegate)",
+      "overriddencreatedon": "Record Created On",
+      "owningbusinessunit": "Owning Business Unit",
+      "owningteam": "Owning Team",
+      "owninguser": "Owning User",
+      "statecode": "Status",
+      "statuscode": "Status Reason",
+      "timezoneruleversionnumber": "Time Zone Rule Version Number",
+      "utcconversiontimezonecode": "UTC Conversion Time Zone Code",
+      "versionnumber": "Version Number",
+      "zx_date": "Date",
+      "zx_name": "ID",
+      "zx_PJPHeader": "PJP Header",
+      "zx_pjplines_AsyncOperations": "System Jobs",
+      "zx_pjplines_BulkDeleteFailures": "Bulk Delete Failures",
+      "zx_pjplines_DuplicateBaseRecord": "Duplicate Records (zx_pjplines_DuplicateBaseRecord)",
+      "zx_pjplines_DuplicateMatchingRecord": "Duplicate Records (zx_pjplines_DuplicateMatchingRecord)",
+      "zx_pjplines_MailboxTrackingFolders": "Mailbox Auto Tracking Folders",
+      "zx_pjplines_PrincipalObjectAttributeAccesses": "Field Sharing",
+      "zx_pjplines_ProcessSession": "Process Sessions",
+      "zx_pjplines_SyncErrors": "Sync Errors",
+      "zx_pjplinesid": "PJP Lines",
+      "zx_Salesperson": "Salesperson",
+      "zx_zx_pjproute_PJPLine_zx_pjplines": "Beat.S"
+    },
+    "PreferredName": "PJP Lines.S",
+    "Type": "NativeCDSDataSourceInfo"
+  },
+  {
+    "DisplayName": "PJP Lines.S (Views)",
+    "Name": "_zx_pjplines_views",
+    "RelatedEntityName": "PJP Lines.S",
+    "TrimmedViewName": true,
+    "Type": "ViewInfo",
+    "ViewInfoNameMapping": {
+      "56dc4571-b4f7-47b0-9341-dab4ee82fd8a": "PJP Lines Associated View",
+      "73361c8e-3b95-4740-91da-017bfd2249bc": "PJP Lines Lookup View",
+      "9c0aa2aa-1ed1-419c-b61e-59d87ebf9e5d": "Active PJP Lines",
+      "be664621-99e1-42a0-adf6-8573a7797e35": "Inactive PJP Lines",
+      "fe69a895-2d49-4c53-9c38-b1e88e57d9f4": "PJP Lines Advanced Find View"
+    }
+  },
+  {
+    "DisplayName": "Status (PJP Lines.S)",
+    "Name": "zx_pjplines_statecode",
+    "OptionSetInfoNameMapping": {
+      "0": "Active",
+      "1": "Inactive"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "statecode",
+        "OptionSetReferenceEntityName": "PJP Lines.S"
+      }
+    },
+    "OptionSetTypeKey": "StateType",
+    "RelatedColumnInvariantName": "statecode",
+    "RelatedEntityName": "PJP Lines.S",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Status Reason (PJP Lines.S)",
+    "Name": "zx_pjplines_statuscode",
+    "OptionSetInfoNameMapping": {
+      "1": "Active",
+      "2": "Inactive"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "statuscode",
+        "OptionSetReferenceEntityName": "PJP Lines.S"
+      }
+    },
+    "OptionSetTypeKey": "StatusType",
+    "RelatedColumnInvariantName": "statuscode",
+    "RelatedEntityName": "PJP Lines.S",
+    "Type": "OptionSetInfo"
+  }
+]

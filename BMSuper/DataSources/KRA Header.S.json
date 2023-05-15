@@ -1,0 +1,241 @@
+[
+  {
+    "CdsFCBContext": "{\"FileType\":true,\"ImageExternalStorage\":true}",
+    "EntitySetName": "zx_kraheaders",
+    "IsHidden": false,
+    "IsSampleData": false,
+    "IsWritable": true,
+    "LogicalName": "zx_kraheader",
+    "MaxGetRowsCount": 500,
+    "Name": "KRA Header.S",
+    "NativeCDSDataSourceInfoNameMapping": {
+      "_ownerid_value": "Owner",
+      "{Attachments}": "Attachments",
+      "createdby": "Created By",
+      "createdon": "Created On",
+      "createdonbehalfby": "Created By (Delegate)",
+      "importsequencenumber": "Import Sequence Number",
+      "modifiedby": "Modified By",
+      "modifiedon": "Modified On",
+      "modifiedonbehalfby": "Modified By (Delegate)",
+      "overriddencreatedon": "Record Created On",
+      "owningbusinessunit": "Owning Business Unit",
+      "owningteam": "Owning Team",
+      "owninguser": "Owning User",
+      "statecode": "Status",
+      "statuscode": "Status Reason",
+      "timezoneruleversionnumber": "Time Zone Rule Version Number",
+      "utcconversiontimezonecode": "UTC Conversion Time Zone Code",
+      "versionnumber": "Version Number",
+      "zx_achivement": "Achivement",
+      "zx_achivementtype": "Achivement Type",
+      "zx_closureachivement": "Closure Achivement",
+      "zx_closuretarget": "Closure Target",
+      "zx_date": "Date",
+      "zx_fromdate": "From Date",
+      "zx_kraheader_Annotations": "Notes",
+      "zx_kraheader_AsyncOperations": "System Jobs",
+      "zx_kraheader_BulkDeleteFailures": "Bulk Delete Failures",
+      "zx_kraheader_DuplicateBaseRecord": "Duplicate Records (zx_kraheader_DuplicateBaseRecord)",
+      "zx_kraheader_DuplicateMatchingRecord": "Duplicate Records (zx_kraheader_DuplicateMatchingRecord)",
+      "zx_kraheader_MailboxTrackingFolders": "Mailbox Auto Tracking Folders",
+      "zx_kraheader_PrincipalObjectAttributeAccesses": "Field Sharing",
+      "zx_kraheader_ProcessSession": "Process Sessions",
+      "zx_kraheader_SyncErrors": "Sync Errors",
+      "zx_kraheaderid": "KRA Header",
+      "zx_leadachivement": "Lead Achivement",
+      "zx_leadtarget": "Lead Target",
+      "zx_monthnumber": "Month Number",
+      "zx_name": "Name",
+      "zx_new_orderheader_KRA_zx_kraheader": "Order Headers",
+      "zx_orderachivement": "Order Achivement",
+      "zx_ordertarget": "Order Target",
+      "zx_percentageofachievement": "Percentage of Achievement",
+      "zx_ranking": "Ranking",
+      "zx_SalesPerson": "Sales Person",
+      "zx_target": "Target",
+      "zx_targettype": "Target Type",
+      "zx_todate": "To Date",
+      "zx_User": "User",
+      "zx_visitachivement": "Visit Achivement",
+      "zx_visittarget": "Visit Target",
+      "zx_weeknumber": "Week Number",
+      "zx_year": "Year",
+      "zx_zx_leads_KRA_zx_kraheader": "Leads.S",
+      "zx_zx_orderheader_KRA_zx_kraheader": "Order Header.S",
+      "zx_zx_visit_KRA_zx_kraheader": "Visit.S"
+    },
+    "PreferredName": "KRA Header.S",
+    "Type": "NativeCDSDataSourceInfo"
+  },
+  {
+    "DisplayName": "KRA Header.S (Views)",
+    "Name": "_zx_kraheader_views",
+    "RelatedEntityName": "KRA Header.S",
+    "TrimmedViewName": true,
+    "Type": "ViewInfo",
+    "ViewInfoNameMapping": {
+      "116d9553-6f5a-438e-a17c-cb7b4b1cfc8a": "KRA Header Associated View",
+      "7202c278-8b46-4160-abd9-30ce2b3998cd": "KRA Header Advanced Find View",
+      "b40dac5d-44ab-4bea-96d2-1b0e55220d15": "KRA Header Lookup View",
+      "d4d8ffd5-bbd8-48b5-a984-9da856fe9978": "Active KRA Headers",
+      "da65a14b-117a-4343-989d-bc489b860ccb": "Inactive KRA Headers"
+    }
+  },
+  {
+    "DisplayName": "Status (KRA Header.S)",
+    "Name": "zx_kraheader_statecode",
+    "OptionSetInfoNameMapping": {
+      "0": "Active",
+      "1": "Inactive"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "statecode",
+        "OptionSetReferenceEntityName": "KRA Header.S"
+      }
+    },
+    "OptionSetTypeKey": "StateType",
+    "RelatedColumnInvariantName": "statecode",
+    "RelatedEntityName": "KRA Header.S",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Status Reason (KRA Header.S)",
+    "Name": "zx_kraheader_statuscode",
+    "OptionSetInfoNameMapping": {
+      "1": "Active",
+      "2": "Inactive"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "statuscode",
+        "OptionSetReferenceEntityName": "KRA Header.S"
+      }
+    },
+    "OptionSetTypeKey": "StatusType",
+    "RelatedColumnInvariantName": "statuscode",
+    "RelatedEntityName": "KRA Header.S",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Achivement Type (KRA Header.S)",
+    "Name": "zx_kraheader_zx_achivementtype",
+    "OptionSetInfoNameMapping": {
+      "128780000": "Daily",
+      "128780001": "Weekly",
+      "128780002": "Monthly"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "zx_achivementtype",
+        "OptionSetReferenceEntityName": "KRA Header.S"
+      }
+    },
+    "OptionSetTypeKey": "PicklistType",
+    "RelatedColumnInvariantName": "zx_achivementtype",
+    "RelatedEntityName": "KRA Header.S",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Month Number (KRA Header.S)",
+    "Name": "zx_kraheader_zx_monthnumber",
+    "OptionSetInfoNameMapping": {
+      "128780000": "1",
+      "128780001": "2",
+      "128780002": "3",
+      "128780003": "4",
+      "128780004": "5",
+      "128780005": "6",
+      "128780006": "7",
+      "128780007": "8",
+      "128780008": "9",
+      "128780009": "10",
+      "128780010": "11",
+      "128780011": "12"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "zx_monthnumber",
+        "OptionSetReferenceEntityName": "KRA Header.S"
+      }
+    },
+    "OptionSetTypeKey": "PicklistType",
+    "RelatedColumnInvariantName": "zx_monthnumber",
+    "RelatedEntityName": "KRA Header.S",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Ranking (KRA Header.S)",
+    "Name": "zx_kraheader_zx_ranking",
+    "OptionSetInfoNameMapping": {
+      "128780000": "Daily",
+      "128780001": "Weekly",
+      "128780002": "Monthly"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "zx_ranking",
+        "OptionSetReferenceEntityName": "KRA Header.S"
+      }
+    },
+    "OptionSetTypeKey": "PicklistType",
+    "RelatedColumnInvariantName": "zx_ranking",
+    "RelatedEntityName": "KRA Header.S",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Target Type (KRA Header.S)",
+    "Name": "zx_kraheader_zx_targettype",
+    "OptionSetInfoNameMapping": {
+      "128780000": "Daily",
+      "128780001": "Weekly",
+      "128780002": "Monthly"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "zx_targettype",
+        "OptionSetReferenceEntityName": "KRA Header.S"
+      }
+    },
+    "OptionSetTypeKey": "PicklistType",
+    "RelatedColumnInvariantName": "zx_targettype",
+    "RelatedEntityName": "KRA Header.S",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Year (KRA Header.S)",
+    "Name": "zx_kraheader_zx_year",
+    "OptionSetInfoNameMapping": {
+      "128780000": "2022",
+      "128780001": "2023",
+      "128780002": "2024",
+      "128780003": "2025",
+      "128780004": "2026"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "zx_year",
+        "OptionSetReferenceEntityName": "KRA Header.S"
+      }
+    },
+    "OptionSetTypeKey": "PicklistType",
+    "RelatedColumnInvariantName": "zx_year",
+    "RelatedEntityName": "KRA Header.S",
+    "Type": "OptionSetInfo"
+  }
+]

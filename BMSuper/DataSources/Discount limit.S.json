@@ -1,0 +1,141 @@
+[
+  {
+    "CdsFCBContext": "{\"FileType\":true,\"ImageExternalStorage\":true}",
+    "EntitySetName": "zx_discountlimits",
+    "IsHidden": false,
+    "IsSampleData": false,
+    "IsWritable": true,
+    "LogicalName": "zx_discountlimit",
+    "MaxGetRowsCount": 500,
+    "Name": "Discount limit.S",
+    "NativeCDSDataSourceInfoNameMapping": {
+      "_ownerid_value": "Owner",
+      "{Attachments}": "Attachments",
+      "createdby": "Created By",
+      "createdon": "Created On",
+      "createdonbehalfby": "Created By (Delegate)",
+      "emailaddress": "Email Address",
+      "importsequencenumber": "Import Sequence Number",
+      "modifiedby": "Modified By",
+      "modifiedon": "Modified On",
+      "modifiedonbehalfby": "Modified By (Delegate)",
+      "overriddencreatedon": "Record Created On",
+      "owningbusinessunit": "Owning Business Unit",
+      "owningteam": "Owning Team",
+      "owninguser": "Owning User",
+      "statecode": "Status",
+      "statuscode": "Status Reason",
+      "timezoneruleversionnumber": "Time Zone Rule Version Number",
+      "utcconversiontimezonecode": "UTC Conversion Time Zone Code",
+      "versionnumber": "Version Number",
+      "zx_discountlimit_ActivityPointers": "Activities",
+      "zx_discountlimit_Annotations": "Notes",
+      "zx_discountlimit_Appointments": "Appointments",
+      "zx_discountlimit_AsyncOperations": "System Jobs",
+      "zx_discountlimit_BulkDeleteFailures": "Bulk Delete Failures",
+      "zx_discountlimit_chats": "Teams chats",
+      "zx_discountlimit_connections1": "Connections (zx_discountlimit_connections1)",
+      "zx_discountlimit_connections2": "Connections (zx_discountlimit_connections2)",
+      "zx_discountlimit_DuplicateBaseRecord": "Duplicate Records (zx_discountlimit_DuplicateBaseRecord)",
+      "zx_discountlimit_DuplicateMatchingRecord": "Duplicate Records (zx_discountlimit_DuplicateMatchingRecord)",
+      "zx_discountlimit_Emails": "Email Messages",
+      "zx_discountlimit_Faxes": "Faxes",
+      "zx_discountlimit_Feedback": "Feedback",
+      "zx_discountlimit_Letters": "Letters",
+      "zx_discountlimit_MailboxTrackingFolders": "Mailbox Auto Tracking Folders",
+      "zx_discountlimit_msfp_alerts": "Customer Voice alert",
+      "zx_discountlimit_msfp_surveyinvites": "Customer Voice survey invites",
+      "zx_discountlimit_msfp_surveyresponses": "Customer Voice survey responses",
+      "zx_discountlimit_PhoneCalls": "Phone Calls",
+      "zx_discountlimit_PrincipalObjectAttributeAccesses": "Field Sharing",
+      "zx_discountlimit_ProcessSession": "Process Sessions",
+      "zx_discountlimit_QueueItems": "Queue Items",
+      "zx_discountlimit_RecurringAppointmentMasters": "Recurring Appointments",
+      "zx_discountlimit_SyncErrors": "Sync Errors",
+      "zx_discountlimit_Tasks": "Tasks",
+      "zx_discountlimit_Teams": "Teams",
+      "zx_discountlimitid": "Discount limit",
+      "zx_discounttype": "Discount type",
+      "zx_managerdiscounts": "Manager Discounts",
+      "zx_name": "Name",
+      "zx_userdiscount": "User Discounts",
+      "zx_usersid": "usersid"
+    },
+    "PreferredName": "Discount limit.S",
+    "Type": "NativeCDSDataSourceInfo"
+  },
+  {
+    "DisplayName": "Discount limit.S (Views)",
+    "Name": "_zx_discountlimit_views",
+    "RelatedEntityName": "Discount limit.S",
+    "TrimmedViewName": true,
+    "Type": "ViewInfo",
+    "ViewInfoNameMapping": {
+      "2c650201-0dc8-42e6-9943-ffc45e895259": "Inactive Discount limits",
+      "70ced4c4-c771-4f46-87a9-d564381023d5": "Discount limit Lookup View",
+      "7aef9b20-790e-4a93-b1ad-318f8fd1084c": "Discount limit Advanced Find View",
+      "9a6408a1-a819-4e3c-9541-92314aaf977a": "Discount limit Associated View",
+      "b28a8e44-8ebe-4747-90d6-fb42fb539f7a": "Active Discount limits"
+    }
+  },
+  {
+    "DisplayName": "Status (Discount limit.S)",
+    "Name": "zx_discountlimit_statecode",
+    "OptionSetInfoNameMapping": {
+      "0": "Active",
+      "1": "Inactive"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "statecode",
+        "OptionSetReferenceEntityName": "Discount limit.S"
+      }
+    },
+    "OptionSetTypeKey": "StateType",
+    "RelatedColumnInvariantName": "statecode",
+    "RelatedEntityName": "Discount limit.S",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Status Reason (Discount limit.S)",
+    "Name": "zx_discountlimit_statuscode",
+    "OptionSetInfoNameMapping": {
+      "1": "Active",
+      "2": "Inactive"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "statuscode",
+        "OptionSetReferenceEntityName": "Discount limit.S"
+      }
+    },
+    "OptionSetTypeKey": "StatusType",
+    "RelatedColumnInvariantName": "statuscode",
+    "RelatedEntityName": "Discount limit.S",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "discount type",
+    "Name": "zx_discounttype",
+    "OptionSetInfoNameMapping": {
+      "128780000": "Quote",
+      "128780001": "Order"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": true,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "zx_discounttype",
+        "OptionSetReferenceEntityName": "Discount limit.S"
+      }
+    },
+    "OptionSetTypeKey": "PicklistType",
+    "RelatedColumnInvariantName": "zx_discounttype",
+    "RelatedEntityName": "Discount limit.S",
+    "Type": "OptionSetInfo"
+  }
+]

@@ -1,0 +1,110 @@
+[
+  {
+    "CdsFCBContext": "{\"FileType\":true,\"ImageExternalStorage\":true}",
+    "EntitySetName": "zx_productofferheaders",
+    "IsHidden": false,
+    "IsSampleData": false,
+    "IsWritable": true,
+    "LogicalName": "zx_productofferheader",
+    "MaxGetRowsCount": 500,
+    "Name": "Product Offer Header.S",
+    "NativeCDSDataSourceInfoNameMapping": {
+      "_ownerid_value": "Owner",
+      "createdby": "Created By",
+      "createdon": "Created On",
+      "createdonbehalfby": "Created By (Delegate)",
+      "importsequencenumber": "Import Sequence Number",
+      "modifiedby": "Modified By",
+      "modifiedon": "Modified On",
+      "modifiedonbehalfby": "Modified By (Delegate)",
+      "overriddencreatedon": "Record Created On",
+      "owningbusinessunit": "Owning Business Unit",
+      "owningteam": "Owning Team",
+      "owninguser": "Owning User",
+      "statecode": "Status",
+      "statuscode": "Status Reason",
+      "timezoneruleversionnumber": "Time Zone Rule Version Number",
+      "utcconversiontimezonecode": "UTC Conversion Time Zone Code",
+      "versionnumber": "Version Number",
+      "zx_activefrom": "Active From",
+      "zx_activeto": "Active To",
+      "zx_description": "Description",
+      "zx_discount": "Discount %",
+      "zx_name": "Name",
+      "zx_offerid": "Offer ID",
+      "zx_ProductCategory": "Product Category ",
+      "zx_ProductGroup": "Product Group",
+      "zx_productofferheader_AsyncOperations": "System Jobs",
+      "zx_productofferheader_BulkDeleteFailures": "Bulk Delete Failures",
+      "zx_productofferheader_DuplicateBaseRecord": "Duplicate Records (zx_productofferheader_DuplicateBaseRecord)",
+      "zx_productofferheader_DuplicateMatchingRecord": "Duplicate Records (zx_productofferheader_DuplicateMatchingRecord)",
+      "zx_productofferheader_MailboxTrackingFolders": "Mailbox Auto Tracking Folders",
+      "zx_productofferheader_PrincipalObjectAttributeAccesses": "Field Sharing",
+      "zx_productofferheader_ProcessSession": "Process Sessions",
+      "zx_productofferheader_SyncErrors": "Sync Errors",
+      "zx_productofferheaderid": "Product Offer Header",
+      "zx_ProductSubCategory": "Product Sub-Category ",
+      "zx_Region": "Region",
+      "zx_salescontractno": "Sales Contract No",
+      "zx_State": "State",
+      "zx_zx_productofferlines_ProductOfferHeader_z": "Product Offer Lines.S",
+      "zx_zx_productoffersmapping_ProductOffers_zx_": "Product Offers Mapping.S"
+    },
+    "PreferredName": "Product Offer Header.S",
+    "Type": "NativeCDSDataSourceInfo"
+  },
+  {
+    "DisplayName": "Product Offer Header.S (Views)",
+    "Name": "_zx_productofferheader_views",
+    "RelatedEntityName": "Product Offer Header.S",
+    "TrimmedViewName": true,
+    "Type": "ViewInfo",
+    "ViewInfoNameMapping": {
+      "2c4334d8-b1db-4185-adec-30e8fd945d41": "Inactive Product Offer Headers",
+      "56331da4-c2be-47a7-a598-d954aae2b4df": "Product Offer Header Advanced Find View",
+      "6f044d77-bca3-4f4e-89a0-3ed67e36a016": "Active Product Offer Headers",
+      "8dc0138e-2cea-4932-bffe-d52779ebef87": "Product Offer Header Lookup View",
+      "da93f066-7b8e-48d8-80af-e5614e7b9d07": "Product Offer Header Associated View"
+    }
+  },
+  {
+    "DisplayName": "Status (Product Offer Header.S)",
+    "Name": "zx_productofferheader_statecode",
+    "OptionSetInfoNameMapping": {
+      "0": "Active",
+      "1": "Inactive"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "statecode",
+        "OptionSetReferenceEntityName": "Product Offer Header.S"
+      }
+    },
+    "OptionSetTypeKey": "StateType",
+    "RelatedColumnInvariantName": "statecode",
+    "RelatedEntityName": "Product Offer Header.S",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Status Reason (Product Offer Header.S)",
+    "Name": "zx_productofferheader_statuscode",
+    "OptionSetInfoNameMapping": {
+      "1": "Active",
+      "2": "Inactive"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "statuscode",
+        "OptionSetReferenceEntityName": "Product Offer Header.S"
+      }
+    },
+    "OptionSetTypeKey": "StatusType",
+    "RelatedColumnInvariantName": "statuscode",
+    "RelatedEntityName": "Product Offer Header.S",
+    "Type": "OptionSetInfo"
+  }
+]

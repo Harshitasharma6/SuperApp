@@ -1,0 +1,50 @@
+"'Activity Detail Screen' As screen":
+    LoadingSpinnerColor: =RGBA(0, 120, 212, 1)
+
+    "'Detail Page_3' As 'Detail Page'":
+        DataSource: |-
+            =Table({
+                    Title: "Activity Id:",
+                    Data:If(IsBlank(varActivityData.'Lead Activity Id'), varActivityData.VisitID,varActivityData.'Lead Activity Id')
+                },
+                {
+                    Title: "Type:",
+                    Data:Text(varActivityData.VisitActivity)
+                },
+                {
+                    Title: "Contact:",
+                    Data: varActivityData.Contact.'First Name' & " "& varActivityData.Contact.'Last Name'
+                },
+                {
+                    Title: "Remarks:",
+                    Data:varActivityData.ActivityRemark
+                },
+                {
+                    Title: "Outcome:",
+                    Data: Text(varActivityData.ActivityOutCome)
+                },
+                {
+                    Title: "Duration:",
+                    Data: Text(varActivityData.Duration)
+                },
+                {
+                    Title: "Next Follow-Up Date:",
+                    Data: Text(varActivityData.NextFolllowUpDate,"dd-mm-yyyy")
+                },
+                {
+                    Title: "Next Follow-Up Activity:",
+                    Data: Text(varActivityData.FollowUpActivity)
+                }
+            )
+        Fill: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Screen Background Color").'Default Value') //ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Screen Background Color").'Default Value') //_VarGblAppColors.BackgroundColor
+        Height: =962
+        Y: =80
+
+    Header_23 As Header:
+        ScreenName: =varActivityData.zx_name
+        ZIndex: =2
+
+    "'Bottom Bar_25' As 'Bottom Bar'":
+        Y: =1026
+        ZIndex: =3
+
