@@ -1,0 +1,101 @@
+[
+  {
+    "CdsFCBContext": "{\"FileType\":true,\"ImageExternalStorage\":true}",
+    "EntitySetName": "zx_productoffersmappings",
+    "IsHidden": false,
+    "IsSampleData": false,
+    "IsWritable": true,
+    "LogicalName": "zx_productoffersmapping",
+    "MaxGetRowsCount": 500,
+    "Name": "Product Offers Mapping.S",
+    "NativeCDSDataSourceInfoNameMapping": {
+      "_ownerid_value": "Owner",
+      "createdby": "Created By",
+      "createdon": "Created On",
+      "createdonbehalfby": "Created By (Delegate)",
+      "importsequencenumber": "Import Sequence Number",
+      "modifiedby": "Modified By",
+      "modifiedon": "Modified On",
+      "modifiedonbehalfby": "Modified By (Delegate)",
+      "overriddencreatedon": "Record Created On",
+      "owningbusinessunit": "Owning Business Unit",
+      "owningteam": "Owning Team",
+      "owninguser": "Owning User",
+      "statecode": "Status",
+      "statuscode": "Status Reason",
+      "timezoneruleversionnumber": "Time Zone Rule Version Number",
+      "utcconversiontimezonecode": "UTC Conversion Time Zone Code",
+      "versionnumber": "Version Number",
+      "zx_Customer": "Customer",
+      "zx_name": "ID",
+      "zx_ProductOffers": "Product Offers",
+      "zx_productoffersmapping_AsyncOperations": "System Jobs",
+      "zx_productoffersmapping_BulkDeleteFailures": "Bulk Delete Failures",
+      "zx_productoffersmapping_DuplicateBaseRecord": "Duplicate Records (zx_productoffersmapping_DuplicateBaseRecord)",
+      "zx_productoffersmapping_DuplicateMatchingRecord": "Duplicate Records (zx_productoffersmapping_DuplicateMatchingRecord)",
+      "zx_productoffersmapping_MailboxTrackingFolders": "Mailbox Auto Tracking Folders",
+      "zx_productoffersmapping_PrincipalObjectAttributeAccesses": "Field Sharing",
+      "zx_productoffersmapping_ProcessSession": "Process Sessions",
+      "zx_productoffersmapping_SyncErrors": "Sync Errors",
+      "zx_productoffersmappingid": "Product Offers Mapping",
+      "zx_Region": "Region",
+      "zx_State": "State"
+    },
+    "PreferredName": "Product Offers Mapping.S",
+    "Type": "NativeCDSDataSourceInfo"
+  },
+  {
+    "DisplayName": "Product Offers Mapping.S (Views)",
+    "Name": "_zx_productoffersmapping_views",
+    "RelatedEntityName": "Product Offers Mapping.S",
+    "TrimmedViewName": true,
+    "Type": "ViewInfo",
+    "ViewInfoNameMapping": {
+      "0e74b2d3-74d9-454d-a187-b017a6986f08": "Product Offers Mapping. Advanced Find View",
+      "1fac76d5-36cc-4eab-814f-7f51375e6566": "Product Offers Mapping. Lookup View",
+      "7b6c456c-dcb2-4a4e-ba58-b3f0018ef606": "Active Product Offers Mapping.S",
+      "847b36ca-7eff-4d08-a999-1fbccf8970e1": "Inactive Product Offers Mapping.S",
+      "f178307a-953f-4c74-86fc-549e089ff9bd": "Product Offers Mapping. Associated View"
+    }
+  },
+  {
+    "DisplayName": "Status (Product Offers Mapping.S)",
+    "Name": "zx_productoffersmapping_statecode",
+    "OptionSetInfoNameMapping": {
+      "0": "Active",
+      "1": "Inactive"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "statecode",
+        "OptionSetReferenceEntityName": "Product Offers Mapping.S"
+      }
+    },
+    "OptionSetTypeKey": "StateType",
+    "RelatedColumnInvariantName": "statecode",
+    "RelatedEntityName": "Product Offers Mapping.S",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Status Reason (Product Offers Mapping.S)",
+    "Name": "zx_productoffersmapping_statuscode",
+    "OptionSetInfoNameMapping": {
+      "1": "Active",
+      "2": "Inactive"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "statuscode",
+        "OptionSetReferenceEntityName": "Product Offers Mapping.S"
+      }
+    },
+    "OptionSetTypeKey": "StatusType",
+    "RelatedColumnInvariantName": "statuscode",
+    "RelatedEntityName": "Product Offers Mapping.S",
+    "Type": "OptionSetInfo"
+  }
+]

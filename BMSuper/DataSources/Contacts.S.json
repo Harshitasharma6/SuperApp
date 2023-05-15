@@ -1,0 +1,131 @@
+[
+  {
+    "CdsFCBContext": "{\"FileType\":true,\"ImageExternalStorage\":true}",
+    "EntitySetName": "zx_contactses",
+    "IsHidden": false,
+    "IsSampleData": false,
+    "IsWritable": true,
+    "LogicalName": "zx_contacts",
+    "MaxGetRowsCount": 500,
+    "Name": "Contacts.S",
+    "NativeCDSDataSourceInfoNameMapping": {
+      "_ownerid_value": "Owner",
+      "{Attachments}": "Attachments",
+      "createdby": "Created By",
+      "createdon": "Created On",
+      "createdonbehalfby": "Created By (Delegate)",
+      "importsequencenumber": "Import Sequence Number",
+      "modifiedby": "Modified By",
+      "modifiedon": "Modified On",
+      "modifiedonbehalfby": "Modified By (Delegate)",
+      "overriddencreatedon": "Record Created On",
+      "owningbusinessunit": "Owning Business Unit",
+      "owningteam": "Owning Team",
+      "owninguser": "Owning User",
+      "statecode": "Status",
+      "statuscode": "Status Reason",
+      "timezoneruleversionnumber": "Time Zone Rule Version Number",
+      "utcconversiontimezonecode": "UTC Conversion Time Zone Code",
+      "versionnumber": "Version Number",
+      "zx_contacts_Annotations": "Notes",
+      "zx_contacts_AsyncOperations": "System Jobs",
+      "zx_contacts_BulkDeleteFailures": "Bulk Delete Failures",
+      "zx_contacts_DuplicateBaseRecord": "Duplicate Records (zx_contacts_DuplicateBaseRecord)",
+      "zx_contacts_DuplicateMatchingRecord": "Duplicate Records (zx_contacts_DuplicateMatchingRecord)",
+      "zx_contacts_MailboxTrackingFolders": "Mailbox Auto Tracking Folders",
+      "zx_contacts_PrincipalObjectAttributeAccesses": "Field Sharing",
+      "zx_contacts_ProcessSession": "Process Sessions",
+      "zx_contacts_SyncErrors": "Sync Errors",
+      "zx_contactsid": "Contacts",
+      "zx_department": "Department",
+      "zx_designation": "Designation",
+      "zx_emailaddress": "Email Address",
+      "zx_firstname": "First Name",
+      "zx_lastname": "Last Name",
+      "zx_mobileno": "Mobile No",
+      "zx_name": "Contact Id",
+      "zx_Party": "Party",
+      "zx_primarycontact": "Primary Contact",
+      "zx_zx_activity_Contact_zx_contacts": "Activities",
+      "zx_zx_leadactivities_Contact_zx_contacts": "Lead Activities.S",
+      "zx_zx_leads_Contact_zx_contacts": "Leads.S",
+      "zx_zx_visit_Contact_zx_contacts": "Visit.S"
+    },
+    "PreferredName": "Contacts.S",
+    "Type": "NativeCDSDataSourceInfo"
+  },
+  {
+    "DisplayName": "Contacts.S (Views)",
+    "Name": "_zx_contacts_views",
+    "RelatedEntityName": "Contacts.S",
+    "TrimmedViewName": true,
+    "Type": "ViewInfo",
+    "ViewInfoNameMapping": {
+      "0caf513b-8ab9-4646-aa3a-4254d61c86e2": "Contacts Associated View",
+      "2cb5adda-59f7-41ac-b661-abdc192d89af": "Active Contacts",
+      "ae9880d2-73d1-4f54-975b-d4afa740f0f3": "Contacts Lookup View",
+      "b2b9e21f-9eeb-4af6-8fc1-e72a17d812e1": "Contacts Advanced Find View",
+      "d178d89c-d89f-42ca-aa3a-ce8b24c0a8d1": "Inactive Contacts"
+    }
+  },
+  {
+    "DisplayName": "Status (Contacts.S)",
+    "Name": "zx_contacts_statecode",
+    "OptionSetInfoNameMapping": {
+      "0": "Active",
+      "1": "Inactive"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "statecode",
+        "OptionSetReferenceEntityName": "Contacts.S"
+      }
+    },
+    "OptionSetTypeKey": "StateType",
+    "RelatedColumnInvariantName": "statecode",
+    "RelatedEntityName": "Contacts.S",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Status Reason (Contacts.S)",
+    "Name": "zx_contacts_statuscode",
+    "OptionSetInfoNameMapping": {
+      "1": "Active",
+      "2": "Inactive"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "statuscode",
+        "OptionSetReferenceEntityName": "Contacts.S"
+      }
+    },
+    "OptionSetTypeKey": "StatusType",
+    "RelatedColumnInvariantName": "statuscode",
+    "RelatedEntityName": "Contacts.S",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Primary Contact (Contacts.S)",
+    "Name": "zx_contacts_zx_primarycontact",
+    "OptionSetInfoNameMapping": {
+      "0": "No",
+      "1": "Yes"
+    },
+    "OptionSetIsBooleanValued": true,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "zx_primarycontact",
+        "OptionSetReferenceEntityName": "Contacts.S"
+      }
+    },
+    "OptionSetTypeKey": "BooleanType",
+    "RelatedColumnInvariantName": "zx_primarycontact",
+    "RelatedEntityName": "Contacts.S",
+    "Type": "OptionSetInfo"
+  }
+]

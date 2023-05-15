@@ -1,0 +1,94 @@
+"'Top Tab' As CanvasComponent":
+    ActiveTabId: =_VarActivetopTabID
+    Fill: =Color.Transparent
+    Height: =60
+    TopItems: |-
+        =Table(
+            {
+                Title: "Basic",
+                TabId: 1
+            },
+            {
+                Title: "Basic 1",
+                TabId: 2
+            },
+            {
+                Title: "Basic 2",
+                TabId: 3
+            },{
+                Title: "Basic 3",
+                TabId: 4
+            }
+        )
+    Width: =640
+    X: =0
+    Y: =0
+    ZIndex: =1
+
+    Gallery3 As gallery.galleryHorizontal:
+        AccessibleLabel: ="Top Bar"
+        BorderColor: =RGBA(0, 18, 107, 1)
+        BorderStyle: =BorderStyle.None
+        Height: =60
+        Items: ='Top Tab'.TopItems
+        OnSelect: =
+        TabIndex: =0
+        TemplatePadding: =0
+        TemplateSize: =Gallery3.Width/ CountRows('Top Tab'.TopItems)
+        ZIndex: =1
+
+        title As label:
+            Align: =Align.Center
+            BorderColor: =RGBA(0, 18, 107, 1)
+            BorderStyle: =BorderStyle.None
+            Color: =If(_VarActivetopTabID= ThisItem.TabId, ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' ), ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Text Primary Color").'Default Value' ))
+            DisabledColor: =RGBA(166, 166, 166, 1)
+            FocusedBorderThickness: =0.3
+            FontWeight: =FontWeight.Semibold
+            Height: =60
+            OnSelect: =Set(_VarActivetopTabID, ThisItem.TabId)
+            Size: =LookUp(c_EnvironmentVariable,'Display Name'="Text Medium Font Size").'Default Value'
+            TabIndex: =0
+            Text: =ThisItem.Title
+            Width: =Gallery3.TemplateWidth
+            ZIndex: =2
+
+        Border As button:
+            BorderColor: =If(_VarActivetopTabID= ThisItem.TabId, ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button  Fill").'Default Value') , ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Hover Color").'Default Value'))
+            BorderStyle: =BorderStyle.None
+            BorderThickness: =0
+            DisabledBorderColor: =RGBA(166, 166, 166, 1)
+            DisabledColor: =RGBA(166, 166, 166, 1)
+            DisabledFill: =RGBA(244, 244, 244, 1)
+            Fill: =RGBA(0, 0, 0, 0)
+            FocusedBorderThickness: =2.5
+            Font: =Font.'Segoe UI'
+            FontWeight: =FontWeight.Semibold
+            Height: =54
+            HoverColor: =RGBA(255, 255, 255, 1)
+            HoverFill: =
+            OnSelect: =Set(_VarActivetopTabID, ThisItem.TabId);
+            PressedColor: =Self.Color
+            PressedFill: =Self.Fill
+            RadiusBottomLeft: =15
+            RadiusBottomRight: =15
+            RadiusTopLeft: =15
+            RadiusTopRight: =15
+            Size: =28
+            Text: =""
+            Width: =Gallery3.TemplateWidth-6
+            X: =3
+            Y: =3
+            ZIndex: =3
+
+        Rectangle28 As rectangle:
+            BorderColor: =RGBA(0, 18, 107, 1)
+            Fill: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//_VarGblAppColors.PrimaryRed
+            Height: =1
+            OnSelect: =Select(Parent)
+            Visible: =If(_VarActivetopTabID = ThisItem.TabId,true,false)
+            Width: =Parent.TemplateWidth - 40
+            X: =Parent.TemplateWidth/2-Self.Width/2
+            Y: =53
+            ZIndex: =4
+

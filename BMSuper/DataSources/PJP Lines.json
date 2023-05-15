@@ -1,0 +1,102 @@
+[
+  {
+    "CdsFCBContext": "{\"FileType\":true,\"ImageExternalStorage\":true}",
+    "EntitySetName": "new_pjplineses",
+    "IsHidden": false,
+    "IsSampleData": false,
+    "IsWritable": true,
+    "LogicalName": "new_pjplines",
+    "MaxGetRowsCount": 500,
+    "Name": "PJP Lines",
+    "NativeCDSDataSourceInfoNameMapping": {
+      "_ownerid_value": "Owner",
+      "createdby": "Created By",
+      "createdon": "Created On",
+      "createdonbehalfby": "Created By (Delegate)",
+      "importsequencenumber": "Import Sequence Number",
+      "modifiedby": "Modified By",
+      "modifiedon": "Modified On",
+      "modifiedonbehalfby": "Modified By (Delegate)",
+      "new_date": "Date",
+      "new_id": "ID",
+      "new_new_pjproute_PJPLine_new_pjplines": "Beats",
+      "new_new_pjproutenew_PJPLine_new_pjplines": "PJP Route New",
+      "new_PJPHeader": "PJP Header",
+      "new_pjplines_AsyncOperations": "System Jobs",
+      "new_pjplines_BulkDeleteFailures": "Bulk Delete Failures",
+      "new_pjplines_DuplicateBaseRecord": "Duplicate Records (new_pjplines_DuplicateBaseRecord)",
+      "new_pjplines_DuplicateMatchingRecord": "Duplicate Records (new_pjplines_DuplicateMatchingRecord)",
+      "new_pjplines_MailboxTrackingFolders": "Mailbox Auto Tracking Folders",
+      "new_pjplines_PrincipalObjectAttributeAccesses": "Field Sharing",
+      "new_pjplines_ProcessSession": "Process Sessions",
+      "new_pjplines_SyncErrors": "Sync Errors",
+      "new_pjplinesid": "PJP Lines",
+      "new_User": "Salesperson",
+      "overriddencreatedon": "Record Created On",
+      "owningbusinessunit": "Owning Business Unit",
+      "owningteam": "Owning Team",
+      "owninguser": "Owning User",
+      "statecode": "Status",
+      "statuscode": "Status Reason",
+      "timezoneruleversionnumber": "Time Zone Rule Version Number",
+      "utcconversiontimezonecode": "UTC Conversion Time Zone Code",
+      "versionnumber": "Version Number"
+    },
+    "PreferredName": "PJP Lines",
+    "Type": "NativeCDSDataSourceInfo"
+  },
+  {
+    "DisplayName": "PJP Lines (Views)",
+    "Name": "_new_pjplines_views",
+    "RelatedEntityName": "PJP Lines",
+    "TrimmedViewName": true,
+    "Type": "ViewInfo",
+    "ViewInfoNameMapping": {
+      "1bb4c42f-2783-4eec-b82a-d3c8b8a4bff8": "Active PJP Lines",
+      "593fc61c-c8e8-4d37-9f64-39f8aa8c3654": "Inactive PJP Lines",
+      "631ca3f2-3f0d-4490-b39a-4e744bc7eb19": "PJP Lines Associated View",
+      "d672c42a-fc91-47d3-9b15-a87147b7b74e": "PJP Lines Advanced Find View",
+      "f1b853eb-9b4b-4990-b65a-48e8456c5a4c": "PJP Lines Lookup View"
+    }
+  },
+  {
+    "DisplayName": "Status (PJP Lines)",
+    "Name": "new_pjplines_statecode",
+    "OptionSetInfoNameMapping": {
+      "0": "Active",
+      "1": "Inactive"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "statecode",
+        "OptionSetReferenceEntityName": "PJP Lines"
+      }
+    },
+    "OptionSetTypeKey": "StateType",
+    "RelatedColumnInvariantName": "statecode",
+    "RelatedEntityName": "PJP Lines",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Status Reason (PJP Lines)",
+    "Name": "new_pjplines_statuscode",
+    "OptionSetInfoNameMapping": {
+      "1": "Active",
+      "2": "Inactive"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "statuscode",
+        "OptionSetReferenceEntityName": "PJP Lines"
+      }
+    },
+    "OptionSetTypeKey": "StatusType",
+    "RelatedColumnInvariantName": "statuscode",
+    "RelatedEntityName": "PJP Lines",
+    "Type": "OptionSetInfo"
+  }
+]

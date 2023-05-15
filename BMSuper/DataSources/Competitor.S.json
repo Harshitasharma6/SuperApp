@@ -1,0 +1,100 @@
+[
+  {
+    "CdsFCBContext": "{\"FileType\":true,\"ImageExternalStorage\":true}",
+    "EntitySetName": "zx_competitors",
+    "IsHidden": false,
+    "IsSampleData": false,
+    "IsWritable": true,
+    "LogicalName": "zx_competitor",
+    "MaxGetRowsCount": 500,
+    "Name": "Competitor.S",
+    "NativeCDSDataSourceInfoNameMapping": {
+      "_ownerid_value": "Owner",
+      "createdby": "Created By",
+      "createdon": "Created On",
+      "createdonbehalfby": "Created By (Delegate)",
+      "importsequencenumber": "Import Sequence Number",
+      "modifiedby": "Modified By",
+      "modifiedon": "Modified On",
+      "modifiedonbehalfby": "Modified By (Delegate)",
+      "overriddencreatedon": "Record Created On",
+      "owningbusinessunit": "Owning Business Unit",
+      "owningteam": "Owning Team",
+      "owninguser": "Owning User",
+      "statecode": "Status",
+      "statuscode": "Status Reason",
+      "timezoneruleversionnumber": "Time Zone Rule Version Number",
+      "utcconversiontimezonecode": "UTC Conversion Time Zone Code",
+      "versionnumber": "Version Number",
+      "zx_competitor_AsyncOperations": "System Jobs",
+      "zx_competitor_BulkDeleteFailures": "Bulk Delete Failures",
+      "zx_competitor_DuplicateBaseRecord": "Duplicate Records (zx_competitor_DuplicateBaseRecord)",
+      "zx_competitor_DuplicateMatchingRecord": "Duplicate Records (zx_competitor_DuplicateMatchingRecord)",
+      "zx_competitor_MailboxTrackingFolders": "Mailbox Auto Tracking Folders",
+      "zx_competitor_PrincipalObjectAttributeAccesses": "Field Sharing",
+      "zx_competitor_ProcessSession": "Process Sessions",
+      "zx_competitor_SyncErrors": "Sync Errors",
+      "zx_competitorid": "Competitor",
+      "zx_competitorname": "Competitor Name",
+      "zx_cra62_leads_Competitor_zx_competitor": "Leads",
+      "zx_name": "Competitor Id",
+      "zx_zx_leads_Competitor_zx_competitor": "Leads.S"
+    },
+    "PreferredName": "Competitor.S",
+    "Type": "NativeCDSDataSourceInfo"
+  },
+  {
+    "DisplayName": "Competitor.S (Views)",
+    "Name": "_zx_competitor_views",
+    "RelatedEntityName": "Competitor.S",
+    "TrimmedViewName": true,
+    "Type": "ViewInfo",
+    "ViewInfoNameMapping": {
+      "1b499cd0-9248-4fd7-a96d-5698411e24c3": "Active Competitors",
+      "2aa81682-5ca5-4dad-8f30-217406795de4": "Competitor Associated View",
+      "40f3d8d9-d6a9-40a3-ba08-359c7b630199": "Inactive Competitors",
+      "76340d9f-9e89-43eb-b0cb-c36d1fb6c39f": "Competitor Lookup View",
+      "a9dd9479-d01e-4a64-bc0c-9e8fde3ba206": "Competitor Advanced Find View"
+    }
+  },
+  {
+    "DisplayName": "Status (Competitor.S)",
+    "Name": "zx_competitor_statecode",
+    "OptionSetInfoNameMapping": {
+      "0": "Active",
+      "1": "Inactive"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "statecode",
+        "OptionSetReferenceEntityName": "Competitor.S"
+      }
+    },
+    "OptionSetTypeKey": "StateType",
+    "RelatedColumnInvariantName": "statecode",
+    "RelatedEntityName": "Competitor.S",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Status Reason (Competitor.S)",
+    "Name": "zx_competitor_statuscode",
+    "OptionSetInfoNameMapping": {
+      "1": "Active",
+      "2": "Inactive"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "statuscode",
+        "OptionSetReferenceEntityName": "Competitor.S"
+      }
+    },
+    "OptionSetTypeKey": "StatusType",
+    "RelatedColumnInvariantName": "statuscode",
+    "RelatedEntityName": "Competitor.S",
+    "Type": "OptionSetInfo"
+  }
+]

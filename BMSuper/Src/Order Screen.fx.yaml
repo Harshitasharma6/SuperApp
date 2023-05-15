@@ -1,0 +1,96 @@
+"'Order Screen' As screen":
+    LoadingSpinnerColor: =RGBA(0, 120, 212, 1)
+    OnVisible: |-
+        =Set(primarydata,Blank());
+        Set(secondarydata,Blank());
+        Set(
+            varCollectionEmpty,
+            true
+        );
+        Set( varSelectedTabId, 1)
+
+    Header_1 As Header:
+        ScreenName: |-
+            ="Book Order"
+            /*If(
+                varCustomertype = 'Party Type Choices'.Distributor || varCustomertype = 'Party Type Choices'.Dealer,
+                "New Primary Order",
+                "New Secondary Order"
+            )*/
+
+    "'Product List_1' As 'Product List'":
+        Height: =988
+        OrderType: |-
+            =//"Primary"
+            If(
+                varCustomertype = 'Party Type Choices'.Distributor || varCustomertype = 'Party Type Choices'.Dealer,
+                "Primary",
+                "Secondary"
+            )
+        Party: |-
+            =LookUp(
+                OfflinePartiesCollection,
+                Parties = varCustomerforDiscount
+            )
+        Y: =67
+        ZIndex: =2
+
+    "'Bottom Bar_4' As 'Bottom Bar'":
+        Y: =1026
+        ZIndex: =3
+
+    Image20 As image:
+        BorderColor: =RGBA(0, 0, 0, 0)
+        BorderStyle: =BorderStyle.None
+        BorderThickness: =2
+        DisabledBorderColor: =RGBA(0, 0, 0, 0)
+        DisabledFill: =RGBA(0, 0, 0, 0)
+        FocusedBorderThickness: =4
+        Height: =52
+        HoverBorderColor: =RGBA(0, 0, 0, 0)
+        HoverFill: =RGBA(0, 0, 0, 0)
+        Image: ='Group 1 (1)'
+        OnSelect: |-
+            =If('Product List_1'.OrderType="Primary",Navigate('Primary Cart Screen', ScreenTransition.CoverRight,{
+                        varParty: ComboBox1_1.Selected.'Customer Name',
+                        varCustomertype: ComboBox1_1.Selected.'Customer Type'
+                    }),
+            Navigate('Secondary Cart Screen',ScreenTransition.CoverRight,{
+                        varParty: ComboBox1_3.Selected.'Customer Name',
+                        varCustomertype: ComboBox1_3.Selected.'Customer Type'
+                    }));
+        PressedBorderColor: =RGBA(0, 0, 0, 0)
+        PressedFill: =RGBA(0, 0, 0, 0)
+        Width: =52
+        X: =575
+        Y: =14
+        ZIndex: =4
+
+    Label14 As label:
+        Align: =Align.Center
+        BorderColor: =RGBA(0, 18, 107, 1)
+        Color: =RGBA(255, 255, 255, 1)
+        DisabledColor: =RGBA(166, 166, 166, 1)
+        FocusedBorderThickness: =01
+        Height: =30
+        OnSelect: |-
+            =If('Product List_1'.OrderType="Primary",Navigate('Primary Cart Screen', ScreenTransition.CoverRight,{
+                        varParty: ComboBox1_1.Selected.'Customer Name',
+                        varCustomertype: ComboBox1_1.Selected.'Customer Type'
+                    }),
+            Navigate('Secondary Cart Screen',ScreenTransition.CoverRight,{
+                        varParty: ComboBox1_3.Selected.'Customer Name',
+                        varCustomertype: ComboBox1_3.Selected.'Customer Type'
+                    }));
+        TabIndex: =0
+        Text: |
+            =If(
+                varCustomertype = 'Party Type Choices'.Distributor || varCustomertype = 'Party Type Choices'.Dealer,
+                CountRows(colPrimaryCart),
+                CountRows(colSecondaryCart)
+            )
+        Width: =30
+        X: =597
+        Y: =19
+        ZIndex: =5
+

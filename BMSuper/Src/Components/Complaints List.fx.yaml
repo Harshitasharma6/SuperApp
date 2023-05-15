@@ -1,0 +1,23 @@
+"'Complaints List' As CanvasComponent":
+    Fill: =ColorValue(LookUp(c_EnvironmentVariable, 'Display Name'="Light Red").'Default Value')
+    Height: =640
+    Width: =640
+    X: =0
+    Y: =0
+    ZIndex: =1
+
+    "Gallery4_1 As gallery.'BrowseLayout_Vertical_TwoTextOneImageVariant_ver4.0'":
+        AccessibleLabel: ="Gal"
+        BorderColor: =RGBA(0, 18, 107, 1)
+        BorderStyle: =BorderStyle.None
+        Height: =640
+        Items: ='Complaint.S'
+        Layout: =Layout.Vertical
+        ShowScrollbar: =false
+        TabIndex: =0//-1
+        TemplatePadding: =0
+        TemplateSize: =224
+        Width: =600
+        X: =18
+        ZIndex: =1
+

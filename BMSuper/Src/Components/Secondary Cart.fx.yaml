@@ -1,0 +1,406 @@
+"'Secondary Cart' As CanvasComponent":
+    CartType: ="Text"
+    Fill: |-
+        =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Screen Background Color").'Default Value')
+        //_VarGblAppColors.BackgroundColor
+    Height: |
+        =800
+    Width: =App.Width
+    X: =0
+    Y: =0
+    ZIndex: =1
+
+    "'Cart Gallery_4' As gallery.galleryVertical":
+        AccessibleLabel: ="Cart"
+        BorderColor: =RGBA(0, 18, 107, 1)
+        FocusedBorderThickness: =
+        Height: =473
+        Items: |-
+            =If(
+                'Secondary Cart'.CartType = "Primary",
+                colPrimaryCart,
+                'Secondary Cart'.CartType = "Secondary",
+                colSecondaryCart
+            )
+        Layout: =Layout.Vertical
+        TabIndex: =0
+        TemplateSize: =238
+        Width: ='Secondary Cart'.Width
+        Y: =10
+        ZIndex: =1
+
+        "'Product BG_13' As button":
+            BorderColor: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//_VarGblAppColors.PrimaryRed
+            BorderThickness: =1
+            Color: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Hover Color").'Default Value')
+            DisabledBorderColor: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//_VarGblAppColors.PrimaryRed
+            DisabledColor: =RGBA(166, 166, 166, 1)
+            DisabledFill: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Hover Color").'Default Value')
+            DisplayMode: =DisplayMode.Disabled
+            Fill: =RGBA(56, 96, 178, 1)
+            FontWeight: =FontWeight.Semibold
+            Height: =225
+            HoverColor: =RGBA(255, 255, 255, 1)
+            HoverFill: =ColorFade(RGBA(56, 96, 178, 1), -20%)
+            OnSelect: =Select(Parent)
+            RadiusBottomLeft: =15
+            RadiusBottomRight: =15
+            RadiusTopLeft: =15
+            RadiusTopRight: =15
+            Size: =24
+            Text: =""
+            Width: ='Cart Gallery_4'.TemplateWidth -30
+            X: =15
+            ZIndex: =1
+
+        "'Product Name Lbl_10' As label":
+            BorderColor: =RGBA(0, 18, 107, 1)
+            Color: |-
+                =//_VarGblAppColors.PrimaryText
+                ColorValue(LookUp(c_EnvironmentVariable, 'Display Name'="Text Primary Color").'Default Value')
+            DisabledColor: =RGBA(166, 166, 166, 1)
+            FontWeight: =FontWeight.Bold
+            Height: =43
+            OnSelect: =Select(Parent)
+            Size: =18
+            Text: |-
+                =//ThisItem.productName & " (" & ThisItem.productVariant.Variant.'Variant Name' & ")"
+                
+                ThisItem.productName 
+            Width: =413
+            Wrap: =false
+            X: =52
+            Y: =10
+            ZIndex: =2
+
+        "'Product Price Lbl_13' As label":
+            BorderColor: =RGBA(0, 18, 107, 1)
+            Color: |-
+                =//_VarGblAppColors.PrimaryText
+                ColorValue(LookUp(c_EnvironmentVariable, 'Display Name'="Text Primary Color").'Default Value')
+            DisabledColor: =RGBA(166, 166, 166, 1)
+            FontWeight: =FontWeight.Semibold
+            OnSelect: =Select(Parent)
+            Size: =LookUp(c_EnvironmentVariable,'Display Name'="Text Medium Font Size").'Default Value'
+            Text: |-
+                ="Unit Price: " 
+            Width: =140
+            Wrap: =false
+            X: =52
+            Y: =76
+            ZIndex: =4
+
+        "'Product Discount Lbl_7' As label":
+            BorderColor: =RGBA(0, 18, 107, 1)
+            Color: |-
+                =//_VarGblAppColors.PrimaryText
+                ColorValue(LookUp(c_EnvironmentVariable, 'Display Name'="Text Primary Color").'Default Value')
+            DisabledColor: =RGBA(166, 166, 166, 1)
+            FontWeight: =FontWeight.Semibold
+            OnSelect: =Select(Parent)
+            Size: =LookUp(c_EnvironmentVariable,'Display Name'="Text Medium Font Size").'Default Value'
+            Text: |-
+                ="Discount: "
+            Width: =140
+            Wrap: =false
+            X: =52
+            Y: =119
+            ZIndex: =8
+
+        "'Quantityn Lbl_9' As label":
+            BorderColor: =RGBA(0, 18, 107, 1)
+            Color: |-
+                =//_VarGblAppColors.PrimaryText
+                ColorValue(LookUp(c_EnvironmentVariable, 'Display Name'="Text Primary Color").'Default Value')
+            DisabledColor: =RGBA(166, 166, 166, 1)
+            FontWeight: =FontWeight.Semibold
+            OnSelect: =Select(Parent)
+            Size: =LookUp(c_EnvironmentVariable,'Display Name'="Text Medium Font Size").'Default Value'
+            Text: |-
+                ="Quantity: "& ""
+            Width: =118
+            Wrap: =false
+            X: =52
+            Y: =162
+            ZIndex: =9
+
+        "'Quantity Input_6' As text":
+            AccessibleLabel: ="Quan"
+            BorderColor: |-
+                =//_VarGblAppColors.SecondaryText
+                ColorValue(LookUp(c_EnvironmentVariable, 'Display Name'="Text Secondary Color").'Default Value')
+            BorderThickness: =2
+            Color: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Text Background Color").'Default Value' )//_VarGblAppColors.PrimaryRed
+            Default: =ThisItem.quantity
+            DisabledBorderColor: =RGBA(166, 166, 166, 1)
+            DisabledColor: =RGBA(166, 166, 166, 1)
+            DisabledFill: =RGBA(244, 244, 244, 1)
+            Format: =TextFormat.Number
+            HintText: ="Enter Qty"
+            HoverBorderColor: =RGBA(128, 128, 128, 1)
+            HoverColor: =RGBA(0, 0, 0, 1)
+            HoverFill: =RGBA(230, 230, 230, 1)
+            OnChange: |-
+                =If(
+                    'Secondary Cart'.CartType = "Primary",
+                    If(
+                        Value('Quantity Input_6'.Text) = 0,
+                        Remove(
+                            colPrimaryCart,
+                            LookUp(
+                                colPrimaryCart,
+                                productSKU = ThisItem.productSKU
+                            )
+                        ),
+                        Patch(
+                            colPrimaryCart,
+                            LookUp(
+                                colPrimaryCart,
+                                productSKU = ThisItem.productSKU
+                            ),
+                            {quantity: 'Quantity Input_6'.Text}
+                        );
+                    ),
+                    //Secondary CART----------------------------------------------------
+                    'Secondary Cart'.CartType = "Secondary",
+                    If(
+                        Value('Quantity Input_6'.Text) = 0,
+                        Remove(
+                            colSecondaryCart,
+                            LookUp(
+                                colSecondaryCart,
+                                productSKU = ThisItem.productSKU
+                            )
+                        ),
+                        Patch(
+                            colSecondaryCart,
+                            LookUp(
+                                colSecondaryCart,
+                                productSKU = ThisItem.productSKU
+                            ),
+                            {quantity: 'Quantity Input_6'.Text}
+                        );
+                    )
+                )
+            OnSelect: =Select(Parent)
+            RadiusBottomLeft: =15
+            RadiusBottomRight: =15
+            RadiusTopLeft: =15
+            RadiusTopRight: =15
+            Width: =105
+            X: =174
+            Y: =162
+            ZIndex: =10
+
+        Icon8_4 As icon.Trash:
+            AccessibleLabel: ="Delete"
+            BorderColor: =RGBA(0, 18, 107, 1)
+            Color: =RGBA(255, 0, 0, 0.62)
+            DisabledBorderColor: =RGBA(166, 166, 166, 1)
+            DisabledColor: =RGBA(244, 244, 244, 1)
+            Height: =32
+            Icon: =Icon.Trash
+            OnSelect: |-
+                =If(
+                    'Secondary Cart'.CartType = "Primary",
+                    Remove(
+                        colPrimaryCart,
+                        ThisItem
+                    ),
+                    'Secondary Cart'.CartType = "Secondary",
+                    Remove(
+                        colSecondaryCart,
+                        ThisItem
+                    )
+                )
+            TabIndex: =0
+            Width: =32
+            X: ='Secondary Cart'.Width - 80
+            Y: =17
+            ZIndex: =11
+
+        "'Product Price Lbl_14' As label":
+            BorderColor: =RGBA(0, 18, 107, 1)
+            Color: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//_VarGblAppColors.PrimaryRed
+            DisabledColor: =RGBA(166, 166, 166, 1)
+            FontWeight: =FontWeight.Semibold
+            OnSelect: =Select(Parent)
+            Size: =LookUp(c_EnvironmentVariable,'Display Name'="Text Medium Font Size").'Default Value'
+            Text: |-
+                ="Net Price:     "& If(((ThisItem.baseUnitPrice - (ThisItem.baseUnitPrice * (ThisItem.discount / 100))) * ThisItem.quantity) + ThisItem.igstAmount + ThisItem.cgstAmount + ThisItem.sgstAmount + ThisItem.cessAmount=0,"₹0.00","₹" & Text(
+                    ((ThisItem.baseUnitPrice - (ThisItem.baseUnitPrice * (ThisItem.discount / 100))) * ThisItem.quantity) + ThisItem.igstAmount + ThisItem.cgstAmount + ThisItem.sgstAmount + ThisItem.cessAmount,
+                    /*"[$-hi-IN]##,##,##,###",
+                    "hi-IN"*/  "[$-en-US]#.00"
+                ))
+            Width: =253
+            Wrap: =false
+            X: =362
+            Y: =162
+            ZIndex: =12
+
+        "'Product Price Lbl_17' As label":
+            BorderColor: =RGBA(0, 18, 107, 1)
+            Color: |-
+                =//_VarGblAppColors.PrimaryText
+                ColorValue(LookUp(c_EnvironmentVariable, 'Display Name'="Text Primary Color").'Default Value')
+            DisabledColor: =RGBA(166, 166, 166, 1)
+            FontWeight: =FontWeight.Semibold
+            OnSelect: =Select(Parent)
+            Size: =LookUp(c_EnvironmentVariable,'Display Name'="Text Medium Font Size").'Default Value'
+            Text: |-
+                ="Total Price: " 
+            Width: =140
+            Wrap: =false
+            X: =362
+            Y: =76
+            ZIndex: =13
+
+        "'Product Discount Lbl_10' As label":
+            BorderColor: =RGBA(0, 18, 107, 1)
+            Color: |-
+                =//_VarGblAppColors.PrimaryText
+                ColorValue(LookUp(c_EnvironmentVariable, 'Display Name'="Text Primary Color").'Default Value')
+            DisabledColor: =RGBA(166, 166, 166, 1)
+            FontWeight: =FontWeight.Semibold
+            OnSelect: =Select(Parent)
+            Size: =LookUp(c_EnvironmentVariable,'Display Name'="Text Medium Font Size").'Default Value'
+            Text: |-
+                ="Disc.Price: "
+            Width: =172
+            Wrap: =false
+            X: =362
+            Y: =119
+            ZIndex: =14
+
+        Rectangle37_2 As rectangle:
+            BorderColor: =RGBA(0, 18, 107, 1)
+            Fill: =RGBA(102, 182, 227, 1)
+            Height: =2
+            OnSelect: =Select(Parent)
+            Width: =600
+            X: =15
+            Y: =57
+            ZIndex: =15
+
+        Label55_2 As label:
+            BorderColor: =RGBA(0, 18, 107, 1)
+            Color: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Text Background Color").'Default Value' )//_VarGblAppColors.PrimaryRed
+            DisabledColor: =RGBA(166, 166, 166, 1)
+            OnSelect: =Select(Parent)
+            Size: =LookUp(c_EnvironmentVariable,'Display Name'="Text Medium Font Size").'Default Value'
+            Text: ="₹" & ThisItem.baseUnitPrice
+            Width: =135
+            X: =174
+            Y: =76
+            ZIndex: =16
+
+        Label59_2 As label:
+            BorderColor: =RGBA(0, 18, 107, 1)
+            Color: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Text Background Color").'Default Value' )//_VarGblAppColors.PrimaryRed
+            DisabledColor: =RGBA(166, 166, 166, 1)
+            OnSelect: =Select(Parent)
+            Size: =LookUp(c_EnvironmentVariable,'Display Name'="Text Medium Font Size").'Default Value'
+            Text: =If(IsBlank(ThisItem.discount),"0%",ThisItem.discount & "%")
+            Width: =120
+            X: =174
+            Y: =119
+            ZIndex: =17
+
+        Label57_3 As label:
+            BorderColor: =RGBA(0, 18, 107, 1)
+            Color: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Text Background Color").'Default Value' )//_VarGblAppColors.PrimaryRed
+            DisabledColor: =RGBA(166, 166, 166, 1)
+            Size: =LookUp(c_EnvironmentVariable,'Display Name'="Text Medium Font Size").'Default Value'
+            Text: |-
+                =//"₹" & ThisItem.baseUnitPrice * (ThisItem.discount/100) * ThisItem.quantity
+                If(ThisItem.baseUnitPrice * (ThisItem.discount / 100) * ThisItem.quantity=0,"₹0.00",Concatenate(
+                    "₹",
+                    Text(
+                        ThisItem.baseUnitPrice * (ThisItem.discount / 100) * ThisItem.quantity,
+                       /* "[$-hi-IN]##,##,##,###",
+                        "hi-IN"*/  "[$-en-US]#.00"
+                    )
+                ))
+            Width: =96
+            X: =486
+            Y: =119
+            ZIndex: =20
+
+        Label66_2 As label:
+            BorderColor: =RGBA(0, 18, 107, 1)
+            Color: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Text Background Color").'Default Value' )//_VarGblAppColors.PrimaryRed
+            DisabledColor: =RGBA(166, 166, 166, 1)
+            OnSelect: =Select(Parent)
+            Size: =LookUp(c_EnvironmentVariable,'Display Name'="Text Medium Font Size").'Default Value'
+            Text: ="₹" & (ThisItem.baseUnitPrice * ThisItem.quantity)
+            Width: =96
+            X: =486
+            Y: =76
+            ZIndex: =21
+
+    btnCnfrm_1 As button:
+        DisabledBorderColor: =RGBA(166, 166, 166, 1)
+        DisabledColor: =RGBA(166, 166, 166, 1)
+        DisabledFill: =RGBA(244, 244, 244, 1)
+        DisplayMode: |-
+            =//DisplayMode.Edit
+            If(
+                CountRows(colSecondaryCart) > 0,
+                DisplayMode.Edit,
+                DisplayMode.Disabled
+            )
+        Fill: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//_VarGblAppColors.PrimaryRed
+        FontWeight: =FontWeight.Semibold
+        Height: =50
+        HoverColor: =RGBA(255, 255, 255, 1)
+        HoverFill: |-
+            =ColorFade(
+                ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//_VarGblAppColors.PrimaryRed
+                , -20%)
+        OnSelect: |
+            =
+            Set(
+                varTotalBill,
+                RoundUp(
+                    Value(
+                        Sum(
+                            colSecondaryCart,
+                            (baseUnitPrice - (baseUnitPrice * (discount / 100))) * quantity
+                        ) + (Sum(
+                            colSecondaryCart,
+                            igstAmount
+                        ) + Sum(
+                            colSecondaryCart,
+                            cgstAmount
+                        ) + Sum(
+                            colSecondaryCart,
+                            sgstAmount
+                        ) + Sum(
+                            colSecondaryCart,
+                            cessAmount
+                        ))
+                    ),
+                    2
+                )
+            );
+            //Set(varorderselectedId,2);
+            If(
+                IsBlank(ComboBox7_6.SelectedItems) && IsBlank(ComboBox7_7.SelectedItems) && IsBlank(ComboBox7_8.SelectedItems),
+                Notify(
+                    "Please fill the order terms",
+                    NotificationType.Error,
+                    2000
+                ),
+                Set(
+                varorderselectedId,
+                2
+            );
+            );
+        Size: =20
+        Text: ="Place Order"
+        Visible: =If(IsBlank(ComboBox7_6.SelectedItems) && IsBlank(ComboBox7_7.SelectedItems) && IsBlank(ComboBox7_8.SelectedItems) ,true,false)
+        Width: =258
+        X: =191
+        Y: =513
+        ZIndex: =2
+

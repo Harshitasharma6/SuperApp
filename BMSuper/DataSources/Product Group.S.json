@@ -1,0 +1,129 @@
+[
+  {
+    "CdsFCBContext": "{\"FileType\":true,\"ImageExternalStorage\":true}",
+    "EntitySetName": "zx_productgroups",
+    "IsHidden": false,
+    "IsSampleData": false,
+    "IsWritable": true,
+    "LogicalName": "zx_productgroup",
+    "MaxGetRowsCount": 500,
+    "Name": "Product Group.S",
+    "NativeCDSDataSourceInfoNameMapping": {
+      "_ownerid_value": "Owner",
+      "createdby": "Created By",
+      "createdon": "Created On",
+      "createdonbehalfby": "Created By (Delegate)",
+      "importsequencenumber": "Import Sequence Number",
+      "modifiedby": "Modified By",
+      "modifiedon": "Modified On",
+      "modifiedonbehalfby": "Modified By (Delegate)",
+      "overriddencreatedon": "Record Created On",
+      "owningbusinessunit": "Owning Business Unit",
+      "owningteam": "Owning Team",
+      "owninguser": "Owning User",
+      "statecode": "Status",
+      "statuscode": "Status Reason",
+      "timezoneruleversionnumber": "Time Zone Rule Version Number",
+      "utcconversiontimezonecode": "UTC Conversion Time Zone Code",
+      "versionnumber": "Version Number",
+      "zx_groupcode": "Group Code",
+      "zx_level": "Level",
+      "zx_name": "Group Name",
+      "zx_ParentGroup": "Parent Group",
+      "zx_parentgroupcode": "Parent Group Code",
+      "zx_parentgroupcodelevel2": "Parent Group code level 2",
+      "zx_parentgroupcodelevel3": "Parent Group code level 3",
+      "zx_productgroup_AsyncOperations": "System Jobs",
+      "zx_productgroup_BulkDeleteFailures": "Bulk Delete Failures",
+      "zx_productgroup_DuplicateBaseRecord": "Duplicate Records (zx_productgroup_DuplicateBaseRecord)",
+      "zx_productgroup_DuplicateMatchingRecord": "Duplicate Records (zx_productgroup_DuplicateMatchingRecord)",
+      "zx_productgroup_MailboxTrackingFolders": "Mailbox Auto Tracking Folders",
+      "zx_productgroup_PrincipalObjectAttributeAccesses": "Field Sharing",
+      "zx_productgroup_ProcessSession": "Process Sessions",
+      "zx_productgroup_SyncErrors": "Sync Errors",
+      "zx_productgroupcodelevel4": "Product group code level 4",
+      "zx_productgroupid": "Product Group",
+      "zx_type": "Type",
+      "zx_zx_product_ProductGroup_zx_productgroup": "Product.S",
+      "zx_zx_productgroup_ParentGroup_zx_productgro": "Product Group.S",
+      "zx_zx_productofferheader_ProductGroup_zx_pro": "Product Offer Header.S",
+      "zx_zx_productsku_ProductGroup_zx_productgrou": "Product SKU.S",
+      "zx_zx_productsubcategory_ProductGroup_zx_pro": "Product Sub-Category.S"
+    },
+    "PreferredName": "Product Group.S",
+    "Type": "NativeCDSDataSourceInfo"
+  },
+  {
+    "DisplayName": "Product Group.S (Views)",
+    "Name": "_zx_productgroup_views",
+    "RelatedEntityName": "Product Group.S",
+    "TrimmedViewName": true,
+    "Type": "ViewInfo",
+    "ViewInfoNameMapping": {
+      "723d9cf1-daff-4bf3-b46d-36a6850b9f0a": "Inactive Product Groups",
+      "90f2bdb3-97ad-490a-b9f5-80a2c3dd5a3b": "Product Group Associated View",
+      "b9abc3ca-5357-45ca-b162-55cb88e4c084": "Product Group Advanced Find View",
+      "e01d1288-7be9-411e-b7b5-2d857ff18f8a": "Product Group Lookup View",
+      "e1a0b20f-b22f-4638-aa30-32c5ed03d098": "Active Product Groups"
+    }
+  },
+  {
+    "DisplayName": "PickList for Product type",
+    "Name": "zx_picklistforproducttype",
+    "OptionSetInfoNameMapping": {
+      "128780000": "Brand"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": true,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "zx_type",
+        "OptionSetReferenceEntityName": "Product Group.S"
+      }
+    },
+    "OptionSetTypeKey": "PicklistType",
+    "RelatedColumnInvariantName": "zx_type",
+    "RelatedEntityName": "Product Group.S",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Status (Product Group.S)",
+    "Name": "zx_productgroup_statecode",
+    "OptionSetInfoNameMapping": {
+      "0": "Active",
+      "1": "Inactive"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "statecode",
+        "OptionSetReferenceEntityName": "Product Group.S"
+      }
+    },
+    "OptionSetTypeKey": "StateType",
+    "RelatedColumnInvariantName": "statecode",
+    "RelatedEntityName": "Product Group.S",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Status Reason (Product Group.S)",
+    "Name": "zx_productgroup_statuscode",
+    "OptionSetInfoNameMapping": {
+      "1": "Active",
+      "2": "Inactive"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "statuscode",
+        "OptionSetReferenceEntityName": "Product Group.S"
+      }
+    },
+    "OptionSetTypeKey": "StatusType",
+    "RelatedColumnInvariantName": "statuscode",
+    "RelatedEntityName": "Product Group.S",
+    "Type": "OptionSetInfo"
+  }
+]

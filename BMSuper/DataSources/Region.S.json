@@ -1,0 +1,107 @@
+[
+  {
+    "CdsFCBContext": "{\"FileType\":true,\"ImageExternalStorage\":true}",
+    "EntitySetName": "zx_regions",
+    "IsHidden": false,
+    "IsSampleData": false,
+    "IsWritable": true,
+    "LogicalName": "zx_region",
+    "MaxGetRowsCount": 500,
+    "Name": "Region.S",
+    "NativeCDSDataSourceInfoNameMapping": {
+      "_ownerid_value": "Owner",
+      "createdby": "Created By",
+      "createdon": "Created On",
+      "createdonbehalfby": "Created By (Delegate)",
+      "importsequencenumber": "Import Sequence Number",
+      "modifiedby": "Modified By",
+      "modifiedon": "Modified On",
+      "modifiedonbehalfby": "Modified By (Delegate)",
+      "overriddencreatedon": "Record Created On",
+      "owningbusinessunit": "Owning Business Unit",
+      "owningteam": "Owning Team",
+      "owninguser": "Owning User",
+      "statecode": "Status",
+      "statuscode": "Status Reason",
+      "timezoneruleversionnumber": "Time Zone Rule Version Number",
+      "utcconversiontimezonecode": "UTC Conversion Time Zone Code",
+      "versionnumber": "Version Number",
+      "zx_name": "Name",
+      "zx_region_AsyncOperations": "System Jobs",
+      "zx_region_BulkDeleteFailures": "Bulk Delete Failures",
+      "zx_region_DuplicateBaseRecord": "Duplicate Records (zx_region_DuplicateBaseRecord)",
+      "zx_region_DuplicateMatchingRecord": "Duplicate Records (zx_region_DuplicateMatchingRecord)",
+      "zx_region_MailboxTrackingFolders": "Mailbox Auto Tracking Folders",
+      "zx_region_PrincipalObjectAttributeAccesses": "Field Sharing",
+      "zx_region_ProcessSession": "Process Sessions",
+      "zx_region_SyncErrors": "Sync Errors",
+      "zx_regionid": "Region",
+      "zx_regionname": "Region Name",
+      "zx_zx_area_Region_zx_region": "Area.S",
+      "zx_zx_city_Region_zx_region": "City.S",
+      "zx_zx_parties_Region_zx_region": "Parties.S",
+      "zx_zx_pincode_Region_zx_region": "Pincode.S",
+      "zx_zx_pricelistmapping_Region_zx_region": "Price List Mapping.S",
+      "zx_zx_productofferheader_Region_zx_region": "Product Offer Header.S",
+      "zx_zx_productoffersmapping_Region_zx_region": "Product Offers Mapping.S",
+      "zx_zx_state_Region_zx_region": "State.S",
+      "zx_zx_territory_Region_zx_region": "Territory.S"
+    },
+    "PreferredName": "Region.S",
+    "Type": "NativeCDSDataSourceInfo"
+  },
+  {
+    "DisplayName": "Region.S (Views)",
+    "Name": "_zx_region_views",
+    "RelatedEntityName": "Region.S",
+    "TrimmedViewName": true,
+    "Type": "ViewInfo",
+    "ViewInfoNameMapping": {
+      "10c02402-d25b-49e9-859d-c2e9bf31b352": "Active Regions",
+      "2e39b9b5-9149-4ca1-9d7e-6f055a184f1f": "Inactive Regions",
+      "339f3082-e9fc-42bc-a404-a611843de4c6": "Region Associated View",
+      "7603c32c-9fd4-4e7b-8f00-e8047ec7ba1d": "Region Advanced Find View",
+      "b387c3fd-1932-45b6-bbe1-b5a97a7aa179": "Region Lookup View"
+    }
+  },
+  {
+    "DisplayName": "Status (Region.S)",
+    "Name": "zx_region_statecode",
+    "OptionSetInfoNameMapping": {
+      "0": "Active",
+      "1": "Inactive"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "statecode",
+        "OptionSetReferenceEntityName": "Region.S"
+      }
+    },
+    "OptionSetTypeKey": "StateType",
+    "RelatedColumnInvariantName": "statecode",
+    "RelatedEntityName": "Region.S",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Status Reason (Region.S)",
+    "Name": "zx_region_statuscode",
+    "OptionSetInfoNameMapping": {
+      "1": "Active",
+      "2": "Inactive"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "statuscode",
+        "OptionSetReferenceEntityName": "Region.S"
+      }
+    },
+    "OptionSetTypeKey": "StatusType",
+    "RelatedColumnInvariantName": "statuscode",
+    "RelatedEntityName": "Region.S",
+    "Type": "OptionSetInfo"
+  }
+]
