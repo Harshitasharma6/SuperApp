@@ -2225,12 +2225,12 @@
             BorderStyle: =BorderStyle.None
             BorderThickness: =2
             Color: |-
-                =If(ProdAddd=ThisItem.Id, Color.White,
+                =If(v_QuoteTab=ThisItem.Id, Color.White,
                 ColorValue(LookUp(c_EnvironmentVariable, 'Display Name'="Button Fill").'Default Value'))
             DisabledBorderColor: =RGBA(0, 0, 0, 0)
             DisabledColor: =RGBA(166, 166, 166, 1)
             Fill: |-
-                =If(ProdAddd=ThisItem.Id, 
+                =If(v_QuoteTab=ThisItem.Id, 
                 ColorValue(LookUp(c_EnvironmentVariable, 'Display Name'="Button Fill").'Default Value'),ColorFade( ColorValue( LookUp('Environment Variable Definitions', 'Display Name'="Common Primary Background").'Default Value')//_VarGblAppColors.PrimaryBg
                 ,20%))
             FocusedBorderThickness: =4
