@@ -74,7 +74,7 @@
                 Visible: =v_QuoteTab=1
                 Width: =592
                 X: =16
-                Y: =258
+                Y: =68
                 ZIndex: =3
 
             Label20_6 As label:
@@ -92,7 +92,7 @@
                 Visible: =v_QuoteTab=1
                 Width: =130
                 X: =36
-                Y: =271
+                Y: =81
                 ZIndex: =4
 
             Label42 As label:
@@ -107,7 +107,7 @@
                 Visible: =v_QuoteTab=1
                 Width: =180
                 X: =149
-                Y: =271
+                Y: =81
                 ZIndex: =5
 
             Label20_7 As label:
@@ -125,7 +125,7 @@
                 Visible: =v_QuoteTab=1
                 Width: =130
                 X: =36
-                Y: =325
+                Y: =135
                 ZIndex: =6
 
             Label20_8 As label:
@@ -143,7 +143,7 @@
                 Visible: =v_QuoteTab=1
                 Width: =130
                 X: =36
-                Y: =379
+                Y: =189
                 ZIndex: =7
 
             Label42_1 As label:
@@ -165,7 +165,7 @@
                 Visible: =v_QuoteTab=1
                 Width: =180
                 X: =150
-                Y: =325
+                Y: =135
                 ZIndex: =8
 
             Label42_2 As label:
@@ -180,7 +180,7 @@
                 Visible: =v_QuoteTab=1
                 Width: =180
                 X: =150
-                Y: =379
+                Y: =189
                 ZIndex: =9
 
             Label20_9 As label:
@@ -198,7 +198,7 @@
                 Visible: =v_QuoteTab=1
                 Width: =130
                 X: =346
-                Y: =271
+                Y: =81
                 ZIndex: =10
 
             Label20_10 As label:
@@ -216,7 +216,7 @@
                 Visible: =v_QuoteTab=1
                 Width: =130
                 X: =346
-                Y: =325
+                Y: =135
                 ZIndex: =11
 
             Label20_11 As label:
@@ -234,7 +234,7 @@
                 Visible: =v_QuoteTab=1
                 Width: =130
                 X: =346
-                Y: =379
+                Y: =189
                 ZIndex: =12
 
             Label42_3 As label:
@@ -249,7 +249,7 @@
                 Visible: =v_QuoteTab=1
                 Width: =180
                 X: =460
-                Y: =271
+                Y: =81
                 ZIndex: =13
 
             Label42_4 As label:
@@ -264,16 +264,17 @@
                 Visible: =v_QuoteTab=1
                 Width: =180
                 X: =460
-                Y: =325
+                Y: =135
                 ZIndex: =14
 
             Rectangle26_1 As rectangle:
                 BorderColor: =RGBA(0, 18, 107, 1)
                 Fill: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )
                 Height: =60
+                Visible: =v_QuoteTab=2
                 Width: =520
                 X: =60
-                Y: =520
+                Y: =20
                 ZIndex: =16
 
             Label41_1 As label:
@@ -284,9 +285,10 @@
                 Height: =60
                 Size: =21
                 Text: ="Quote Product"
+                Visible: =v_QuoteTab=2
                 Width: =302
                 X: =209
-                Y: =520
+                Y: =20
                 ZIndex: =17
 
             "'Orderline Gallery_3' As gallery.galleryVertical":
@@ -310,8 +312,9 @@
                 ShowScrollbar: =false
                 TabIndex: =0
                 TemplateSize: =330
+                Visible: =v_QuoteTab=2
                 Width: =622
-                Y: =605
+                Y: =105
                 ZIndex: =18
 
                 Button5_30 As button:
@@ -1452,7 +1455,7 @@
                 Visible: =v_QuoteTab=1
                 Width: =80
                 X: =460
-                Y: =396
+                Y: =206
                 ZIndex: =32
 
             Icon5 As icon.Edit:
@@ -1496,9 +1499,10 @@
                     Navigate('Leads Detail Page');*/
                     
                     Set(crtQut,true);
+                Visible: =v_QuoteTab=2
                 Width: =44
                 X: =526
-                Y: =530
+                Y: =30
                 ZIndex: =33
 
             Button38 As button:
