@@ -323,6 +323,23 @@
             Y: =96
             ZIndex: =19
 
+        Label11_10 As label:
+            BorderColor: =RGBA(0, 18, 107, 1)
+            Color: =RGBA(0, 0, 0, 1)
+            DisabledColor: =RGBA(166, 166, 166, 1)
+            FocusedBorderThickness: =1
+            Font: =Font.'Segoe UI'
+            FontWeight: =FontWeight.Semibold
+            Height: =47
+            OnSelect: |
+                =Navigate('detail page complaint',ScreenTransition.Fade,{varcomp:ThisItem});
+            Size: =16
+            TabIndex: =0//-1
+            Text: =ThisItem.'Complaint No.'
+            Width: =168
+            X: =203
+            ZIndex: =20
+
     Button25 As button:
         DisabledBorderColor: =RGBA(166, 166, 166, 1)
         DisabledColor: =RGBA(166, 166, 166, 1)
