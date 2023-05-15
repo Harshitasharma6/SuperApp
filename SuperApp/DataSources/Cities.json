@@ -1,0 +1,98 @@
+[
+  {
+    "CdsFCBContext": "{\"FileType\":true,\"ImageExternalStorage\":true}",
+    "EntitySetName": "new_cities",
+    "IsHidden": false,
+    "IsSampleData": false,
+    "IsWritable": true,
+    "LogicalName": "new_city",
+    "MaxGetRowsCount": 500,
+    "Name": "Cities",
+    "NativeCDSDataSourceInfoNameMapping": {
+      "_ownerid_value": "Owner",
+      "createdby": "Created By",
+      "createdon": "Created On",
+      "createdonbehalfby": "Created By (Delegate)",
+      "importsequencenumber": "Import Sequence Number",
+      "modifiedby": "Modified By",
+      "modifiedon": "Modified On",
+      "modifiedonbehalfby": "Modified By (Delegate)",
+      "new_city_AsyncOperations": "System Jobs",
+      "new_city_BulkDeleteFailures": "Bulk Delete Failures",
+      "new_city_DuplicateBaseRecord": "Duplicate Records (new_city_DuplicateBaseRecord)",
+      "new_city_DuplicateMatchingRecord": "Duplicate Records (new_city_DuplicateMatchingRecord)",
+      "new_city_MailboxTrackingFolders": "Mailbox Auto Tracking Folders",
+      "new_city_PrincipalObjectAttributeAccesses": "Field Sharing",
+      "new_city_ProcessSession": "Process Sessions",
+      "new_city_SyncErrors": "Sync Errors",
+      "new_cityid": "City",
+      "new_cityname": "City Name",
+      "new_name": "Name",
+      "overriddencreatedon": "Record Created On",
+      "owningbusinessunit": "Owning Business Unit",
+      "owningteam": "Owning Team",
+      "owninguser": "Owning User",
+      "statecode": "Status",
+      "statuscode": "Status Reason",
+      "timezoneruleversionnumber": "Time Zone Rule Version Number",
+      "utcconversiontimezonecode": "UTC Conversion Time Zone Code",
+      "versionnumber": "Version Number"
+    },
+    "PreferredName": "Cities",
+    "Type": "NativeCDSDataSourceInfo"
+  },
+  {
+    "DisplayName": "Cities (Views)",
+    "Name": "_new_city_views",
+    "RelatedEntityName": "Cities",
+    "TrimmedViewName": true,
+    "Type": "ViewInfo",
+    "ViewInfoNameMapping": {
+      "03b2c169-7c34-4f86-9751-51249c0adbd6": "City Advanced Find View",
+      "164e0413-5870-40db-ad96-d981f6d5767a": "Active Cities",
+      "30aab04f-73a1-4565-b7b2-491bd4666d22": "City Associated View",
+      "b62655d3-0d2c-4ec9-8529-237847f85921": "City Lookup View",
+      "dddf15e4-f6e4-416f-bb39-82dba75b665f": "Inactive Cities"
+    }
+  },
+  {
+    "DisplayName": "Status (Cities)",
+    "Name": "new_city_statecode",
+    "OptionSetInfoNameMapping": {
+      "0": "Active",
+      "1": "Inactive"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "statecode",
+        "OptionSetReferenceEntityName": "Cities"
+      }
+    },
+    "OptionSetTypeKey": "StateType",
+    "RelatedColumnInvariantName": "statecode",
+    "RelatedEntityName": "Cities",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Status Reason (Cities)",
+    "Name": "new_city_statuscode",
+    "OptionSetInfoNameMapping": {
+      "1": "Active",
+      "2": "Inactive"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "statuscode",
+        "OptionSetReferenceEntityName": "Cities"
+      }
+    },
+    "OptionSetTypeKey": "StatusType",
+    "RelatedColumnInvariantName": "statuscode",
+    "RelatedEntityName": "Cities",
+    "Type": "OptionSetInfo"
+  }
+]

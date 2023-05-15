@@ -1,0 +1,99 @@
+[
+  {
+    "CdsFCBContext": "{\"FileType\":true,\"ImageExternalStorage\":true}",
+    "EntitySetName": "zx_skuimageses",
+    "IsHidden": false,
+    "IsSampleData": false,
+    "IsWritable": true,
+    "LogicalName": "zx_skuimages",
+    "MaxGetRowsCount": 500,
+    "Name": "SKU Images.S",
+    "NativeCDSDataSourceInfoNameMapping": {
+      "_ownerid_value": "Owner",
+      "createdby": "Created By",
+      "createdon": "Created On",
+      "createdonbehalfby": "Created By (Delegate)",
+      "importsequencenumber": "Import Sequence Number",
+      "modifiedby": "Modified By",
+      "modifiedon": "Modified On",
+      "modifiedonbehalfby": "Modified By (Delegate)",
+      "overriddencreatedon": "Record Created On",
+      "owningbusinessunit": "Owning Business Unit",
+      "owningteam": "Owning Team",
+      "owninguser": "Owning User",
+      "statecode": "Status",
+      "statuscode": "Status Reason",
+      "timezoneruleversionnumber": "Time Zone Rule Version Number",
+      "utcconversiontimezonecode": "UTC Conversion Time Zone Code",
+      "versionnumber": "Version Number",
+      "zx_imagelink": "Image Link",
+      "zx_name": "ID",
+      "zx_SKU": "SKU",
+      "zx_skuimages_AsyncOperations": "System Jobs",
+      "zx_skuimages_BulkDeleteFailures": "Bulk Delete Failures",
+      "zx_skuimages_DuplicateBaseRecord": "Duplicate Records (zx_skuimages_DuplicateBaseRecord)",
+      "zx_skuimages_DuplicateMatchingRecord": "Duplicate Records (zx_skuimages_DuplicateMatchingRecord)",
+      "zx_skuimages_MailboxTrackingFolders": "Mailbox Auto Tracking Folders",
+      "zx_skuimages_PrincipalObjectAttributeAccesses": "Field Sharing",
+      "zx_skuimages_ProcessSession": "Process Sessions",
+      "zx_skuimages_SyncErrors": "Sync Errors",
+      "zx_skuimagesid": "SKU Images"
+    },
+    "PreferredName": "SKU Images.S",
+    "Type": "NativeCDSDataSourceInfo"
+  },
+  {
+    "DisplayName": "SKU Images.S (Views)",
+    "Name": "_zx_skuimages_views",
+    "RelatedEntityName": "SKU Images.S",
+    "TrimmedViewName": true,
+    "Type": "ViewInfo",
+    "ViewInfoNameMapping": {
+      "073d4d49-0c23-44c4-91bb-1d6cfa20c0e0": "Active SKU Images",
+      "13f7f7b3-d243-40ac-8cf2-01896b73debf": "SKU Images Lookup View",
+      "449fe69b-6a9f-4b7e-a688-53546dac1be2": "Inactive SKU Images",
+      "6ac5b30b-3d66-45d6-8109-76febebfec56": "SKU Images Associated View",
+      "72233c83-2777-4b30-a8e6-6ebdf7694b81": "SKU Images Advanced Find View"
+    }
+  },
+  {
+    "DisplayName": "Status (SKU Images.S)",
+    "Name": "zx_skuimages_statecode",
+    "OptionSetInfoNameMapping": {
+      "0": "Active",
+      "1": "Inactive"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "statecode",
+        "OptionSetReferenceEntityName": "SKU Images.S"
+      }
+    },
+    "OptionSetTypeKey": "StateType",
+    "RelatedColumnInvariantName": "statecode",
+    "RelatedEntityName": "SKU Images.S",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Status Reason (SKU Images.S)",
+    "Name": "zx_skuimages_statuscode",
+    "OptionSetInfoNameMapping": {
+      "1": "Active",
+      "2": "Inactive"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "statuscode",
+        "OptionSetReferenceEntityName": "SKU Images.S"
+      }
+    },
+    "OptionSetTypeKey": "StatusType",
+    "RelatedColumnInvariantName": "statuscode",
+    "RelatedEntityName": "SKU Images.S",
+    "Type": "OptionSetInfo"
+  }
+]

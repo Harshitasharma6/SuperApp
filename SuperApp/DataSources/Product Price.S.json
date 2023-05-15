@@ -1,0 +1,115 @@
+[
+  {
+    "CdsFCBContext": "{\"FileType\":true,\"ImageExternalStorage\":true}",
+    "EntitySetName": "zx_productprices",
+    "IsHidden": false,
+    "IsSampleData": false,
+    "IsWritable": true,
+    "LogicalName": "zx_productprice",
+    "MaxGetRowsCount": 500,
+    "Name": "Product Price.S",
+    "NativeCDSDataSourceInfoNameMapping": {
+      "_ownerid_value": "Owner",
+      "createdby": "Created By",
+      "createdon": "Created On",
+      "createdonbehalfby": "Created By (Delegate)",
+      "exchangerate": "Exchange Rate",
+      "importsequencenumber": "Import Sequence Number",
+      "modifiedby": "Modified By",
+      "modifiedon": "Modified On",
+      "modifiedonbehalfby": "Modified By (Delegate)",
+      "overriddencreatedon": "Record Created On",
+      "owningbusinessunit": "Owning Business Unit",
+      "owningteam": "Owning Team",
+      "owninguser": "Owning User",
+      "statecode": "Status",
+      "statuscode": "Status Reason",
+      "timezoneruleversionnumber": "Time Zone Rule Version Number",
+      "transactioncurrencyid": "Currency",
+      "utcconversiontimezonecode": "UTC Conversion Time Zone Code",
+      "versionnumber": "Version Number",
+      "zx_cess": "CESS",
+      "zx_cgst": "CGST",
+      "zx_exfactory": "Ex-Factory",
+      "zx_exfactory_base": "Ex-Factory (Base)",
+      "zx_gst": "GST",
+      "zx_HSN": "HSN",
+      "zx_id": "ID",
+      "zx_igst": "IGST",
+      "zx_imageurl": "Image URL",
+      "zx_mop": "MOP",
+      "zx_mrp": "MRP",
+      "zx_name": "Name",
+      "zx_Pricelist": "Price list",
+      "zx_productname": "Product Name",
+      "zx_productprice_AsyncOperations": "System Jobs",
+      "zx_productprice_BulkDeleteFailures": "Bulk Delete Failures",
+      "zx_productprice_DuplicateBaseRecord": "Duplicate Records (zx_productprice_DuplicateBaseRecord)",
+      "zx_productprice_DuplicateMatchingRecord": "Duplicate Records (zx_productprice_DuplicateMatchingRecord)",
+      "zx_productprice_MailboxTrackingFolders": "Mailbox Auto Tracking Folders",
+      "zx_productprice_PrincipalObjectAttributeAccesses": "Field Sharing",
+      "zx_productprice_ProcessSession": "Process Sessions",
+      "zx_productprice_SyncErrors": "Sync Errors",
+      "zx_productpriceid": "Product Price",
+      "zx_ProductSKU": "Product SKU Price",
+      "zx_sgst": "SGST",
+      "zx_skucode": "SKU Code"
+    },
+    "PreferredName": "Product Price.S",
+    "Type": "NativeCDSDataSourceInfo"
+  },
+  {
+    "DisplayName": "Product Price.S (Views)",
+    "Name": "_zx_productprice_views",
+    "RelatedEntityName": "Product Price.S",
+    "TrimmedViewName": true,
+    "Type": "ViewInfo",
+    "ViewInfoNameMapping": {
+      "48e4d565-0135-40cf-838d-45cfa150e739": "Product Price Advanced Find View",
+      "6195a96f-96b0-4998-beae-3abc3c779124": "Inactive Product Prices",
+      "6dc78dfd-e41c-47da-9f06-e345b7ee6565": "Product Price Lookup View",
+      "a00f6889-99dd-41e0-9d76-9c0b2563fd51": "Product Price Associated View",
+      "d9ebd57c-c07d-4ad2-915c-5fc3b211f055": "Active Product Prices"
+    }
+  },
+  {
+    "DisplayName": "Status (Product Price.S)",
+    "Name": "zx_productprice_statecode",
+    "OptionSetInfoNameMapping": {
+      "0": "Active",
+      "1": "Inactive"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "statecode",
+        "OptionSetReferenceEntityName": "Product Price.S"
+      }
+    },
+    "OptionSetTypeKey": "StateType",
+    "RelatedColumnInvariantName": "statecode",
+    "RelatedEntityName": "Product Price.S",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Status Reason (Product Price.S)",
+    "Name": "zx_productprice_statuscode",
+    "OptionSetInfoNameMapping": {
+      "1": "Active",
+      "2": "Inactive"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "statuscode",
+        "OptionSetReferenceEntityName": "Product Price.S"
+      }
+    },
+    "OptionSetTypeKey": "StatusType",
+    "RelatedColumnInvariantName": "statuscode",
+    "RelatedEntityName": "Product Price.S",
+    "Type": "OptionSetInfo"
+  }
+]

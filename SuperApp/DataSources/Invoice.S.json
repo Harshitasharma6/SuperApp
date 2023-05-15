@@ -1,0 +1,137 @@
+[
+  {
+    "CdsFCBContext": "{\"FileType\":true,\"ImageExternalStorage\":true}",
+    "EntitySetName": "zx_invoices",
+    "IsHidden": false,
+    "IsSampleData": false,
+    "IsWritable": true,
+    "LogicalName": "zx_invoice",
+    "MaxGetRowsCount": 500,
+    "Name": "Invoice.S",
+    "NativeCDSDataSourceInfoNameMapping": {
+      "_ownerid_value": "Owner",
+      "createdby": "Created By",
+      "createdon": "Created On",
+      "createdonbehalfby": "Created By (Delegate)",
+      "exchangerate": "Exchange Rate",
+      "importsequencenumber": "Import Sequence Number",
+      "modifiedby": "Modified By",
+      "modifiedon": "Modified On",
+      "modifiedonbehalfby": "Modified By (Delegate)",
+      "overriddencreatedon": "Record Created On",
+      "owningbusinessunit": "Owning Business Unit",
+      "owningteam": "Owning Team",
+      "owninguser": "Owning User",
+      "statecode": "Status",
+      "statuscode": "Status Reason",
+      "timezoneruleversionnumber": "Time Zone Rule Version Number",
+      "transactioncurrencyid": "Currency",
+      "utcconversiontimezonecode": "UTC Conversion Time Zone Code",
+      "versionnumber": "Version Number",
+      "zx_baseamount": "Base Amount",
+      "zx_cess": "CESS",
+      "zx_cess_base": "CESS (Base)",
+      "zx_cgst": "CGST",
+      "zx_cgst_base": "CGST (Base)",
+      "zx_igst": "IGST",
+      "zx_igst_base": "IGST (Base)",
+      "zx_invoice_AsyncOperations": "System Jobs",
+      "zx_invoice_BulkDeleteFailures": "Bulk Delete Failures",
+      "zx_invoice_DuplicateBaseRecord": "Duplicate Records (zx_invoice_DuplicateBaseRecord)",
+      "zx_invoice_DuplicateMatchingRecord": "Duplicate Records (zx_invoice_DuplicateMatchingRecord)",
+      "zx_invoice_MailboxTrackingFolders": "Mailbox Auto Tracking Folders",
+      "zx_invoice_PrincipalObjectAttributeAccesses": "Field Sharing",
+      "zx_invoice_ProcessSession": "Process Sessions",
+      "zx_invoice_SyncErrors": "Sync Errors",
+      "zx_invoiceid": "Invoice",
+      "zx_invoicestatus": "Invoice Status",
+      "zx_Lead": "Lead",
+      "zx_name": "Invoice Id",
+      "zx_OrderNo": "Order No.",
+      "zx_Party": "Party",
+      "zx_sgst": "SGST",
+      "zx_sgst_base": "SGST (Base)",
+      "zx_totalamount": "Total Amount",
+      "zx_totaldiscount": "Total Discount",
+      "zx_totaldiscount_base": "Total Discount (Base)",
+      "zx_zx_invoiceline_Invoice_zx_invoice": "Invoice Line.S"
+    },
+    "PreferredName": "Invoice.S",
+    "Type": "NativeCDSDataSourceInfo"
+  },
+  {
+    "DisplayName": "Invoice.S (Views)",
+    "Name": "_zx_invoice_views",
+    "RelatedEntityName": "Invoice.S",
+    "TrimmedViewName": true,
+    "Type": "ViewInfo",
+    "ViewInfoNameMapping": {
+      "594fac28-3bb6-4f9f-a819-6b606606f44f": "Invoice Associated View",
+      "5c9a66a1-0b31-4384-a291-ea0580063ef9": "Invoice Lookup View",
+      "a2e5c01a-dc07-4287-93c0-5c6101c3f1ab": "Inactive Invoices",
+      "a6e9b2eb-3e5a-4123-9b8f-4f61dc582d03": "Active Invoices",
+      "aa04f31c-3955-4a29-9a87-9c5b6513f87e": "Invoice Advanced Find View"
+    }
+  },
+  {
+    "DisplayName": "Invoice Status",
+    "Name": "new_invoicestatus",
+    "OptionSetInfoNameMapping": {
+      "100000002": "Paid",
+      "128780001": "Unpaid",
+      "128780002": "Partially Paid"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": true,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "zx_invoicestatus",
+        "OptionSetReferenceEntityName": "Invoice.S"
+      }
+    },
+    "OptionSetTypeKey": "PicklistType",
+    "RelatedColumnInvariantName": "zx_invoicestatus",
+    "RelatedEntityName": "Invoice.S",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Status (Invoice.S)",
+    "Name": "zx_invoice_statecode",
+    "OptionSetInfoNameMapping": {
+      "0": "Active",
+      "1": "Inactive"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "statecode",
+        "OptionSetReferenceEntityName": "Invoice.S"
+      }
+    },
+    "OptionSetTypeKey": "StateType",
+    "RelatedColumnInvariantName": "statecode",
+    "RelatedEntityName": "Invoice.S",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Status Reason (Invoice.S)",
+    "Name": "zx_invoice_statuscode",
+    "OptionSetInfoNameMapping": {
+      "1": "Active",
+      "2": "Inactive"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "statuscode",
+        "OptionSetReferenceEntityName": "Invoice.S"
+      }
+    },
+    "OptionSetTypeKey": "StatusType",
+    "RelatedColumnInvariantName": "statuscode",
+    "RelatedEntityName": "Invoice.S",
+    "Type": "OptionSetInfo"
+  }
+]

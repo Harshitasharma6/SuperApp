@@ -1,0 +1,104 @@
+[
+  {
+    "CdsFCBContext": "{\"FileType\":true,\"ImageExternalStorage\":true}",
+    "EntitySetName": "zx_pricelists",
+    "IsHidden": false,
+    "IsSampleData": false,
+    "IsWritable": true,
+    "LogicalName": "zx_pricelist",
+    "MaxGetRowsCount": 500,
+    "Name": "Price List.S",
+    "NativeCDSDataSourceInfoNameMapping": {
+      "_ownerid_value": "Owner",
+      "createdby": "Created By",
+      "createdon": "Created On",
+      "createdonbehalfby": "Created By (Delegate)",
+      "importsequencenumber": "Import Sequence Number",
+      "modifiedby": "Modified By",
+      "modifiedon": "Modified On",
+      "modifiedonbehalfby": "Modified By (Delegate)",
+      "overriddencreatedon": "Record Created On",
+      "owningbusinessunit": "Owning Business Unit",
+      "owningteam": "Owning Team",
+      "owninguser": "Owning User",
+      "statecode": "Status",
+      "statuscode": "Status Reason",
+      "timezoneruleversionnumber": "Time Zone Rule Version Number",
+      "utcconversiontimezonecode": "UTC Conversion Time Zone Code",
+      "versionnumber": "Version Number",
+      "zx_activefrom": "Active From",
+      "zx_activeto": "Active To",
+      "zx_name": "Name",
+      "zx_pricelist_AsyncOperations": "System Jobs",
+      "zx_pricelist_BulkDeleteFailures": "Bulk Delete Failures",
+      "zx_pricelist_DuplicateBaseRecord": "Duplicate Records (zx_pricelist_DuplicateBaseRecord)",
+      "zx_pricelist_DuplicateMatchingRecord": "Duplicate Records (zx_pricelist_DuplicateMatchingRecord)",
+      "zx_pricelist_MailboxTrackingFolders": "Mailbox Auto Tracking Folders",
+      "zx_pricelist_PrincipalObjectAttributeAccesses": "Field Sharing",
+      "zx_pricelist_ProcessSession": "Process Sessions",
+      "zx_pricelist_SyncErrors": "Sync Errors",
+      "zx_pricelistid": "Price List",
+      "zx_priceliststatus": "Price List Status",
+      "zx_salescontractno": "Sales Contract No",
+      "zx_zx_parties_PriceList_zx_pricelist": "Parties.S",
+      "zx_zx_pricelistmapping_PriceList_zx_pricelis": "Price List Mapping.S",
+      "zx_zx_productprice_Pricelist_zx_pricelist": "Product Price.S"
+    },
+    "PreferredName": "Price List.S",
+    "Type": "NativeCDSDataSourceInfo"
+  },
+  {
+    "DisplayName": "Price List.S (Views)",
+    "Name": "_zx_pricelist_views",
+    "RelatedEntityName": "Price List.S",
+    "TrimmedViewName": true,
+    "Type": "ViewInfo",
+    "ViewInfoNameMapping": {
+      "145e4d09-2093-4d5e-94c4-f4aee15b6093": "Price List Associated View",
+      "15ea3196-b1b1-4ce2-b5b0-7ac01de3be32": "Price List Lookup View",
+      "2095030e-d169-4ff5-b90b-18807b3ed64c": "Inactive Price Lists",
+      "a9f530fe-ed97-4309-a8af-c85690be0aef": "Price List Advanced Find View",
+      "f6e534dd-14f2-402e-ac92-34da0b3774fd": "Active Price Lists"
+    }
+  },
+  {
+    "DisplayName": "Status (Price List.S)",
+    "Name": "zx_pricelist_statecode",
+    "OptionSetInfoNameMapping": {
+      "0": "Active",
+      "1": "Inactive"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "statecode",
+        "OptionSetReferenceEntityName": "Price List.S"
+      }
+    },
+    "OptionSetTypeKey": "StateType",
+    "RelatedColumnInvariantName": "statecode",
+    "RelatedEntityName": "Price List.S",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Status Reason (Price List.S)",
+    "Name": "zx_pricelist_statuscode",
+    "OptionSetInfoNameMapping": {
+      "1": "Active",
+      "2": "Inactive"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "statuscode",
+        "OptionSetReferenceEntityName": "Price List.S"
+      }
+    },
+    "OptionSetTypeKey": "StatusType",
+    "RelatedColumnInvariantName": "statuscode",
+    "RelatedEntityName": "Price List.S",
+    "Type": "OptionSetInfo"
+  }
+]

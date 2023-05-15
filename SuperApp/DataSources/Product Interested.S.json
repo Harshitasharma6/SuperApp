@@ -1,0 +1,107 @@
+[
+  {
+    "CdsFCBContext": "{\"FileType\":true,\"ImageExternalStorage\":true}",
+    "EntitySetName": "zx_productinteresteds",
+    "IsHidden": false,
+    "IsSampleData": false,
+    "IsWritable": true,
+    "LogicalName": "zx_productinterested",
+    "MaxGetRowsCount": 500,
+    "Name": "Product Interested.S",
+    "NativeCDSDataSourceInfoNameMapping": {
+      "_ownerid_value": "Owner",
+      "createdby": "Created By",
+      "createdon": "Created On",
+      "createdonbehalfby": "Created By (Delegate)",
+      "exchangerate": "Exchange Rate",
+      "importsequencenumber": "Import Sequence Number",
+      "modifiedby": "Modified By",
+      "modifiedon": "Modified On",
+      "modifiedonbehalfby": "Modified By (Delegate)",
+      "overriddencreatedon": "Record Created On",
+      "owningbusinessunit": "Owning Business Unit",
+      "owningteam": "Owning Team",
+      "owninguser": "Owning User",
+      "statecode": "Status",
+      "statuscode": "Status Reason",
+      "timezoneruleversionnumber": "Time Zone Rule Version Number",
+      "transactioncurrencyid": "Currency",
+      "utcconversiontimezonecode": "UTC Conversion Time Zone Code",
+      "versionnumber": "Version Number",
+      "zx_discount": "Discount",
+      "zx_Lead": "Lead",
+      "zx_name": "ID",
+      "zx_Party": "Party",
+      "zx_productinterested_AsyncOperations": "System Jobs",
+      "zx_productinterested_BulkDeleteFailures": "Bulk Delete Failures",
+      "zx_productinterested_DuplicateBaseRecord": "Duplicate Records (zx_productinterested_DuplicateBaseRecord)",
+      "zx_productinterested_DuplicateMatchingRecord": "Duplicate Records (zx_productinterested_DuplicateMatchingRecord)",
+      "zx_productinterested_MailboxTrackingFolders": "Mailbox Auto Tracking Folders",
+      "zx_productinterested_PrincipalObjectAttributeAccesses": "Field Sharing",
+      "zx_productinterested_ProcessSession": "Process Sessions",
+      "zx_productinterested_SyncErrors": "Sync Errors",
+      "zx_productinterestedid": "Product Interested",
+      "zx_ProductSKU": "Product SKU",
+      "zx_quantity": "Quantity",
+      "zx_totalamount": "Total Amount",
+      "zx_totalamount_base": "Total Amount (Base)",
+      "zx_userdiscountprecent": "user discount precent"
+    },
+    "PreferredName": "Product Interested.S",
+    "Type": "NativeCDSDataSourceInfo"
+  },
+  {
+    "DisplayName": "Product Interested.S (Views)",
+    "Name": "_zx_productinterested_views",
+    "RelatedEntityName": "Product Interested.S",
+    "TrimmedViewName": true,
+    "Type": "ViewInfo",
+    "ViewInfoNameMapping": {
+      "07168ec4-5ae6-4f14-aa4a-88034e8d8cc8": "Inactive Product Interesteds",
+      "09c6871b-9094-477b-a626-b01eb1008732": "Product Interested Lookup View",
+      "2635790a-8d51-4dd3-8707-8e5d7f3130ac": "Product Interested Associated View",
+      "6c299d4b-f425-44da-9a30-8486941c8acc": "Product Interested Advanced Find View",
+      "7bc40cc4-315b-4842-8867-996e3a2058ef": "Active Product Interesteds"
+    }
+  },
+  {
+    "DisplayName": "Status (Product Interested.S)",
+    "Name": "zx_productinterested_statecode",
+    "OptionSetInfoNameMapping": {
+      "0": "Active",
+      "1": "Inactive"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "statecode",
+        "OptionSetReferenceEntityName": "Product Interested.S"
+      }
+    },
+    "OptionSetTypeKey": "StateType",
+    "RelatedColumnInvariantName": "statecode",
+    "RelatedEntityName": "Product Interested.S",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Status Reason (Product Interested.S)",
+    "Name": "zx_productinterested_statuscode",
+    "OptionSetInfoNameMapping": {
+      "1": "Active",
+      "2": "Inactive"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "statuscode",
+        "OptionSetReferenceEntityName": "Product Interested.S"
+      }
+    },
+    "OptionSetTypeKey": "StatusType",
+    "RelatedColumnInvariantName": "statuscode",
+    "RelatedEntityName": "Product Interested.S",
+    "Type": "OptionSetInfo"
+  }
+]
