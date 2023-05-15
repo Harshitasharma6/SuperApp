@@ -875,10 +875,10 @@
                 Filter(
                     OfflineInvoiceCollection,
                     'Order No.'.'Order Header' = If(
-                varOrderData.zx_ordertype = 'Order Type Choice'.Primary,
-                varOrderData.zx_orderheaderid,
-                varOrderData.zx_ordertype = 'Order Type Choice'.Secondary,
-                varOrderData.zx_orderheaderid
+                varOrderData.'Order Type' = 'Order Type Choice'.Primary,
+                varOrderData.'Order Header',
+                varOrderData.'Order Type' = 'Order Type Choice'.Secondary,
+                varOrderData.'Order Header'
                 )),
                 'Created On',
                 SortOrder.Descending
