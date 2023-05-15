@@ -1,0 +1,88 @@
+"'Detail Page_4' As CanvasComponent":
+    DataSource: |-
+        =Table(
+            {
+                Title: "Name:",
+                Data: "1"
+            },
+            {
+                Title: "Email:",
+                Data: "2"
+            },
+            {
+                Title: "Mobile No:",
+                Data:"3"
+            },
+            {
+                Title: "Order From:",
+                Data: "4"
+            },
+            {
+                Title: "Order To:",
+                Data: "5"
+            }
+        )
+    Fill: =_VarGblAppColors.BackgroundColor
+    HeaderId: =varContactData
+    Height: =800
+    Width: =640
+    X: =0
+    Y: =0
+    ZIndex: =1
+
+    "'Header Container_4' As groupContainer.manualLayoutContainer":
+        Height: =800
+        Width: ='Detail Page_4'.Width
+        ZIndex: =2
+
+        "'Detail Gallery_2' As gallery.galleryVertical":
+            AccessibleLabel: ="Order Header Gallery"
+            BorderColor: =RGBA(0, 18, 107, 1)
+            Fill: =RGBA(255, 255, 255, 1)
+            Height: =800
+            Items: ='Detail Page_4'.DataSource
+            Layout: =Layout.Vertical
+            ShowScrollbar: =false
+            TabIndex: =0
+            TemplateSize: =74
+            Width: ='Detail Page_4'.Width
+            ZIndex: =1
+
+            Rectangle7_2 As rectangle:
+                BorderColor: =RGBA(0, 18, 107, 1)
+                BorderStyle: =BorderStyle.None
+                Fill: =RGBA(219, 219, 219, 1)
+                Height: =0.5
+                Width: =630
+                Y: =73
+                ZIndex: =3
+
+            Title_2 As label:
+                BorderColor: =RGBA(0, 18, 107, 1)
+                Color: =RGBA(0, 0, 0, 1)
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                Height: =66
+                OnSelect: =Select(Parent)
+                PaddingLeft: =15
+                Size: =_VarGblAppFonts.Size.Medium
+                Text: =ThisItem.Title
+                Width: =246
+                X: =25
+                Y: =4
+                ZIndex: =4
+
+            Data_2 As label:
+                BorderColor: =RGBA(0, 18, 107, 1)
+                Color: =_VarGblAppColors.PrimaryRed
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                FontWeight: =FontWeight.Semibold
+                Height: =66
+                OnSelect: =Select(Parent)
+                Size: =_VarGblAppFonts.Size.Medium
+                Text: =ThisItem.Data
+                Width: =292
+                Wrap: =false
+                X: =314
+                Y: =8
+                ZIndex: =5
+

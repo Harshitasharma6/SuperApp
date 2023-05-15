@@ -1,0 +1,57 @@
+"'Order line detail' As screen":
+    LoadingSpinnerColor: =RGBA(0, 120, 212, 1)
+
+    "'Detail Page_5' As 'Detail Page_4'":
+        DataSource: |-
+            =Table(
+                {
+                    Title: "Line Id:",
+                    Data: varOrderline.'Quote Line ID'
+                },
+                {
+                    Title: "HSN Code:",
+                    Data: varOrderline.zx_Product.'Product Code'
+                },
+                {
+                    Title: "Product Name:",
+                    Data: varOrderline.zx_Product.'Product Name'
+                },
+                {
+                    Title: "Quantity:",
+                    Data: Text(varOrderline.Quantity)
+                },
+                {
+                    Title: "Variant:",
+                    Data: LookUp(
+                        OfflineVariantCollection,
+                        Variants = LookUp(
+                            OfflineProductVariantCollection,
+                            'Product Variants' = varOrderline.Variant.'Product Variants'
+                        ).Variant.Variants
+                    ).'Variant Name'
+                },
+                {
+                    Title: "Discount:",
+                    Data: Text(varOrderline.'Discount %') & "%"
+                },
+                {
+                    Title: "Unit Price:",
+                    Data: "₹" & Text(varOrderline.'Unit Price')
+                },
+                {
+                    Title: "Total Unit Price:",
+                    Data: "₹" & Text(varOrderline.'Total Unit Price')
+                }
+            )
+        Fill: =
+        Height: =916
+        Y: =80
+
+    "'Bottom Bar_35' As 'Bottom Bar'":
+        Y: =1026
+        ZIndex: =2
+
+    Header_33 As Header:
+        ScreenName: ="My Profile"
+        ZIndex: =3
+
