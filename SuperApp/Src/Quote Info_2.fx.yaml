@@ -1,5 +1,7 @@
 "'Quote Info_2' As screen":
     LoadingSpinnerColor: =RGBA(0, 120, 212, 1)
+    OnVisible: |-
+        =UpdateContext({v_QuoteTab:1});
 
     "'Bottom Bar_23' As 'Bottom Bar'":
         Y: =1026
@@ -33,9 +35,10 @@
                 BorderColor: =RGBA(0, 18, 107, 1)
                 Fill: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )
                 Height: =60
+                Visible: =false
                 Width: =520
                 X: =53
-                Y: =14
+                Y: =154
                 ZIndex: =1
 
             Label41 As label:
@@ -46,9 +49,10 @@
                 Height: =60
                 Size: =21
                 Text: ="Quote Summary"
+                Visible: =false
                 Width: =302
                 X: =202
-                Y: =14
+                Y: =154
                 ZIndex: =2
 
             Button31 As button:
@@ -67,9 +71,10 @@
                 RadiusTopRight: =15
                 Size: =24
                 Text: =""
+                Visible: =v_QuoteTab=1
                 Width: =592
                 X: =16
-                Y: =118
+                Y: =258
                 ZIndex: =3
 
             Label20_6 As label:
@@ -84,9 +89,10 @@
                 TabIndex: =0 //-1
                 Text: |-
                     ="Quote Id :"
+                Visible: =v_QuoteTab=1
                 Width: =130
                 X: =36
-                Y: =131
+                Y: =271
                 ZIndex: =4
 
             Label42 As label:
@@ -98,9 +104,10 @@
                 Text: |-
                     =//varOrderData.new_orderid
                     _VarnewQuoteHeaderResponse.'Quote ID'
+                Visible: =v_QuoteTab=1
                 Width: =180
                 X: =149
-                Y: =131
+                Y: =271
                 ZIndex: =5
 
             Label20_7 As label:
@@ -115,9 +122,10 @@
                 TabIndex: =0 //-1
                 Text: |-
                     ="Date :"
+                Visible: =v_QuoteTab=1
                 Width: =130
                 X: =36
-                Y: =185
+                Y: =325
                 ZIndex: =6
 
             Label20_8 As label:
@@ -132,9 +140,10 @@
                 TabIndex: =0 //-1
                 Text: |-
                     ="Party :"
+                Visible: =v_QuoteTab=1
                 Width: =130
                 X: =36
-                Y: =239
+                Y: =379
                 ZIndex: =7
 
             Label42_1 As label:
@@ -153,9 +162,10 @@
                                 _VarnewQuoteHeaderResponse.'Created On',
                                 "dd-mm-yyyy"
                          )
+                Visible: =v_QuoteTab=1
                 Width: =180
                 X: =150
-                Y: =185
+                Y: =325
                 ZIndex: =8
 
             Label42_2 As label:
@@ -167,9 +177,10 @@
                 Text: |-
                     =//varOrderData.'Order From'.'Customer Name'
                     _VarnewQuoteHeaderResponse.'Bill To'.'Customer Name'
+                Visible: =v_QuoteTab=1
                 Width: =180
                 X: =150
-                Y: =239
+                Y: =379
                 ZIndex: =9
 
             Label20_9 As label:
@@ -184,9 +195,10 @@
                 TabIndex: =0 //-1
                 Text: |-
                     ="Status :"
+                Visible: =v_QuoteTab=1
                 Width: =130
                 X: =346
-                Y: =131
+                Y: =271
                 ZIndex: =10
 
             Label20_10 As label:
@@ -201,9 +213,10 @@
                 TabIndex: =0 //-1
                 Text: |-
                     ="Version :"
+                Visible: =v_QuoteTab=1
                 Width: =130
                 X: =346
-                Y: =185
+                Y: =325
                 ZIndex: =11
 
             Label20_11 As label:
@@ -218,9 +231,10 @@
                 TabIndex: =0 //-1
                 Text: |-
                     ="Discount :"
+                Visible: =v_QuoteTab=1
                 Width: =130
                 X: =346
-                Y: =239
+                Y: =379
                 ZIndex: =12
 
             Label42_3 As label:
@@ -232,9 +246,10 @@
                 Text: |-
                     =//Text(varOrderData.cra3a_orderstatus)
                     _VarnewQuoteHeaderResponse.'Status (zx_status)'
+                Visible: =v_QuoteTab=1
                 Width: =180
                 X: =460
-                Y: =131
+                Y: =271
                 ZIndex: =13
 
             Label42_4 As label:
@@ -246,9 +261,10 @@
                 Text: |-
                     =//Text(varOrderData.'Quote Version')
                     _VarnewQuoteHeaderResponse.Version
+                Visible: =v_QuoteTab=1
                 Width: =180
                 X: =460
-                Y: =185
+                Y: =325
                 ZIndex: =14
 
             Rectangle26_1 As rectangle:
@@ -257,7 +273,7 @@
                 Height: =60
                 Width: =520
                 X: =60
-                Y: =380
+                Y: =520
                 ZIndex: =16
 
             Label41_1 As label:
@@ -270,7 +286,7 @@
                 Text: ="Quote Product"
                 Width: =302
                 X: =209
-                Y: =380
+                Y: =520
                 ZIndex: =17
 
             "'Orderline Gallery_3' As gallery.galleryVertical":
@@ -295,7 +311,7 @@
                 TabIndex: =0
                 TemplateSize: =330
                 Width: =622
-                Y: =465
+                Y: =605
                 ZIndex: =18
 
                 Button5_30 As button:
@@ -1152,9 +1168,10 @@
                 BorderColor: =RGBA(0, 18, 107, 1)
                 Fill: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )
                 Height: =60
+                Visible: =false
                 Width: =520
                 X: =50
-                Y: =872
+                Y: =1012
                 ZIndex: =19
 
             Label41_2 As label:
@@ -1167,7 +1184,7 @@
                 Text: ="Quote Terms"
                 Width: =302
                 X: =199
-                Y: =872
+                Y: =1012
                 ZIndex: =20
 
             Button31_1 As button:
@@ -1186,9 +1203,10 @@
                 RadiusTopRight: =15
                 Size: =24
                 Text: =""
+                Visible: =v_QuoteTab=3
                 Width: =592
                 X: =16
-                Y: =969
+                Y: =1109
                 ZIndex: =21
 
             Label20_12 As label:
@@ -1203,9 +1221,10 @@
                 TabIndex: =0 //-1
                 Text: |-
                     ="Bill-To :"
+                Visible: =v_QuoteTab=3
                 Width: =130
                 X: =36
-                Y: =985
+                Y: =1125
                 ZIndex: =22
 
             Label20_13 As label:
@@ -1220,9 +1239,10 @@
                 TabIndex: =0 //-1
                 Text: |-
                     ="Ship-To :"
+                Visible: =v_QuoteTab=3
                 Width: =130
                 X: =313
-                Y: =985
+                Y: =1125
                 ZIndex: =23
 
             Label20_15 As label:
@@ -1237,9 +1257,10 @@
                 TabIndex: =0 //-1
                 Text: |-
                     ="Bill-To-Address :"
+                Visible: =v_QuoteTab=3
                 Width: =114
                 X: =36
-                Y: =1048
+                Y: =1188
                 ZIndex: =25
 
             Label20_16 As label:
@@ -1254,9 +1275,10 @@
                 TabIndex: =0 //-1
                 Text: |-
                     ="Ship-To-Address :"
+                Visible: =v_QuoteTab=3
                 Width: =147
                 X: =313
-                Y: =1048
+                Y: =1188
                 ZIndex: =26
 
             Label43 As label:
@@ -1267,9 +1289,10 @@
                 Text: |-
                     =//varOrderData.'Order From'.'Customer Name'
                     _VarnewQuoteHeaderResponse.'Bill To'.'Customer Name'
+                Visible: =v_QuoteTab=3
                 Width: =208
                 X: =125
-                Y: =993
+                Y: =1133
                 ZIndex: =27
 
             Label43_1 As label:
@@ -1280,9 +1303,10 @@
                 Text: |-
                     =//varOrderData.'Order From'.'Customer Name'
                     _VarnewQuoteHeaderResponse.'Ship To'.'Customer Name'
+                Visible: =v_QuoteTab=3
                 Width: =137
                 X: =421
-                Y: =991
+                Y: =1131
                 ZIndex: =28
 
             Label43_2 As label:
@@ -1293,9 +1317,10 @@
                 Text: |-
                     =//varOrderData.'Order From'.Address
                     _VarnewQuoteHeaderResponse.'Bill To'.Address
+                Visible: =v_QuoteTab=3
                 Width: =137
                 X: =149
-                Y: =1048
+                Y: =1188
                 ZIndex: =29
 
             Label43_3 As label:
@@ -1306,9 +1331,10 @@
                 Text: |-
                     =//varOrderData.'Order From'.Address
                     _VarnewQuoteHeaderResponse.'Ship To'.Address
+                Visible: =v_QuoteTab=3
                 Width: =134
                 X: =436
-                Y: =1048
+                Y: =1188
                 ZIndex: =30
 
             Icon24 As icon.Edit:
@@ -1334,9 +1360,10 @@
                 Icon: =Icon.Edit
                 OnSelect: =Set(varEdit,!varEdit)
                 TabIndex: =0 //-1
+                Visible: =false
                 Width: =44
                 X: =526
-                Y: =27
+                Y: =167
                 ZIndex: =31
 
             HDisc As text:
@@ -1422,9 +1449,10 @@
                     );
                     Set(varEdit,false)
                        
+                Visible: =v_QuoteTab=1
                 Width: =80
                 X: =460
-                Y: =256
+                Y: =396
                 ZIndex: =32
 
             Icon5 As icon.Edit:
@@ -1470,7 +1498,7 @@
                     Set(crtQut,true);
                 Width: =44
                 X: =526
-                Y: =390
+                Y: =530
                 ZIndex: =33
 
             Button38 As button:
@@ -1703,9 +1731,10 @@
                     )
                 Size: =16
                 Text: ="Convert To Order"
+                Visible: =v_QuoteTab=3
                 Width: =280
                 X: =Parent.Width/2-Self.Width/2
-                Y: =1264
+                Y: =1404
                 ZIndex: =34
 
             Container15 As groupContainer.manualLayoutContainer:
@@ -1713,7 +1742,7 @@
                 Height: =362
                 Visible: =If(crtQut,true)
                 Width: =Parent.Width
-                Y: =466
+                Y: =606
                 ZIndex: =35
 
                 Button39 As button:
@@ -2109,8 +2138,105 @@
                     )
                 Size: =16
                 Text: ="Submit"
+                Visible: =v_QuoteTab=3
                 Width: =280
                 X: =Parent.Width/2-Self.Width/2
-                Y: =1366
+                Y: =1506
                 ZIndex: =36
+
+            Icon24_1 As icon.Edit:
+                AccessibleLabel: ="Icon"
+                BorderColor: =RGBA(0, 18, 107, 1)
+                Color: =RGBA(255, 255, 255, 1)
+                DisabledBorderColor: =RGBA(166, 166, 166, 1)
+                DisabledColor: =RGBA(244, 244, 244, 1)
+                DisplayMode: |-
+                    =/*If(
+                        //IsBlank(
+                            First(
+                                Filter(
+                                    'Order Header.S',
+                                    'Order ID' = varOrderData.'Order ID'
+                                )
+                            ).'Order ID'='Orderline Gallery_3'.Selected.'Order Header'.'Order ID',
+                       // ),
+                        DisplayMode.Edit,
+                        DisplayMode.Disabled
+                    )*/
+                Height: =40
+                Icon: =Icon.Edit
+                OnSelect: =Set(varEdit,!varEdit)
+                TabIndex: =0 //-1
+                Width: =44
+                X: =558
+                Y: =271
+                ZIndex: =37
+
+    "'Dashboard Toptab_3' As gallery.galleryHorizontal":
+        AccessibleLabel: ="Dashboard Toptab_1"
+        BorderColor: =RGBA(109, 109, 109, 1)
+        Fill: =RGBA(0,0,0,0)
+        FocusedBorderThickness: =01
+        Height: =65
+        Items: |-
+            =Table(
+                {
+                    Title: "Quote Summary",
+                    Id:1
+                },
+                {
+                    Title: "Quote Product",
+                    Id:2
+                },
+                {
+                    Title: "Quote Terms",
+                    Id:3
+                }
+            )
+        OnSelect: =
+        ShowScrollbar: =false
+        TabIndex: =0
+        TemplateSize: =233
+        Y: =3
+        ZIndex: =4
+
+        Rectangle3_6 As rectangle:
+            BorderColor: =RGBA(0, 0, 0, 0)
+            BorderStyle: =BorderStyle.None
+            DisabledFill: =RGBA(166, 166, 166, 1)
+            Fill: |-
+                =If(ThisItem.IsSelected, ColorValue("#A00002"), RGBA(103, 204, 107, 0.1))
+            FocusedBorderThickness: =4
+            Height: =55
+            HoverFill: =RGBA(103, 204, 107, 0.28)
+            OnSelect: =Select(Parent)
+            PressedFill: =RGBA(103, 204, 107, 0.25)
+            Visible: =false
+            Width: =233
+            ZIndex: =1
+
+        Label2_51 As label:
+            Align: =Align.Center
+            BorderColor: =RGBA(0, 0, 0, 0)
+            BorderStyle: =BorderStyle.None
+            BorderThickness: =2
+            Color: |-
+                =If(ProdAddd=ThisItem.Id, Color.White,
+                ColorValue(LookUp(c_EnvironmentVariable, 'Display Name'="Button Fill").'Default Value'))
+            DisabledBorderColor: =RGBA(0, 0, 0, 0)
+            DisabledColor: =RGBA(166, 166, 166, 1)
+            Fill: |-
+                =If(ProdAddd=ThisItem.Id, 
+                ColorValue(LookUp(c_EnvironmentVariable, 'Display Name'="Button Fill").'Default Value'),ColorFade( ColorValue( LookUp('Environment Variable Definitions', 'Display Name'="Common Primary Background").'Default Value')//_VarGblAppColors.PrimaryBg
+                ,20%))
+            FocusedBorderThickness: =4
+            Font: =Font.Lato
+            FontWeight: =FontWeight.Semibold
+            Height: =55
+            OnSelect: |-
+                =UpdateContext({v_QuoteTab:ThisItem.Id});
+            Size: =16
+            Text: =ThisItem.Title
+            Width: =233
+            ZIndex: =3
 

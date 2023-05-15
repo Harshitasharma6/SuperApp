@@ -1,4 +1,32 @@
 {
+  "6761ee6f-9c67-4348-a8cd-98bf3192169d": {
+    "connectionRef": {
+      "displayName": "Logic flows",
+      "iconUri": "https://connectoricons-prod.azureedge.net/releases/v1.0.1615/1.0.1615.3163/logicflows/icon.png",
+      "id": "/providers/microsoft.powerapps/apis/shared_logicflows",
+      "parameterHints": {
+        "workflowEntityId": {},
+        "workflowName": {
+          "value": "22d8ab20-91cd-47e2-bdab-8f3b652a8bb7"
+        }
+      },
+      "parameterHintsV2": {
+        "workflowEntityId": {},
+        "workflowName": {
+          "value": "22d8ab20-91cd-47e2-bdab-8f3b652a8bb7"
+        }
+      }
+    },
+    "datasets": {},
+    "dataSources": [
+      "PowerApp->Initializevariable,Startandwaitforanapproval"
+    ],
+    "dependencies": {
+      "shared_approvals": "e663487b-7261-48df-a52b-d5231258cfbb"
+    },
+    "dependents": [],
+    "id": "6761ee6f-9c67-4348-a8cd-98bf3192169d"
+  },
   "be6cb60f-083e-4ace-8078-6ade31aded2f": {
     "connectionRef": {
       "apiTier": "Standard",
@@ -16,5 +44,19 @@
     "dependencies": {},
     "dependents": [],
     "id": "be6cb60f-083e-4ace-8078-6ade31aded2f"
+  },
+  "e663487b-7261-48df-a52b-d5231258cfbb": {
+    "connectionRef": {
+      "displayName": "Approvals",
+      "iconUri": "https://connectoricons-prod.azureedge.net/releases/v1.0.1623/1.0.1623.3209/approvals/icon.png",
+      "id": "/providers/microsoft.powerapps/apis/shared_approvals"
+    },
+    "datasets": {},
+    "dataSources": [],
+    "dependencies": {},
+    "dependents": [
+      "6761ee6f-9c67-4348-a8cd-98bf3192169d"
+    ],
+    "id": "e663487b-7261-48df-a52b-d5231258cfbb"
   }
 }
