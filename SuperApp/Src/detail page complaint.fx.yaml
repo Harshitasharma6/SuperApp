@@ -1,0 +1,586 @@
+"'detail page complaint' As screen":
+    LoadingSpinnerColor: =RGBA(0, 120, 212, 1)
+
+    RectQuickActionBar1 As rectangle:
+        BorderColor: =RGBA(0, 18, 107, 1)
+        Fill: =RGBA(0, 0, 0, 0)
+        Height: =88
+        Width: =Parent.Width
+        Y: =40
+        ZIndex: =1
+
+    LblAppName1 As label:
+        Align: =Align.Center
+        Color: =RGBA(255, 255, 255, 1)
+        DisabledColor: =RGBA(166, 166, 166, 1)
+        Height: =88
+        Size: =27
+        Text: ="[Title]"
+        Width: =Parent.Width
+        Y: =40
+        ZIndex: =2
+
+    Canvas3 As fluidGrid.fluidGridWithBlankCard:
+        BorderThickness: =0
+        Height: =908
+        Width: =Parent.Width
+        Y: =RectQuickActionBar1.Y + RectQuickActionBar1.Height
+        ZIndex: =3
+
+        DataCard4 As dataCard:
+            BorderColor: =RGBA(0, 0, 0, 1)
+            BorderStyle: =BorderStyle.Solid
+            BorderThickness: =0
+            DisplayMode: =DisplayMode.Edit
+            Fill: =RGBA(0, 0, 0, 0)
+            Height: =888
+            Width: =Parent.Width
+            X: =0
+            Y: =0
+            ZIndex: =1
+
+            Label18_40 As label:
+                BorderColor: =RGBA(0, 18, 107, 1)
+                Color: =RGBA(0, 0, 0, 1)
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                FontWeight: =FontWeight.Semibold
+                Height: =56
+                Size: =16
+                Text: ="Complaint ID"
+                Width: =200
+                X: =21
+                Y: =143
+                ZIndex: =1
+
+            Label18_41 As label:
+                BorderColor: =RGBA(0, 18, 107, 1)
+                Color: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Text Primary Color").'Default Value') //_VarGblAppColors.textbgbutton
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                Height: =53
+                PaddingRight: =20
+                Text: =varcomp.'Complaint No.'
+                Width: =113
+                X: =490
+                Y: =143
+                ZIndex: =2
+
+            Label18_42 As label:
+                BorderColor: =RGBA(0, 18, 107, 1)
+                Color: =RGBA(0, 0, 0, 1)
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                FontWeight: =FontWeight.Semibold
+                Height: =53
+                Size: =16
+                Text: ="Assigned To"
+                Width: =267
+                X: =21
+                Y: =229
+                ZIndex: =3
+
+            Label18_43 As label:
+                BorderColor: =RGBA(0, 18, 107, 1)
+                Color: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Text Primary Color").'Default Value') //_VarGblAppColors.textbgbutton
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                Height: =55
+                PaddingRight: =20
+                Text: =LookUp(Users, User = varcomp.'Assigned To'.User).'Full Name'
+                Width: =267
+                X: =373
+                Y: =220
+                ZIndex: =4
+
+            Label18_44 As label:
+                BorderColor: =RGBA(0, 18, 107, 1)
+                Color: =RGBA(0, 0, 0, 1)
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                FontWeight: =FontWeight.Semibold
+                Height: =53
+                Size: =16
+                Text: ="Resolution Date"
+                Width: =267
+                X: =21
+                Y: =313
+                ZIndex: =5
+
+            Label18_45 As label:
+                BorderColor: =RGBA(0, 18, 107, 1)
+                Color: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Text Primary Color").'Default Value') //_VarGblAppColors.textbgbutton
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                Height: =55
+                PaddingRight: =20
+                Text: =varcomp.'Resolution Date'
+                Width: =267
+                X: =373
+                Y: =310
+                ZIndex: =6
+
+            Label18_46 As label:
+                BorderColor: =RGBA(0, 18, 107, 1)
+                Color: =RGBA(0, 0, 0, 1)
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                FontWeight: =FontWeight.Semibold
+                Height: =53
+                Size: =16
+                Text: ="Assigned Date "
+                Width: =267
+                X: =21
+                Y: =393
+                ZIndex: =7
+
+            Label18_47 As label:
+                BorderColor: =RGBA(0, 18, 107, 1)
+                Color: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Text Primary Color").'Default Value') //_VarGblAppColors.textbgbutton
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                Height: =55
+                PaddingRight: =20
+                Text: =varcomp.'Assigned Date'
+                Width: =267
+                X: =373
+                Y: =389
+                ZIndex: =8
+
+            Label18_48 As label:
+                BorderColor: =RGBA(0, 18, 107, 1)
+                Color: =RGBA(0, 0, 0, 1)
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                FontWeight: =FontWeight.Semibold
+                Height: =53
+                Size: =16
+                Text: ="Issue Description"
+                Width: =267
+                X: =21
+                Y: =477
+                ZIndex: =9
+
+            Label18_49 As label:
+                BorderColor: =RGBA(0, 18, 107, 1)
+                Color: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Text Primary Color").'Default Value') //_VarGblAppColors.textbgbutton
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                Height: =55
+                PaddingRight: =20
+                Text: =varcomp.'Issue Description'
+                Width: =267
+                X: =373
+                Y: =473
+                ZIndex: =10
+
+            Label18_50 As label:
+                BorderColor: =RGBA(0, 18, 107, 1)
+                Color: =RGBA(0, 0, 0, 1)
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                FontWeight: =FontWeight.Semibold
+                Height: =53
+                Size: =16
+                Text: ="Nature of Complaint"
+                Width: =267
+                X: =21
+                Y: =551
+                ZIndex: =11
+
+            Label18_51 As label:
+                BorderColor: =RGBA(0, 18, 107, 1)
+                Color: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Text Primary Color").'Default Value') //_VarGblAppColors.textbgbutton
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                Height: =53
+                PaddingRight: =20
+                Text: =varcomp.'Nature of Complaint'
+                Width: =282
+                X: =358
+                Y: =551
+                ZIndex: =12
+
+            Label18_52 As label:
+                BorderColor: =RGBA(0, 18, 107, 1)
+                Color: =RGBA(0, 0, 0, 1)
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                FontWeight: =FontWeight.Semibold
+                Height: =53
+                Size: =16
+                Text: ="Remarks "
+                Width: =299
+                X: =21
+                Y: =646
+                ZIndex: =13
+
+            Label18_53 As label:
+                BorderColor: =RGBA(0, 18, 107, 1)
+                Color: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Text Primary Color").'Default Value') //_VarGblAppColors.textbgbutton
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                Height: =55
+                PaddingRight: =20
+                Text: |-
+                    =varcomp.Remarks
+                    
+                    /*CountRows(
+                            Filter(
+                                'Order Header.S',
+                                'Created By'.'Primary Email' = User().Email && 'KRA '.'Achivement Type'=LookUp( 'KRA Header.S','Achivement Type'='Achivement Type (KRA Header.S)'.Daily).'Achivement Type' && 'KRA '.ID = LookUp( 'KRA Header.S',ID=varkra.ID).ID
+                            )
+                        )
+                        */
+                Width: =267
+                X: =363
+                Y: =636
+                ZIndex: =14
+
+            Label18_54 As label:
+                BorderColor: =RGBA(0, 18, 107, 1)
+                Color: =RGBA(0, 0, 0, 1)
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                FontWeight: =FontWeight.Semibold
+                Height: =53
+                Size: =16
+                Text: ="Department"
+                Width: =267
+                X: =21
+                Y: =739
+                ZIndex: =15
+
+            Label18_55 As label:
+                BorderColor: =RGBA(0, 18, 107, 1)
+                Color: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Text Primary Color").'Default Value') //_VarGblAppColors.textbgbutton
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                Height: =55
+                PaddingRight: =20
+                Text: =varcomp.Deparment
+                Width: =267
+                X: =363
+                Y: =728
+                ZIndex: =16
+
+            Label18_56 As label:
+                BorderColor: =RGBA(0, 18, 107, 1)
+                Color: =RGBA(0, 0, 0, 1)
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                FontWeight: =FontWeight.Semibold
+                Height: =46
+                Size: =16
+                Text: ="Expected Closure Date"
+                Width: =299
+                X: =21
+                Y: =825
+                ZIndex: =17
+
+            Label18_57 As label:
+                BorderColor: =RGBA(0, 18, 107, 1)
+                Color: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Text Primary Color").'Default Value') //_VarGblAppColors.textbgbutton
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                Height: =55
+                PaddingRight: =20
+                Text: =varcomp.'Expected Closure Date'
+                Width: =267
+                X: =353
+                Y: =825
+                ZIndex: =18
+
+            Label18_58 As label:
+                BorderColor: =RGBA(0, 18, 107, 1)
+                Color: =RGBA(0, 0, 0, 1)
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                FontWeight: =FontWeight.Semibold
+                Height: =45
+                Size: =16
+                Text: ="Status "
+                Width: =310
+                X: =21
+                Y: =927
+                ZIndex: =19
+
+            Label18_59 As label:
+                BorderColor: =RGBA(0, 18, 107, 1)
+                Color: |-
+                    =//RGBA(0, 0, 0, 1)
+                    ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Text Primary Color").'Default Value') //_VarGblAppColors.textbgbutton
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                Height: =56
+                PaddingRight: =20
+                Text: =varcomp.Status
+                Width: =117
+                X: =513
+                Y: =907
+                ZIndex: =20
+
+            Rectangle4_14 As rectangle:
+                BorderColor: =RGBA(0, 18, 107, 1)
+                BorderStyle: =BorderStyle.Dotted
+                Fill: =RGBA(0, 0, 0, 1)
+                Height: =1
+                Width: =636
+                X: =4
+                Y: =279
+                ZIndex: =21
+
+            Rectangle4_12 As rectangle:
+                BorderColor: =RGBA(0, 18, 107, 1)
+                BorderStyle: =BorderStyle.Dotted
+                Fill: =RGBA(0, 0, 0, 1)
+                Height: =1
+                Width: =640
+                Y: =195
+                ZIndex: =22
+
+            Rectangle4_22 As rectangle:
+                BorderColor: =RGBA(0, 18, 107, 1)
+                BorderStyle: =BorderStyle.Dotted
+                Fill: =RGBA(0, 0, 0, 1)
+                Height: =1
+                Width: =640
+                Y: =366
+                ZIndex: =23
+
+            Rectangle4_23 As rectangle:
+                BorderColor: =RGBA(0, 18, 107, 1)
+                BorderStyle: =BorderStyle.Dotted
+                Fill: =RGBA(0, 0, 0, 1)
+                Height: =1
+                Width: =635
+                X: =5
+                Y: =694
+                ZIndex: =24
+
+            Rectangle4_24 As rectangle:
+                BorderColor: =RGBA(0, 18, 107, 1)
+                BorderStyle: =BorderStyle.Dotted
+                Fill: =RGBA(0, 0, 0, 1)
+                Height: =1
+                Width: =635
+                X: =5
+                Y: =877
+                ZIndex: =25
+
+            Rectangle4_25 As rectangle:
+                BorderColor: =RGBA(0, 18, 107, 1)
+                BorderStyle: =BorderStyle.Dotted
+                Fill: =RGBA(0, 0, 0, 1)
+                Height: =1
+                Width: =635
+                X: =5
+                Y: =963
+                ZIndex: =26
+
+            Rectangle4_26 As rectangle:
+                BorderColor: =RGBA(0, 18, 107, 1)
+                BorderStyle: =BorderStyle.Dotted
+                Fill: =RGBA(0, 0, 0, 1)
+                Height: =1
+                Width: =635
+                X: =5
+                Y: =526
+                ZIndex: =27
+
+            Rectangle4_27 As rectangle:
+                BorderColor: =RGBA(0, 18, 107, 1)
+                BorderStyle: =BorderStyle.Dotted
+                Fill: =RGBA(0, 0, 0, 1)
+                Height: =1
+                Width: =635
+                X: =5
+                Y: =605
+                ZIndex: =28
+
+            Rectangle4_28 As rectangle:
+                BorderColor: =RGBA(0, 18, 107, 1)
+                BorderStyle: =BorderStyle.Dotted
+                Fill: =RGBA(0, 0, 0, 1)
+                Height: =1
+                Width: =640
+                Y: =447
+                ZIndex: =29
+
+            Rectangle4_29 As rectangle:
+                BorderColor: =RGBA(0, 18, 107, 1)
+                BorderStyle: =BorderStyle.Dotted
+                Fill: =RGBA(0, 0, 0, 1)
+                Height: =1
+                Width: =635
+                X: =5
+                Y: =788
+                ZIndex: =30
+
+            Circle4_5 As circle:
+                BorderColor: =RGBA(0, 18, 107, 1)
+                Fill: |-
+                    =If(varcomp.'Complaint Status' ='Complaint Status (Complaint.S)'.Register
+                    || varcomp.'Complaint Status' ='Complaint Status (Complaint.S)'.Assign
+                    || varcomp.'Complaint Status' ='Complaint Status (Complaint.S)'.Resolution
+                    || varcomp.'Complaint Status' ='Complaint Status (Complaint.S)'.Closure
+                    
+                    , ColorValue(LookUp('Environment Variable Definitions','Display Name'="Button Fill").'Default Value'), Color.Black)
+                    //If(Value(varcomp.'Status level') >=1, Color.Red,Color.Black)
+                Height: =55
+                Width: =55
+                X: =41
+                ZIndex: =31
+
+            Rectangle9_5 As rectangle:
+                BorderColor: =RGBA(0, 18, 107, 1)
+                Fill: =If(Value(varcomp.'Status level') >=2, Color.Red, Color.Black)
+                Height: =2
+                Width: =90
+                X: =101
+                Y: =27
+                ZIndex: =32
+
+            Circle4_6 As circle:
+                BorderColor: =RGBA(0, 18, 107, 1)
+                Fill: |-
+                    =If(
+                     varcomp.'Complaint Status' ='Complaint Status (Complaint.S)'.Assign
+                    || varcomp.'Complaint Status' ='Complaint Status (Complaint.S)'.Resolution
+                    || varcomp.'Complaint Status' ='Complaint Status (Complaint.S)'.Closure
+                    
+                    , ColorValue(LookUp('Environment Variable Definitions','Display Name'="Button Fill").'Default Value'), Color.Black)
+                Height: =55
+                Width: =55
+                X: =194
+                ZIndex: =33
+
+            Rectangle9_6 As rectangle:
+                BorderColor: =RGBA(0, 18, 107, 1)
+                Fill: =If(Value(varcomp.'Status level') >=3, Color.Red, Color.Black)
+                Height: =2
+                Width: =120
+                X: =252
+                Y: =27
+                ZIndex: =34
+
+            Circle4_7 As circle:
+                BorderColor: =RGBA(0, 18, 107, 1)
+                Fill: |-
+                    =If(
+                     varcomp.'Complaint Status' ='Complaint Status (Complaint.S)'.Resolution
+                    || varcomp.'Complaint Status' ='Complaint Status (Complaint.S)'.Closure
+                    
+                    , ColorValue(LookUp('Environment Variable Definitions','Display Name'="Button Fill").'Default Value'), Color.Black)
+                Height: =55
+                Width: =55
+                X: =372
+                ZIndex: =35
+
+            Label25_11 As label:
+                BorderColor: =RGBA(0, 18, 107, 1)
+                Color: =RGBA(255, 255, 255, 1)
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                Size: =18
+                Text: ="1"
+                Width: =37
+                X: =54
+                Y: =7
+                ZIndex: =36
+
+            Label25_12 As label:
+                BorderColor: =RGBA(0, 18, 107, 1)
+                Color: =RGBA(255, 255, 255, 1)
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                Size: =18
+                Text: ="2"
+                Width: =37
+                X: =209
+                Y: =7
+                ZIndex: =37
+
+            Label25_13 As label:
+                BorderColor: =RGBA(0, 18, 107, 1)
+                Color: =RGBA(255, 255, 255, 1)
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                Size: =18
+                Text: ="3"
+                Width: =37
+                X: =387
+                Y: =8
+                ZIndex: =38
+
+            Label25_14 As label:
+                BorderColor: =RGBA(0, 18, 107, 1)
+                Color: =If(Value(varcomp.'Status level') >=1, Color.Red, Color.Black)
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                FontWeight: =FontWeight.Bold
+                Height: =36
+                Size: =12
+                Text: ='Complaint Status (Complaint.S)'.Register
+                Width: =114
+                X: =38
+                Y: =62
+                ZIndex: =39
+
+            Label25_15 As label:
+                BorderColor: =RGBA(0, 18, 107, 1)
+                Color: =If(Value(varcomp.'Status level') >=2, Color.Red, Color.Black)
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                FontWeight: =FontWeight.Bold
+                Height: =36
+                Size: =12
+                Text: ='Complaint Status (Complaint.S)'.Assign
+                Width: =92
+                X: =199
+                Y: =62
+                ZIndex: =40
+
+            Label25_16 As label:
+                BorderColor: =RGBA(0, 18, 107, 1)
+                Color: =If(Value(varcomp.'Status level') >=3, Color.Red, Color.Black)
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                FontWeight: =FontWeight.Bold
+                Height: =36
+                Size: =12
+                Text: ='Complaint Status (Complaint.S)'.Resolution
+                Width: =118
+                X: =358
+                Y: =62
+                ZIndex: =41
+
+            Circle4_8 As circle:
+                BorderColor: =RGBA(0, 18, 107, 1)
+                Fill: |-
+                    =If(
+                    varcomp.'Complaint Status' ='Complaint Status (Complaint.S)'.Closure
+                    
+                    , ColorValue(LookUp('Environment Variable Definitions','Display Name'="Button Fill").'Default Value'), Color.Black)
+                Height: =55
+                Width: =55
+                X: =550
+                ZIndex: =42
+
+            Rectangle9_7 As rectangle:
+                BorderColor: =RGBA(0, 18, 107, 1)
+                Fill: =If(Value(varcomp.'Status level') =4, Color.Red, Color.Black)
+                Height: =2
+                Width: =124
+                X: =427
+                Y: =29
+                ZIndex: =43
+
+            Label25_17 As label:
+                BorderColor: =RGBA(0, 18, 107, 1)
+                Color: =RGBA(255, 255, 255, 1)
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                Height: =39
+                Size: =18
+                Text: ="4"
+                Width: =34
+                X: =564
+                Y: =10
+                ZIndex: =44
+
+            Label25_19 As label:
+                Align: =Align.Center
+                BorderColor: =RGBA(0, 18, 107, 1)
+                Color: =If(Value(varcomp.'Status level') =4, Color.Red, Color.Black)
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                FontWeight: =FontWeight.Bold
+                Height: =36
+                Size: =12
+                Text: ='Complaint Status (Complaint.S)'.Closure
+                Width: =115
+                X: =525
+                Y: =62
+                ZIndex: =46
+
+    "'Bottom Bar_26' As 'Bottom Bar'":
+        Y: =1026
+        ZIndex: =4
+
+    Header_24 As Header:
+        ScreenName: ="Complaint"
+        ZIndex: =5
+

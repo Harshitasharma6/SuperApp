@@ -1,0 +1,2116 @@
+"'Quote Info_2' As screen":
+    LoadingSpinnerColor: =RGBA(0, 120, 212, 1)
+
+    "'Bottom Bar_23' As 'Bottom Bar'":
+        Y: =1026
+
+    Header_21 As Header:
+        ScreenName: ="Quote Detail"
+        ZIndex: =2
+
+    Canvas4_4 As fluidGrid.fluidGridWithBlankCard:
+        BorderThickness: =0
+        Height: =948
+        Width: =Parent.Width
+        Y: |-
+            =//RectQuickActionBar2.Y + RectQuickActionBar2.Height
+            85
+        ZIndex: =3
+
+        DataCard5_4 As dataCard:
+            BorderColor: =RGBA(0, 0, 0, 1)
+            BorderStyle: =BorderStyle.Solid
+            BorderThickness: =0
+            DisplayMode: =DisplayMode.Edit
+            Fill: =RGBA(0, 0, 0, 0)
+            Height: =1983
+            Width: =Parent.Width
+            X: =0
+            Y: =0
+            ZIndex: =1
+
+            Rectangle26 As rectangle:
+                BorderColor: =RGBA(0, 18, 107, 1)
+                Fill: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )
+                Height: =60
+                Width: =520
+                X: =53
+                Y: =14
+                ZIndex: =1
+
+            Label41 As label:
+                BorderColor: =RGBA(0, 18, 107, 1)
+                Color: =RGBA(255, 255, 255, 1)
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                FontWeight: =FontWeight.Bold
+                Height: =60
+                Size: =21
+                Text: ="Quote Summary"
+                Width: =302
+                X: =202
+                Y: =14
+                ZIndex: =2
+
+            Button31 As button:
+                DisabledBorderColor: =RGBA(166, 166, 166, 1)
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                DisabledFill: =//ColorFade(ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' ),70%)
+                DisplayMode: =DisplayMode.Disabled
+                Fill: =ColorFade(ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' ),70%)
+                FontWeight: =FontWeight.Semibold
+                Height: =225
+                HoverColor: =RGBA(255, 255, 255, 1)
+                HoverFill: =ColorFade(Self.Fill, -20%)
+                RadiusBottomLeft: =15
+                RadiusBottomRight: =15
+                RadiusTopLeft: =15
+                RadiusTopRight: =15
+                Size: =24
+                Text: =""
+                Width: =592
+                X: =16
+                Y: =118
+                ZIndex: =3
+
+            Label20_6 As label:
+                BorderColor: =RGBA(0, 18, 107, 1)
+                Color: =RGBA(0, 0, 0, 1)
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                FocusedBorderThickness: =1 //0
+                FontWeight: =FontWeight.Semibold
+                Height: =54
+                OnSelect: =//Select(Parent)
+                Size: =//_VarGblAppFonts.Size.Medium
+                TabIndex: =0 //-1
+                Text: |-
+                    ="Quote Id :"
+                Width: =130
+                X: =36
+                Y: =131
+                ZIndex: =4
+
+            Label42 As label:
+                BorderColor: =RGBA(0, 18, 107, 1)
+                Color: =RGBA(0, 0, 0, 1)
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                Height: =54
+                Size: =13
+                Text: |-
+                    =//varOrderData.new_orderid
+                    _VarnewQuoteHeaderResponse.'Quote ID'
+                Width: =180
+                X: =149
+                Y: =131
+                ZIndex: =5
+
+            Label20_7 As label:
+                BorderColor: =RGBA(0, 18, 107, 1)
+                Color: =RGBA(0, 0, 0, 1)
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                FocusedBorderThickness: =1 //0
+                FontWeight: =FontWeight.Semibold
+                Height: =54
+                OnSelect: =//Select(Parent)
+                Size: =//_VarGblAppFonts.Size.Medium
+                TabIndex: =0 //-1
+                Text: |-
+                    ="Date :"
+                Width: =130
+                X: =36
+                Y: =185
+                ZIndex: =6
+
+            Label20_8 As label:
+                BorderColor: =RGBA(0, 18, 107, 1)
+                Color: =RGBA(0, 0, 0, 1)
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                FocusedBorderThickness: =1 //0
+                FontWeight: =FontWeight.Semibold
+                Height: =54
+                OnSelect: =//Select(Parent)
+                Size: =//_VarGblAppFonts.Size.Medium
+                TabIndex: =0 //-1
+                Text: |-
+                    ="Party :"
+                Width: =130
+                X: =36
+                Y: =239
+                ZIndex: =7
+
+            Label42_1 As label:
+                BorderColor: =RGBA(0, 18, 107, 1)
+                Color: =RGBA(0, 0, 0, 1)
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                Height: =54
+                Size: =13
+                Text: |-
+                    =/*Text(
+                                varOrderData.createdon,
+                                "dd-mm-yyyy"
+                         )
+                         */
+                         Text(
+                                _VarnewQuoteHeaderResponse.'Created On',
+                                "dd-mm-yyyy"
+                         )
+                Width: =180
+                X: =150
+                Y: =185
+                ZIndex: =8
+
+            Label42_2 As label:
+                BorderColor: =RGBA(0, 18, 107, 1)
+                Color: =RGBA(0, 0, 0, 1)
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                Height: =54
+                Size: =13
+                Text: |-
+                    =//varOrderData.'Order From'.'Customer Name'
+                    _VarnewQuoteHeaderResponse.'Bill To'.'Customer Name'
+                Width: =180
+                X: =150
+                Y: =239
+                ZIndex: =9
+
+            Label20_9 As label:
+                BorderColor: =RGBA(0, 18, 107, 1)
+                Color: =RGBA(0, 0, 0, 1)
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                FocusedBorderThickness: =1 //0
+                FontWeight: =FontWeight.Semibold
+                Height: =54
+                OnSelect: =//Select(Parent)
+                Size: =//_VarGblAppFonts.Size.Medium
+                TabIndex: =0 //-1
+                Text: |-
+                    ="Status :"
+                Width: =130
+                X: =346
+                Y: =131
+                ZIndex: =10
+
+            Label20_10 As label:
+                BorderColor: =RGBA(0, 18, 107, 1)
+                Color: =RGBA(0, 0, 0, 1)
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                FocusedBorderThickness: =1 //0
+                FontWeight: =FontWeight.Semibold
+                Height: =54
+                OnSelect: =//Select(Parent)
+                Size: =//_VarGblAppFonts.Size.Medium
+                TabIndex: =0 //-1
+                Text: |-
+                    ="Version :"
+                Width: =130
+                X: =346
+                Y: =185
+                ZIndex: =11
+
+            Label20_11 As label:
+                BorderColor: =RGBA(0, 18, 107, 1)
+                Color: =RGBA(0, 0, 0, 1)
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                FocusedBorderThickness: =1 //0
+                FontWeight: =FontWeight.Semibold
+                Height: =54
+                OnSelect: =//Select(Parent)
+                Size: =//_VarGblAppFonts.Size.Medium
+                TabIndex: =0 //-1
+                Text: |-
+                    ="Discount :"
+                Width: =130
+                X: =346
+                Y: =239
+                ZIndex: =12
+
+            Label42_3 As label:
+                BorderColor: =RGBA(0, 18, 107, 1)
+                Color: =RGBA(0, 0, 0, 1)
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                Height: =54
+                Size: =13
+                Text: |-
+                    =//Text(varOrderData.cra3a_orderstatus)
+                    _VarnewQuoteHeaderResponse.'Status (zx_status)'
+                Width: =180
+                X: =460
+                Y: =131
+                ZIndex: =13
+
+            Label42_4 As label:
+                BorderColor: =RGBA(0, 18, 107, 1)
+                Color: =RGBA(0, 0, 0, 1)
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                Height: =54
+                Size: =13
+                Text: |-
+                    =//Text(varOrderData.'Quote Version')
+                    _VarnewQuoteHeaderResponse.Version
+                Width: =180
+                X: =460
+                Y: =185
+                ZIndex: =14
+
+            Rectangle26_1 As rectangle:
+                BorderColor: =RGBA(0, 18, 107, 1)
+                Fill: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )
+                Height: =60
+                Width: =520
+                X: =60
+                Y: =380
+                ZIndex: =16
+
+            Label41_1 As label:
+                BorderColor: =RGBA(0, 18, 107, 1)
+                Color: =RGBA(255, 255, 255, 1)
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                FontWeight: =FontWeight.Bold
+                Height: =60
+                Size: =21
+                Text: ="Quote Product"
+                Width: =302
+                X: =209
+                Y: =380
+                ZIndex: =17
+
+            "'Orderline Gallery_3' As gallery.galleryVertical":
+                AccessibleLabel: ="Orderline Gallery"
+                BorderColor: =RGBA(0, 18, 107, 1)
+                Fill: =RGBA(255, 255, 255, 1)
+                FocusedBorderColor: =Color.Transparent
+                FocusedBorderThickness: =0.1
+                Height: =363
+                Items: |-
+                    =/*Filter(
+                        //OfflineOrderLineCollection,
+                        'Order Lines',
+                        'Order Header'.'Order ID' = varOrderData.'Order ID'
+                    )*/
+                    Filter(
+                            'Quote Line.S',
+                            'Quote Header'.'Quote ID' = _VarnewQuoteHeaderResponse.'Quote ID'
+                        )
+                Layout: =Layout.Vertical
+                ShowScrollbar: =false
+                TabIndex: =0
+                TemplateSize: =330
+                Width: =622
+                Y: =465
+                ZIndex: =18
+
+                Button5_30 As button:
+                    BorderColor: =Color.Black
+                    BorderStyle: =BorderStyle.None
+                    BorderThickness: =0
+                    DisabledBorderColor: =RGBA(166, 166, 166, 1)
+                    DisabledColor: =RGBA(166, 166, 166, 1)
+                    DisabledFill: =RGBA(244, 244, 244, 1)
+                    Fill: =RGBA(255, 255, 255, 1)
+                    FontWeight: =FontWeight.Semibold
+                    Height: =316
+                    HoverColor: =RGBA(255, 255, 255, 1)
+                    HoverFill: =Color.White
+                    OnSelect: |-
+                        =Navigate('Order line detail',ScreenTransition.CoverRight);
+                        Set(varOrderline,ThisItem)
+                    Size: =24
+                    Text: =""
+                    Width: =612
+                    Y: =10
+                    ZIndex: =1
+
+                Rectangle1_37 As rectangle:
+                    AccessibleLabel: ="Rectangle1_8"
+                    BorderColor: =RGBA(0, 18, 107, 1)
+                    Fill: =//_VarGblAppColors.HeaderBg
+                    Height: =1
+                    OnSelect: |-
+                        =Navigate('Order line detail',ScreenTransition.CoverRight);
+                        Set(varOrderline,ThisItem)
+                    TabIndex: =0
+                    Width: ='Orderline Gallery_3'.TemplateWidth
+                    Y: =84
+                    ZIndex: =2
+
+                Background_40 As button:
+                    BorderThickness: =0
+                    Color: =//_VarGblAppColors.AccentBg
+                    DisabledBorderColor: =RGBA(166, 166, 166, 1)
+                    DisabledColor: =RGBA(116, 116, 116, 1)
+                    DisabledFill: =//ColorFade(ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' ),80%)
+                    DisplayMode: =DisplayMode.Disabled
+                    Fill: =ColorFade(ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' ),70%)
+                    FontWeight: =FontWeight.Semibold
+                    Height: =64
+                    HoverColor: =RGBA(255, 255, 255, 1)
+                    HoverFill: =ColorFade(Self.Fill, -20%)
+                    OnSelect: |-
+                        =Navigate('Order line detail',ScreenTransition.CoverRight);
+                        Set(varOrderline,ThisItem)
+                    RadiusBottomLeft: =15
+                    RadiusBottomRight: =15
+                    RadiusTopLeft: |-
+                        =
+                        0
+                    RadiusTopRight: |-
+                        =
+                        0
+                    Size: =24
+                    Text: =""
+                    Width: ='Orderline Gallery_3'.TemplateWidth 
+                    Y: =262
+                    ZIndex: =3
+
+                Body1_202 As label:
+                    BorderColor: =RGBA(0, 18, 107, 1)
+                    Color: =//ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )
+                    DisabledColor: =RGBA(166, 166, 166, 1)
+                    FocusedBorderThickness: =1
+                    Font: =//_VarGblAppFonts.Heading
+                    FontWeight: =FontWeight.Bold
+                    Height: =74
+                    OnSelect: |-
+                        =Navigate('Order line detail',ScreenTransition.CoverRight);
+                        Set(varOrderline,ThisItem)
+                    Size: =20
+                    TabIndex: =0
+                    Text: |-
+                        =//ThisItem.'Order Line ID'
+                        Text(ThisItem.'Quote Line ID')
+                    Tooltip: |-
+                        =//ThisItem.'Order Line ID'
+                        ThisItem.'Quote Line ID'
+                    Width: =290
+                    Wrap: =false
+                    X: =16
+                    Y: =10
+                    ZIndex: =4
+
+                Body1_203 As label:
+                    BorderColor: =RGBA(0, 18, 107, 1)
+                    Color: =//ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )
+                    DisabledColor: =RGBA(166, 166, 166, 1)
+                    FocusedBorderThickness: =1
+                    Font: =//_VarGblAppFonts.Heading
+                    FontWeight: =FontWeight.Bold
+                    Height: =75
+                    OnSelect: |-
+                        =Navigate('Order line detail',ScreenTransition.CoverRight);
+                        Set(varOrderline,ThisItem)
+                    Size: =//_VarGblAppFonts.Size.Medium
+                    TabIndex: =0
+                    Text: |-
+                        ="HSN Code: " & ThisItem.Product.'Product Code'
+                    Tooltip: |-
+                        ="HSN Code: " & ThisItem.Product.'Product Code'
+                    Width: =231
+                    Wrap: =false
+                    X: =381
+                    Y: =10
+                    ZIndex: =6
+
+                Body1_204 As label:
+                    BorderColor: =RGBA(0, 18, 107, 1)
+                    Color: =RGBA(0, 0, 0, 1)
+                    DisabledColor: =RGBA(166, 166, 166, 1)
+                    FocusedBorderThickness: =1
+                    Font: =//_VarGblAppFonts.Heading
+                    FontWeight: =FontWeight.Semibold
+                    Height: =50
+                    OnSelect: |-
+                        =Navigate('Order line detail',ScreenTransition.CoverRight);
+                        Set(varOrderline,ThisItem)
+                    Size: =//_VarGblAppFonts.Size.Subtitle
+                    TabIndex: =0
+                    Text: |-
+                        ="Unit Price: "
+                    Tooltip: |-
+                        ="Product Name: " & ThisItem.Product.'Product Name'
+                    Width: =116
+                    Wrap: =false
+                    X: =16
+                    Y: =84
+                    ZIndex: =7
+
+                Body1_207 As label:
+                    BorderColor: =RGBA(0, 18, 107, 1)
+                    Color: =RGBA(0, 0, 0, 1)
+                    DisabledColor: =RGBA(166, 166, 166, 1)
+                    FocusedBorderThickness: =01
+                    Font: =//_VarGblAppFonts.Heading
+                    FontWeight: =FontWeight.Semibold
+                    Height: =50
+                    OnSelect: |-
+                        =Navigate('Order line detail',ScreenTransition.CoverRight);
+                        Set(varOrderline,ThisItem)
+                    Size: =//_VarGblAppFonts.Size.Subtitle
+                    TabIndex: =0
+                    Text: |
+                        ="CGST: " & ThisItem.CGST //LookUp('HSN Masters',Name=LookUp(TaxN,TName=Name).TName).'CGST %'
+                    Tooltip: |-
+                        ="Discount: " & ThisItem.'Discount %'&"%"
+                    Width: =200
+                    X: =384
+                    Y: =122
+                    ZIndex: =8
+
+                Body1_209 As label:
+                    BorderColor: =RGBA(0, 18, 107, 1)
+                    Color: =RGBA(0, 0, 0, 1)
+                    DisabledColor: =RGBA(166, 166, 166, 1)
+                    FocusedBorderThickness: =01
+                    Font: =//_VarGblAppFonts.Heading
+                    FontWeight: =FontWeight.Semibold
+                    Height: =72
+                    OnSelect: |-
+                        =Navigate('Order line detail',ScreenTransition.CoverRight);
+                        Set(varOrderline,ThisItem)
+                    Size: =//_VarGblAppFonts.Size.Subtitle
+                    TabIndex: =0
+                    Text: |-
+                        ="Unit Price: " &"₹"& ThisItem.'Unit Price'
+                    Tooltip: |-
+                        =
+                        "Unit Price: " &"₹"& ThisItem.'Unit Price'
+                    Visible: =false
+                    Width: =320
+                    X: =16
+                    Y: =208
+                    ZIndex: =10
+
+                Body1_208 As label:
+                    BorderColor: =RGBA(0, 18, 107, 1)
+                    Color: =RGBA(0, 0, 0, 1)
+                    DisabledColor: =RGBA(166, 166, 166, 1)
+                    DisabledFill: =//ColorFade(ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' ),80%)
+                    FocusedBorderThickness: =01
+                    Font: =//_VarGblAppFonts.Heading
+                    FontWeight: =FontWeight.Bold
+                    Height: =64
+                    OnSelect: |-
+                        =Navigate('Order line detail',ScreenTransition.CoverRight);
+                        Set(varOrderline,ThisItem)
+                    Size: =//_VarGblAppFonts.Size.Subtitle
+                    TabIndex: =0
+                    Text: |-
+                        ="Total Price: " &"₹"& ThisItem.'Net Price' //+ ThisItem.'Total Unit Price'* Label46.Text/100
+                    Tooltip: |-
+                        ="Total Unit Price: " &"₹"& ThisItem.'Total Unit Price'
+                    Width: =274
+                    X: =16
+                    Y: =262
+                    ZIndex: =11
+
+                Body1_205 As label:
+                    BorderColor: =RGBA(0, 18, 107, 1)
+                    Color: =RGBA(0, 0, 0, 1)
+                    DisabledColor: =RGBA(166, 166, 166, 1)
+                    FocusedBorderThickness: =01
+                    Font: =//_VarGblAppFonts.Heading
+                    FontWeight: =FontWeight.Semibold
+                    Height: =50
+                    OnSelect: |-
+                        =Navigate('Order line detail',ScreenTransition.CoverRight);
+                        Set(varOrderline,ThisItem)
+                    Size: =//_VarGblAppFonts.Size.Subtitle
+                    TabIndex: =0
+                    Text: |-
+                        ="IGST: "& ThisItem.IGST //LookUp('HSN Masters',Name=LookUp(TaxN,TName=Name).TName).'IGST %'
+                    Tooltip: |-
+                        ="Quantity: "& ThisItem.Quantity
+                    Width: =227
+                    X: =384
+                    Y: =84
+                    ZIndex: =12
+
+                Body1_206 As label:
+                    BorderColor: =RGBA(0, 18, 107, 1)
+                    Color: =RGBA(0, 0, 0, 1)
+                    DisabledColor: =RGBA(166, 166, 166, 1)
+                    FocusedBorderThickness: =01
+                    Font: =//_VarGblAppFonts.Heading
+                    FontWeight: =FontWeight.Semibold
+                    Height: =50
+                    OnSelect: |-
+                        =Navigate('Order line detail',ScreenTransition.CoverRight);
+                        Set(varOrderline,ThisItem)
+                    Size: =//_VarGblAppFonts.Size.Subtitle
+                    TabIndex: =0
+                    Text: |
+                        =/*"Variant: " & LookUp(
+                            OfflineVariantCollection,
+                            Variants = LookUp(
+                                OfflineProductVariantCollection,
+                                'Product Variants' = ThisItem.Variant.'Product Variants'
+                            ).Variant.Variants
+                        ).'Variant Name'*/
+                        
+                        //"List Price: " & ThisItem.TotalUPrice
+                        "List Price: " & ThisItem.TotalUAmount
+                    Tooltip: =
+                    Width: =320
+                    X: =16
+                    Y: =122
+                    ZIndex: =13
+
+                Icon14_2 As icon.Trash:
+                    AccessibleLabel: ="Delete the particular record"
+                    BorderColor: =RGBA(0, 18, 107, 1)
+                    Color: =//ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )
+                    DisabledBorderColor: =RGBA(166, 166, 166, 1)
+                    DisabledColor: =RGBA(244, 244, 244, 1)
+                    Height: =30
+                    Icon: =Icon.Trash
+                    OnSelect: |
+                        =/*Remove(
+                            'Order Lines',
+                            ThisItem
+                        );
+                        ClearCollect(
+                            OfflineOrderLineCollection,
+                            'Order Lines'
+                        );
+                        With(
+                            {
+                                QuoteLines: Filter(
+                                    'Order Lines',
+                                    'Order Header'.'Order Header' = varOrderData.'Order Header'
+                                )
+                            },
+                            Patch(
+                                'Order Header.S',
+                                LookUp(
+                                    'Order Header.S',
+                                    'Order Header' = ThisItem.'Order Header'.'Order Header'
+                                ),
+                                {
+                                    Quantity: Sum(
+                                        QuoteLines,
+                                        Quantity
+                                    ),
+                                    'Total Bill Amount (new_totalbillamount)': Sum(
+                                        QuoteLines,
+                                        'Total Unit Price'
+                                    ),
+                                    Discount: (Sum(
+                                        QuoteLines,
+                                        'Discount %'
+                                    ) / CountRows(QuoteLines))
+                                }
+                            )
+                        );
+                        ClearCollect(
+                            OfflineOrderHeaderCollection,
+                            'Order Header.S'
+                        );
+                        ClearCollect(
+                            OfflineOrderLineCollection,
+                            'Order Lines'
+                        );*/
+                    TabIndex: =0//-1
+                    Width: =30
+                    X: =581
+                    Y: =27
+                    ZIndex: =14
+
+                Body1_210 As label:
+                    BorderColor: =RGBA(0, 18, 107, 1)
+                    Color: =RGBA(0, 0, 0, 1)
+                    DisabledColor: =RGBA(166, 166, 166, 1)
+                    FocusedBorderThickness: =01
+                    Font: =//_VarGblAppFonts.Heading
+                    FontWeight: =FontWeight.Semibold
+                    Height: =46
+                    OnSelect: |-
+                        =Navigate('Order line detail',ScreenTransition.CoverRight);
+                        Set(varOrderline,ThisItem)
+                    Size: =//_VarGblAppFonts.Size.Subtitle
+                    TabIndex: =0
+                    Text: |-
+                        ="Disc.Unit Price: " 
+                    Tooltip: =
+                    Width: =180
+                    X: =16
+                    Y: =167
+                    ZIndex: =17
+
+                Body1_211 As label:
+                    BorderColor: =RGBA(0, 18, 107, 1)
+                    Color: =RGBA(0, 0, 0, 1)
+                    DisabledColor: =RGBA(166, 166, 166, 1)
+                    FocusedBorderThickness: =01
+                    Font: =//_VarGblAppFonts.Heading
+                    FontWeight: =FontWeight.Semibold
+                    Height: =50
+                    OnSelect: |-
+                        =Navigate('Order line detail',ScreenTransition.CoverRight);
+                        Set(varOrderline,ThisItem)
+                    Size: =//_VarGblAppFonts.Size.Subtitle
+                    TabIndex: =0
+                    Text: |-
+                        ="SGST: " & ThisItem.SGST //LookUp('HSN Masters',Name=LookUp(TaxN,TName=Name).TName).'SGST %'
+                    Tooltip: |-
+                        ="Discount: " & ThisItem.'Discount %'&"%"
+                    Width: =200
+                    X: =384
+                    Y: =167
+                    ZIndex: =18
+
+                Body1_212 As label:
+                    BorderColor: =RGBA(0, 18, 107, 1)
+                    Color: =RGBA(0, 0, 0, 1)
+                    DisabledColor: =RGBA(166, 166, 166, 1)
+                    FocusedBorderThickness: =01
+                    Font: =//_VarGblAppFonts.Heading
+                    FontWeight: =FontWeight.Semibold
+                    Height: =50
+                    OnSelect: |-
+                        =Navigate('Order line detail',ScreenTransition.CoverRight);
+                        Set(varOrderline,ThisItem)
+                    Size: =//_VarGblAppFonts.Size.Subtitle
+                    TabIndex: =0
+                    Text: |-
+                        ="Quantity: " & ThisItem.Quantity
+                    Tooltip: =
+                    Width: =320
+                    X: =16
+                    Y: =209
+                    ZIndex: =19
+
+                Body1_213 As label:
+                    BorderColor: =RGBA(0, 18, 107, 1)
+                    Color: =RGBA(0, 0, 0, 1)
+                    DisabledColor: =RGBA(166, 166, 166, 1)
+                    FocusedBorderThickness: =01
+                    Font: =//_VarGblAppFonts.Heading
+                    FontWeight: =FontWeight.Semibold
+                    Height: =50
+                    OnSelect: |-
+                        =Navigate('Order line detail',ScreenTransition.CoverRight);
+                        Set(varOrderline,ThisItem)
+                    Size: =//_VarGblAppFonts.Size.Subtitle
+                    TabIndex: =0
+                    Text: |-
+                        ="Total GST: "
+                    Tooltip: |-
+                        ="Discount: " & ThisItem.'Discount %'&"%"
+                    Width: =124
+                    X: =384
+                    Y: =209
+                    ZIndex: =20
+
+                Body1_214 As label:
+                    BorderColor: =RGBA(0, 18, 107, 1)
+                    Color: =RGBA(0, 0, 0, 1)
+                    DisabledColor: =RGBA(166, 166, 166, 1)
+                    DisabledFill: =//ColorFade(ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' ),80%)
+                    FocusedBorderThickness: =01
+                    Font: =//_VarGblAppFonts.Heading
+                    FontWeight: =FontWeight.Bold
+                    Height: =64
+                    OnSelect: |-
+                        =Navigate('Order line detail',ScreenTransition.CoverRight);
+                        Set(varOrderline,ThisItem)
+                    Size: =//_VarGblAppFonts.Size.Subtitle
+                    TabIndex: =0
+                    Text: |-
+                        ="List Price Total: " &"₹"& ThisItem.TotalUAmount
+                    Tooltip: |-
+                        ="Total Unit Price: " &"₹"& ThisItem.'Total Unit Price'
+                    Width: =225
+                    X: =384
+                    Y: =262
+                    ZIndex: =21
+
+                DiscountText_3 As text:
+                    AccessibleLabel: ="Discount"
+                    Align: =Align.Justify
+                    Color: =RGBA(0, 0, 0, 1)
+                    Default: |
+                        =//If(IsBlank(ThisItem.'Discount %'), 0 , ThisItem.'Discount %')
+                        ThisItem.'Discount %'
+                        //HDisc.Text
+                    DisabledBorderColor: =RGBA(166, 166, 166, 1)
+                    DisabledColor: =RGBA(166, 166, 166, 1)
+                    DisabledFill: =RGBA(244, 244, 244, 1)
+                    DisplayMode: =If(varEditLines=true,DisplayMode.Edit,DisplayMode.View)
+                    FocusedBorderThickness: =4
+                    Font: =//_VarGblAppFonts.Heading
+                    FontWeight: =FontWeight.Semibold
+                    Height: =45
+                    HoverBorderColor: =RGBA(0, 18, 107, 1)
+                    HoverColor: =RGBA(0, 0, 0, 1)
+                    HoverFill: =RGBA(186, 202, 226, 1)
+                    OnChange: |-
+                        =/*With(
+                            {
+                                itemPrice: LookUp(
+                                    OfflineProductPriceCollection,
+                                    'Product SKU'.'Product SKU' = ThisItem.'Product SKU'.'Product SKU' && 'Price list'.Name = varPricelist.Name
+                                ).'Ex-Factory'
+                            },
+                            Patch(
+                                'Order Lines',
+                                LookUp(
+                                    'Order Lines',
+                                    'Order Line ID' = ThisItem.'Order Line ID'
+                                ),
+                                {
+                                    Quantity: Value('Quantity text_2'.Text),
+                                    'Discount %': Value(DiscountText_3.Text),
+                                    'Total Unit Price': (itemPrice - (itemPrice * (Value(DiscountText_3.Text) / 100) )) * Value('Quantity text_2'.Text)
+                                }
+                            )
+                        );
+                        With(
+                            {
+                                QuoteLines: Filter(
+                                    'Order Lines',
+                                    'Order Header'.'Order Header' = varOrderData.'Order Header'
+                                )
+                            },
+                            Patch(
+                                'Order Header.S',
+                                LookUp(
+                                    'Order Header.S',
+                                    'Order Header' = ThisItem.'Order Header'.'Order Header'
+                                ),
+                                {
+                                    Quantity: Sum(
+                                        QuoteLines,
+                                        Quantity
+                                    ),
+                                    Discount: Sum(
+                                        QuoteLines,
+                                        'Discount %'
+                                    )/CountRows(QuoteLines),
+                                    'Total Bill Amount': Sum(
+                                        QuoteLines,
+                                        'Total Unit Price'
+                                    )
+                                }
+                            )
+                        );
+                        Notify(
+                            "Quote updated successfully",
+                            NotificationType.Success,
+                            2000
+                        )*/
+                    OnSelect: =Select(Parent)
+                    Size: =//_VarGblAppFonts.Size.Subtitle
+                    Width: =61
+                    X: |-
+                        =//245
+                        Parent.Width/2-Self.Width/2
+                    Y: =270
+                    ZIndex: =22
+
+                Label44 As label:
+                    BorderColor: =RGBA(0, 18, 107, 1)
+                    Color: =RGBA(0, 0, 0, 1)
+                    DisabledColor: =RGBA(166, 166, 166, 1)
+                    FontWeight: =FontWeight.Semibold
+                    Height: =35
+                    OnSelect: =Select(Parent)
+                    Text: =ThisItem.'Unit Price'
+                    Width: =163
+                    X: =122
+                    Y: =92
+                    ZIndex: =23
+
+                Label45 As label:
+                    BorderColor: =RGBA(0, 18, 107, 1)
+                    Color: =RGBA(0, 0, 0, 1)
+                    DisabledColor: =RGBA(166, 166, 166, 1)
+                    FontWeight: =FontWeight.Semibold
+                    Height: =53
+                    OnSelect: =Select(Parent)
+                    Text: =(Label44.Text * ThisItem.Quantity) * DiscountText_3.Text/100
+                    Width: =120
+                    X: =155
+                    Y: =163
+                    ZIndex: =24
+
+                Label46 As label:
+                    BorderColor: =RGBA(0, 18, 107, 1)
+                    Color: =RGBA(0, 0, 0, 1)
+                    DisabledColor: =RGBA(166, 166, 166, 1)
+                    FontWeight: =FontWeight.Semibold
+                    Height: =30
+                    OnSelect: =Select(Parent)
+                    Text: =ThisItem.GST //LookUp('HSN Masters',Name=LookUp(TaxN,TName=Name).TName).'GST %'
+                    Width: =124
+                    X: =480
+                    Y: =220
+                    ZIndex: =25
+
+                TextInput7 As text:
+                    BorderColor: =RGBA(0, 18, 107, 1)
+                    BorderThickness: =2
+                    Color: =RGBA(0, 0, 0, 1)
+                    Default: =ThisItem.Quantity
+                    DisabledBorderColor: =RGBA(166, 166, 166, 1)
+                    DisabledColor: =RGBA(166, 166, 166, 1)
+                    DisabledFill: =RGBA(244, 244, 244, 1)
+                    DisplayMode: =If(QuanEdit,DisplayMode.Edit,DisplayMode.View)
+                    FocusedBorderThickness: =4
+                    FontWeight: =FontWeight.Semibold
+                    Height: =25
+                    HoverBorderColor: =RGBA(0, 18, 107, 1)
+                    HoverColor: =RGBA(0, 0, 0, 1)
+                    HoverFill: =RGBA(186, 202, 226, 1)
+                    OnChange: |-
+                        =/*If(
+                            Self.Text <> "" And Value(Self.Text) <> RoundDown(
+                                Value(Self.Text),
+                                0
+                            ),
+                            Notify(
+                                "Please enter whole number",
+                                NotificationType.Information,
+                                1000
+                            );
+                            Reset(Self),
+                            If(
+                                Value(Self.Text) > 0,
+                                If(
+                                    IsBlank(
+                                        LookUp(
+                                            'Product Interesteds',
+                                            Lead.Leads = varLeadData.Leads && 'Product SKU'.'Product SKU' = ThisItem.'Product SKU'.'Product SKU'
+                                        )
+                                    ),
+                                    With(
+                                        {
+                                            itemPrice: LookUp(
+                                                OfflineProductPriceCollection,
+                                                'Product SKU'.'Product SKU' = ThisItem.'Product SKU'.'Product SKU' && 'Price list'.Name = varPricelist.Name
+                                            ).'Ex-Factory'
+                                        },
+                                        Patch(
+                                            'Product Interesteds',
+                                            Defaults('Product Interesteds'),
+                                            {
+                                                'Product SKU': LookUp(
+                                                    OfflineProductSKUCollection,
+                                                    'Product SKU' = ThisItem.'Product SKU'.'Product SKU'
+                                                ),
+                                                Quantity: Value(Self.Text),
+                                                Lead: LookUp(
+                                                    offlineLeadCollection,
+                                                    Leads = varLeadData.Leads
+                                                ),
+                                                Discount: Value(DiscountText_3.Text),
+                                                'Total Amount': (itemPrice - (itemPrice * (Value(DiscountText_3.Text) / 100) )) * Value(Self.Text)
+                                            }
+                                        );
+                                    );
+                                    ,
+                                    With(
+                                        {
+                                            itemPrice: LookUp(
+                                                OfflineProductPriceCollection,
+                                                'Product SKU'.'Product SKU' = ThisItem.'Product SKU'.'Product SKU' && 'Price list'.Name = varPricelist.Name
+                                            ).'Ex-Factory'
+                                        },
+                                        Patch(
+                                            'Product Interesteds',
+                                            LookUp(
+                                                'Product Interesteds',
+                                                Lead.Leads = varLeadData.Leads && 'Product SKU'.'Product SKU' = ThisItem.'Product SKU'.'Product SKU'
+                                            ),
+                                            {
+                                                Quantity: Value(Self.Text),
+                                                Discount: Value(DiscountText_3.Text),
+                                                'Total Amount': (itemPrice - (itemPrice * (Value(DiscountText_3.Text) / 100) )) * Value(Self.Text)
+                                            }
+                                        ); 
+                                    );//
+                                ),
+                                Notify(
+                                    "Please enter quantity.",
+                                    NotificationType.Warning,
+                                    700
+                                )
+                            )
+                        );
+                        
+                        Set(
+                                _VarQuoteQuanHeaderResponse,
+                                With(
+                                    {
+                                        QuoteLines: Filter(
+                                            'Product Interesteds',
+                                            Lead.Leads = varLeadData.Leads && ThisItem.'Order Header'.'Order ID'= varOrderData.'Order ID'
+                                        )
+                                    },
+                                    Patch(
+                                        'Order Header.S',
+                                        LookUp(
+                                        'Order Header.S',
+                                        'Order ID' = ThisItem.'Order Header'.'Order ID'),
+                                        {
+                                            'Total Bill Amount (new_totalbillamount)': Sum(
+                                                QuoteLines,
+                                                'Total Amount'
+                                            ),
+                                            Quantity: Sum(
+                                                QuoteLines,
+                                                Quantity
+                                            )
+                                        }
+                                        )
+                                )
+                        );
+                         /////////////       QuoteLine            ///////////////////////////
+                        If(
+                            !IsBlank(_VarQuoteQuanHeaderResponse),
+                            ForAll(
+                                Filter(
+                                    'Product Interesteds',
+                                    Lead.Leads = varLeadData.Leads && ThisItem.'Order Header'.'Order ID'= varOrderData.'Order ID'
+                                ) As ItemvarQuoteLine,
+                                Patch(
+                                    'Order Lines',
+                                    LookUp(
+                                        'Order Lines',
+                                        'Order Header'.'Order ID' = _VarQuoteQuanHeaderResponse.'Order ID' /* && 'Product SKU'.'Item Code'='Product Gallery_3'.Selected.'Product SKU'.'Item Code'*/
+                                   /* ), ////commet
+                                    {
+                                        //'Total Unit Price': ItemvarQuoteLine.'Total Amount',
+                                        Quantity: Value(Self.Text)
+                                    }
+                                );
+                                
+                            )
+                        );Notify(
+                                     "Quantity Updated",
+                                    NotificationType.Success,
+                                    2000
+                                );
+                                */
+                        
+                                //////////////////////////chage here/////
+                        /*If(
+                            Value(Self.Text) > 0,
+                            With(
+                                {
+                                    itemPrice: LookUp(
+                                        OfflineProductPriceCollection,
+                                        'Product SKU'.'Product SKU' = ThisItem.'Product SKU'.'Product SKU' && 'Price list'.Name = varPricelist.Name
+                                    ).'Ex-Factory'
+                                },
+                                Patch(
+                                    'Order Lines',
+                                    LookUp(
+                                        'Order Lines',
+                                        'Product SKU'.'Product SKU' = ThisItem.'Product SKU'.'Product SKU' && 'Order Header'.'Order ID' = ThisItem.'Order Header'.'Order ID'
+                                    ),
+                                    {
+                                        Quantity: Value(Self.Text)
+                                    }
+                                )
+                            );
+                            Notify(
+                                "Quantity Updated",
+                                NotificationType.Success,
+                                2000
+                            );
+                            With(
+                                {
+                                    QuoteeLines: Filter(
+                                        'Order Lines',
+                                        'Order Header'.'Order ID' = ThisItem.'Order Header'.'Order ID'
+                                    )
+                                },
+                                Patch(
+                                    'Order Header.S',
+                                    LookUp(
+                                        'Order Header.S',
+                                        'Order ID' = ThisItem.'Order Header'.'Order ID'
+                                    ),
+                                    {
+                                        Quantity: Sum(
+                                            QuoteeLines,
+                                            Quantity
+                                        ),
+                                        Discount: Sum(
+                                            QuoteeLines,
+                                            'Discount %'
+                                        ) / CountRows(QuoteeLines),
+                                        'Total Bill Amount (new_totalbillamount)': Sum(
+                                            QuoteeLines,
+                                            'LNet Price '
+                                        )
+                                    }
+                                )
+                            ),
+                            Notify(
+                                "Please Enter Quantity Greater Than 0",
+                                NotificationType.Error,
+                                2000
+                            )
+                        );*/
+                        
+                        If(
+                            Value(Self.Text) > 0,
+                            With(
+                                {
+                                    itemPrice: LookUp(
+                                        OfflineProductPriceCollection,
+                                          'Product SKU Price'.'Product SKU' = ThisItem.'Product SKU'.'Product SKU' && 'Price list'.Name = varPricelist.Name
+                                    ).'Ex-Factory'
+                                },
+                                Patch(
+                                    'Quote Line.S',
+                                    LookUp(
+                                       'Quote Line.S',
+                                        'Product SKU'.'Product SKU' = ThisItem.'Product SKU'.'Product SKU' && 'Quote Header'.'Quote ID' = ThisItem.'Quote Header'.'Quote ID'
+                                    ),
+                                    {
+                                        Quantity: Value(Self.Text)
+                                    }
+                                )
+                            );
+                            Notify(
+                                "Quantity Updated",
+                                NotificationType.Success,
+                                2000
+                            );
+                            With(
+                                {
+                                    QuoteeLines: Filter(
+                                        'Quote Line.S',
+                                        'Quote Header'.'Quote ID' = ThisItem.'Quote Header'.'Quote ID'
+                                    )
+                                },
+                                Patch(
+                                    'Quote Header.S',
+                                    LookUp(
+                                        'Quote Header.S',
+                                        'Quote ID' = ThisItem.'Quote Header'.'Quote ID'
+                                    ),
+                                    {
+                                        Quantity: Sum(
+                                            QuoteeLines,
+                                            Quantity
+                                        ),
+                                        'DiscountP %': Sum(
+                                            QuoteeLines,
+                                            'Discount %'
+                                        ) / CountRows(QuoteeLines),
+                                        'Total Price': Sum(
+                                            QuoteeLines,'Net Price'
+                                        )
+                                    }
+                                )
+                            );
+                                If(
+                            
+                                First(
+                                    Filter(
+                                        'Quote Header.S',
+                                      // Lead.Leads = varLeadData.Leads && 'Quote / Order' = 'Quote Order Choice'.Quote
+                                      'Quote ID' = _VarnewQuoteHeaderResponse.'Quote ID'
+                                    )
+                                ).'Quote ID'=ThisItem.'Quote Header'.'Quote ID',
+                            
+                                    Patch(
+                                        'Quote Header.S',
+                                      LookUp('Quote Header.S','Quote ID' = _VarnewQuoteHeaderResponse.'Quote ID'),
+                                      {
+                                          'Status (zx_status)': QuoteStatus.Activated
+                                      } 
+                                          ),
+                                          Patch(
+                                        'Quote Header.S',
+                                      LookUp('Quote Header.S','Quote ID' = _VarnewQuoteHeaderResponse.'Quote ID'),
+                                      {
+                                          'Status (zx_status)': QuoteStatus.Deactivated
+                                      } 
+                                          )
+                                          ),
+                            Notify(
+                                "Please Enter Quantity Greater Than 0",
+                                NotificationType.Error,
+                                2000
+                            )
+                        );
+                        
+                        //////////////////////////////////////////////////////////
+                        Set(
+                            QuanEdit,
+                            false
+                        )
+                    OnSelect: =Select(Parent)
+                    Width: =50
+                    X: =103
+                    Y: =220
+                    ZIndex: =26
+
+            Rectangle26_2 As rectangle:
+                BorderColor: =RGBA(0, 18, 107, 1)
+                Fill: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )
+                Height: =60
+                Width: =520
+                X: =50
+                Y: =872
+                ZIndex: =19
+
+            Label41_2 As label:
+                BorderColor: =RGBA(0, 18, 107, 1)
+                Color: =RGBA(255, 255, 255, 1)
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                FontWeight: =FontWeight.Bold
+                Height: =60
+                Size: =21
+                Text: ="Quote Terms"
+                Width: =302
+                X: =199
+                Y: =872
+                ZIndex: =20
+
+            Button31_1 As button:
+                DisabledBorderColor: =RGBA(166, 166, 166, 1)
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                DisabledFill: =//ColorFade(ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' ),70%)
+                DisplayMode: =DisplayMode.Disabled
+                Fill: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )
+                FontWeight: =FontWeight.Semibold
+                Height: =199
+                HoverColor: =RGBA(255, 255, 255, 1)
+                HoverFill: =ColorFade(RGBA(56, 96, 178, 1), -20%)
+                RadiusBottomLeft: =15
+                RadiusBottomRight: =15
+                RadiusTopLeft: =15
+                RadiusTopRight: =15
+                Size: =24
+                Text: =""
+                Width: =592
+                X: =16
+                Y: =969
+                ZIndex: =21
+
+            Label20_12 As label:
+                BorderColor: =RGBA(0, 18, 107, 1)
+                Color: =RGBA(0, 0, 0, 1)
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                FocusedBorderThickness: =1 //0
+                FontWeight: =FontWeight.Semibold
+                Height: =54
+                OnSelect: =//Select(Parent)
+                Size: =//_VarGblAppFonts.Size.Medium
+                TabIndex: =0 //-1
+                Text: |-
+                    ="Bill-To :"
+                Width: =130
+                X: =36
+                Y: =985
+                ZIndex: =22
+
+            Label20_13 As label:
+                BorderColor: =RGBA(0, 18, 107, 1)
+                Color: =RGBA(0, 0, 0, 1)
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                FocusedBorderThickness: =1 //0
+                FontWeight: =FontWeight.Semibold
+                Height: =54
+                OnSelect: =//Select(Parent)
+                Size: =//_VarGblAppFonts.Size.Medium
+                TabIndex: =0 //-1
+                Text: |-
+                    ="Ship-To :"
+                Width: =130
+                X: =313
+                Y: =985
+                ZIndex: =23
+
+            Label20_15 As label:
+                BorderColor: =RGBA(0, 18, 107, 1)
+                Color: =RGBA(0, 0, 0, 1)
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                FocusedBorderThickness: =1 //0
+                FontWeight: =FontWeight.Semibold
+                Height: =96
+                OnSelect: =//Select(Parent)
+                Size: =//_VarGblAppFonts.Size.Medium
+                TabIndex: =0 //-1
+                Text: |-
+                    ="Bill-To-Address :"
+                Width: =114
+                X: =36
+                Y: =1048
+                ZIndex: =25
+
+            Label20_16 As label:
+                BorderColor: =RGBA(0, 18, 107, 1)
+                Color: =RGBA(0, 0, 0, 1)
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                FocusedBorderThickness: =1 //0
+                FontWeight: =FontWeight.Semibold
+                Height: =96
+                OnSelect: =//Select(Parent)
+                Size: =//_VarGblAppFonts.Size.Medium
+                TabIndex: =0 //-1
+                Text: |-
+                    ="Ship-To-Address :"
+                Width: =147
+                X: =313
+                Y: =1048
+                ZIndex: =26
+
+            Label43 As label:
+                BorderColor: =RGBA(0, 18, 107, 1)
+                Color: =RGBA(0, 0, 0, 1)
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                Height: =42
+                Text: |-
+                    =//varOrderData.'Order From'.'Customer Name'
+                    _VarnewQuoteHeaderResponse.'Bill To'.'Customer Name'
+                Width: =208
+                X: =125
+                Y: =993
+                ZIndex: =27
+
+            Label43_1 As label:
+                BorderColor: =RGBA(0, 18, 107, 1)
+                Color: =RGBA(0, 0, 0, 1)
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                Height: =48
+                Text: |-
+                    =//varOrderData.'Order From'.'Customer Name'
+                    _VarnewQuoteHeaderResponse.'Ship To'.'Customer Name'
+                Width: =137
+                X: =421
+                Y: =991
+                ZIndex: =28
+
+            Label43_2 As label:
+                BorderColor: =RGBA(0, 18, 107, 1)
+                Color: =RGBA(0, 0, 0, 1)
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                Height: =90
+                Text: |-
+                    =//varOrderData.'Order From'.Address
+                    _VarnewQuoteHeaderResponse.'Bill To'.Address
+                Width: =137
+                X: =149
+                Y: =1048
+                ZIndex: =29
+
+            Label43_3 As label:
+                BorderColor: =RGBA(0, 18, 107, 1)
+                Color: =RGBA(0, 0, 0, 1)
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                Height: =90
+                Text: |-
+                    =//varOrderData.'Order From'.Address
+                    _VarnewQuoteHeaderResponse.'Ship To'.Address
+                Width: =134
+                X: =436
+                Y: =1048
+                ZIndex: =30
+
+            Icon24 As icon.Edit:
+                AccessibleLabel: ="Icon"
+                BorderColor: =RGBA(0, 18, 107, 1)
+                Color: =RGBA(255, 255, 255, 1)
+                DisabledBorderColor: =RGBA(166, 166, 166, 1)
+                DisabledColor: =RGBA(244, 244, 244, 1)
+                DisplayMode: |-
+                    =/*If(
+                        //IsBlank(
+                            First(
+                                Filter(
+                                    'Order Header.S',
+                                    'Order ID' = varOrderData.'Order ID'
+                                )
+                            ).'Order ID'='Orderline Gallery_3'.Selected.'Order Header'.'Order ID',
+                       // ),
+                        DisplayMode.Edit,
+                        DisplayMode.Disabled
+                    )*/
+                Height: =40
+                Icon: =Icon.Edit
+                OnSelect: =Set(varEdit,!varEdit)
+                TabIndex: =0 //-1
+                Width: =44
+                X: =526
+                Y: =27
+                ZIndex: =31
+
+            HDisc As text:
+                BorderColor: =RGBA(0, 18, 107, 1)
+                BorderThickness: =2
+                Color: =RGBA(0, 0, 0, 1)
+                Default: |-
+                    =//Text(varOrderData.'Discount %')
+                    _VarnewQuoteHeaderResponse.'DiscountP %'
+                DisabledBorderColor: =RGBA(166, 166, 166, 1)
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                DisabledFill: =RGBA(244, 244, 244, 1)
+                DisplayMode: |-
+                    =If(
+                        varEdit, DisplayMode.Edit, DisplayMode.View
+                    )
+                FocusedBorderThickness: =4
+                FontWeight: =FontWeight.Semibold
+                Height: =25
+                HoverBorderColor: =RGBA(0, 18, 107, 1)
+                HoverColor: =RGBA(0, 0, 0, 1)
+                HoverFill: =RGBA(186, 202, 226, 1)
+                OnChange: |
+                    =If(
+                        !IsBlank(HDisc.Text),
+                         Patch(
+                        'Quote Header.S',
+                        LookUp(
+                            'Quote Header.S',
+                            'Quote ID' = _VarnewQuoteHeaderResponse.'Quote ID'
+                        ),
+                        {'DiscountP %' : Value(HDisc.Text),
+                        Version: If(
+                                            IsBlank(
+                                                _VarnewQuoteHeaderResponse.Version
+                                            ),
+                                            1.0,
+                                            
+                                            Sum(_VarnewQuoteHeaderResponse.Version + 0.1)
+                                        )
+                        
+                        }
+                    );
+                        ForAll(
+                            Filter(
+                                OfflineQuoteLinCollection,
+                                 'Quote Header'.'Quote ID'= _VarnewQuoteHeaderResponse.'Quote ID'
+                            ) As LQID ,
+                            Patch(
+                                'Quote Line.S',
+                                LookUp(
+                                    'Quote Line.S',
+                                    'Quote Line ID' = LQID.'Quote Line ID'
+                                ),
+                                {
+                                    'Discount %': Value(HDisc.Text)
+                                }
+                            )
+                        );
+                    
+                      /*  Patch(
+                        'Order Header.S',
+                        LookUp(
+                            'Order Header.S',
+                            'Order ID' = varOrderData.new_orderid
+                        ),
+                        {'Discount %' : Value(HDisc.Text),
+                        'Quote Version': If(
+                                            IsBlank(
+                                                varOrderData.'Quote Version'
+                                            ),
+                                            1.0,
+                                            
+                                            Sum(varOrderData.'Quote Version' + 0.1)
+                                        ),
+                                        'Total Bill Amount (new_totalbillamount)':Sum(LookUp('Order Lines','Order Header'.'Order ID'=varOrderData.'Order ID').'LNet Price '),
+                                        Quantity: Sum(LookUp('Order Lines','Order Header'.'Order ID'=varOrderData.'Order ID').Quantity)
+                        
+                        }
+                    );*/
+                        
+                        ,Notify("Enter correct Discount")
+                    );
+                    Set(varEdit,false)
+                       
+                Width: =80
+                X: =460
+                Y: =256
+                ZIndex: =32
+
+            Icon5 As icon.Edit:
+                BorderColor: =RGBA(0, 18, 107, 1)
+                Color: =RGBA(255, 255, 255, 1)
+                DisabledBorderColor: =RGBA(166, 166, 166, 1)
+                DisabledColor: =RGBA(244, 244, 244, 1)
+                DisplayMode: |-
+                    =/*If(
+                        Sort(
+                                'Order Lines',
+                                'Created On',
+                                SortOrder.Descending
+                        ) = 'Orderline Gallery_3'.Selected.'Order Line ID',
+                        DisplayMode.Edit,
+                        DisplayMode.Disabled
+                    )*/
+                    //
+                    //LookUp('Order Lines','Order Line ID'= 'Orderline Gallery_3'.Selected.'Order Line ID')
+                    //--------
+                    
+                    /*If(
+                        //IsBlank(
+                            First(
+                                Filter(
+                                    'Order Header.S',
+                                    'Order ID' = varOrderData.'Order ID'
+                                )
+                            ).'Order ID'='Orderline Gallery_3'.Selected.'Order Header'.'Order ID',
+                       // ),
+                        DisplayMode.Edit,
+                        DisplayMode.Disabled
+                    )*/
+                Height: =40
+                Icon: =Icon.Edit
+                OnSelect: |
+                    =/*Set(
+                        ProdAddd,
+                        3
+                    );
+                    Navigate('Leads Detail Page');*/
+                    
+                    Set(crtQut,true);
+                Width: =44
+                X: =526
+                Y: =390
+                ZIndex: =33
+
+            Button38 As button:
+                DisabledBorderColor: =RGBA(166, 166, 166, 1)
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                DisabledFill: =RGBA(244, 244, 244, 1)
+                Fill: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )
+                FontWeight: =FontWeight.Semibold
+                Height: =60
+                HoverColor: =RGBA(255, 255, 255, 1)
+                HoverFill: =ColorFade(Self.Fill, -20%)
+                OnSelect: |-
+                    =If(
+                        CountRows(
+                            Filter(
+                                'Product Interested.S',
+                                Lead.Leads = varLeadData.zx_leadsid
+                            )
+                        ) = 0,
+                        Notify(
+                            "Please add products interested first",
+                            NotificationType.Information,
+                            2000
+                        );
+                        ,
+                        Set(
+                            _VarQuoteHeaderResponse,
+                            With(
+                                {
+                                    QuoteLines: Filter(
+                                        'Quote Header.S', //'Product Interesteds',
+                                        Lead.Leads = varLeadData.zx_leadsid && 'Quote ID' =_VarnewQuoteHeaderResponse.'Quote ID'
+                                    )
+                                },
+                                Patch(
+                                     'Order Header.S',
+                                    Defaults( 'Order Header.S'),
+                                    {
+                                        'Bill To': LookUp(
+                                            OfflinePartiesCollection,
+                                            'Customer Name' = varLeadData.zx_Party.'Customer Name'
+                                        ),
+                                        'Order Status': 'Order Status Choice'.Open,
+                                        Quantity: Sum(
+                                            QuoteLines,
+                                            Quantity
+                                        ),
+                                        'Discount%': Sum(
+                                            QuoteLines,
+                                            'DiscountP %' 
+                                        ),
+                                        'Total Price': Sum(
+                                            QuoteLines,'Total Price'
+                                        ),
+                                        'Quote / Order': 'Quote Order Choice'.Order,
+                                        Lead: LookUp(
+                                            offlineLeadCollection,
+                                            Leads = varLeadData.zx_leadsid
+                                        )
+                                       // GSTAmount:Sum(QuoteLines,GST)
+                                       /* 'Quote Version': If(
+                                            IsBlank(
+                                                LookUp(
+                                                    OfflineOrderHeaderCollection,
+                                                    Lead.Leads = varLeadData.Leads
+                                                )
+                                            ),
+                                            1.0,
+                                            (LookUp(
+                                                OfflineOrderHeaderCollection,
+                                                Lead.Leads = varLeadData.Leads
+                                            ).'Quote Version' + 0.1)
+                                        )*/
+                                    }
+                                );
+                            )
+                        );
+                        //Update lead value--------------------------------------
+                    Patch(
+                            'Leads.S',
+                            LookUp(
+                                'Leads.S',
+                                Leads = varLeadData.zx_leadsid
+                            ),
+                            {
+                                'Estimated Value': Round(
+                                    _VarQuoteHeaderResponse.'Total Price',
+                                    0
+                                )
+                            }
+                        );
+                        
+                    //__________________________________________________________________________________________________________________
+                    If(
+                            !IsBlank(_VarQuoteHeaderResponse),
+                            ForAll(
+                                Filter(
+                                    'Product Interested.S',
+                                    Lead.Leads = varLeadData.zx_leadsid
+                                ) As ItemOrderLine,
+                                Patch(
+                                    'Order Lines.S',
+                                    Defaults('Order Lines.S'),
+                                    {
+                                        'Order Header': LookUp(
+                                            'Order Header.S',
+                                            'Order ID' = _VarQuoteHeaderResponse.'Order ID'
+                                        ),
+                                        Product: LookUp(
+                                            OfflineProductCollection,
+                                            Product = LookUp(
+                                                OfflineProductSKUCollection,
+                                                'Product SKU' = ItemOrderLine.'Product SKU'.'Product SKU'
+                                            ).Product.Product
+                                        ),
+                                        'Product SKU': LookUp(
+                                            OfflineProductSKUCollection,
+                                            'Product SKU' = ItemOrderLine.'Product SKU'.'Product SKU'
+                                        ),
+                                        Variant: LookUp(
+                                            OfflineProductVariantCollection,
+                                            'Product Variants' = LookUp(
+                                                OfflineProductSKUCollection,
+                                                'Product SKU' = ItemOrderLine.'Product SKU'.'Product SKU'
+                                            ).'Product Variant'.'Product Variants'
+                                        ),
+                                        'Discount %': _VarQuoteHeaderResponse.'Discount%',
+                                        'Total Unit Price': ItemOrderLine.'Total Amount',
+                                        Quantity: ItemOrderLine.Quantity,
+                                        'Unit Price': LookUp(
+                                            OfflineProductPriceCollection,
+                                            'Product SKU Price'.'Product SKU' = LookUp(
+                                                OfflineProductSKUCollection,
+                                                'Product SKU' = ItemOrderLine.'Product SKU'.'Product SKU'
+                                            ).'Product SKU'
+                                        ).'Ex-Factory'
+                                    }
+                                )
+                            )
+                        );
+                        ClearCollect(
+                            OfflineOrderHeaderCollection,
+                            Filter(
+                                'Order Header.S',
+                                'Created By'.'Primary Email' = User().Email
+                            )
+                        );
+                        ClearCollect(
+                            OfflineOrderLineCollection,
+                            'Order Lines.S'
+                        );
+                        Notify(
+                            "Order has been created successfully",
+                            NotificationType.Success,
+                            3000
+                        );
+                        //_________________________________________________________________________________________________________________________________________________________________________Invoice
+                        //Invoice Header Logic--------------------------------------------------------------------------
+                    Set(
+                            _varInvoiceResponse,
+                            Patch(
+                                'Invoice.S',
+                                Defaults('Invoice.S'),
+                                {
+                                    'Order No.': LookUp(
+                                        'Order Header.S',
+                                        'Order ID' = _VarQuoteHeaderResponse.'Order ID'            ),
+                                    Party: LookUp(
+                                        OfflinePartiesCollection,
+                                        'Customer Name' = varParty
+                                    ),
+                                    'Total Discount': _VarQuoteHeaderResponse.'Discount ',
+                                    'Total Amount': _VarQuoteHeaderResponse.'Total Price',
+                                  //  CGST: _VarQuoteHeaderResponse.CGST,
+                                 //   SGST: _VarQuoteHeaderResponse.SGST,
+                                  //  IGST: _VarQuoteHeaderResponse.IGST,
+                                   // 'Gst Amount':_VarQuoteHeaderResponse.GSTAmount,
+                                    Lead: LookUp(
+                                        offlineLeadCollection,
+                                        Leads = varLeadData.zx_leadsid               )
+                                }
+                            )
+                        );
+                        
+                    //Invoice Line Logic:-----------------------------------------------------------------------------------
+                    If(
+                            !IsBlank(_varInvoiceResponse),
+                            ForAll(
+                                colPrimaryCart As InvoiceLine,
+                                Patch(
+                                    'Invoice Line.S',
+                                    Defaults('Invoice Line.S'),
+                                    {
+                                        'Unit Price': InvoiceLine.baseUnitPrice,
+                                     //   Discount: InvoiceLine.disc,
+                                        'Product SKU': LookUp(
+                                            OfflineProductSKUCollection,
+                                            'Product SKU' = InvoiceLine.productSKU
+                                        ),
+                                        Invoice: LookUp(
+                                            'Invoice.S',
+                                            'Invoice Id' = _varInvoiceResponse.'Invoice Id'
+                                        ),
+                                        Quantity: Value(InvoiceLine.quantity)
+                                       /* 'Discounted Base Price': Sum(
+                                            colPrimaryCart,
+                                            (baseUnitPrice - (baseUnitPrice * (discount / 100))) * quantity
+                                        )*/
+                                    }
+                                )
+                            )
+                        );
+                        ClearCollect(
+                            offlineLeadCollection,
+                            'Leads.S'
+                        );
+                        Notify(
+                            "Invoice has been created successfully. Your Invoice ID is " & _varInvoiceResponse.'Invoice Id',
+                            NotificationType.Success,
+                            3000
+                        );
+                        Navigate(
+                            'Leads Detail Page',
+                            ScreenTransition.CoverRight
+                        );
+                        ClearCollect(
+                            offlineLeadCollection,
+                            'Leads.S'
+                        )
+                    )
+                Size: =16
+                Text: ="Convert To Order"
+                Width: =280
+                X: =Parent.Width/2-Self.Width/2
+                Y: =1264
+                ZIndex: =34
+
+            Container15 As groupContainer.manualLayoutContainer:
+                Fill: =RGBA(255, 255, 255, 1)
+                Height: =362
+                Visible: =If(crtQut,true)
+                Width: =Parent.Width
+                Y: =466
+                ZIndex: =35
+
+                Button39 As button:
+                    DisabledBorderColor: =RGBA(166, 166, 166, 1)
+                    DisabledColor: =RGBA(166, 166, 166, 1)
+                    DisabledFill: =RGBA(244, 244, 244, 1)
+                    Fill: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )
+                    FontWeight: =FontWeight.Semibold
+                    Height: =70
+                    HoverColor: =RGBA(255, 255, 255, 1)
+                    HoverFill: =ColorFade(Self.Fill, -20%)
+                    OnSelect: |-
+                        =Set(
+                            ProdAddd,
+                            3
+                        );
+                        Navigate('Leads Detail Page');
+                        Set(crtQut,false)
+                    Size: =20
+                    Text: ="Add Product"
+                    Width: =280
+                    X: =17
+                    Y: =130
+                    ZIndex: =1
+
+                Button40 As button:
+                    DisabledBorderColor: =RGBA(166, 166, 166, 1)
+                    DisabledColor: =RGBA(166, 166, 166, 1)
+                    DisabledFill: =RGBA(244, 244, 244, 1)
+                    Fill: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )
+                    FontWeight: =FontWeight.Semibold
+                    Height: =70
+                    HoverColor: =RGBA(255, 255, 255, 1)
+                    HoverFill: =ColorFade(Self.Fill, -20%)
+                    OnSelect: |-
+                        =Set(crtQut,false);
+                        Set(QuanEdit,true)
+                    Size: =20
+                    Text: ="Add Quantity"
+                    Width: =280
+                    X: =323
+                    Y: =130
+                    ZIndex: =2
+
+                Icon26_1 As icon.CancelBadge:
+                    BorderColor: =RGBA(0, 18, 107, 1)
+                    Color: =RGBA(0, 18, 107, 1)
+                    DisabledBorderColor: =RGBA(166, 166, 166, 1)
+                    DisabledColor: =RGBA(244, 244, 244, 1)
+                    Height: =50
+                    HoverFill: =ColorFade(Self.Fill, -20%)
+                    Icon: =Icon.CancelBadge
+                    OnSelect: =Set(crtQut,false);
+                    Width: =40
+                    X: =559
+                    Y: =6
+                    ZIndex: =3
+
+                Rectangle30_1 As rectangle:
+                    BorderColor: =RGBA(0, 18, 107, 1)
+                    Fill: =RGBA(241, 244, 249, 1)
+                    Height: =4
+                    Width: =Parent.Width
+                    ZIndex: =4
+
+                Rectangle30_2 As rectangle:
+                    BorderColor: =RGBA(0, 18, 107, 1)
+                    Fill: =RGBA(241, 244, 249, 1)
+                    Height: =4
+                    Width: =Parent.Width
+                    Y: =357
+                    ZIndex: =5
+
+            Button41_6 As button:
+                DisabledBorderColor: =RGBA(166, 166, 166, 1)
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                DisabledFill: =RGBA(244, 244, 244, 1)
+                Fill: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )
+                FontWeight: =FontWeight.Semibold
+                Height: =60
+                HoverColor: =RGBA(255, 255, 255, 1)
+                HoverFill: =ColorFade(RGBA(56, 96, 178, 1), -20%)
+                OnSelect: |
+                    =/*ClearCollect(
+                        colData,
+                        Filter(
+                            'Order Lines',
+                            'Order Header'.'Order ID' = varOrderData.'Order ID'
+                        )
+                    );*/
+                    
+                    ///////////////////Chage//
+                    If(// none
+                        IsBlank(QuanEdit) && IsBlank(varEdit),
+                        ClearCollect(//collection storing lines which have discount >0
+                            colDataquoteslines,
+                            Filter(
+                                'Quote Line.S',
+                                'Quote Header'.'Quote ID' = _VarnewQuoteHeaderResponse.'Quote ID' && 'Discount %' > 0
+                            )
+                        );
+                        If(// check if no discount line & header//header discout %
+                            IsBlank(_VarnewQuoteHeaderResponse.'DiscountP %') && CountRows(colDataquoteslines) = 0,
+                            Patch(
+                                'Quote Header.S',
+                                LookUp(
+                                    'Quote Header.S',
+                                    'Quote ID' = _VarnewQuoteHeaderResponse.'Quote ID'
+                                ),
+                                {'Approval Status': ApprovalChoiceQuoteHeader.Approved}
+                            );
+                            Set(
+                                approveduser,
+                                true
+                            );
+                            Notify(
+                                "No discount on both, you can proceed",
+                                NotificationType.Success,
+                                3000
+                            ),
+                            Patch(
+                               'Quote Header.S',
+                                LookUp(
+                                    'Quote Header.S',
+                                    'Quote ID' = _VarnewQuoteHeaderResponse.'Quote ID'
+                                ),
+                                {'Approval Status': ApprovalChoiceQuoteHeader.Rejected}
+                            );
+                            Set(// if discount exist throw error
+                                approveduser,
+                                false
+                            );
+                            Notify(
+                                "You cannot add discount, make discount 0",
+                                NotificationType.Error,
+                                3000
+                            )
+                        ),
+                        If(// if header only
+                            IsBlank(QuanEdit) && !IsBlank(varEdit),
+                            ClearCollect(
+                                colDataquoteslines,
+                                Filter(
+                                    'Quote Line.S',
+                                    'Quote Header'.'Quote ID' = _VarnewQuoteHeaderResponse.'Quote ID' && 'Discount %' > 0
+                                )
+                            );
+                            If(//header discount contain value & line do not//add order data discout%
+                                !IsBlank(_VarnewQuoteHeaderResponse.'DiscountP %') && CountRows(colDataquoteslines) = 0,
+                                Set(// getting user discount
+                                    userdis,
+                                    LookUp(
+                                        'Discount limit.S',
+                                        usersid.'Full Name' = _VarnewQuoteHeaderResponse.'Owning User'.'Full Name'
+                                    ).'User Discounts'
+                                );
+                                Set(// getting manager discount
+                                    mandis,
+                                    LookUp(
+                                        'Discount limit.S',
+                                        usersid.'Full Name' = _VarnewQuoteHeaderResponse.'Owning User'.'Full Name'
+                                    ).'Manager Discounts'
+                                );
+                                If(// compare where the discount lies, in user range or manager or out of range
+                                    _VarnewQuoteHeaderResponse.'DiscountP %' <= userdis,
+                                    Patch(
+                                        'Quote Header.S',
+                                        LookUp(
+                                            'Quote Header.S',
+                                            'Quote ID' = _VarnewQuoteHeaderResponse.'Quote ID'
+                                        ),
+                                        {'Approval Status': ApprovalChoiceQuoteHeader.Approved}
+                                    );
+                                    Set(
+                                        approveduser,
+                                        true
+                                    );
+                                    Notify(
+                                        "Discount on header only, within user range, you can proceed",
+                                        NotificationType.Success,
+                                        3000
+                                    ),
+                                    If(
+                                        mandis >= _VarnewQuoteHeaderResponse.'DiscountP %' && _VarnewQuoteHeaderResponse.'DiscountP %' > userdis,
+                                        Patch(
+                                            'Quote Header.S',
+                                            LookUp(
+                                                'Quote Header.S',
+                                                'Quote ID' = _VarnewQuoteHeaderResponse.'Quote ID'
+                                            ),{'Approval Status': ApprovalChoiceQuoteHeader.'Pending for Approval'}
+                                          //  {'Approval Status': Approval Status Choice'.'Pending For Approval'}
+                                        );
+                                        Set(
+                                            approveduser,
+                                            true
+                                        );
+                                        Notify(
+                                            "Discount on header only, but out of user range, although within manager range, sending approval request",
+                                            NotificationType.Success,
+                                            3000
+                                        );
+                                        /*approvalflow1.Run(// approve or reject
+                                            varOrderData.Discount,
+                                            "sahil.sharma@zoxima.com",
+                                            varOrderData.'Order ID'
+                                        ) */
+                                    );
+                                    If(
+                                        mandis < _VarnewQuoteHeaderResponse.'DiscountP %',
+                                        Patch(
+                                            'Quote Header.S',
+                                            LookUp(
+                                                'Quote Header.S',
+                                                'Quote ID' = _VarnewQuoteHeaderResponse.'Quote ID'
+                                            ),
+                                            {'Approval Status': ApprovalChoiceQuoteHeader.Rejected}
+                                        );
+                                        Set(
+                                            approveduser,
+                                            false
+                                        );
+                                        Notify(
+                                            "Discount on header only, but out of manager range as well, cannot send request",
+                                            NotificationType.Success,
+                                            3000
+                                        )
+                                    )
+                                ),//CountRows(colDataquoteslines) = 0,
+                                If(
+                                    IsBlank(_VarnewQuoteHeaderResponse.'DiscountP %'),
+                                    Patch(
+                                        'Quote Header.S',
+                                        LookUp(
+                                            'Quote Header.S',
+                                            'Quote ID' = _VarnewQuoteHeaderResponse.'Quote ID'
+                                        ),
+                                        {'Approval Status': ApprovalChoiceQuoteHeader.Approved}
+                                    );
+                                    Set(
+                                        approveduser,
+                                        true
+                                    );
+                                    Notify(
+                                        "No discount there, although user can provide discount in header, APPROVED",
+                                        NotificationType.Success,
+                                        3000
+                                    )
+                                );
+                                If(
+                                    CountRows(colDataquoteslines) > 0,
+                                    Patch(
+                                        'Quote Header.S',
+                                        LookUp(
+                                            'Quote Header.S',
+                                            'Quote ID' = _VarnewQuoteHeaderResponse.'Quote ID'
+                                        ),
+                                        {'Approval Status': ApprovalChoiceQuoteHeader.Rejected}
+                                    );
+                                    Set(// if lines also exist other than header
+                                        approveduser,
+                                        false
+                                    );
+                                    Notify(
+                                        "Discount on line, you can only give on header, please modify",
+                                        NotificationType.Error,
+                                        3000
+                                    )
+                                )
+                            ),
+                            Patch(
+                                'Quote Header.S',
+                                LookUp(
+                                    'Quote Header.S',
+                                    'Quote ID' = _VarnewQuoteHeaderResponse.'Quote ID'
+                                ),
+                                {'Approval Status': ApprovalChoiceQuoteHeader.Rejected}
+                            );
+                            Set(
+                                approveduser,
+                                false
+                            );
+                            Notify(
+                                "Discount on line not allowed, please modify",
+                                NotificationType.Error,
+                                3000
+                            )
+                        );
+                        ////
+                    If(//line only
+                            !IsBlank(QuanEdit) && IsBlank(varEdit),
+                            ClearCollect(
+                                colDataquoteslines,
+                                Filter(
+                                    'Quote Line.S',
+                                    'Quote Header'.'Quote ID' = _VarnewQuoteHeaderResponse.'Quote ID' && 'Discount %' > 0
+                                )
+                            );
+                            If(//line discount contain value & header do not
+                                IsBlank(_VarnewQuoteHeaderResponse.'DiscountP %') && CountRows(colDataquoteslines) > 0,
+                                Notify(
+                                    "Discount on header only, but out",
+                                    NotificationType.Success,
+                                    3000
+                                );
+                                ClearCollect(
+                                    orderlinefilter,
+                                    Filter(
+                                        'Quote Line.S',
+                                        'Quote Header'.'Quote ID' = _VarnewQuoteHeaderResponse.'Quote ID'
+                                    )
+                                );
+                                ClearCollect(
+                                    linemail,
+                                    ForAll(
+                                        orderlinefilter As abc,
+                                        LookUp(
+                                            'Product.S',
+                                            'Product Name' = abc.Product.'Product Name').'Product Code';  ///userdiscount
+                                        LookUp(
+                                            'Product.S',
+                                            'Product Name' = abc.Product.'Product Name' 
+                                        ).Product; ////managerdiscount
+                                        abc.'Discount Amount';
+                                        abc.Product.'Product Name';
+                                        "valueok" = "1"
+                                    );
+                                    Notify(
+                                        "linemail",
+                                        NotificationType.Success,
+                                        3000
+                                    )
+                                    ////
+                                ),
+                                If(
+                                    !IsBlank(_VarnewQuoteHeaderResponse.'DiscountP %'),
+                                    Patch(
+                                        'Quote Header.S',
+                                        LookUp(
+                                            'Quote Header.S',
+                                            'Quote ID' = _VarnewQuoteHeaderResponse.'Quote ID'
+                                        ),
+                                        {'Approval Status': ApprovalChoiceQuoteHeader.Rejected}
+                                    );
+                                    Set(
+                                        approveduser,
+                                        false
+                                    );
+                                    Notify(
+                                        "There is a discount on header",
+                                        NotificationType.Error,
+                                        3000
+                                    )
+                                );
+                                If(
+                                    CountRows(colDataquoteslines) = 0,
+                                    Notify(
+                                        "Approved, although you can provide discount on line",
+                                        NotificationType.Success,
+                                        3000
+                                    );
+                                    Patch(
+                                        'Quote Header.S',
+                                        LookUp(
+                                            'Quote Header.S',
+                                            'Quote ID' = _VarnewQuoteHeaderResponse.'Quote ID'
+                                        ),
+                                        {'Approval Status': ApprovalChoiceQuoteHeader.Approved}
+                                    );
+                                    Set(
+                                        approveduser,
+                                        true
+                                    );
+                                )
+                            ),
+                            Patch(
+                                'Quote Header.S',
+                                LookUp(
+                                    'Quote Header.S',
+                                    'Quote ID' = _VarnewQuoteHeaderResponse.'Quote ID'
+                                ),
+                                {'Approval Status': ApprovalChoiceQuoteHeader.Rejected}
+                            );
+                            Set(
+                                approveduser,
+                                false
+                            );
+                            Notify(
+                                "Discount on header is not permitted, Please Modify",
+                                NotificationType.Error,
+                                2000
+                            )
+                        )
+                    )
+                Size: =16
+                Text: ="Submit"
+                Width: =280
+                X: =Parent.Width/2-Self.Width/2
+                Y: =1366
+                ZIndex: =36
+

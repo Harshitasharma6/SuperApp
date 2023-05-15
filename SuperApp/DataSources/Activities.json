@@ -1,0 +1,105 @@
+[
+  {
+    "CdsFCBContext": "{\"FileType\":true,\"ImageExternalStorage\":true}",
+    "EntitySetName": "zx_activities",
+    "IsHidden": false,
+    "IsSampleData": false,
+    "IsWritable": true,
+    "LogicalName": "zx_activity",
+    "MaxGetRowsCount": 500,
+    "Name": "Activities",
+    "NativeCDSDataSourceInfoNameMapping": {
+      "_ownerid_value": "Owner",
+      "createdby": "Created By",
+      "createdon": "Created On",
+      "createdonbehalfby": "Created By (Delegate)",
+      "importsequencenumber": "Import Sequence Number",
+      "modifiedby": "Modified By",
+      "modifiedon": "Modified On",
+      "modifiedonbehalfby": "Modified By (Delegate)",
+      "overriddencreatedon": "Record Created On",
+      "owningbusinessunit": "Owning Business Unit",
+      "owningteam": "Owning Team",
+      "owninguser": "Owning User",
+      "statecode": "Status",
+      "statuscode": "Status Reason",
+      "timezoneruleversionnumber": "Time Zone Rule Version Number",
+      "utcconversiontimezonecode": "UTC Conversion Time Zone Code",
+      "versionnumber": "Version Number",
+      "zx_activity_AsyncOperations": "System Jobs",
+      "zx_activity_BulkDeleteFailures": "Bulk Delete Failures",
+      "zx_activity_DuplicateBaseRecord": "Duplicate Records (zx_activity_DuplicateBaseRecord)",
+      "zx_activity_DuplicateMatchingRecord": "Duplicate Records (zx_activity_DuplicateMatchingRecord)",
+      "zx_activity_MailboxTrackingFolders": "Mailbox Auto Tracking Folders",
+      "zx_activity_PrincipalObjectAttributeAccesses": "Field Sharing",
+      "zx_activity_ProcessSession": "Process Sessions",
+      "zx_activity_SyncErrors": "Sync Errors",
+      "zx_activityid": "Activity",
+      "zx_activityoutcome": "Activity Outcome",
+      "zx_activitytype": "Activity Type",
+      "zx_Contact": "Contact",
+      "zx_Customer": "Customer",
+      "zx_date": "Date",
+      "zx_duration": "Duration",
+      "zx_name": "Name",
+      "zx_remark": "Remark",
+      "zx_zx_leadactivities_Activity_zx_activity": "Lead Activities.S"
+    },
+    "PreferredName": "Activities",
+    "Type": "NativeCDSDataSourceInfo"
+  },
+  {
+    "DisplayName": "Activities (Views)",
+    "Name": "_zx_activity_views",
+    "RelatedEntityName": "Activities",
+    "TrimmedViewName": true,
+    "Type": "ViewInfo",
+    "ViewInfoNameMapping": {
+      "6fb53b5f-edc5-43bf-bef7-fea6c7bd6ca6": "Active Activities",
+      "8328802f-bca8-4359-9107-5cdb560fb4f3": "Activity Associated View",
+      "a79b94de-341e-441a-a558-bda354bb908d": "Activity Advanced Find View",
+      "f91dd3d9-3f4d-4e28-ab47-d0766fb4349b": "Inactive Activities",
+      "ff956194-fb45-4ead-9a23-eb525a9298b1": "Activity Lookup View"
+    }
+  },
+  {
+    "DisplayName": "Status (Activities)",
+    "Name": "zx_activity_statecode",
+    "OptionSetInfoNameMapping": {
+      "0": "Active",
+      "1": "Inactive"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "statecode",
+        "OptionSetReferenceEntityName": "Activities"
+      }
+    },
+    "OptionSetTypeKey": "StateType",
+    "RelatedColumnInvariantName": "statecode",
+    "RelatedEntityName": "Activities",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Status Reason (Activities)",
+    "Name": "zx_activity_statuscode",
+    "OptionSetInfoNameMapping": {
+      "1": "Active",
+      "2": "Inactive"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "statuscode",
+        "OptionSetReferenceEntityName": "Activities"
+      }
+    },
+    "OptionSetTypeKey": "StatusType",
+    "RelatedColumnInvariantName": "statuscode",
+    "RelatedEntityName": "Activities",
+    "Type": "OptionSetInfo"
+  }
+]

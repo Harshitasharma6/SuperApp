@@ -1,0 +1,114 @@
+[
+  {
+    "CdsFCBContext": "{\"FileType\":true,\"ImageExternalStorage\":true}",
+    "EntitySetName": "zx_invoicelines",
+    "IsHidden": false,
+    "IsSampleData": false,
+    "IsWritable": true,
+    "LogicalName": "zx_invoiceline",
+    "MaxGetRowsCount": 500,
+    "Name": "Invoice Line.S",
+    "NativeCDSDataSourceInfoNameMapping": {
+      "_ownerid_value": "Owner",
+      "createdby": "Created By",
+      "createdon": "Created On",
+      "createdonbehalfby": "Created By (Delegate)",
+      "exchangerate": "Exchange Rate",
+      "importsequencenumber": "Import Sequence Number",
+      "modifiedby": "Modified By",
+      "modifiedon": "Modified On",
+      "modifiedonbehalfby": "Modified By (Delegate)",
+      "overriddencreatedon": "Record Created On",
+      "owningbusinessunit": "Owning Business Unit",
+      "owningteam": "Owning Team",
+      "owninguser": "Owning User",
+      "statecode": "Status",
+      "statuscode": "Status Reason",
+      "timezoneruleversionnumber": "Time Zone Rule Version Number",
+      "transactioncurrencyid": "Currency",
+      "utcconversiontimezonecode": "UTC Conversion Time Zone Code",
+      "versionnumber": "Version Number",
+      "zx_cess": "CESS",
+      "zx_cess_base": "CESS (Base)",
+      "zx_cgst": "CGST",
+      "zx_cgst_base": "CGST (Base)",
+      "zx_discount": "Discount",
+      "zx_discount_base": "Discount (Base)",
+      "zx_discountedbaseprice": "Discounted Base Price",
+      "zx_igst": "IGST",
+      "zx_igst_base": "IGST (Base)",
+      "zx_Invoice": "Invoice",
+      "zx_invoiceline_AsyncOperations": "System Jobs",
+      "zx_invoiceline_BulkDeleteFailures": "Bulk Delete Failures",
+      "zx_invoiceline_DuplicateBaseRecord": "Duplicate Records (zx_invoiceline_DuplicateBaseRecord)",
+      "zx_invoiceline_DuplicateMatchingRecord": "Duplicate Records (zx_invoiceline_DuplicateMatchingRecord)",
+      "zx_invoiceline_MailboxTrackingFolders": "Mailbox Auto Tracking Folders",
+      "zx_invoiceline_PrincipalObjectAttributeAccesses": "Field Sharing",
+      "zx_invoiceline_ProcessSession": "Process Sessions",
+      "zx_invoiceline_SyncErrors": "Sync Errors",
+      "zx_invoicelineid": "Invoice Line",
+      "zx_name": "Invoice Line Id",
+      "zx_ProductSKU": "Product SKU",
+      "zx_quantity": "Quantity",
+      "zx_sgst": "SGST",
+      "zx_sgst_base": "SGST (Base)",
+      "zx_unitprice": "Unit Price"
+    },
+    "PreferredName": "Invoice Line.S",
+    "Type": "NativeCDSDataSourceInfo"
+  },
+  {
+    "DisplayName": "Invoice Line.S (Views)",
+    "Name": "_zx_invoiceline_views",
+    "RelatedEntityName": "Invoice Line.S",
+    "TrimmedViewName": true,
+    "Type": "ViewInfo",
+    "ViewInfoNameMapping": {
+      "3441f70a-f7e1-4e72-b2f4-42c6d9277a01": "Inactive Invoice Lines",
+      "513d88ea-aff7-4503-8057-f5d54d70adde": "Invoice Line Associated View",
+      "543a2611-784c-4a77-be32-31a8ae8f310c": "Active Invoice Lines",
+      "8b33c655-0286-4ad2-b6df-8b16af015923": "Invoice Line Advanced Find View",
+      "94838a75-3b3c-46de-931d-c326f1db6254": "Invoice Line Lookup View"
+    }
+  },
+  {
+    "DisplayName": "Status (Invoice Line.S)",
+    "Name": "zx_invoiceline_statecode",
+    "OptionSetInfoNameMapping": {
+      "0": "Active",
+      "1": "Inactive"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "statecode",
+        "OptionSetReferenceEntityName": "Invoice Line.S"
+      }
+    },
+    "OptionSetTypeKey": "StateType",
+    "RelatedColumnInvariantName": "statecode",
+    "RelatedEntityName": "Invoice Line.S",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Status Reason (Invoice Line.S)",
+    "Name": "zx_invoiceline_statuscode",
+    "OptionSetInfoNameMapping": {
+      "1": "Active",
+      "2": "Inactive"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "statuscode",
+        "OptionSetReferenceEntityName": "Invoice Line.S"
+      }
+    },
+    "OptionSetTypeKey": "StatusType",
+    "RelatedColumnInvariantName": "statuscode",
+    "RelatedEntityName": "Invoice Line.S",
+    "Type": "OptionSetInfo"
+  }
+]
