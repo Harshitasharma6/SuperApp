@@ -23,6 +23,8 @@
                     Title: "Info",
                     Id:1
                 },
+                { Title: "Info 2",
+                    Id:11},
                 {
                     Title: "Activities",
                     Id:2
@@ -96,7 +98,7 @@
             =//If('Dashboard Toptab_2'.Selected.Id=2 ,true,false)
             If(ProdAddd=2 ,true,false)
         Width: ='Lead Detail'.Width
-        Y: =70
+        Y: =71
         ZIndex: =2
 
         "'Activity gallery' As gallery.galleryVertical":
@@ -4245,91 +4247,1468 @@
             Y: =149
             ZIndex: =12
 
-    Container4_11 As groupContainer.manualLayoutContainer:
-        Height: =277
-        Visible: =varRemarkVisible
-        Width: =455
-        X: =93
-        Y: =363
+    Button33_10 As button:
+        DisabledBorderColor: =RGBA(166, 166, 166, 1)
+        DisabledColor: =RGBA(166, 166, 166, 1)
+        DisabledFill: =RGBA(255, 255, 255, 1)
+        DisplayMode: =DisplayMode.Disabled
+        Fill: =RGBA(0, 0, 0, 0)
+        FontWeight: =FontWeight.Semibold
+        Height: =60
+        HoverColor: =RGBA(255, 255, 255, 1)
+        HoverFill: =ColorFade(RGBA(56, 96, 178, 1), -20%)
+        RadiusBottomLeft: =15
+        RadiusBottomRight: =15
+        RadiusTopLeft: =15
+        RadiusTopRight: =15
+        Size: =24
+        Text: =""
+        Width: =530
+        X: =55
+        Y: =123
         ZIndex: =9
 
-        Rectangle29 As rectangle:
-            BorderColor: =RGBA(0, 0, 0, 1)
-            BorderThickness: =2
-            Fill: =RGBA(255, 255, 255, 1)
-            Height: =Parent.Height
+    TextInput5_1 As text:
+        AccessibleLabel: ="Text Input"
+        BorderStyle: =BorderStyle.None
+        BorderThickness: =0
+        Color: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Text Primary Color").'Default Value') //_VarGblAppColors.textbgbutton
+        Default: =""
+        DisabledBorderColor: =RGBA(166, 166, 166, 1)
+        DisabledColor: =RGBA(166, 166, 166, 1)
+        DisabledFill: =RGBA(244, 244, 244, 1)
+        FocusedBorderThickness: =4
+        Height: =50
+        HintText: =""
+        HoverBorderColor: =//RGBA(0, 18, 107, 1)
+        HoverColor: =RGBA(0, 0, 0, 1)
+        HoverFill: =//RGBA(186, 202, 226, 1)
+        PaddingTop: =0
+        Size: =18
+        Width: =500
+        X: =70
+        Y: =130
+        ZIndex: =10
+
+    Label23_16 As label:
+        BorderColor: =RGBA(0, 18, 107, 1)
+        Color: |-
+            =ColorValue(LookUp(c_EnvironmentVariable, 'Display Name'="Button Fill").'Default Value')
+            
+            //RGBA(0, 0, 0, 1)
+        DisabledColor: =RGBA(166, 166, 166, 1)
+        Fill: =RGBA(255, 255, 255, 1)
+        FontWeight: =FontWeight.Semibold
+        Size: =15
+        Text: ="Lead Id"
+        Width: =100
+        X: =100
+        Y: =103
+        ZIndex: =11
+
+    Button33_11 As button:
+        DisabledBorderColor: =RGBA(166, 166, 166, 1)
+        DisabledColor: =RGBA(166, 166, 166, 1)
+        DisabledFill: =RGBA(255, 255, 255, 1)
+        DisplayMode: =DisplayMode.Disabled
+        Fill: =RGBA(0, 0, 0, 0)
+        FontWeight: =FontWeight.Semibold
+        Height: =60
+        HoverColor: =RGBA(255, 255, 255, 1)
+        HoverFill: =ColorFade(RGBA(56, 96, 178, 1), -20%)
+        RadiusBottomLeft: =15
+        RadiusBottomRight: =15
+        RadiusTopLeft: =15
+        RadiusTopRight: =15
+        Size: =24
+        Text: =""
+        Width: =530
+        X: =55
+        Y: =221
+        ZIndex: =12
+
+    TextInput5_2 As text:
+        AccessibleLabel: ="Text Input"
+        BorderStyle: =BorderStyle.None
+        BorderThickness: =0
+        Color: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Text Primary Color").'Default Value') //_VarGblAppColors.textbgbutton
+        Default: =""
+        DisabledBorderColor: =RGBA(166, 166, 166, 1)
+        DisabledColor: =RGBA(166, 166, 166, 1)
+        DisabledFill: =RGBA(244, 244, 244, 1)
+        FocusedBorderThickness: =4
+        Height: =50
+        HintText: =""
+        HoverBorderColor: =//RGBA(0, 18, 107, 1)
+        HoverColor: =RGBA(0, 0, 0, 1)
+        HoverFill: =//RGBA(186, 202, 226, 1)
+        PaddingTop: =0
+        Size: =18
+        Width: =500
+        X: =70
+        Y: =228
+        ZIndex: =13
+
+    Label23_17 As label:
+        BorderColor: =RGBA(0, 18, 107, 1)
+        Color: |-
+            =ColorValue(LookUp(c_EnvironmentVariable, 'Display Name'="Button Fill").'Default Value')
+            
+            //RGBA(0, 0, 0, 1)
+        DisabledColor: =RGBA(166, 166, 166, 1)
+        Fill: =RGBA(255, 255, 255, 1)
+        FontWeight: =FontWeight.Semibold
+        Size: =15
+        Text: ="Lead Id"
+        Width: =100
+        X: =100
+        Y: =201
+        ZIndex: =14
+
+    "'Lead Info Container_1' As groupContainer.verticalAutoLayoutContainer":
+        Height: =834
+        LayoutDirection: =LayoutDirection.Vertical
+        LayoutMode: =LayoutMode.Auto
+        LayoutOverflowY: =LayoutOverflow.Scroll
+        Visible: |-
+            =//If('Dashboard Toptab_2'.Selected.Id=1,true,false)
+            If(ProdAddd=12 ,true,false)
+        Width: ='Lead Detail'.Width
+        Y: =91
+        ZIndex: =15
+
+        Container4_7 As groupContainer.manualLayoutContainer:
+            AlignInContainer: =AlignInContainer.SetByContainer
+            FillPortions: =0
+            Height: =70
+            LayoutMinHeight: =112
+            LayoutMinWidth: =250
             Width: =Parent.Width
             ZIndex: =1
 
-        Label29_35 As label:
-            BorderColor: =RGBA(0, 18, 107, 1)
-            Color: =RGBA(0, 0, 0, 1)
-            DisabledColor: =RGBA(166, 166, 166, 1)
-            FontWeight: =FontWeight.Semibold
-            Size: =16
-            Text: |-
-                ="Remarks:"
-            Width: =253
+            Label29_7 As label:
+                BorderColor: =RGBA(0, 18, 107, 1)
+                Color: =RGBA(0, 0, 0, 1)
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                FontWeight: =FontWeight.Semibold
+                Size: =16
+                Text: |-
+                    ="Lead Id:"
+                Width: =253
+                X: =24
+                Y: =10
+                ZIndex: =1
+
+            Value_7 As label:
+                Align: =Align.Right
+                BorderColor: =RGBA(0, 18, 107, 1)
+                Color: =RGBA(0, 0, 0, 1)
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                FontWeight: =FontWeight.Semibold
+                Size: =16
+                Text: =varLeadData.zx_name
+                Width: =330
+                X: =280
+                Y: =10
+                ZIndex: =2
+
+            Rectangle14_7 As rectangle:
+                BorderColor: =RGBA(0, 18, 107, 1)
+                BorderThickness: =1
+                Fill: =RGBA(0, 0, 0, 1)
+                Height: =1.5
+                Width: =Container4_7.Width
+                Y: =95
+                ZIndex: =3
+
+        Container4_11 As groupContainer.manualLayoutContainer:
+            FillPortions: =0
+            Height: =75
+            LayoutMinHeight: =112
+            LayoutMinWidth: =250
+            Width: =Parent.Width
             ZIndex: =2
 
-        Label29_36 As label:
-            BorderThickness: =1
-            Color: =RGBA(0, 0, 0, 1)
-            DisabledColor: =RGBA(166, 166, 166, 1)
-            FontWeight: =FontWeight.Semibold
-            Height: =183
-            Size: =16
-            Text: =//varLeadData.'Reason for Rejection'
-            Width: =372
-            X: =42
-            Y: =40
+            Label29_9 As label:
+                BorderColor: =RGBA(0, 18, 107, 1)
+                Color: =RGBA(0, 0, 0, 1)
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                FontWeight: =FontWeight.Semibold
+                Size: =16
+                Text: |-
+                    ="Name:"
+                Width: =253
+                X: =24
+                Y: =10
+                ZIndex: =1
+
+            Value_8 As label:
+                Align: =Align.Right
+                BorderColor: =RGBA(0, 18, 107, 1)
+                Color: =RGBA(0, 0, 0, 1)
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                FontWeight: =FontWeight.Semibold
+                Size: =16
+                Text: =If(IsBlank(varLeadData.zx_leadname), "Partner Lead", varLeadData.zx_leadname)
+                Width: =330
+                X: =280
+                Y: =10
+                ZIndex: =2
+
+            Rectangle14_11 As rectangle:
+                BorderColor: =RGBA(0, 18, 107, 1)
+                Fill: =RGBA(0, 0, 0, 1)
+                Height: =2
+                Width: =Container4_11.Width
+                Y: =95
+                ZIndex: =3
+
+        Container4_27 As groupContainer.manualLayoutContainer:
+            FillPortions: =0
+            Height: =75
+            LayoutMinHeight: =112
+            LayoutMinWidth: =250
+            Width: =Parent.Width
             ZIndex: =3
 
-        Icon19 As icon.Cancel:
-            BorderColor: =RGBA(0, 18, 107, 1)
-            Color: =Color.Black
-            DisabledBorderColor: =RGBA(166, 166, 166, 1)
-            DisabledColor: =RGBA(244, 244, 244, 1)
-            Height: =17
-            Icon: =Icon.Cancel
-            OnSelect: =Set( varRemarkVisible, !varRemarkVisible) 
-            Width: =20
-            X: =424
-            Y: =8
+            Label29_24 As label:
+                BorderColor: =RGBA(0, 18, 107, 1)
+                Color: =RGBA(0, 0, 0, 1)
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                FontWeight: =FontWeight.Semibold
+                Size: =16
+                Text: |-
+                    ="Party:"
+                Width: =253
+                X: =24
+                Y: =10
+                ZIndex: =1
+
+            Value_14 As label:
+                Align: =Align.Right
+                BorderColor: =RGBA(0, 18, 107, 1)
+                Color: =RGBA(0, 0, 0, 1)
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                FontWeight: =FontWeight.Semibold
+                Size: =16
+                Text: =varLeadData.zx_Party.'Customer Name'
+                Width: =330
+                X: =280
+                Y: =10
+                ZIndex: =2
+
+            Rectangle14_12 As rectangle:
+                BorderColor: =RGBA(0, 18, 107, 1)
+                Fill: =RGBA(0, 0, 0, 1)
+                Height: =2
+                Width: =Container4_27.Width
+                Y: =95
+                ZIndex: =3
+
+        Container4_28 As groupContainer.manualLayoutContainer:
+            FillPortions: =0
+            Height: =75
+            LayoutMinHeight: =112
+            LayoutMinWidth: =250
+            Width: =Parent.Width
             ZIndex: =4
 
-        Button36 As button:
-            DisabledBorderColor: =RGBA(166, 166, 166, 1)
-            DisabledColor: =RGBA(166, 166, 166, 1)
-            DisabledFill: =RGBA(244, 244, 244, 1)
-            Fill: =RGBA(56, 96, 178, 1)
-            FontWeight: =FontWeight.Semibold
-            Height: =25
-            HoverColor: =RGBA(255, 255, 255, 1)
-            HoverFill: =ColorFade(RGBA(56, 96, 178, 1), -20%)
-            OnSelect: |-
-                =Patch(
-                    'Leads.S',
-                    LookUp(
-                        'Leads.S',
-                        'Lead Id' = varLeadData.zx_name
-                    ),
-                    {//'Reason for Rejection': Label29_36.Text
-                    }
-                );
-                Notify(
-                    "Reason updated successfully!",
-                    NotificationType.Success,
-                    2000
-                );
-                Set(
-                    varRemarkVisible,
-                    false
-                )
-            Size: =16
-            Text: ="SUBMIT"
-            Width: =120
-            X: =168
-            Y: =237
+            Label29_29 As label:
+                BorderColor: =RGBA(0, 18, 107, 1)
+                Color: =RGBA(0, 0, 0, 1)
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                FontWeight: =FontWeight.Semibold
+                Size: =16
+                Text: |-
+                    ="Contact:"
+                Width: =253
+                X: =24
+                Y: =10
+                ZIndex: =1
+
+            Value_19 As label:
+                Align: =Align.Right
+                BorderColor: =RGBA(0, 18, 107, 1)
+                Color: =RGBA(0, 0, 0, 1)
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                FontWeight: =FontWeight.Semibold
+                Size: =16
+                Text: |-
+                    =/*LookUp(
+                        'Contacts.S',
+                        Party.'Customer Name' = varLeadData.zx_Party.'Customer Name' && 'Primary Contact' = 'Primary Contact (Contacts.S)'.Yes
+                    ).'First Name'*/
+                    varLeadData.zx_Contact.'First Name'
+                Width: =330
+                X: =280
+                Y: =10
+                ZIndex: =2
+
+            Rectangle14_13 As rectangle:
+                BorderColor: =RGBA(0, 18, 107, 1)
+                Fill: =RGBA(0, 0, 0, 1)
+                Height: =2
+                Width: =Container4_28.Width
+                Y: =95
+                ZIndex: =3
+
+        Container4_29 As groupContainer.manualLayoutContainer:
+            FillPortions: =0
+            Height: =75
+            LayoutMinHeight: =112
+            LayoutMinWidth: =250
+            Width: =Parent.Width
             ZIndex: =5
+
+            Label29_30 As label:
+                BorderColor: =RGBA(0, 18, 107, 1)
+                Color: =RGBA(0, 0, 0, 1)
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                FontWeight: =FontWeight.Semibold
+                Size: =16
+                Text: |-
+                    ="Email:"
+                Width: =253
+                X: =24
+                Y: =10
+                ZIndex: =1
+
+            Value_20 As label:
+                Align: =Align.Right
+                BorderColor: =RGBA(0, 18, 107, 1)
+                Color: =RGBA(0, 0, 0, 1)
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                FontWeight: =FontWeight.Semibold
+                Size: =16
+                Text: =///varLeadData.ema
+                Width: =330
+                X: =280
+                Y: =10
+                ZIndex: =2
+
+            Rectangle14_14 As rectangle:
+                BorderColor: =RGBA(0, 18, 107, 1)
+                Fill: =RGBA(0, 0, 0, 1)
+                Height: =2
+                Width: =Container4_29.Width
+                Y: =95
+                ZIndex: =3
+
+        Container4_36 As groupContainer.manualLayoutContainer:
+            FillPortions: =0
+            Height: =75
+            LayoutMinHeight: =112
+            LayoutMinWidth: =250
+            Width: =Parent.Width
+            ZIndex: =6
+
+            Label29_31 As label:
+                BorderColor: =RGBA(0, 18, 107, 1)
+                Color: =RGBA(0, 0, 0, 1)
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                FontWeight: =FontWeight.Semibold
+                Size: =16
+                Text: |-
+                    ="Mobile No:"
+                Width: =253
+                X: =24
+                Y: =10
+                ZIndex: =1
+
+            Value_21 As label:
+                Align: =Align.Right
+                BorderColor: =RGBA(0, 18, 107, 1)
+                Color: =RGBA(0, 0, 0, 1)
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                FontWeight: =FontWeight.Semibold
+                Size: =16
+                Text: =varLeadData.zx_mobileno
+                Width: =330
+                X: =280
+                Y: =10
+                ZIndex: =2
+
+            Rectangle14_15 As rectangle:
+                BorderColor: =RGBA(0, 18, 107, 1)
+                Fill: =RGBA(0, 0, 0, 1)
+                Height: =2
+                Width: =Container4_36.Width
+                Y: =95
+                ZIndex: =3
+
+        Container4_38 As groupContainer.manualLayoutContainer:
+            FillPortions: =0
+            Height: =75
+            LayoutMinHeight: =112
+            LayoutMinWidth: =250
+            Width: =Parent.Width
+            ZIndex: =7
+
+            Label29_35 As label:
+                BorderColor: =RGBA(0, 18, 107, 1)
+                Color: =RGBA(0, 0, 0, 1)
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                FontWeight: =FontWeight.Semibold
+                Size: =16
+                Text: |-
+                    ="Area:"
+                Width: =253
+                X: =24
+                Y: =10
+                ZIndex: =1
+
+            Value_22 As label:
+                Align: =Align.Right
+                BorderColor: =RGBA(0, 18, 107, 1)
+                Color: =RGBA(0, 0, 0, 1)
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                FontWeight: =FontWeight.Semibold
+                Size: =16
+                Text: =varLeadData.zx_Area.'Area Name'
+                Width: =330
+                X: =280
+                Y: =10
+                ZIndex: =2
+
+            Rectangle14_23 As rectangle:
+                BorderColor: =RGBA(0, 18, 107, 1)
+                Fill: =RGBA(0, 0, 0, 1)
+                Height: =2
+                Width: =Container4_38.Width
+                Y: =95
+                ZIndex: =3
+
+        Container4_39 As groupContainer.manualLayoutContainer:
+            FillPortions: =0
+            Height: =75
+            LayoutMinHeight: =112
+            LayoutMinWidth: =250
+            Width: =Parent.Width
+            ZIndex: =8
+
+            Label29_36 As label:
+                BorderColor: =RGBA(0, 18, 107, 1)
+                Color: =RGBA(0, 0, 0, 1)
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                FontWeight: =FontWeight.Semibold
+                Size: =16
+                Text: |-
+                    ="Stage:"
+                Width: =253
+                X: =24
+                Y: =10
+                ZIndex: =1
+
+            Rectangle14_25 As rectangle:
+                BorderColor: =RGBA(0, 18, 107, 1)
+                Fill: =RGBA(0, 0, 0, 1)
+                Height: =2
+                Width: =Container4_39.Width
+                Y: =95
+                ZIndex: =3
+
+            Dropdown2_3 As dropdown:
+                AccessibleLabel: ="Stage choice"
+                BorderColor: =RGBA(0, 18, 107, 1)
+                BorderStyle: =BorderStyle.None
+                BorderThickness: =0
+                ChevronBackground: =RGBA(0, 0, 0, 0)
+                ChevronDisabledBackground: =RGBA(166, 166, 166, 1)
+                ChevronDisabledFill: =RGBA(244, 244, 244, 1)
+                ChevronFill: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//_VarGblAppColors.PrimaryRed
+                ChevronHoverBackground: =ColorFade(RGBA(56, 96, 178, 1), -20%)
+                ChevronHoverFill: =RGBA(255, 255, 255, 1)
+                Default: =varLeadData.zx_leadstage
+                DisabledBorderColor: =RGBA(166, 166, 166, 1)
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                DisabledFill: =RGBA(244, 244, 244, 1)
+                Fill: =If(varEdit=true,RGBA(255, 255, 255, 1),RGBA(0, 0, 0, 0))
+                FontWeight: =FontWeight.Semibold
+                HoverColor: =RGBA(0, 0, 0, 1)
+                HoverFill: =RGBA(186, 202, 226, 1)
+                Items: =Choices('Stage Choice')
+                OnChange: |-
+                    =Patch(
+                        'Leads.S',
+                        LookUp(
+                            'Leads.S',
+                            Leads = varLeadData.zx_leadsid
+                        ),
+                        {
+                            'Lead Stage ': Dropdown2_3.Selected.Value
+                          //  'Stage date update': Now()
+                        }
+                    );
+                    Notify(
+                        "Lead stage update successfully",
+                        NotificationType.Success,
+                        2000
+                    );
+                    ClearCollect(
+                        offlineLeadCollection,
+                        'Leads.S'
+                    )
+                PaddingLeft: =172
+                PaddingRight: =5
+                PressedBorderColor: =Self.ChevronFill
+                PressedColor: =RGBA(255, 255, 255, 1)
+                PressedFill: =RGBA(184, 0, 0, 0.18)
+                SelectionFill: =RGBA(184, 0, 0, 0.3)
+                Size: =16
+                Width: =330
+                X: =280
+                Y: =10
+                ZIndex: =4
+
+        Container4_40 As groupContainer.manualLayoutContainer:
+            FillPortions: =0
+            Height: =75
+            LayoutMinHeight: =112
+            LayoutMinWidth: =250
+            Width: =Parent.Width
+            ZIndex: =9
+
+            Rectangle14_26 As rectangle:
+                BorderColor: =RGBA(0, 18, 107, 1)
+                Fill: =RGBA(0, 0, 0, 1)
+                Height: =2
+                Width: =Container4_40.Width
+                Y: =95
+                ZIndex: =3
+
+            Label29_42 As label:
+                BorderColor: =RGBA(0, 18, 107, 1)
+                Color: =RGBA(0, 0, 0, 1)
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                FontWeight: =FontWeight.Semibold
+                Size: =16
+                Text: |-
+                    ="Engagement:"
+                Width: =253
+                X: =24
+                Y: =10
+                ZIndex: =4
+
+            Dropdown2_4 As dropdown:
+                AccessibleLabel: ="Stage choice"
+                BorderColor: =RGBA(0, 18, 107, 1)
+                BorderStyle: =BorderStyle.None
+                BorderThickness: =0
+                ChevronBackground: =RGBA(0, 0, 0, 0)
+                ChevronDisabledBackground: =RGBA(166, 166, 166, 1)
+                ChevronDisabledFill: =RGBA(244, 244, 244, 1)
+                ChevronFill: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//_VarGblAppColors.PrimaryRed
+                ChevronHoverBackground: =ColorFade(RGBA(56, 96, 178, 1), -20%)
+                ChevronHoverFill: =RGBA(255, 255, 255, 1)
+                Default: =//varLeadData.zx_engagement
+                DisabledBorderColor: =RGBA(166, 166, 166, 1)
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                DisabledFill: =RGBA(244, 244, 244, 1)
+                Fill: =If(varEdit=true,RGBA(255, 255, 255, 1),RGBA(0, 0, 0, 0))
+                FontWeight: =FontWeight.Semibold
+                HoverColor: =RGBA(0, 0, 0, 1)
+                HoverFill: =RGBA(186, 202, 226, 1)
+                Items: =///Choices(Engagement)
+                OnChange: =
+                OnSelect: |-
+                    =Patch(
+                        'Leads.S',
+                        LookUp(
+                            'Leads.S',
+                            Leads = varLeadData.zx_leadsid
+                        ),
+                        {//Engagement: Dropdown2_1.Selected.Value
+                        }
+                    );
+                    /*If(
+                        Self.Selected.Value = Engagement.Hold,
+                        Set(
+                            varRemarkVisible,
+                            true
+                        )
+                    );*/
+                    Notify(
+                        "Enagageement stage update successfully",
+                        NotificationType.Success,
+                        2000
+                    );
+                    ClearCollect(
+                        offlineLeadCollection,
+                        'Leads.S'
+                    )
+                PaddingLeft: =172
+                PaddingRight: =5
+                PressedBorderColor: =Self.ChevronFill
+                PressedColor: =RGBA(255, 255, 255, 1)
+                PressedFill: =RGBA(184, 0, 0, 0.18)
+                SelectionFill: =RGBA(184, 0, 0, 0.3)
+                Size: =16
+                Width: =330
+                X: =280
+                Y: =10
+                ZIndex: =5
+
+        Container4_41 As groupContainer.manualLayoutContainer:
+            AlignInContainer: =AlignInContainer.SetByContainer
+            FillPortions: =0
+            Height: =75
+            LayoutMinHeight: =112
+            LayoutMinWidth: =250
+            Width: =Parent.Width
+            ZIndex: =11
+
+            Rectangle14_27 As rectangle:
+                BorderColor: =RGBA(0, 18, 107, 1)
+                Fill: =RGBA(0, 0, 0, 1)
+                Height: =2
+                Width: =Container4_41.Width
+                Y: =95
+                ZIndex: =3
+
+            Label29_43 As label:
+                BorderColor: =RGBA(0, 18, 107, 1)
+                Color: =RGBA(0, 0, 0, 1)
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                FontWeight: =FontWeight.Semibold
+                Size: =16
+                Text: |-
+                    ="Lead Status:"
+                Width: =253
+                X: =24
+                Y: =10
+                ZIndex: =4
+
+            Dropdown2_5 As dropdown:
+                AccessibleLabel: ="Stage choice"
+                BorderColor: =RGBA(0, 18, 107, 1)
+                BorderStyle: =BorderStyle.None
+                BorderThickness: =0
+                ChevronBackground: =RGBA(0, 0, 0, 0)
+                ChevronDisabledBackground: =RGBA(166, 166, 166, 1)
+                ChevronDisabledFill: =RGBA(244, 244, 244, 1)
+                ChevronFill: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//_VarGblAppColors.PrimaryRed
+                ChevronHoverBackground: =ColorFade(RGBA(56, 96, 178, 1), -20%)
+                ChevronHoverFill: =RGBA(255, 255, 255, 1)
+                Default: =varLeadData.zx_leadstage
+                DisabledBorderColor: =RGBA(166, 166, 166, 1)
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                DisabledFill: =RGBA(244, 244, 244, 1)
+                Fill: =If(varEdit=true,RGBA(255, 255, 255, 1),RGBA(0, 0, 0, 0))
+                FontWeight: =FontWeight.Semibold
+                HoverColor: =RGBA(0, 0, 0, 1)
+                HoverFill: =RGBA(186, 202, 226, 1)
+                Items: =Choices('Status (Leads.S)')
+                OnChange: |-
+                    =Patch(
+                        'Leads.S',
+                        LookUp(
+                            'Leads.S',
+                            Leads = varLeadData.zx_leadsid
+                        ),
+                        {
+                           //leadstatus:Dropdown2_2.Selected.Value
+                        }
+                    );
+                    Notify(
+                        "Lead Status update successfully",
+                        NotificationType.Success,
+                        2000
+                    );
+                    ClearCollect(
+                        offlineLeadCollection,
+                        'Leads.S'
+                    )
+                PaddingLeft: =172
+                PaddingRight: =5
+                PressedBorderColor: =Self.ChevronFill
+                PressedColor: =RGBA(255, 255, 255, 1)
+                PressedFill: =RGBA(184, 0, 0, 0.18)
+                SelectionFill: =RGBA(184, 0, 0, 0.3)
+                Size: =16
+                Width: =330
+                X: =280
+                Y: =10
+                ZIndex: =5
+
+        Container4_42 As groupContainer.manualLayoutContainer:
+            FillPortions: =0
+            Height: =75
+            LayoutMinHeight: =100
+            LayoutMinWidth: =250
+            Width: =Parent.Width
+            ZIndex: =12
+
+        Container4_43 As groupContainer.manualLayoutContainer:
+            FillPortions: =0
+            Height: =75
+            LayoutMinHeight: =100
+            LayoutMinWidth: =250
+            Width: =Parent.Width
+            ZIndex: =13
+
+            Label29_44 As label:
+                BorderColor: =RGBA(0, 18, 107, 1)
+                Color: =RGBA(0, 0, 0, 1)
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                FontWeight: =FontWeight.Semibold
+                Size: =16
+                Text: |-
+                    ="Product Category:"
+                Width: =253
+                X: =24
+                Y: =10
+                ZIndex: =1
+
+            Value_23 As label:
+                Align: =Align.Right
+                BorderColor: =RGBA(0, 18, 107, 1)
+                Color: =RGBA(0, 0, 0, 1)
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                FontWeight: =FontWeight.Semibold
+                OnSelect: |-
+                    =Patch(
+                        'Leads.S',
+                        LookUp(
+                            'Leads.S',
+                            'Lead Id' = varLeadData.zx_name
+                        ),
+                        {
+                            'Lead Stage ': Value_23
+                        }
+                    );
+                    Notify(
+                        "Lead stage value updated!",
+                        NotificationType.Success,
+                        2000
+                    )
+                Size: =16
+                Text: =varLeadData.zx_ProductCategory.'Category Name'
+                Width: =330
+                X: =280
+                Y: =10
+                ZIndex: =2
+
+        Container4_44 As groupContainer.manualLayoutContainer:
+            FillPortions: =0
+            Height: =75
+            LayoutMinHeight: =112
+            LayoutMinWidth: =250
+            Width: =Parent.Width
+            ZIndex: =14
+
+            Label29_45 As label:
+                BorderColor: =RGBA(0, 18, 107, 1)
+                Color: =RGBA(0, 0, 0, 1)
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                FontWeight: =FontWeight.Semibold
+                Size: =16
+                Text: |-
+                    ="Lead Value:"
+                Width: =253
+                X: =24
+                Y: =10
+                ZIndex: =1
+
+            Value_24 As label:
+                Align: =Align.Right
+                BorderColor: =RGBA(0, 18, 107, 1)
+                Color: =RGBA(0, 0, 0, 1)
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                FontWeight: =FontWeight.Semibold
+                PaddingRight: =40
+                Size: =16
+                Text: =varLeadData.zx_leadvalue
+                Width: =330
+                X: =280
+                Y: =10
+                ZIndex: =2
+
+        Container4_45 As groupContainer.manualLayoutContainer:
+            FillPortions: =0
+            Height: =75
+            LayoutMinHeight: =112
+            LayoutMinWidth: =250
+            Width: =Parent.Width
+            ZIndex: =15
+
+            Label29_46 As label:
+                BorderColor: =RGBA(0, 18, 107, 1)
+                Color: =RGBA(0, 0, 0, 1)
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                FontWeight: =FontWeight.Semibold
+                Size: =16
+                Text: |-
+                    ="Committed:"
+                Width: =253
+                X: =24
+                Y: =10
+                ZIndex: =1
+
+            dropCommited_2 As dropdown:
+                AccessibleLabel: ="Committed choice"
+                BorderColor: =RGBA(0, 18, 107, 1)
+                BorderStyle: =BorderStyle.None
+                BorderThickness: =0
+                ChevronBackground: =RGBA(0, 0, 0, 0)
+                ChevronDisabledBackground: =RGBA(166, 166, 166, 1)
+                ChevronDisabledFill: =RGBA(244, 244, 244, 1)
+                ChevronFill: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//_VarGblAppColors.PrimaryRed
+                ChevronHoverBackground: |-
+                    =ColorFade(ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//_VarGblAppColors.PrimaryRed
+                    ,50%)
+                ChevronHoverFill: =RGBA(255, 255, 255, 1)
+                Default: =varLeadData.zx_commited
+                DisabledBorderColor: =RGBA(166, 166, 166, 1)
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                DisabledFill: =RGBA(244, 244, 244, 1)
+                Fill: =If(varEdit=true,RGBA(255, 255, 255, 1),RGBA(0, 0, 0, 0))
+                FontWeight: =FontWeight.Semibold
+                HoverColor: =RGBA(0, 0, 0, 1)
+                HoverFill: =RGBA(186, 202, 226, 1)
+                Items: =Choices('Commited (Leads.S)')
+                OnChange: |-
+                    =Patch(
+                        'Leads.S',
+                        LookUp(
+                            'Leads.S',
+                              Leads = varLeadData.zx_leadsid
+                        ),
+                        {zx_commited: dropCommited_2.Selected.Value
+                        }
+                    );
+                    Notify(
+                        "Lead Update successfully",
+                        NotificationType.Success,
+                        2000
+                    );
+                    ClearCollect(offlineLeadCollection,'Leads.S')
+                PaddingLeft: =230
+                PaddingRight: =5
+                PressedColor: =RGBA(255, 255, 255, 1)
+                PressedFill: =RGBA(175, 191, 224, 1)
+                SelectionFill: =RGBA(56, 96, 178, 1)
+                Size: =16
+                Width: =330
+                X: =280
+                Y: =10
+                ZIndex: =2
+
+        Container4_46 As groupContainer.manualLayoutContainer:
+            FillPortions: =0
+            Height: =75
+            LayoutMinHeight: =112
+            LayoutMinWidth: =250
+            Width: =Parent.Width
+            ZIndex: =16
+
+            Rectangle14_28 As rectangle:
+                BorderColor: =RGBA(0, 18, 107, 1)
+                Fill: =RGBA(0, 0, 0, 1)
+                Height: =2
+                Width: =Container4_46.Width
+                Y: =95
+                ZIndex: =3
+
+            Label31_1 As label:
+                Align: =Align.Right
+                BorderColor: =RGBA(0, 18, 107, 1)
+                Color: =RGBA(0, 0, 0, 1)
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                Height: =56
+                Size: =21
+                Text: =ComboBox5_1.Selected.'Full Name'
+                Visible: =If(varEdit=false,true)
+                Width: =330
+                ZIndex: =5
+
+            Label29_47 As label:
+                BorderColor: =RGBA(0, 18, 107, 1)
+                Color: =RGBA(0, 0, 0, 1)
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                FontWeight: =FontWeight.Semibold
+                Size: =16
+                Text: |-
+                    ="Estimated Value:"
+                Width: =253
+                X: =24
+                Y: =10
+                ZIndex: =6
+
+            Value_25 As label:
+                Align: =Align.Right
+                BorderColor: =RGBA(0, 18, 107, 1)
+                Color: =RGBA(0, 0, 0, 1)
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                FontWeight: =FontWeight.Semibold
+                Size: =16
+                Text: =varLeadData.zx_estimatedvalue
+                Width: =330
+                X: =280
+                Y: =10
+                ZIndex: =7
+
+        Container4_47 As groupContainer.manualLayoutContainer:
+            FillPortions: =0
+            Height: =75
+            LayoutMinHeight: =112
+            LayoutMinWidth: =250
+            Width: =Parent.Width
+            ZIndex: =17
+
+            Rectangle14_29 As rectangle:
+                BorderColor: =RGBA(0, 18, 107, 1)
+                Fill: =RGBA(0, 0, 0, 1)
+                Height: =2
+                Width: =Container4_47.Width
+                Y: =95
+                ZIndex: =3
+
+            Label29_48 As label:
+                BorderColor: =RGBA(0, 18, 107, 1)
+                Color: =RGBA(0, 0, 0, 1)
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                FontWeight: =FontWeight.Semibold
+                Size: =16
+                Text: |-
+                    ="Created Date:"
+                Width: =253
+                X: =24
+                Y: =10
+                ZIndex: =4
+
+            Value_26 As label:
+                Align: =Align.Right
+                BorderColor: =RGBA(0, 18, 107, 1)
+                Color: =RGBA(0, 0, 0, 1)
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                FontWeight: =FontWeight.Semibold
+                OnSelect: |-
+                    =Patch(
+                        'Leads.S',
+                        LookUp(
+                            'Leads.S',
+                            'Lead Id' = varLeadData.zx_name
+                        ),
+                        {
+                            Commited: Value_26
+                        }
+                    );
+                    Notify(
+                        "Lead stage value updated!",
+                        NotificationType.Success,
+                        2000
+                    )
+                Size: =16
+                Text: =DateValue(varLeadData.createdon)
+                Width: =330
+                X: =280
+                Y: =10
+                ZIndex: =5
+
+        Container4_48 As groupContainer.manualLayoutContainer:
+            FillPortions: =0
+            Height: =75
+            LayoutMinHeight: =112
+            LayoutMinWidth: =250
+            Width: =Parent.Width
+            ZIndex: =18
+
+            Rectangle14_31 As rectangle:
+                BorderColor: =RGBA(0, 18, 107, 1)
+                Fill: =RGBA(0, 0, 0, 1)
+                Height: =2
+                Width: =Container4_48.Width
+                Y: =95
+                ZIndex: =3
+
+            Label29_49 As label:
+                BorderColor: =RGBA(0, 18, 107, 1)
+                Color: =RGBA(0, 0, 0, 1)
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                FontWeight: =FontWeight.Semibold
+                Size: =16
+                Text: |-
+                    ="Assigned Date:"
+                Width: =253
+                X: =24
+                Y: =10
+                ZIndex: =4
+
+            Value_27 As label:
+                Align: =Align.Right
+                BorderColor: =RGBA(0, 18, 107, 1)
+                Color: =RGBA(0, 0, 0, 1)
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                FontWeight: =FontWeight.Semibold
+                Size: =16
+                Text: =DateValue(varLeadData.zx_assigndate)
+                Width: =330
+                X: =280
+                Y: =10
+                ZIndex: =5
+
+        Container4_49 As groupContainer.manualLayoutContainer:
+            FillPortions: =0
+            Height: =75
+            LayoutMinHeight: =112
+            LayoutMinWidth: =250
+            Width: =Parent.Width
+            ZIndex: =19
+
+            Rectangle14_32 As rectangle:
+                BorderColor: =RGBA(0, 18, 107, 1)
+                Fill: =RGBA(0, 0, 0, 1)
+                Height: =2
+                Width: =Container4_49.Width
+                Y: =95
+                ZIndex: =3
+
+            Label29_50 As label:
+                BorderColor: =RGBA(0, 18, 107, 1)
+                Color: =RGBA(0, 0, 0, 1)
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                FontWeight: =FontWeight.Semibold
+                Size: =16
+                Text: |-
+                    ="Assigned To:"
+                Width: =253
+                X: =24
+                Y: =10
+                ZIndex: =4
+
+            ComboBox5_1 As combobox:
+                AccessibleLabel: ="Assigned to"
+                BorderColor: =RGBA(255, 255, 255, 1)
+                ChevronBackground: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//_VarGblAppColors.PrimaryRed
+                ChevronDisabledBackground: =RGBA(166, 166, 166, 1)
+                ChevronDisabledFill: =RGBA(244, 244, 244, 1)
+                ChevronHoverBackground: =ColorFade(RGBA(56, 96, 178, 1), -20%)
+                ChevronHoverFill: =RGBA(255, 255, 255, 1)
+                DisabledBorderColor: =RGBA(166, 166, 166, 1)
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                DisabledFill: =RGBA(244, 244, 244, 1)
+                DisplayFields: =["fullname"]
+                HoverColor: =RGBA(0, 0, 0, 1)
+                HoverFill: =RGBA(186, 202, 226, 1)
+                Items: =Users
+                OnChange: |-
+                    =/*Set(
+                        varassigneddate,
+                        Today()
+                    );*/
+                    Patch(
+                        'Leads.S',
+                        LookUp(
+                            'Leads.S',
+                            Leads = varLeadData.zx_leadsid
+                        ),
+                        {
+                            // Owner: LookUp(Users, 'Primary Email' = ComboBox5.Selected.'Primary Email'),
+                            'Assign Date': Today()
+                        }
+                    );
+                    Refresh('Leads.S');
+                    Notify(
+                        "Lead owner update successfully",
+                        NotificationType.Success,
+                        2000
+                    );
+                PressedColor: =RGBA(255, 255, 255, 1)
+                PressedFill: =RGBA(0, 18, 107, 1)
+                SearchFields: =["fullname"]
+                SearchItems: =Search(Users,ComboBox5_1.SearchText,"fullname")
+                SelectionFill: =RGBA(237, 237, 237, 1)
+                Size: =16
+                Width: =330
+                X: =280
+                Y: =10
+                ZIndex: =5
+
+        Container4_50 As groupContainer.manualLayoutContainer:
+            FillPortions: =0
+            Height: =75
+            LayoutMinHeight: =112
+            LayoutMinWidth: =250
+            Width: =Parent.Width
+            ZIndex: =20
+
+            Rectangle14_35 As rectangle:
+                BorderColor: =RGBA(0, 18, 107, 1)
+                Fill: =RGBA(0, 0, 0, 1)
+                Height: =2
+                Width: =Container4_50.Width
+                Y: =95
+                ZIndex: =3
+
+            Label29_51 As label:
+                BorderColor: =RGBA(0, 18, 107, 1)
+                Color: =RGBA(0, 0, 0, 1)
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                FontWeight: =FontWeight.Semibold
+                Size: =16
+                Text: |-
+                    ="Expected Closure Date:"
+                VerticalAlign: =VerticalAlign.Top
+                Width: =253
+                X: =24
+                Y: =10
+                ZIndex: =4
+
+            DatePicker6_1 As datepicker:
+                AccessibleLabel: ="Date Picker"
+                BorderColor: =RGBA(0, 18, 107, 1)
+                BorderStyle: =BorderStyle.None
+                CalendarHeaderFill: =RGBA(56, 96, 178, 1)
+                Color: =RGBA(0, 0, 0, 1)
+                DefaultDate: =DateValue(varLeadData.zx_expectedclosuredate)
+                DisabledBorderColor: =RGBA(166, 166, 166, 1)
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                DisabledFill: =RGBA(244, 244, 244, 1)
+                HoverDateFill: =RGBA(186, 202, 226, 1)
+                IconBackground: =
+                IconFill: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//_VarGblAppColors.PrimaryRed
+                OnChange: |-
+                    =Patch(
+                        'Leads.S',
+                        LookUp(
+                            'Leads.S',
+                            'Lead Id' = varLeadData.zx_name
+                        ),
+                        {'Expected Closure Date': Self.SelectedDate}
+                    );
+                    Notify(
+                        "Expected closure date updated sucessfully!",
+                        NotificationType.Success,
+                        1000
+                    )
+                SelectedDateFill: =RGBA(56, 96, 178, 1)
+                Size: =16
+                Width: =280
+                X: =330
+                Y: =10
+                ZIndex: =5
+
+        Container4_51 As groupContainer.manualLayoutContainer:
+            AlignInContainer: =AlignInContainer.SetByContainer
+            FillPortions: =0
+            Height: =75
+            LayoutMinHeight: =112
+            LayoutMinWidth: =250
+            Width: =Parent.Width
+            ZIndex: =21
+
+            Rectangle14_36 As rectangle:
+                BorderColor: =RGBA(0, 18, 107, 1)
+                Fill: =RGBA(0, 0, 0, 1)
+                Height: =2
+                Width: =Container4_51.Width
+                Y: =95
+                ZIndex: =3
+
+            Label29_52 As label:
+                BorderColor: =RGBA(0, 18, 107, 1)
+                Color: =RGBA(0, 0, 0, 1)
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                FontWeight: =FontWeight.Semibold
+                Size: =16
+                Text: |-
+                    ="Actual Closure Date:"
+                Width: =253
+                X: =24
+                Y: =10
+                ZIndex: =4
+
+            Value_28 As label:
+                Align: =Align.Right
+                BorderColor: =RGBA(0, 18, 107, 1)
+                Color: =RGBA(0, 0, 0, 1)
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                FontWeight: =FontWeight.Semibold
+                OnSelect: |-
+                    =Patch(
+                        'Leads.S',
+                        LookUp(
+                            'Leads.S',
+                            'Lead Id' = varLeadData.zx_name
+                        ),
+                        {'Owning User': Value_28}
+                    );
+                    Notify(
+                        "Lead assigned sucessfully!",
+                        NotificationType.Success,
+                        2000
+                    )
+                Size: =16
+                Text: =DateValue(varLeadData.zx_actualclosuredate)
+                Width: =330
+                X: =280
+                Y: =10
+                ZIndex: =5
+
+        Container4_52 As groupContainer.manualLayoutContainer:
+            AlignInContainer: =AlignInContainer.SetByContainer
+            FillPortions: =0
+            Height: =75
+            LayoutMinHeight: =112
+            LayoutMinWidth: =250
+            Width: =Parent.Width
+            ZIndex: =22
+
+            Rectangle14_37 As rectangle:
+                BorderColor: =RGBA(0, 18, 107, 1)
+                Fill: =RGBA(0, 0, 0, 1)
+                Height: =2
+                Width: =Container4_52.Width
+                Y: =95
+                ZIndex: =3
+
+            Label29_53 As label:
+                BorderColor: =RGBA(0, 18, 107, 1)
+                Color: =RGBA(0, 0, 0, 1)
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                FontWeight: =FontWeight.Semibold
+                Size: =16
+                Text: |-
+                    ="Next Action Date:"
+                Width: =253
+                X: =24
+                Y: =10
+                ZIndex: =4
+
+            DatePicker1_7 As datepicker:
+                AccessibleLabel: ="Next action date"
+                BorderColor: =RGBA(0, 18, 107, 1)
+                BorderStyle: =BorderStyle.None
+                BorderThickness: =0
+                CalendarHeaderFill: =RGBA(56, 96, 178, 1)
+                Color: =RGBA(0, 0, 0, 1)
+                DefaultDate: =varLeadData.zx_nextactiondate
+                DisabledBorderColor: =RGBA(166, 166, 166, 1)
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                DisabledFill: =RGBA(244, 244, 244, 1)
+                Fill: =If(varEdit=true,RGBA(255, 255, 255, 1),RGBA(0, 0, 0, 0))
+                HoverDateFill: =RGBA(186, 202, 226, 1)
+                IconBackground: =Color.Transparent
+                IconFill: =ColorValue(LookUp(c_EnvironmentVariable,'Display Name'="Button Fill").'Default Value' )//_VarGblAppColors.PrimaryRed
+                InputTextPlaceholder: =If(IsBlank(Self.SelectedDate), Text(Today(),"dd/mm/yyyy"))
+                OnChange: |-
+                    =Patch(
+                        'Leads.S',
+                        LookUp(
+                            'Leads.S',
+                              Leads = varLeadData.zx_leadsid
+                        ),
+                        {'Next Action Date':DatePicker1_7.SelectedDate}
+                    );
+                    Notify(
+                        "Lead Update successfully",
+                        NotificationType.Success,
+                        2000
+                    );
+                    ClearCollect(offlineLeadCollection,'Leads.S')
+                OnSelect: |-
+                    =Patch(
+                        'Leads.S',
+                        LookUp(
+                            'Leads.S',
+                            'Lead Id' = varLeadData.zx_name
+                        ),
+                        {'Expected Closure Date': DatePicker1_7.SelectedDate}
+                    );
+                    Notify(
+                        "Expected closure date value updated!",
+                        NotificationType.Success,
+                        2000
+                    )
+                PaddingLeft: =158
+                PaddingTop: =5
+                SelectedDateFill: =RGBA(56, 96, 178, 1)
+                Size: =16
+                Width: =280
+                X: =330
+                Y: =10
+                ZIndex: =5
+
+        Container4_53 As groupContainer.manualLayoutContainer:
+            AlignInContainer: =AlignInContainer.SetByContainer
+            FillPortions: =0
+            Height: =75
+            LayoutMinHeight: =112
+            LayoutMinWidth: =250
+            PaddingBottom: =15
+            Width: =Parent.Width
+            ZIndex: =23
+
+            Rectangle14_38 As rectangle:
+                BorderColor: =RGBA(0, 18, 107, 1)
+                Fill: =RGBA(0, 0, 0, 1)
+                Height: =2
+                Width: =Container4_53.Width
+                Y: =95
+                ZIndex: =3
+
+            Label29_54 As label:
+                BorderColor: =RGBA(0, 18, 107, 1)
+                Color: =RGBA(0, 0, 0, 1)
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                FontWeight: =FontWeight.Semibold
+                Size: =16
+                Text: |-
+                    ="Next Action:"
+                Width: =253
+                X: =24
+                Y: =10
+                ZIndex: =4
+
+            TextInput3_1 As text:
+                AccessibleLabel: ="Next Action"
+                Align: =Align.Right
+                BorderColor: =RGBA(0, 18, 107, 1)
+                BorderStyle: =BorderStyle.None
+                BorderThickness: =0
+                Color: =RGBA(0, 0, 0, 1)
+                Default: =varLeadData.zx_nextaction
+                DisabledBorderColor: =RGBA(166, 166, 166, 1)
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                DisabledFill: =RGBA(244, 244, 244, 1)
+                DisplayMode: =If(varEdit=true,DisplayMode.Edit,DisplayMode.View)
+                Fill: =If(varEdit=true,RGBA(255, 255, 255, 1),RGBA(0, 0, 0, 0))
+                FocusedBorderThickness: =4
+                FontWeight: =FontWeight.Semibold
+                HoverBorderColor: =RGBA(0, 18, 107, 1)
+                HoverColor: =RGBA(0, 0, 0, 1)
+                HoverFill: =RGBA(186, 202, 226, 1)
+                OnChange: |-
+                    =Patch(
+                        'Leads.S',
+                        LookUp(
+                            'Leads.S',
+                              Leads = varLeadData.zx_leadsid
+                        ),
+                        {'Next Action':TextInput3_1.Text}
+                    );
+                    Notify(
+                        "Lead Update successfully",
+                        NotificationType.Success,
+                        2000
+                    );
+                    ClearCollect(offlineLeadCollection,'Leads.S')
+                Size: =16
+                Width: =330
+                X: =280
+                Y: =10
+                ZIndex: =5
+
+        Container12_1 As groupContainer.manualLayoutContainer:
+            FillPortions: =0
+            Height: =75
+            LayoutMinHeight: =112
+            LayoutMinWidth: =250
+            ZIndex: =24
+
+            Label29_55 As label:
+                BorderColor: =RGBA(0, 18, 107, 1)
+                Color: =RGBA(0, 0, 0, 1)
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                FontWeight: =FontWeight.Semibold
+                Size: =16
+                Text: |-
+                    ="Lead Days:"
+                Width: =253
+                X: =24
+                Y: =10
+                ZIndex: =1
+
+            Value_29 As label:
+                Align: =Align.Right
+                BorderColor: =RGBA(0, 18, 107, 1)
+                Color: =RGBA(0, 0, 0, 1)
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                FontWeight: =FontWeight.Semibold
+                OnSelect: |-
+                    =Patch(
+                        'Leads.S',
+                        LookUp(
+                            'Leads.S',
+                            'Lead Id' = varLeadData.zx_name
+                        ),
+                        {'Next Action Date': Value_29}
+                    );
+                    Notify(
+                        "Next Action Date value updated!",
+                        NotificationType.Success,
+                        2000
+                    )
+                Size: =16
+                Text: =varLeadData.zx_leaddays
+                Width: =330
+                X: =280
+                Y: =10
+                ZIndex: =2
+
+        Container13_1 As groupContainer.manualLayoutContainer:
+            FillPortions: =0
+            Height: =75
+            LayoutMinHeight: =112
+            LayoutMinWidth: =250
+            ZIndex: =25
+
+            Label29_56 As label:
+                BorderColor: =RGBA(0, 18, 107, 1)
+                Color: =RGBA(0, 0, 0, 1)
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                FontWeight: =FontWeight.Semibold
+                Size: =16
+                Text: |-
+                    ="No Action Days:"
+                Width: =253
+                X: =24
+                Y: =10
+                ZIndex: =1
+
+            Value_30 As label:
+                Align: =Align.Right
+                BorderColor: =RGBA(0, 18, 107, 1)
+                Color: =RGBA(0, 0, 0, 1)
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                FontWeight: =FontWeight.Semibold
+                Size: =16
+                Text: =varLeadData.zx_noactiondays
+                Width: =330
+                X: =280
+                Y: =10
+                ZIndex: =2
+
+        Container14_1 As groupContainer.manualLayoutContainer:
+            FillPortions: =0
+            Height: =75
+            LayoutMinHeight: =112
+            LayoutMinWidth: =250
+            ZIndex: =26
+
+            Label29_57 As label:
+                BorderColor: =RGBA(0, 18, 107, 1)
+                Color: =RGBA(0, 0, 0, 1)
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                FontWeight: =FontWeight.Semibold
+                Size: =16
+                Text: |-
+                    ="Competitor:"
+                Width: =253
+                X: =24
+                Y: =10
+                ZIndex: =1
+
+            Value_31 As label:
+                Align: =Align.Right
+                BorderColor: =RGBA(0, 18, 107, 1)
+                Color: =RGBA(0, 0, 0, 1)
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                FontWeight: =FontWeight.Semibold
+                Size: =16
+                Text: =varLeadData.zx_Competitor.'Competitor Name'
+                Width: =330
+                X: =280
+                Y: =10
+                ZIndex: =2
 
