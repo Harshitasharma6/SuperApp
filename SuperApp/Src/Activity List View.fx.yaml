@@ -58,7 +58,7 @@
         Height: =953
         Items: |-
             =Sort(
-                c_ActivityVisit,//OfflineActivitiesCollection,
+              OfflineActivitiesCollection, // c_ActivityVisit,//
                 'Created On',
                 SortOrder.Descending
             )
@@ -129,7 +129,7 @@
                 LookUp('Environment Variable Definitions', 'Display Name'="Text Sub Title Font Size").'Default Value'
             TabIndex: =0
             Text: |-
-                ="Type: " & If(IsBlank(ThisItem.VisitActivity), "Call", "Visit")
+                ="Type: " & ThisItem.'Activity Type'
             Tooltip: |-
                 ="Order Line Id: "
             Width: =290
@@ -185,7 +185,8 @@
             Size: =LookUp(c_EnvironmentVariable,'Display Name'="Text Medium Font Size").'Default Value'
             TabIndex: =0
             Text: |-
-                ="Activity ID: " & If(IsBlank(ThisItem.'Lead Activity Id'), ThisItem.VisitID, ThisItem.'Lead Activity Id')
+                =//"Activity ID: " &  ThisItem.'Lead Activity Id'//If(IsBlank(ThisItem.'Lead Activity Id'), ThisItem.VisitID, ThisItem.'Lead Activity Id')
+                If(!IsBlank(ThisItem.Lead), "Lead",!IsBlank(ThisItem.Visit), "Visit")
             Tooltip: =
             Width: =316
             X: =4
@@ -211,7 +212,7 @@
                 LookUp('Environment Variable Definitions', 'Display Name'="Text Sub Title Font Size").'Default Value'
             TabIndex: =0
             Text: |-
-                ="Follow-Up Activity Type: "& ThisItem.FollowUpActivity
+                ="Follow-Up Activity Type: "& ThisItem.'Follow-Up Activity Type'
             Tooltip: =
             Width: =310
             X: =4

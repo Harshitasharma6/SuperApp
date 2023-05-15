@@ -729,6 +729,7 @@
             MaxLength: =DataSourceInfo([@'Lead Activities.S'], DataSourceInfo.MaxLength, "zx_duration")
             Required: =false
             Update: =DataCardValue8.Text
+            Visible: =false
             Width: =590
             X: =0
             Y: =3
@@ -818,6 +819,7 @@
             Height: =50
             Required: =false
             Update: =DataCardValue16.Selected.Value
+            Visible: =(DataCardValue14.Selected.Value='Activity Type'.Call)
             Width: =590
             X: =0
             Y: =4
