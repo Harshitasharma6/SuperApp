@@ -63,6 +63,58 @@
     }
   },
   {
+    "DisplayName": "Activity Outcome",
+    "Name": "cra62_activityoutcome",
+    "OptionSetInfoNameMapping": {
+      "571990000": "Interested",
+      "571990001": "Not Interested"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": true,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "zx_activityoutcome",
+        "OptionSetReferenceEntityName": "Activities"
+      },
+      "OptionSetReferenceItem1": {
+        "OptionSetReferenceColumnName": "zx_activityoutcome",
+        "OptionSetReferenceEntityName": "Lead Activities.S"
+      }
+    },
+    "OptionSetTypeKey": "PicklistType",
+    "RelatedColumnInvariantName": "zx_activityoutcome",
+    "RelatedEntityName": "Activities",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Activity Type",
+    "Name": "cra62_activitytype",
+    "OptionSetInfoNameMapping": {
+      "571990000": "Visit",
+      "571990001": "Call"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": true,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "zx_activitytype",
+        "OptionSetReferenceEntityName": "Activities"
+      },
+      "OptionSetReferenceItem1": {
+        "OptionSetReferenceColumnName": "zx_activitytype",
+        "OptionSetReferenceEntityName": "Lead Activities.S"
+      },
+      "OptionSetReferenceItem2": {
+        "OptionSetReferenceColumnName": "zx_followupactivitytype",
+        "OptionSetReferenceEntityName": "Lead Activities.S"
+      }
+    },
+    "OptionSetTypeKey": "PicklistType",
+    "RelatedColumnInvariantName": "zx_activitytype",
+    "RelatedEntityName": "Activities",
+    "Type": "OptionSetInfo"
+  },
+  {
     "DisplayName": "Status (Activities)",
     "Name": "zx_activity_statecode",
     "OptionSetInfoNameMapping": {
